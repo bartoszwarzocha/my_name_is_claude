@@ -28,6 +28,7 @@ Inspired by: [Claude AI](https://claude.ai), [Serena](https://serena.ai), [Conte
   - [🔧 Comprehensive Automation Hooks](#-comprehensive-automation-hooks)
   - [🎯 Workflow Orchestration](#-workflow-orchestration)
   - [🗃️ Enterprise Database Management](#️-enterprise-database-management)
+- [🛠️ MCP Tools Integration](#️-mcp-tools-integration)
 - [🚀 Getting Started](#-getting-started)
 - [📝 Usage Examples & Scenarios](#-usage-examples--scenarios)
 - [⚙️ Advanced Configuration](#️-advanced-configuration)
@@ -57,33 +58,35 @@ This repository contains a production-ready Claude Code Agent Framework with a c
 ```text
 my_name_is_claude/
 ├── .claude/                                    # Claude Code configuration
-│   ├── agents/                                 # 11 specialized agent definitions
+│   ├── agents/                                 # Specialized agent definitions
 │   │   ├── api/                               # API engineer agent
 │   │   ├── architecture/                      # Software architect agent
+│   │   ├── backend/                           # Backend engineer agent
 │   │   ├── business/                          # Business analyst agent
 │   │   ├── data/                             # Data engineer agent
 │   │   ├── deployment/                        # Deployment engineer agent
 │   │   ├── design/                           # UX/UI designer agent
 │   │   ├── frontend/                         # Frontend engineer agent
-│   │   ├── planner/                          # Product manager agent
+│   │   ├── planner/                          # Product manager & reviewer agents
 │   │   ├── quality/                          # QA engineer agent
-│   │   ├── review/                           # Reviewer agent
 │   │   └── security/                         # Security engineer agent
 │   │
 │   ├── prompts/                              # ⭐ Comprehensive Prompts Library
 │   │   ├── agents/                           # Specialized agent prompts
-│   │   │   ├── api/                         # API engineering prompts
-│   │   │   ├── architecture/                # System architecture prompt
+│   │   │   ├── api/                         # API engineering prompts (REST, GraphQL, microservices)
+│   │   │   ├── architecture/                # System architecture & desktop app prompts
 │   │   │   ├── business/                    # Business analysis prompts
-│   │   │   ├── data/                        # Data engineering prompts
-│   │   │   ├── deployment/                  # Deployment engineering prompts
-│   │   │   ├── design/                      # UX design prompts
-│   │   │   ├── frontend/                    # ✅ Frontend engineering prompts
+│   │   │   ├── data/                        # Data engineering & database prompts
+│   │   │   ├── deployment/                  # Deployment & packaging prompts
+│   │   │   ├── design/                      # UX research & persona development
+│   │   │   ├── frontend/                    # ✅ Complete frontend prompts (React, Angular, wxWidgets, PWA)
 │   │   │   ├── product/                     # Product management prompts
-│   │   │   ├── quality/                     # QA engineering prompts
-│   │   │   ├── review/                      # Review & validation prompts
-│   │   │   └── security/                    # ✅ Security engineering prompts
+│   │   │   ├── qa/                          # Performance optimization prompts
+│   │   │   ├── quality/                     # Test automation prompts
+│   │   │   ├── review/                      # Code quality & security review prompts
+│   │   │   └── security/                    # ✅ Comprehensive security prompts (pentesting, compliance, IAM)
 │   │   ├── workflows/                       # Multi-agent orchestration prompts
+│   │   ├── init/                           # Project initialization prompts
 │   │   └── README.md                        # Prompts documentation
 │   │
 │   ├── templates/                           # Reusable templates and patterns
@@ -92,10 +95,13 @@ my_name_is_claude/
 │   │   ├── orchestration-trigger.sh       # 📋 Automatic scenario selection
 │   │   ├── orchestration-monitor.sh       # 📡 Real-time orchestration monitoring
 │   │   └── [automation hooks]             # Multi-agent coordination
-│   └── docs/                               # Framework documentation
+│   ├── docs/                               # Framework documentation
+│   └── settings.local.json                 # Local Claude Code settings
 │
-├── CLAUDE.md                               # Main project configuration
-├── DATABASE_CONNECTIONS.md                 # Database configurations
+├── CLAUDE.md                               # Main project configuration template
+├── DATABASE_CONNECTIONS.md                 # Database configurations guide
+├── mcp_tools.sh                           # 🛠️ MCP tools installation script
+├── examples.md                            # Usage examples and patterns
 └── README.md                              # This comprehensive guide
 ```
 
@@ -236,6 +242,35 @@ my_name_is_claude/
 - **Multiple Environments:** WSL, Docker, cloud configurations
 - **Connection Patterns:** Standardized database connection templates
 - **Migration Support:** Database schema evolution and ETL pipelines
+
+## 🛠️ MCP Tools Integration
+
+The repository includes `mcp_tools.sh` - an interactive script for easy MCP (Model Context Protocol) tools integration with Claude Code per project.
+
+### Supported MCP Tools:
+
+**🔧 Context7 MCP** (Docker-based)
+- AI-powered codebase generation and large-scale transformations
+- Comprehensive documentation and template creation
+- Automatic Dockerfile generation and container management
+
+**🔍 Serena MCP** (Project analysis)
+- Advanced codebase navigation and precise code modifications
+- Multi-project dependency management with auto-indexing
+- Development mode with dashboard and SSE support
+
+**🎭 Playwright MCP** (Browser automation)
+- End-to-end testing and browser automation capabilities
+- NPX and Docker deployment options
+- Comprehensive browser testing integration
+
+### Quick Setup:
+```bash
+chmod +x mcp_tools.sh
+./mcp_tools.sh
+```
+
+The interactive menu provides guided installation, configuration, and registration of MCP tools with Claude Code for enhanced development capabilities.
 
 ## 🚀 Getting Started
 
@@ -466,7 +501,7 @@ The template supports diverse technology combinations:
 **Database Connection Problems:**
 - Check `DATABASE_CONNECTIONS.md` configuration
 - Verify environment-specific settings (WSL, Docker, cloud)
-- Use `DATABASE_CONNECTIONS_TEMPLATE.md` for reference
+- Use `DATABASE_CONNECTIONS.md` for reference
 
 **Agent Coordination Conflicts:**
 - Use `reviewer` agent for conflict resolution
