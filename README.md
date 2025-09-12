@@ -101,6 +101,13 @@ my_name_is_claude/
 ├── CLAUDE.md                          # Main project configuration template
 ├── DATABASE_CONNECTIONS.md            # Database configurations guide
 ├── mcp_tools.sh                       # 🛠️ MCP tools installation script
+├── examples/                          # 📚 Comprehensive implementation examples
+│   ├── desktop-book-writing-app.md    # Desktop Python/wxPython development
+│   ├── desktop-book-writing-app_PL.md # Polish version
+│   ├── angular-invoice-app-migration.md # Angular/.NET API modernization
+│   ├── angular-invoice-app-migration_PL.md # Polish version
+│   ├── complex-legacy-migration-tdd.md # Enterprise migration with TDD
+│   └── complex-legacy-migration-tdd_PL.md # Polish version
 └── README.md                          # This comprehensive guide
 ```
 
@@ -602,6 +609,43 @@ This Claude Code Multi-Agent Framework represents a paradigm shift in software d
 **🌍 Technology Excellence:** Deep specialization in Angular, wxWidgets, security, and modern development
 **⚡ Scalable Framework:** Adaptable from startup MVPs to enterprise-scale applications
 
-**Ready to revolutionize your development workflow?** Start with the comprehensive prompts library and experience the future of AI-driven software development.
+## 📚 Comprehensive Examples Library
+
+The framework includes detailed implementation examples demonstrating complete development workflows:
+
+### Available Examples (English & Polish)
+
+**🖥️ Example 1: Desktop Book Writing Application**
+- **Technology:** Python/wxPython + SQLite
+- **Files:** `examples/desktop-book-writing-app.md` | `examples/desktop-book-writing-app_PL.md`
+- **Focus:** Cross-platform desktop development with complete publishing workflow
+- **Timeline:** 12 days development cycle
+- **Features:** Multi-platform GUI, content organization, export systems, plugin architecture
+
+**💼 Example 2: Angular Invoice Application Migration**
+- **Technology:** Angular 17+ + .NET Core Web API
+- **Files:** `examples/angular-invoice-app-migration.md` | `examples/angular-invoice-app-migration_PL.md`
+- **Focus:** Legacy API modernization with reverse engineering and documentation rebuild
+- **Timeline:** 3 weeks migration process
+- **Features:** API documentation regeneration, frontend optimization, performance improvements
+
+**🏢 Example 3: Complex Legacy Enterprise Migration with TDD**
+- **Technology:** ASP.NET WebForms + C++ → Angular + .NET Core
+- **Files:** `examples/complex-legacy-migration-tdd.md` | `examples/complex-legacy-migration-tdd_PL.md`
+- **Focus:** Enterprise-scale migration with Test-Driven Development and Playwright automation
+- **Timeline:** 12 weeks comprehensive migration
+- **Features:** Business logic reconstruction, automated testing, zero-downtime deployment
+
+### Example Features
+
+Each example provides:
+- ✅ **Complete Project Setup** - CLAUDE.md configuration and environment preparation
+- ✅ **MCP Tools Integration** - Serena, Context7, and Playwright MCP setup instructions
+- ✅ **Step-by-Step Workflow** - Detailed agent coordination and prompt sequences
+- ✅ **Real-World Challenges** - Problem-solving approaches for common issues
+- ✅ **Success Metrics** - Performance benchmarks and quality measurements
+- ✅ **Timeline Estimates** - Realistic development schedules and milestones
+
+**Ready to revolutionize your development workflow?** Start with the comprehensive prompts library and practical examples to experience the future of AI-driven software development.
 
 **Happy coding with Claude Code!** 🚀
