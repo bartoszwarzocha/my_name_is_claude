@@ -24,6 +24,7 @@ Inspired by: [Claude AI](https://claude.ai), [Serena](https://serena.ai), [Conte
   - [🔄 Production-Ready Prompts](#-production-ready-prompts)
   - [🌐 Technology Stack Flexibility](#-technology-stack-flexibility)
   - [🔧 Comprehensive Automation Hooks](#-comprehensive-automation-hooks)
+  - [🎯 Workflow Orchestration](#-workflow-orchestration)
   - [🗃️ Enterprise Database Management](#️-enterprise-database-management)
 - [🚀 Getting Started](#-getting-started)
 - [📝 Usage Examples & Scenarios](#-usage-examples--scenarios)
@@ -39,13 +40,13 @@ Inspired by: [Claude AI](https://claude.ai), [Serena](https://serena.ai), [Conte
 
 This repository contains a production-ready Claude Code Agent Framework with a comprehensive prompts library, configuration templates, and multi-agent orchestration system. The framework transforms software development through systematic agent collaboration, implementing enterprise-grade development lifecycle management with specialized expertise in each domain.
 
-**Key Innovation:** Comprehensive prompt library featuring complete security-engineer (7 prompts) and frontend-engineer (11 prompts) coverage, plus advanced workflow orchestration scenarios.
+**Key Innovation:** Comprehensive prompt library featuring complete security-engineer (7 prompts) and frontend-engineer (11 prompts) coverage, plus revolutionary workflow orchestration system with intelligent scenario selection and adaptive execution.
 
 ## 🎯 Main Goals
 
 - **Agent-Driven Development:** Revolutionary approach using 11 specialized AI agents for complete software lifecycle
 - **Production Readiness:** Enterprise-grade prompts with real working code examples and advanced patterns
-- **Systematic Workflows:** Orchestrated multi-agent collaboration with quality gates and phase transitions
+- **Intelligent Orchestration:** Revolutionary workflow system with automatic scenario selection, adaptive execution, and conditional workflow engine
 - **Technology Excellence:** Deep expertise in modern technology stacks (Angular, wxWidgets, security, infrastructure)
 - **Scalable Architecture:** Adaptable framework supporting projects from startups to enterprise scale
 
@@ -84,7 +85,11 @@ my_claude/
 │   │   └── README.md                        # Complete prompts documentation
 │   │
 │   ├── templates/                           # Reusable templates and patterns
-│   ├── hooks/                              # 🔧 Automation hooks (11 hooks)
+│   ├── hooks/                              # 🔧 Automation & orchestration system
+│   │   ├── orchestration/                  # 🎯 Workflow orchestration scenarios
+│   │   ├── orchestration-trigger.sh       # 📋 Automatic scenario selection
+│   │   ├── orchestration-monitor.sh       # 📡 Real-time orchestration monitoring
+│   │   └── [11 specialized hooks]         # Complete automation pipeline
 │   └── docs/                               # Framework documentation
 │
 ├── CLAUDE.md                               # Main project configuration
@@ -236,6 +241,14 @@ my_claude/
 - **Conflict Resolution:** Proactive detection and resolution of agent conflicts
 - **Compliance Automation:** WCAG 2.1, GDPR, and SOX compliance validation
 
+### 🎯 Workflow Orchestration
+
+- **Intelligent Orchestration:** 3 specialized scenario-based workflows for different project types
+- **Automatic Trigger System:** AI-powered analysis for optimal workflow selection
+- **Conditional Workflow Engine:** Adaptive execution based on project complexity and requirements
+- **Real-time Monitoring:** Live tracking and intervention capabilities for running orchestrations
+- **Learning Integration:** Machine learning from execution patterns for continuous improvement
+
 ### 🗃️ Enterprise Database Management
 
 - **Multiple Environments:** WSL, Docker, cloud configurations
@@ -344,15 +357,45 @@ Security-First Approach:
 └── reviewer → security-vulnerability-assessment.md
 ```
 
-### Automated Multi-Agent Workflow with Hooks
+### Automated Multi-Agent Workflow with Orchestration
 
 ```
-Complete Automation Pipeline:
+Complete Orchestration Pipeline:
+├── 📋 orchestration-trigger.sh → Automatic scenario selection
+├── 🚀 rapid-mvp-scenario.sh → Fast MVP development
+├── 🛡️ enterprise-security-first-scenario.sh → Security-by-design
+├── 📊 data-driven-scenario.sh → Analytics-focused development
+├── 🧠 conditional-workflow-engine.sh → Adaptive workflow intelligence
+└── 📡 orchestration-monitor.sh → Real-time orchestration monitoring
+```
+
+### Traditional Automation Hooks
+
+```
+Supporting Automation Pipeline:
 ├── agent-handoff.sh → Seamless phase transitions
 ├── cross-agent-dependency-tracker.sh → Workflow validation  
 ├── compliance-automation.sh → WCAG/GDPR/SOX validation
 ├── agent-performance-monitor.sh → Bottleneck identification
 └── agent-conflict-resolution.sh → Proactive conflict management
+```
+
+**Example Orchestration Usage:**
+```bash
+# Automatic scenario selection and execution
+./.claude/hooks/orchestration-trigger.sh
+
+# Interactive scenario selection
+./.claude/hooks/orchestration-trigger.sh "$(pwd)" "" "interactive"
+
+# Force specific scenario
+./.claude/hooks/orchestration-trigger.sh "$(pwd)" "security"
+
+# Monitor running orchestrations
+./.claude/hooks/orchestration-monitor.sh "watch"
+
+# Execute advanced conditional workflow
+./.claude/hooks/orchestration/conditional-workflow-engine.sh "$(pwd)" "fintech" "dynamic"
 ```
 
 **Example Hook Usage:**
@@ -507,12 +550,12 @@ This framework thrives on community contributions and real-world usage feedback.
 
 ### Development Priorities
 
-**Immediate Next Steps:**
-1. 🎯 Complete **api-engineer** prompts (2 remaining)
-2. 🎯 Complete **business-analyst** prompts (2 remaining)  
-3. 🎯 Complete **reviewer** prompts (3 remaining)
-4. 🚀 Create workflow orchestration scenarios
-5. 📋 Develop quality gate validation prompts
+**Focus Areas:**
+1. 🔄 Test multi-agent coordination scenarios using orchestration system
+2. 📋 Develop quality gate validation prompts
+3. 🛠️ Enhance CI/CD integration capabilities  
+4. 💡 Continue developing prompts based on actual project needs
+5. 🧠 Expand conditional workflow engine with additional intelligence
 
 ### Quality Standards
 
