@@ -1,10 +1,12 @@
 # My Name Is Claude
 
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Framework-FF6B35?style=flat-square&logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code) [![Multi-Agent](https://img.shields.io/badge/Multi--Agent-System-FF6B35?style=flat-square&logo=robot&logoColor=white)](.claude/agents/) [![Prompts Library](https://img.shields.io/badge/Prompts-Library-FF6B35?style=flat-square&logo=library&logoColor=white)](.claude/prompts/) [![Automation Hooks](https://img.shields.io/badge/Automation-Hooks-FF6B35?style=flat-square&logo=settings&logoColor=white)](.claude/hooks/) [![MIT License](https://img.shields.io/badge/License-MIT-FF6B35?style=flat-square)](https://opensource.org/licenses/MIT)
+
 ## Claude Code Multi-Agent Framework & Comprehensive Prompts Library
 
-A comprehensive workspace template for Claude Code projects, optimized for efficient multi-agent collaboration, parallel work execution, and production-ready development workflows. This framework includes an extensive library of 33 specialized agent prompts with comprehensive coverage for security and frontend engineering.
+A comprehensive workspace template for Claude Code projects, optimized for efficient multi-agent collaboration, parallel work execution, and production-ready development workflows. This framework includes an extensive library of specialized agent prompts with comprehensive coverage for security and frontend engineering.
 
-**🔗 Repository:** [https://github.com/your-username/my_claude](https://github.com/your-username/my_claude)
+**🔗 Repository:** [https://github.com/your-username/my_name_is_claude](https://github.com/your-username/my_name_is_claude)
 
 Inspired by: [Claude AI](https://claude.ai), [Serena](https://serena.ai), [Context7](https://context7.ai), https://github.com/coleam00/context-engineering-intro.git and https://github.com/lausena/my_awesome_crm.git
 
@@ -40,7 +42,7 @@ Inspired by: [Claude AI](https://claude.ai), [Serena](https://serena.ai), [Conte
 
 This repository contains a production-ready Claude Code Agent Framework with a comprehensive prompts library, configuration templates, and multi-agent orchestration system. The framework transforms software development through systematic agent collaboration, implementing enterprise-grade development lifecycle management with specialized expertise in each domain.
 
-**Key Innovation:** Comprehensive prompt library featuring complete security-engineer (7 prompts) and frontend-engineer (11 prompts) coverage, plus revolutionary workflow orchestration system with intelligent scenario selection and adaptive execution.
+**Key Innovation:** Comprehensive prompt library with security and frontend engineering expertise, plus revolutionary workflow orchestration system with intelligent scenario selection and adaptive execution.
 
 ## 🎯 Main Goals
 
@@ -53,7 +55,7 @@ This repository contains a production-ready Claude Code Agent Framework with a c
 ## 🏗️ Project Structure
 
 ```text
-my_claude/
+my_name_is_claude/
 ├── .claude/                                    # Claude Code configuration
 │   ├── agents/                                 # 11 specialized agent definitions
 │   │   ├── api/                               # API engineer agent
@@ -69,27 +71,27 @@ my_claude/
 │   │   └── security/                         # Security engineer agent
 │   │
 │   ├── prompts/                              # ⭐ Comprehensive Prompts Library
-│   │   ├── agents/                           # 33 specialized agent prompts
-│   │   │   ├── api/                         # 3 API engineering prompts
-│   │   │   ├── architecture/                # 1 system architecture prompt
-│   │   │   ├── business/                    # 3 business analysis prompts
-│   │   │   ├── data/                        # 1 data engineering prompt
-│   │   │   ├── deployment/                  # 1 deployment engineering prompt
-│   │   │   ├── design/                      # 1 UX design prompt
-│   │   │   ├── frontend/                    # ✅ 11 frontend prompts
-│   │   │   ├── product/                     # 2 product management prompts
-│   │   │   ├── quality/                     # 1 QA engineering prompt
-│   │   │   ├── review/                      # 2 review & validation prompts
-│   │   │   └── security/                    # ✅ 7 complete security prompts
+│   │   ├── agents/                           # Specialized agent prompts
+│   │   │   ├── api/                         # API engineering prompts
+│   │   │   ├── architecture/                # System architecture prompt
+│   │   │   ├── business/                    # Business analysis prompts
+│   │   │   ├── data/                        # Data engineering prompts
+│   │   │   ├── deployment/                  # Deployment engineering prompts
+│   │   │   ├── design/                      # UX design prompts
+│   │   │   ├── frontend/                    # ✅ Frontend engineering prompts
+│   │   │   ├── product/                     # Product management prompts
+│   │   │   ├── quality/                     # QA engineering prompts
+│   │   │   ├── review/                      # Review & validation prompts
+│   │   │   └── security/                    # ✅ Security engineering prompts
 │   │   ├── workflows/                       # Multi-agent orchestration prompts
-│   │   └── README.md                        # Complete prompts documentation
+│   │   └── README.md                        # Prompts documentation
 │   │
 │   ├── templates/                           # Reusable templates and patterns
 │   ├── hooks/                              # 🔧 Automation & orchestration system
 │   │   ├── orchestration/                  # 🎯 Workflow orchestration scenarios
 │   │   ├── orchestration-trigger.sh       # 📋 Automatic scenario selection
 │   │   ├── orchestration-monitor.sh       # 📡 Real-time orchestration monitoring
-│   │   └── [11 specialized hooks]         # Complete automation pipeline
+│   │   └── [automation hooks]             # Multi-agent coordination
 │   └── docs/                               # Framework documentation
 │
 ├── CLAUDE.md                               # Main project configuration
@@ -106,21 +108,18 @@ my_claude/
 - **Role:** Requirements analysis and process optimization
 - **Competencies:** Stakeholder management, process modeling, requirements documentation, business case development
 - **Focus:** Business process excellence and stakeholder alignment
-- **Available Prompts:** 3 prompts (stakeholder-requirements-gathering, current-state-process-analysis, business-case-development)
 
 #### **Product Manager**
 
 - **Role:** Product strategy and user-centric solutions
 - **Competencies:** Market analysis, UX research, roadmaps, user story creation, MVP scoping
 - **Focus:** Business value delivery and product strategy
-- **Available Prompts:** 2 prompts (user-story-creation-and-prioritization, mvp-scoping-and-roadmap-planning)
 
 #### **Reviewer**
 
 - **Role:** Quality assurance and validation
 - **Competencies:** Requirements validation, code quality analysis, security vulnerability assessment
 - **Focus:** Completeness, quality, and business alignment
-- **Available Prompts:** 2 prompts (sonarqube-code-quality-analysis, security-vulnerability-assessment)
 
 ### 🏗️ Phase 2: Architecture & UX Design
 
@@ -129,21 +128,18 @@ my_claude/
 - **Role:** System architecture design and technology selection
 - **Competencies:** Scalable solutions, architectural patterns, technology stack selection, system design
 - **Focus:** Long-term maintainability, performance, and scalability
-- **Available Prompts:** 1 prompt (system-architecture-design)
 
 #### **UX/UI Designer**
 
 - **Role:** User experience and interface design
 - **Competencies:** User research, persona development, design systems, accessibility, prototyping
 - **Focus:** User-centered design and inclusive experiences
-- **Available Prompts:** 1 prompt (user-research-and-persona-development)
 
 #### **Security Engineer**
 
 - **Role:** Security architecture and compliance
 - **Competencies:** Threat modeling, penetration testing, compliance audits, incident response, IAM, secure code review
 - **Focus:** Security-first development and regulatory compliance
-- **Available Prompts:** 7 prompts (security-architecture-and-threat-modeling, penetration-testing-and-security-audit, compliance-audit-and-governance, incident-response-and-forensics, security-controls-implementation, identity-and-access-management, secure-code-review-and-sast)
 
 ### 💻 Phase 3: Development & Continuous QA
 
@@ -152,29 +148,24 @@ my_claude/
 - **Role:** User interface development with modern frameworks
 - **Competencies:** Angular 17+ development, wxWidgets desktop apps, responsive design, TypeScript mastery, PWA development, accessibility compliance, state management, build optimization, comprehensive testing
 - **Focus:** User experience excellence, accessibility, and technical excellence
-- **Available Prompts:** 11 prompts (angular-component-development, wxwidgets-desktop-development, responsive-design-and-css-architecture, modern-javascript-and-typescript-development, progressive-web-app-development, web-accessibility-and-inclusive-design, state-management-and-data-flow, build-tools-and-bundler-optimization, frontend-testing-and-quality-assurance, react-component-development, react-component-development-and-testing)
-- **Technologies:** Angular 17+, React, wxPython, TypeScript, RxJS, CSS Architecture, PWA, WCAG 2.1
 
 #### **API Engineer**
 
 - **Role:** API and microservices development
 - **Competencies:** RESTful APIs, GraphQL development, microservices architecture, service integration, API security
 - **Focus:** API excellence, service reliability, and integration quality
-- **Available Prompts:** 3 prompts (rest-api-design-and-implementation, microservices-architecture-patterns, graphql-api-development)
 
 #### **Data Engineer**
 
 - **Role:** Data architecture and analytics
 - **Competencies:** Database design, ETL pipelines, data processing, business intelligence, data quality frameworks
 - **Focus:** Data reliability, performance optimization, and analytics excellence
-- **Available Prompts:** 1 prompt (database-design-and-etl-implementation)
 
 #### **QA Engineer**
 
 - **Role:** Quality assurance and test automation
 - **Competencies:** Test automation, performance testing, quality processes, comprehensive testing strategies
 - **Focus:** Quality-first development and continuous improvement
-- **Available Prompts:** 1 prompt (test-automation-and-quality-assurance)
 
 ### 🚀 Phase 4: Deployment & Operations
 
@@ -183,32 +174,24 @@ my_claude/
 - **Role:** DevOps and infrastructure management
 - **Competencies:** CI/CD pipelines, cloud infrastructure, monitoring, automation, scalable infrastructure
 - **Focus:** Zero-downtime deployments and enterprise reliability
-- **Available Prompts:** 1 prompt (ci-cd-pipeline-and-infrastructure-setup)
 
 ## 📊 Prompts Library Overview
 
-### Available Prompts by Agent
+### Agent Specializations by Development Phase
 
-| Phase | Agent | Available Prompts | Specializations |
-|-------|-------|-------------------|-----------------|
-| **Phase 1** | business-analyst | 3 prompts | Stakeholder requirements, process analysis, business cases |
-| **Phase 1** | product-manager | 2 prompts | User story creation, MVP scoping and roadmaps |
-| **Phase 1** | reviewer | 2 prompts | Code quality analysis, security vulnerability assessment |
-| **Phase 2** | software-architect | 1 prompt | System architecture design |
-| **Phase 2** | ux-designer | 1 prompt | User research and persona development |
-| **Phase 2** | security-engineer | 7 prompts | Complete security coverage: threat modeling, penetration testing, compliance |
-| **Phase 3** | frontend-engineer | 11 prompts | Complete frontend coverage: Angular, React, wxWidgets, PWA, accessibility |
-| **Phase 3** | api-engineer | 3 prompts | REST API design, microservices, GraphQL development |
-| **Phase 3** | data-engineer | 1 prompt | Database design and ETL implementation |
-| **Phase 3** | qa-engineer | 1 prompt | Test automation and quality assurance |
-| **Phase 4** | deployment-engineer | 1 prompt | CI/CD pipeline and infrastructure setup |
-
-**📈 Total Available:** 33 specialized prompts
-
-**🌟 Comprehensive Coverage Areas:**
-- **Security Engineering:** Complete enterprise security workflow coverage
-- **Frontend Development:** Full-stack frontend development with modern frameworks
-- **Business Analysis:** Core business discovery and requirements processes
+| Phase | Agent | Key Specializations |
+|-------|-------|---------------------|
+| **Phase 1** | business-analyst | Stakeholder requirements, process analysis, business cases |
+| **Phase 1** | product-manager | User story creation, MVP scoping, feature implementation |
+| **Phase 1** | reviewer | Code quality analysis, security vulnerability assessment |
+| **Phase 2** | software-architect | System architecture design |
+| **Phase 2** | ux-designer | User research and persona development |
+| **Phase 2** | security-engineer | Threat modeling, penetration testing, compliance, IAM, forensics |
+| **Phase 3** | frontend-engineer | Angular, React, wxWidgets, PWA, accessibility, responsive design |
+| **Phase 3** | api-engineer | REST API, microservices, GraphQL, Swagger generation |
+| **Phase 3** | data-engineer | Database design, ETL, EntityFramework generation |
+| **Phase 3** | qa-engineer | Test automation and quality assurance |
+| **Phase 4** | deployment-engineer | CI/CD pipeline and infrastructure setup |
 
 ## 🛠️ Framework Features
 
@@ -224,12 +207,11 @@ my_claude/
 - **Expert-Level Content:** Each prompt contains actual working code examples
 - **Enterprise Patterns:** Advanced architectural patterns and best practices
 - **Technology Mastery:** Deep specialization in modern technology stacks
-- **Comprehensive Coverage:** Complete workflows from analysis to deployment
 
 ### 🌐 Technology Stack Flexibility
 
 - **Frontend Excellence:** Complete Angular 17+ and wxWidgets desktop development
-- **Security Focus:** Comprehensive security engineering with 7 specialized prompts
+- **Security Focus:** Enterprise security engineering and compliance
 - **Modern JavaScript/TypeScript:** ES2023+ features and advanced patterns
 - **Cross-Platform:** Web applications, desktop applications, and mobile PWAs
 
@@ -433,8 +415,8 @@ The framework supports integration with:
 The template supports diverse technology combinations:
 
 **Frontend:**
-- ✅ Angular 17+ (Complete coverage - 9 prompts)
-- ✅ wxWidgets Desktop (Complete coverage)
+- ✅ Angular 17+ development
+- ✅ wxWidgets desktop applications
 - Modern CSS Architecture & Responsive Design
 - Progressive Web Applications (PWA)
 
@@ -444,7 +426,7 @@ The template supports diverse technology combinations:
 - Microservices architecture patterns
 
 **Security:**
-- ✅ Complete security coverage (7 prompts)
+- ✅ Enterprise security engineering
 - Threat modeling and penetration testing
 - Identity and Access Management (IAM)
 - Compliance frameworks (GDPR, SOX, HIPAA)
@@ -496,30 +478,29 @@ The template supports diverse technology combinations:
 - Use agent-specific prompts for efficiency
 - Implement caching strategies for repeated operations
 
-### WSL and File Synchronization
+### WSL Environment Setup
 
-If working in WSL environment and files are not synchronized between Windows and WSL:
+For WSL users, ensure proper file permissions and synchronization:
 
 ```bash
-# Check if files are synchronized
-ls -la /mnt/e/AI/my_claude/
+# Verify current project directory
+pwd
+ls -la
 
-# Force synchronization (if needed)
-cd /mnt/e/AI/my_claude/
+# Ensure hooks are executable (if needed)
+chmod +x .claude/hooks/*.sh
+chmod +x .claude/hooks/orchestration/*.sh
+
+# Check git status for any synchronization issues
 git status
-git pull origin main
-
-# Or reset to latest state
-git fetch origin
-git reset --hard origin/main
 ```
 
 ## 📚 Documentation & Resources
 
 ### Core Documentation
 
-- **[Prompts Library Guide](.claude/prompts/README.md)** - Complete documentation of all 33 available prompts
-- **[Automation Hooks Guide](.claude/hooks/README.md)** - Complete documentation of all 11 automation hooks
+- **[Prompts Library Guide](.claude/prompts/README.md)** - Agent prompts documentation
+- **[Automation Hooks Guide](.claude/hooks/README.md)** - Automation and orchestration documentation
 - **[Agent Specifications](.claude/agents/)** - Detailed agent capabilities and configurations
 - **[Project Configuration](CLAUDE.md)** - Main project setup and customization guide
 - **[Database Connections](DATABASE_CONNECTIONS.md)** - Database configuration examples
@@ -532,8 +513,8 @@ git reset --hard origin/main
 
 ### Community & Support
 
-- **Issues & Feature Requests:** [GitHub Issues](https://github.com/your-username/my_claude/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/your-username/my_claude/discussions)
+- **Issues & Feature Requests:** [GitHub Issues](https://github.com/your-username/my_name_is_claude/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/your-username/my_name_is_claude/discussions)
 - **Contributing:** See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines
 
 ## 🤝 Contributing and Development
@@ -575,7 +556,7 @@ This template serves as a foundation for building sophisticated software solutio
 This Claude Code Multi-Agent Framework represents a paradigm shift in software development:
 
 **🚀 Revolutionary Approach:** Transform development through systematic AI agent collaboration
-**📚 Knowledge Repository:** 31+ expert-level prompts with complete security and frontend coverage  
+**📚 Knowledge Repository:** Expert-level prompts with comprehensive security and frontend coverage  
 **🏗️ Production Ready:** Enterprise-grade patterns with real working code examples
 **🌍 Technology Excellence:** Deep specialization in Angular, wxWidgets, security, and modern development
 **⚡ Scalable Framework:** Adaptable from startup MVPs to enterprise-scale applications

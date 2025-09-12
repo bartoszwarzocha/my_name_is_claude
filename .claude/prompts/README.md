@@ -52,6 +52,14 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 
 ### Product Management (`agents/product/`)
 
+#### **feature-implementation-from-specification.md**
+
+- **Purpose:** Implement complete application features from detailed specification documents with multi-layer coordination
+- **When to use:** Feature development, specification-driven development, cross-team coordination, complete feature delivery
+- **Key outputs:** Complete feature implementation (frontend + backend + database), production-ready functionality, comprehensive testing
+- **Agent:** product-manager + frontend-engineer + api-engineer
+- **Phases:** All phases - coordinated implementation
+
 #### **user-story-creation-and-prioritization.md**
 
 - **Purpose:** Transform business requirements into prioritized user stories with clear acceptance criteria
@@ -88,7 +96,77 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 - **Agent:** software-architect
 - **Phases:** Architecture & UX Design
 
+#### **frontend-backend-integration.md**
+
+- **Purpose:** Architecture and implementation of seamless communication between frontend and backend systems across multiple technology stacks
+- **When to use:** Angular+Java/Spring Boot integration, Angular+.NET Core integration, React+Node.js communication patterns
+- **Key outputs:** Service layers, HTTP client configurations, authentication flows, error handling frameworks
+- **Agent:** api-engineer + frontend-engineer
+- **Phases:** Development & Continuous QA
+- **Technologies:** Angular+Java/Spring Boot, Angular+.NET Core, React+Node.js, CORS, JWT, OAuth
+
+#### **desktop-application-architecture.md**
+
+- **Purpose:** Design and implement scalable desktop application architectures using modern patterns and cross-platform technologies
+- **When to use:** Desktop application development, Python+wxPython, C++/wxWidgets, .NET/WPF desktop applications
+- **Key outputs:** Desktop architecture patterns, UI frameworks, data binding systems, threading implementations
+- **Agent:** software-architect + frontend-engineer
+- **Phases:** Architecture & UX Design, Development & Continuous QA
+- **Technologies:** Python+wxPython, C++/wxWidgets, .NET/WPF, MVC/MVP/MVVM patterns
+
+#### **desktop-database-integration.md**
+
+- **Purpose:** Implement comprehensive database integration patterns for desktop applications with local and remote databases
+- **When to use:** Desktop database applications, SQLite integration, local data management, offline-first applications
+- **Key outputs:** Database connection management, ORM patterns, repository implementations, data synchronization
+- **Agent:** data-engineer + frontend-engineer
+- **Phases:** Architecture & UX Design, Development & Continuous QA
+- **Technologies:** SQLite, PostgreSQL, Python SQLAlchemy, C++ SQLite, .NET Entity Framework
+
+#### **desktop-deployment-and-packaging.md**
+
+- **Purpose:** Design and implement cross-platform deployment and packaging solutions for desktop applications
+- **When to use:** Desktop application distribution, cross-platform deployment, installer creation, update mechanisms
+- **Key outputs:** Build scripts, installers, update systems, platform-specific packages
+- **Agent:** deployment-engineer + frontend-engineer
+- **Phases:** Deployment & Operations
+- **Technologies:** PyInstaller, CMake/CPack, dotnet publish, Windows/macOS/Linux packaging
+
+#### **database-backend-integration.md**
+
+- **Purpose:** Design comprehensive database schemas and backend integration patterns with advanced ORM configurations
+- **When to use:** Database-driven applications, complex data models, API data layer design, multi-technology stack integration
+- **Key outputs:** Database schemas, ORM configurations, repository patterns, API service layers
+- **Agent:** data-engineer + api-engineer
+- **Phases:** Architecture & UX Design, Development & Continuous QA
+- **Technologies:** Java/Spring Boot+JPA, .NET Core+EF, Node.js+TypeORM, Python+SQLAlchemy
+
+#### **application-performance-optimization.md**
+
+- **Purpose:** Implement comprehensive performance optimization strategies across frontend, backend, and database layers
+- **When to use:** Performance bottlenecks, scalability requirements, optimization audits, monitoring implementation
+- **Key outputs:** Performance optimizations, monitoring systems, load testing frameworks, APM configurations
+- **Agent:** qa-engineer
+- **Phases:** Development & Continuous QA, Deployment & Operations
+- **Technologies:** Performance monitoring, caching strategies, database optimization, frontend performance
+
 ### API Engineering (`agents/api/`)
+
+#### **swagger-documentation-generation.md**
+
+- **Purpose:** Generate comprehensive Swagger/OpenAPI documentation from existing backend API code
+- **When to use:** API documentation, backend code analysis, documentation maintenance
+- **Key outputs:** Complete OpenAPI 3.0 specification, interactive Swagger UI, integration examples
+- **Agent:** api-engineer
+- **Phases:** Development & Continuous QA
+
+#### **swagger-to-endpoints-generation.md**
+
+- **Purpose:** Generate complete, production-ready API endpoints from Swagger/OpenAPI specifications
+- **When to use:** API development from documentation, ensuring consistency between spec and implementation
+- **Key outputs:** Complete API controllers, models/DTOs, error handling, service layer integration
+- **Agent:** api-engineer
+- **Phases:** Development & Continuous QA
 
 #### **rest-api-design-and-implementation.md**
 
@@ -115,6 +193,14 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 - **Phases:** Development & Continuous QA
 
 ### Data Engineering (`agents/data/`)
+
+#### **database-to-entityframework-generation.md**
+
+- **Purpose:** Generate comprehensive Entity Framework Core models, contexts, and API endpoints from database schemas
+- **When to use:** Database-first development, stored procedures integration, complete CRUD operations generation
+- **Key outputs:** EF Core entities, DbContext, repositories, API controllers, stored procedure integration
+- **Agent:** data-engineer + api-engineer
+- **Phases:** Architecture & UX Design, Development & Continuous QA
 
 #### **database-design-and-etl-implementation.md**
 
@@ -183,6 +269,15 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 - **Phases:** Development & Continuous QA
 
 ### Frontend Engineering (`agents/frontend/`)
+
+#### **swagger-to-angular-generation.md**
+
+- **Purpose:** Generate complete, type-safe Angular services and data models from Swagger/OpenAPI specifications
+- **When to use:** Frontend API integration, Angular development from backend documentation, type-safe service generation
+- **Key outputs:** TypeScript interfaces, Angular HTTP services, error handling, reactive patterns, form integration
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+- **Technologies:** Angular, TypeScript, RxJS, HTTP Client
 
 #### **angular-component-development.md**
 
@@ -342,19 +437,19 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 
 | Agent | Available Prompts | Specialization Areas |
 |-------|-------------------|----------------------|
-| **business-analyst** | 3 prompts | Stakeholder requirements, process analysis, business cases |
-| **product-manager** | 2 prompts | User story creation, MVP scoping and roadmaps |
-| **ux-designer** | 1 prompt | User research and persona development |
-| **software-architect** | 1 prompt | System architecture design |
-| **api-engineer** | 3 prompts | REST API, microservices, GraphQL development |
-| **data-engineer** | 1 prompt | Database design and ETL implementation |
-| **frontend-engineer** | 11 prompts | Angular, React, wxWidgets, PWA, accessibility, modern JS/TS |
-| **security-engineer** | 7 prompts | Complete security coverage: threat modeling, pentesting, compliance |
-| **qa-engineer** | 1 prompt | Test automation and quality assurance |
-| **deployment-engineer** | 1 prompt | CI/CD pipeline and infrastructure setup |
-| **reviewer** | 2 prompts | Code quality analysis, security vulnerability assessment |
+| **business-analyst** | Available | Stakeholder requirements, process analysis, business cases |
+| **product-manager** | Available | User story creation, MVP scoping, feature implementation |
+| **ux-designer** | Available | User research and persona development |
+| **software-architect** | Available | System architecture design |
+| **api-engineer** | Available | REST API, microservices, GraphQL, Swagger generation |
+| **data-engineer** | Available | Database design, ETL, EntityFramework generation |
+| **frontend-engineer** | Complete coverage | Angular, React, wxWidgets, PWA, accessibility, modern JS/TS |
+| **security-engineer** | Complete coverage | Threat modeling, pentesting, compliance, IAM, forensics |
+| **qa-engineer** | Available | Test automation and quality assurance |
+| **deployment-engineer** | Available | CI/CD pipeline and infrastructure setup |
+| **reviewer** | Available | Code quality analysis, security vulnerability assessment |
 
-**Total Available:** 33 specialized prompts
+**Status:** Comprehensive prompts library with complete coverage for security and frontend engineering
 
 **Comprehensive Coverage Areas:**
 - **Security Engineering:** Complete enterprise security workflow coverage
