@@ -23,7 +23,8 @@
       "Bash(for:*)",
       "Bash(do echo \"=== $file ===\")",
       "Bash(done)",
-      "Bash(xargs file:*)"
+      "Bash(xargs file:*)",
+      "Read(//mnt/e/AI/**)"
     ],
     "deny": []
   }

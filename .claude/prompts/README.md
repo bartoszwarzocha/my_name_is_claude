@@ -1,12 +1,23 @@
-# Agent Prompts Library
+# Claude Code Agent Framework - Prompts Library
 
-This directory contains specialized prompts for the Claude Code Agent Framework's 11 agents, organized by function and workflow coordination.
+Specialized prompts library for the Claude Code Agent Framework's 11 agents, organized by function and workflow coordination.
 
 ## 📁 Directory Structure
 
 ```
 .claude/prompts/
 ├── agents/           # Agent-specific prompts for common operations
+│   ├── api/          # API Engineer prompts
+│   ├── architecture/ # Software Architect prompts
+│   ├── business/     # Business Analyst prompts
+│   ├── data/         # Data Engineer prompts
+│   ├── deployment/   # Deployment Engineer prompts
+│   ├── design/       # UX Designer prompts
+│   ├── frontend/     # Frontend Engineer prompts
+│   ├── product/      # Product Manager prompts
+│   ├── quality/      # QA Engineer prompts
+│   ├── review/       # Reviewer prompts
+│   └── security/     # Security Engineer prompts
 ├── workflows/        # Cross-agent coordination and handoff prompts
 └── README.md        # This comprehensive guide
 ```
@@ -15,193 +26,340 @@ This directory contains specialized prompts for the Claude Code Agent Framework'
 
 ### Business Analysis (`agents/business/`)
 
-**stakeholder-requirements-gathering.md**
+#### **stakeholder-requirements-gathering.md**
 
 - **Purpose:** Conduct structured stakeholder interviews and requirements workshops
 - **When to use:** Starting new projects, gathering business requirements, understanding user needs
 - **Key outputs:** Business Requirements Document, stakeholder analysis, success criteria
 - **Agent:** business-analyst
+- **Phases:** Business Discovery & Analysis, Architecture & UX Design
 
-**current-state-process-analysis.md**
+#### **current-state-process-analysis.md**
 
 - **Purpose:** Analyze existing business processes to identify improvement opportunities
 - **When to use:** Understanding existing workflows, identifying inefficiencies, planning process improvements
 - **Key outputs:** Current state process maps, gap analysis, improvement opportunities matrix
 - **Agent:** business-analyst
+- **Phases:** Business Discovery & Analysis
 
-**business-case-development.md**
+#### **business-case-development.md**
 
 - **Purpose:** Develop compelling business justification for proposed solutions
 - **When to use:** Securing project funding, demonstrating ROI, gaining executive support
 - **Key outputs:** Executive business case, financial models, risk assessments, implementation roadmap
 - **Agent:** business-analyst
+- **Phases:** Business Discovery & Analysis
 
 ### Product Management (`agents/product/`)
 
-**user-story-creation-and-prioritization.md**
+#### **user-story-creation-and-prioritization.md**
 
 - **Purpose:** Transform business requirements into prioritized user stories with clear acceptance criteria
 - **When to use:** Sprint planning, backlog grooming, feature definition, development prioritization
 - **Key outputs:** Product backlog, user stories with acceptance criteria, prioritization matrix
 - **Agent:** product-manager
+- **Phases:** Business Discovery & Analysis, Architecture & UX Design
 
-**mvp-scoping-and-roadmap-planning.md**
+#### **mvp-scoping-and-roadmap-planning.md**
 
 - **Purpose:** Define Minimum Viable Product scope and create strategic product roadmap
 - **When to use:** Product strategy development, release planning, feature prioritization, stakeholder alignment
 - **Key outputs:** MVP scope document, product roadmap, success metrics framework
 - **Agent:** product-manager
+- **Phases:** Business Discovery & Analysis, Architecture & UX Design
 
 ### UX Design (`agents/design/`)
 
-**user-research-and-persona-development.md**
+#### **user-research-and-persona-development.md**
 
 - **Purpose:** Conduct comprehensive user research and create actionable user personas
 - **When to use:** Understanding target users, validating design decisions, informing product strategy
 - **Key outputs:** User research report, primary personas, journey maps, design principles
 - **Agent:** ux-designer
+- **Phases:** Business Discovery & Analysis, Architecture & UX Design
 
 ### System Architecture (`agents/architecture/`)
 
-**system-architecture-design.md**
+#### **system-architecture-design.md**
 
 - **Purpose:** Design scalable, maintainable system architecture aligned with business requirements
 - **When to use:** Technical planning, technology stack selection, system design, scalability planning
 - **Key outputs:** System architecture documentation, technology recommendations, implementation roadmap
 - **Agent:** software-architect
+- **Phases:** Architecture & UX Design
 
 ### API Engineering (`agents/api/`)
 
-**rest-api-design-and-implementation.md**
+#### **rest-api-design-and-implementation.md**
 
 - **Purpose:** Design and implement scalable, secure REST APIs following best practices
 - **When to use:** API development, microservices architecture, backend integration design
 - **Key outputs:** API specifications (OpenAPI/Swagger), implementation code, integration guides
 - **Agent:** api-engineer
+- **Phases:** Development & Continuous QA
 
-**microservices-architecture-patterns.md**
+#### **microservices-architecture-patterns.md**
 
 - **Purpose:** Design and implement scalable microservices architecture with proven patterns and best practices
 - **When to use:** System decomposition, service mesh architecture, distributed systems design
 - **Key outputs:** Service boundary definitions, communication patterns, resilience implementations
 - **Agent:** api-engineer
+- **Phases:** Architecture & UX Design, Development & Continuous QA
 
-**graphql-api-development.md**
+#### **graphql-api-development.md**
 
 - **Purpose:** Design and implement efficient GraphQL APIs with advanced features like subscriptions and federation
 - **When to use:** Flexible data fetching requirements, real-time features, API federation scenarios
 - **Key outputs:** GraphQL schemas, resolver implementations, subscription systems, federation setup
 - **Agent:** api-engineer
+- **Phases:** Development & Continuous QA
 
 ### Data Engineering (`agents/data/`)
 
-**database-design-and-etl-implementation.md**
+#### **database-design-and-etl-implementation.md**
 
 - **Purpose:** Design efficient database schemas and implement robust ETL pipelines for data processing
 - **When to use:** Database design, data warehouse implementation, ETL pipeline development
 - **Key outputs:** Database schemas, migration scripts, ETL pipeline code, data quality frameworks
 - **Agent:** data-engineer
+- **Phases:** Architecture & UX Design, Development & Continuous QA
 
 ### Security Engineering (`agents/security/`)
 
-**security-architecture-and-threat-modeling.md**
+#### **security-architecture-and-threat-modeling.md**
 
 - **Purpose:** Design comprehensive security architecture and conduct thorough threat modeling
 - **When to use:** Security planning, threat assessment, compliance implementation, incident response
 - **Key outputs:** Security architecture, threat models, incident response plans, compliance frameworks
 - **Agent:** security-engineer
+- **Phases:** Architecture & UX Design, Development & Continuous QA
+
+#### **penetration-testing-and-security-audit.md**
+
+- **Purpose:** Conduct comprehensive penetration testing and security audits of applications and infrastructure
+- **When to use:** Security assessments, control validation, pre-deployment testing, compliance audits
+- **Key outputs:** Penetration testing reports, vulnerability matrices, remediation plans
+- **Agent:** security-engineer
+- **Phases:** Development & Continuous QA, Deployment & Operations
+
+#### **compliance-audit-and-governance.md**
+
+- **Purpose:** Implement compliance frameworks and conduct regulatory compliance audits
+- **When to use:** Audit preparation, compliance implementation, regulatory risk management
+- **Key outputs:** Compliance documentation, audit results, remediation plans, governance frameworks
+- **Agent:** security-engineer
+- **Phases:** All phases (continuous monitoring)
+
+#### **incident-response-and-forensics.md**
+
+- **Purpose:** Develop incident response plans and conduct digital forensics analysis of security incidents
+- **When to use:** Incident preparedness, breach response, post-incident analysis
+- **Key outputs:** Incident response plans, playbooks, forensic reports, preventive measures
+- **Agent:** security-engineer
+- **Phases:** Deployment & Operations, Monitoring & Continuous Improvement
+
+#### **security-controls-implementation.md**
+
+- **Purpose:** Implement comprehensive security controls and security monitoring systems
+- **When to use:** Security hardening, monitoring setup, access control implementation
+- **Key outputs:** Security control configurations, monitoring dashboards, response procedures
+- **Agent:** security-engineer
+- **Phases:** Development & Continuous QA, Deployment & Operations
+
+#### **identity-and-access-management.md**
+
+- **Purpose:** Design and implement comprehensive identity and access management solutions
+- **When to use:** SSO projects, RBAC implementation, IAM migrations, federation integrations
+- **Key outputs:** IAM architecture, SSO configurations, access policies, audit procedures
+- **Agent:** security-engineer
+- **Phases:** Architecture & UX Design, Development & Continuous QA
+
+#### **secure-code-review-and-sast.md**
+
+- **Purpose:** Conduct advanced security code reviews and implement SAST tools
+- **When to use:** Code reviews, security pipeline implementation, vulnerability analysis
+- **Key outputs:** Security review reports, SAST configurations, secure coding guides
+- **Agent:** security-engineer
+- **Phases:** Development & Continuous QA
+
+### Frontend Engineering (`agents/frontend/`)
+
+#### **angular-component-development.md**
+
+- **Purpose:** Architect and implement advanced Angular applications with enterprise-grade component architecture
+- **When to use:** Angular app development, standalone components implementation, reactive programming
+- **Key outputs:** Angular component library, RxJS state management, performance optimization frameworks
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+- **Technologies:** Angular 17+, TypeScript, RxJS, Angular Material
+
+#### **wxwidgets-desktop-development.md**
+
+- **Purpose:** Develop cross-platform desktop applications using wxWidgets with Python (wxPython) or C++
+- **When to use:** Desktop applications, system tools, cross-platform applications
+- **Key outputs:** Desktop application framework, advanced UI patterns, threading system
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+- **Technologies:** wxPython, wxWidgets C++, threading, SQLite
+
+#### **responsive-design-and-css-architecture.md**
+
+- **Purpose:** Implementation of modern CSS methodologies and responsive design patterns with design systems
+- **When to use:** Responsive design, design systems, CSS optimization, accessibility
+- **Key outputs:** CSS frameworks, design systems, responsive components, performance optimizations
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+
+#### **modern-javascript-and-typescript-development.md**
+
+- **Purpose:** Mastery of modern JavaScript ES2023+ features and advanced TypeScript patterns
+- **When to use:** Modern JavaScript/TypeScript development, code optimization, functional patterns
+- **Key outputs:** Utility libraries, pattern frameworks, TypeScript configurations
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+
+#### **progressive-web-app-development.md**
+
+- **Purpose:** Create comprehensive Progressive Web Applications with offline functionality and native integration
+- **When to use:** PWA development, offline functionality, device feature integration
+- **Key outputs:** Service workers, cache strategies, manifest, push notifications
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+
+#### **web-accessibility-and-inclusive-design.md**
+
+- **Purpose:** Implement WCAG 2.1 compliance and create inclusive digital experiences
+- **When to use:** Accessibility audits, WCAG implementation, inclusive design
+- **Key outputs:** Accessibility frameworks, audit tools, ARIA components
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+
+#### **state-management-and-data-flow.md**
+
+- **Purpose:** Architecture and implementation of comprehensive state management solutions for complex frontend applications
+- **When to use:** Global state management, server state synchronization, performance optimization
+- **Key outputs:** State management frameworks, reactive patterns, performance optimizations
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+
+#### **build-tools-and-bundler-optimization.md**
+
+- **Purpose:** Architecture and optimization of advanced build pipelines for modern frontend applications
+- **When to use:** Build optimization, bundle analysis, CI/CD configuration, performance optimization
+- **Key outputs:** Webpack/Vite configurations, bundle analysis frameworks, CI/CD pipelines
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA, Deployment & Operations
+
+#### **frontend-testing-and-quality-assurance.md**
+
+- **Purpose:** Implementation of comprehensive testing strategies and quality assurance frameworks for modern frontend applications
+- **When to use:** Testing pyramid, E2E testing, accessibility testing, performance testing
+- **Key outputs:** Testing frameworks, automated tests, visual regression testing
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+
+#### **react-component-development.md**
+
+- **Purpose:** Architect and implement modern React applications with advanced component patterns and hooks
+- **When to use:** React app development, component library creation, state management implementation
+- **Key outputs:** React component library, custom hooks, performance optimization frameworks
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+- **Technologies:** React 18+, TypeScript, React Query, Zustand
+
+#### **react-component-development-and-testing.md**
+
+- **Purpose:** Comprehensive React component development with integrated testing strategies and quality assurance
+- **When to use:** Test-driven React development, component testing, integration testing setup
+- **Key outputs:** Tested React components, testing frameworks, CI/CD integration
+- **Agent:** frontend-engineer
+- **Phases:** Development & Continuous QA
+- **Technologies:** React 18+, Jest, React Testing Library, Cypress
 
 ### Quality Assurance (`agents/quality/`)
 
-**test-automation-and-quality-assurance.md**
+#### **test-automation-and-quality-assurance.md**
 
 - **Purpose:** Design comprehensive testing strategies and implement automated quality assurance processes
 - **When to use:** Test planning, automation framework setup, quality gate implementation
 - **Key outputs:** Test strategies, automated test suites, quality dashboards, CI/CD integration
 - **Agent:** qa-engineer
+- **Phases:** Development & Continuous QA
 
 ### Deployment Engineering (`agents/deployment/`)
 
-**ci-cd-pipeline-and-infrastructure-setup.md**
+#### **ci-cd-pipeline-and-infrastructure-setup.md**
 
 - **Purpose:** Design and implement automated deployment pipelines and scalable infrastructure
 - **When to use:** Infrastructure planning, CI/CD setup, deployment automation, monitoring implementation
 - **Key outputs:** Infrastructure code, CI/CD pipelines, monitoring setup, deployment documentation
 - **Agent:** deployment-engineer
+- **Phases:** Deployment & Operations
 
 ### Review and Validation (`agents/review/`)
 
-**sonarqube-code-quality-analysis.md**
+#### **sonarqube-code-quality-analysis.md**
 
 - **Purpose:** Conduct comprehensive code quality analysis using SonarQube and establish quality gates
 - **When to use:** Code quality assessment, technical debt analysis, quality gate enforcement
 - **Key outputs:** Quality reports, remediation plans, automated quality gates, team coaching materials
 - **Agent:** reviewer
+- **Phases:** Development & Continuous QA
 
-**security-vulnerability-assessment.md**
+#### **security-vulnerability-assessment.md**
 
 - **Purpose:** Conduct comprehensive security vulnerability assessments using automated tools and manual analysis
 - **When to use:** Security audits, vulnerability management, compliance validation, penetration testing
 - **Key outputs:** Vulnerability reports, risk assessments, remediation priorities, security dashboards
 - **Agent:** reviewer
+- **Phases:** Development & Continuous QA, Deployment & Operations
 
 ## 🔄 Workflow Coordination Prompts
 
 ### Phase Transitions (`workflows/phase-transitions/`)
 
-**business-requirements-to-architecture-handoff.md**
-
-- **Purpose:** Seamlessly transfer validated business requirements to architecture and design teams
-- **When to use:** Transitioning from Phase 1 (Business Discovery) to Phase 2 (Architecture & Design)
-- **Key activities:** Requirements validation, team briefings, handoff coordination meeting
-- **Participants:** business-analyst, product-manager, ux-designer, reviewer → software-architect, security-engineer, data-engineer
-- **Outputs:** Complete requirements package, architecture briefing documents, team alignment confirmation
-
-**architecture-design-to-development-handoff.md**
-
-- **Purpose:** Transfer validated architecture and design specifications to development teams
-- **When to use:** Transitioning from Phase 2 (Architecture & Design) to Phase 3 (Development & QA)
-- **Key activities:** Architecture documentation validation, design system handoff, development team briefings
-- **Participants:** software-architect, ux-designer, security-engineer, data-engineer → frontend-engineer, api-engineer, qa-engineer
-- **Outputs:** Technical specifications, design system package, implementation guidance
-
-*[Additional phase transition prompts to be created]*
+*Section to be expanded - prompts will be created systematically*
 
 ### Orchestration Scenarios (`workflows/scenarios/`)
 
-**new-feature-development-orchestration.md**
-
-- **Purpose:** Orchestrate multi-agent collaboration for developing new features from conception to production
-- **When to use:** Complete feature development lifecycle, major functionality additions, MVP development
-- **Key phases:** Business Discovery → Architecture & Design → Development & QA → Deployment & Validation
-- **Participants:** All 11 agents coordinated through systematic workflow
-- **Outputs:** Production-ready features with complete documentation and validation
-
-**critical-bug-fix-orchestration.md**
-
-- **Purpose:** Coordinate rapid response for critical production issues with minimal disruption
-- **When to use:** Emergency incidents, critical bugs, system outages, security breaches
-- **Key phases:** Emergency Response → Priority Fix → Standard Resolution → Post-Incident Analysis
-- **Participants:** Specialized response teams based on incident type and severity
-- **Outputs:** System restoration, incident reports, prevention measures, process improvements
+*Section to be expanded - scenarios will be created based on common use cases*
 
 ### Parallel Coordination (`workflows/parallel-coordination/`)
 
-**cross-team-development-coordination.md**
-
-- **Purpose:** Coordinate frontend, API, data, security, and QA teams during concurrent development
-- **When to use:** During Phase 3 (Development & QA) when multiple specialized teams work in parallel
-- **Key activities:** Daily standups, integration coordination, quality gate management
-- **Participants:** frontend-engineer, api-engineer, data-engineer, security-engineer, qa-engineer
-- **Outputs:** Coordination notes, integration status, quality metrics, risk assessments
+*Section to be expanded - prompts for parallel team work*
 
 ### Quality Gates (`workflows/quality-gates/`)
 
-*[Prompts to be created for quality validation checkpoints between phases]*
+*Section to be expanded - prompts for validation checkpoints between phases*
 
 ### Stakeholder Communication (`workflows/stakeholder-communication/`)
 
-*[Prompts to be created for stakeholder updates, approval processes, feedback integration]*
+*Section to be expanded - prompts for stakeholder updates and approval processes*
+
+## 📊 Prompts Library Statistics
+
+### Available Prompts Overview
+
+| Agent | Available Prompts | Specialization Areas |
+|-------|-------------------|----------------------|
+| **business-analyst** | 3 prompts | Stakeholder requirements, process analysis, business cases |
+| **product-manager** | 2 prompts | User story creation, MVP scoping and roadmaps |
+| **ux-designer** | 1 prompt | User research and persona development |
+| **software-architect** | 1 prompt | System architecture design |
+| **api-engineer** | 3 prompts | REST API, microservices, GraphQL development |
+| **data-engineer** | 1 prompt | Database design and ETL implementation |
+| **frontend-engineer** | 11 prompts | Angular, React, wxWidgets, PWA, accessibility, modern JS/TS |
+| **security-engineer** | 7 prompts | Complete security coverage: threat modeling, pentesting, compliance |
+| **qa-engineer** | 1 prompt | Test automation and quality assurance |
+| **deployment-engineer** | 1 prompt | CI/CD pipeline and infrastructure setup |
+| **reviewer** | 2 prompts | Code quality analysis, security vulnerability assessment |
+
+**Total Available:** 33 specialized prompts
+
+**Comprehensive Coverage Areas:**
+- **Security Engineering:** Complete enterprise security workflow coverage
+- **Frontend Development:** Full-stack modern frontend development
+- **Business Analysis:** Core business discovery and requirements processes
 
 ## 🎯 How to Use These Prompts
 
@@ -248,42 +406,30 @@ This directory contains specialized prompts for the Claude Code Agent Framework'
 - **Define clear deliverables** and success criteria
 - **Add examples** and templates where helpful
 
-## 📊 Success Metrics
+## 🔧 Integration with Claude Code
 
-### Individual Agent Effectiveness
+### Using Prompts in Claude Code
 
-- **Task completion rate** within estimated timeframes
-- **Quality of deliverables** meeting defined standards
-- **Stakeholder satisfaction** with agent outputs
-- **Collaboration effectiveness** with other agents
+1. **Open Claude Code** in the project directory
+2. **Select appropriate agent** for the task
+3. **Reference the prompt** using path (e.g., `agents/frontend/angular-component-development.md`)
+4. **Customize the prompt** for specific project requirements
+5. **Execute the task** following prompt guidelines
+6. **Coordinate with other agents** as needed
 
-### Workflow Coordination Success
+### Integration with AI Tools
 
-- **Phase transition smoothness** without information loss
-- **Cross-team coordination** effectiveness and communication
-- **Quality gate passage** rates and issue resolution speed
-- **Overall project timeline** adherence and delivery quality
-
-## 🔧 Integration with AI Tools
-
-### Serena Integration
+#### Serena Integration
 
 - Use Serena for **navigating existing codebases** when analyzing current state
 - Leverage Serena for **precise code modifications** during implementation
 - Apply Serena for **debugging and troubleshooting** during development phases
 
-### Context7 Integration
+#### Context7 Integration
 
 - Use Context7 for **generating new code** based on specifications
 - Leverage Context7 for **creating comprehensive documentation** and templates
 - Apply Context7 for **large-scale transformations** and migrations
-
-### Combined AI-Agent Workflows
-
-- **Analysis phase:** Serena + business-analyst for current state analysis
-- **Design phase:** Context7 + software-architect for architecture generation
-- **Development phase:** Context7 + Serena + development agents for implementation
-- **Documentation phase:** Context7 + all agents for comprehensive documentation
 
 ## 📚 Additional Resources
 
@@ -291,9 +437,27 @@ This directory contains specialized prompts for the Claude Code Agent Framework'
 - **Workflow Diagrams:** `.claude/docs/agent-sdlc-workflow.puml` for visual process overview
 - **Project Configuration:** `CLAUDE.md` for project-specific agent guidance
 - **AI Tools Guide:** `.claude/docs/ai-tools-usage-guide.md` for Serena and Context7 usage
+- **Main README:** `README.md` for general project overview and configuration
+
+## 🚀 Next Development Steps
+
+### Planned Expansion
+
+1. **Continue developing agent prompts** based on project needs and domain expertise
+2. **Workflow scenarios** - create complete orchestration scenarios  
+3. **Quality gates** - prompts for validation checkpoints between phases
+4. **Stakeholder communication** - frameworks for updates and approvals
+5. **Documentation templates** - standard formats for deliverables
+
+### Development Approach
+
+- Focus on **real project needs** rather than predetermined targets
+- Develop prompts based on **actual workflow requirements**
+- Prioritize **quality and completeness** over quantity
+- Create prompts that address **specific domain expertise areas**
 
 ---
 
-**Note:** This prompt library is continuously evolving. Prompts marked with *[Additional prompts to be created]* indicate areas for future expansion based on project needs and user feedback.
+**Note:** This prompts library is continuously evolving. Prompts marked with *[To be created]* indicate areas for future expansion based on project needs and user feedback.
 
 *Each prompt is designed to work independently while supporting the overall Agent-Driven Development Lifecycle for maximum productivity and quality.*
