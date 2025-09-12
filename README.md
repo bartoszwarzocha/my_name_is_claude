@@ -57,52 +57,52 @@ This repository contains a production-ready Claude Code Agent Framework with a c
 
 ```text
 my_name_is_claude/
-├── .claude/                                    # Claude Code configuration
-│   ├── agents/                                 # Specialized agent definitions
-│   │   ├── api/                               # API engineer agent
-│   │   ├── architecture/                      # Software architect agent
-│   │   ├── backend/                           # Backend engineer agent
-│   │   ├── business/                          # Business analyst agent
-│   │   ├── data/                             # Data engineer agent
-│   │   ├── deployment/                        # Deployment engineer agent
-│   │   ├── design/                           # UX/UI designer agent
-│   │   ├── frontend/                         # Frontend engineer agent
-│   │   ├── planner/                          # Product manager & reviewer agents
-│   │   ├── quality/                          # QA engineer agent
-│   │   └── security/                         # Security engineer agent
+├── .claude/                           # Claude Code configuration
+│   ├── agents/                        # Specialized agent definitions
+│   │   ├── api/                       # API engineer agent
+│   │   ├── architecture/              # Software architect agent
+│   │   ├── backend/                   # Backend engineer agent
+│   │   ├── business/                  # Business analyst agent
+│   │   ├── data/                      # Data engineer agent
+│   │   ├── deployment/                # Deployment engineer agent
+│   │   ├── design/                    # UX/UI designer agent
+│   │   ├── frontend/                  # Frontend engineer agent
+│   │   ├── planner/                   # Product manager & reviewer agents
+│   │   ├── quality/                   # QA engineer agent
+│   │   └── security/                  # Security engineer agent
 │   │
-│   ├── prompts/                              # ⭐ Comprehensive Prompts Library
-│   │   ├── agents/                           # Specialized agent prompts
-│   │   │   ├── api/                         # API engineering prompts (REST, GraphQL, microservices)
-│   │   │   ├── architecture/                # System architecture & desktop app prompts
-│   │   │   ├── business/                    # Business analysis prompts
-│   │   │   ├── data/                        # Data engineering & database prompts
-│   │   │   ├── deployment/                  # Deployment & packaging prompts
-│   │   │   ├── design/                      # UX research & persona development
-│   │   │   ├── frontend/                    # ✅ Complete frontend prompts (React, Angular, wxWidgets, PWA)
-│   │   │   ├── product/                     # Product management prompts
-│   │   │   ├── qa/                          # Performance optimization prompts
-│   │   │   ├── quality/                     # Test automation prompts
-│   │   │   ├── review/                      # Code quality & security review prompts
-│   │   │   └── security/                    # ✅ Comprehensive security prompts (pentesting, compliance, IAM)
-│   │   ├── workflows/                       # Multi-agent orchestration prompts
-│   │   ├── init/                           # Project initialization prompts
-│   │   └── README.md                        # Prompts documentation
+│   ├── prompts/                       # ⭐ Comprehensive Prompts Library
+│   │   ├── agents/                    # Specialized agent prompts
+│   │   │   ├── api/                   # API engineering prompts (REST, GraphQL, microservices)
+│   │   │   ├── architecture/          # System architecture & desktop app prompts
+│   │   │   ├── business/              # Business analysis prompts
+│   │   │   ├── data/                  # Data engineering & database prompts
+│   │   │   ├── deployment/            # Deployment & packaging prompts
+│   │   │   ├── design/                # UX research & persona development
+│   │   │   ├── frontend/              # Frontend prompts (React, Angular, wxWidgets, PWA)
+│   │   │   ├── product/               # Product management prompts
+│   │   │   ├── qa/                    # Performance optimization prompts
+│   │   │   ├── quality/               # Test automation prompts
+│   │   │   ├── review/                # Code quality & security review prompts
+│   │   │   └── security/              # Comprehensive security prompts (pentesting, compliance, IAM)
+│   │   ├── workflows/                 # Multi-agent orchestration prompts
+│   │   ├── init/                      # Project initialization prompts
+│   │   └── README.md                  # Prompts documentation
 │   │
-│   ├── templates/                           # Reusable templates and patterns
-│   ├── hooks/                              # 🔧 Automation & orchestration system
-│   │   ├── orchestration/                  # 🎯 Workflow orchestration scenarios
-│   │   ├── orchestration-trigger.sh       # 📋 Automatic scenario selection
-│   │   ├── orchestration-monitor.sh       # 📡 Real-time orchestration monitoring
-│   │   └── [automation hooks]             # Multi-agent coordination
-│   ├── docs/                               # Framework documentation
-│   └── settings.local.json                 # Local Claude Code settings
+│   ├── templates/                     # Reusable templates and patterns
+│   ├── hooks/                         # 🔧 Automation & orchestration system
+│   │   ├── orchestration/             # 🎯 Workflow orchestration scenarios
+│   │   ├── orchestration-trigger.sh   # 📋 Automatic scenario selection
+│   │   ├── orchestration-monitor.sh   # 📡 Real-time orchestration monitoring
+│   │   └── [automation hooks]         # Multi-agent coordination
+│   ├── docs/                          # Framework documentation
+│   └── settings.local.json            # Local Claude Code settings
 │
-├── CLAUDE.md                               # Main project configuration template
-├── DATABASE_CONNECTIONS.md                 # Database configurations guide
-├── mcp_tools.sh                           # 🛠️ MCP tools installation script
-├── examples.md                            # Usage examples and patterns
-└── README.md                              # This comprehensive guide
+├── CLAUDE.md                          # Main project configuration template
+├── DATABASE_CONNECTIONS.md            # Database configurations guide
+├── mcp_tools.sh                       # 🛠️ MCP tools installation script
+├── examples.md                        # Usage examples and patterns
+└── README.md                          # This comprehensive guide
 ```
 
 ## 🤖 Available Agents & Specializations
