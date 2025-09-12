@@ -1,10 +1,20 @@
 # Identity and Access Management
 
-**Agent Type: security-engineer**
-**Complexity Level: Expert**
-**Estimated Duration: 6-10 hours**
+**Agent: security-engineer**
+**Purpose: Design and implement enterprise-grade identity and access management with technology-adaptive authentication and authorization solutions**
 
 ---
+
+## Context Analysis
+
+The security-engineer will analyze the CLAUDE.md file to determine:
+- **Technology Stack**: Application frameworks and authentication protocols for appropriate IAM integration patterns and security controls
+- **User Population**: Scale and types of users (employees, customers, partners, services) for identity domain design and authentication strategies
+- **Business Domain**: Industry-specific compliance requirements and identity governance frameworks for regulatory alignment
+- **Infrastructure Model**: Cloud, on-premise, or hybrid deployment for identity architecture design and federation strategies
+- **Security Requirements**: Risk tolerance and compliance obligations for authentication strength and governance controls
+
+Based on this analysis, the security engineer will design appropriate identity architectures, implement technology-specific authentication controls, and ensure comprehensive identity governance across the entire user lifecycle.
 
 ## 🎯 Mission
 
@@ -639,6 +649,708 @@ class IdentityLifecycleManager:
         
         return governance_automation
 ```
+
+## Technology-Adaptive Implementation
+
+### Java/Spring Boot Identity Management
+
+**Recommended Pattern:** Spring Security with OAuth2, JWT, and comprehensive identity governance
+
+```java
+// IdentityConfiguration.java - Comprehensive Spring Security Identity setup
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class IdentityManagementConfiguration {
+    
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
+    
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
+    
+    @Bean
+    public SecurityFilterChain identitySecurityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(authz -> authz
+                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/identity/register").hasRole("ADMIN")
+                .requestMatchers("/api/identity/users/**").hasAnyRole("USER_ADMIN", "ADMIN")
+                .requestMatchers("/api/identity/roles/**").hasRole("ADMIN")
+                .requestMatchers("/api/identity/permissions/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+            )
+            .oauth2ResourceServer(oauth2 -> oauth2
+                .jwt(jwt -> jwt
+                    .decoder(jwtDecoder())
+                    .jwtAuthenticationConverter(customJwtAuthenticationConverter())
+                )
+            )
+            .sessionManagement(session -> session
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            );
+            
+        return http.build();
+    }
+    
+    @Bean
+    public JwtDecoder jwtDecoder() {
+        NimbusJwtDecoder decoder = NimbusJwtDecoder
+            .withJwkSetUri("https://your-identity-provider/.well-known/jwks.json")
+            .build();
+        decoder.setJwtValidator(jwtValidator());
+        return decoder;
+    }
+    
+    @Bean
+    public Converter<Jwt, AbstractAuthenticationToken> customJwtAuthenticationConverter() {
+        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
+        converter.setJwtGrantedAuthoritiesConverter(jwt -> {
+            // Extract roles and permissions from JWT claims
+            List<String> roles = jwt.getClaimAsStringList("roles");
+            List<String> permissions = jwt.getClaimAsStringList("permissions");
+            
+            return Stream.concat(
+                roles.stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role)),
+                permissions.stream().map(permission -> new SimpleGrantedAuthority(permission))
+            ).collect(Collectors.toList());
+        });
+        return converter;
+    }
+}
+
+// IdentityGovernanceService.java - Identity lifecycle and governance
+@Service
+@Transactional
+public class IdentityGovernanceService {
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Autowired
+    private RoleRepository roleRepository;
+    
+    @Autowired
+    private AccessReviewService accessReviewService;
+    
+    @EventListener
+    public void handleUserJoinerEvent(UserJoinerEvent event) {
+        User user = event.getUser();
+        
+        // Automatic role assignment based on department and job title
+        assignRolesByJobFunction(user);
+        
+        // Provision access to default applications
+        provisionDefaultApplicationAccess(user);
+        
+        // Schedule access certification review
+        scheduleAccessReview(user, Duration.ofDays(90));
+        
+        // Notify managers and IT team
+        sendJoinerNotifications(user);
+    }
+    
+    @Scheduled(fixedRate = 3600000) // Run hourly
+    public void performAccessGovernanceCheck() {
+        // Identify dormant accounts
+        List<User> dormantUsers = userRepository.findUsersWithoutActivitySince(
+            Instant.now().minus(90, ChronoUnit.DAYS)
+        );
+        
+        dormantUsers.forEach(user -> {
+            user.setStatus(UserStatus.DORMANT);
+            userRepository.save(user);
+            sendDormantAccountAlert(user);
+        });
+        
+        // Check for excessive privileges
+        List<User> usersWithExcessivePrivileges = identifyUsersWithExcessivePrivileges();
+        usersWithExcessivePrivileges.forEach(this::triggerPrivilegeReview);
+        
+        // Enforce segregation of duties
+        validateSegregationOfDuties();
+    }
+    
+    private void assignRolesByJobFunction(User user) {
+        String department = user.getDepartment();
+        String jobTitle = user.getJobTitle();
+        
+        // Department-based role assignment
+        switch (department.toLowerCase()) {
+            case "finance":
+                assignRole(user, "FINANCE_USER");
+                if (jobTitle.contains("Manager") || jobTitle.contains("Director")) {
+                    assignRole(user, "FINANCE_MANAGER");
+                }
+                break;
+            case "hr":
+                assignRole(user, "HR_USER");
+                if (jobTitle.contains("Manager")) {
+                    assignRole(user, "HR_MANAGER");
+                }
+                break;
+            case "it":
+                assignRole(user, "IT_USER");
+                if (jobTitle.contains("Admin") || jobTitle.contains("Engineer")) {
+                    assignRole(user, "IT_ADMIN");
+                }
+                break;
+            default:
+                assignRole(user, "STANDARD_USER");
+        }
+        
+        // Additional privilege assignment based on seniority
+        if (jobTitle.contains("Director") || jobTitle.contains("VP")) {
+            assignRole(user, "EXECUTIVE_USER");
+        }
+    }
+    
+    @Async
+    public CompletableFuture<AccessReviewResult> conductAccessReview(String userId) {
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new UserNotFoundException(userId));
+        
+        AccessReviewResult result = AccessReviewResult.builder()
+            .userId(userId)
+            .reviewDate(Instant.now())
+            .build();
+        
+        // Analyze current access rights
+        Set<Role> currentRoles = user.getRoles();
+        Set<Permission> currentPermissions = extractPermissions(currentRoles);
+        
+        // Compare with role-based access model
+        Set<Permission> expectedPermissions = calculateExpectedPermissions(user);
+        
+        // Identify excessive permissions
+        Set<Permission> excessivePermissions = Sets.difference(currentPermissions, expectedPermissions);
+        result.setExcessivePermissions(excessivePermissions);
+        
+        // Identify missing permissions
+        Set<Permission> missingPermissions = Sets.difference(expectedPermissions, currentPermissions);
+        result.setMissingPermissions(missingPermissions);
+        
+        // Generate remediation recommendations
+        List<RemediationAction> actions = generateRemediationActions(user, result);
+        result.setRemediationActions(actions);
+        
+        return CompletableFuture.completedFuture(result);
+    }
+}
+```
+
+### .NET Core Identity Implementation
+
+**Recommended Pattern:** ASP.NET Core Identity with comprehensive role management and governance
+
+```csharp
+// IdentityConfiguration.cs
+public class IdentityManagementStartup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Identity with advanced configuration
+        services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+        {
+            // Password policy
+            options.Password.RequiredLength = 14;
+            options.Password.RequireDigit = true;
+            options.Password.RequireUppercase = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequireNonAlphanumeric = true;
+            options.Password.RequiredUniqueChars = 6;
+            
+            // Lockout policy
+            options.Lockout.MaxFailedAccessAttempts = 3;
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromHours(1);
+            options.Lockout.AllowedForNewUsers = true;
+            
+            // User policy
+            options.User.RequireUniqueEmail = true;
+            options.SignIn.RequireConfirmedEmail = true;
+            options.SignIn.RequireConfirmedAccount = true;
+        })
+        .AddEntityFrameworkStores<IdentityDbContext>()
+        .AddDefaultTokenProviders()
+        .AddTokenProvider<EmailTokenProvider<ApplicationUser>>("Email")
+        .AddTokenProvider<PhoneNumberTokenProvider<ApplicationUser>>("Phone");
+        
+        // JWT Authentication
+        services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = Configuration["Identity:Issuer"],
+                ValidAudience = Configuration["Identity:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(Configuration["Identity:SecretKey"])),
+                ClockSkew = TimeSpan.Zero,
+                RoleClaimType = ClaimTypes.Role
+            };
+        });
+        
+        // Authorization policies
+        services.AddAuthorization(options =>
+        {
+            // Role-based policies
+            options.AddPolicy("AdminOnly", policy => 
+                policy.RequireRole("Administrator"));
+            options.AddPolicy("ManagerOrAbove", policy => 
+                policy.RequireRole("Manager", "Director", "Administrator"));
+                
+            // Claim-based policies
+            options.AddPolicy("RequireMFA", policy => 
+                policy.RequireClaim("mfa_verified", "true"));
+            options.AddPolicy("RequireEmailVerified", policy => 
+                policy.RequireClaim(ClaimTypes.Email));
+                
+            // Custom policies
+            options.AddPolicy("CanAccessFinancialData", policy =>
+                policy.Requirements.Add(new FinancialDataAccessRequirement()));
+        });
+        
+        // Identity governance services
+        services.AddScoped<IIdentityGovernanceService, IdentityGovernanceService>();
+        services.AddScoped<IAccessReviewService, AccessReviewService>();
+        services.AddScoped<IRoleManagementService, RoleManagementService>();
+        services.AddHostedService<IdentityLifecycleService>();
+    }
+}
+
+// IdentityGovernanceService.cs
+public class IdentityGovernanceService : IIdentityGovernanceService
+{
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly RoleManager<ApplicationRole> _roleManager;
+    private readonly ILogger<IdentityGovernanceService> _logger;
+    private readonly IServiceProvider _serviceProvider;
+    
+    public async Task<IdentityResult> ProcessJoinerAsync(JoinerRequest request)
+    {
+        var user = new ApplicationUser
+        {
+            UserName = request.Email,
+            Email = request.Email,
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            Department = request.Department,
+            JobTitle = request.JobTitle,
+            ManagerId = request.ManagerId,
+            StartDate = request.StartDate,
+            EmailConfirmed = false
+        };
+        
+        // Create user account
+        var result = await _userManager.CreateAsync(user, GenerateTemporaryPassword());
+        if (!result.Succeeded)
+            return result;
+        
+        // Assign default roles based on department and job function
+        await AssignDefaultRolesAsync(user, request.Department, request.JobTitle);
+        
+        // Generate email confirmation token and send welcome email
+        var emailToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        await SendWelcomeEmailAsync(user, emailToken);
+        
+        // Schedule access review
+        await ScheduleAccessReviewAsync(user.Id, TimeSpan.FromDays(90));
+        
+        // Audit log
+        _logger.LogInformation("New user {UserId} created for {Email} in {Department}", 
+            user.Id, user.Email, user.Department);
+            
+        return IdentityResult.Success;
+    }
+    
+    public async Task<AccessReviewResult> ConductAccessReviewAsync(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+            throw new UserNotFoundException(userId);
+        
+        var currentRoles = await _userManager.GetRolesAsync(user);
+        var currentClaims = await _userManager.GetClaimsAsync(user);
+        
+        // Determine expected access based on current role
+        var expectedRoles = await DetermineExpectedRolesAsync(user);
+        var expectedClaims = await DetermineExpectedClaimsAsync(user);
+        
+        var result = new AccessReviewResult
+        {
+            UserId = userId,
+            ReviewDate = DateTime.UtcNow,
+            CurrentRoles = currentRoles.ToList(),
+            ExpectedRoles = expectedRoles,
+            ExcessiveRoles = currentRoles.Except(expectedRoles).ToList(),
+            MissingRoles = expectedRoles.Except(currentRoles).ToList(),
+            CurrentClaims = currentClaims.Select(c => $"{c.Type}:{c.Value}").ToList(),
+            ExpectedClaims = expectedClaims.Select(c => $"{c.Type}:{c.Value}").ToList()
+        };
+        
+        // Generate remediation actions
+        result.RemediationActions = await GenerateRemediationActionsAsync(user, result);
+        
+        return result;
+    }
+    
+    private async Task AssignDefaultRolesAsync(ApplicationUser user, string department, string jobTitle)
+    {
+        var defaultRoles = new List<string> { "Employee" };
+        
+        // Department-specific roles
+        switch (department?.ToLower())
+        {
+            case "finance":
+                defaultRoles.Add("FinanceUser");
+                if (jobTitle.Contains("Manager", StringComparison.OrdinalIgnoreCase))
+                    defaultRoles.Add("FinanceManager");
+                break;
+            case "hr":
+                defaultRoles.Add("HRUser");
+                if (jobTitle.Contains("Manager", StringComparison.OrdinalIgnoreCase))
+                    defaultRoles.Add("HRManager");
+                break;
+            case "it":
+                defaultRoles.Add("ITUser");
+                if (jobTitle.Contains("Admin", StringComparison.OrdinalIgnoreCase))
+                    defaultRoles.Add("ITAdministrator");
+                break;
+        }
+        
+        // Senior roles
+        if (jobTitle.Contains("Director", StringComparison.OrdinalIgnoreCase) ||
+            jobTitle.Contains("VP", StringComparison.OrdinalIgnoreCase))
+        {
+            defaultRoles.Add("Executive");
+        }
+        
+        foreach (var role in defaultRoles)
+        {
+            if (await _roleManager.RoleExistsAsync(role))
+            {
+                await _userManager.AddToRoleAsync(user, role);
+            }
+        }
+    }
+}
+```
+
+### Python/FastAPI Identity Management
+
+**Recommended Pattern:** FastAPI with OAuth2, JWT, and comprehensive identity governance
+
+```python
+# identity_management.py
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from sqlalchemy.orm import Session
+from datetime import datetime, timedelta
+import jwt
+from passlib.context import CryptContext
+from enum import Enum
+import asyncio
+from typing import List, Optional, Dict, Any
+
+class UserStatus(str, Enum):
+    ACTIVE = "active"
+    INACTIVE = "inactive" 
+    SUSPENDED = "suspended"
+    DORMANT = "dormant"
+
+class IdentityManagementService:
+    def __init__(self):
+        self.pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+        self.oauth2_scheme = HTTPBearer()
+        
+    async def create_user_account(self, user_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Comprehensive user account creation with role assignment"""
+        
+        # Validate user data
+        await self.validate_user_data(user_data)
+        
+        # Create user account
+        hashed_password = self.pwd_context.hash(self.generate_temporary_password())
+        
+        user = User(
+            email=user_data["email"],
+            username=user_data["email"],
+            first_name=user_data["first_name"],
+            last_name=user_data["last_name"],
+            department=user_data["department"],
+            job_title=user_data["job_title"],
+            manager_id=user_data.get("manager_id"),
+            hashed_password=hashed_password,
+            status=UserStatus.INACTIVE,
+            created_at=datetime.utcnow(),
+            password_changed_at=datetime.utcnow(),
+            must_change_password=True
+        )
+        
+        # Save user to database
+        db_user = await self.user_repository.create(user)
+        
+        # Assign default roles based on job function
+        await self.assign_default_roles(db_user)
+        
+        # Generate email verification token
+        verification_token = await self.generate_email_verification_token(db_user.email)
+        
+        # Send welcome email
+        await self.send_welcome_email(db_user, verification_token)
+        
+        # Schedule access review
+        await self.schedule_access_review(db_user.id, days=90)
+        
+        # Audit logging
+        await self.audit_logger.log_event(
+            event_type="user_created",
+            user_id=db_user.id,
+            details={
+                "email": db_user.email,
+                "department": db_user.department,
+                "created_by": "system"
+            }
+        )
+        
+        return {
+            "user_id": db_user.id,
+            "email": db_user.email,
+            "status": db_user.status,
+            "verification_required": True
+        }
+    
+    async def assign_default_roles(self, user: User) -> None:
+        """Assign roles based on department and job title"""
+        
+        default_roles = ["employee"]
+        
+        # Department-based roles
+        department_roles = {
+            "finance": ["finance_user"],
+            "hr": ["hr_user"],
+            "it": ["it_user"],
+            "sales": ["sales_user"],
+            "marketing": ["marketing_user"]
+        }
+        
+        if user.department.lower() in department_roles:
+            default_roles.extend(department_roles[user.department.lower()])
+        
+        # Management roles based on job title
+        if any(title in user.job_title.lower() for title in ["manager", "director", "vp"]):
+            default_roles.append("manager")
+            
+        if any(title in user.job_title.lower() for title in ["director", "vp", "ceo"]):
+            default_roles.append("executive")
+            
+        # IT-specific roles
+        if user.department.lower() == "it":
+            if "admin" in user.job_title.lower():
+                default_roles.append("it_administrator")
+            if "security" in user.job_title.lower():
+                default_roles.append("security_analyst")
+        
+        # Assign roles to user
+        for role_name in default_roles:
+            role = await self.role_repository.get_by_name(role_name)
+            if role:
+                await self.user_role_repository.create({
+                    "user_id": user.id,
+                    "role_id": role.id,
+                    "assigned_at": datetime.utcnow(),
+                    "assigned_by": "system"
+                })
+    
+    async def conduct_access_review(self, user_id: str) -> Dict[str, Any]:
+        """Comprehensive access review and governance check"""
+        
+        user = await self.user_repository.get_by_id(user_id)
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+        
+        # Get current user roles and permissions
+        current_roles = await self.get_user_roles(user_id)
+        current_permissions = await self.get_user_permissions(user_id)
+        
+        # Determine expected access based on current position
+        expected_roles = await self.calculate_expected_roles(user)
+        expected_permissions = await self.calculate_expected_permissions(expected_roles)
+        
+        # Identify discrepancies
+        excessive_roles = list(set(current_roles) - set(expected_roles))
+        missing_roles = list(set(expected_roles) - set(current_roles))
+        excessive_permissions = list(set(current_permissions) - set(expected_permissions))
+        
+        # Check for dormant account
+        last_activity = await self.get_last_user_activity(user_id)
+        is_dormant = (datetime.utcnow() - last_activity).days > 90 if last_activity else True
+        
+        # Generate review result
+        review_result = {
+            "user_id": user_id,
+            "review_date": datetime.utcnow(),
+            "current_roles": current_roles,
+            "expected_roles": expected_roles,
+            "excessive_roles": excessive_roles,
+            "missing_roles": missing_roles,
+            "excessive_permissions": excessive_permissions,
+            "is_dormant": is_dormant,
+            "last_activity": last_activity,
+            "remediation_actions": []
+        }
+        
+        # Generate remediation actions
+        if excessive_roles:
+            review_result["remediation_actions"].append({
+                "action": "remove_excessive_roles",
+                "details": excessive_roles,
+                "priority": "high"
+            })
+        
+        if missing_roles:
+            review_result["remediation_actions"].append({
+                "action": "assign_missing_roles", 
+                "details": missing_roles,
+                "priority": "medium"
+            })
+        
+        if is_dormant:
+            review_result["remediation_actions"].append({
+                "action": "review_dormant_account",
+                "details": "Account has been inactive for >90 days",
+                "priority": "high"
+            })
+        
+        # Save review result
+        await self.access_review_repository.create(review_result)
+        
+        # Send notifications if remediation needed
+        if review_result["remediation_actions"]:
+            await self.send_access_review_notification(user, review_result)
+        
+        return review_result
+
+# Background task for identity governance
+class IdentityGovernanceScheduler:
+    def __init__(self, identity_service: IdentityManagementService):
+        self.identity_service = identity_service
+        
+    async def run_daily_governance_checks(self):
+        """Daily identity governance and compliance checks"""
+        
+        # Check for dormant accounts
+        await self.check_dormant_accounts()
+        
+        # Validate segregation of duties
+        await self.validate_segregation_of_duties()
+        
+        # Check for excessive privileges
+        await self.check_excessive_privileges()
+        
+        # Process scheduled access reviews
+        await self.process_scheduled_reviews()
+        
+        # Generate compliance reports
+        await self.generate_daily_compliance_report()
+    
+    async def check_dormant_accounts(self):
+        """Identify and flag dormant user accounts"""
+        
+        cutoff_date = datetime.utcnow() - timedelta(days=90)
+        dormant_users = await self.identity_service.user_repository.get_inactive_since(cutoff_date)
+        
+        for user in dormant_users:
+            if user.status != UserStatus.DORMANT:
+                user.status = UserStatus.DORMANT
+                await self.identity_service.user_repository.update(user)
+                
+                # Notify managers and security team
+                await self.identity_service.send_dormant_account_alert(user)
+```
+
+### Generic/Fallback Implementation
+
+For unsupported technologies, provide generic identity management patterns:
+
+```yaml
+# Generic Identity Management Configuration
+identity_management:
+  approach: "zero_trust"  # or "role_based", "attribute_based"
+  
+  identity_domains:
+    - "employee_identity_domain"
+    - "customer_identity_domain"
+    - "partner_identity_domain"
+    - "service_identity_domain"
+    
+  authentication_methods:
+    - "multi_factor_authentication_required"
+    - "adaptive_risk_based_authentication"
+    - "single_sign_on_federation"
+    - "privileged_session_management"
+    
+  authorization_patterns:
+    - "attribute_based_access_control"
+    - "role_based_access_control"
+    - "just_in_time_privilege_elevation"
+    - "segregation_of_duties_enforcement"
+    
+  governance_controls:
+    - "automated_joiner_mover_leaver_processes"
+    - "periodic_access_certification_reviews"
+    - "continuous_compliance_monitoring"
+    - "identity_analytics_behavioral_monitoring"
+    
+  technology_integration:
+    - "directory_service_integration"
+    - "application_sso_federation"
+    - "privileged_access_management_integration"
+    - "security_information_event_management_integration"
+```
+
+## Implementation Strategy
+
+### 1. Technology Detection
+
+Analyze CLAUDE.md configuration to determine:
+- **Application Framework** from primary_language for appropriate identity integration patterns and authentication libraries
+- **User Scale** from project_scale for identity architecture complexity and performance requirements
+- **Business Domain** for industry-specific compliance requirements and identity governance frameworks
+- **Infrastructure Model** from deployment approach for identity provider selection and federation strategies
+
+### 2. Identity Architecture Strategy Selection
+
+Select identity management approaches based on detected requirements:
+- **Enterprise Applications**: Comprehensive identity governance with full lifecycle management and compliance reporting
+- **Customer-Facing Applications**: Scalable customer identity management with social login and self-service capabilities
+- **API-Centric Applications**: Service identity management with certificate-based authentication and API security
+- **Legacy System Integration**: Hybrid identity solutions with gradual modernization and federation capabilities
+
+### 3. Implementation Pattern Application
+
+Apply technology-specific identity patterns:
+- **Authentication Implementation**: Framework-appropriate multi-factor authentication and adaptive security controls
+- **Authorization Framework**: Technology-specific RBAC/ABAC implementation with fine-grained access controls
+- **Identity Governance**: Automated lifecycle management with technology-native integration capabilities
+- **Federation and SSO**: Standards-based federation with technology-specific SSO integration patterns
+
+### 4. Success Criteria
+
+Identity and access management implementation validation checklist:
+- **Authentication Security**: Multi-factor authentication implemented with adaptive risk-based policies
+- **Authorization Accuracy**: Fine-grained access controls with comprehensive role and permission management
+- **Governance Automation**: Automated joiner/mover/leaver processes with continuous compliance monitoring
+- **Federation Integration**: Single sign-on capabilities with internal and external identity provider federation
+- **Compliance Achievement**: Identity governance framework meeting all applicable regulatory requirements
 
 ## 📊 Success Criteria
 

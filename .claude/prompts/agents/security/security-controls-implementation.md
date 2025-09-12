@@ -1,10 +1,20 @@
 # Security Controls Implementation
 
-**Agent Type: security-engineer**
-**Complexity Level: Expert**
-**Estimated Duration: 6-12 hours**
+**Agent: security-engineer**
+**Purpose: Design, implement, and operationalize comprehensive security controls with technology-adaptive protection strategies**
 
 ---
+
+## Context Analysis
+
+The security-engineer will analyze the CLAUDE.md file to determine:
+- **Technology Infrastructure**: Application architecture and deployment model (cloud, on-premise, hybrid) for appropriate security control selection and implementation
+- **Application Stack**: Programming languages and frameworks for technology-specific security controls and integration patterns
+- **Business Domain**: Industry-specific security requirements and compliance obligations for control framework selection
+- **Project Scale**: Infrastructure complexity and user base for appropriate control granularity and automation levels
+- **Security Maturity**: Existing security tools and processes for integration planning and control layering strategies
+
+Based on this analysis, the security engineer will select appropriate security control frameworks, implement technology-specific protections, and ensure comprehensive defense-in-depth coverage across the entire technology stack.
 
 ## 🎯 Mission
 
@@ -646,6 +656,417 @@ class SecurityMonitoringFramework:
         return monitoring_architecture
 ```
 
+## Technology-Adaptive Implementation
+
+### Java/Spring Boot Security Controls
+
+**Recommended Pattern:** Enterprise security with Spring Security, JWT, and comprehensive audit logging
+
+```java
+// SecurityConfiguration.java - Comprehensive Spring Security setup
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class EnterpriseSecurityConfiguration {
+    
+    @Autowired
+    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    
+    @Autowired
+    private UserDetailsService jwtUserDetailsService;
+    
+    @Autowired
+    private JwtRequestFilter jwtRequestFilter;
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
+    
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(authz -> authz
+                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/public/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/health").permitAll()
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN")
+                .anyRequest().authenticated()
+            )
+            .exceptionHandling(ex -> ex
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+            )
+            .sessionManagement(session -> session
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            )
+            .headers(headers -> headers
+                .frameOptions().deny()
+                .contentTypeOptions().and()
+                .httpStrictTransportSecurity(hstsConfig -> hstsConfig
+                    .maxAgeInSeconds(31536000)
+                    .includeSubdomains(true)
+                )
+            )
+            .oauth2ResourceServer(oauth2 -> oauth2
+                .jwt(jwt -> jwt
+                    .decoder(jwtDecoder())
+                    .jwtAuthenticationConverter(jwtAuthenticationConverter())
+                )
+            );
+            
+        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        
+        return http.build();
+    }
+}
+
+// SecurityAuditService.java - Comprehensive security event logging
+@Service
+@Transactional
+public class SecurityAuditService {
+    
+    @Autowired
+    private SecurityEventRepository securityEventRepository;
+    
+    @EventListener
+    public void handleAuthenticationSuccess(AuthenticationSuccessEvent event) {
+        SecurityEvent securityEvent = SecurityEvent.builder()
+            .eventType(SecurityEventType.AUTHENTICATION_SUCCESS)
+            .username(event.getAuthentication().getName())
+            .timestamp(Instant.now())
+            .ipAddress(getClientIpAddress())
+            .userAgent(getCurrentUserAgent())
+            .details("User successfully authenticated")
+            .build();
+            
+        securityEventRepository.save(securityEvent);
+    }
+    
+    @EventListener
+    public void handleAuthenticationFailure(AbstractAuthenticationFailureEvent event) {
+        String username = event.getAuthentication().getName();
+        String reason = event.getException().getMessage();
+        
+        SecurityEvent securityEvent = SecurityEvent.builder()
+            .eventType(SecurityEventType.AUTHENTICATION_FAILURE)
+            .username(username)
+            .timestamp(Instant.now())
+            .ipAddress(getClientIpAddress())
+            .reason(reason)
+            .build();
+            
+        securityEventRepository.save(securityEvent);
+        
+        // Check for brute force attempts
+        checkBruteForceAttempts(username);
+    }
+    
+    private void checkBruteForceAttempts(String username) {
+        Instant fiveMinutesAgo = Instant.now().minus(5, ChronoUnit.MINUTES);
+        
+        long failedAttempts = securityEventRepository
+            .countByUsernameAndEventTypeAndTimestampAfter(
+                username, SecurityEventType.AUTHENTICATION_FAILURE, fiveMinutesAgo
+            );
+            
+        if (failedAttempts >= 5) {
+            // Lock account and send alert
+            lockUserAccount(username);
+            sendSecurityAlert("Brute force attack detected", username);
+        }
+    }
+}
+```
+
+### .NET Core Security Implementation
+
+**Recommended Pattern:** ASP.NET Core Identity with comprehensive authorization and security headers
+
+```csharp
+// SecurityConfiguration.cs
+public class SecurityStartup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Identity configuration with enhanced security
+        services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+        {
+            // Password policy
+            options.Password.RequiredLength = 12;
+            options.Password.RequireDigit = true;
+            options.Password.RequireUppercase = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequireNonAlphanumeric = true;
+            options.Password.RequiredUniqueChars = 4;
+            
+            // Lockout policy
+            options.Lockout.MaxFailedAccessAttempts = 5;
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+            options.Lockout.AllowedForNewUsers = true;
+            
+            // User policy
+            options.User.RequireUniqueEmail = true;
+            options.SignIn.RequireConfirmedEmail = true;
+        })
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+        
+        // JWT Configuration
+        services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = Configuration["Jwt:Issuer"],
+                ValidAudience = Configuration["Jwt:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])),
+                ClockSkew = TimeSpan.Zero
+            };
+        });
+        
+        // Authorization policies
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("AdminOnly", policy => 
+                policy.RequireRole("Admin"));
+            options.AddPolicy("RequireMFA", policy => 
+                policy.RequireClaim("mfa", "true"));
+        });
+        
+        // Security services
+        services.AddScoped<ISecurityAuditService, SecurityAuditService>();
+        services.AddScoped<IThreatDetectionService, ThreatDetectionService>();
+    }
+    
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        // Security headers middleware
+        app.Use(async (context, next) =>
+        {
+            context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+            context.Response.Headers.Add("X-Frame-Options", "DENY");
+            context.Response.Headers.Add("X-XSS-Protection", "1; mode=block");
+            context.Response.Headers.Add("Strict-Transport-Security", 
+                "max-age=31536000; includeSubDomains; preload");
+            context.Response.Headers.Add("Content-Security-Policy", 
+                "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'");
+                
+            await next();
+        });
+        
+        app.UseAuthentication();
+        app.UseAuthorization();
+        
+        // Custom security middleware
+        app.UseMiddleware<SecurityAuditMiddleware>();
+        app.UseMiddleware<ThreatDetectionMiddleware>();
+    }
+}
+
+// SecurityAuditService.cs
+public class SecurityAuditService : ISecurityAuditService
+{
+    private readonly ApplicationDbContext _context;
+    private readonly ILogger<SecurityAuditService> _logger;
+    
+    public async Task LogSecurityEventAsync(SecurityEvent securityEvent)
+    {
+        _context.SecurityEvents.Add(securityEvent);
+        await _context.SaveChangesAsync();
+        
+        // Real-time threat analysis
+        await AnalyzeThreatPatternsAsync(securityEvent);
+    }
+    
+    private async Task AnalyzeThreatPatternsAsync(SecurityEvent securityEvent)
+    {
+        // Implement threat detection logic
+        if (securityEvent.EventType == SecurityEventType.LoginFailure)
+        {
+            var recentFailures = await _context.SecurityEvents
+                .Where(e => e.UserId == securityEvent.UserId 
+                           && e.EventType == SecurityEventType.LoginFailure
+                           && e.Timestamp > DateTime.UtcNow.AddMinutes(-15))
+                .CountAsync();
+                
+            if (recentFailures >= 5)
+            {
+                await TriggerAccountLockdownAsync(securityEvent.UserId);
+            }
+        }
+    }
+}
+```
+
+### Python/FastAPI Security Controls
+
+**Recommended Pattern:** FastAPI with OAuth2, comprehensive middleware, and async security monitoring
+
+```python
+# security_middleware.py
+from fastapi import FastAPI, Request, HTTPException, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+import asyncio
+import logging
+from datetime import datetime, timedelta
+
+class SecurityMiddleware:
+    def __init__(self, app: FastAPI):
+        self.app = app
+        self.security_logger = logging.getLogger('security')
+        self.setup_security_middleware()
+    
+    def setup_security_middleware(self):
+        # CORS configuration
+        self.app.add_middleware(
+            CORSMiddleware,
+            allow_origins=["https://yourdomain.com"],
+            allow_credentials=True,
+            allow_methods=["GET", "POST", "PUT", "DELETE"],
+            allow_headers=["Authorization", "Content-Type"]
+        )
+        
+        # Trusted host middleware
+        self.app.add_middleware(
+            TrustedHostMiddleware, 
+            allowed_hosts=["yourdomain.com", "*.yourdomain.com"]
+        )
+        
+        # Rate limiting
+        limiter = Limiter(key_func=get_remote_address)
+        self.app.state.limiter = limiter
+        self.app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+        
+        # Security headers middleware
+        @self.app.middleware("http")
+        async def add_security_headers(request: Request, call_next):
+            response = await call_next(request)
+            
+            # Security headers
+            response.headers["X-Content-Type-Options"] = "nosniff"
+            response.headers["X-Frame-Options"] = "DENY"
+            response.headers["X-XSS-Protection"] = "1; mode=block"
+            response.headers["Strict-Transport-Security"] = (
+                "max-age=31536000; includeSubDomains; preload"
+            )
+            response.headers["Content-Security-Policy"] = (
+                "default-src 'self'; script-src 'self' 'unsafe-inline'; "
+                "style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;"
+            )
+            
+            return response
+        
+        # Security audit middleware
+        @self.app.middleware("http")
+        async def security_audit_middleware(request: Request, call_next):
+            start_time = datetime.utcnow()
+            client_ip = get_remote_address(request)
+            user_agent = request.headers.get("user-agent", "")
+            
+            # Log request
+            self.security_logger.info(
+                f"Request: {request.method} {request.url} from {client_ip}"
+            )
+            
+            # Check for suspicious patterns
+            if self.is_suspicious_request(request):
+                self.security_logger.warning(
+                    f"Suspicious request: {request.method} {request.url} from {client_ip}"
+                )
+                await self.handle_suspicious_activity(request, client_ip)
+            
+            response = await call_next(request)
+            
+            # Log response
+            process_time = (datetime.utcnow() - start_time).total_seconds()
+            self.security_logger.info(
+                f"Response: {response.status_code} in {process_time:.4f}s"
+            )
+            
+            return response
+    
+    def is_suspicious_request(self, request: Request) -> bool:
+        suspicious_patterns = [
+            r'\.\.[/\\]',     # Directory traversal
+            r'<script',       # XSS attempts
+            r'union.*select', # SQL injection
+            r'eval\(',        # Code injection
+        ]
+        
+        import re
+        test_string = f"{request.url} {request.query_params}"
+        return any(re.search(pattern, test_string, re.IGNORECASE) 
+                  for pattern in suspicious_patterns)
+    
+    async def handle_suspicious_activity(self, request: Request, client_ip: str):
+        # Implement threat response logic
+        await self.log_security_event({
+            'event_type': 'suspicious_request',
+            'ip_address': client_ip,
+            'request_url': str(request.url),
+            'user_agent': request.headers.get('user-agent'),
+            'timestamp': datetime.utcnow()
+        })
+
+# Authentication and authorization
+class SecurityManager:
+    def __init__(self):
+        self.oauth2_scheme = HTTPBearer()
+        
+    async def get_current_user(self, credentials: HTTPAuthorizationCredentials):
+        token = credentials.credentials
+        
+        try:
+            payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+            username: str = payload.get("sub")
+            if username is None:
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail="Could not validate credentials"
+                )
+                
+            # Additional token validation
+            await self.validate_token_integrity(token, payload)
+            
+            return await self.get_user_by_username(username)
+            
+        except JWTError:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Could not validate credentials"
+            )
+    
+    async def validate_token_integrity(self, token: str, payload: dict):
+        # Check token blacklist
+        if await self.is_token_blacklisted(token):
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Token has been revoked"
+            )
+        
+        # Check token expiration with grace period
+        exp = payload.get("exp")
+        if exp and datetime.fromtimestamp(exp) < datetime.utcnow():
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Token has expired"
+            )
+```
+
 ## 📊 Success Criteria
 
 ### Control Implementation Effectiveness
@@ -673,6 +1094,80 @@ Upon completion of comprehensive security controls implementation:
 - ✅ **Security Orchestration Playbooks** for common incident response scenarios
 - ✅ **Compliance Documentation** demonstrating control implementation and effectiveness
 - ✅ **Operational Procedures** for ongoing security control maintenance and optimization
+
+### Generic/Fallback Implementation
+
+For unsupported technologies, provide generic security control patterns:
+
+```yaml
+# Generic Security Controls Configuration
+security_controls:
+  approach: "defense_in_depth"  # or "zero_trust", "risk_based"
+  
+  control_categories:
+    - "identity_and_access_management"
+    - "network_security_controls"
+    - "endpoint_protection_controls"
+    - "application_security_controls"
+    - "data_protection_controls"
+    - "monitoring_and_detection_controls"
+    
+  implementation_principles:
+    - "least_privilege_access_enforcement"
+    - "defense_in_depth_layered_security"
+    - "continuous_monitoring_and_assessment"
+    - "automated_threat_detection_and_response"
+    - "comprehensive_audit_logging_and_analysis"
+    
+  technology_integration:
+    - "siem_centralized_log_management"
+    - "security_orchestration_automation_response"
+    - "threat_intelligence_integration"
+    - "vulnerability_management_automation"
+    - "compliance_monitoring_and_reporting"
+    
+  operational_procedures:
+    - "incident_response_and_forensics"
+    - "change_management_security_reviews"
+    - "access_review_and_certification"
+    - "security_awareness_training_programs"
+    - "continuous_improvement_and_optimization"
+```
+
+## Implementation Strategy
+
+### 1. Technology Detection
+
+Analyze CLAUDE.md configuration to determine:
+- **Application Framework** from primary_language for appropriate security control integration patterns
+- **Infrastructure Model** from deployment approach for suitable security architecture and control placement
+- **Business Domain** for industry-specific security requirements and compliance control frameworks
+- **Scale Requirements** for appropriate control granularity, automation levels, and monitoring capabilities
+
+### 2. Security Control Strategy Selection
+
+Select security implementation approaches based on detected requirements:
+- **Enterprise Applications**: Comprehensive controls with SIEM integration, automated response, and compliance reporting
+- **Cloud-Native Applications**: Container security, API gateways, and cloud-specific control implementations
+- **Legacy Systems**: Compensating controls, network segmentation, and enhanced monitoring for older technologies
+- **Hybrid Environments**: Unified control frameworks spanning cloud and on-premise infrastructure
+
+### 3. Control Implementation Strategy
+
+Apply technology-specific security patterns:
+- **Authentication Controls**: Framework-appropriate identity integration and multi-factor authentication
+- **Authorization Controls**: Technology-specific RBAC implementation and fine-grained access controls
+- **Data Protection**: Encryption implementation suitable for application architecture and data flow patterns
+- **Monitoring Integration**: Technology-aware log collection and security event correlation
+
+### 4. Success Criteria
+
+Security controls implementation validation checklist:
+- **Control Coverage**: Comprehensive protection across all identified threat vectors and attack surfaces
+- **Technology Integration**: Seamless integration with existing technology stack and development workflows
+- **Operational Effectiveness**: Automated threat detection and response with minimal false positive rates
+- **Compliance Alignment**: Controls mapped to applicable regulatory frameworks and audit requirements
+- **Business Enablement**: Security controls that enhance rather than impede business functionality
 
 ---
 

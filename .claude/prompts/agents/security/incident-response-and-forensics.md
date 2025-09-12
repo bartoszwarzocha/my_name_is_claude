@@ -1,10 +1,20 @@
 # Incident Response and Digital Forensics
 
-**Agent Type: security-engineer**
-**Complexity Level: Expert**
-**Estimated Duration: 3-6 hours (Initial Response) + 8-16 hours (Investigation)**
+**Agent: security-engineer**
+**Purpose: Lead comprehensive incident response operations and conduct digital forensics investigations with technology-adaptive response strategies**
 
 ---
+
+## Context Analysis
+
+The security-engineer will analyze the CLAUDE.md file to determine:
+- **Technology Infrastructure**: System architecture (cloud, on-premise, hybrid) and technology stack for appropriate forensic tools and investigation techniques
+- **Business Domain**: Industry-specific incident types, regulatory requirements, and compliance obligations for response procedures
+- **Project Scale**: Infrastructure complexity and user base size for incident classification and resource allocation
+- **Security Maturity**: Existing security tools and monitoring capabilities for evidence collection and analysis
+- **Regulatory Environment**: Compliance requirements (GDPR, HIPAA, PCI-DSS) for breach notification timelines and forensic standards
+
+Based on this analysis, the security engineer will customize incident response procedures, select appropriate forensic tools, and ensure compliance with regulatory requirements throughout the investigation process.
 
 ## 🎯 Mission
 
@@ -593,6 +603,403 @@ class AdvancedContainmentStrategy:
         return recovery_operations
 ```
 
+## Technology-Adaptive Implementation
+
+### Cloud-Native Incident Response (AWS/Azure/GCP)
+
+**Recommended Pattern:** Cloud-native forensics with automated evidence collection and scalable response
+
+```python
+# cloud_incident_response.py
+import boto3
+import asyncio
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.compute import ComputeManagementClient
+from google.cloud import compute_v1
+from datetime import datetime
+import logging
+
+class CloudIncidentResponseService:
+    def __init__(self, cloud_provider: str, region: str):
+        self.provider = cloud_provider
+        self.region = region
+        self.logger = logging.getLogger(__name__)
+        
+        if cloud_provider == "aws":
+            self.ec2 = boto3.client('ec2', region_name=region)
+            self.cloudtrail = boto3.client('cloudtrail', region_name=region)
+            self.guardduty = boto3.client('guardduty', region_name=region)
+        elif cloud_provider == "azure":
+            credential = DefaultAzureCredential()
+            self.compute_client = ComputeManagementClient(credential, subscription_id)
+        elif cloud_provider == "gcp":
+            self.compute_client = compute_v1.InstancesClient()
+    
+    async def initiate_cloud_incident_response(self, incident_id: str, affected_resources: list):
+        """Initiate cloud-specific incident response procedures"""
+        
+        response_actions = {
+            'evidence_preservation': await self._preserve_cloud_evidence(affected_resources),
+            'resource_isolation': await self._isolate_affected_resources(affected_resources),
+            'log_collection': await self._collect_cloud_logs(incident_id),
+            'forensic_imaging': await self._create_forensic_snapshots(affected_resources),
+            'threat_analysis': await self._analyze_cloud_threats(incident_id)
+        }
+        
+        return response_actions
+    
+    async def _preserve_cloud_evidence(self, resources: list) -> dict:
+        """Preserve cloud infrastructure evidence"""
+        evidence_collection = {}
+        
+        for resource in resources:
+            if self.provider == "aws":
+                # AWS-specific evidence preservation
+                if resource['type'] == 'ec2_instance':
+                    # Create EBS snapshots
+                    snapshots = await self._create_ebs_snapshots(resource['id'])
+                    evidence_collection[resource['id']] = {
+                        'snapshots': snapshots,
+                        'metadata': await self._collect_ec2_metadata(resource['id']),
+                        'security_groups': await self._collect_security_groups(resource['id']),
+                        'vpc_flow_logs': await self._collect_vpc_flow_logs(resource['id'])
+                    }
+                    
+            elif self.provider == "azure":
+                # Azure-specific evidence preservation
+                if resource['type'] == 'virtual_machine':
+                    vm_snapshots = await self._create_azure_snapshots(resource['id'])
+                    evidence_collection[resource['id']] = {
+                        'disk_snapshots': vm_snapshots,
+                        'activity_logs': await self._collect_azure_activity_logs(resource['id']),
+                        'nsg_logs': await self._collect_nsg_flow_logs(resource['id'])
+                    }
+                    
+        return evidence_collection
+    
+    async def _create_ebs_snapshots(self, instance_id: str) -> list:
+        """Create forensic EBS snapshots for AWS EC2 instances"""
+        
+        # Get instance details
+        response = self.ec2.describe_instances(InstanceIds=[instance_id])
+        instance = response['Reservations'][0]['Instances'][0]
+        
+        snapshots = []
+        for block_device in instance.get('BlockDeviceMappings', []):
+            volume_id = block_device['Ebs']['VolumeId']
+            
+            # Create snapshot with forensic metadata
+            snapshot_response = self.ec2.create_snapshot(
+                VolumeId=volume_id,
+                Description=f"Forensic snapshot - Incident Response - {datetime.utcnow().isoformat()}",
+                TagSpecifications=[
+                    {
+                        'ResourceType': 'snapshot',
+                        'Tags': [
+                            {'Key': 'Purpose', 'Value': 'Forensic Analysis'},
+                            {'Key': 'IncidentId', 'Value': f'INC-{datetime.utcnow().strftime("%Y%m%d-%H%M%S")}'},
+                            {'Key': 'SourceInstance', 'Value': instance_id},
+                            {'Key': 'CreatedBy', 'Value': 'IncidentResponse'},
+                            {'Key': 'RetentionPeriod', 'Value': '7Years'}
+                        ]
+                    }
+                ]
+            )
+            
+            snapshots.append({
+                'snapshot_id': snapshot_response['SnapshotId'],
+                'volume_id': volume_id,
+                'creation_time': datetime.utcnow().isoformat(),
+                'hash_verification': await self._calculate_snapshot_hash(snapshot_response['SnapshotId'])
+            })
+            
+        return snapshots
+    
+    async def _collect_cloud_logs(self, incident_id: str) -> dict:
+        """Collect comprehensive cloud audit and security logs"""
+        
+        log_collection = {}
+        
+        if self.provider == "aws":
+            # AWS CloudTrail logs
+            end_time = datetime.utcnow()
+            start_time = end_time - timedelta(days=30)  # Look back 30 days
+            
+            cloudtrail_events = self.cloudtrail.lookup_events(
+                LookupAttributes=[
+                    {
+                        'AttributeKey': 'EventName',
+                        'AttributeValue': 'RunInstances'
+                    },
+                ],
+                StartTime=start_time,
+                EndTime=end_time
+            )
+            
+            # AWS GuardDuty findings
+            detector_ids = self.guardduty.list_detectors()['DetectorIds']
+            if detector_ids:
+                findings = self.guardduty.list_findings(
+                    DetectorId=detector_ids[0],
+                    FindingCriteria={
+                        'Criterion': {
+                            'updatedAt': {
+                                'Gte': int(start_time.timestamp() * 1000)
+                            }
+                        }
+                    }
+                )
+                
+                log_collection['guardduty_findings'] = findings['FindingIds']
+            
+            log_collection['cloudtrail_events'] = cloudtrail_events['Events']
+            
+            # AWS Config compliance data
+            config_client = boto3.client('config', region_name=self.region)
+            compliance_summary = config_client.get_compliance_summary_by_resource_type()
+            log_collection['config_compliance'] = compliance_summary
+            
+        return log_collection
+    
+    async def _analyze_cloud_threats(self, incident_id: str) -> dict:
+        """Analyze cloud-specific threat indicators and attack patterns"""
+        
+        threat_analysis = {
+            'cloud_specific_attacks': {
+                'credential_harvesting': await self._detect_credential_harvesting(),
+                'privilege_escalation': await self._detect_privilege_escalation(),
+                'lateral_movement': await self._detect_lateral_movement(),
+                'data_exfiltration': await self._detect_data_exfiltration(),
+                'resource_abuse': await self._detect_resource_abuse()
+            },
+            'attack_timeline': await self._construct_cloud_attack_timeline(),
+            'impact_assessment': await self._assess_cloud_impact(),
+            'attribution_indicators': await self._collect_attribution_indicators()
+        }
+        
+        return threat_analysis
+
+class ContainerizedIncidentResponse:
+    def __init__(self, orchestrator: str = "kubernetes"):
+        self.orchestrator = orchestrator
+        if orchestrator == "kubernetes":
+            from kubernetes import client, config
+            config.load_incluster_config()
+            self.k8s_client = client.CoreV1Api()
+            self.apps_client = client.AppsV1Api()
+    
+    async def respond_to_container_incident(self, namespace: str, pod_name: str):
+        """Handle incidents in containerized environments"""
+        
+        # Container forensic evidence collection
+        evidence = {
+            'container_logs': await self._collect_container_logs(namespace, pod_name),
+            'pod_manifest': await self._collect_pod_manifest(namespace, pod_name),
+            'container_filesystem': await self._create_container_snapshot(namespace, pod_name),
+            'network_policies': await self._collect_network_policies(namespace),
+            'service_mesh_logs': await self._collect_service_mesh_logs(namespace)
+        }
+        
+        # Container isolation
+        isolation_actions = {
+            'network_isolation': await self._isolate_pod_network(namespace, pod_name),
+            'resource_limits': await self._apply_resource_constraints(namespace, pod_name),
+            'security_context': await self._apply_security_constraints(namespace, pod_name)
+        }
+        
+        return {
+            'evidence_collection': evidence,
+            'containment_actions': isolation_actions,
+            'recovery_plan': await self._plan_container_recovery(namespace, pod_name)
+        }
+```
+
+### On-Premise Infrastructure Response
+
+**Recommended Pattern:** Traditional forensics with comprehensive evidence preservation
+
+```bash
+#!/bin/bash
+# on_premise_incident_response.sh
+
+INCIDENT_ID="INC-$(date +%Y%m%d-%H%M%S)"
+EVIDENCE_DIR="/forensics/evidence/${INCIDENT_ID}"
+LOG_FILE="/forensics/logs/incident_${INCIDENT_ID}.log"
+
+# Create evidence directory structure
+mkdir -p "${EVIDENCE_DIR}/{memory,disk,network,logs,malware}"
+
+log_action() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
+}
+
+# Memory forensics acquisition
+acquire_memory_dump() {
+    local target_host=$1
+    log_action "Starting memory acquisition for $target_host"
+    
+    # Use multiple tools for redundancy
+    if command -v linpmem &> /dev/null; then
+        linpmem -o "${EVIDENCE_DIR}/memory/${target_host}_linpmem.raw"
+        sha256sum "${EVIDENCE_DIR}/memory/${target_host}_linpmem.raw" > "${EVIDENCE_DIR}/memory/${target_host}_linpmem.raw.sha256"
+    fi
+    
+    if command -v avml &> /dev/null; then
+        avml "${EVIDENCE_DIR}/memory/${target_host}_avml.raw"
+        sha256sum "${EVIDENCE_DIR}/memory/${target_host}_avml.raw" > "${EVIDENCE_DIR}/memory/${target_host}_avml.raw.sha256"
+    fi
+    
+    # Volatility analysis
+    if command -v vol.py &> /dev/null; then
+        vol.py -f "${EVIDENCE_DIR}/memory/${target_host}_linpmem.raw" imageinfo > "${EVIDENCE_DIR}/memory/${target_host}_imageinfo.txt"
+        vol.py -f "${EVIDENCE_DIR}/memory/${target_host}_linpmem.raw" --profile=Win7SP1x64 pslist > "${EVIDENCE_DIR}/memory/${target_host}_pslist.txt"
+        vol.py -f "${EVIDENCE_DIR}/memory/${target_host}_linpmem.raw" --profile=Win7SP1x64 netscan > "${EVIDENCE_DIR}/memory/${target_host}_netscan.txt"
+    fi
+    
+    log_action "Memory acquisition completed for $target_host"
+}
+
+# Disk forensics imaging
+acquire_disk_image() {
+    local target_device=$1
+    local output_name=$2
+    
+    log_action "Starting disk imaging for $target_device"
+    
+    # Create forensic image with verification
+    dc3dd if="$target_device" of="${EVIDENCE_DIR}/disk/${output_name}.dd" hash=sha256 log="${EVIDENCE_DIR}/disk/${output_name}.log"
+    
+    # Create E01 format for compatibility
+    if command -v ewfacquire &> /dev/null; then
+        ewfacquire -t "${EVIDENCE_DIR}/disk/${output_name}" "$target_device"
+    fi
+    
+    log_action "Disk imaging completed for $target_device"
+}
+
+# Network traffic capture
+start_network_capture() {
+    local interface=$1
+    local duration=${2:-3600}  # Default 1 hour
+    
+    log_action "Starting network capture on $interface for ${duration}s"
+    
+    # Full packet capture
+    tcpdump -i "$interface" -w "${EVIDENCE_DIR}/network/capture_$(date +%Y%m%d_%H%M%S).pcap" &
+    TCPDUMP_PID=$!
+    
+    # Wait for specified duration then stop
+    sleep "$duration"
+    kill $TCPDUMP_PID
+    
+    # Generate traffic analysis
+    if command -v tshark &> /dev/null; then
+        tshark -r "${EVIDENCE_DIR}/network/capture_*.pcap" -q -z conv,ip > "${EVIDENCE_DIR}/network/conversations.txt"
+        tshark -r "${EVIDENCE_DIR}/network/capture_*.pcap" -q -z http,tree > "${EVIDENCE_DIR}/network/http_analysis.txt"
+    fi
+    
+    log_action "Network capture completed"
+}
+
+# System information collection
+collect_system_info() {
+    local target_host=$1
+    
+    log_action "Collecting system information for $target_host"
+    
+    # Basic system info
+    uname -a > "${EVIDENCE_DIR}/logs/${target_host}_uname.txt"
+    cat /etc/os-release > "${EVIDENCE_DIR}/logs/${target_host}_os_release.txt"
+    
+    # Running processes
+    ps auxwww > "${EVIDENCE_DIR}/logs/${target_host}_processes.txt"
+    
+    # Network connections
+    netstat -antlp > "${EVIDENCE_DIR}/logs/${target_host}_netstat.txt"
+    ss -antlp > "${EVIDENCE_DIR}/logs/${target_host}_ss.txt"
+    
+    # Logged in users
+    who > "${EVIDENCE_DIR}/logs/${target_host}_who.txt"
+    last > "${EVIDENCE_DIR}/logs/${target_host}_last.txt"
+    
+    # File system information
+    mount > "${EVIDENCE_DIR}/logs/${target_host}_mount.txt"
+    df -h > "${EVIDENCE_DIR}/logs/${target_host}_df.txt"
+    
+    # Recently modified files
+    find / -type f -mtime -7 -ls 2>/dev/null > "${EVIDENCE_DIR}/logs/${target_host}_recent_files.txt"
+    
+    log_action "System information collection completed for $target_host"
+}
+
+# Log collection
+collect_system_logs() {
+    local target_host=$1
+    
+    log_action "Collecting system logs for $target_host"
+    
+    # System logs
+    cp -r /var/log/* "${EVIDENCE_DIR}/logs/${target_host}_var_log/" 2>/dev/null
+    
+    # Journal logs
+    if command -v journalctl &> /dev/null; then
+        journalctl --all --no-pager > "${EVIDENCE_DIR}/logs/${target_host}_journalctl.txt"
+    fi
+    
+    # Authentication logs
+    if [ -f /var/log/auth.log ]; then
+        cp /var/log/auth.log "${EVIDENCE_DIR}/logs/${target_host}_auth.log"
+    fi
+    
+    if [ -f /var/log/secure ]; then
+        cp /var/log/secure "${EVIDENCE_DIR}/logs/${target_host}_secure.log"
+    fi
+    
+    # Web server logs if present
+    if [ -d /var/log/apache2 ]; then
+        cp -r /var/log/apache2 "${EVIDENCE_DIR}/logs/${target_host}_apache2/"
+    fi
+    
+    if [ -d /var/log/nginx ]; then
+        cp -r /var/log/nginx "${EVIDENCE_DIR}/logs/${target_host}_nginx/"
+    fi
+    
+    log_action "System log collection completed for $target_host"
+}
+
+# Main incident response workflow
+main() {
+    local target_host=${1:-localhost}
+    local target_device=${2:-/dev/sda}
+    local network_interface=${3:-eth0}
+    
+    log_action "Starting incident response for incident $INCIDENT_ID"
+    log_action "Target host: $target_host, Device: $target_device, Interface: $network_interface"
+    
+    # Parallel evidence collection
+    acquire_memory_dump "$target_host" &
+    collect_system_info "$target_host" &
+    collect_system_logs "$target_host" &
+    start_network_capture "$network_interface" 3600 &
+    
+    # Wait for background jobs to complete
+    wait
+    
+    # Disk imaging (do this last to avoid interference)
+    acquire_disk_image "$target_device" "${target_host}_disk"
+    
+    # Generate evidence summary
+    find "$EVIDENCE_DIR" -type f -exec ls -la {} \; > "${EVIDENCE_DIR}/evidence_inventory.txt"
+    find "$EVIDENCE_DIR" -type f -exec sha256sum {} \; > "${EVIDENCE_DIR}/evidence_hashes.txt"
+    
+    log_action "Incident response evidence collection completed"
+    log_action "Evidence stored in: $EVIDENCE_DIR"
+}
+
+# Execute main function with provided arguments
+main "$@"
+```
+
 ## 📊 Success Criteria
 
 ### Incident Response Effectiveness
@@ -619,6 +1026,78 @@ Upon completion of incident response and forensic investigation:
 - ✅ **Legal and Regulatory Package** with breach notifications and compliance documentation
 - ✅ **Business Impact Analysis** with financial quantification and risk assessment
 - ✅ **Recovery Validation Report** confirming system integrity and security posture restoration
+
+### Generic/Fallback Implementation
+
+For unsupported technologies, provide generic incident response patterns:
+
+```yaml
+# Generic Incident Response Configuration
+incident_response:
+  approach: "nist_framework"  # or "sans_methodology", "iso_27035"
+  
+  response_phases:
+    - "preparation_and_planning"
+    - "detection_and_analysis"
+    - "containment_eradication_recovery"
+    - "post_incident_activity"
+    
+  evidence_collection:
+    - "volatile_data_acquisition"
+    - "non_volatile_data_imaging"
+    - "network_traffic_capture"
+    - "log_file_preservation"
+    - "chain_of_custody_documentation"
+    
+  forensic_analysis:
+    - "timeline_reconstruction"
+    - "malware_analysis_and_attribution"
+    - "network_forensics_and_traffic_analysis"
+    - "file_system_and_registry_analysis"
+    - "memory_forensics_and_process_analysis"
+    
+  reporting_deliverables:
+    - "executive_summary_with_business_impact"
+    - "technical_findings_and_evidence_analysis"
+    - "forensic_timeline_and_attack_reconstruction"
+    - "recommendations_and_lessons_learned"
+    - "legal_and_regulatory_compliance_documentation"
+```
+
+## Implementation Strategy
+
+### 1. Technology Detection
+
+Analyze CLAUDE.md configuration to determine:
+- **Infrastructure Type** from deployment model for appropriate forensic tools and evidence collection methods
+- **Technology Stack** for system-specific forensic techniques and log analysis procedures
+- **Business Domain** for industry-specific incident types and regulatory compliance requirements
+- **Scale and Complexity** for resource allocation and specialized forensic capabilities
+
+### 2. Response Strategy Selection
+
+Select incident response approaches based on detected requirements:
+- **Cloud Environments**: Cloud-native forensics with API-based evidence collection and automated response
+- **On-Premise Infrastructure**: Traditional forensics with comprehensive imaging and manual evidence preservation
+- **Hybrid Environments**: Combined approach with both cloud and traditional forensic techniques
+- **Containerized Applications**: Container-specific forensics with orchestration-aware response procedures
+
+### 3. Forensic Implementation Strategy
+
+Apply technology-specific forensic techniques:
+- **Evidence Preservation**: Technology-appropriate imaging and data collection methods
+- **Analysis Techniques**: Framework-specific forensic tools and investigation procedures
+- **Timeline Reconstruction**: Technology-aware log correlation and event timeline construction
+- **Attribution Analysis**: Threat intelligence correlation and attack pattern recognition
+
+### 4. Success Criteria
+
+Incident response implementation validation checklist:
+- **Response Timeliness**: Incident classification and initial response within established timeframes
+- **Evidence Integrity**: Forensically sound evidence collection with proper chain of custody
+- **Investigation Completeness**: Thorough analysis with definitive root cause identification
+- **Business Continuity**: Minimal service disruption during containment and recovery operations
+- **Regulatory Compliance**: Adherence to industry-specific breach notification and documentation requirements
 
 ---
 

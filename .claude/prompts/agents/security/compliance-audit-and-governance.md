@@ -1,10 +1,20 @@
 # Compliance Audit and Governance
 
-**Agent Type: security-engineer**
-**Complexity Level: Expert**
-**Estimated Duration: 4-8 hours**
+**Agent: security-engineer**
+**Purpose: Conduct comprehensive compliance audits and establish security governance frameworks with technology-adaptive compliance patterns**
 
 ---
+
+## Context Analysis
+
+The security-engineer will analyze the CLAUDE.md file to determine:
+- **Technology Stack**: Backend and database technologies for appropriate compliance controls and audit procedures
+- **Business Domain**: Industry-specific compliance requirements (GDPR for EU, HIPAA for healthcare, PCI-DSS for payments, SOX for financial)
+- **Project Scale**: Compliance scope and audit depth based on organization size and regulatory exposure
+- **Development Stage**: Compliance implementation maturity for appropriate governance frameworks and audit frequency
+- **Geographic Scope**: Regional compliance requirements and data sovereignty considerations
+
+Based on this analysis, the security engineer will select appropriate compliance frameworks, implement technology-specific controls, and establish governance processes aligned with regulatory requirements.
 
 ## 🎯 Mission
 
@@ -622,6 +632,95 @@ class ComplianceGovernanceFramework:
         return policy_framework
 ```
 
+## Technology-Adaptive Implementation
+
+### Java/Spring Boot Enterprise Compliance
+
+**Recommended Pattern:** Enterprise-grade compliance with comprehensive audit trails and automated evidence collection
+
+```java
+// ComplianceAuditService.java - Comprehensive compliance monitoring
+@Service
+@Transactional
+public class ComplianceAuditService {
+    
+    @Autowired
+    private AuditEventRepository auditEventRepository;
+    
+    @EventListener
+    public void handleDataAccessEvent(DataAccessEvent event) {
+        // GDPR Article 30 - Records of Processing
+        ComplianceAuditEvent auditEvent = ComplianceAuditEvent.builder()
+            .eventType(ComplianceEventType.DATA_ACCESS)
+            .userId(event.getUserId())
+            .dataCategory(event.getDataCategory())
+            .lawfulBasis(event.getLawfulBasis())
+            .processingPurpose(event.getPurpose())
+            .timestamp(Instant.now())
+            .build();
+            
+        auditEventRepository.save(auditEvent);
+    }
+    
+    public ComplianceAssessmentResult performSOC2Assessment() {
+        // SOC 2 Type II assessment implementation
+        return assessSOC2TrustServicesCriteria();
+    }
+}
+```
+
+### .NET Core Enterprise Compliance
+
+**Recommended Pattern:** Comprehensive audit logging with Entity Framework and compliance-driven architecture
+
+```csharp
+// ComplianceAuditService.cs
+[ComplianceAudit(Framework = "SOC2", Control = "CC6.1")]
+public async Task<SOC2AssessmentResult> PerformSOC2AssessmentAsync()
+{
+    var assessment = new SOC2AssessmentResult
+    {
+        AssessmentDate = DateTime.UtcNow,
+        Framework = "SOC2 Type II"
+    };
+    
+    // Automated compliance control assessment
+    var accessControlResults = await AssessAccessControlsAsync();
+    assessment.ControlAssessments.Add("CC6.1", accessControlResults);
+    
+    return assessment;
+}
+```
+
+### Python/FastAPI Compliance Implementation
+
+**Recommended Pattern:** Async compliance monitoring with comprehensive audit trails
+
+```python
+# compliance_service.py
+class ComplianceAuditService:
+    async def perform_gdpr_compliance_assessment(self) -> GDPRComplianceReport:
+        """Comprehensive GDPR compliance assessment"""
+        
+        report = GDPRComplianceReport(
+            assessment_date=datetime.utcnow(),
+            framework="GDPR"
+        )
+        
+        # Article 30 - Records of Processing Activities
+        processing_records = await self.assess_processing_records()
+        report.add_assessment("Article30", processing_records)
+        
+        return report
+    
+    async def handle_data_subject_request(self, request: DataSubjectRequest) -> DataSubjectResponse:
+        """Handle GDPR data subject rights requests"""
+        
+        if request.request_type == DataSubjectRequestType.ERASURE:
+            return await self._handle_erasure_request(request)
+        # Additional request types handled...
+```
+
 ## 📊 Success Criteria
 
 ### Compliance Readiness Metrics
@@ -647,6 +746,56 @@ Upon completion of this comprehensive compliance audit and governance implementa
 - ✅ **Policy and Procedure Library** with lifecycle management and regular review processes
 - ✅ **Compliance Dashboard and Metrics** for real-time monitoring and executive reporting
 - ✅ **Training and Awareness Program** tailored to roles and compliance requirements
+
+### Generic/Fallback Implementation
+
+For unsupported technologies, provide generic compliance patterns:
+
+```yaml
+# Generic Compliance Implementation Configuration
+compliance_governance:
+  approach: "framework_based"  # or "risk_based", "control_based"
+  
+  compliance_frameworks:
+    - "gdpr_data_protection_regulation"
+    - "soc2_trust_services_criteria"
+    - "iso27001_information_security_management"
+    - "hipaa_healthcare_privacy"
+    - "pci_dss_payment_security"
+    
+  governance_structure:
+    - "executive_compliance_committee"
+    - "operational_compliance_working_groups"
+    - "policy_development_and_maintenance"
+    - "continuous_monitoring_and_assessment"
+    - "incident_response_and_remediation"
+```
+
+## Implementation Strategy
+
+### 1. Technology Detection
+
+Analyze CLAUDE.md configuration to determine:
+- **Application Architecture** from technology stack for appropriate compliance control implementations
+- **Business Domain** for industry-specific regulatory requirements and compliance frameworks
+- **Data Processing Scope** for privacy regulation applicability and data protection requirements
+- **Geographic Operations** for regional compliance obligations and data sovereignty considerations
+
+### 2. Compliance Framework Selection
+
+Select compliance approaches based on detected requirements:
+- **Enterprise Applications**: Comprehensive frameworks (SOC 2, ISO 27001) with automated evidence collection
+- **Healthcare Applications**: HIPAA compliance with enhanced audit trails and access controls
+- **Financial Services**: PCI-DSS and SOX compliance with strict data protection measures
+- **EU Operations**: GDPR compliance with data subject rights and privacy by design
+
+### 3. Success Criteria
+
+Compliance implementation validation checklist:
+- **Framework Alignment**: All applicable regulatory requirements addressed with appropriate controls
+- **Technology Integration**: Compliance controls integrated seamlessly with existing technology stack
+- **Audit Readiness**: Comprehensive evidence collection and automated reporting capabilities
+- **Governance Effectiveness**: Established processes for ongoing compliance monitoring and improvement
 
 ---
 
