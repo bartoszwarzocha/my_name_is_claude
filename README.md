@@ -47,7 +47,7 @@ This repository contains a production-ready Claude Code Agent Framework with a c
 
 ## 🎯 Main Goals
 
-- **Agent-Driven Development:** Revolutionary approach using 11 specialized AI agents for complete software lifecycle
+- **Agent-Driven Development:** Revolutionary approach using specialized AI agents for complete software lifecycle
 - **Production Readiness:** Enterprise-grade prompts with real working code examples and advanced patterns
 - **Intelligent Orchestration:** Revolutionary workflow system with automatic scenario selection, adaptive execution, and conditional workflow engine
 - **Technology Excellence:** Deep expertise in modern technology stacks (Angular, wxWidgets, security, infrastructure)
@@ -191,25 +191,19 @@ my_name_is_claude/
 
 ### Agent Specializations by Development Phase
 
-| Phase | Agent | Key Specializations | Status |
-|-------|-------|---------------------|---------|
-| **Phase 1** | business-analyst | Stakeholder requirements, process analysis, business cases | ✅ Complete (3 prompts) |
-| **Phase 1** | product-manager | User story creation, MVP scoping, feature implementation | ✅ Complete (2 prompts) |
-| **Phase 1** | reviewer | Code quality analysis, security vulnerability assessment | ✅ Complete (2 prompts) |
-| **Phase 2** | software-architect | System architecture design | ✅ Complete (1 prompt) - Technology-Adaptive |
-| **Phase 2** | ux-designer | User research and persona development | ✅ Complete (1 prompt) |
-| **Phase 2** | security-engineer | Threat modeling, penetration testing, compliance, IAM, forensics | ✅ Complete (6 prompts) - All Technology-Adaptive |
-| **Phase 3** | frontend-engineer | Angular, React, wxWidgets, PWA, accessibility, responsive design | ✅ Complete (11 prompts) |
-| **Phase 3** | api-engineer | REST API, microservices, GraphQL, Swagger generation | ✅ Complete (3 prompts) - Technology-Adaptive |
-| **Phase 3** | data-engineer | Database design, ETL, EntityFramework generation | ✅ Complete (1 prompt) - Technology-Adaptive |
-| **Phase 3** | qa-engineer | Test automation and quality assurance | ✅ Complete (1 prompt) - Technology-Adaptive |
-| **Phase 4** | deployment-engineer | CI/CD pipeline and infrastructure setup | ✅ Complete (1 prompt) - Technology-Adaptive |
-
-**📊 Library Statistics:**
-- **Total Prompts:** 44 specialized agent prompts
-- **Technology-Adaptive Prompts:** 14 key prompts with automatic CLAUDE.md configuration reading
-- **Production Ready:** All prompts contain expert-level code examples and implementation patterns
-- **Coverage:** Complete development lifecycle from business analysis to deployment
+| Phase | Agent | Key Specializations |
+|-------|-------|---------------------|
+| **Phase 1** | business-analyst | Stakeholder requirements, process analysis, business cases |
+| **Phase 1** | product-manager | User story creation, MVP scoping, feature implementation |
+| **Phase 1** | reviewer | Code quality analysis, security vulnerability assessment |
+| **Phase 2** | software-architect | System architecture design - Technology-Adaptive |
+| **Phase 2** | ux-designer | User research and persona development |
+| **Phase 2** | security-engineer | Threat modeling, penetration testing, compliance, IAM, forensics - All Technology-Adaptive |
+| **Phase 3** | frontend-engineer | Angular, React, wxWidgets, PWA, accessibility, responsive design |
+| **Phase 3** | api-engineer | REST API, microservices, GraphQL, Swagger generation - Technology-Adaptive |
+| **Phase 3** | data-engineer | Database design, ETL, EntityFramework generation - Technology-Adaptive |
+| **Phase 3** | qa-engineer | Test automation and quality assurance - Technology-Adaptive |
+| **Phase 4** | deployment-engineer | CI/CD pipeline and infrastructure setup - Technology-Adaptive |
 
 ## 🛠️ Framework Features
 
@@ -222,8 +216,8 @@ my_name_is_claude/
 
 ### 🔄 Production-Ready Prompts
 
-- **Expert-Level Content:** All 44 prompts contain actual working code examples and production patterns
-- **Technology-Adaptive:** 14 key prompts automatically adapt to project technology stack via CLAUDE.md configuration
+- **Expert-Level Content:** All prompts contain actual working code examples and production patterns
+- **Technology-Adaptive:** Key prompts automatically adapt to project technology stack via CLAUDE.md configuration
 - **Enterprise Patterns:** Advanced architectural patterns and best practices across all development phases
 - **Technology Mastery:** Deep specialization in modern technology stacks with automatic technology detection
 
@@ -236,7 +230,7 @@ my_name_is_claude/
 
 ### 🔧 Comprehensive Automation Hooks
 
-- **11 Specialized Hooks:** Complete automation for multi-agent workflows
+- **Specialized Hooks:** Complete automation for multi-agent workflows
 - **Quality Assurance:** Automated validation for prompts, dependencies, and compliance
 - **Performance Monitoring:** Real-time tracking of agent execution and bottleneck identification
 - **Conflict Resolution:** Proactive detection and resolution of agent conflicts
@@ -244,7 +238,7 @@ my_name_is_claude/
 
 ### 🎯 Workflow Orchestration
 
-- **Intelligent Orchestration:** 3 specialized scenario-based workflows for different project types
+- **Intelligent Orchestration:** Specialized scenario-based workflows for different project types
 - **Automatic Trigger System:** AI-powered analysis for optimal workflow selection
 - **Conditional Workflow Engine:** Adaptive execution based on project complexity and requirements
 - **Real-time Monitoring:** Live tracking and intervention capabilities for running orchestrations
@@ -619,21 +613,21 @@ The framework includes detailed implementation examples demonstrating complete d
 - **Technology:** Python/wxPython + SQLite
 - **Files:** `examples/desktop-book-writing-app.md` | `examples/desktop-book-writing-app_PL.md`
 - **Focus:** Cross-platform desktop development with complete publishing workflow
-- **Timeline:** 12 days development cycle
+- **Timeline:** Short development cycle
 - **Features:** Multi-platform GUI, content organization, export systems, plugin architecture
 
 **💼 Example 2: Angular Invoice Application Migration**
 - **Technology:** Angular 17+ + .NET Core Web API
 - **Files:** `examples/angular-invoice-app-migration.md` | `examples/angular-invoice-app-migration_PL.md`
 - **Focus:** Legacy API modernization with reverse engineering and documentation rebuild
-- **Timeline:** 3 weeks migration process
+- **Timeline:** Standard migration process
 - **Features:** API documentation regeneration, frontend optimization, performance improvements
 
 **🏢 Example 3: Complex Legacy Enterprise Migration with TDD**
 - **Technology:** ASP.NET WebForms + C++ → Angular + .NET Core
 - **Files:** `examples/complex-legacy-migration-tdd.md` | `examples/complex-legacy-migration-tdd_PL.md`
 - **Focus:** Enterprise-scale migration with Test-Driven Development and Playwright automation
-- **Timeline:** 12 weeks comprehensive migration
+- **Timeline:** Comprehensive migration process
 - **Features:** Business logic reconstruction, automated testing, zero-downtime deployment
 
 ### Example Features
