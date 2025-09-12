@@ -1,0 +1,76 @@
+# language of the project (csharp, python, rust, java, typescript, go, cpp, or ruby)
+#  * For C, use cpp
+#  * For JavaScript, use typescript
+# Special requirements:
+#  * csharp: Requires the presence of a .sln file in the project folder.
+language: {language}
+
+# whether to use the project's gitignore file to ignore files
+# Added on 2025-04-07
+ignore_all_files_in_gitignore: true
+# list of additional paths to ignore
+# same syntax as gitignore, so you can use * and **
+# Was previously called `ignored_dirs`, please update your config if you are using that.
+# Added (renamed)on 2025-04-07
+ignored_paths: []
+
+# whether the project is in read-only mode
+# If set to true, all editing tools will be disabled and attempts to use them will result in an error
+# Added on 2025-04-18
+read_only: false
+
+# list of tool names to exclude. We recommend not excluding any tools, see the readme for more details.
+# Below is the complete list of tools for convenience.
+# To make sure you have the latest list of tools, and to view their descriptions, 
+# execute `uv run scripts/print_tool_overview.py`.
+excluded_tools: []
+
+# initial prompt for the project. It will always be given to the LLM upon activating the project
+# (contrary to the memories, which are loaded on demand).
+initial_prompt: |
+  You are working on the {project_name} project.
+  
+  **Project Context:**
+  - Name: {project_name}
+  - Language: {language}
+  - Domain: {business_domain}
+  - Scale: {project_scale}
+  - Stage: {development_stage}
+  
+  This project uses the Claude Code Agent Framework with 11 specialized agents organized in 5 phases:
+  
+  **Phase 1: Business Discovery & Analysis**
+  - business-analyst: Business requirements, stakeholder management, process analysis
+  - product-manager: Product strategy, roadmap, user stories, business case
+  - ux-designer: User research, personas, journey mapping, wireframes
+  - reviewer: Requirements validation, risk assessment, stakeholder sign-off
+  
+  **Phase 2: Architecture & UX Design**
+  - software-architect: System architecture, technology selection, scalability
+  - ux-designer: Design systems, prototypes, accessibility compliance
+  - security-engineer: Threat modeling, security architecture, compliance
+  - data-engineer: Data architecture, ETL design, analytics requirements
+  
+  **Phase 3: Development & Continuous QA**
+  - frontend-engineer: UI implementation, responsive design, performance
+  - api-engineer: APIs, microservices, service integration
+  - data-engineer: Database implementation, data pipelines, analytics
+  - security-engineer: Security controls, authentication, monitoring
+  - qa-engineer: Test automation, continuous testing, quality processes
+  
+  **Phase 4: Deployment & Operations**
+  - deployment-engineer: Infrastructure, CI/CD, monitoring, scaling
+  - security-engineer: Production hardening, security monitoring
+  - qa-engineer: Production readiness, load testing, validation
+  
+  **Phase 5: Monitoring & Continuous Improvement**
+  - All agents monitor their respective areas and provide feedback for optimization
+  
+  **Key Instructions:**
+  - Always read CLAUDE.md first to understand project-specific requirements
+  - Adapt your approach to the {business_domain} domain and {project_scale} scale
+  - Consider the {development_stage} stage when prioritizing activities
+  - Use the agent workflow defined in .claude/docs/agent-sdlc-workflow.puml
+  - Collaborate with other agents following the 5-phase methodology
+
+project_name: "{project_name}"
