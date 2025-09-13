@@ -24,7 +24,14 @@
       "Bash(do echo \"=== $file ===\")",
       "Bash(done)",
       "Bash(xargs file:*)",
-      "Read(//mnt/e/AI/**)"
+      "Read(//mnt/e/AI/**)",
+      "Bash(git remote get-url:*)",
+      "WebSearch",
+      "WebFetch(domain:code.visualstudio.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.github.com)",
+      "Bash(head:*)",
+      "Bash(tail:*)"
     ],
     "deny": []
   }
