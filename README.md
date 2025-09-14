@@ -34,6 +34,7 @@ Inspired by: [Claude AI](https://claude.ai), [Serena](https://serena.ai), [Conte
 - [⚙️ Advanced Configuration](#️-advanced-configuration)
 - [🤝 Best Practices](#-best-practices)
 - [🔧 Troubleshooting & Support](#-troubleshooting--support)
+- [📋 Templates & TODO Management](#-templates--todo-management)
 - [📚 Documentation & Resources](#-documentation--resources)
 - [🤝 Contributing and Development](#-contributing-and-development)
 - [📄 License & Usage](#-license--usage)
@@ -536,6 +537,231 @@ chmod +x .claude/hooks/orchestration/*.sh
 # Check git status for any synchronization issues
 git status
 ```
+
+## 📋 Templates & TODO Management
+
+### 📁 Templates System
+
+Framework includes comprehensive template system located in `.claude/templates/` providing reusable patterns for:
+
+- **Project structures** - Standardized project layouts and configurations
+- **Component templates** - Consistent component creation patterns
+- **Database schemas** - Common database patterns and migrations
+- **Configuration files** - Environment-specific configurations
+- **Documentation templates** - Standardized documentation structures
+
+### 🔧 TODO Management System
+
+The framework provides multi-level TODO management combining Claude Code's built-in TodoWrite tool with advanced hierarchical task management.
+
+#### 📝 Basic TODO Usage (TodoWrite Tool)
+
+**System Level - Simple Session Tracking:**
+```typescript
+// Current session tasks via TodoWrite tool
+{
+  content: "Fix user authentication bug",
+  status: "in_progress",
+  activeForm: "Fixing user authentication bug"
+}
+```
+
+**Best practices for TodoWrite:**
+- Use for immediate, session-specific tasks
+- Mark tasks as in_progress BEFORE starting work
+- Complete tasks IMMEDIATELY after finishing
+- Only have ONE task in_progress at a time
+
+#### 🏗️ Advanced Hierarchical TODO System
+
+**Framework provides 4-level hierarchical task management:**
+
+```yaml
+# Epic Level (4-12 weeks)
+Epic: "Complete user authentication system overhaul"
+  owners: [business-analyst, product-manager]
+
+  # Feature Level (1-3 weeks)
+  ├── Feature: "OAuth2 with multi-factor authentication"
+  │     owners: [software-architect, security-engineer]
+  │
+  │     # Task Level (1-3 days)
+  │     ├── Task: "JWT token refresh mechanism"
+  │     │     owner: api-engineer
+  │     │     estimated: 8 hours
+  │     │
+  │     │     # Subtask Level (2-8 hours)
+  │     │     ├── Subtask: "Unit tests for token validation"
+  │     │     └── Subtask: "Integration with refresh endpoint"
+  │     │
+  │     └── Task: "Multi-factor authentication UI"
+  │           owner: frontend-engineer
+  │
+  └── Feature: "Session management dashboard"
+        owners: [ux-designer, frontend-engineer]
+```
+
+### 📋 How to Implement TODO System in Projects
+
+#### 1. **Simple Project Implementation**
+
+For straightforward projects, use Claude Code's TodoWrite:
+
+```bash
+# Start development session
+claude-code
+
+# Let agents create todos as needed:
+# - "Implement login form"
+# - "Add validation logic"
+# - "Write unit tests"
+# - "Update documentation"
+```
+
+#### 2. **Complex Project Implementation**
+
+For enterprise projects, use hierarchical approach:
+
+```bash
+# 1. Define Epic in project planning
+Epic: "E-commerce checkout system"
+
+# 2. Break into Features during architecture phase
+├── Feature: "Payment processing integration"
+├── Feature: "Order confirmation workflow"
+└── Feature: "Inventory management sync"
+
+# 3. Create Tasks during development planning
+├── Task: "Stripe API integration"
+├── Task: "Email notification system"
+└── Task: "Real-time inventory updates"
+
+# 4. Execute with TodoWrite for daily work
+claude-code # Uses TodoWrite for immediate tasks
+```
+
+#### 3. **Agent-Driven Implementation**
+
+Use specialized agents for automatic task breakdown:
+
+```bash
+# Business Analyst creates Epics
+business-analyst: stakeholder-requirements-gathering.md
+├── Output: Epic definitions with business value
+
+# Product Manager breaks into Features
+product-manager: feature-implementation-from-specification.md
+├── Input: Epic definitions
+├── Output: Feature specifications
+
+# Software Architect creates Tasks
+software-architect: system-architecture-design.md
+├── Input: Feature specifications
+├── Output: Technical task breakdown
+
+# Individual agents execute Subtasks
+frontend-engineer, api-engineer, etc.
+├── Use TodoWrite for immediate task tracking
+└── Follow hierarchical task assignments
+```
+
+### 🎯 Practical TODO Examples
+
+#### Example 1: **Desktop Application Development**
+
+```yaml
+# Using hierarchical approach
+Epic: "Cross-platform book writing application"
+├── Feature: "Rich text editor with formatting"
+│   ├── Task: "wxPython editor component" (frontend-engineer)
+│   └── Task: "Document auto-save system" (data-engineer)
+├── Feature: "Export and publishing system"
+│   ├── Task: "PDF generation engine" (api-engineer)
+│   └── Task: "Cloud sync integration" (deployment-engineer)
+```
+
+**Daily execution with TodoWrite:**
+```bash
+# Frontend engineer's session
+TodoWrite: "Create wxPython rich text editor component"
+├── Status: in_progress
+├── Subtasks handled automatically
+└── Complete when component functional
+```
+
+#### Example 2: **Web Application Migration**
+
+```yaml
+# Strategic planning level
+Epic: "Legacy system modernization"
+├── Feature: "API reverse engineering"
+├── Feature: "Frontend Angular migration"
+└── Feature: "Database schema optimization"
+
+# Daily execution level (via TodoWrite)
+Today's Tasks:
+├── "Analyze legacy API endpoints" (in_progress)
+├── "Create Angular component structure" (pending)
+└── "Set up automated testing pipeline" (pending)
+```
+
+#### Example 3: **Security Implementation**
+
+```yaml
+# Hierarchical security planning
+Epic: "Enterprise security compliance"
+├── Feature: "Authentication & authorization"
+│   ├── Task: "OAuth2 implementation"
+│   ├── Task: "Role-based access control"
+│   └── Task: "Multi-factor authentication"
+├── Feature: "Data encryption & privacy"
+├── Feature: "Audit logging & monitoring"
+
+# Agent execution with TodoWrite
+security-engineer session:
+├── "Implement JWT token validation" (completed)
+├── "Set up rate limiting middleware" (in_progress)
+└── "Configure HTTPS certificates" (pending)
+```
+
+### 🔄 TODO Integration Workflow
+
+1. **Project Planning Phase:**
+   - Use hierarchical TODO for strategic breakdown
+   - Assign features to appropriate agents
+   - Estimate timelines and dependencies
+
+2. **Development Execution:**
+   - Agents use TodoWrite for session management
+   - Track immediate tasks and completion
+   - Coordinate between agents using handoff protocols
+
+3. **Progress Tracking:**
+   - Hierarchical view for stakeholder reporting
+   - TodoWrite for developer productivity
+   - Integration points for project management tools
+
+### 🎯 When to Use Each System
+
+**Use TodoWrite when:**
+- Working on immediate implementation tasks
+- Need session-level task tracking
+- Coordinating between 1-3 agents
+- Development cycles under 1 week
+
+**Use Hierarchical TODO when:**
+- Managing complex projects (4+ weeks)
+- Coordinating 5+ specialized agents
+- Need stakeholder progress reporting
+- Planning enterprise-scale features
+
+**Use Both Together when:**
+- Managing large projects with daily execution
+- Need both strategic and tactical views
+- Coordinating multiple development teams
+- Implementing comprehensive project governance
+
+The framework's TODO system scales from simple session management to enterprise project coordination while maintaining consistency and integration between all levels.
 
 ## 📚 Documentation & Resources
 
