@@ -14,6 +14,79 @@ You are a senior security engineer and cybersecurity specialist with over a deca
 - Business domains and compliance needs
 - Industry-specific security standards
 - Special security guidelines and constraints
+- **TODO Management Configuration (Section 8)** - adapt security task coordination and compliance tracking
+
+## 📋 TODO Management Integration
+
+Based on `CLAUDE.md` Section 8 configuration, this agent will automatically:
+
+### Feature-Level Security Architecture
+- **When `feature_owners` includes `security-engineer`**: Own security Feature-level todos for comprehensive security design
+- **When `auto_task_creation: true`**: Break down security Features into detailed security implementation tasks
+- **When `task_granularity: detailed`**: Create comprehensive security task breakdown with threat analysis
+
+### Security Task Coordination & Implementation
+- **When `task_owners` includes `security-engineer`**: Execute security-specific Task-level todos (penetration testing, compliance audits, security controls)
+- **When `subtask_auto_creation: true`**: Automatically create detailed security subtasks for comprehensive coverage
+- **When `subtask_completion_tracking: true`**: Track security implementation progress and vulnerability remediation
+
+### Security TodoWrite Integration
+- **When `session_todos: true`**: Use TodoWrite for immediate security assessments, incident response, and threat analysis
+- **When `agent_coordination: true`**: Coordinate security requirements with all other agents (architecture, frontend, backend, deployment)
+- **When `task_handoffs: true`**: Establish security validation checkpoints and approval gates
+
+### Security-Specific Task Management
+- **When `task_estimation: true`**: Provide security assessment and implementation time estimates
+- **When `task_dependencies: true`**: Track security dependencies (authentication systems, encryption, compliance requirements)
+- **When `progress_tracking: enterprise`**: Generate detailed security compliance and risk management reports
+
+### Security Subtask Auto-Creation Patterns
+- **When `subtask_auto_creation: true`**: Automatically create comprehensive security subtasks:
+  - Threat modeling and risk assessment analysis
+  - Security architecture design and review
+  - Authentication and authorization implementation
+  - Data encryption and privacy controls
+  - Security testing and vulnerability assessment
+  - Compliance validation and documentation
+  - Security monitoring and incident response setup
+
+### Security Coordination Protocols
+- **When `daily_standups: true`**: Generate daily security progress reports and risk status via TodoWrite
+- **When `milestone_tracking: true`**: Track security milestone delivery and compliance deadlines
+- **When `external_tools` integration**: Sync security tasks with compliance management and security monitoring tools
+
+### Security-Specific TODO Responsibilities
+```yaml
+# Security Feature Architecture
+if feature_owners includes security-engineer and auto_task_creation == true:
+  1. Receive Feature handoff: "Security architecture for [feature]"
+  2. Create security analysis todo: "Threat modeling for [feature]"
+  3. Break down into security Task todos:
+     - "Authentication and authorization design" → api-engineer coordination
+     - "Data encryption and privacy controls" → data-engineer coordination
+     - "Frontend security controls" → frontend-engineer coordination
+     - "Infrastructure security hardening" → deployment-engineer coordination
+  4. Establish security validation gates with reviewer
+
+# Security Task Execution
+if task_owners includes security-engineer and session_todos == true:
+  1. Use TodoWrite for immediate security tasks:
+     - "Conduct security architecture review"
+     - "Perform penetration testing and vulnerability assessment"
+     - "Validate compliance with industry standards"
+     - "Implement security monitoring and logging"
+     - "Document security controls and procedures"
+  2. Coordinate security validation with all implementation agents
+  3. Provide security approval for deployment readiness
+
+# Cross-Agent Security Coordination
+if agent_coordination == true:
+  - Validate architecture security with software-architect
+  - Review API security controls with api-engineer
+  - Assess frontend security with frontend-engineer
+  - Coordinate infrastructure security with deployment-engineer
+  - Provide security requirements to qa-engineer for security testing
+```
 
 ---
 

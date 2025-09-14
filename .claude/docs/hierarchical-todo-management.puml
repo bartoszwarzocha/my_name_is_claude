@@ -1,0 +1,209 @@
+@startuml
+!theme materia
+title Claude Code Multi-Agent Framework v2.0.0 - Hierarchical TODO Management System
+
+skinparam rectangle {
+    BackgroundColor<<Epic>> #FF6B6B
+    BackgroundColor<<Feature>> #4ECDC4
+    BackgroundColor<<Task>> #45B7D1
+    BackgroundColor<<Subtask>> #FFA07A
+    BackgroundColor<<Agent>> #E6E6FA
+    BackgroundColor<<TodoWrite>> #98FB98
+}
+
+package "📋 Hierarchical TODO Structure" {
+
+    rectangle "EPIC LEVEL\n(4-12 weeks)" as Epic <<Epic>> {
+        note right : **business-analyst** ownership\nBusiness strategy & requirements\nStakeholder coordination
+
+        rectangle "Epic: User Authentication System Overhaul" as E1
+        rectangle "Epic: Advanced Analytics Dashboard" as E2
+        rectangle "Epic: Mobile Application Development" as E3
+    }
+
+    rectangle "FEATURE LEVEL\n(1-3 weeks)" as Feature <<Feature>> {
+        note right : **product-manager** ownership\nFeature specifications\nMVP scoping & prioritization
+
+        rectangle "Feature: OAuth2 Implementation" as F1
+        rectangle "Feature: Multi-Factor Authentication" as F2
+        rectangle "Feature: User Profile Management" as F3
+        rectangle "Feature: Real-time Analytics" as F4
+        rectangle "Feature: Custom Dashboards" as F5
+        rectangle "Feature: Mobile UI Components" as F6
+    }
+
+    rectangle "TASK LEVEL\n(4 hours - 3 days)" as Task <<Task>> {
+        note right : **software-architect** ownership\nTechnical architecture\nComponent design & planning
+
+        rectangle "Task: JWT Token Management" as T1
+        rectangle "Task: OAuth2 Server Setup" as T2
+        rectangle "Task: MFA UI Components" as T3
+        rectangle "Task: Analytics Data Pipeline" as T4
+        rectangle "Task: Dashboard API Design" as T5
+        rectangle "Task: Mobile Navigation" as T6
+    }
+
+    rectangle "SUBTASK LEVEL\n(2-8 hours)" as Subtask <<Subtask>> {
+        note right : **Implementation Agents** ownership\nConcrete development work\nSpecific coding tasks
+
+        rectangle "Subtask: JWT Unit Tests" as S1
+        rectangle "Subtask: Token Refresh Logic" as S2
+        rectangle "Subtask: OAuth2 Client Config" as S3
+        rectangle "Subtask: MFA Input Validation" as S4
+        rectangle "Subtask: Analytics Query Optimization" as S5
+        rectangle "Subtask: Dashboard Chart Components" as S6
+    }
+}
+
+package "🤖 Agent Responsibilities" {
+
+    rectangle "business-analyst" as BA <<Agent>> {
+        note bottom
+            **Epic Level Management:**
+            • Epic creation & validation
+            • Stakeholder requirements
+            • Business value assessment
+            • Epic → Feature handoff
+        end note
+    }
+
+    rectangle "product-manager" as PM <<Agent>> {
+        note bottom
+            **Feature Level Management:**
+            • Epic → Feature breakdown
+            • Feature prioritization
+            • MVP scoping & planning
+            • Feature → Task handoff
+        end note
+    }
+
+    rectangle "software-architect" as SA <<Agent>> {
+        note bottom
+            **Task Level Management:**
+            • Feature → Task breakdown
+            • Technical architecture design
+            • Component planning
+            • Task → Subtask handoff
+        end note
+    }
+
+    rectangle "Implementation Agents" as IA <<Agent>> {
+        note bottom
+            **Subtask Level Execution:**
+            • Task → Subtask breakdown
+            • Concrete implementation
+            • Code development
+            • Testing & validation
+        end note
+
+        rectangle "frontend-engineer\napi-engineer\ndata-engineer" as ImplDetail
+    }
+
+    rectangle "qa-engineer\nsecurity-engineer\nreviewer" as QA <<Agent>> {
+        note bottom
+            **Cross-Level Validation:**
+            • Quality gates at all levels
+            • Cross-agent coordination
+            • Process compliance
+            • Final validation & approval
+        end note
+    }
+}
+
+package "✅ TodoWrite Tool Integration" {
+
+    rectangle "Session-Level TODO Management" as SessionTODO <<TodoWrite>> {
+        note bottom
+            **TodoWrite Tool Usage:**
+            • Real-time task tracking
+            • Status: pending/in_progress/completed
+            • Cross-agent coordination
+            • Progress visibility
+        end note
+
+        rectangle "TodoWrite Examples:" as Examples
+        rectangle "• content: 'Implement JWT validation'\n• status: 'in_progress'\n• activeForm: 'Implementing JWT validation'" as Ex1
+        rectangle "• content: 'Design OAuth2 architecture'\n• status: 'completed'\n• activeForm: 'Designing OAuth2 architecture'" as Ex2
+    }
+}
+
+package "🔄 Workflow Coordination" {
+
+    rectangle "Epic → Feature Handoff" as EF_Handoff {
+        note bottom
+            **business-analyst → product-manager**
+            • Epic completion validation
+            • Feature breakdown initiation
+            • Requirements transfer
+        end note
+    }
+
+    rectangle "Feature → Task Handoff" as FT_Handoff {
+        note bottom
+            **product-manager → software-architect**
+            • Feature specification transfer
+            • Technical feasibility validation
+            • Architecture planning initiation
+        end note
+    }
+
+    rectangle "Task → Subtask Handoff" as TS_Handoff {
+        note bottom
+            **software-architect → implementation agents**
+            • Technical specifications transfer
+            • Development task assignment
+            • Implementation coordination
+        end note
+    }
+
+    rectangle "Quality Gate Validation" as QG_Validation {
+        note bottom
+            **qa-engineer + security-engineer + reviewer**
+            • Cross-level quality validation
+            • Process compliance checks
+            • Final approval coordination
+        end note
+    }
+}
+
+' Relationships
+Epic ||--|| Feature : "Epic → Feature\nBreakdown"
+Feature ||--|| Task : "Feature → Task\nDecomposition"
+Task ||--|| Subtask : "Task → Subtask\nImplementation"
+
+BA ||--|| Epic : "Creates &\nManages"
+PM ||--|| Feature : "Creates &\nManages"
+SA ||--|| Task : "Creates &\nManages"
+IA ||--|| Subtask : "Executes &\nCompletes"
+QA ||--|| Epic : "Validates"
+QA ||--|| Feature : "Validates"
+QA ||--|| Task : "Validates"
+QA ||--|| Subtask : "Validates"
+
+Epic --> EF_Handoff
+Feature --> FT_Handoff
+Task --> TS_Handoff
+Subtask --> QG_Validation
+
+SessionTODO --> Epic : "Tracks"
+SessionTODO --> Feature : "Tracks"
+SessionTODO --> Task : "Tracks"
+SessionTODO --> Subtask : "Tracks"
+
+note top of Epic
+    **CLAUDE.md Section 8 Configuration:**
+    • todo_management_enabled: true
+    • todo_hierarchy_level: hierarchical
+    • auto_task_creation: true
+    • agent_coordination: true
+end note
+
+note bottom of Subtask
+    **TodoWrite Integration Pattern:**
+    1. Mark exactly ONE task as 'in_progress'
+    2. Complete tasks immediately after finishing
+    3. Use descriptive content & activeForm
+    4. Coordinate handoffs via status updates
+end note
+
+@enduml

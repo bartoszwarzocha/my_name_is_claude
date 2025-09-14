@@ -74,6 +74,15 @@ I'll only ask for information I can't detect:
 - Do you want to use **Serena** for code navigation and intelligent editing? (y/n)
 - Do you want to use **Context7** for advanced code generation and migrations? (y/n)
 
+**TODO Management Integration Assessment (I'll always ask about these):**
+- Do you want to integrate **TODO management** into your existing workflow? (y/n)
+  - If yes: What integration approach? (gradual/immediate/pilot)
+  - If yes: Which complexity level fits your team? (simple/hierarchical)
+  - If yes: Do you want agents to create tasks automatically? (y/n)
+  - If yes: What progress tracking scope? (session/project/enterprise)
+- Do you have existing project management tools? (jira/asana/trello/none)
+  - If yes: Do you want TODO system to integrate with them? (y/n)
+
 **If special requirements exist:**
 - Any specific compliance, security, or performance requirements?
 - Any existing conventions I should follow?
@@ -87,6 +96,11 @@ Once I understand your project, I'll:
    - Technology stack documentation of EXISTING setup
    - Business domain configuration for YOUR use case
    - Agent roles mapped to YOUR current architecture
+   - **TODO Management Configuration (Section 8)** based on your preferences:
+     - Integration approach (gradual/immediate/pilot)
+     - Complexity level adapted to your team size and workflow
+     - External tool integration settings (Jira/Asana/Trello)
+     - Gradual adoption timeline and milestones
    - **ZERO changes to existing functionality**
 
 2. **Set up AI Tools Integration (if requested):**
@@ -99,7 +113,11 @@ Once I understand your project, I'll:
 3. **Create Integration Documentation:**
    - Agent usage guide tailored to your project and chosen AI tools
    - AI tools configuration documentation (Serena/Context7 usage patterns)
-   - Mapping of current workflow to agent workflow with AI assistance
+   - **TODO Management Integration Guide:**
+     - Mapping current workflow to agent TODO coordination
+     - Integration timeline with existing project management tools
+     - Agent training guide for TODO system adoption
+     - Success metrics and progress tracking setup
    - Quick wins where agents and AI tools can help immediately
    - Gradual adoption roadmap for both agents and AI tools
 
@@ -117,6 +135,13 @@ I'll provide you with:
 - Code quality assessment and recommendations  
 - Architecture analysis and optimization suggestions
 - Security audit and compliance gap analysis
+
+**TODO Management Integration Timeline:**
+- **Pilot Phase**: Single agent (reviewer) with simple TodoWrite integration
+- **Phase 1**: Core agents (business-analyst, software-architect) with feature-level todos
+- **Phase 2**: Implementation agents (frontend, api, data) with task coordination
+- **Phase 3**: Full hierarchical system with external tool integration
+- **Phase 4**: Advanced analytics and automated workflow optimization
 
 **Long-term Integration Plan:**
 - Phase 1: Analysis and documentation (safe)
@@ -145,8 +170,13 @@ I'll provide you with:
 After integration, you'll have:
 
 - 📊 **Comprehensive Project Analysis** - detailed understanding of current state
-- 📋 **CLAUDE.md Configuration** - perfectly tailored to your existing project  
+- 📋 **CLAUDE.md Configuration** - perfectly tailored to your existing project
 - 🔧 **AI Tools Integration** - Serena and/or Context7 working alongside existing tools
+- 📝 **TODO Management Integration** - configured based on your workflow preferences:
+  - Gradual integration timeline with your existing project management
+  - Agent coordination protocols adapted to your team structure
+  - External tool integration (Jira/Asana/Trello) if requested
+  - Success metrics and progress tracking tailored to your needs
 - 🎯 **Agent Usage Strategy** - clear plan for gradual adoption
 - 🚀 **Immediate Quick Wins** - valuable insights and recommendations
 - 📈 **Growth Roadmap** - path to full agent-driven development

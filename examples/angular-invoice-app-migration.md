@@ -17,7 +17,7 @@ Modernization of existing web invoice application with outdated API documentatio
 - **Challenge:** Outdated Swagger documentation doesn't reflect actual endpoints
 - **Approach:** Reverse engineering + code analysis + documentation rebuild
 
-## Sample CLAUDE.md Content
+## Sample CLAUDE.md Content with TODO Management
 
 ```markdown
 # CLAUDE.md – Invoice Application Migration Project
@@ -430,6 +430,265 @@ serena search "@Injectable" --type ts --path frontend
 3. **Frontend Optimization:** Virtual scrolling in Angular
 4. **Caching Strategy:** Redis/memory caching for frequent queries
 
+## TODO Workflow Management for Legacy Migration
+
+### Migration-Specific TODO Configuration
+
+Based on CLAUDE.md Section 8 configuration for **fintech** domain and **enterprise** scale:
+
+```yaml
+## 8. TODO Management Configuration
+### Task Management Strategy
+- **todo_management_enabled**: true
+- **todo_hierarchy_level**: hierarchical
+- **auto_task_creation**: true
+- **project_scale**: enterprise
+- **business_domain**: fintech
+
+### Migration-Specific Settings
+- **legacy_code_analysis**: true
+- **api_documentation_rebuild**: true
+- **backward_compatibility**: critical
+- **quality_gates_strict**: true
+```
+
+### Real Migration TODO Examples
+
+#### Phase 1: Legacy System Analysis TODO Flow
+
+**api-engineer** analyzing existing .NET Controllers:
+
+```javascript
+// api-engineer discovers endpoint discrepancies
+TodoWrite({
+  todos: [
+    {
+      content: "Analyze all .NET Controllers to discover actual API endpoints",
+      status: "completed",
+      activeForm: "Analyzing Controllers for endpoints"
+    },
+    {
+      content: "Compare actual endpoints vs. outdated Swagger documentation",
+      status: "completed",
+      activeForm: "Comparing endpoints with docs"
+    },
+    {
+      content: "Generate accurate OpenAPI 3.0 spec from controller code",
+      status: "in_progress",
+      activeForm: "Generating OpenAPI specification"
+    },
+    {
+      content: "Document deprecated endpoints and migration strategy",
+      status: "pending",
+      activeForm: "Documenting deprecated endpoints"
+    }
+  ]
+})
+```
+
+**frontend-engineer** analyzing Angular application:
+
+```javascript
+// frontend-engineer maps Angular services to API calls
+TodoWrite({
+  todos: [
+    {
+      content: "Inventory all Angular HTTP service calls and endpoints",
+      status: "completed",
+      activeForm: "Inventorying Angular services"
+    },
+    {
+      content: "Identify 404 errors from non-existent API endpoints",
+      status: "in_progress",
+      activeForm: "Identifying 404 errors"
+    },
+    {
+      content: "Update TypeScript interfaces to match actual API responses",
+      status: "pending",
+      activeForm: "Updating TypeScript interfaces"
+    },
+    {
+      content: "Modernize Angular services to version 17+ patterns",
+      status: "pending",
+      activeForm: "Modernizing Angular services"
+    }
+  ]
+})
+```
+
+#### Phase 2: Cross-Agent Coordination for API Mismatches
+
+**Critical Issue Discovery** - Coordinated TODO management:
+
+```javascript
+// api-engineer discovers missing invoice recurring feature
+TodoWrite({
+  todos: [
+    {
+      content: "CRITICAL: Frontend has recurring invoice UI but no API support",
+      status: "in_progress",
+      activeForm: "Investigating recurring invoice discrepancy"
+    },
+    {
+      content: "Design and implement /api/invoices/recurring endpoints",
+      status: "pending",
+      activeForm: "Implementing recurring endpoints"
+    },
+    {
+      content: "Add database tables for recurring invoice schedules",
+      status: "pending",
+      activeForm: "Adding recurring invoice tables"
+    }
+  ]
+})
+
+// business-analyst responds with business requirements
+TodoWrite({
+  todos: [
+    {
+      content: "Validate recurring invoice business requirements with stakeholders",
+      status: "in_progress",
+      activeForm: "Validating recurring invoice requirements"
+    },
+    {
+      content: "Document complete recurring invoice workflow specification",
+      status: "pending",
+      activeForm: "Documenting recurring invoice workflow"
+    }
+  ]
+})
+
+// frontend-engineer coordinates implementation
+TodoWrite({
+  todos: [
+    {
+      content: "Connect existing recurring invoice UI to new API endpoints",
+      status: "pending",
+      activeForm: "Connecting recurring UI to API"
+    },
+    {
+      content: "Add error handling for recurring invoice operations",
+      status: "pending",
+      activeForm: "Adding error handling"
+    }
+  ]
+})
+```
+
+#### Phase 3: Performance Optimization TODO Flow
+
+**qa-engineer** identifies performance bottleneck:
+
+```javascript
+// Performance issue with invoice listing
+TodoWrite({
+  todos: [
+    {
+      content: "PERFORMANCE: Invoice listing >5s load time for 1000+ records",
+      status: "completed",
+      activeForm: "Analyzing invoice listing performance"
+    },
+    {
+      content: "Profile .NET API database queries for invoice listing",
+      status: "in_progress",
+      activeForm: "Profiling database queries"
+    },
+    {
+      content: "Implement server-side pagination for invoice API",
+      status: "pending",
+      activeForm: "Implementing server-side pagination"
+    }
+  ]
+})
+
+// data-engineer optimizes database queries
+TodoWrite({
+  todos: [
+    {
+      content: "Add database indexes for invoice listing performance",
+      status: "in_progress",
+      activeForm: "Adding database indexes"
+    },
+    {
+      content: "Implement Redis caching for frequent invoice queries",
+      status: "pending",
+      activeForm: "Implementing Redis caching"
+    }
+  ]
+})
+
+// frontend-engineer implements client-side optimization
+TodoWrite({
+  todos: [
+    {
+      content: "Add virtual scrolling to Angular invoice list component",
+      status: "pending",
+      activeForm: "Adding virtual scrolling"
+    },
+    {
+      content: "Implement progressive loading with loading indicators",
+      status: "pending",
+      activeForm: "Implementing progressive loading"
+    }
+  ]
+})
+```
+
+### Production Migration Automation
+
+Using migration-specific automation templates:
+
+```bash
+# Automatic legacy code analysis and TODO mapping
+./.claude/templates/todo/agent-coordination-hooks.sh invoice-migration legacy-system
+
+# Migration-specific validation
+./.claude/templates/todo/claude-md-validation.sh fintech enterprise
+
+# Expected output:
+# 📊 Legacy Analysis Phase:
+# ✅ api-engineer: Controller analysis completed
+# ✅ frontend-engineer: Angular service inventory completed
+# ⏳ business-analyst: Business process reconstruction in progress
+#
+# 🔧 Modernization Phase:
+# ⏸️ api-engineer: Waiting for business requirements
+# ⏸️ frontend-engineer: Waiting for API updates
+# ⏸️ deployment-engineer: Waiting for testing completion
+```
+
+### Quality Gates with TODO Integration
+
+Migration-specific quality gates tied to TODO completion:
+
+```javascript
+// qa-engineer enforces strict quality gates for enterprise fintech
+TodoWrite({
+  todos: [
+    {
+      content: "QUALITY GATE: 100% API documentation accuracy validation",
+      status: "in_progress",
+      activeForm: "Validating API documentation accuracy"
+    },
+    {
+      content: "QUALITY GATE: Zero 404 errors in frontend API calls",
+      status: "pending",
+      activeForm: "Validating zero 404 errors"
+    },
+    {
+      content: "QUALITY GATE: Performance <2s for all invoice operations",
+      status: "pending",
+      activeForm: "Validating performance requirements"
+    },
+    {
+      content: "QUALITY GATE: Backward compatibility with existing integrations",
+      status: "pending",
+      activeForm: "Validating backward compatibility"
+    }
+  ]
+})
+```
+
 ## Expected Final Results
 
 ### Technical Deliverables
@@ -454,6 +713,7 @@ serena search "@Injectable" --type ts --path frontend
 - **Error Reduction:** 95% reduction in frontend API errors
 - **Development Velocity:** 50% faster future feature development
 - **Maintenance Cost:** 60% reduction in debugging time for API issues
+- **TODO Coordination:** 100% cross-agent issue tracking and resolution
 
 ### Migration Timeline
 

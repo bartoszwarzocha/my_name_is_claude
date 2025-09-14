@@ -19,7 +19,7 @@ Cross-platform desktop application (Windows, Linux, macOS) for supporting the bo
   - Version control system integration
   - Plugin system for extensions
 
-## Sample CLAUDE.md Content
+## Sample CLAUDE.md Content with TODO Management
 
 ```markdown
 # CLAUDE.md – Book Writing Desktop Application
@@ -88,7 +88,7 @@ cp ../DATABASE_CONNECTIONS.md .
 # [Edit CLAUDE.md file according to above content]
 ```
 
-### 2. Claude Code Initialization
+### 2. Claude Code Initialization with TODO Management
 
 ```bash
 # Launch Claude Code
@@ -97,6 +97,13 @@ claude-code
 # Configuration verification
 # Check if .claude/agents/ contains all 11 agents
 # Check if prompts are available in .claude/prompts/agents/
+
+# Validate TODO configuration
+chmod +x .claude/templates/todo/validate-claude-md.sh
+./.claude/templates/todo/validate-claude-md.sh
+
+# Initialize TODO management system
+./.claude/templates/todo/hooks/agent-init-hook.sh "product-manager"
 ```
 
 ## MCP Initialization Method
@@ -376,6 +383,195 @@ claude-code
 3. **Release Management** - Version control, release notes
 4. **Post-launch Support** - Monitoring, feedback collection
 
+## TODO Workflow Management Example
+
+### Hierarchical TODO Configuration for Desktop App
+
+Based on CLAUDE.md Section 8 configuration for **publishing** domain and **sme** scale:
+
+```yaml
+## 8. TODO Management Configuration
+### Task Management Strategy
+- **todo_management_enabled**: true
+- **todo_hierarchy_level**: hierarchical
+- **auto_task_creation**: true
+- **project_scale**: sme
+- **business_domain**: publishing
+
+### Agent TODO Responsibilities
+- **Epic Level (business-analyst)**: User story epics, stakeholder requirements
+- **Feature Level (product-manager)**: Feature specifications, MVP planning
+- **Task Level (software-architect)**: Technical architecture, component design
+- **Subtask Level (implementation agents)**: Concrete development tasks
+```
+
+### Real TODO Workflow Examples
+
+#### Phase 1: Business Analysis TODO Flow
+
+**business-analyst** creates Epic-level TODOs:
+
+```javascript
+// TodoWrite command from business-analyst
+TodoWrite({
+  todos: [
+    {
+      content: "Define target user personas for book writing application",
+      status: "in_progress",
+      activeForm: "Defining target user personas"
+    },
+    {
+      content: "Analyze competitor features (Scrivener, yWriter, Ulysses)",
+      status: "pending",
+      activeForm: "Analyzing competitor features"
+    },
+    {
+      content: "Create user journey maps for complete writing workflow",
+      status: "pending",
+      activeForm: "Creating user journey maps"
+    }
+  ]
+})
+```
+
+**Handoff to product-manager** with Epic completion and Feature breakdown:
+
+```javascript
+// business-analyst completes Epic, hands off to product-manager
+TodoWrite({
+  todos: [
+    {
+      content: "Define target user personas for book writing application",
+      status: "completed",
+      activeForm: "Defining target user personas"
+    },
+    {
+      content: "Create MVP feature specification from user personas",
+      status: "in_progress",
+      activeForm: "Creating MVP feature specification"
+    },
+    {
+      content: "Design three-module architecture (Editor, Library, Publisher Comm)",
+      status: "pending",
+      activeForm: "Designing modular architecture"
+    }
+  ]
+})
+```
+
+#### Phase 3: Development TODO Flow
+
+**software-architect** creates Task-level breakdown:
+
+```javascript
+// software-architect breaks down Feature into Tasks
+TodoWrite({
+  todos: [
+    {
+      content: "Design wxPython main window architecture with panel system",
+      status: "completed",
+      activeForm: "Designing main window architecture"
+    },
+    {
+      content: "Create SQLite database schema for books, chapters, sources",
+      status: "in_progress",
+      activeForm: "Creating database schema"
+    },
+    {
+      content: "Implement text editor component with advanced features",
+      status: "pending",
+      activeForm: "Implementing text editor"
+    },
+    {
+      content: "Design export system architecture (PDF, EPUB, DOCX)",
+      status: "pending",
+      activeForm: "Designing export system"
+    }
+  ]
+})
+```
+
+**frontend-engineer** executes Subtasks:
+
+```javascript
+// frontend-engineer handles concrete implementation
+TodoWrite({
+  todos: [
+    {
+      content: "Implement wxPython MainFrame with menu system",
+      status: "completed",
+      activeForm: "Implementing MainFrame"
+    },
+    {
+      content: "Create text editor panel with syntax highlighting",
+      status: "completed",
+      activeForm: "Creating text editor panel"
+    },
+    {
+      content: "Implement source library panel with tree control",
+      status: "in_progress",
+      activeForm: "Implementing source library panel"
+    },
+    {
+      content: "Add keyboard shortcuts and writer-friendly UX",
+      status: "pending",
+      activeForm: "Adding keyboard shortcuts"
+    },
+    {
+      content: "Integrate with SQLAlchemy models for data persistence",
+      status: "pending",
+      activeForm: "Integrating data persistence"
+    }
+  ]
+})
+```
+
+#### Cross-Agent Coordination Example
+
+When **qa-engineer** identifies issues, coordination happens via TODO updates:
+
+```javascript
+// qa-engineer creates testing TODOs with dependencies
+TodoWrite({
+  todos: [
+    {
+      content: "Fix text editor memory leak with large documents",
+      status: "in_progress",
+      activeForm: "Fixing memory leak"
+    },
+    {
+      content: "Add unit tests for SQLAlchemy book model operations",
+      status: "pending",
+      activeForm: "Adding book model tests"
+    },
+    {
+      content: "Implement E2E tests for complete book writing workflow",
+      status: "pending",
+      activeForm: "Implementing E2E tests"
+    }
+  ]
+})
+
+// frontend-engineer responds to bug fix TODO
+// (memory leak fix completed, hands back to qa-engineer)
+```
+
+### Production Automation Example
+
+Using `.claude/templates/todo/agent-coordination-hooks.sh`:
+
+```bash
+# Automatic TODO mapping for desktop application
+./claude/templates/todo/agent-coordination-hooks.sh book-writing-studio desktop-app
+
+# Expected output:
+# ✅ business-analyst: Epic-level stakeholder analysis
+# ⏳ product-manager: Feature breakdown in progress
+# ⏸️  software-architect: Waiting for feature specs
+# ⏸️  frontend-engineer: Waiting for architecture tasks
+# ⏸️  qa-engineer: Waiting for implementation completion
+```
+
 ## Expected Final Results
 
 ### Technical Deliverables
@@ -397,6 +593,7 @@ claude-code
 - **Performance:** <2s startup time, smooth editing 1M+ characters
 - **User Satisfaction:** Writer workflow improvement >50%
 - **Technical Debt:** Maintainable, extensible codebase architecture
+- **TODO Management:** 100% task completion tracking with hierarchical coordination
 
 ---
 

@@ -37,6 +37,12 @@ Based on my analysis, I'll ask only for missing information:
 - Do you want to use **Serena** for code navigation and intelligent editing? (y/n)
 - Do you want to use **Context7** for advanced code generation and migrations? (y/n)
 
+**TODO Management Configuration (I'll always ask about these):**
+- Do you want to enable **active TODO management** for your project? (y/n)
+  - If yes: Which complexity level? (simple/hierarchical)
+  - If yes: Do you want automatic task creation by agents? (y/n)
+  - If yes: What progress tracking scope? (session/project/enterprise)
+
 **If I can't detect specific requirements:**
 - Any special technologies or constraints I should know about?
 
@@ -49,6 +55,12 @@ Once I have the information, I'll automatically:
    - Technology stack appropriate for your language/domain
    - Business domain configuration optimized for your use case
    - Agent roles tailored to your project scale and needs
+   - **TODO Management Configuration (Section 8)** with your preferences:
+     - Enable/disable TODO management system
+     - Set complexity level (simple/hierarchical)
+     - Configure automatic task creation
+     - Set progress tracking scope
+     - Apply templates based on project scale (startup/sme/enterprise)
 
 2. **Set up Serena integration** with:
    - `.serena` directory creation
@@ -68,16 +80,28 @@ Once I have the information, I'll automatically:
    - Development database setup if needed
    - Environment variable templates
 
+5. **Configure TODO Management System** (if enabled):
+   - Set up hierarchical task templates (Epic/Feature/Task/Subtask)
+   - Configure agent coordination protocols
+   - Initialize TodoWrite integration patterns
+   - Set up progress tracking and reporting
+   - Create agent-specific task assignment rules
+
 ### Step 4: Agent-Ready Project
 
 After setup, you'll have:
 
 - ✅ **Fully configured CLAUDE.md** adapted to your project
 - ✅ **Working Serena integration** with agent context
-- ✅ **Complete project structure** ready for development  
+- ✅ **Complete project structure** ready for development
 - ✅ **All 11 agents** able to understand your project
 - ✅ **5-phase workflow** ready to execute
 - ✅ **Development environment** prepared
+- ✅ **TODO Management System** configured and ready (if enabled):
+  - Agents automatically use TodoWrite based on your configuration
+  - Hierarchical task breakdown (Epic→Feature→Task→Subtask) if selected
+  - Agent coordination protocols active
+  - Progress tracking and reporting system operational
 
 ### Smart Defaults I'll Use
 
@@ -85,11 +109,13 @@ After setup, you'll have:
 - Simplified agent workflow focusing on speed
 - MVP-focused technology choices
 - Basic but scalable architecture patterns
+- **TODO Configuration**: Simple TodoWrite integration, session tracking
 
 **For SME/Enterprise:**
 - Full 11-agent workflow with governance
 - Enterprise-grade technology selections
 - Comprehensive security and compliance setup
+- **TODO Configuration**: Full hierarchical system, epic management, enterprise reporting
 
 **Language-Specific Optimizations:**
 - **Python**: FastAPI/Django, pytest, poetry/pip

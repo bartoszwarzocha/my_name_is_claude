@@ -19,8 +19,57 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 │   ├── review/       # Reviewer prompts
 │   └── security/     # Security Engineer prompts
 ├── workflows/        # Cross-agent coordination and handoff prompts
+├── init/            # 🚀 Project initialization & configuration prompts
+│   ├── claude_md_from_concept.md  # Intelligent CLAUDE.md generator
+│   └── prepare_instruction.md     # Custom development workflow generator
 └── README.md        # This comprehensive guide
 ```
+
+## 🚀 Project Initialization Prompts (`init/`)
+
+### **claude_md_from_concept.md**
+
+- **Purpose:** Generate complete CLAUDE.md configuration from project concept materials
+- **When to use:** New project setup, automatic configuration generation, concept-to-production workflow
+- **Key outputs:** Production-ready CLAUDE.md, technology stack detection, agent recommendations, TODO configuration
+- **Agent:** Configuration specialist with intelligent project analysis
+- **Features:**
+  - **Intelligent Analysis:** Automatic technology detection from concept files
+  - **Scale Assessment:** Startup/SME/Enterprise project scale determination
+  - **Agent Optimization:** Recommended agent subset based on project needs
+  - **Interactive Configuration:** User decisions on ambiguous choices
+  - **Production Ready:** Complete CLAUDE.md with all sections populated
+
+### **prepare_instruction.md**
+
+- **Purpose:** Generate customized development instructions and workflow roadmap based on CLAUDE.md configuration
+- **When to use:** After CLAUDE.md generation, project planning, team onboarding, workflow optimization
+- **Key outputs:** Phase-by-phase development guide, agent sequences, TODO setup, timeline estimates
+- **Agent:** Development workflow architect with multi-agent coordination expertise
+- **Features:**
+  - **Custom Workflows:** Tailored development phases for specific project
+  - **Agent Sequencing:** Optimized agent coordination based on technology stack
+  - **TODO Integration:** Complete TODO management setup for project scale
+  - **Technology Guidance:** Stack-specific implementation recommendations
+  - **Quality Gates:** Validation checkpoints aligned with project requirements
+
+### Project Initialization Workflow
+
+```bash
+# Step 1: Add concept materials to init_concept/
+echo "Project description" > init_concept/project_idea.md
+echo "Technology preferences" > init_concept/tech_stack.md
+
+# Step 2: Generate CLAUDE.md configuration
+# Use: .claude/prompts/init/claude_md_from_concept.md
+# → Automatic project analysis and configuration generation
+
+# Step 3: Generate development instructions
+# Use: .claude/prompts/init/prepare_instruction.md
+# → Custom roadmap with agent sequences and TODO setup
+```
+
+---
 
 ## 🤖 Agent-Specific Prompts
 
@@ -437,6 +486,7 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 
 | Agent | Available Prompts | Specialization Areas |
 |-------|-------------------|----------------------|
+| **🚀 init (System)** | **Complete** | **Project initialization, CLAUDE.md generation, workflow planning** |
 | **business-analyst** | Available | Stakeholder requirements, process analysis, business cases |
 | **product-manager** | Available | User story creation, MVP scoping, feature implementation |
 | **ux-designer** | Available | User research and persona development |
@@ -449,9 +499,10 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 | **deployment-engineer** | Available | CI/CD pipeline and infrastructure setup |
 | **reviewer** | Available | Code quality analysis, security vulnerability assessment |
 
-**Status:** Comprehensive prompts library with complete coverage for security and frontend engineering
+**Status:** Comprehensive prompts library with complete coverage for security, frontend engineering, and project initialization
 
 **Comprehensive Coverage Areas:**
+- **🚀 Project Initialization:** Complete concept-to-production workflow automation
 - **Security Engineering:** Complete enterprise security workflow coverage
 - **Frontend Development:** Full-stack modern frontend development
 - **Business Analysis:** Core business discovery and requirements processes
@@ -476,11 +527,76 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 
 ### For Project Planning
 
-1. **Start with Phase 1 business analysis** prompts
-2. **Use workflow transition prompts** to move between phases
-3. **Apply parallel coordination prompts** during development phases
-4. **Leverage quality gate prompts** for validation checkpoints
-5. **Use stakeholder communication prompts** for updates and approvals
+1. **🚀 Start with project initialization** - Use `init/claude_md_from_concept.md` for automatic setup
+2. **📋 Generate development instructions** - Use `init/prepare_instruction.md` for custom workflow
+3. **📊 Follow generated roadmap** - Execute phase-by-phase plan from initialization
+4. **🔄 Use workflow transition prompts** to move between phases
+5. **⚡ Apply parallel coordination prompts** during development phases
+6. **✅ Leverage quality gate prompts** for validation checkpoints
+7. **📢 Use stakeholder communication prompts** for updates and approvals
+
+## ✅ TODO Management Integration
+
+### Hierarchical Task Management
+
+The framework includes comprehensive TODO management integration that operates at multiple levels:
+
+#### Session-Level TODO Management (TodoWrite Tool)
+- **Purpose:** Track immediate tasks within single Claude Code sessions
+- **Usage:** Agents automatically use TodoWrite tool to create, update, and complete tasks
+- **Best Practices:**
+  - Mark exactly ONE task as `in_progress` at any time
+  - Complete tasks immediately after finishing (don't batch completions)
+  - Use descriptive task names with both `content` and `activeForm`
+
+#### Project-Level TODO Management (CLAUDE.md Configuration)
+- **Purpose:** Configure project-wide TODO management behavior
+- **Configuration:** Set in CLAUDE.md Section 8 TODO Management Configuration
+- **Levels:**
+  - `simple`: Basic TodoWrite usage for session tracking
+  - `hierarchical`: Full Epic→Feature→Task→Subtask coordination
+
+#### Multi-Agent TODO Coordination
+
+| Agent Level | TODO Responsibility | Coordination Role |
+|-------------|-------------------|-------------------|
+| **business-analyst** | Epic-level planning | Business requirement breakdown |
+| **product-manager** | Feature-level management | Epic→Feature translation |
+| **software-architect** | Task-level architecture | Feature→Task breakdown |
+| **Implementation agents** | Subtask execution | Task completion |
+
+#### Production Templates for TODO Automation
+- **Location:** `.claude/templates/todo/`
+- **Key Templates:**
+  - `todo-mapping-script.md`: Hierarchical automation algorithms
+  - `agent-coordination-hooks.md`: Automated agent handoffs
+  - `claude-md-validation.md`: Configuration validation and auto-fix
+  - `working-examples-todo.md`: Real-world TodoWrite examples
+
+### TODO Integration in Prompts
+
+#### Agent-Specific TODO Integration
+All agent prompts include standardized TODO management sections:
+
+1. **TODO Management Integration**
+   - TodoWrite tool usage patterns
+   - Task creation and completion guidelines
+   - Agent coordination protocols
+
+2. **Hierarchical Task Management**
+   - Role-specific TODO responsibilities
+   - Handoff protocols to other agents
+   - Quality gate integration
+
+3. **Session Management**
+   - Task prioritization strategies
+   - Progress tracking methods
+   - Completion validation
+
+#### Workflow TODO Coordination
+- **Phase transitions:** TODO validation between phases
+- **Parallel coordination:** Synchronized task management across agents
+- **Quality gates:** TODO-based validation checkpoints
 
 ## 🛠️ Customization Guidelines
 
@@ -491,6 +607,7 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 - **Modify deliverables** to match your documentation standards
 - **Customize success criteria** for your business context
 - **Add domain-specific requirements** as needed
+- **Configure TODO management** in CLAUDE.md Section 8 based on project complexity
 
 ### Creating New Prompts
 
@@ -506,11 +623,43 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 ### Using Prompts in Claude Code
 
 1. **Open Claude Code** in the project directory
-2. **Select appropriate agent** for the task
-3. **Reference the prompt** using path (e.g., `agents/frontend/angular-component-development.md`)
-4. **Customize the prompt** for specific project requirements
-5. **Execute the task** following prompt guidelines
-6. **Coordinate with other agents** as needed
+2. **Verify TODO configuration** in CLAUDE.md Section 8
+3. **Select appropriate agent** for the task
+4. **Reference the prompt** using path (e.g., `agents/frontend/angular-component-development.md`)
+5. **Initialize TODO management** if configured for hierarchical mode
+6. **Execute the task** following prompt guidelines and TODO protocols
+7. **Complete TODO items** as work progresses
+8. **Coordinate with other agents** using TODO handoff protocols
+
+### TODO-Driven Workflow Integration
+
+#### For Session-Level Work (Simple Mode)
+```bash
+# Start Claude Code with automatic TODO tracking
+claude-code
+
+# Agents automatically:
+# 1. Create TODO items using TodoWrite tool
+# 2. Mark tasks as in_progress before starting work
+# 3. Complete tasks immediately after finishing
+# 4. Coordinate handoffs via TODO status updates
+```
+
+#### For Project-Level Work (Hierarchical Mode)
+```bash
+# Initialize hierarchical TODO management
+./.claude/templates/todo/agent-coordination-hooks.sh
+
+# Validate CLAUDE.md TODO configuration
+./.claude/templates/todo/claude-md-validation.sh
+
+# Execute with automatic TODO mapping
+claude-code
+# business-analyst creates Epic-level TODOs
+# product-manager breaks down into Features
+# software-architect creates Task breakdowns
+# Implementation agents handle Subtasks
+```
 
 ### Integration with AI Tools
 
@@ -531,6 +680,7 @@ Specialized prompts library for the Claude Code Agent Framework's 11 agents, org
 - **Agent Specifications:** `.claude/agents/` directory for detailed agent capabilities
 - **Workflow Diagrams:** `.claude/docs/agent-sdlc-workflow.puml` for visual process overview
 - **Project Configuration:** `CLAUDE.md` for project-specific agent guidance
+- **TODO Templates:** `.claude/templates/todo/` for production-ready TODO automation
 - **AI Tools Guide:** `.claude/docs/ai-tools-usage-guide.md` for Serena and Context7 usage
 - **Main README:** `README.md` for general project overview and configuration
 

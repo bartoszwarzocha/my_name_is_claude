@@ -7,11 +7,95 @@
 
 ## 🎯 Mission
 
-Transform high-level business initiatives into structured development work through systematic decomposition, ensuring complete coverage, proper sizing, and clear ownership.
+Transform high-level business initiatives into structured development work through systematic decomposition with integrated TODO management, ensuring complete coverage, proper sizing, clear ownership, and real-time progress tracking using TodoWrite tool.
+
+## ✅ TODO Management Integration
+
+### TodoWrite Tool Usage for Epic Breakdown
+
+This orchestration workflow integrates Claude Code's TodoWrite tool for real-time task management throughout the epic breakdown process. Each agent uses TodoWrite to:
+
+1. **Create hierarchical TODOs** following Epic → Feature → Task → Subtask structure
+2. **Track progress** with `status: in_progress/completed/pending`
+3. **Coordinate handoffs** between agents through TODO status updates
+4. **Maintain visibility** into overall epic breakdown progress
+
+### Agent TODO Responsibilities in Epic Breakdown
+
+| **Agent** | **TODO Level** | **Responsibility** |
+|-----------|----------------|-------------------|
+| **business-analyst** | Epic | Business requirements, stakeholder analysis, epic validation |
+| **product-manager** | Feature | Feature scoping, user stories, MVP prioritization |
+| **software-architect** | Task | Technical breakdown, architecture planning, dependency mapping |
+| **Implementation Agents** | Subtask | Concrete development tasks, estimates, technical specifications |
+
+### TodoWrite Integration Pattern
+
+Each agent follows this TODO management pattern:
+
+```javascript
+// Agent starts work on epic breakdown
+TodoWrite({
+  todos: [
+    {
+      content: "Analyze business requirements for [Epic Name]",
+      status: "in_progress",
+      activeForm: "Analyzing business requirements"
+    },
+    {
+      content: "Create feature breakdown from business analysis",
+      status: "pending",
+      activeForm: "Creating feature breakdown"
+    }
+  ]
+})
+
+// Agent completes current work and hands off to next agent
+TodoWrite({
+  todos: [
+    {
+      content: "Analyze business requirements for [Epic Name]",
+      status: "completed",
+      activeForm: "Analyzing business requirements"
+    },
+    {
+      content: "Create feature breakdown from business analysis",
+      status: "in_progress",
+      activeForm: "Creating feature breakdown"
+    }
+  ]
+})
+```
 
 ## 📋 Epic Breakdown Process
 
 ### Phase 1: Epic Analysis and Scoping (1-2 days)
+
+#### TodoWrite Integration for Phase 1
+
+At phase start, **business-analyst** creates Epic-level TODOs:
+
+```javascript
+TodoWrite({
+  todos: [
+    {
+      content: "EPIC: [Epic Name] - Business analysis and validation",
+      status: "in_progress",
+      activeForm: "Analyzing epic business requirements"
+    },
+    {
+      content: "Conduct stakeholder interviews for epic requirements",
+      status: "pending",
+      activeForm: "Conducting stakeholder interviews"
+    },
+    {
+      content: "Define success criteria and acceptance criteria",
+      status: "pending",
+      activeForm: "Defining success criteria"
+    }
+  ]
+})
+```
 
 **Step 1.1: Business Context Analysis**
 
@@ -89,6 +173,68 @@ priority: critical
 ```
 
 ### Phase 2: Technical Architecture Planning (2-3 days)
+
+#### TodoWrite Integration for Phase 2
+
+**product-manager** completes Epic validation and creates Feature-level TODOs:
+
+```javascript
+// Phase 1 completion handoff to Phase 2
+TodoWrite({
+  todos: [
+    {
+      content: "EPIC: [Epic Name] - Business analysis and validation",
+      status: "completed",
+      activeForm: "Analyzing epic business requirements"
+    },
+    {
+      content: "FEATURE: Technical architecture planning and review",
+      status: "in_progress",
+      activeForm: "Planning technical architecture"
+    },
+    {
+      content: "FEATURE: Security architecture and compliance review",
+      status: "pending",
+      activeForm: "Reviewing security architecture"
+    },
+    {
+      content: "FEATURE: Data architecture and integration planning",
+      status: "pending",
+      activeForm: "Planning data architecture"
+    }
+  ]
+})
+```
+
+**software-architect** breaks down architecture planning into Tasks:
+
+```javascript
+// Architecture task breakdown
+TodoWrite({
+  todos: [
+    {
+      content: "TASK: Analyze system architecture impact for epic",
+      status: "in_progress",
+      activeForm: "Analyzing architecture impact"
+    },
+    {
+      content: "TASK: Create component modification plan",
+      status: "pending",
+      activeForm: "Creating component modification plan"
+    },
+    {
+      content: "TASK: Define integration requirements",
+      status: "pending",
+      activeForm: "Defining integration requirements"
+    },
+    {
+      content: "TASK: Coordinate with security and data teams",
+      status: "pending",
+      activeForm: "Coordinating with other teams"
+    }
+  ]
+})
+```
 
 **Step 2.1: System Architecture Analysis**
 
