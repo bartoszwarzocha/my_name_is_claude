@@ -123,11 +123,62 @@
 
 ---
 
-## 🔥 **CRITICAL PRIORITY - ESSENTIAL CAPABILITIES**
+## 🔥 **CRITICAL PRIORITY - FRAMEWORK 2.2.0 IMPROVEMENTS**
 
-*No critical capabilities currently missing - Framework is enterprise complete*
+*Critical enhancements for improved usability, organization, and developer experience*
 
-**Status:** ✅ All critical enterprise capabilities have been implemented
+### 🔥 **EXTREME PRIORITY - Framework Organization & Usability**
+
+#### **Framework Structure & Organization**
+- [ ] **Agent Directory Restructure** - Organize 36 agents into logical subdirectories for better navigation and clarity
+- [ ] **Project Initialization Reorganization** - Move project initialization prompts back to dedicated `/init/` directory for improved structure clarity
+- [ ] **MCP Tools Script Enhancement** - Complete overhaul of `mcp_tools.sh` for consistency, reliability, and comprehensive tool integration
+- [ ] **Documentation & Assets Update** - Update all docs and visual assets to reflect new 36-agent architecture and enterprise capabilities
+
+#### **Intelligent Project Workflow Generation**
+- [ ] **Project-Specific Workflow Generator** - Develop script/prompt that analyzes project type and generates customized workflow instructions
+- [ ] **Agent Selection Optimization** - Intelligent agent subset recommendation based on project characteristics and requirements
+- [ ] **Phase-Based Development Guide** - Generate specific development phases and prompt sequences for detected project types
+- [ ] **Technology Stack Workflow Adaptation** - Customize workflow patterns based on detected technology stack and project scale
+
+#### **Developer Experience Enhancement**
+- [ ] **Interactive Framework Setup** - Guided setup wizard with project detection and automatic configuration
+  ```
+  Implementation Options Analysis:
+
+  Option 1: Shell Script (.sh) - RECOMMENDED
+  ✅ Natywna integracja z obecnym mcp_tools.sh
+  ✅ Zero dependencies - działa wszędzie gdzie jest framework
+  ✅ Prosta dystrybucja - jeden plik, chmod +x i gotowe
+  ✅ Cross-platform - Linux, macOS, Windows (WSL)
+  ✅ Konsystencja z obecną architekturą (hooks/, mcp_tools.sh)
+
+  Option 2: Python Script (.py)
+  ✅ Bogata interaktywność - colored output, progress bars
+  ✅ JSON parsing - łatwiejsze operacje na CLAUDE.md
+  ✅ Better error handling i extensibility
+  ❌ Python dependency - wymaga Python 3.6+
+  ❌ Package management complexity
+
+  Option 3: Hybrid Approach
+  Shell wrapper + Python core dla best of both worlds
+
+  Proposed Structure (Shell-based):
+  .claude/setup/
+  ├── framework_wizard.sh     # Main wizard
+  ├── project_detector.sh     # Technology detection
+  ├── agent_selector.sh       # Agent recommendation
+  └── templates/              # CLAUDE.md templates
+  ```
+- [ ] **Agent Discovery System** - Improved agent browsing and selection interface with capability-based filtering
+- [ ] **Prompt Usage Analytics** - Track most-used prompts and agent combinations for optimization insights
+- [ ] **Quick Start Templates** - Pre-configured project templates for common technology stacks and business domains
+
+#### **Advanced Integration & Automation**
+- [ ] **Enhanced MCP Integration** - Improved Serena, Context7, Playwright integration with error handling and fallbacks
+- [ ] **Automated Quality Validation** - Framework health checks and validation scripts for maintaining consistency
+- [ ] **Agent Performance Monitoring** - Track agent effectiveness and coordination patterns for optimization
+- [ ] **Configuration Migration Tools** - Tools for upgrading CLAUDE.md files and project configurations between framework versions
 
 ---
 

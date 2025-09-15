@@ -37,7 +37,8 @@
       "Bash(then find /mnt/e/AI/my_name_is_claude/.claude/prompts/agents -path \"*documentation*\" -name \"*.md\")",
       "Bash(else find /mnt/e/AI/my_name_is_claude/.claude/prompts/agents -path \"*$agent*\" -name \"*.md\")",
       "Bash(fi)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }
