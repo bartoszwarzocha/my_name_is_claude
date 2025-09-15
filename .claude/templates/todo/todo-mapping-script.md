@@ -40,10 +40,10 @@ if epic_management == true and business-analyst in epic_owners:
       - "Authentication response time < 200ms"
       - "99.9% authentication availability"
 
-    Estimated_Duration: "8-12 weeks"
-    Estimated_Features: "3-5 features"
-    Estimated_Tasks: "15-25 tasks"
-    Estimated_Subtasks: "60-120 subtasks"
+    Estimated_Duration: "weeks to months"
+    Estimated_Features: "multiple features"
+    Estimated_Tasks: "numerous tasks"
+    Estimated_Subtasks: "comprehensive subtasks"
 
   # Step 3: Handoff Protocol
   Epic_Handoff_to_Product_Manager:
@@ -114,7 +114,7 @@ if feature_breakdown == true and product-manager in epic_owners:
         - "Users can login with Google/GitHub OAuth2"
         - "SMS/Email MFA required for sensitive operations"
         - "Remember device for 30 days option"
-      Estimated_Duration: "2-3 weeks"
+      Estimated_Duration: "weeks"
       Priority: "Critical"
 
     Feature_2:
@@ -124,7 +124,7 @@ if feature_breakdown == true and product-manager in epic_owners:
         - "Users see list of active sessions with device/location"
         - "Users can terminate individual sessions"
         - "Real-time session activity notifications"
-      Estimated_Duration: "1-2 weeks"
+      Estimated_Duration: "weeks"
       Priority: "High"
 
   # Step 3: Technical Feasibility Coordination
@@ -474,11 +474,11 @@ Automation_Logic:
 
   if task_granularity == "minimal":
     # Reduce Subtask creation detail
-    Subtask_Count: "3-5 per Task"
+    Subtask_Count: "multiple per Task"
 
   if external_tools == "jira":
     # Add external sync todos
-    External_Sync: "Sync TODO status with Jira every 24h"
+    External_Sync: "Sync TODO status with Jira daily"
 ```
 
 ---

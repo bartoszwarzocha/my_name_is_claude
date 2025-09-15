@@ -31,7 +31,8 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.github.com)",
       "Bash(head:*)",
-      "Bash(tail:*)"
+      "Bash(tail:*)",
+      "Bash(sed:*)"
     ],
     "deny": []
   }

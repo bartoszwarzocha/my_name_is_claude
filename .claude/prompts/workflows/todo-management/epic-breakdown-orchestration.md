@@ -1,678 +1,122 @@
-# Epic Breakdown Orchestration
+# Epic Breakdown Orchestration and Hierarchical Task Management
 
-**Workflow Type: Epic to Feature/Task Decomposition**
-**Purpose: Systematically break down business epics into actionable development work**
+## 1. 🎯 FUNCTIONAL REQUIREMENTS
+
+Transform high-level business initiatives into structured development work through systematic Epic→Feature→Task→Subtask decomposition with integrated TodoWrite management. Ensure complete requirement coverage, appropriate sizing, clear ownership assignments, dependency identification, and real-time progress tracking across all framework agents while maintaining quality gates and stakeholder alignment.
+
+## 2. 🔄 HIGH-LEVEL ALGORITHMS
+
+### Phase 1: Epic Analysis and Business Context Establishment
+1. **Conduct comprehensive business analysis** - Analyze epic requirements, stakeholder needs, success criteria, and business impact assessment
+2. **Establish product strategy alignment** - Ensure epic alignment with product roadmap, user research data, and business objectives
+3. **Design user experience mapping** - Define user experience requirements, interaction patterns, and accessibility considerations
+4. **Implement epic validation and approval** - Validate epic scope with stakeholders and obtain formal approval for decomposition
+5. **Create TodoWrite Epic-level tracking** - Initialize hierarchical TODO management with Epic-level tasks and agent assignments
+
+### Phase 2: Technical Architecture Planning and Assessment
+1. **Analyze system architecture impact** - Evaluate how epic requirements affect existing system architecture and component design
+2. **Conduct security architecture review** - Assess security implications, compliance requirements, and threat modeling updates
+3. **Plan data architecture changes** - Design database modifications, data flow changes, and analytics implementation requirements
+4. **Create Feature-level TODO breakdown** - Decompose Epic into Features with TodoWrite tracking and agent coordination
+5. **Establish technical specification framework** - Define technical boundaries, integration requirements, and API contracts
+
+### Phase 3: Feature Decomposition and Specification Development
+1. **Identify and scope individual features** - Break down Epic into discrete Features with clear boundaries and success criteria
+2. **Create technical specifications per feature** - Define API contracts, database requirements, and integration specifications
+3. **Develop UX specifications for each feature** - Create wireframes, user flows, and interaction design specifications
+4. **Establish feature dependency mapping** - Identify inter-feature dependencies and critical path requirements
+5. **Initialize Task-level TodoWrite tracking** - Create Task-level TODO hierarchy with technical component breakdown
+
+### Phase 4: Task Breakdown, Assignment, and Coordination Setup
+1. **Create development task breakdown** - Generate implementation tasks for api-engineer, frontend-engineer, and data-engineer
+2. **Design quality and security task structure** - Define testing, security validation, and quality assurance tasks
+3. **Plan infrastructure and deployment tasks** - Create deployment, monitoring, and operational readiness tasks
+4. **Assign tasks with capacity consideration** - Allocate tasks based on agent expertise, capacity, and project timeline constraints
+5. **Establish Subtask-level coordination** - Initialize detailed implementation tracking with dependencies and progress monitoring
+
+## 3. ✅ VALIDATION CRITERIA
+
+### Epic Decomposition Completeness and Quality
+- **Complete requirement coverage achieved**: All epic requirements traced through to specific implementation tasks
+- **Appropriate task sizing validated**: Epic→Feature→Task→Subtask hierarchy follows framework sizing guidelines and agent capacity
+- **Clear ownership assignments established**: Every task level has designated agent ownership with accountability and success criteria
+- **Comprehensive dependency mapping complete**: All inter-task dependencies identified with critical path analysis and blocking risk assessment
+- **TodoWrite integration functional**: Hierarchical TODO management operational across all agents with real-time progress tracking
+
+### Technical Architecture and Quality Planning Success
+- **Architecture impact analysis thorough**: System changes properly analyzed with component modification plans and integration requirements
+- **Security and compliance requirements addressed**: Security architecture review complete with threat modeling and compliance validation
+- **Data architecture changes planned**: Database modifications, analytics requirements, and data flow changes properly specified
+- **Quality gates defined at all levels**: Testing, validation, and acceptance criteria established for Epic, Feature, Task, and Subtask levels
+- **Technical specifications complete**: API contracts, database schemas, and integration requirements fully documented
+
+### Coordination and Execution Readiness Verification
+- **Agent coordination protocols established**: Clear handoff procedures, communication patterns, and collaboration workflows defined
+- **Resource allocation optimized**: Task assignments balance agent capacity, expertise, and project timeline requirements
+- **Progress tracking mechanisms operational**: Real-time visibility into task completion, blocking issues, and milestone achievement
+- **Stakeholder alignment maintained**: Epic decomposition maintains business value alignment with regular validation checkpoints
+- **Execution readiness confirmed**: All necessary specifications, dependencies, and resources available for implementation commencement
+
+## 4. 📚 USAGE EXAMPLES
+
+### Enterprise SaaS Platform User Authentication Overhaul
+**Epic Context**: Complete authentication system modernization with OAuth2, multi-factor authentication, and enhanced security
+**Breakdown Approach**:
+- Epic Level: "User Authentication System Overhaul" with business-analyst leading stakeholder requirements and success criteria
+- Feature Level: OAuth2 Implementation, Multi-Factor Authentication, User Profile Management, Session Management, Authentication Analytics
+- Task Level: OAuth2 Authorization Server Setup, JWT Token Management, MFA Integration, UI Component Development, Database Schema Updates
+- Subtask Level: Specific implementation tasks distributed across api-engineer (authentication endpoints), frontend-engineer (login UI), data-engineer (user schema), security-engineer (security configuration)
+
+### E-commerce Platform Mobile Payment Integration
+**Epic Context**: Mobile payment system with Apple Pay, Google Pay, and cryptocurrency support for enhanced checkout experience
+**Breakdown Approach**:
+- Epic Level: "Mobile Payment Integration Platform" with product-manager driving user experience requirements and business case
+- Feature Level: Apple Pay Integration, Google Pay Support, Cryptocurrency Payment Gateway, Payment Security Enhancement, Mobile Checkout Optimization
+- Task Level: Payment SDK integration, mobile UI components, payment validation services, fraud detection implementation
+- Subtask Level: Platform-specific implementations with frontend-engineer (mobile payment UI), api-engineer (payment processing), security-engineer (fraud detection)
+
+### Financial Services Regulatory Compliance Update
+**Epic Context**: PCI DSS 4.0 compliance implementation with audit trail expansion and automated reporting
+**Breakdown Approach**:
+- Epic Level: "PCI DSS 4.0 Compliance Implementation" with security-engineer leading regulatory analysis and compliance planning
+- Feature Level: Enhanced Data Encryption, Audit Trail Expansion, Access Control Updates, Automated Compliance Reporting, Security Monitoring Enhancement
+- Task Level: Encryption algorithm updates, audit logging system design, role-based access control implementation, compliance dashboard development
+- Subtask Level: Specific compliance tasks with security-engineer (encryption), data-engineer (audit logs), frontend-engineer (compliance dashboard)
+
+### Open Source Library API Version Migration
+**Epic Context**: Breaking API changes for version 3.0 with backwards compatibility tools and community migration support
+**Breakdown Approach**:
+- Epic Level: "API v3.0 Migration with Community Support" with product-manager coordinating community impact and migration strategy
+- Feature Level: New API Design, Legacy Compatibility Layer, Migration Tooling, Documentation Overhaul, Community Communication
+- Task Level: API contract definition, compatibility shim development, automated migration scripts, comprehensive documentation updates
+- Subtask Level: Implementation distributed across api-engineer (new API), qa-engineer (migration testing), reviewer (documentation validation)
+
+### Healthcare Application HIPAA Compliance Enhancement
+**Epic Context**: Enhanced patient data protection with advanced encryption, access logging, and compliance automation
+**Breakdown Approach**:
+- Epic Level: "HIPAA Compliance Enhancement Initiative" with security-engineer and business-analyst coordinating regulatory requirements
+- Feature Level: Advanced Patient Data Encryption, Comprehensive Access Logging, Automated Compliance Monitoring, Staff Training System, Audit Preparation Tools
+- Task Level: Encryption key management, access control implementation, compliance dashboard design, training content development
+- Subtask Level: Security implementations with security-engineer (encryption), data-engineer (access logs), frontend-engineer (compliance UI)
 
 ---
 
-## 🎯 Mission
-
-Transform high-level business initiatives into structured development work through systematic decomposition with integrated TODO management, ensuring complete coverage, proper sizing, clear ownership, and real-time progress tracking using TodoWrite tool.
-
-## ✅ TODO Management Integration
-
-### TodoWrite Tool Usage for Epic Breakdown
-
-This orchestration workflow integrates Claude Code's TodoWrite tool for real-time task management throughout the epic breakdown process. Each agent uses TodoWrite to:
-
-1. **Create hierarchical TODOs** following Epic → Feature → Task → Subtask structure
-2. **Track progress** with `status: in_progress/completed/pending`
-3. **Coordinate handoffs** between agents through TODO status updates
-4. **Maintain visibility** into overall epic breakdown progress
-
-### Agent TODO Responsibilities in Epic Breakdown
-
-| **Agent** | **TODO Level** | **Responsibility** |
-|-----------|----------------|-------------------|
-| **business-analyst** | Epic | Business requirements, stakeholder analysis, epic validation |
-| **product-manager** | Feature | Feature scoping, user stories, MVP prioritization |
-| **software-architect** | Task | Technical breakdown, architecture planning, dependency mapping |
-| **Implementation Agents** | Subtask | Concrete development tasks, estimates, technical specifications |
-
-### TodoWrite Integration Pattern
-
-Each agent follows this TODO management pattern:
-
-```javascript
-// Agent starts work on epic breakdown
-TodoWrite({
-  todos: [
-    {
-      content: "Analyze business requirements for [Epic Name]",
-      status: "in_progress",
-      activeForm: "Analyzing business requirements"
-    },
-    {
-      content: "Create feature breakdown from business analysis",
-      status: "pending",
-      activeForm: "Creating feature breakdown"
-    }
-  ]
-})
-
-// Agent completes current work and hands off to next agent
-TodoWrite({
-  todos: [
-    {
-      content: "Analyze business requirements for [Epic Name]",
-      status: "completed",
-      activeForm: "Analyzing business requirements"
-    },
-    {
-      content: "Create feature breakdown from business analysis",
-      status: "in_progress",
-      activeForm: "Creating feature breakdown"
-    }
-  ]
-})
-```
-
-## 📋 Epic Breakdown Process
-
-### Phase 1: Epic Analysis and Scoping (1-2 days)
-
-#### TodoWrite Integration for Phase 1
-
-At phase start, **business-analyst** creates Epic-level TODOs:
-
-```javascript
-TodoWrite({
-  todos: [
-    {
-      content: "EPIC: [Epic Name] - Business analysis and validation",
-      status: "in_progress",
-      activeForm: "Analyzing epic business requirements"
-    },
-    {
-      content: "Conduct stakeholder interviews for epic requirements",
-      status: "pending",
-      activeForm: "Conducting stakeholder interviews"
-    },
-    {
-      content: "Define success criteria and acceptance criteria",
-      status: "pending",
-      activeForm: "Defining success criteria"
-    }
-  ]
-})
-```
-
-**Step 1.1: Business Context Analysis**
-
-```yaml
-agent: business-analyst
-prompt: epic-business-analysis.md  # To be created
-parallel_with: []
-inputs:
-  - epic_description
-  - business_requirements_document
-  - stakeholder_interviews
-outputs:
-  - business_context_analysis
-  - user_impact_assessment
-  - success_criteria_definition
-duration: 4 hours
-priority: high
-```
-
-**Step 1.2: Product Strategy Alignment**
-
-```yaml
-agent: product-manager
-prompt: epic-product-strategy-alignment.md  # To be created
-parallel_with: [Step 1.3]
-depends_on: [Step 1.1]
-inputs:
-  - business_context_analysis
-  - product_roadmap
-  - user_research_data
-outputs:
-  - product_strategy_alignment
-  - user_story_themes
-  - mvp_scope_recommendations
-duration: 3 hours
-priority: high
-```
-
-**Step 1.3: User Experience Mapping**
-
-```yaml
-agent: ux-designer
-prompt: epic-user-experience-mapping.md  # To be created
-parallel_with: [Step 1.2]
-depends_on: [Step 1.1]
-inputs:
-  - business_context_analysis
-  - user_personas
-  - current_user_journeys
-outputs:
-  - user_experience_requirements
-  - interaction_design_needs
-  - accessibility_requirements
-duration: 4 hours
-priority: high
-```
-
-**Step 1.4: Epic Validation and Approval**
-
-```yaml
-agent: reviewer
-prompt: epic-validation-and-approval.md  # To be created
-parallel_with: []
-depends_on: [Step 1.2, Step 1.3]
-inputs:
-  - business_context_analysis
-  - product_strategy_alignment
-  - user_experience_requirements
-outputs:
-  - validated_epic_scope
-  - approved_success_criteria
-  - stakeholder_sign_off
-duration: 2 hours
-priority: critical
-```
-
-### Phase 2: Technical Architecture Planning (2-3 days)
-
-#### TodoWrite Integration for Phase 2
-
-**product-manager** completes Epic validation and creates Feature-level TODOs:
-
-```javascript
-// Phase 1 completion handoff to Phase 2
-TodoWrite({
-  todos: [
-    {
-      content: "EPIC: [Epic Name] - Business analysis and validation",
-      status: "completed",
-      activeForm: "Analyzing epic business requirements"
-    },
-    {
-      content: "FEATURE: Technical architecture planning and review",
-      status: "in_progress",
-      activeForm: "Planning technical architecture"
-    },
-    {
-      content: "FEATURE: Security architecture and compliance review",
-      status: "pending",
-      activeForm: "Reviewing security architecture"
-    },
-    {
-      content: "FEATURE: Data architecture and integration planning",
-      status: "pending",
-      activeForm: "Planning data architecture"
-    }
-  ]
-})
-```
-
-**software-architect** breaks down architecture planning into Tasks:
-
-```javascript
-// Architecture task breakdown
-TodoWrite({
-  todos: [
-    {
-      content: "TASK: Analyze system architecture impact for epic",
-      status: "in_progress",
-      activeForm: "Analyzing architecture impact"
-    },
-    {
-      content: "TASK: Create component modification plan",
-      status: "pending",
-      activeForm: "Creating component modification plan"
-    },
-    {
-      content: "TASK: Define integration requirements",
-      status: "pending",
-      activeForm: "Defining integration requirements"
-    },
-    {
-      content: "TASK: Coordinate with security and data teams",
-      status: "pending",
-      activeForm: "Coordinating with other teams"
-    }
-  ]
-})
-```
-
-**Step 2.1: System Architecture Analysis**
-
-```yaml
-agent: software-architect
-prompt: epic-architecture-planning.md  # To be created
-parallel_with: [Step 2.2]
-depends_on: [Phase 1 Complete]
-inputs:
-  - validated_epic_scope
-  - current_system_architecture
-  - technical_constraints
-outputs:
-  - architecture_impact_analysis
-  - component_modification_plan
-  - integration_requirements
-duration: 6 hours
-priority: high
-```
-
-**Step 2.2: Security Architecture Review**
-
-```yaml
-agent: security-engineer
-prompt: epic-security-planning.md  # To be created
-parallel_with: [Step 2.1, Step 2.3]
-depends_on: [Phase 1 Complete]
-inputs:
-  - validated_epic_scope
-  - current_security_architecture
-  - compliance_requirements
-outputs:
-  - security_impact_assessment
-  - security_requirements_definition
-  - threat_modeling_updates
-duration: 4 hours
-priority: high
-```
-
-**Step 2.3: Data Architecture Planning**
-
-```yaml
-agent: data-engineer
-prompt: epic-data-architecture-planning.md  # To be created
-parallel_with: [Step 2.2]
-depends_on: [Step 2.1 - Preliminary Results]
-inputs:
-  - architecture_impact_analysis
-  - current_data_models
-  - analytics_requirements
-outputs:
-  - data_architecture_changes
-  - database_modification_plan
-  - analytics_implementation_plan
-duration: 4 hours
-priority: high
-```
-
-### Phase 3: Feature Decomposition (1-2 days)
-
-**Step 3.1: Feature Identification and Scoping**
-
-```yaml
-agent: software-architect
-prompt: feature-identification-and-scoping.md  # To be created
-parallel_with: []
-depends_on: [Phase 2 Complete]
-inputs:
-  - architecture_impact_analysis
-  - user_experience_requirements
-  - security_requirements_definition
-outputs:
-  - feature_list_with_boundaries
-  - feature_dependency_map
-  - feature_priority_ranking
-duration: 4 hours
-priority: critical
-```
-
-**Step 3.2: Feature Technical Specification**
-
-```yaml
-agent: software-architect
-prompt: feature-technical-specification.md  # To be created
-parallel_with: [Step 3.3]
-depends_on: [Step 3.1]
-inputs:
-  - feature_list_with_boundaries
-  - architecture_impact_analysis
-  - integration_requirements
-outputs:
-  - technical_specifications_per_feature
-  - api_contracts_definition
-  - database_schema_requirements
-duration: 6 hours
-priority: high
-```
-
-**Step 3.3: Feature UX Specification**
-
-```yaml
-agent: ux-designer
-prompt: feature-ux-specification.md  # To be created
-parallel_with: [Step 3.2]
-depends_on: [Step 3.1]
-inputs:
-  - feature_list_with_boundaries
-  - user_experience_requirements
-  - interaction_design_needs
-outputs:
-  - ux_specifications_per_feature
-  - wireframes_and_mockups
-  - user_flow_definitions
-duration: 8 hours
-priority: high
-```
-
-### Phase 4: Task Breakdown and Assignment (1 day)
-
-**Step 4.1: Development Task Creation**
-
-```yaml
-agents: [api-engineer, frontend-engineer, data-engineer]
-prompt: development-task-breakdown.md  # To be created
-parallel_with: [Step 4.2]
-depends_on: [Step 3.2, Step 3.3]
-inputs:
-  - technical_specifications_per_feature
-  - ux_specifications_per_feature
-  - development_standards
-outputs:
-  - implementation_task_list
-  - task_effort_estimates
-  - technical_dependency_mapping
-duration: 4 hours
-priority: high
-```
-
-**Step 4.2: Quality and Security Task Creation**
-
-```yaml
-agents: [qa-engineer, security-engineer]
-prompt: quality-security-task-breakdown.md  # To be created
-parallel_with: [Step 4.1]
-depends_on: [Step 3.2, Step 3.3]
-inputs:
-  - technical_specifications_per_feature
-  - security_requirements_definition
-  - quality_standards
-outputs:
-  - testing_task_list
-  - security_implementation_tasks
-  - quality_gate_definitions
-duration: 3 hours
-priority: high
-```
-
-**Step 4.3: Infrastructure and Deployment Task Creation**
-
-```yaml
-agent: deployment-engineer
-prompt: infrastructure-deployment-task-breakdown.md  # To be created
-parallel_with: []
-depends_on: [Step 4.1, Step 4.2]
-inputs:
-  - implementation_task_list
-  - infrastructure_requirements
-  - deployment_strategies
-outputs:
-  - infrastructure_task_list
-  - deployment_task_list
-  - monitoring_setup_tasks
-duration: 2 hours
-priority: medium
-```
-
-**Step 4.4: Task Assignment and Scheduling**
-
-```yaml
-agent: reviewer
-prompt: task-assignment-and-scheduling.md  # To be created
-parallel_with: []
-depends_on: [Step 4.1, Step 4.2, Step 4.3]
-inputs:
-  - all_task_lists
-  - team_capacity_data
-  - project_timeline_constraints
-outputs:
-  - assigned_task_hierarchy
-  - development_schedule
-  - resource_allocation_plan
-duration: 2 hours
-priority: critical
-```
-
-## 🎯 Detailed Task Breakdown Templates
-
-### Epic → Feature Mapping
-
-```yaml
-epic_to_feature_mapping:
-  epic: "User Authentication System Overhaul"
-  
-  features:
-    - name: "OAuth2 Implementation"
-      scope: "Replace legacy auth with OAuth2"
-      owner: api-engineer
-      estimated_duration: "2 weeks"
-      dependencies: []
-      
-    - name: "Multi-Factor Authentication"
-      scope: "Add MFA support for enhanced security"
-      owner: security-engineer
-      estimated_duration: "1.5 weeks"
-      dependencies: ["OAuth2 Implementation"]
-      
-    - name: "User Profile Management"
-      scope: "Modern user profile interface"
-      owner: frontend-engineer
-      estimated_duration: "1 week"
-      dependencies: ["OAuth2 Implementation"]
-      
-    - name: "Session Management"
-      scope: "Advanced session handling and security"
-      owner: api-engineer
-      estimated_duration: "1 week"
-      dependencies: ["OAuth2 Implementation", "Multi-Factor Authentication"]
-      
-    - name: "Authentication Analytics"
-      scope: "Login analytics and security monitoring"
-      owner: data-engineer
-      estimated_duration: "0.5 weeks"
-      dependencies: ["OAuth2 Implementation"]
-```
-
-### Feature → Task Breakdown
-
-```yaml
-feature_to_task_breakdown:
-  feature: "OAuth2 Implementation"
-  
-  api_tasks:
-    - name: "OAuth2 Authorization Server Setup"
-      agent: api-engineer
-      estimated_hours: 16
-      priority: critical
-      dependencies: []
-      
-    - name: "JWT Token Management"
-      agent: api-engineer
-      estimated_hours: 12
-      priority: high
-      dependencies: ["OAuth2 Authorization Server Setup"]
-      
-    - name: "Client Credential Management"
-      agent: api-engineer
-      estimated_hours: 8
-      priority: high
-      dependencies: ["OAuth2 Authorization Server Setup"]
-      
-    - name: "Token Refresh Mechanism"
-      agent: api-engineer
-      estimated_hours: 6
-      priority: medium
-      dependencies: ["JWT Token Management"]
-      
-  frontend_tasks:
-    - name: "OAuth2 Login Flow UI"
-      agent: frontend-engineer
-      estimated_hours: 12
-      priority: high
-      dependencies: ["OAuth2 Authorization Server Setup"]
-      
-    - name: "Token Storage and Management"
-      agent: frontend-engineer
-      estimated_hours: 8
-      priority: high
-      dependencies: ["JWT Token Management"]
-      
-    - name: "Authenticated Route Guards"
-      agent: frontend-engineer
-      estimated_hours: 6
-      priority: medium
-      dependencies: ["Token Storage and Management"]
-      
-  data_tasks:
-    - name: "User Authentication Schema"
-      agent: data-engineer
-      estimated_hours: 4
-      priority: high
-      dependencies: []
-      
-    - name: "OAuth2 Token Storage Schema"
-      agent: data-engineer
-      estimated_hours: 3
-      priority: high
-      dependencies: ["User Authentication Schema"]
-      
-  security_tasks:
-    - name: "OAuth2 Security Configuration"
-      agent: security-engineer
-      estimated_hours: 8
-      priority: critical
-      dependencies: ["OAuth2 Authorization Server Setup"]
-      
-    - name: "Token Security Validation"
-      agent: security-engineer
-      estimated_hours: 6
-      priority: high
-      dependencies: ["JWT Token Management"]
-      
-  testing_tasks:
-    - name: "OAuth2 Integration Tests"
-      agent: qa-engineer
-      estimated_hours: 12
-      priority: high
-      dependencies: ["OAuth2 Authorization Server Setup", "OAuth2 Login Flow UI"]
-      
-    - name: "Security Penetration Testing"
-      agent: qa-engineer
-      estimated_hours: 8
-      priority: high
-      dependencies: ["OAuth2 Security Configuration"]
-      
-  deployment_tasks:
-    - name: "OAuth2 Environment Configuration"
-      agent: deployment-engineer
-      estimated_hours: 4
-      priority: medium
-      dependencies: ["OAuth2 Authorization Server Setup"]
-      
-    - name: "Authentication Service Deployment"
-      agent: deployment-engineer
-      estimated_hours: 6
-      priority: high
-      dependencies: ["OAuth2 Environment Configuration"]
-```
-
-## 📊 Automated Breakdown Rules
-
-### Task Sizing Guidelines
-
-```yaml
-task_sizing_rules:
-  epic:
-    min_duration: "4 weeks"
-    max_duration: "12 weeks"
-    min_features: 3
-    max_features: 8
-    
-  feature:
-    min_duration: "3 days"
-    max_duration: "3 weeks"
-    min_tasks: 5
-    max_tasks: 20
-    
-  task:
-    min_duration: "2 hours"
-    max_duration: "3 days"
-    max_subtasks: 5
-    
-  auto_split_triggers:
-    epic_too_large: "duration > 12 weeks OR features > 8"
-    feature_too_large: "duration > 3 weeks OR tasks > 20"
-    task_too_large: "duration > 3 days OR complexity > 8"
-```
-
-### Dependency Detection Rules
-
-```yaml
-dependency_detection:
-  automatic_dependencies:
-    database_schema: 
-      - blocks: ["api_endpoints", "data_migration"]
-      - required_for: "any database operations"
-      
-    authentication_system:
-      - blocks: ["user_management", "protected_endpoints"]
-      - required_for: "any user-specific features"
-      
-    api_contracts:
-      - blocks: ["frontend_integration", "third_party_integration"]
-      - required_for: "any API consumers"
-      
-    design_system:
-      - blocks: ["ui_components", "styling"]
-      - required_for: "consistent UI implementation"
-```
-
-## 📈 Success Metrics
-
-### Breakdown Quality Metrics
-
-```yaml
-quality_metrics:
-  completeness:
-    - all_epic_requirements_covered: target = 100%
-    - feature_boundary_clarity: target > 90%
-    - task_acceptance_criteria_defined: target = 100%
-    
-  sizing_accuracy:
-    - task_estimation_variance: target < 25%
-    - feature_completion_predictability: target > 80%
-    - epic_timeline_accuracy: target > 75%
-    
-  dependency_management:
-    - dependency_identification_accuracy: target > 95%
-    - critical_path_optimization: target > 85%
-    - parallel_work_maximization: target > 70%
-```
-
-### Team Productivity Impact
-
-```yaml
-productivity_metrics:
-  development_efficiency:
-    - reduced_rework_rate: target < 10%
-    - faster_feature_delivery: target +25%
-    - improved_story_completion_rate: target > 90%
-    
-  collaboration_effectiveness:
-    - cross_team_dependency_clarity: target > 95%
-    - handoff_efficiency: target < 2h delay
-    - stakeholder_satisfaction: target > 4.5/5
-```
-
-## 📤 Final Deliverables
-
-Upon completion of epic breakdown:
-
-- ✅ **Complete Task Hierarchy** with Epic → Features → Tasks → Subtasks
-- ✅ **Agent Assignments** with clear ownership and accountability
-- ✅ **Dependency Mapping** with critical path identification
-- ✅ **Timeline Estimates** with realistic scheduling and milestones
-- ✅ **Quality Gates** with acceptance criteria and definitions of done
-- ✅ **Resource Allocation** with team capacity and workload balancing
-- ✅ **Progress Tracking** setup with metrics and monitoring dashboards
-
----
-
-*Systematic epic breakdown ensures comprehensive coverage, proper sizing, and clear execution pathways for complex business initiatives.*
+## 🎯 EXECUTION APPROACH
+
+**Systematic Epic Breakdown Methodology**:
+1. **Business-value driven decomposition** - Start with business requirements and user value to ensure technical work aligns with objectives
+2. **Progressive refinement strategy** - Begin with high-level Epic scope, then progressively refine into Features, Tasks, and Subtasks
+3. **Agent expertise utilization** - Assign breakdown responsibilities based on agent competencies and domain knowledge
+4. **Dependency-aware planning** - Identify and plan for dependencies early to minimize blocking issues during execution
+
+**TodoWrite Integration Strategy**:
+- **Hierarchical TODO creation** - Use TodoWrite at every level (Epic→Feature→Task→Subtask) with appropriate agent ownership
+- **Progressive status tracking** - Track progress through pending→in_progress→completed status transitions with meaningful activeForm descriptions
+- **Cross-agent coordination** - Use TODO status updates to coordinate handoffs between agents and maintain execution visibility
+- **Quality gate integration** - Incorporate validation checkpoints into TODO workflows to ensure quality throughout decomposition
+
+**Quality Assurance and Risk Management**:
+- **Sizing validation** - Ensure Epic, Feature, Task, and Subtask sizing follows framework guidelines for agent capacity and delivery timelines
+- **Completeness verification** - Validate that decomposition covers all Epic requirements without gaps or overlaps
+- **Dependency risk mitigation** - Identify critical dependencies early and plan mitigation strategies for potential blocking issues
+- **Stakeholder alignment maintenance** - Regular validation checkpoints ensure decomposition maintains business value alignment throughout process

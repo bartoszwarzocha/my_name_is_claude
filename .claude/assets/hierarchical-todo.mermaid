@@ -1,0 +1,58 @@
+graph TD
+    A[📋 EPIC LEVEL<br/>4-12 weeks<br/>business-analyst ownership] --> A1[Epic: User Authentication System Overhaul]
+    A --> A2[Epic: Advanced Analytics Dashboard]
+    A --> A3[Epic: Mobile Application Development]
+
+    A1 --> B[🎯 FEATURE LEVEL<br/>1-3 weeks<br/>product-manager ownership]
+
+    B --> B1[Feature: OAuth2 Implementation]
+    B --> B2[Feature: Multi-Factor Authentication]
+    B --> B3[Feature: User Profile Management]
+
+    B1 --> C[⚙️ TASK LEVEL<br/>4 hours - 3 days<br/>software-architect ownership]
+
+    C --> C1[Task: JWT Token Management]
+    C --> C2[Task: OAuth2 Server Setup]
+    C --> C3[Task: MFA UI Components]
+
+    C1 --> D[🔧 SUBTASK LEVEL<br/>2-8 hours<br/>Implementation Agents]
+
+    D --> D1[Subtask: JWT Unit Tests<br/>frontend-engineer]
+    D --> D2[Subtask: Token Refresh Logic<br/>api-engineer]
+    D --> D3[Subtask: OAuth2 Client Config<br/>security-engineer]
+
+    %% TodoWrite Integration
+    E[📝 TodoWrite Tool Integration] --> E1[Session-Level TODO Management]
+    E1 --> E2[Mark exactly ONE task as 'in_progress']
+    E1 --> E3[Complete tasks immediately after finishing]
+    E1 --> E4[Use descriptive content & activeForm]
+
+    %% Agent Responsibilities
+    F[🤖 Agent TODO Responsibilities] --> F1[business-analyst: Epic creation & validation]
+    F --> F2[product-manager: Epic → Feature breakdown]
+    F --> F3[software-architect: Feature → Task decomposition]
+    F --> F4[Implementation agents: Task → Subtask execution]
+    F --> F5[qa + security + reviewer: Cross-level validation]
+
+    %% Configuration
+    G[⚙️ CLAUDE.md Configuration] --> G1[todo_management_enabled: true]
+    G --> G2[todo_hierarchy_level: hierarchical]
+    G --> G3[auto_task_creation: true]
+    G --> G4[agent_coordination: true]
+
+    %% Styling
+    classDef epicBox fill:#ffcdd2,stroke:#d32f2f,stroke-width:3px,color:#b71c1c
+    classDef featureBox fill:#c8e6c9,stroke:#388e3c,stroke-width:2px,color:#2e7d32
+    classDef taskBox fill:#bbdefb,stroke:#1976d2,stroke-width:2px,color:#0d47a1
+    classDef subtaskBox fill:#ffe0b2,stroke:#f57c00,stroke-width:2px,color:#e65100
+    classDef todoBox fill:#e1bee7,stroke:#8e24aa,stroke-width:2px,color:#6a1b9a
+    classDef agentBox fill:#fff3e0,stroke:#ff9800,stroke-width:1px,color:#f57c00
+    classDef configBox fill:#e0f2f1,stroke:#00695c,stroke-width:2px,color:#004d40
+
+    class A,A1,A2,A3 epicBox
+    class B,B1,B2,B3 featureBox
+    class C,C1,C2,C3 taskBox
+    class D,D1,D2,D3 subtaskBox
+    class E,E1,E2,E3,E4 todoBox
+    class F,F1,F2,F3,F4,F5 agentBox
+    class G,G1,G2,G3,G4 configBox

@@ -1,457 +1,211 @@
-# Agent Coordination Hooks - Production Automation Scripts
+# Agent Coordination Templates - Multi-Agent TODO Management
 
-**Purpose: Automated coordination protocols for seamless multi-agent TODO management and handoff automation**
+**Purpose: Coordination patterns for seamless multi-agent TODO management and handoff protocols**
 
 ---
 
 ## 🎯 Coordination System Overview
 
-### Hook Architecture
+### Agent Coordination Flow
 
 ```mermaid
 graph TD
     A[Agent Starts Work] --> B[Read CLAUDE.md Section 8]
-    B --> C[Initialize Coordination Hooks]
-    C --> D[Execute Agent-Specific TODO Logic]
-    D --> E[Update Progress & Coordinate]
-    E --> F[Trigger Handoff Hooks]
+    B --> C[Create Coordination TODOs]
+    C --> D[Execute Agent-Specific Work]
+    D --> E[Update Progress via TodoWrite]
+    E --> F[Create Handoff TODOs]
     F --> G[Next Agent Activation]
 ```
 
 ---
 
-## 📋 Hook Scripts for Production Deployment
+## 📋 TodoWrite Coordination Patterns
 
-### 1. **Agent Initialization Hook**
+### 1. **Agent Session Start Pattern**
 
-**File: `.claude/templates/todo/hooks/agent-init-hook.sh`**
+**Functional Approach: Initialize agent coordination via TodoWrite**
 
-```bash
-#!/bin/bash
-# Agent Initialization Hook - Auto-configure TODO behavior
+```typescript
+// Agent initialization TODO
+TodoWrite({
+  content: "Initialize [agent-name] coordination with CLAUDE.md configuration",
+  status: "in_progress",
+  activeForm: "Reading CLAUDE.md Section 8 and setting up coordination"
+});
 
-AGENT_NAME="$1"
-PROJECT_ROOT="$(pwd)"
-CLAUDE_MD="$PROJECT_ROOT/CLAUDE.md"
+// Configuration validation TODO
+TodoWrite({
+  content: "Validate TODO management configuration for [agent-name] session",
+  status: "pending",
+  activeForm: "Checking TODO hierarchy and coordination settings"
+});
 
-# Validate CLAUDE.md exists
-if [ ! -f "$CLAUDE_MD" ]; then
-    echo "❌ CLAUDE.md not found. Cannot initialize TODO management."
-    exit 1
-fi
-
-# Read TODO management configuration
-TODO_ENABLED=$(grep "todo_management_enabled:" "$CLAUDE_MD" | awk '{print $2}')
-TODO_HIERARCHY=$(grep "todo_hierarchy_level:" "$CLAUDE_MD" | awk '{print $2}')
-AGENT_COORDINATION=$(grep "agent_coordination:" "$CLAUDE_MD" | awk '{print $2}')
-SESSION_TODOS=$(grep "session_todos:" "$CLAUDE_MD" | awk '{print $2}')
-
-# Display configuration
-echo "🔧 Initializing TODO management for agent: $AGENT_NAME"
-echo "   - TODO Management: $TODO_ENABLED"
-echo "   - Hierarchy Level: $TODO_HIERARCHY"
-echo "   - Agent Coordination: $AGENT_COORDINATION"
-echo "   - Session TODOs: $SESSION_TODOS"
-
-# Create agent-specific TODO configuration
-AGENT_TODO_CONFIG="$PROJECT_ROOT/.claude/temp/agent-$AGENT_NAME-todo-config.json"
-mkdir -p "$PROJECT_ROOT/.claude/temp"
-
-cat > "$AGENT_TODO_CONFIG" << EOF
-{
-  "agent_name": "$AGENT_NAME",
-  "todo_management_enabled": $TODO_ENABLED,
-  "todo_hierarchy_level": "$TODO_HIERARCHY",
-  "agent_coordination": $AGENT_COORDINATION,
-  "session_todos": $SESSION_TODOS,
-  "initialized_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-  "project_root": "$PROJECT_ROOT"
-}
-EOF
-
-echo "✅ Agent $AGENT_NAME TODO configuration initialized"
-echo "📁 Config saved to: $AGENT_TODO_CONFIG"
+// Coordination readiness TODO
+TodoWrite({
+  content: "Establish coordination readiness for multi-agent workflow",
+  status: "pending",
+  activeForm: "Preparing for handoffs and progress coordination"
+});
 ```
 
-### 2. **Handoff Coordination Hook**
+**Usage: Agents use these patterns at session start to establish coordination**
 
-**File: `.claude/templates/todo/hooks/agent-handoff-hook.sh`**
+### 2. **Agent Handoff Pattern**
 
-```bash
-#!/bin/bash
-# Agent Handoff Hook - Automated task handoff between agents
+**Functional Approach: Seamless agent handoffs via TodoWrite coordination**
 
-SENDING_AGENT="$1"
-RECEIVING_AGENT="$2"
-WORK_ITEM="$3"
-DELIVERABLES="$4"
+```typescript
+// Sending agent completion
+TodoWrite({
+  content: "Handoff [work-item] to [receiving-agent] with deliverables",
+  status: "completed",
+  activeForm: "Completed [work-item] and prepared handoff to [receiving-agent]"
+});
 
-PROJECT_ROOT="$(pwd)"
-HANDOFF_LOG="$PROJECT_ROOT/.claude/temp/handoff-log.json"
+// Receiving agent acknowledgment
+TodoWrite({
+  content: "Received [work-item] from [sending-agent] - starting next phase",
+  status: "in_progress",
+  activeForm: "Starting work on [work-item] from [sending-agent]"
+});
 
-echo "🤝 Processing handoff: $SENDING_AGENT → $RECEIVING_AGENT"
-echo "📋 Work Item: $WORK_ITEM"
-echo "📦 Deliverables: $DELIVERABLES"
+// Requirements validation
+TodoWrite({
+  content: "Validate [work-item] requirements and deliverables",
+  status: "pending",
+  activeForm: "Validating requirements for [work-item]"
+});
 
-# Validate agents configuration
-SENDING_CONFIG="$PROJECT_ROOT/.claude/temp/agent-$SENDING_AGENT-todo-config.json"
-RECEIVING_CONFIG="$PROJECT_ROOT/.claude/temp/agent-$RECEIVING_AGENT-todo-config.json"
-
-if [ ! -f "$SENDING_CONFIG" ] || [ ! -f "$RECEIVING_CONFIG" ]; then
-    echo "❌ Agent configurations not found. Initialize agents first."
-    exit 1
-fi
-
-# Create handoff record
-HANDOFF_ID="handoff-$(date +%s)"
-TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-
-# Log handoff
-mkdir -p "$(dirname "$HANDOFF_LOG")"
-if [ ! -f "$HANDOFF_LOG" ]; then
-    echo "[]" > "$HANDOFF_LOG"
-fi
-
-# Add handoff record
-jq --arg id "$HANDOFF_ID" \
-   --arg timestamp "$TIMESTAMP" \
-   --arg sending "$SENDING_AGENT" \
-   --arg receiving "$RECEIVING_AGENT" \
-   --arg item "$WORK_ITEM" \
-   --arg deliverables "$DELIVERABLES" \
-   '. += [{
-     "handoff_id": $id,
-     "timestamp": $timestamp,
-     "sending_agent": $sending,
-     "receiving_agent": $receiving,
-     "work_item": $item,
-     "deliverables": $deliverables,
-     "status": "initiated"
-   }]' "$HANDOFF_LOG" > "$HANDOFF_LOG.tmp" && mv "$HANDOFF_LOG.tmp" "$HANDOFF_LOG"
-
-echo "✅ Handoff $HANDOFF_ID initiated and logged"
-
-# Generate TODO commands for receiving agent
-echo "📝 Suggested TodoWrite commands for $RECEIVING_AGENT:"
-echo
-echo "// Receive handoff"
-echo "TodoWrite({"
-echo "  content: \"Received $WORK_ITEM from $SENDING_AGENT - starting next phase\","
-echo "  status: \"in_progress\","
-echo "  activeForm: \"Starting work on $WORK_ITEM from $SENDING_AGENT\""
-echo "});"
-echo
-echo "// Validation todo"
-echo "TodoWrite({"
-echo "  content: \"Validate $WORK_ITEM requirements and deliverables\","
-echo "  status: \"pending\","
-echo "  activeForm: \"Validating requirements for $WORK_ITEM\""
-echo "});"
+// Coordination confirmation
+TodoWrite({
+  content: "Confirm handoff understanding with [sending-agent]",
+  status: "pending",
+  activeForm: "Coordinating with [sending-agent] for clarifications"
+});
 ```
 
-### 3. **Progress Synchronization Hook**
+**Usage: Standard pattern for all agent-to-agent work handoffs**
 
-**File: `.claude/templates/todo/hooks/progress-sync-hook.sh`**
+### 3. **Progress Tracking Pattern**
 
-```bash
-#!/bin/bash
-# Progress Synchronization Hook - Automated progress tracking and reporting
+**Functional Approach: Progress synchronization via TodoWrite updates**
 
-PROJECT_ROOT="$(pwd)"
-CLAUDE_MD="$PROJECT_ROOT/CLAUDE.md"
-PROGRESS_REPORT="$PROJECT_ROOT/.claude/temp/progress-report.json"
+```typescript
+// Daily progress update
+TodoWrite({
+  content: "Daily progress: [agent-work] status and coordination update",
+  status: "completed",
+  activeForm: "Reporting daily progress for [agent-name] activities"
+});
 
-# Read progress tracking configuration
-PROGRESS_TRACKING=$(grep "progress_tracking:" "$CLAUDE_MD" | awk '{print $2}')
-DAILY_STANDUPS=$(grep "daily_standups:" "$CLAUDE_MD" | awk '{print $2}')
-WEEKLY_SUMMARIES=$(grep "weekly_summaries:" "$CLAUDE_MD" | awk '{print $2}')
+// Cross-agent progress coordination
+TodoWrite({
+  content: "Coordinate progress status with dependent agents",
+  status: "pending",
+  activeForm: "Synchronizing progress with [related-agents]"
+});
 
-echo "📊 Generating progress synchronization report"
-echo "   - Progress Tracking Level: $PROGRESS_TRACKING"
-echo "   - Daily Standups: $DAILY_STANDUPS"
-echo "   - Weekly Summaries: $WEEKLY_SUMMARIES"
+// Blocking issues identification
+TodoWrite({
+  content: "Identify and report any blocking issues for workflow",
+  status: "pending",
+  activeForm: "Checking for blockers and dependency issues"
+});
 
-# Collect agent status
-AGENTS_DIR="$PROJECT_ROOT/.claude/temp"
-TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-
-# Initialize progress report
-cat > "$PROGRESS_REPORT" << EOF
-{
-  "report_timestamp": "$TIMESTAMP",
-  "progress_tracking_level": "$PROGRESS_TRACKING",
-  "daily_standups_enabled": $DAILY_STANDUPS,
-  "weekly_summaries_enabled": $WEEKLY_SUMMARIES,
-  "agents_status": [],
-  "handoffs_status": [],
-  "blocking_issues": []
-}
-EOF
-
-# Collect agent configurations
-for config_file in "$AGENTS_DIR"/agent-*-todo-config.json; do
-    if [ -f "$config_file" ]; then
-        agent_name=$(jq -r '.agent_name' "$config_file")
-        initialized_at=$(jq -r '.initialized_at' "$config_file")
-
-        # Add to progress report
-        jq --arg name "$agent_name" \
-           --arg init_time "$initialized_at" \
-           '.agents_status += [{
-             "agent_name": $name,
-             "initialized_at": $init_time,
-             "status": "active"
-           }]' "$PROGRESS_REPORT" > "$PROGRESS_REPORT.tmp" && mv "$PROGRESS_REPORT.tmp" "$PROGRESS_REPORT"
-    fi
-done
-
-# Add handoff status if handoff log exists
-HANDOFF_LOG="$PROJECT_ROOT/.claude/temp/handoff-log.json"
-if [ -f "$HANDOFF_LOG" ]; then
-    # Count active handoffs
-    ACTIVE_HANDOFFS=$(jq '[.[] | select(.status == "initiated")] | length' "$HANDOFF_LOG")
-
-    jq --argjson active "$ACTIVE_HANDOFFS" \
-       '.handoffs_status = [{
-         "active_handoffs": $active,
-         "total_handoffs": (if . then length else 0 end)
-       }]' "$HANDOFF_LOG" > "$PROGRESS_REPORT.tmp"
-
-    # Merge handoff data into progress report
-    jq -s '.[0] * .[1]' "$PROGRESS_REPORT" "$PROGRESS_REPORT.tmp" > "$PROGRESS_REPORT.final" && mv "$PROGRESS_REPORT.final" "$PROGRESS_REPORT"
-    rm -f "$PROGRESS_REPORT.tmp"
-fi
-
-echo "✅ Progress report generated: $PROGRESS_REPORT"
-
-# Generate daily standup if enabled
-if [ "$DAILY_STANDUPS" = "true" ]; then
-    STANDUP_REPORT="$PROJECT_ROOT/.claude/temp/daily-standup-$(date +%Y-%m-%d).md"
-
-    echo "# Daily Standup Report - $(date +%Y-%m-%d)" > "$STANDUP_REPORT"
-    echo "" >> "$STANDUP_REPORT"
-    echo "## Agent Status" >> "$STANDUP_REPORT"
-
-    jq -r '.agents_status[] | "- **\(.agent_name)**: \(.status) (initialized: \(.initialized_at))"' "$PROGRESS_REPORT" >> "$STANDUP_REPORT"
-
-    echo "" >> "$STANDUP_REPORT"
-    echo "## Active Handoffs" >> "$STANDUP_REPORT"
-
-    if [ -f "$HANDOFF_LOG" ]; then
-        jq -r '.[] | select(.status == "initiated") | "- \(.sending_agent) → \(.receiving_agent): \(.work_item)"' "$HANDOFF_LOG" >> "$STANDUP_REPORT"
-    else
-        echo "- No active handoffs" >> "$STANDUP_REPORT"
-    fi
-
-    echo "" >> "$STANDUP_REPORT"
-    echo "## Suggested TodoWrite Updates" >> "$STANDUP_REPORT"
-    echo "```typescript" >> "$STANDUP_REPORT"
-    echo "// Daily progress update" >> "$STANDUP_REPORT"
-    echo "TodoWrite({" >> "$STANDUP_REPORT"
-    echo "  content: \"Daily standup: Progress report generated\","  >> "$STANDUP_REPORT"
-    echo "  status: \"completed\"," >> "$STANDUP_REPORT"
-    echo "  activeForm: \"Generated daily progress report for $(date +%Y-%m-%d)\"" >> "$STANDUP_REPORT"
-    echo "});" >> "$STANDUP_REPORT"
-    echo "```" >> "$STANDUP_REPORT"
-
-    echo "📋 Daily standup report: $STANDUP_REPORT"
-fi
+// Progress milestone tracking
+TodoWrite({
+  content: "Track milestone completion: [milestone-description]",
+  status: "completed",
+  activeForm: "Achieved milestone: [milestone-name]"
+});
 ```
 
-### 4. **Dependency Validation Hook**
+**Usage: Regular progress reporting and coordination patterns**
 
-**File: `.claude/templates/todo/hooks/dependency-validation-hook.sh`**
+### 4. **Dependency Management Pattern**
 
-```bash
-#!/bin/bash
-# Dependency Validation Hook - Automated dependency checking and blocking issue detection
+**Functional Approach: Dependency validation via TodoWrite coordination**
 
-AGENT_NAME="$1"
-WORK_ITEM="$2"
+```typescript
+// Dependency validation check
+TodoWrite({
+  content: "Validate dependencies for [agent-name] work: [dependency-list]",
+  status: "in_progress",
+  activeForm: "Checking dependencies for [work-item]"
+});
 
-PROJECT_ROOT="$(pwd)"
-CLAUDE_MD="$PROJECT_ROOT/CLAUDE.md"
+// Blocking dependency identification
+TodoWrite({
+  content: "Blocked: Waiting for [dependency-agent] to complete prerequisites",
+  status: "pending",
+  activeForm: "Waiting for [dependency-agent] dependency resolution"
+});
 
-# Read dependency tracking configuration
-TASK_DEPENDENCIES=$(grep "task_dependencies:" "$CLAUDE_MD" | awk '{print $2}')
+// Dependency coordination
+TodoWrite({
+  content: "Coordinate with [dependency-agent] for [required-deliverable]",
+  status: "pending",
+  activeForm: "Coordinating dependency requirements with [dependency-agent]"
+});
 
-echo "🔍 Validating dependencies for $AGENT_NAME: $WORK_ITEM"
-echo "   - Task Dependencies Tracking: $TASK_DEPENDENCIES"
-
-if [ "$TASK_DEPENDENCIES" != "true" ]; then
-    echo "ℹ️  Dependency tracking disabled, skipping validation"
-    exit 0
-fi
-
-# Define dependency rules
-DEPENDENCY_RULES="$PROJECT_ROOT/.claude/temp/dependency-rules.json"
-
-# Create dependency rules if not exists
-if [ ! -f "$DEPENDENCY_RULES" ]; then
-    mkdir -p "$(dirname "$DEPENDENCY_RULES")"
-    cat > "$DEPENDENCY_RULES" << 'EOF'
-{
-  "dependency_rules": {
-    "frontend-engineer": {
-      "depends_on": ["api-engineer", "ux-designer"],
-      "provides_to": ["qa-engineer"],
-      "blocking_items": [
-        "API endpoints not implemented",
-        "Design specifications not provided",
-        "Authentication system not ready"
-      ]
-    },
-    "api-engineer": {
-      "depends_on": ["data-engineer", "security-engineer"],
-      "provides_to": ["frontend-engineer", "qa-engineer"],
-      "blocking_items": [
-        "Database schema not finalized",
-        "Security controls not implemented",
-        "External service integration not ready"
-      ]
-    },
-    "data-engineer": {
-      "depends_on": ["software-architect"],
-      "provides_to": ["api-engineer", "frontend-engineer"],
-      "blocking_items": [
-        "Database architecture not approved",
-        "Data migration strategy not defined"
-      ]
-    },
-    "qa-engineer": {
-      "depends_on": ["frontend-engineer", "api-engineer", "security-engineer"],
-      "provides_to": ["deployment-engineer"],
-      "blocking_items": [
-        "Implementation not completed",
-        "Test environment not configured",
-        "Security validation not passed"
-      ]
-    }
-  }
-}
-EOF
-    echo "📋 Created dependency rules: $DEPENDENCY_RULES"
-fi
-
-# Check dependencies for current agent
-DEPENDENCIES=$(jq -r ".dependency_rules.\"$AGENT_NAME\".depends_on[]?" "$DEPENDENCY_RULES" 2>/dev/null)
-BLOCKING_ITEMS=$(jq -r ".dependency_rules.\"$AGENT_NAME\".blocking_items[]?" "$DEPENDENCY_RULES" 2>/dev/null)
-
-if [ -n "$DEPENDENCIES" ]; then
-    echo "🔗 Checking dependencies for $AGENT_NAME:"
-
-    for dep_agent in $DEPENDENCIES; do
-        dep_config="$PROJECT_ROOT/.claude/temp/agent-$dep_agent-todo-config.json"
-        if [ -f "$dep_config" ]; then
-            echo "   ✅ $dep_agent - configured"
-        else
-            echo "   ❌ $dep_agent - not initialized"
-            echo "🚨 Blocking issue detected: $dep_agent not ready for $AGENT_NAME"
-
-            # Generate TodoWrite for blocking issue
-            echo ""
-            echo "📝 Suggested TodoWrite for handling dependency:"
-            echo "```typescript"
-            echo "TodoWrite({"
-            echo "  content: \"Blocked: Waiting for $dep_agent to complete dependencies\","
-            echo "  status: \"pending\","
-            echo "  activeForm: \"Waiting for $dep_agent dependency resolution\""
-            echo "});"
-            echo "```"
-        fi
-    done
-fi
-
-if [ -n "$BLOCKING_ITEMS" ]; then
-    echo ""
-    echo "⚠️  Common blocking items for $AGENT_NAME to monitor:"
-    echo "$BLOCKING_ITEMS" | while read -r item; do
-        echo "   - $item"
-    done
-fi
-
-echo "✅ Dependency validation completed for $AGENT_NAME"
+// Dependency resolution confirmation
+TodoWrite({
+  content: "Confirm dependency resolution: [resolved-dependency]",
+  status: "completed",
+  activeForm: "Verified dependency resolution: [resolved-dependency]"
+});
 ```
+
+**Common Agent Dependencies:**
+- **frontend-engineer**: depends on api-engineer, ux-designer
+- **api-engineer**: depends on data-engineer, security-engineer
+- **data-engineer**: depends on software-architect
+- **qa-engineer**: depends on frontend-engineer, api-engineer, security-engineer
+
+**Usage: Manage agent dependencies and blocking issues**
 
 ---
 
-## ⚡ Hook Integration Instructions
+## ⚡ Coordination Integration
 
-### Setup for Production Use
+### Usage Guidelines
 
-**1. Make hooks executable:**
-```bash
-chmod +x .claude/templates/todo/hooks/*.sh
-```
+**1. Session Initialization:**
+- Agents read CLAUDE.md Section 8 configuration
+- Create coordination TODOs using patterns above
+- Establish handoff readiness with other agents
 
-**2. Initialize agent coordination:**
-```bash
-# Initialize TODO management for specific agent
-.claude/templates/todo/hooks/agent-init-hook.sh "frontend-engineer"
-```
+**2. Work Coordination:**
+- Use handoff patterns for agent-to-agent transitions
+- Create dependency TODOs when blocked
+- Update progress regularly via TodoWrite
 
-**3. Process agent handoffs:**
-```bash
-# Execute handoff between agents
-.claude/templates/todo/hooks/agent-handoff-hook.sh \
-  "software-architect" \
-  "frontend-engineer" \
-  "OAuth2 UI implementation" \
-  "Component specifications and design mockups"
-```
+**3. Progress Tracking:**
+- Daily progress updates via TodoWrite
+- Milestone tracking for major achievements
+- Cross-agent coordination for complex workflows
 
-**4. Generate progress reports:**
-```bash
-# Generate daily progress synchronization
-.claude/templates/todo/hooks/progress-sync-hook.sh
-```
+**4. Dependency Management:**
+- Check dependencies before starting work
+- Create blocking TODOs when prerequisites missing
+- Coordinate with dependency agents for resolution
 
-**5. Validate dependencies:**
-```bash
-# Check dependencies before starting work
-.claude/templates/todo/hooks/dependency-validation-hook.sh \
-  "frontend-engineer" \
-  "OAuth2 authentication UI"
-```
+### Coordination Benefits
 
-### Agent Usage Integration
+**Seamless Handoffs**
+- Clear agent-to-agent work transitions
+- Validated deliverable handoffs
+- Reduced coordination overhead
 
-**Each agent should run these hooks automatically:**
+**Progress Visibility**
+- Real-time progress tracking
+- Cross-agent workflow visibility
+- Early blocking issue detection
 
-```bash
-# 1. At session start
-.claude/templates/todo/hooks/agent-init-hook.sh "$AGENT_NAME"
+**Quality Assurance**
+- Dependency validation before work starts
+- Progress verification at each stage
+- Consistent coordination patterns
 
-# 2. Before starting new work
-.claude/templates/todo/hooks/dependency-validation-hook.sh "$AGENT_NAME" "$WORK_ITEM"
-
-# 3. When completing handoffs
-.claude/templates/todo/hooks/agent-handoff-hook.sh "$SENDING_AGENT" "$RECEIVING_AGENT" "$WORK_ITEM" "$DELIVERABLES"
-
-# 4. Daily progress updates
-.claude/templates/todo/hooks/progress-sync-hook.sh
-```
-
----
-
-## 🎯 Production Benefits
-
-### Automated Coordination
-- **Zero-configuration** agent handoffs
-- **Automatic dependency** validation
-- **Real-time progress** synchronization
-- **Blocking issue** early detection
-
-### Enhanced Productivity
-- **Eliminate manual** coordination overhead
-- **Prevent dependency** bottlenecks
-- **Automated progress** reporting
-- **Consistent workflow** across all agents
-
-### Quality Assurance
-- **Validated handoffs** with proper documentation
-- **Dependency compliance** before work starts
-- **Progress visibility** for stakeholders
-- **Automated issue** escalation
-
-**These hooks transform agent coordination from manual to fully automated production-ready system.**
+**These patterns enable seamless multi-agent coordination using simple TodoWrite integration.**

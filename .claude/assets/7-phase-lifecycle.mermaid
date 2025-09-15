@@ -1,0 +1,64 @@
+graph TD
+    A[🚀 Feature Request/Epic Initiated] --> B[📋 Phase 1: Business Discovery & Analysis]
+
+    B --> B1[business-analyst: Epic Analysis & TODO Creation]
+    B --> B2[product-manager: Epic → Feature Breakdown]
+    B --> B3[ux-designer: User Research & Design Requirements]
+    B --> B4[reviewer: Epic & Feature Validation]
+
+    B4 --> C[🏗️ Phase 2: Architecture & UX Design]
+
+    C --> C1[software-architect: Feature → Task Breakdown]
+    C --> C2[ux-designer: Design System & Prototypes]
+    C --> C3[security-engineer: Security Architecture]
+    C --> C4[data-engineer: Data Architecture Design]
+    C --> C5[reviewer: Architecture & Design Validation]
+
+    C5 --> D[💻 Phase 3: Development & Continuous QA]
+
+    D --> D1[frontend-engineer: UI Implementation]
+    D --> D2[api-engineer: APIs & Microservices]
+    D --> D3[data-engineer: Data Solutions]
+    D --> D4[security-engineer: Security Implementation]
+    D --> D5[qa-engineer: Integration & Quality Testing]
+    D --> D6[reviewer: Implementation Quality Review]
+
+    D6 --> E[🚀 Phase 4: Deployment & Operations]
+
+    E --> E1[deployment-engineer: Infrastructure & CI/CD]
+    E --> E2[security-engineer: Production Security]
+    E --> E3[qa-engineer: Production Readiness]
+    E --> E4[reviewer: Production Readiness Validation]
+
+    E4 --> F[📈 Phase 5: Monitoring & Continuous Improvement]
+
+    F --> F1[deployment-engineer: Operations Monitoring]
+    F --> F2[product-manager: Success Metrics]
+    F --> F3[security-engineer: Security Monitoring]
+    F --> F4[qa-engineer: Quality Monitoring]
+    F --> F5[business-analyst: Continuous Improvement]
+
+    F --> G[🔄 Phase 6: Workflow Orchestration Enhancement]
+
+    G --> G1[Epic Breakdown Orchestration]
+    G --> G2[Phase Transition Management]
+    G --> G3[Cross-Agent Coordination]
+
+    G --> H[✅ Phase 7: Quality Gates & Validation]
+
+    H --> H1[TODO-Integrated Quality Gates]
+    H --> H2[Cross-Agent TODO Validation]
+    H --> H3[Quality Metrics & Monitoring]
+
+    H --> I[✨ Project Success]
+
+    %% Styling
+    classDef phaseBox fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#01579b
+    classDef agentBox fill:#fff3e0,stroke:#f57c00,stroke-width:1px,color:#e65100
+    classDef qualityBox fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#1b5e20
+    classDef orchBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#4a148c
+
+    class A,B,C,D,E,F,G,H,I phaseBox
+    class B1,B2,B3,B4,C1,C2,C3,C4,C5,D1,D2,D3,D4,D5,D6,E1,E2,E3,E4,F1,F2,F3,F4,F5 agentBox
+    class G1,G2,G3 orchBox
+    class H1,H2,H3 qualityBox

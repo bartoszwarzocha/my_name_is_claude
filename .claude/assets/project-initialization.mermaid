@@ -1,0 +1,81 @@
+graph TD
+    A[🚀 Project Concept] --> B[Add concept files to init_concept/]
+
+    B --> B1[project_idea.md<br/>Business description]
+    B --> B2[tech_stack.md<br/>Technology preferences]
+    B --> B3[requirements.md<br/>Scope & timeline]
+    B --> B4[wireframes/<br/>UI mockups]
+
+    B1 --> C[📊 claude_md_from_concept.md]
+    B2 --> C
+    B3 --> C
+    B4 --> C
+
+    C --> C1[🔍 Technology Detection]
+    C --> C2[📏 Scale Assessment]
+    C --> C3[🤖 Agent Recommendation]
+    C --> C4[⚙️ TODO Configuration]
+
+    C1 --> C11[Angular/React/Vue detection]
+    C1 --> C12[Backend framework analysis]
+    C1 --> C13[Database requirements]
+
+    C2 --> C21[Startup: MVP, rapid development]
+    C2 --> C22[SME: Business processes, integration]
+    C2 --> C23[Enterprise: Large scale, compliance]
+
+    C3 --> C31[Essential agents for all projects]
+    C3 --> C32[Scale-based agent selection]
+    C3 --> C33[Domain-specific specialists]
+
+    C4 --> C41[Simple: Session-based TODOs]
+    C4 --> C42[Hierarchical: Epic→Feature→Task→Subtask]
+
+    C --> D[❓ Interactive Configuration]
+
+    D --> D1[Technology stack confirmation]
+    D --> D2[Agent selection approval]
+    D --> D3[TODO management preferences]
+    D --> D4[Project scale validation]
+
+    D --> E[📝 Generated CLAUDE.md]
+
+    E --> E1[Complete project metadata]
+    E --> E2[Technology stack configuration]
+    E --> E3[Agent roles & responsibilities]
+    E --> E4[TODO management settings]
+    E --> E5[Integration requirements]
+
+    E --> F[📋 prepare_instruction.md]
+
+    F --> F1[🎯 Phase-by-Phase Workflow]
+    F --> F2[🤖 Agent Sequence Recommendations]
+    F --> F3[📊 TODO Management Setup]
+    F --> F4[⏰ Timeline Estimates]
+    F --> F5[🛠️ Technology-Specific Guidance]
+
+    F1 --> G[🚀 Ready to Start Development]
+    F2 --> G
+    F3 --> G
+    F4 --> G
+    F5 --> G
+
+    %% Examples
+    H[💡 Example Workflows]
+    H --> H1[Startup MVP: Simple TODO + 4 agents]
+    H --> H2[SME Business App: Hierarchical TODO + 8 agents]
+    H --> H3[Enterprise System: Full hierarchy + 11 agents]
+
+    %% Styling
+    classDef conceptBox fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#0d47a1
+    classDef analysisBox fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#e65100
+    classDef configBox fill:#e0f2f1,stroke:#00695c,stroke-width:2px,color:#004d40
+    classDef interactiveBox fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#880e4f
+    classDef outputBox fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#1b5e20
+    classDef exampleBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#4a148c
+
+    class A,B,B1,B2,B3,B4 conceptBox
+    class C,C1,C2,C3,C4,C11,C12,C13,C21,C22,C23,C31,C32,C33,C41,C42 analysisBox
+    class D,D1,D2,D3,D4 interactiveBox
+    class E,E1,E2,E3,E4,E5,F,F1,F2,F3,F4,F5,G outputBox
+    class H,H1,H2,H3 exampleBox

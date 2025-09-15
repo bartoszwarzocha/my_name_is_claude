@@ -1,429 +1,122 @@
-# Comprehensive TODO Orchestration
+# Comprehensive TODO Orchestration and Multi-Agent Task Management
 
-**Workflow Type: Complete TODO Management Integration**
-**Purpose: Master orchestration of all TODO management capabilities across the entire development lifecycle**
+## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
----
+Orchestrate hierarchical TODO management across all framework agents to enable systematic task breakdown, cross-agent coordination, quality gate integration, and comprehensive development lifecycle management. Ensure seamless Epic→Feature→Task→Subtask flows with automated handoffs, validation checkpoints, and real-time progress tracking while maintaining full visibility and accountability.
 
-## 🎯 Mission
+## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-Provide comprehensive orchestration of all TODO management capabilities, integrating hierarchical task management, cross-agent coordination, quality gates, and production automation for maximum development efficiency and quality assurance.
+### Phase 1: Hierarchical TODO Structure Design and Agent Assignment
+1. **Establish multi-level TODO hierarchy** - Design Epic/Feature/Task/Subtask levels with appropriate owner assignments and scope boundaries
+2. **Configure agent responsibility matrix** - Map each agent type to primary TODO levels and secondary coordination responsibilities
+3. **Design cross-agent handoff protocols** - Create standardized procedures for transferring work context between agents
+4. **Establish TODO lifecycle management** - Define creation, progression, completion, and validation workflows for each level
+5. **Plan dependency tracking mechanisms** - Design systems for managing inter-task dependencies and blocking issues
 
-## ✅ Complete TODO Management Architecture
+### Phase 2: Multi-Agent Coordination Workflow Implementation
+1. **Implement Epic initiation workflows** - Design business-analyst driven Epic creation with stakeholder requirements gathering
+2. **Create Feature breakdown processes** - Enable product-manager decomposition of Epics into prioritized Features
+3. **Design Task architecture workflows** - Implement software-architect technical decomposition of Features into Tasks
+4. **Orchestrate implementation coordination** - Coordinate Subtask distribution across implementation agents (frontend, api, data, etc.)
+5. **Integrate quality validation workflows** - Embed qa-engineer and security-engineer validation throughout all levels
 
-### Multi-Level TODO Hierarchy
+### Phase 3: Quality Gate Integration and Validation Orchestration
+1. **Design continuous quality monitoring** - Implement quality validation at every TODO level transition
+2. **Create security validation checkpoints** - Integrate security-engineer reviews at appropriate workflow stages
+3. **Implement automated quality gates** - Design validation criteria that must be met before TODO progression
+4. **Establish escalation procedures** - Create protocols for handling blockers, critical issues, and scope changes
+5. **Design stakeholder communication workflows** - Ensure appropriate notification and approval processes
 
-```yaml
-todo_hierarchy:
-  epic_level:
-    owner: business-analyst
-    scope: business_initiatives
-    duration: 4-12_weeks
-    example: "EPIC: Complete user authentication system overhaul"
+### Phase 4: Progress Monitoring and Automation Integration
+1. **Implement real-time progress tracking** - Design systems for monitoring TODO completion across all hierarchy levels
+2. **Create automated workflow triggers** - Enable automatic TODO creation and progression based on completion events
+3. **Design performance metrics collection** - Track efficiency, quality, and coordination effectiveness metrics
+4. **Establish reporting and dashboard capabilities** - Provide visibility into overall project health and agent productivity
+5. **Integrate with existing development tools** - Connect TODO orchestration with git, CI/CD, and project management systems
 
-  feature_level:
-    owner: product-manager
-    scope: user_features
-    duration: 3_days-3_weeks
-    example: "FEATURE: OAuth2 implementation with social login"
+## 3. ✅ VALIDATION CRITERIA
 
-  task_level:
-    owner: software-architect
-    scope: technical_components
-    duration: 4_hours-3_days
-    example: "TASK: Design JWT token management system"
+### Hierarchical TODO Management Effectiveness
+- **Complete hierarchy established**: Epic→Feature→Task→Subtask levels properly defined with clear ownership and scope boundaries
+- **Agent responsibility matrix functional**: All 11 framework agents have clear TODO level assignments and coordination responsibilities
+- **Cross-agent handoffs seamless**: Work context transfers successfully between agents without information loss
+- **Dependency tracking operational**: Inter-task dependencies properly tracked and blocking issues identified automatically
+- **TODO lifecycle management complete**: Creation, progression, completion, and validation workflows function correctly
 
-  subtask_level:
-    owner: implementation_agents
-    scope: concrete_implementation
-    duration: 2_hours-1_day
-    example: "SUBTASK: Implement Google OAuth2 provider"
-```
+### Multi-Agent Coordination and Quality Integration
+- **Epic-to-delivery flow functional**: Complete workflow from business-analyst Epic initiation to deployment-engineer delivery
+- **Quality gates effective**: QA and security validation integrated at appropriate stages with clear success criteria
+- **Issue escalation responsive**: Critical issues and blockers properly escalated with resolution coordination protocols
+- **Stakeholder communication clear**: Appropriate notifications and approvals maintain project transparency and alignment
+- **Cross-agent collaboration efficient**: Agents coordinate effectively with minimal context switching overhead
 
-### Complete Agent TODO Integration Matrix
+### Performance Monitoring and Automation Success
+- **Real-time progress visibility**: Current TODO status visible across all hierarchy levels with accurate completion tracking
+- **Automated workflow efficiency**: TODO creation, progression, and validation automated where appropriate without losing human oversight
+- **Performance metrics meaningful**: Delivery efficiency, coordination effectiveness, and quality metrics provide actionable insights
+- **Integration compatibility maintained**: TODO orchestration works seamlessly with existing development tools and processes
+- **Scalability demonstrated**: System handles varying project sizes and complexity levels without degradation
 
-| **Agent** | **Primary TODO Level** | **Secondary Responsibilities** | **Coordination TODOs** |
-|-----------|----------------------|-------------------------------|----------------------|
-| **business-analyst** | Epic | Stakeholder requirements, process analysis | Epic validation, requirement handoff |
-| **product-manager** | Feature | MVP scoping, user story creation | Epic breakdown, feature prioritization |
-| **software-architect** | Task | Technical design, architecture planning | Feature decomposition, dependency mapping |
-| **api-engineer** | Subtask | API implementation, service integration | Technical coordination, contract validation |
-| **frontend-engineer** | Subtask | UI implementation, user experience | Design coordination, testing integration |
-| **data-engineer** | Subtask | Database design, data pipeline implementation | Data integrity, performance optimization |
-| **security-engineer** | All levels | Security validation, compliance | Security review, threat assessment |
-| **qa-engineer** | All levels | Quality assurance, testing coordination | Quality gates, validation orchestration |
-| **deployment-engineer** | Subtask | Infrastructure, deployment automation | Deployment readiness, operational validation |
-| **ux-designer** | Feature/Task | User experience design, accessibility | Design validation, usability coordination |
-| **reviewer** | All levels | Quality oversight, process compliance | Cross-agent validation, final approval |
+## 4. 📚 USAGE EXAMPLES
 
-## 📋 Complete Orchestration Workflows
+### Enterprise SaaS Platform Feature Development
+**Project Context**: Multi-tenant B2B platform adding advanced analytics dashboard with user segmentation and real-time reporting
+**TODO Orchestration Approach**:
+- Epic Level (business-analyst): "Advanced Analytics Platform" with stakeholder requirements, competitive analysis, and business case development
+- Feature Level (product-manager): Break into "User Segmentation Engine", "Real-time Data Processing", "Interactive Dashboard UI", and "Export Capabilities"
+- Task Level (software-architect): Technical tasks like "Streaming Data Architecture", "Frontend State Management", "API Rate Limiting", "Database Optimization"
+- Subtask Level (implementation agents): Concrete implementations distributed across frontend-engineer (React components), api-engineer (GraphQL schemas), data-engineer (ETL pipelines)
 
-### Workflow 1: Epic-to-Delivery TODO Flow
+### Open Source Library Major Version Release
+**Project Context**: Popular JavaScript library implementing breaking API changes with backwards compatibility migration tools
+**TODO Orchestration Approach**:
+- Epic Level: "API v3.0 Migration" with community impact assessment and migration strategy
+- Feature Level: "New Configuration System", "Legacy Compatibility Layer", "Migration Tooling", "Documentation Overhaul"
+- Task Level: Architecture for new config schema, backwards compatibility strategy, automated migration scripts
+- Subtask Level: Implementation of specific API endpoints, documentation updates, test suite expansion, community tool integration
 
-**Phase 1: Epic Initiation**
+### Financial Services Security Compliance Update
+**Project Context**: Banking application implementing new regulatory compliance requirements with zero-downtime deployment constraints
+**TODO Orchestration Approach**:
+- Epic Level: "PCI DSS 4.0 Compliance Implementation" with regulatory analysis and audit preparation
+- Feature Level: "Enhanced Data Encryption", "Audit Trail Expansion", "Access Control Updates", "Monitoring Enhancement"
+- Task Level: Technical compliance requirements, security architecture updates, audit logging system design
+- Subtask Level: Encryption implementation, database security hardening, monitoring dashboard creation, compliance reporting automation
 
-```javascript
-// business-analyst initiates epic
-TodoWrite({
-  todos: [
-    {
-      content: "EPIC INITIATION: [Epic Name] - Comprehensive business analysis",
-      status: "in_progress",
-      activeForm: "Initiating epic analysis"
-    },
-    {
-      content: "Stakeholder requirements gathering and validation",
-      status: "pending",
-      activeForm: "Gathering stakeholder requirements"
-    },
-    {
-      content: "Business process analysis and optimization opportunities",
-      status: "pending",
-      activeForm: "Analyzing business processes"
-    },
-    {
-      content: "Epic validation and stakeholder approval",
-      status: "pending",
-      activeForm: "Validating epic with stakeholders"
-    }
-  ]
-})
-```
+### Mobile Application Performance Optimization
+**Project Context**: React Native app experiencing performance issues with large user base requiring optimization without feature regression
+**TODO Orchestration Approach**:
+- Epic Level: "Performance Optimization Initiative" with user impact analysis and success metrics definition
+- Feature Level: "Rendering Optimization", "Memory Management", "Network Efficiency", "Background Processing"
+- Task Level: Profiling and bottleneck identification, optimization strategy design, testing methodology
+- Subtask Level: Component memoization, image caching implementation, API request batching, background task scheduling
 
-**Phase 2: Feature Breakdown**
-
-```javascript
-// product-manager breaks down epic into features
-TodoWrite({
-  todos: [
-    {
-      content: "EPIC HANDOFF: Receive validated epic from business-analyst",
-      status: "in_progress",
-      activeForm: "Receiving epic handoff"
-    },
-    {
-      content: "FEATURE BREAKDOWN: Identify and scope individual features",
-      status: "pending",
-      activeForm: "Breaking down features"
-    },
-    {
-      content: "FEATURE PRIORITIZATION: Rank features by business value",
-      status: "pending",
-      activeForm: "Prioritizing features"
-    },
-    {
-      content: "MVP SCOPING: Define minimum viable product boundaries",
-      status: "pending",
-      activeForm: "Scoping MVP"
-    }
-  ]
-})
-```
-
-**Phase 3: Technical Architecture**
-
-```javascript
-// software-architect creates technical task breakdown
-TodoWrite({
-  todos: [
-    {
-      content: "FEATURE HANDOFF: Receive feature specifications from product-manager",
-      status: "in_progress",
-      activeForm: "Receiving feature handoff"
-    },
-    {
-      content: "TASK BREAKDOWN: Technical task decomposition for all features",
-      status: "pending",
-      activeForm: "Breaking down technical tasks"
-    },
-    {
-      content: "ARCHITECTURE DESIGN: System architecture for feature requirements",
-      status: "pending",
-      activeForm: "Designing system architecture"
-    },
-    {
-      content: "DEPENDENCY MAPPING: Identify and document all task dependencies",
-      status: "pending",
-      activeForm: "Mapping dependencies"
-    }
-  ]
-})
-```
-
-**Phase 4: Implementation Coordination**
-
-```javascript
-// Implementation agents receive task assignments
-// api-engineer
-TodoWrite({
-  todos: [
-    {
-      content: "TASK ASSIGNMENT: API implementation tasks received from architect",
-      status: "in_progress",
-      activeForm: "Receiving API tasks"
-    },
-    {
-      content: "SUBTASK BREAKDOWN: Create concrete implementation subtasks",
-      status: "pending",
-      activeForm: "Breaking down implementation"
-    },
-    {
-      content: "API CONTRACT DESIGN: Define service interfaces and contracts",
-      status: "pending",
-      activeForm: "Designing API contracts"
-    },
-    {
-      content: "COORDINATION: Sync with frontend-engineer on integration",
-      status: "pending",
-      activeForm: "Coordinating with frontend"
-    }
-  ]
-})
-
-// frontend-engineer
-TodoWrite({
-  todos: [
-    {
-      content: "TASK ASSIGNMENT: UI implementation tasks received from architect",
-      status: "in_progress",
-      activeForm: "Receiving UI tasks"
-    },
-    {
-      content: "UX COORDINATION: Align implementation with ux-designer specifications",
-      status: "pending",
-      activeForm: "Coordinating with UX designer"
-    },
-    {
-      content: "COMPONENT IMPLEMENTATION: Build reusable UI components",
-      status: "pending",
-      activeForm: "Implementing components"
-    },
-    {
-      content: "API INTEGRATION: Connect frontend to backend services",
-      status: "pending",
-      activeForm: "Integrating with APIs"
-    }
-  ]
-})
-```
-
-### Workflow 2: Quality Gate Integration
-
-**Continuous Quality Validation**
-
-```javascript
-// qa-engineer monitors all phases with quality gates
-TodoWrite({
-  todos: [
-    {
-      content: "QUALITY GATE: Epic requirements validation - completeness check",
-      status: "in_progress",
-      activeForm: "Validating epic requirements"
-    },
-    {
-      content: "QUALITY GATE: Feature specification validation - acceptance criteria",
-      status: "pending",
-      activeForm: "Validating feature specifications"
-    },
-    {
-      content: "QUALITY GATE: Technical design validation - feasibility assessment",
-      status: "pending",
-      activeForm: "Validating technical design"
-    },
-    {
-      content: "QUALITY GATE: Implementation validation - code quality and testing",
-      status: "pending",
-      activeForm: "Validating implementation"
-    },
-    {
-      content: "QUALITY GATE: Deployment readiness - production validation",
-      status: "pending",
-      activeForm: "Validating deployment readiness"
-    }
-  ]
-})
-
-// security-engineer provides security validation
-TodoWrite({
-  todos: [
-    {
-      content: "SECURITY VALIDATION: Epic security requirements assessment",
-      status: "in_progress",
-      activeForm: "Assessing security requirements"
-    },
-    {
-      content: "SECURITY VALIDATION: Technical design security review",
-      status: "pending",
-      activeForm: "Reviewing security design"
-    },
-    {
-      content: "SECURITY VALIDATION: Implementation security testing",
-      status: "pending",
-      activeForm: "Testing security implementation"
-    },
-    {
-      content: "SECURITY VALIDATION: Production security readiness",
-      status: "pending",
-      activeForm: "Validating production security"
-    }
-  ]
-})
-```
-
-### Workflow 3: Issue Resolution and Escalation
-
-**Critical Issue Management**
-
-```javascript
-// Issue discovered during implementation
-TodoWrite({
-  todos: [
-    {
-      content: "CRITICAL ISSUE: Technical blocker requires immediate attention",
-      status: "in_progress",
-      activeForm: "Managing critical issue"
-    },
-    {
-      content: "ESCALATION: Notify product-manager and software-architect",
-      status: "pending",
-      activeForm: "Escalating to stakeholders"
-    },
-    {
-      content: "RESOLUTION COORDINATION: Assemble resolution team",
-      status: "pending",
-      activeForm: "Coordinating resolution"
-    },
-    {
-      content: "IMPACT ASSESSMENT: Evaluate impact on timeline and scope",
-      status: "pending",
-      activeForm: "Assessing impact"
-    },
-    {
-      content: "STAKEHOLDER UPDATE: Communicate resolution plan",
-      status: "pending",
-      activeForm: "Updating stakeholders"
-    }
-  ]
-})
-```
-
-## 🚀 Production Automation Integration
-
-### Automated TODO Orchestration
-
-```bash
-# Complete TODO orchestration automation
-./.claude/templates/todo/comprehensive-orchestration.sh [project-path] [domain] [scale]
-
-# Example usage:
-./.claude/templates/todo/comprehensive-orchestration.sh /project enterprise-app enterprise
-
-# Expected comprehensive output:
-# 🎯 EPIC LEVEL (business-analyst):
-# ✅ Epic: User authentication system - COMPLETED
-# ⏳ Epic: Payment processing system - IN PROGRESS
-# ⏸️ Epic: Analytics dashboard - WAITING
-
-# 🚀 FEATURE LEVEL (product-manager):
-# ✅ Feature: OAuth2 implementation - COMPLETED
-# ⏳ Feature: Multi-factor authentication - IN PROGRESS
-# ⏸️ Feature: Social login integration - WAITING
-
-# 🔧 TASK LEVEL (software-architect):
-# ✅ Task: Authentication architecture - COMPLETED
-# ⏳ Task: Security token management - IN PROGRESS
-# ⏸️ Task: Integration API design - WAITING
-
-# ⚡ SUBTASK LEVEL (implementation-agents):
-# ✅ Subtask: JWT token implementation - COMPLETED (api-engineer)
-# ⏳ Subtask: Login UI components - IN PROGRESS (frontend-engineer)
-# ⏸️ Subtask: User database schema - WAITING (data-engineer)
-
-# 🔒 SECURITY VALIDATION (security-engineer):
-# ✅ Security: Threat modeling complete
-# ⏳ Security: Vulnerability testing in progress
-# ⏸️ Security: Production security review pending
-
-# ✅ QUALITY GATES (qa-engineer):
-# ✅ Gate 1: Requirements validated
-# ⏳ Gate 2: Design validation in progress
-# ⏸️ Gate 3: Implementation testing pending
-```
-
-### Real-Time Monitoring Dashboard
-
-```bash
-# TODO monitoring dashboard
-./.claude/templates/todo/monitoring-dashboard.sh
-
-# Real-time TODO status dashboard:
-# ┌─────────────────────────────────────────────────────────────┐
-# │                 TODO ORCHESTRATION DASHBOARD                │
-# ├─────────────────────────────────────────────────────────────┤
-# │ Epic Progress:    ████████████████████░░  85% (17/20)       │
-# │ Feature Progress: ███████████████░░░░░░░  70% (14/20)       │
-# │ Task Progress:    ████████████░░░░░░░░░░  60% (12/20)       │
-# │ Quality Gates:    ██████████████████████  100% (4/4)        │
-# ├─────────────────────────────────────────────────────────────┤
-# │ Active Agents: 8/11                                         │
-# │ Blockers: 2 (CRITICAL)                                      │
-# │ Avg Cycle Time: 1.2 hours                                   │
-# │ Quality Score: 94%                                           │
-# └─────────────────────────────────────────────────────────────┘
-```
-
-## 📊 Complete Success Metrics
-
-### Comprehensive TODO Orchestration Metrics
-
-```yaml
-orchestration_success_metrics:
-  epic_delivery_efficiency:
-    target: >85%
-    measurement: on_time_epic_completions / total_epics
-
-  cross_agent_coordination:
-    target: >95%
-    measurement: successful_handoffs / total_handoffs
-
-  quality_gate_effectiveness:
-    target: >98%
-    measurement: issues_caught_by_gates / total_issues
-
-  todo_hierarchy_compliance:
-    target: 100%
-    measurement: proper_todo_structure / total_todos
-
-  automation_utilization:
-    target: >80%
-    measurement: automated_workflows / total_workflows
-
-  stakeholder_satisfaction:
-    target: >4.7/5
-    measurement: stakeholder_feedback_scores
-
-  development_velocity:
-    target: +40%
-    measurement: feature_delivery_rate_improvement
-
-  defect_reduction:
-    target: >60%
-    measurement: defect_reduction_vs_baseline
-```
-
-## 📤 Final Deliverables
-
-Upon complete TODO orchestration implementation:
-
-- ✅ **Hierarchical TODO Management System** - Complete Epic→Feature→Task→Subtask structure
-- ✅ **Cross-Agent Coordination Framework** - Seamless agent handoffs and collaboration
-- ✅ **Quality Gate Integration** - Automated quality validation throughout lifecycle
-- ✅ **Production Automation Suite** - Complete TODO management automation
-- ✅ **Real-Time Monitoring Dashboard** - Live TODO status and metrics tracking
-- ✅ **Escalation and Issue Management** - Automated issue detection and resolution
-- ✅ **Metrics and Analytics Framework** - Comprehensive TODO performance measurement
-- ✅ **Documentation and Training** - Complete TODO management methodology guide
+### E-commerce Platform Holiday Season Preparation
+**Project Context**: High-traffic online store preparing for peak shopping season with scalability and reliability requirements
+**TODO Orchestration Approach**:
+- Epic Level: "Holiday Season Readiness" with capacity planning and business continuity preparation
+- Feature Level: "Load Balancing Enhancement", "Inventory Management Scaling", "Payment Processing Optimization", "Customer Support Automation"
+- Task Level: Infrastructure scaling strategy, database optimization, caching layer design, monitoring enhancement
+- Subtask Level: Auto-scaling configuration, CDN optimization, payment gateway integration, chatbot implementation
 
 ---
 
-*Comprehensive TODO orchestration transforms development from ad-hoc task management to systematic, measurable, and highly efficient collaborative development with full visibility and accountability across all agents and activities.*
+## 🎯 EXECUTION APPROACH
+
+**Systematic TODO Orchestration Implementation**:
+1. **Hierarchy-first design** - Establish clear TODO levels and ownership before implementing coordination workflows
+2. **Agent-centric coordination** - Design workflows around agent competencies and natural handoff points
+3. **Quality-integrated validation** - Embed quality gates throughout TODO lifecycle rather than as separate validation phase
+4. **Progressive automation** - Start with manual coordination, then automate repetitive workflows while maintaining oversight
+
+**Cross-Agent Collaboration Strategy**:
+- **Context preservation** - Ensure work context and decisions transfer completely between agents during handoffs
+- **Dependency awareness** - Maintain visibility of blocking dependencies and enable proactive coordination
+- **Communication protocols** - Establish clear communication patterns for status updates, issues, and approvals
+- **Feedback integration** - Create mechanisms for agents to provide input on TODO structure and workflow effectiveness
+
+**Quality and Performance Integration**:
+- **Continuous validation** - Integrate quality checks throughout TODO progression rather than at completion gates
+- **Predictive issue identification** - Use TODO patterns and progress metrics to identify potential problems early
+- **Adaptive workflow optimization** - Adjust TODO orchestration based on project characteristics and team performance patterns
+- **Stakeholder alignment maintenance** - Ensure TODO structure and progress remain aligned with business objectives and stakeholder expectations

@@ -11,8 +11,8 @@
 Project: "Enterprise SaaS Application"
 Scale: enterprise
 Technology: Angular + .NET Core + PostgreSQL
-Timeline: 8-12 weeks
-Team: 6 agents (business-analyst, product-manager, software-architect, frontend-engineer, api-engineer, security-engineer)
+Timeline: weeks to months
+Team: multiple specialized agents (business-analyst, product-manager, software-architect, frontend-engineer, api-engineer, security-engineer)
 ```
 
 ---
@@ -475,7 +475,7 @@ TodoWrite({
 
 // product-manager daily update
 TodoWrite({
-  content: "Daily standup: 3 Features defined, technical coordination in progress",
+  content: "Daily standup: Features defined, technical coordination in progress",
   status: "completed",
   activeForm: "Reported daily progress: Features breakdown 100%, technical validation 60%"
 });
@@ -484,7 +484,7 @@ TodoWrite({
 TodoWrite({
   content: "Daily standup: MFA UI 70% complete, QR code component functional, responsive design pending",
   status: "completed",
-  activeForm: "Reported daily progress: MFA implementation 70%, 3 of 5 Subtasks completed"
+  activeForm: "Reported daily progress: MFA implementation 70%, most Subtasks completed"
 });
 ```
 
@@ -521,7 +521,7 @@ TodoWrite({
 ```
 Day 1: business-analyst creates Epic, coordinates stakeholders
 Day 2: business-analyst validates Epic, hands off to product-manager
-Day 3: product-manager breaks Epic into 3 Features
+Day 3: product-manager breaks Epic into Features
 Day 4: product-manager coordinates with ux-designer and software-architect
 Day 5: Features validated and handed off to software-architect
 ```
@@ -529,14 +529,14 @@ Day 5: Features validated and handed off to software-architect
 ### Week 2: Feature → Task (Tactical Level)
 ```
 Day 1: software-architect analyzes Features, designs architecture
-Day 2-3: software-architect creates 15 Tasks across 5 implementation agents
+Day 2-3: software-architect creates multiple Tasks across implementation agents
 Day 4: Dependencies mapped, Task specifications finalized
 Day 5: Tasks handed off to implementation agents
 ```
 
 ### Weeks 3-6: Task → Subtask (Implementation Level)
 ```
-Week 3: Implementation agents create 60+ Subtasks via TodoWrite
+Week 3: Implementation agents create comprehensive Subtasks via TodoWrite
 Week 4-5: Active development with daily TodoWrite progress updates
 Week 6: Implementation completion, handoffs to qa-engineer
 ```

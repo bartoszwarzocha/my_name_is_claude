@@ -1,451 +1,122 @@
-# Project Development Instructions Generator
+# CLAUDE.md Configuration to Development Strategy Converter
 
-## 🎯 Role: Development Workflow Architect
+## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
-You are an expert development workflow architect specializing in creating customized development roadmaps based on project-specific CLAUDE.md configurations. You have deep expertise in multi-agent coordination, TODO management, and production workflow optimization.
+Transform a validated CLAUDE.md configuration into actionable development instructions and strategic roadmap. Generate detailed implementation guidance that enables effective multi-agent coordination, establishes clear success criteria, and provides concrete next steps for project initialization.
 
-## 📋 Primary Objective
+## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-Analyze the generated CLAUDE.md configuration and existing project files to create a comprehensive, step-by-step development instruction guide that optimizes the Claude Code Multi-Agent Framework workflow for the specific project needs.
+### Phase 1: Configuration Analysis and Context Extraction
+1. **Parse CLAUDE.md configuration** - Extract all metadata, business goals, technology stack, and quality requirements
+2. **Identify project characteristics** - Determine scale, domain, complexity, and timeline implications
+3. **Map agent requirements** - Analyze which agents are needed and their coordination patterns
+4. **Extract business priorities** - Understand success criteria and stakeholder expectations
+5. **Assess technical constraints** - Identify technology decisions and their implications
 
-## 🔍 Analysis Process
+### Phase 2: Strategic Roadmap Planning
+1. **Define development phases** - Break project into logical phases based on business priorities
+2. **Sequence agent activities** - Plan optimal order of agent involvement and handoffs
+3. **Establish milestone criteria** - Define measurable outcomes for each phase
+4. **Identify risk mitigation strategies** - Plan for technical and business risks
+5. **Create quality gates** - Define checkpoints and validation criteria
 
-### Step 1: Configuration Analysis
+### Phase 3: Resource Allocation and Team Coordination
+1. **Map agent responsibilities** - Assign specific deliverables to each agent type
+2. **Design collaboration patterns** - Plan how agents coordinate and share context
+3. **Establish communication protocols** - Define handoff procedures and documentation standards
+4. **Plan skill development needs** - Identify training or knowledge gaps to address
+5. **Optimize workflow efficiency** - Minimize blockers and maximize parallel work
 
-**Read and analyze the current CLAUDE.md:**
+### Phase 4: Implementation Guidance Generation
+1. **Create actionable instructions** - Generate specific next steps for project start
+2. **Document success criteria** - Establish measurable goals and validation methods
+3. **Prepare monitoring frameworks** - Define progress tracking and quality metrics
+4. **Generate templates and standards** - Provide reusable patterns and best practices
+5. **Establish feedback loops** - Create mechanisms for continuous improvement
 
-```bash
-# Analyze project configuration
-echo "📊 Analyzing CLAUDE.md configuration..."
-cat CLAUDE.md
+## 3. ✅ VALIDATION CRITERIA
 
-# Extract key configuration parameters
-PROJECT_SCALE=$(grep "project_scale" CLAUDE.md | cut -d':' -f2 | tr -d ' "')
-TODO_LEVEL=$(grep "todo_hierarchy_level" CLAUDE.md | cut -d':' -f2 | tr -d ' "')
-PRIMARY_LANGUAGE=$(grep "primary_language" CLAUDE.md | cut -d':' -f2 | tr -d ' "')
-BUSINESS_DOMAIN=$(grep "business_domain" CLAUDE.md | cut -d':' -f2 | tr -d ' "')
-```
+### Completeness and Clarity Requirements
+- **All configuration elements addressed**: Every aspect of CLAUDE.md translated to actionable guidance
+- **Clear next steps defined**: Specific, executable instructions for project initiation
+- **Success criteria established**: Measurable outcomes and validation methods specified
+- **Risk mitigation planned**: Identified risks have corresponding mitigation strategies
+- **Resource allocation optimized**: Agent assignments maximize efficiency and minimize conflicts
 
-### Step 2: Project Structure Detection
+### Strategic Alignment Validation
+- **Business goals supported**: Development strategy directly advances business objectives
+- **Technology choices justified**: Technical decisions align with project constraints and goals
+- **Timeline feasibility confirmed**: Planned phases and milestones are realistically achievable
+- **Quality standards maintained**: Quality requirements balanced with delivery timelines
+- **Stakeholder needs addressed**: All stakeholder groups have clear value propositions
 
-**Analyze existing project files and structure:**
+### Implementation Readiness Assessment
+- **Dependencies mapped**: All external requirements and constraints identified
+- **Team readiness confirmed**: Required skills and capabilities are available or planned
+- **Infrastructure requirements defined**: Technical environment needs clearly specified
+- **Integration points planned**: External system interfaces and data flows documented
+- **Change management prepared**: Organizational impact and adoption strategies planned
 
-```bash
-# Detect existing project structure
-find . -type f -name "*.json" -o -name "*.js" -o -name "*.ts" -o -name "*.py" -o -name "*.cs" -o -name "*.java" | head -20
+## 4. 📚 USAGE EXAMPLES
 
-# Check for framework indicators
-if [ -f "package.json" ]; then
-    echo "📦 Node.js/JavaScript project detected"
-    FRAMEWORK_DETECTED="nodejs"
-fi
+### E-commerce Startup (TypeScript/React Stack)
+**Input Configuration**: project_scale="startup", primary_language="typescript", business_domain="e-commerce"
+**Generated Strategy**:
+- Phase 1: MVP development (product-manager + frontend-engineer + api-engineer)
+- Phase 2: Payment integration and security (security-engineer)
+- Phase 3: Performance optimization and scaling (qa-engineer)
+- Key milestones: Working prototype (4 weeks), Beta launch (8 weeks), Production (12 weeks)
 
-if [ -f "requirements.txt" ] || [ -f "pyproject.toml" ]; then
-    echo "🐍 Python project detected"
-    FRAMEWORK_DETECTED="python"
-fi
+### Healthcare Enterprise Integration (Java/Spring Stack)
+**Input Configuration**: project_scale="enterprise", primary_language="java", business_domain="healthcare"
+**Generated Strategy**:
+- Phase 1: Requirements analysis and compliance review (business-analyst + security-engineer)
+- Phase 2: Architecture design and security framework (software-architect + security-engineer)
+- Phase 3: Core system development (backend-engineer + data-engineer)
+- Phase 4: Integration testing and deployment (qa-engineer + deployment-engineer)
+- Key milestones: Architecture approval (6 weeks), Security audit (12 weeks), System integration (20 weeks)
 
-if [ -f "*.csproj" ] || [ -f "*.sln" ]; then
-    echo "🔷 .NET project detected"
-    FRAMEWORK_DETECTED="dotnet"
-fi
+### Process Automation SME (Python/FastAPI Stack)
+**Input Configuration**: project_scale="sme", primary_language="python", business_domain="business_process_automation"
+**Generated Strategy**:
+- Phase 1: Process analysis and requirements (business-analyst)
+- Phase 2: Data pipeline development (data-engineer + backend-engineer)
+- Phase 3: Automation system implementation (backend-engineer)
+- Phase 4: Testing and deployment (qa-engineer)
+- Key milestones: Process mapping (2 weeks), Data integration (6 weeks), Automation live (10 weeks)
 
-# Database detection
-if [ -f "docker-compose.yml" ]; then
-    echo "🐳 Docker configuration detected"
-fi
-```
+### Financial Services Platform (Java/Microservices)
+**Input Configuration**: project_scale="enterprise", business_domain="financial_services", high security requirements
+**Generated Strategy**:
+- Phase 1: Regulatory requirements and security architecture (business-analyst + security-engineer + software-architect)
+- Phase 2: Core microservices development (api-engineer + backend-engineer)
+- Phase 3: Integration and compliance testing (qa-engineer + security-engineer)
+- Phase 4: Production deployment and monitoring (deployment-engineer)
+- Key milestones: Compliance review (8 weeks), Security certification (16 weeks), Production deployment (24 weeks)
 
-### Step 3: Agent Workflow Optimization
-
-**Based on CLAUDE.md analysis, determine optimal agent sequence:**
-
-```python
-def generate_agent_workflow(project_config):
-    """Generate optimized agent workflow based on project configuration"""
-
-    workflows = {
-        'startup': {
-            'phases': ['concept_validation', 'mvp_development', 'testing', 'deployment'],
-            'agents': ['business-analyst', 'software-architect', 'frontend-engineer', 'qa-engineer'],
-            'duration': '2-8 weeks',
-            'todo_approach': 'simple_session_based'
-        },
-        'sme': {
-            'phases': ['business_analysis', 'architecture_design', 'development', 'integration', 'deployment'],
-            'agents': ['business-analyst', 'product-manager', 'software-architect', 'ux-designer',
-                      'frontend-engineer', 'api-engineer', 'qa-engineer', 'deployment-engineer'],
-            'duration': '2-6 months',
-            'todo_approach': 'hierarchical_with_features'
-        },
-        'enterprise': {
-            'phases': ['discovery', 'architecture', 'security_design', 'development', 'qa', 'deployment', 'monitoring'],
-            'agents': 'all_11_agents',
-            'duration': '6+ months',
-            'todo_approach': 'full_hierarchical_with_epics'
-        }
-    }
-
-    return workflows.get(project_config['scale'], workflows['sme'])
-```
-
-## 📋 Instruction Generation Template
-
-### Step 1: Project Overview Section
-
-```markdown
-# 🚀 [PROJECT_NAME] - Development Instructions
-
-## 📊 Project Configuration Summary
-
-**Generated from CLAUDE.md configuration on [CURRENT_DATE]**
-
-- **Project Scale:** [DETECTED_SCALE]
-- **Primary Technology:** [PRIMARY_TECH_STACK]
-- **Business Domain:** [BUSINESS_DOMAIN]
-- **Development Timeline:** [ESTIMATED_TIMELINE]
-- **TODO Management:** [TODO_CONFIGURATION]
-- **Agents Involved:** [AGENT_COUNT] specialized agents
-
-## 🎯 Development Objectives
-
-[EXTRACTED_PROJECT_GOALS_FROM_CLAUDE_MD]
-
-## 📈 Success Metrics
-
-[GENERATED_SUCCESS_CRITERIA_BASED_ON_PROJECT_TYPE]
-```
-
-### Step 2: TODO Management Setup
-
-**Generate TODO configuration instructions:**
-
-```markdown
-## 🔧 TODO Management Setup
-
-### Your Project's TODO Configuration
-
-Based on your project scale (**[PROJECT_SCALE]**), your TODO management is configured as:
-
-```yaml
-[ACTUAL_TODO_CONFIG_FROM_CLAUDE_MD]
-```
-
-### How This Affects Your Workflow
-
-**[IF SIMPLE CONFIG]**
-- ✅ **Session-based TODO tracking** - Use TodoWrite for immediate tasks
-- ✅ **Agent coordination** - Agents will coordinate via TodoWrite status updates
-- ✅ **Fast iterations** - Optimized for rapid development cycles
-- 📋 **Best Practice:** Keep only 1 task as 'in_progress' at any time
-
-**[IF HIERARCHICAL CONFIG]**
-- ✅ **Epic-level planning** - Business analysts create Epics (4-12 weeks scope)
-- ✅ **Feature breakdown** - Product managers decompose Epics into Features (1-3 weeks)
-- ✅ **Task management** - Architects create detailed Tasks (1-3 days)
-- ✅ **Subtask execution** - Implementation agents handle Subtasks (2-8 hours)
-- 📋 **Best Practice:** Follow Epic→Feature→Task→Subtask hierarchy
-
-### TODO Management Commands You'll Use
-
-**[GENERATED_TODO_EXAMPLES_FOR_PROJECT]**
-
-```javascript
-// Example TodoWrite commands for your project:
-{
-  content: "[PROJECT_SPECIFIC_TASK_EXAMPLE]",
-  status: "in_progress",
-  activeForm: "[PROJECT_SPECIFIC_ACTIVE_FORM]"
-}
-```
-```
-
-### Step 3: Phase-by-Phase Development Workflow
-
-**Generate customized workflow based on project configuration:**
-
-```markdown
-## 🚀 Development Workflow - Phase by Phase
-
-### Phase 1: [PHASE_1_NAME] (Estimated: [DURATION])
-
-#### Recommended Agents:
-- **[AGENT_1]** - [ROLE_IN_THIS_PHASE]
-- **[AGENT_2]** - [ROLE_IN_THIS_PHASE]
-
-#### Suggested Prompts Sequence:
-1. **[PROMPT_1_NAME]** (`.claude/prompts/agents/[agent]/[prompt].md`)
-   - **Purpose:** [PROMPT_PURPOSE_FOR_PROJECT]
-   - **Expected Output:** [PROJECT_SPECIFIC_OUTPUT]
-
-2. **[PROMPT_2_NAME]** (`.claude/prompts/agents/[agent]/[prompt].md`)
-   - **Purpose:** [PROMPT_PURPOSE_FOR_PROJECT]
-   - **Expected Output:** [PROJECT_SPECIFIC_OUTPUT]
-
-#### TODO Management for This Phase:
-```yaml
-# Phase 1 TODO Examples
-TodoWrite({
-  todos: [{
-    content: "[PHASE_SPECIFIC_TODO]",
-    status: "in_progress",
-    activeForm: "[PHASE_SPECIFIC_ACTIVE_FORM]"
-  }]
-})
-```
-
-#### Phase Completion Criteria:
-- ✅ [PHASE_SPECIFIC_DELIVERABLE_1]
-- ✅ [PHASE_SPECIFIC_DELIVERABLE_2]
-- ✅ [QUALITY_GATE_CRITERIA]
-
-#### Handoff to Next Phase:
-[HANDOFF_PROTOCOL_DESCRIPTION]
+### Educational Platform (Next.js/Modern Web)
+**Input Configuration**: project_scale="sme", primary_language="typescript", business_domain="education"
+**Generated Strategy**:
+- Phase 1: User experience design and prototyping (ux-designer + frontend-engineer)
+- Phase 2: Content management system development (backend-engineer + data-engineer)
+- Phase 3: Interactive learning features (frontend-engineer + api-engineer)
+- Phase 4: Testing and optimization (qa-engineer)
+- Key milestones: UX prototype (3 weeks), CMS functional (8 weeks), Full platform (14 weeks)
 
 ---
 
-### Phase 2: [PHASE_2_NAME] (Estimated: [DURATION])
-
-[REPEAT_STRUCTURE_FOR_EACH_PHASE]
-```
-
-### Step 4: Technology-Specific Instructions
-
-**Generate technology stack specific guidance:**
-
-```markdown
-## 💻 Technology Stack Implementation Guide
-
-### [DETECTED_FRONTEND_TECH] Frontend Development
-
-#### Recommended Agent Sequence:
-1. **ux-designer** → Create design system and components
-2. **frontend-engineer** → Implement UI components and features
-3. **qa-engineer** → Set up testing framework and validation
-
-#### Specific Prompts for [FRONTEND_TECH]:
-- `.claude/prompts/agents/design/[design_prompt].md`
-- `.claude/prompts/agents/frontend/[frontend_tech_prompt].md`
-- `.claude/prompts/agents/qa/[testing_prompt].md`
-
-### [DETECTED_BACKEND_TECH] Backend Development
-
-#### Recommended Agent Sequence:
-1. **software-architect** → Design API architecture
-2. **api-engineer** → Implement APIs and services
-3. **data-engineer** → Set up database and data layer
-4. **security-engineer** → Implement security controls
-
-#### Specific Prompts for [BACKEND_TECH]:
-- `.claude/prompts/agents/architecture/[arch_prompt].md`
-- `.claude/prompts/agents/api/[api_tech_prompt].md`
-- `.claude/prompts/agents/data/[data_prompt].md`
-
-### Database: [DETECTED_DATABASE]
-
-#### Setup Instructions:
-[DATABASE_SPECIFIC_SETUP_COMMANDS]
-
-#### Recommended Prompts:
-- `.claude/prompts/agents/data/database-design-and-etl-implementation.md`
-```
-
-### Step 5: Project-Specific Recommendations
-
-**Generate domain-specific advice:**
-
-```markdown
-## 🎯 [BUSINESS_DOMAIN] Domain Considerations
-
-### Industry-Specific Requirements:
-[DOMAIN_SPECIFIC_REQUIREMENTS]
-
-### Recommended Security Measures:
-[SECURITY_RECOMMENDATIONS_FOR_DOMAIN]
-
-### Compliance Considerations:
-[COMPLIANCE_REQUIREMENTS_IF_APPLICABLE]
-
-### Performance Optimization:
-[PERFORMANCE_RECOMMENDATIONS_FOR_DOMAIN]
-```
-
-## 🔄 Advanced Workflow Generation
-
-### Custom Agent Coordination Scripts
-
-**Generate project-specific coordination logic:**
-
-```bash
-# Generate custom agent coordination script
-generate_coordination_script() {
-    local PROJECT_SCALE=$1
-    local AGENTS=$2
-
-    cat << EOF > project_agent_coordination.sh
-#!/bin/bash
-# Auto-generated agent coordination for $PROJECT_NAME
-
-# Phase transitions based on your CLAUDE.md configuration
-phase_1_agents=($PHASE_1_AGENTS)
-phase_2_agents=($PHASE_2_AGENTS)
-
-# TODO management integration
-todo_level="$TODO_LEVEL"
-
-# Custom handoff protocols
-for agent in "\${phase_1_agents[@]}"; do
-    echo "✅ \$agent: Ready for Phase 1"
-    # Add project-specific validation logic
-done
-EOF
-
-    chmod +x project_agent_coordination.sh
-}
-```
-
-### Timeline and Milestone Generation
-
-```python
-def generate_project_timeline(project_config):
-    """Generate realistic timeline based on project configuration"""
-
-    timelines = {
-        'startup': {
-            'total_duration': '4-8 weeks',
-            'phases': {
-                'concept_validation': '3-5 days',
-                'mvp_development': '2-4 weeks',
-                'testing': '3-5 days',
-                'deployment': '2-3 days'
-            }
-        },
-        'sme': {
-            'total_duration': '3-6 months',
-            'phases': {
-                'business_analysis': '1-2 weeks',
-                'architecture_design': '1-2 weeks',
-                'development': '6-12 weeks',
-                'integration_testing': '1-2 weeks',
-                'deployment': '1 week'
-            }
-        },
-        'enterprise': {
-            'total_duration': '6-18 months',
-            'phases': {
-                'discovery': '2-4 weeks',
-                'architecture': '2-4 weeks',
-                'security_design': '1-2 weeks',
-                'development': '12-32 weeks',
-                'qa_validation': '2-4 weeks',
-                'deployment': '2-4 weeks',
-                'monitoring_setup': '1-2 weeks'
-            }
-        }
-    }
-
-    return timelines.get(project_config.scale, timelines['sme'])
-```
-
-## 📊 Quality Gates Integration
-
-### Phase Validation Checkpoints
-
-```markdown
-## ✅ Quality Gates & Validation Points
-
-### Your Project's Quality Gates
-
-Based on your configuration, implement these validation checkpoints:
-
-#### Phase 1 Quality Gate:
-```yaml
-TodoWrite({
-  todos: [{
-    content: "QUALITY GATE: Phase 1 completion validation",
-    status: "in_progress",
-    activeForm: "Validating Phase 1 deliverables"
-  }]
-})
-```
-
-**Validation Criteria:**
-- ✅ [PHASE_1_SPECIFIC_CRITERIA]
-- ✅ [PHASE_1_SPECIFIC_CRITERIA]
-
-#### Phase 2 Quality Gate:
-[REPEAT_FOR_EACH_PHASE]
-
-### Cross-Agent Validation Process:
-
-1. **reviewer** agent validates all deliverables
-2. **qa-engineer** confirms technical quality
-3. **security-engineer** validates security requirements (if applicable)
-
-### Continuous Quality Monitoring:
-```bash
-# Your project's quality monitoring setup
-./setup_quality_monitoring.sh --project="[PROJECT_NAME]" --scale="[PROJECT_SCALE]"
-```
-```
-
-## 🚀 Final Instructions Format
-
-### Complete Project Instructions Structure
-
-```markdown
-# 🚀 [PROJECT_NAME] - Complete Development Instructions
-
-## 📊 Executive Summary
-[PROJECT_OVERVIEW_AND_TIMELINE]
-
-## 🔧 Initial Setup
-[SETUP_COMMANDS_AND_CONFIGURATION]
-
-## 📋 TODO Management Guide
-[TODO_SPECIFIC_INSTRUCTIONS]
-
-## 🚀 Phase-by-Phase Workflow
-[DETAILED_PHASE_INSTRUCTIONS]
-
-## 💻 Technology Implementation
-[TECH_SPECIFIC_GUIDANCE]
-
-## 🎯 Domain Considerations
-[BUSINESS_DOMAIN_SPECIFIC_ADVICE]
-
-## ✅ Quality Assurance
-[QUALITY_GATES_AND_VALIDATION]
-
-## 📈 Progress Tracking
-[MONITORING_AND_REPORTING]
-
-## 🔄 Troubleshooting Guide
-[COMMON_ISSUES_AND_SOLUTIONS]
-
-## 🎯 Success Metrics
-[PROJECT_SUCCESS_CRITERIA]
-
----
-
-**Generated on [DATE]** from CLAUDE.md configuration
-**Framework Version:** 2.0.0
-**Ready to start development!** 🚀
-```
-
-## 🎯 Success Criteria
-
-**Project instructions are complete when:**
-
-✅ All development phases have clear agent assignments
-✅ TODO management approach is clearly explained and configured
-✅ Technology-specific implementation guidance is provided
-✅ Quality gates are defined for each phase
-✅ Timeline estimates are realistic and based on project scale
-✅ Prompt sequences are specified for each development phase
-✅ Troubleshooting guidance addresses likely project challenges
-✅ Success metrics are measurable and aligned with project goals
-
----
-
-**Usage:** Use this prompt after generating CLAUDE.md with `claude_md_from_concept.md`. It will create a comprehensive, step-by-step development instruction guide tailored specifically to your project configuration and detected technology stack.
+## 🎯 EXECUTION APPROACH
+
+**Process Flow:**
+1. Read and validate CLAUDE.md configuration completeness
+2. Apply strategic planning algorithms to create development roadmap
+3. Generate agent coordination plans and handoff procedures
+4. Create specific implementation instructions and success criteria
+5. Validate strategy alignment with business goals and technical constraints
+
+**Output Format:**
+- Strategic development roadmap with phases and milestones
+- Agent coordination plan with specific roles and responsibilities
+- Implementation instructions with concrete next steps
+- Success criteria and validation methods
+- Risk assessment and mitigation strategies

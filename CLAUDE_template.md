@@ -48,6 +48,22 @@ The list of available agents and their competency scope is defined in files:
 ### Architecture and Design
 
 - **software-architect** - System architecture, technology selection, scalability planning
+
+### Agent-Prompt Integration
+
+**🔗 Automatic Agent Activation System:**
+- Prompts in `.claude/prompts/agents/[category]/` automatically activate corresponding agents
+- Directory structure determines agent binding: `api/` → `api-engineer`, `frontend/` → `frontend-engineer`
+- Agents read CLAUDE.md and adapt to project requirements automatically
+- All tasks managed through agent's TodoWrite workflow integration
+
+**Usage Pattern:**
+```
+Prompt Location: .claude/prompts/agents/api/rest-api-design.md
+→ Activates: api-engineer agent (.claude/agents/api/api-engineer.md)
+→ Agent Context: Reads this CLAUDE.md for project adaptation
+→ Agent Execution: Applies specialized competencies + TodoWrite management
+```
 - **ux-designer** - User experience design, design systems, accessibility, user research
 
 ### Development

@@ -2,7 +2,7 @@
 
 ## 🤖 Overview
 
-This guide explains how to effectively use **Serena** and **Context7** with the Claude Code Agent Framework for enhanced development productivity. This framework now includes 31+ specialized agent prompts with complete coverage for security-engineer (7/7) and frontend-engineer (9/9) specializations.
+This guide explains how to effectively use **Serena** and **Context7** with the Claude Code Multi-Agent Framework for enhanced development productivity. This framework includes comprehensive agent prompts with complete coverage for specialized development roles.
 
 ## 🛠️ Tool Comparison
 
@@ -35,43 +35,43 @@ This guide explains how to effectively use **Serena** and **Context7** with the 
 - ✅ **Complete component libraries** (Angular, wxWidgets)
 - ✅ **Security framework implementation** from threat models
 
-## 🎯 Agent-Specific Tool Usage with Complete Prompt Coverage
+## 🎯 Agent-Specific Tool Usage
 
 ### Phase 1: Business Discovery & Analysis
 
-#### **business-analyst** (3/5 prompts available)
+#### **business-analyst**
 
 - **Serena**: Analyze existing business logic and data flows
-- **Context7**: Generate business process documentation using `stakeholder-requirements-gathering.md`
-- **Available Prompts**: stakeholder-requirements-gathering, current-state-process-analysis, business-case-development
+- **Context7**: Generate business process documentation and requirements
+- **Focus**: Stakeholder requirements gathering, current-state analysis, business case development
 
-#### **product-manager** (2/5 prompts available)
+#### **product-manager**
 
 - **Serena**: Review existing features and their implementations
 - **Context7**: Create user stories using `user-story-creation-and-prioritization.md`
-- **Available Prompts**: user-story-creation-and-prioritization, mvp-scoping-and-roadmap-planning
+- **Focus**: User story creation and prioritization, MVP scoping and roadmap planning
 
-#### **reviewer** (2/5 prompts available)
+#### **reviewer**
 
-- **Serena**: Comprehensive code quality analysis with `sonarqube-code-quality-analysis.md`
+- **Serena**: Comprehensive code quality analysis and security assessments
 - **Context7**: Generate quality frameworks and security assessment reports
-- **Available Prompts**: sonarqube-code-quality-analysis, security-vulnerability-assessment
+- **Focus**: Code quality analysis, security vulnerability assessment
 
 ### Phase 2: Architecture & UX Design
 
-#### **software-architect** (1/5 prompts available)
+#### **software-architect**
 
 - **Serena**: Analyze existing architecture patterns and dependencies
 - **Context7**: Generate architecture documentation using `system-architecture-design.md`
 - **Available Prompts**: system-architecture-design
 
-#### **ux-designer** (1/5 prompts available)
+#### **ux-designer**
 
 - **Serena**: Review existing design components and accessibility compliance
 - **Context7**: Generate user personas using `user-research-and-persona-development.md`
 - **Available Prompts**: user-research-and-persona-development
 
-#### **security-engineer** ✅ **COMPLETE COVERAGE (7/7 prompts)**
+#### **security-engineer**
 
 - **Serena**: Analyze existing security implementations and vulnerabilities
 - **Context7**: Generate complete security frameworks using comprehensive prompt library
@@ -90,7 +90,7 @@ This guide explains how to effectively use **Serena** and **Context7** with the 
 - **Compliance**: Context7 generates compliance frameworks, Serena validates implementation
 - **IAM Implementation**: Context7 scaffolds IAM systems, Serena integrates with existing auth
 
-#### **data-engineer** (1/5 prompts available)
+#### **data-engineer**
 
 - **Serena**: Analyze current data models and query performance
 - **Context7**: Generate data pipelines using `database-design-and-etl-implementation.md`
@@ -98,7 +98,7 @@ This guide explains how to effectively use **Serena** and **Context7** with the 
 
 ### Phase 3: Development & Continuous QA
 
-#### **frontend-engineer** ✅ **COMPLETE COVERAGE (9/9 prompts)**
+#### **frontend-engineer**
 
 - **Serena**: Navigate component hierarchies, debug UI issues, optimize performance
 - **Context7**: Generate complete frontend solutions using comprehensive prompt library
@@ -119,13 +119,13 @@ This guide explains how to effectively use **Serena** and **Context7** with the 
 - **PWA Development**: Context7 generates service workers with `progressive-web-app-development.md`, Serena optimizes caching strategies
 - **Accessibility**: Context7 implements WCAG compliance with `web-accessibility-and-inclusive-design.md`, Serena validates against existing components
 
-#### **api-engineer** (3/5 prompts available)
+#### **api-engineer**
 
 - **Serena**: Debug API endpoints, optimize database queries, analyze service dependencies
 - **Context7**: Generate APIs using REST, GraphQL, and microservices prompts
 - **Available Prompts**: rest-api-design-and-implementation, microservices-architecture-patterns, graphql-api-development
 
-#### **qa-engineer** (1/5 prompts available)
+#### **qa-engineer**
 
 - **Serena**: Execute tests, debug failures, analyze code coverage
 - **Context7**: Generate test frameworks using `test-automation-and-quality-assurance.md`
@@ -133,7 +133,7 @@ This guide explains how to effectively use **Serena** and **Context7** with the 
 
 ### Phase 4: Deployment & Operations
 
-#### **deployment-engineer** (1/5 prompts available)
+#### **deployment-engineer**
 
 - **Serena**: Monitor deployment configurations, debug infrastructure issues
 - **Context7**: Generate CI/CD pipelines using `ci-cd-pipeline-and-infrastructure-setup.md`
@@ -269,8 +269,8 @@ In `CLAUDE.md`, add enhanced Project Metadata:
 - **serena_enabled**: true
 - **context7_enabled**: true
 - **ai_workflow_preference**: balanced
-- **security_prompts_coverage**: complete (7/7)
-- **frontend_prompts_coverage**: complete (9/9)
+- **security_prompts_coverage**: complete (comprehensive)
+- **frontend_prompts_coverage**: complete (comprehensive)
 - **prompt_library_version**: v2.0
 - **specialized_agents**: [security-engineer, frontend-engineer]
 ```
@@ -279,16 +279,16 @@ In `CLAUDE.md`, add enhanced Project Metadata:
 
 ```
 Project Type?
-├─ Security-Critical → security-engineer (7 prompts)
+├─ Security-Critical → security-engineer 
 │   ├─ New Implementation → Context7 (generate security framework)
 │   └─ Existing System → Serena (vulnerability analysis) + Context7 (remediation)
 │
-├─ Frontend Application → frontend-engineer (9 prompts)
+├─ Frontend Application → frontend-engineer 
 │   ├─ Angular Web App → Context7 (angular-component-development) + Serena (optimization)
 │   ├─ Desktop App → Context7 (wxwidgets-desktop-development) + Serena (platform-specific)
 │   └─ PWA → Context7 (progressive-web-app-development) + Serena (performance)
 │
-├─ API Development → api-engineer (3 prompts)
+├─ API Development → api-engineer 
 │   ├─ New API → Context7 (rest/graphql-api-development)
 │   └─ Existing API → Serena (debugging) + Context7 (enhancement)
 │
@@ -397,4 +397,4 @@ Track effectiveness through enhanced metrics:
 
 ---
 
-**Remember**: With complete coverage for security-engineer (7/7) and frontend-engineer (9/9), you now have enterprise-grade capabilities for building secure, modern applications. The goal is to leverage AI tools to implement expert-level patterns while maintaining human oversight for critical architectural decisions.
+**Remember**: With complete coverage for security-engineer (comprehensive) and frontend-engineer (comprehensive), you now have enterprise-grade capabilities for building secure, modern applications. The goal is to leverage AI tools to implement expert-level patterns while maintaining human oversight for critical architectural decisions.

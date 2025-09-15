@@ -1,385 +1,122 @@
-# Database-Backend Integration Prompt
+# Database Backend Integration Excellence
 
-**Agent Collaboration**: data-engineer + api-engineer  
-**Primary Focus**: Database schema design, ORM configuration, API data layer architecture
+## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
-## Context Analysis
+Implement seamless database integration with backend applications that provides optimal performance, data consistency, and scalable data access patterns. Create robust data access layers that support business logic requirements while ensuring security, transaction management, and efficient query execution across all application components based on the technology stack defined in CLAUDE.md.
 
-The data-engineer and api-engineer will analyze the CLAUDE.md file to determine:
-- **Primary Language**: Backend technology stack (Java/Spring, .NET Core, Node.js, Python, etc.)
-- **Database Technology**: Primary database system (PostgreSQL, MySQL, SQLite, MongoDB)
-- **Project Scale**: Architecture complexity (startup/simple, SME/moderate, enterprise/complex)
-- **Business Domain**: Data modeling requirements (e-commerce, fintech, healthcare, etc.)
+## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-## Technology-Adaptive Implementation
+### Phase 1: Integration Architecture and Data Access Planning
+1. **Analyze backend framework and database requirements** - Determine optimal integration patterns based on detected technology stack and performance needs
+2. **Design data access layer architecture** - Plan repository patterns, ORM integration, and data abstraction strategies
+3. **Plan transaction management and concurrency control** - Design transaction boundaries, isolation levels, and concurrent access patterns
+4. **Establish connection management and pooling strategies** - Plan database connection optimization and resource management
+5. **Define caching and performance optimization approaches** - Design caching layers and query optimization strategies
 
-### Java/Spring Boot + Database
-```java
-// Entity with validation and audit
-@Entity
-@Table(name = "products")
-@EntityListeners(AuditingEntityListener.class)
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @Column(nullable = false)
-    @NotBlank
-    private String name;
-    
-    @Column(precision = 10, scale = 2)
-    @DecimalMin("0.0")
-    private BigDecimal price;
-    
-    @CreatedDate
-    private LocalDateTime createdAt;
-    
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
-}
+### Phase 2: ORM and Data Access Implementation
+1. **Implement ORM configuration and entity mapping** - Configure object-relational mapping with proper entity relationships and constraints
+2. **Create repository and service layer patterns** - Implement data access abstractions with clean separation of concerns
+3. **Design query optimization and performance patterns** - Implement efficient querying with proper indexing utilization and query planning
+4. **Implement data validation and business rule enforcement** - Create validation layers ensuring data integrity and business logic compliance
+5. **Establish error handling and exception management** - Design comprehensive error handling for database operations and connection issues
 
-// Repository with custom queries
-@Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
-    @Query("SELECT p FROM Product p WHERE p.price BETWEEN :minPrice AND :maxPrice")
-    List<Product> findByPriceRange(@Param("minPrice") BigDecimal minPrice, 
-                                  @Param("maxPrice") BigDecimal maxPrice);
-    
-    @Query(value = "SELECT * FROM products WHERE created_at >= ?1", nativeQuery = true)
-    List<Product> findRecentProducts(LocalDateTime since);
-}
+### Phase 3: Advanced Integration and Performance Optimization
+1. **Implement advanced querying and data retrieval patterns** - Create complex query optimization, pagination, and efficient data loading strategies
+2. **Design caching integration and invalidation strategies** - Implement application-level caching with intelligent cache invalidation and refresh policies
+3. **Create batch processing and bulk operation capabilities** - Implement efficient bulk operations for high-volume data processing requirements
+4. **Establish database migration and schema evolution** - Design database change management and version control integration
+5. **Implement monitoring and performance tracking** - Create comprehensive database performance monitoring and optimization feedback loops
 
-// Service with transaction management
-@Service
-@Transactional
-public class ProductService {
-    @Autowired
-    private ProductRepository productRepository;
-    
-    public Product createProduct(ProductDto productDto) {
-        Product product = new Product();
-        BeanUtils.copyProperties(productDto, product);
-        return productRepository.save(product);
-    }
-    
-    @Transactional(readOnly = true)
-    public Page<Product> findProducts(Pageable pageable) {
-        return productRepository.findAll(pageable);
-    }
-}
-```
+### Phase 4: Security and Operational Excellence
+1. **Implement database security and access controls** - Apply security measures including encryption, access policies, and audit logging
+2. **Create backup and disaster recovery integration** - Establish data protection procedures integrated with application lifecycle
+3. **Design testing and validation strategies** - Implement comprehensive testing for data access patterns and integration scenarios
+4. **Establish documentation and maintenance procedures** - Create operational documentation and troubleshooting guides
+5. **Enable team collaboration and development workflows** - Provide development guidelines and best practices for database integration
 
-### .NET Core + Entity Framework
-```csharp
-// Entity with annotations
-public class Product
-{
-    public int Id { get; set; }
-    
-    [Required]
-    [StringLength(200)]
-    public string Name { get; set; }
-    
-    [Column(TypeName = "decimal(10,2)")]
-    [Range(0, double.MaxValue)]
-    public decimal Price { get; set; }
-    
-    public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
-}
+## 3. ✅ VALIDATION CRITERIA
 
-// DbContext with configuration
-public class AppDbContext : DbContext
-{
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
-    
-    public DbSet<Product> Products { get; set; }
-    
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Product>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
-            entity.Property(e => e.Price).HasColumnType("decimal(10,2)");
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETDATE()");
-        });
-    }
-    
-    public override int SaveChanges()
-    {
-        var entries = ChangeTracker.Entries()
-            .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
-            
-        foreach (var entry in entries)
-        {
-            if (entry.State == EntityState.Added)
-                entry.Property("CreatedAt").CurrentValue = DateTime.UtcNow;
-            entry.Property("UpdatedAt").CurrentValue = DateTime.UtcNow;
-        }
-        
-        return base.SaveChanges();
-    }
-}
+### Integration Architecture and Performance Quality
+- **Data access patterns optimized for application requirements**: Repository and service layers efficiently support business logic with minimal overhead
+- **ORM configuration optimized for performance**: Entity mapping and query generation provide optimal database interaction patterns
+- **Transaction management robust and reliable**: ACID properties maintained with appropriate isolation levels and concurrency control
+- **Connection pooling and resource management efficient**: Database connections properly managed with optimal pool sizing and resource utilization
+- **Query performance meets business expectations**: Response times and throughput requirements satisfied through proper optimization
 
-// Repository pattern with async operations
-public interface IProductRepository
-{
-    Task<Product> GetByIdAsync(int id);
-    Task<IEnumerable<Product>> GetAllAsync();
-    Task<Product> CreateAsync(Product product);
-    Task UpdateAsync(Product product);
-    Task DeleteAsync(int id);
-}
+### Security and Data Integrity Excellence
+- **Data security measures comprehensive**: Encryption, access controls, and audit logging properly implemented at integration layer
+- **Input validation and SQL injection prevention effective**: All user inputs properly validated and parameterized queries used consistently
+- **Business rule enforcement reliable**: Data validation and business logic constraints properly enforced at appropriate layers
+- **Error handling and logging comprehensive**: Database errors properly caught, logged, and handled with user-friendly messaging
+- **Data consistency and integrity maintained**: Referential integrity and business constraints properly enforced across all operations
 
-public class ProductRepository : IProductRepository
-{
-    private readonly AppDbContext _context;
-    
-    public ProductRepository(AppDbContext context)
-    {
-        _context = context;
-    }
-    
-    public async Task<Product> GetByIdAsync(int id)
-    {
-        return await _context.Products.FindAsync(id);
-    }
-    
-    public async Task<IEnumerable<Product>> GetAllAsync()
-    {
-        return await _context.Products.ToListAsync();
-    }
-    
-    public async Task<Product> CreateAsync(Product product)
-    {
-        _context.Products.Add(product);
-        await _context.SaveChangesAsync();
-        return product;
-    }
-}
-```
+### Operational and Development Quality
+- **Database migration and versioning functional**: Schema changes properly managed with rollback capabilities and version control
+- **Monitoring and performance tracking operational**: Database performance metrics collected and analyzed for optimization opportunities
+- **Testing coverage comprehensive**: Unit tests, integration tests, and performance tests covering all data access scenarios
+- **Documentation and troubleshooting guides complete**: Operational procedures documented with clear troubleshooting and maintenance guidance
+- **Development workflow integration smooth**: Database integration patterns support efficient development and deployment processes
 
-### Node.js + TypeORM/Prisma
-```typescript
-// TypeORM Entity
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+## 4. 📚 USAGE EXAMPLES
 
-@Entity('products')
-export class Product {
-    @PrimaryGeneratedColumn()
-    id: number;
-    
-    @Column({ length: 200 })
-    name: string;
-    
-    @Column('decimal', { precision: 10, scale: 2 })
-    price: number;
-    
-    @CreateDateColumn()
-    createdAt: Date;
-    
-    @UpdateDateColumn()
-    updatedAt: Date;
-}
+### Enterprise Resource Planning Backend
+**Project Context**: Large ERP system requiring complex business logic integration with multi-table transactions and reporting capabilities
+**Implementation Approach**:
+- Advanced ORM Configuration: Complex entity relationships, inheritance mapping, and optimized query generation for business processes
+- Transaction Management: Multi-table transaction coordination, business process transaction boundaries, and rollback procedures
+- Performance Optimization: Query optimization for reports, caching strategies for reference data, and bulk operation support
+- Integration Patterns: Service layer abstraction, repository pattern implementation, and business logic encapsulation
 
-// Repository service
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+### E-commerce Platform Data Layer
+**Project Context**: High-traffic e-commerce platform requiring real-time inventory, order processing, and customer data management
+**Implementation Approach**:
+- High-Performance Data Access: Optimized product catalog queries, real-time inventory updates, and efficient order processing
+- Caching Integration: Product data caching, session management, and shopping cart persistence with cache invalidation
+- Scalability Patterns: Read replica utilization, database sharding considerations, and connection pool optimization
+- Real-Time Features: Inventory synchronization, order status updates, and customer notification triggers
 
-@Injectable()
-export class ProductService {
-    constructor(
-        @InjectRepository(Product)
-        private productRepository: Repository<Product>,
-    ) {}
-    
-    async findAll(): Promise<Product[]> {
-        return this.productRepository.find();
-    }
-    
-    async findOne(id: number): Promise<Product> {
-        return this.productRepository.findOne({ where: { id } });
-    }
-    
-    async create(productData: Partial<Product>): Promise<Product> {
-        const product = this.productRepository.create(productData);
-        return this.productRepository.save(product);
-    }
-    
-    async update(id: number, productData: Partial<Product>): Promise<Product> {
-        await this.productRepository.update(id, productData);
-        return this.findOne(id);
-    }
-}
-```
+### Healthcare Information System
+**Project Context**: HIPAA-compliant healthcare system requiring secure patient data access, audit logging, and clinical workflow integration
+**Implementation Approach**:
+- Security-First Integration: Encrypted data access, audit trail generation, role-based data access, and patient consent tracking
+- Clinical Data Models: Patient record management, medical history tracking, appointment scheduling, and provider workflow support
+- Compliance Features: HIPAA audit logging, data retention policies, patient privacy controls, and regulatory reporting
+- Integration Standards: HL7 FHIR data mapping, medical device integration, and healthcare system interoperability
 
-### Python + SQLAlchemy
-```python
-# Models with SQLAlchemy
-from sqlalchemy import Column, Integer, String, Numeric, DateTime, func
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+### Financial Services Trading Platform
+**Project Context**: Real-time trading platform requiring high-frequency data access, risk calculations, and regulatory compliance
+**Implementation Approach**:
+- High-Frequency Data Access: Optimized trading data queries, real-time price updates, and portfolio calculation support
+- Risk Management Integration: Real-time risk calculations, position monitoring, and compliance rule enforcement
+- Audit and Compliance: Complete transaction audit trails, regulatory reporting, and trade settlement tracking
+- Performance Critical Operations: Sub-millisecond data access, concurrent user support, and system reliability requirements
 
-Base = declarative_base()
+### SaaS Multi-Tenant Platform
+**Project Context**: B2B SaaS platform requiring tenant data isolation, shared infrastructure optimization, and scalable data access
+**Implementation Approach**:
+- Multi-Tenant Data Patterns: Tenant data isolation, shared schema optimization, and cross-tenant analytics support
+- Scalable Architecture: Tenant-aware caching, database partitioning strategies, and performance isolation
+- Resource Management: Tenant-specific performance monitoring, resource quota enforcement, and usage tracking
+- Administrative Features: Tenant provisioning, data migration, backup management, and administrative reporting
 
-class Product(Base):
-    __tablename__ = 'products'
-    
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(200), nullable=False)
-    price = Column(Numeric(10, 2), nullable=False)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
-    
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'price': float(self.price),
-            'created_at': self.created_at.isoformat(),
-            'updated_at': self.updated_at.isoformat()
-        }
+---
 
-# Repository pattern
-from abc import ABC, abstractmethod
-from typing import List, Optional
-from sqlalchemy.orm import Session
+## 🎯 EXECUTION APPROACH
 
-class ProductRepository:
-    def __init__(self, session: Session):
-        self.session = session
-    
-    def get_all(self) -> List[Product]:
-        return self.session.query(Product).all()
-    
-    def get_by_id(self, product_id: int) -> Optional[Product]:
-        return self.session.query(Product).filter(Product.id == product_id).first()
-    
-    def create(self, product_data: dict) -> Product:
-        product = Product(**product_data)
-        self.session.add(product)
-        self.session.commit()
-        self.session.refresh(product)
-        return product
-    
-    def update(self, product_id: int, product_data: dict) -> Optional[Product]:
-        product = self.get_by_id(product_id)
-        if product:
-            for key, value in product_data.items():
-                setattr(product, key, value)
-            self.session.commit()
-            self.session.refresh(product)
-        return product
+**Technology-Adaptive Integration Strategy**:
+1. **Backend framework detection** - Analyze CLAUDE.md to determine optimal ORM and data access patterns for detected technology stack
+2. **Database technology alignment** - Select appropriate integration approaches based on database system capabilities and performance characteristics
+3. **Business domain adaptation** - Apply industry-specific data patterns, compliance requirements, and security measures
+4. **Performance requirement matching** - Design integration complexity and optimization strategies based on application performance needs
 
-# FastAPI service integration
-from fastapi import FastAPI, Depends, HTTPException
-from pydantic import BaseModel
+**Database Integration Excellence Patterns**:
+- **Framework-native implementation** - Leverage framework-specific ORM features and data access patterns for optimal integration
+- **Performance-optimized data access** - Implement efficient querying, caching, and connection management for optimal application performance
+- **Security-integrated design** - Build security measures into data access layer design rather than retrofitting security controls
+- **Scalability-ready architecture** - Design data access patterns capable of supporting application growth and increased load
 
-class ProductCreate(BaseModel):
-    name: str
-    price: float
-
-class ProductResponse(BaseModel):
-    id: int
-    name: str
-    price: float
-    created_at: str
-    updated_at: str
-
-@app.post("/products", response_model=ProductResponse)
-async def create_product(product: ProductCreate, db: Session = Depends(get_db)):
-    repository = ProductRepository(db)
-    created_product = repository.create(product.dict())
-    return ProductResponse(**created_product.to_dict())
-```
-
-## Implementation Strategy
-
-### 1. Database Schema Analysis
-- Analyze existing database structure or design new schema
-- Implement proper indexing strategy for query performance
-- Define relationships and foreign key constraints
-- Set up audit trails and soft deletes if required
-
-### 2. ORM Configuration
-- Configure connection pooling and transaction management
-- Set up migrations and versioning system
-- Implement proper error handling and logging
-- Configure caching strategy (Redis, in-memory cache)
-
-### 3. Data Access Layer
-- Implement repository pattern for clean separation
-- Create service layer for business logic
-- Set up proper validation and sanitization
-- Implement pagination and filtering capabilities
-
-### 4. API Integration Points
-- Design RESTful endpoints with proper HTTP methods
-- Implement proper status codes and error responses
-- Set up request/response DTOs with validation
-- Configure CORS and security policies
-
-## Database-Specific Optimizations
-
-### PostgreSQL Integration
-```sql
--- Performance indexes
-CREATE INDEX CONCURRENTLY idx_products_price ON products(price);
-CREATE INDEX CONCURRENTLY idx_products_created_at ON products(created_at);
-
--- Full-text search
-CREATE INDEX CONCURRENTLY idx_products_name_fts ON products USING gin(to_tsvector('english', name));
-```
-
-### MySQL Integration
-```sql
--- Optimized table structure
-CREATE TABLE products (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(200) NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    INDEX idx_price (price),
-    INDEX idx_created (created_at)
-) ENGINE=InnoDB;
-```
-
-### SQLite Integration (Desktop Apps)
-```sql
--- Lightweight structure with proper constraints
-CREATE TABLE products (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL CHECK(length(name) > 0),
-    price REAL NOT NULL CHECK(price >= 0),
-    created_at TEXT DEFAULT (datetime('now')),
-    updated_at TEXT DEFAULT (datetime('now'))
-);
-
-CREATE TRIGGER update_products_timestamp 
-AFTER UPDATE ON products
-BEGIN
-    UPDATE products SET updated_at = datetime('now') WHERE id = NEW.id;
-END;
-```
-
-## Success Criteria
-
-1. **Database Integration**: Proper ORM configuration with connection management
-2. **Data Validation**: Input validation and business rule enforcement
-3. **Performance**: Optimized queries with appropriate indexing
-4. **Error Handling**: Comprehensive error handling and logging
-5. **API Consistency**: Standardized request/response formats
-6. **Transaction Management**: Proper ACID compliance and rollback handling
-
-## Common Pitfalls to Avoid
-
-- N+1 query problems with lazy loading
-- Missing database indexes on frequently queried fields
-- Inadequate connection pool configuration
-- Lack of proper error handling for constraint violations
-- Missing transaction boundaries for multi-step operations
-- Exposing internal database structure through API responses
+**Quality Assurance and Maintenance Integration**:
+- **Comprehensive testing strategy** - Unit testing, integration testing, and performance testing for all data access scenarios
+- **Monitoring and optimization focus** - Continuous performance monitoring with optimization feedback loops for sustained efficiency
+- **Documentation and knowledge sharing** - Clear integration guidelines, troubleshooting procedures, and team knowledge transfer
+- **Evolution and maintenance planning** - Database schema evolution support and maintenance procedures for long-term sustainability

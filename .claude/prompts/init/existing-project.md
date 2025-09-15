@@ -1,193 +1,143 @@
-# Existing Project Integration Prompt
+# Existing Project Framework Integration
 
-**Drag-and-drop ready! Just paste this prompt and I'll safely integrate the agent framework.**
+## 1. 🎯 FUNCTIONAL REQUIREMENTS
+
+Safely integrate Claude Code Multi-Agent Framework into an existing project without disrupting current development workflow, modifying source code, or breaking existing tools. Analyze project structure, technology stack, and business context to create framework configuration that enhances rather than replaces existing processes. Provide immediate value through analysis and recommendations while establishing gradual adoption pathway for full agent-driven development.
+
+## 2. 🔄 HIGH-LEVEL ALGORITHMS
+
+### Phase 1: Safe Project Analysis and Discovery
+1. **Scan project structure comprehensively** - Analyze directories, files, and organization patterns without modification
+2. **Detect technology stack and tools** - Identify languages, frameworks, build systems, databases, CI/CD
+3. **Extract business context** - Parse README, documentation, package metadata for project purpose and domain
+4. **Assess project maturity** - Evaluate development stage, codebase size, team indicators, and complexity
+5. **Map existing tooling** - Inventory development tools, testing frameworks, deployment configs, project management
+
+### Phase 2: Integration Safety Planning and Requirements Gathering
+1. **Validate existing CLAUDE.md** - Check if framework is already configured and preserve all settings
+2. **Identify integration constraints** - Determine what cannot be changed and must be respected
+3. **Request missing critical information** - Ask only for undetectable information:
+   - Project name and business domain if unclear
+   - Development stage and scale if ambiguous
+   - AI tools preferences (Serena, Context7) and TODO management integration level
+4. **Plan non-disruptive integration** - Design additive-only changes that enhance existing workflow
+5. **Create safety guarantees** - Establish firm boundaries about what will and won't be modified
+
+### Phase 3: Framework Configuration and Documentation Creation
+1. **Generate CLAUDE.md reflecting current state** - Document existing architecture without changing it
+2. **Create agent role mapping** - Align 11 agents with current project needs and development phases
+3. **Configure AI tools integration** - Set up Serena/Context7 with respect for existing structure
+4. **Establish TODO management integration** - Configure hierarchical task system compatible with existing workflow
+5. **Document integration approach** - Create guides for gradual adoption and immediate value realization
+
+### Phase 4: Value Delivery and Adoption Strategy
+1. **Provide immediate analysis insights** - Generate actionable recommendations for code quality, security, architecture
+2. **Create graduated adoption roadmap** - Plan phased introduction of agents and framework capabilities
+3. **Establish quick wins** - Identify immediate opportunities for agent assistance without workflow disruption
+4. **Configure monitoring and validation** - Set up success metrics and progress tracking for integration
+5. **Generate next steps guidance** - Provide specific instructions for beginning agent-assisted development
+
+## 3. ✅ VALIDATION CRITERIA
+
+### Integration Safety and Preservation
+- **Zero disruption guarantee**: No existing source code, build configs, or deployment setups modified
+- **Existing functionality intact**: All current project capabilities continue working exactly as before
+- **Tool compatibility maintained**: Integration works with existing development tools and workflows
+- **Team workflow preserved**: Current development practices and processes remain unchanged
+- **Rollback capability**: Framework integration can be completely removed if needed
+
+### Framework Configuration Accuracy
+- **Technology stack correctly documented**: CLAUDE.md accurately reflects current project architecture
+- **Business domain properly identified**: Project classification aligns with actual business context
+- **Agent selection optimized**: Chosen agents provide value for current project needs and development stage
+- **AI tools configured appropriately**: Serena/Context7 setup respects existing project structure and conventions
+- **TODO management integrated smoothly**: Task system works with existing project management without conflicts
+
+### Immediate Value and Adoption Readiness
+- **Actionable insights delivered**: Analysis provides specific, implementable recommendations for improvement
+- **Quick wins identified**: Clear opportunities for immediate agent assistance without workflow changes
+- **Adoption pathway established**: Gradual integration plan with measurable milestones and success criteria
+- **Documentation comprehensive**: All integration aspects clearly explained with usage guidance
+- **Success metrics defined**: Clear criteria for evaluating framework integration effectiveness
+
+## 4. 📚 USAGE EXAMPLES
+
+### Large React Enterprise Application
+**Detected Context**: Complex React/TypeScript app with 50+ components, Jest testing, CI/CD pipeline, team of 8 developers
+**User Requirements**: Business domain: "enterprise", TODO integration: "hierarchical", Serena: yes, Context7: no
+**Integration Result**:
+- CLAUDE.md documenting existing React/TypeScript/Enterprise stack
+- Agents: software-architect, frontend-engineer, qa-engineer, reviewer
+- Serena configured for large codebase navigation with existing ESLint/Prettier
+- TODO management integrated with existing Jira workflow
+- Immediate value: Architecture analysis, component optimization recommendations
+
+### Legacy Java Spring Boot Monolith
+**Detected Context**: Large Spring Boot application, Maven build, Oracle database, Jenkins CI/CD, maintenance stage
+**User Requirements**: Business domain: "financial_services", TODO integration: "pilot", both AI tools: yes
+**Integration Result**:
+- CLAUDE.md preserving existing Maven/Spring/Oracle architecture
+- Agents: business-analyst, software-architect, security-engineer, qa-engineer
+- Serena with legacy code navigation patterns, Context7 for modernization suggestions
+- Pilot TODO system with single reviewer agent
+- Immediate value: Security audit, technical debt analysis, modernization roadmap
+
+### Python Data Science Project
+**Detected Context**: Jupyter notebooks, pandas/scikit-learn, requirements.txt, individual researcher workflow
+**User Requirements**: Business domain: "data_science", TODO integration: "simple", Serena: yes, Context7: yes
+**Integration Result**:
+- CLAUDE.md configured for data science/Python stack
+- Agents: data-engineer, qa-engineer (focused on data quality)
+- AI tools configured for notebook and analysis workflow
+- Simple TODO system for research task tracking
+- Immediate value: Data pipeline optimization, model validation recommendations
+
+### Node.js Microservices Architecture
+**Detected Context**: Multiple service directories, Docker Compose, Kubernetes configs, API documentation
+**User Requirements**: Business domain: "saas", TODO integration: "hierarchical", Context7 focus on API generation
+**Integration Result**:
+- CLAUDE.md documenting microservices architecture with Node.js/Docker/K8s
+- Agents: software-architect, api-engineer, deployment-engineer, security-engineer
+- Context7 optimized for API generation and service coordination
+- Hierarchical TODO system with cross-service task coordination
+- Immediate value: Service integration analysis, API consistency recommendations
+
+### Existing Mobile React Native Project
+**Detected Context**: React Native with iOS/Android builds, Expo workflow, mobile-specific dependencies
+**User Requirements**: Business domain: "mobile_application", TODO integration: "immediate", focus on UX improvement
+**Integration Result**:
+- CLAUDE.md configured for React Native/mobile development
+- Agents: ux-designer, frontend-engineer, qa-engineer
+- Serena configured for mobile development patterns
+- Immediate TODO integration with focus on UX and performance tasks
+- Immediate value: Mobile UX analysis, performance optimization, accessibility audit
 
 ---
 
-## 🔧 Integrate Agent Framework into Existing Project
+## 🎯 EXECUTION APPROACH
 
-I'll help you safely add the Claude Code Agent Framework with 11 specialized agents to your existing project. I'll analyze everything first and make no changes without your approval.
+**Non-Disruptive Integration Process**:
+1. **Comprehensive read-only analysis** - Scan and understand project without any modifications
+2. **Intelligent requirements gathering** - Ask only for information that cannot be auto-detected
+3. **Safe framework configuration** - Create CLAUDE.md and .claude/ structure as pure addition
+4. **AI tools optional integration** - Configure Serena/Context7 if requested, with existing tool respect
+5. **Immediate value delivery** - Provide actionable insights and recommendations without workflow changes
 
-### Step 1: Comprehensive Project Analysis
+**Integration Guarantees**:
+- **Will NOT modify**: Source code, build configs, dependencies, CI/CD, deployment setups
+- **Will ONLY add**: Framework documentation, agent configurations, AI tool setups (if requested)
+- **Will RESPECT**: Existing conventions, tool choices, development practices, team workflows
+- **Will PROVIDE**: Immediate analysis value, gradual adoption options, rollback capability
 
-Let me analyze your existing project automatically:
+**Adoption Strategy Options**:
+- **Conservative**: Framework analysis and documentation only, manual agent consultation
+- **Gradual**: Pilot TODO integration with single agent, expand based on success
+- **Immediate**: Full TODO system integration with selected agents and AI tools
+- **Advanced**: Complete framework adoption with all agents and comprehensive AI tool integration
 
-1. **Project Structure Discovery:**
-   - Main directories and their purposes
-   - Entry points and configuration files
-   - Build system and dependency management
-   - Testing setup and CI/CD configuration
-
-2. **Technology Stack Detection:**
-   - Programming languages and frameworks
-   - Database systems and data stores
-   - Frontend/backend architecture patterns
-   - Deployment and infrastructure setup
-
-3. **Business Context Analysis:**
-   - Project purpose from README/docs
-   - Business domain identification
-   - User base and scale indicators
-   - Current development stage assessment
-
-4. **Existing Tooling Assessment:**
-   - Development tools and IDE configurations
-   - Quality assurance and testing tools
-   - Documentation and project management
-   - Version control and collaboration setup
-
-### Step 2: Intelligent Integration Planning
-
-Based on my analysis, I'll create a safe integration plan:
-
-**If CLAUDE.md already exists:**
-- I'll read current configuration and adapt to it
-- Preserve all existing settings and preferences
-- Only suggest improvements, not replacements
-
-**If no CLAUDE.md exists:**
-- I'll create one that perfectly matches your current setup
-- Document existing architecture without changing it
-- Map current tools to appropriate agent roles
-
-**Integration Safety Check:**
-- ❌ Will NOT modify any existing source code
-- ❌ Will NOT change build/deployment configurations  
-- ❌ Will NOT alter existing package managers or dependencies
-- ✅ Will ONLY add agent framework documentation and configuration
-- ✅ Will CREATE Serena integration that respects existing setup
-
-### Step 3: Smart Information Gathering
-
-I'll only ask for information I can't detect:
-
-**If project name is unclear:**
-- What should I call this project in the agent framework?
-
-**If business domain is unclear:**
-- What business domain does this project serve? (ecommerce, fintech, healthcare, saas, enterprise, iot, other)
-
-**If development stage is unclear:**
-- What stage is this project in? (prototype, mvp, development, production, maintenance)
-
-**AI Development Tools (I'll always ask about these):**
-- Do you want to use **Serena** for code navigation and intelligent editing? (y/n)
-- Do you want to use **Context7** for advanced code generation and migrations? (y/n)
-
-**TODO Management Integration Assessment (I'll always ask about these):**
-- Do you want to integrate **TODO management** into your existing workflow? (y/n)
-  - If yes: What integration approach? (gradual/immediate/pilot)
-  - If yes: Which complexity level fits your team? (simple/hierarchical)
-  - If yes: Do you want agents to create tasks automatically? (y/n)
-  - If yes: What progress tracking scope? (session/project/enterprise)
-- Do you have existing project management tools? (jira/asana/trello/none)
-  - If yes: Do you want TODO system to integrate with them? (y/n)
-
-**If special requirements exist:**
-- Any specific compliance, security, or performance requirements?
-- Any existing conventions I should follow?
-
-### Step 4: Safe Integration Execution
-
-Once I understand your project, I'll:
-
-1. **Create Non-Disruptive CLAUDE.md:**
-   - Project metadata reflecting CURRENT state
-   - Technology stack documentation of EXISTING setup
-   - Business domain configuration for YOUR use case
-   - Agent roles mapped to YOUR current architecture
-   - **TODO Management Configuration (Section 8)** based on your preferences:
-     - Integration approach (gradual/immediate/pilot)
-     - Complexity level adapted to your team size and workflow
-     - External tool integration settings (Jira/Asana/Trello)
-     - Gradual adoption timeline and milestones
-   - **ZERO changes to existing functionality**
-
-2. **Set up AI Tools Integration (if requested):**
-   - **Serena**: `.serena` directory with safe configuration and `project.yml` tailored to your setup
-   - **Context7**: Configuration for advanced code generation and migrations
-   - Both tools respect existing project structure and conventions
-   - Intelligent ignore patterns to avoid conflicts with existing tools
-   - Option for read-only mode initially for maximum safety
-
-3. **Create Integration Documentation:**
-   - Agent usage guide tailored to your project and chosen AI tools
-   - AI tools configuration documentation (Serena/Context7 usage patterns)
-   - **TODO Management Integration Guide:**
-     - Mapping current workflow to agent TODO coordination
-     - Integration timeline with existing project management tools
-     - Agent training guide for TODO system adoption
-     - Success metrics and progress tracking setup
-   - Quick wins where agents and AI tools can help immediately
-   - Gradual adoption roadmap for both agents and AI tools
-
-### Step 5: Adoption Strategy
-
-I'll provide you with:
-
-**Immediate Value Agents:**
-- `business-analyst` - for requirements clarification
-- `reviewer` - for quality validation and risk assessment
-- `security-engineer` - for security analysis of existing code
-
-**Quick Win Opportunities:**
-- Documentation improvement with agent insights
-- Code quality assessment and recommendations  
-- Architecture analysis and optimization suggestions
-- Security audit and compliance gap analysis
-
-**TODO Management Integration Timeline:**
-- **Pilot Phase**: Single agent (reviewer) with simple TodoWrite integration
-- **Phase 1**: Core agents (business-analyst, software-architect) with feature-level todos
-- **Phase 2**: Implementation agents (frontend, api, data) with task coordination
-- **Phase 3**: Full hierarchical system with external tool integration
-- **Phase 4**: Advanced analytics and automated workflow optimization
-
-**Long-term Integration Plan:**
-- Phase 1: Analysis and documentation (safe)
-- Phase 2: Quality and security improvements (low risk)
-- Phase 3: Development workflow integration (when ready)
-- Phase 4: Full agent-driven development (optional)
-
-### Integration Safety Guarantees
-
-**What I WILL do:**
-- ✅ Analyze your project thoroughly and safely
-- ✅ Create documentation that reflects current state
-- ✅ Set up agent framework without disrupting workflow
-- ✅ Provide immediate value through analysis and guidance
-- ✅ Give you control over adoption pace
-
-**What I WILL NOT do:**
-- ❌ Change any existing code without explicit permission
-- ❌ Modify build systems, CI/CD, or deployment configs
-- ❌ Alter dependency management or package files
-- ❌ Break existing workflows or development practices
-- ❌ Make assumptions about desired changes
-
-### Expected Outcomes
-
-After integration, you'll have:
-
-- 📊 **Comprehensive Project Analysis** - detailed understanding of current state
-- 📋 **CLAUDE.md Configuration** - perfectly tailored to your existing project
-- 🔧 **AI Tools Integration** - Serena and/or Context7 working alongside existing tools
-- 📝 **TODO Management Integration** - configured based on your workflow preferences:
-  - Gradual integration timeline with your existing project management
-  - Agent coordination protocols adapted to your team structure
-  - External tool integration (Jira/Asana/Trello) if requested
-  - Success metrics and progress tracking tailored to your needs
-- 🎯 **Agent Usage Strategy** - clear plan for gradual adoption
-- 🚀 **Immediate Quick Wins** - valuable insights and recommendations
-- 📈 **Growth Roadmap** - path to full agent-driven development
-
-### Ready to Integrate
-
-Just paste this prompt and I'll:
-1. **Analyze your project safely** (read-only analysis)
-2. **Ask minimal questions** for context I can't detect
-3. **Create safe integration** without disrupting anything
-4. **Provide immediate value** through agent insights
-5. **Give you adoption roadmap** for gradual integration
-
-No risk to your existing project - pure addition of agent framework capabilities! 🛡️
+**Success Deliverables**:
+- **Fully documented existing project** in CLAUDE.md framework format
+- **Non-disruptive agent configuration** ready for immediate or gradual use
+- **AI tools integration** (if requested) respecting existing development environment
+- **Actionable improvement recommendations** based on comprehensive project analysis
+- **Flexible adoption pathway** allowing team to control integration pace and scope

@@ -1,0 +1,131 @@
+@startuml
+!theme materia
+title Claude Code Multi-Agent Framework - Simplified TodoWrite Workflow
+
+skinparam activity {
+    BackgroundColor #E1F5FE
+    BorderColor #0277BD
+    FontColor #01579B
+}
+
+start
+
+:Feature Request / Task Initiated;
+
+partition "📝 TodoWrite Session Management" {
+    :Create Initial TodoWrite Tasks;
+    note right
+        TodoWrite({
+          todos: [{
+            content: "Analyze requirements and plan approach",
+            status: "in_progress",
+            activeForm: "Analyzing requirements"
+          }]
+        })
+    end note
+
+    :Select Appropriate Agent;
+    note right
+        • business-analyst - Requirements analysis
+        • product-manager - Feature planning
+        • software-architect - System design
+        • frontend-engineer - UI development
+        • api-engineer - Backend services
+        • data-engineer - Data solutions
+        • security-engineer - Security implementation
+        • qa-engineer - Quality assurance
+        • deployment-engineer - Infrastructure
+        • ux-designer - User experience
+        • reviewer - Quality validation
+    end note
+}
+
+partition "🔄 Agent Work Execution" {
+    :Mark Task as In-Progress;
+    note right
+        TodoWrite({
+          todos: [{
+            content: "Current task description",
+            status: "in_progress",
+            activeForm: "Working on current task"
+          }]
+        })
+    end note
+
+    :Execute Agent Work;
+    note right
+        • Follow agent-specific prompts
+        • Apply functional approach patterns
+        • Use CLAUDE.md configuration
+        • Maintain quality standards
+    end note
+
+    :Complete Task Immediately;
+    note right
+        TodoWrite({
+          todos: [{
+            content: "Current task description",
+            status: "completed",
+            activeForm: "Working on current task"
+          }]
+        })
+    end note
+}
+
+partition "🤝 Agent Coordination" {
+    if (Need Agent Handoff?) then (yes)
+        :Use Simplified Handoff Hook;
+        note right
+            ./.claude/hooks/agent-handoff.sh "from-agent" "to-agent"
+
+            Generates TodoWrite patterns:
+            TodoWrite({
+              content: "Process handoff from from-agent",
+              status: "in_progress",
+              activeForm: "Processing from-agent handoff"
+            })
+        end note
+
+        :Next Agent Takes Over;
+    else (no)
+    endif
+
+    if (Quality Check Needed?) then (yes)
+        :Run Quality Gate Hook;
+        note right
+            ./.claude/hooks/quality-gate-checker.sh "agent-type" "task-type"
+
+            Basic validation for agent-specific work
+        end note
+    else (no)
+    endif
+}
+
+partition "✅ Session Completion" {
+    :All TodoWrite Tasks Completed;
+    note right
+        • All tasks marked as "completed"
+        • No tasks remain "in_progress"
+        • Work ready for next phase or completion
+    end note
+
+    :Session Summary;
+    note right
+        • Document what was accomplished
+        • Note any follow-up tasks needed
+        • Prepare for next session or handoff
+    end note
+}
+
+stop
+
+note bottom
+    **Simplified TodoWrite Principles:**
+    • ONE task "in_progress" at a time
+    • Complete tasks immediately after finishing
+    • Use descriptive content & activeForm
+    • Coordinate through simple hooks
+    • Focus on essential functionality
+end note
+
+@enduml
