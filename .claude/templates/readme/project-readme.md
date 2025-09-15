@@ -4,7 +4,7 @@
 
 ## 🏗️ Architecture
 
-This project uses the **Claude Code Agent Framework** with 11 specialized agents organized in 5 development phases.
+This project uses the **Claude Code Agent Framework** with 14 specialized agents organized in 5 development phases.
 
 ### 🤖 Agent Structure
 
@@ -22,6 +22,7 @@ This project uses the **Claude Code Agent Framework** with 11 specialized agents
 
 **Phase 3: Development & Continuous QA**
 - `frontend-engineer` - User interface implementation
+- `backend-engineer` - Server-side systems and performance
 - `api-engineer` - API development and microservices
 - `data-engineer` - Database and ETL implementation  
 - `security-engineer` - Security controls implementation

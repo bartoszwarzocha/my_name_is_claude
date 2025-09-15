@@ -37,7 +37,7 @@ initial_prompt: |
   - Scale: {project_scale}
   - Stage: {development_stage}
   
-  This project uses the Claude Code Agent Framework with 11 specialized agents organized in 5 phases:
+  This project uses the Claude Code Agent Framework with 14 specialized agents organized in 5 phases:
   
   **Phase 1: Business Discovery & Analysis**
   - business-analyst: Business requirements, stakeholder management, process analysis
@@ -53,6 +53,7 @@ initial_prompt: |
   
   **Phase 3: Development & Continuous QA**
   - frontend-engineer: UI implementation, responsive design, performance
+  - backend-engineer: Server-side systems, performance optimization, security
   - api-engineer: APIs, microservices, service integration
   - data-engineer: Database implementation, data pipelines, analytics
   - security-engineer: Security controls, authentication, monitoring

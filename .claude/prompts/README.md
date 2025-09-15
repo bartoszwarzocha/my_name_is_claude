@@ -74,24 +74,46 @@ The Claude Code Multi-Agent Framework provides:
 │   ├── documentation-consistency-validator.md
 │   └── project-structure-modernization.md
 ├── agents/                     # Agent-specific prompts ✅
-│   ├── business/              # Business analysis
-│   ├── product/               # Product management
-│   ├── design/                # UX/UI design
-│   ├── architecture/          # System architecture
-│   ├── frontend/              # Frontend development
 │   ├── api/                   # API development
+│   ├── architecture/          # System architecture
+│   ├── automation/            # Automation engineering
+│   ├── backend/               # Backend engineering
+│   ├── business/              # Business analysis
+│   ├── capacity/              # Capacity planning
+│   ├── cloud/                 # Cloud engineering
+│   ├── compliance/            # Compliance auditing
 │   ├── data/                  # Data engineering
-│   ├── security/              # Security engineering
+│   ├── database/              # Database administration
 │   ├── deployment/            # DevOps and deployment
-│   ├── qa/                    # Quality assurance
+│   ├── design/                # UX/UI design
+│   ├── devops/                # DevOps architecture
+│   ├── documentation/         # Technical writing
+│   ├── enterprise/            # Enterprise architecture
+│   ├── frontend/              # Frontend development
+│   ├── governance/            # Governance architecture
+│   ├── incident/              # Incident response
+│   ├── integration/           # Integration architecture
+│   ├── middleware/            # Middleware engineering
+│   ├── mobile/                # Mobile development
+│   ├── monitoring/            # Monitoring engineering
+│   ├── network/               # Network architecture
+│   ├── performance/           # Performance engineering
+│   ├── planner/               # Product management & review
+│   ├── platform/              # Platform engineering
+│   ├── project/               # Project coordination
 │   ├── quality/               # Test automation
-│   └── review/                # Code review and audit
+│   ├── reliability/           # Reliability engineering
+│   ├── risk/                  # Risk management
+│   ├── security/              # Security engineering
+│   ├── session/               # Session management
+│   └── sre/                   # Site reliability engineering
 └── workflows/                  # Multi-agent orchestration ✅
-    ├── phase-transitions/     # Workflow handoffs
     ├── parallel-coordination/ # Cross-team coordination
+    ├── phase-transitions/     # Workflow handoffs
+    ├── quality-gates/         # Validation checkpoints
     ├── scenarios/             # Development scenarios
-    ├── todo-management/       # TODO orchestration
-    └── quality-gates/         # Validation checkpoints
+    ├── stakeholder-communication/ # Stakeholder coordination
+    └── todo-management/       # TODO orchestration
 ```
 
 ---
@@ -405,6 +427,306 @@ echo "Project description and requirements" > init_concept/project_idea.md
 #### DevOps & Infrastructure
 - `ci-cd-pipeline-and-infrastructure-setup.md` - Automated deployment pipelines
 - `desktop-deployment-and-packaging.md` - Cross-platform desktop deployment
+
+---
+
+## 🏗️ Core Framework Agents
+
+### Backend Engineering
+
+#### `backend-architecture-design.md`
+- **Purpose**: Backend system architecture and service design
+- **Output**: Service architecture, API design, database integration
+- **Usage**: Backend development, microservices design, system integration
+
+#### `backend-monitoring-logging.md`
+- **Purpose**: Backend monitoring and logging infrastructure
+- **Output**: Monitoring strategy, logging frameworks, performance tracking
+- **Usage**: Production monitoring, debugging, performance optimization
+
+### Database Engineering
+
+#### `database-design-and-etl-implementation.md`
+- **Purpose**: Database schema design and ETL pipeline implementation
+- **Output**: Database design, data models, ETL processes
+- **Usage**: Data architecture, database optimization, data pipeline development
+
+#### `database-to-entityframework-generation.md`
+- **Purpose**: Entity Framework code generation from database schema
+- **Output**: Entity models, database context, repository patterns
+- **Usage**: .NET development, ORM implementation, database integration
+
+#### `database-backend-integration.md`
+- **Purpose**: Database integration with backend services
+- **Output**: Data access layer, connection management, transaction handling
+- **Usage**: Backend development, data persistence, API integration
+
+#### `desktop-database-integration.md`
+- **Purpose**: Desktop application database integration
+- **Output**: Local database setup, data synchronization, offline capabilities
+- **Usage**: Desktop development, local data management, synchronization
+
+### DevOps Architecture
+
+#### `devops-architecture-and-automation.md`
+- **Purpose**: DevOps architecture and automation frameworks
+- **Output**: DevOps strategy, automation pipelines, infrastructure management
+- **Usage**: Infrastructure automation, deployment optimization, operational efficiency
+
+#### `devops-ci-cd-optimization.md`
+- **Purpose**: CI/CD pipeline optimization and automation
+- **Output**: Optimized pipelines, deployment strategies, quality gates
+- **Usage**: DevOps improvement, deployment efficiency, automation enhancement
+
+### Capacity Planning
+
+#### `enterprise-capacity-planning.md`
+- **Purpose**: Enterprise-scale capacity planning and resource optimization
+- **Output**: Capacity models, resource forecasting, scaling strategies
+- **Usage**: Infrastructure planning, cost optimization, performance scaling
+
+#### `performance-capacity-analysis.md`
+- **Purpose**: Performance analysis and capacity assessment
+- **Output**: Performance metrics, capacity recommendations, optimization plans
+- **Usage**: Performance tuning, capacity management, resource optimization
+
+### Governance Architecture
+
+#### `enterprise-governance-frameworks.md`
+- **Purpose**: Enterprise governance and compliance frameworks
+- **Output**: Governance strategy, compliance processes, risk management
+- **Usage**: Corporate governance, regulatory compliance, risk mitigation
+
+#### `technology-governance-and-standards.md`
+- **Purpose**: Technology governance and architectural standards
+- **Output**: Technology standards, governance processes, compliance frameworks
+- **Usage**: Architecture governance, technology oversight, standards enforcement
+
+### Incident Response
+
+#### `incident-response-automation.md`
+- **Purpose**: Incident response automation and orchestration
+- **Output**: Response procedures, automation workflows, escalation processes
+- **Usage**: Incident management, automated response, operational resilience
+
+#### `incident-management-procedures.md`
+- **Purpose**: Incident management procedures and coordination
+- **Output**: Management processes, communication protocols, resolution procedures
+- **Usage**: Incident handling, team coordination, service restoration
+
+### Middleware Engineering
+
+#### `middleware-integration-architecture.md`
+- **Purpose**: Middleware architecture and integration patterns
+- **Output**: Integration architecture, middleware design, communication patterns
+- **Usage**: System integration, middleware implementation, service connectivity
+
+#### `message-queue-and-middleware-optimization.md`
+- **Purpose**: Message queue optimization and middleware performance
+- **Output**: Optimization strategies, performance tuning, scalability improvements
+- **Usage**: Middleware optimization, message processing, system performance
+
+### Risk Management
+
+#### `risk-assessment-and-mitigation.md`
+- **Purpose**: Risk assessment and mitigation strategies
+- **Output**: Risk analysis, mitigation plans, monitoring frameworks
+- **Usage**: Risk management, compliance, strategic planning
+
+#### `risk-monitoring-reporting.md`
+- **Purpose**: Risk monitoring and reporting systems
+- **Output**: Monitoring systems, reporting frameworks, alert mechanisms
+- **Usage**: Continuous risk management, compliance reporting, risk oversight
+
+### Site Reliability Engineering
+
+#### `sre-reliability-engineering.md`
+- **Purpose**: Site reliability engineering and operational excellence
+- **Output**: SRE practices, reliability frameworks, operational procedures
+- **Usage**: Production reliability, operational excellence, service availability
+
+#### `sre-incident-response.md`
+- **Purpose**: SRE incident response and postmortem analysis
+- **Output**: Response procedures, postmortem processes, improvement plans
+- **Usage**: Incident management, continuous improvement, operational learning
+
+### Session Management
+
+#### `session-start-and-context-analysis.md`
+- **Purpose**: Session initialization and comprehensive context analysis
+- **Output**: Session state, context analysis, project understanding
+- **Usage**: Session management, context preservation, project analysis
+
+#### `session-continuation-from-summary.md`
+- **Purpose**: Session continuation from previous session summaries
+- **Output**: Restored context, continued workflow, project state
+- **Usage**: Session recovery, workflow continuation, context restoration
+
+#### `session-end-and-summary-generation.md`
+- **Purpose**: Session termination and comprehensive summary generation
+- **Output**: Session summary, progress tracking, next steps
+- **Usage**: Session closure, progress documentation, handoff preparation
+
+#### `session-state-recovery.md`
+- **Purpose**: Session state recovery and context restoration
+- **Output**: Recovered state, context restoration, workflow resumption
+- **Usage**: Error recovery, session restoration, continuity management
+
+#### `serena-sync-and-update.md`
+- **Purpose**: Serena MCP tool synchronization and project updates
+- **Output**: Synchronized project state, updated indexing, tool coordination
+- **Usage**: MCP integration, project synchronization, tool coordination
+
+---
+
+## 🏢 Enterprise-Scale Agents
+
+### Enterprise Architecture
+
+#### `enterprise-architecture-strategy.md`
+- **Purpose**: Enterprise architecture strategy and governance frameworks
+- **Output**: Enterprise strategy, governance processes, technology roadmaps
+- **Usage**: Digital transformation, enterprise planning, architectural governance
+
+#### `digital-transformation-planning.md`
+- **Purpose**: Digital transformation planning and implementation strategies
+- **Output**: Transformation roadmap, capability development, change management
+- **Usage**: Organizational modernization, technology adoption, business transformation
+
+#### `technology-governance-frameworks.md`
+- **Purpose**: Technology governance and standards management
+- **Output**: Governance frameworks, compliance systems, standards enforcement
+- **Usage**: Technology oversight, risk management, regulatory compliance
+
+### Cloud Engineering
+
+#### `cloud-cost-optimization.md`
+- **Purpose**: Cloud cost analysis and optimization strategies
+- **Output**: Cost optimization plan, resource right-sizing, financial governance
+- **Usage**: Cloud financial management, cost reduction, resource optimization
+
+#### `cloud-migration-strategy.md`
+- **Purpose**: Cloud migration planning and execution strategies
+- **Output**: Migration roadmap, risk assessment, migration execution plan
+- **Usage**: Cloud adoption, legacy modernization, infrastructure migration
+
+#### `cloud-serverless-architecture.md`
+- **Purpose**: Serverless architecture design and implementation
+- **Output**: Serverless architecture, event-driven systems, scaling strategies
+- **Usage**: Modern cloud architecture, cost-effective scaling, event processing
+
+#### `cloud-multi-cloud-management.md`
+- **Purpose**: Multi-cloud strategy and management frameworks
+- **Output**: Multi-cloud architecture, vendor management, integration strategies
+- **Usage**: Cloud diversification, vendor risk mitigation, hybrid cloud solutions
+
+### Performance Engineering
+
+#### `application-performance-optimization.md`
+- **Purpose**: Application performance analysis and optimization
+- **Output**: Performance optimization plan, bottleneck analysis, improvement strategies
+- **Usage**: Performance tuning, scalability improvement, user experience enhancement
+
+#### `scalability-testing-and-load-analysis.md`
+- **Purpose**: Scalability testing and load analysis frameworks
+- **Output**: Load testing strategy, scalability assessment, capacity planning
+- **Usage**: Performance validation, capacity planning, scalability assurance
+
+#### `system-optimization.md`
+- **Purpose**: System-wide optimization and efficiency improvement
+- **Output**: System optimization plan, resource efficiency, performance enhancement
+- **Usage**: Infrastructure optimization, cost reduction, performance improvement
+
+### Automation Engineering
+
+#### `business-process-automation.md`
+- **Purpose**: Business process automation and workflow optimization
+- **Output**: Process automation strategy, workflow optimization, efficiency improvement
+- **Usage**: Process modernization, operational efficiency, automation implementation
+
+#### `deployment-automation-and-ci-cd.md`
+- **Purpose**: Deployment automation and CI/CD pipeline implementation
+- **Output**: CI/CD strategy, automation frameworks, deployment optimization
+- **Usage**: DevOps implementation, deployment efficiency, quality automation
+
+#### `infrastructure-automation.md`
+- **Purpose**: Infrastructure automation and management frameworks
+- **Output**: Infrastructure as code, automation strategies, operational efficiency
+- **Usage**: Infrastructure management, operational automation, resource optimization
+
+### Mobile Development
+
+#### `mobile-app-development.md`
+- **Purpose**: Mobile application development and lifecycle management
+- **Output**: Mobile development strategy, platform optimization, deployment planning
+- **Usage**: Mobile app development, platform-specific optimization, mobile DevOps
+
+#### `cross-platform-development.md`
+- **Purpose**: Cross-platform mobile development and optimization
+- **Output**: Cross-platform strategy, code sharing optimization, platform integration
+- **Usage**: Multi-platform development, development efficiency, platform consistency
+
+### Data Science & Analytics
+
+#### `machine-learning.md`
+- **Purpose**: Machine learning implementation and model development
+- **Output**: ML strategy, model development, deployment automation, performance monitoring
+- **Usage**: AI implementation, predictive analytics, intelligent automation
+
+#### `predictive-analytics.md`
+- **Purpose**: Predictive analytics and forecasting systems
+- **Output**: Forecasting models, analytics strategy, business intelligence frameworks
+- **Usage**: Business forecasting, trend analysis, data-driven decision making
+
+#### `data-analysis.md`
+- **Purpose**: Data analysis and statistical modeling frameworks
+- **Output**: Analysis strategy, statistical models, business insights
+- **Usage**: Data exploration, business intelligence, analytical reporting
+
+### Infrastructure & Operations
+
+#### Network Architecture
+- `enterprise-network-design-and-topology.md` - Enterprise network design and topology planning
+- `network-infrastructure-planning.md` - Network infrastructure planning and optimization
+- `network-security-architecture.md` - Network security architecture and protection strategies
+- `network-performance-optimization.md` - Network performance optimization and monitoring
+
+#### Platform Engineering
+- `internal-developer-platform-design.md` - Internal developer platform design and implementation
+- `developer-experience-optimization.md` - Developer experience optimization and productivity enhancement
+- `platform-engineering-automation.md` - Platform automation and developer tooling
+
+#### Reliability Engineering
+- `chaos-engineering-and-resilience-testing.md` - Chaos engineering and system resilience testing
+- `performance-monitoring-and-observability.md` - Performance monitoring and observability frameworks
+- `system-reliability-engineering.md` - System reliability engineering and SRE practices
+
+#### Technical Documentation
+- `technical-documentation-systems.md` - Technical documentation systems and standards
+- `api-documentation-and-developer-resources.md` - API documentation and developer resource management
+- `knowledge-management-systems.md` - Knowledge management and documentation automation
+
+### Monitoring & Compliance
+
+#### Infrastructure Monitoring
+- `infrastructure-monitoring.md` - Infrastructure monitoring and alerting systems
+- `application-monitoring.md` - Application performance monitoring and observability
+- `alerting-systems.md` - Alerting systems and incident response automation
+
+#### Compliance & Risk Management
+- `audit-preparation.md` - Audit preparation and compliance management
+- `risk-assessment.md` - Risk assessment and mitigation strategies
+- `regulatory-compliance.md` - Regulatory compliance and governance frameworks
+
+### Integration & Coordination
+
+#### Enterprise Integration
+- `enterprise-integration-patterns.md` - Enterprise integration patterns and architecture design
+- `system-integration.md` - System integration and connectivity management
+
+#### Project Coordination
+- `team-coordination.md` - Team coordination and collaboration management
+- `project-management.md` - Project management and execution coordination
 
 ---
 

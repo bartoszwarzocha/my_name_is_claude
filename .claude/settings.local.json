@@ -32,7 +32,12 @@
       "WebFetch(domain:docs.github.com)",
       "Bash(head:*)",
       "Bash(tail:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(if [ \"$agent\" = \"technical\" ])",
+      "Bash(then find /mnt/e/AI/my_name_is_claude/.claude/prompts/agents -path \"*documentation*\" -name \"*.md\")",
+      "Bash(else find /mnt/e/AI/my_name_is_claude/.claude/prompts/agents -path \"*$agent*\" -name \"*.md\")",
+      "Bash(fi)",
+      "Bash(echo:*)"
     ],
     "deny": []
   }
