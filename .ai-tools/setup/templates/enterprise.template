@@ -1,0 +1,265 @@
+# Enterprise Project Template Variables
+
+## Project Scale Configuration
+project_scale_title="Fortune 500 Enterprise"
+capabilities_list="- **Enterprise-Grade Architecture** with high availability, disaster recovery, and global scalability
+- **Complete Agent Ecosystem** covering entire enterprise development lifecycle
+- **Advanced Governance Framework** with compliance, audit trails, and risk management
+- **Security & Compliance Excellence** meeting SOX, GDPR, HIPAA, and industry-specific regulations
+- **Performance & Scalability** supporting millions of users and petabytes of data
+- **DevSecOps Integration** with automated security testing, compliance validation, and governance
+- **Business Intelligence** with advanced analytics, reporting, and decision support systems"
+
+## Business Domains
+business_domains_list="- **Enterprise Systems**: ERP, CRM, SCM, HRM, financial systems, core business platforms
+- **Digital Transformation**: Legacy modernization, cloud migration, process automation
+- **Regulatory Compliance**: SOX, GDPR, HIPAA, PCI-DSS, industry-specific compliance
+- **Financial Services**: Trading platforms, risk management, regulatory reporting, wealth management
+- **Healthcare Systems**: EMR, patient management, clinical decision support, regulatory compliance
+- **Manufacturing**: Supply chain optimization, quality management, IoT integration, predictive maintenance
+- **Government**: Citizen services, regulatory systems, security clearance, public safety"
+
+## Project Goals
+project_goals_list="- **Business Transformation**: Enable strategic business initiatives and competitive advantage
+- **Operational Excellence**: Optimize business processes and operational efficiency at scale
+- **Risk Management**: Comprehensive risk mitigation, compliance, and governance frameworks
+- **Global Scalability**: Support multinational operations with 24/7 availability requirements
+- **Security Leadership**: Industry-leading security posture and threat protection
+- **Innovation Platform**: Enable rapid innovation while maintaining enterprise controls
+- **Stakeholder Value**: Measurable business value across all stakeholder groups"
+
+## Technology Stack
+technology_stack_list="- **Enterprise Frontend**: {{detected_frontend}} with micro-frontend architecture, accessibility compliance
+- **Enterprise Backend**: {{detected_backend}} with microservices, event-driven architecture, API gateway
+- **Enterprise Data**: {{detected_database}} with data lakes, warehouses, real-time analytics, AI/ML
+- **Security Framework**: Zero-trust architecture, identity management, encryption, threat detection
+- **Cloud Infrastructure**: Multi-cloud/hybrid cloud with disaster recovery, global distribution
+- **DevSecOps Pipeline**: Automated security testing, compliance validation, deployment orchestration
+- **Monitoring & Observability**: APM, infrastructure monitoring, business intelligence, audit logging
+- **Integration Platform**: ESB, API management, message queues, event streaming, ETL/ELT"
+
+## TODO Management Configuration
+todo_management_enabled="true"
+todo_hierarchy_level="hierarchical"
+auto_task_creation="true"
+progress_tracking="enterprise"
+session_todos="true"
+agent_coordination="true"
+task_handoffs="true"
+
+todo_system_config="- **Epic Management**: true (Strategic business initiative and program management)
+- **Feature Breakdown**: true (Comprehensive feature planning with business impact analysis)
+- **Task Granularity**: detailed (Enterprise-level task planning with dependencies and risk assessment)
+- **Subtask Tracking**: true (Granular progress monitoring across multiple teams and workstreams)
+- **Daily Standups**: true (Multi-team coordination with escalation and dependency management)
+- **Weekly Summaries**: true (Executive reporting and stakeholder communication)
+- **Milestone Tracking**: true (Business milestone monitoring with KPI and success metrics)
+- **Burndown Charts**: true (Velocity tracking and predictive analytics for delivery forecasting)
+- **External Tools**: jira (Integration with enterprise project management and governance tools)
+- **API Integration**: true (Integration with enterprise systems for automated reporting and tracking)
+- **Automation Hooks**: true (Advanced workflow automation and governance enforcement)
+- **Compliance Tracking**: true (Regulatory compliance and audit trail maintenance)"
+
+## Performance Requirements
+performance_requirements="- **Response Time**: < 1 second for critical business transactions, < 3 seconds for complex operations
+- **Throughput**: Support 1M+ concurrent users with linear scalability
+- **Availability**: 99.99% uptime (52 minutes downtime/year) with planned maintenance windows
+- **Disaster Recovery**: RPO < 15 minutes, RTO < 4 hours for critical systems
+- **Global Performance**: < 200ms response time across all geographic regions
+- **Scalability**: Auto-scaling to handle 100x traffic spikes and seasonal variations"
+
+## Scalability Requirements
+scalability_requirements="- **User Scale**: Support 10M+ users globally with regional data centers
+- **Data Volume**: Handle petabytes of data with real-time processing capabilities
+- **Geographic Distribution**: Multi-region deployment with data sovereignty compliance
+- **Team Scale**: Support 100+ developers across multiple teams and time zones
+- **System Integration**: Seamless integration with 100+ enterprise systems and third-party services
+- **Technology Evolution**: Architecture supports technology modernization without business disruption"
+
+## Reliability Requirements
+reliability_requirements="- **High Availability**: 99.99% uptime with redundancy, failover, and disaster recovery
+- **Data Integrity**: ACID compliance, blockchain verification, comprehensive audit trails
+- **Fault Tolerance**: Graceful degradation, circuit breakers, chaos engineering validation
+- **Business Continuity**: Comprehensive disaster recovery, business continuity planning
+- **Monitoring Excellence**: Real-time monitoring, predictive alerting, automated remediation
+- **Change Management**: Zero-downtime deployments, blue-green deployment, canary releases"
+
+## Security Requirements
+security_requirements="- **Zero-Trust Architecture**: Identity verification, least privilege, continuous validation
+- **Advanced Threat Protection**: AI-powered threat detection, behavioral analytics, incident response
+- **Compliance Excellence**: SOX, GDPR, HIPAA, PCI-DSS, industry-specific regulatory compliance
+- **Data Protection**: End-to-end encryption, data loss prevention, privacy by design
+- **Identity & Access**: Multi-factor authentication, privileged access management, identity governance
+- **Security Operations**: 24/7 SOC, threat hunting, vulnerability management, penetration testing
+- **Audit & Governance**: Comprehensive audit trails, compliance reporting, governance frameworks"
+
+## Additional Agents
+additional_agents="### Enterprise Leadership & Strategy
+- **enterprise-architect** - Enterprise architecture governance and strategic technology planning
+- **governance-architect** - Enterprise governance frameworks and policy development
+- **risk-manager** - Enterprise risk management and business continuity planning
+
+### Specialized Operations & Reliability
+- **sre-engineer** - Site reliability engineering and service level management
+- **platform-engineer** - Platform design and developer experience optimization
+- **reliability-engineer** - System reliability and chaos engineering
+- **capacity-planner** - Performance engineering and scalability strategy
+- **cloud-engineer** - Multi-cloud management and cloud cost optimization
+
+### Advanced Quality & Compliance
+- **compliance-auditor** - Regulatory compliance and audit preparation
+- **automation-engineer** - Process automation and workflow optimization
+- **incident-responder** - Crisis management and emergency response coordination
+- **database-administrator** - Enterprise database management and optimization
+- **monitoring-engineer** - Infrastructure monitoring and observability
+- **network-architect** - Network design and security implementation
+- **middleware-engineer** - Enterprise middleware and integration platform management
+
+### Core Development Excellence
+- **integration-architect** - System integration and enterprise service bus design
+- **performance-engineer** - Application optimization and scalability testing
+- **technical-writer** - Technical documentation and knowledge management
+- **mobile-developer** - Enterprise mobile applications and device management
+- **data-scientist** - Advanced analytics and machine learning implementation"
+
+## Integration List
+integration_list="- **Enterprise Architecture**: EA frameworks, technology governance, strategic planning tools
+- **Development Ecosystem**: Enterprise IDEs, advanced testing frameworks, code quality platforms
+- **Security Integration**: SIEM, threat intelligence, identity management, security orchestration
+- **Compliance Tools**: GRC platforms, audit management, regulatory reporting, policy enforcement
+- **Business Intelligence**: Enterprise data warehouses, analytics platforms, executive dashboards
+- **Operations Management**: Enterprise monitoring, incident management, change management systems
+- **Financial Systems**: Budgeting, cost management, ROI tracking, financial reporting integration
+- **Human Resources**: Identity provisioning, access management, training, compliance tracking
+- **Supply Chain**: Vendor management, procurement systems, contract management, risk assessment"
+
+## External Dependencies
+external_dependencies_list="- **Enterprise Cloud**: Multi-cloud enterprise agreements with SLA guarantees and support
+- **Security Services**: Enterprise security tools, threat intelligence feeds, managed security services
+- **Compliance Services**: Regulatory consulting, audit services, compliance monitoring tools
+- **Business Services**: Enterprise software licenses, consulting services, training and certification
+- **Infrastructure Services**: Global CDN, enterprise networking, telecommunications, data centers
+- **Integration Platforms**: Enterprise ESB, API management, message brokers, EDI systems
+- **Analytics Platforms**: Business intelligence, data science platforms, machine learning services"
+
+## Maintenance Rules
+maintenance_rules="### 🔧 **ENTERPRISE PROJECT MAINTENANCE**
+
+**Comprehensive enterprise maintenance framework with governance and compliance:**
+
+#### **Enterprise Maintenance Standards**
+- **Documentation Excellence**: Comprehensive architecture documentation, API specifications, compliance documentation
+- **Change Management**: Formal change control processes, impact assessment, stakeholder approval workflows
+- **Quality Governance**: Enterprise quality gates, code review standards, architectural compliance validation
+- **Security Maintenance**: Continuous security monitoring, vulnerability management, threat assessment
+- **Compliance Management**: Regulatory compliance tracking, audit preparation, policy enforcement
+
+#### **Enterprise Framework Integration**
+- **Multi-Team Coordination**: Cross-functional team coordination with clear roles and responsibilities
+- **Governance Integration**: Integration with enterprise governance frameworks and policy enforcement
+- **Risk Management**: Comprehensive risk assessment, mitigation planning, and continuous monitoring
+- **Performance Management**: Enterprise-grade performance monitoring, capacity planning, and optimization
+
+#### **Business Process Excellence**
+- **Stakeholder Management**: Executive reporting, business stakeholder engagement, value demonstration
+- **Vendor Management**: Third-party vendor coordination, contract management, SLA monitoring
+- **Knowledge Management**: Enterprise knowledge base, training programs, certification tracking
+- **Innovation Management**: Technology roadmap planning, innovation pipeline, emerging technology assessment"
+
+## Command Mapping
+command_mapping="### 🎯 **ENTERPRISE COMMAND PATTERNS**
+
+**Comprehensive command recognition for enterprise-scale development:**
+
+#### **Enterprise Architecture Commands**
+- \"enterprise architecture\", \"system integration\", \"technology governance\"
+- \"architecture review\", \"technology strategy\", \"platform design\"
+
+#### **Governance & Compliance Commands**
+- \"compliance audit\", \"risk assessment\", \"governance framework\"
+- \"policy enforcement\", \"regulatory compliance\", \"audit preparation\"
+
+#### **Operations & Reliability Commands**
+- \"site reliability\", \"performance monitoring\", \"capacity planning\"
+- \"incident response\", \"disaster recovery\", \"business continuity\"
+
+#### **Security & Risk Commands**
+- \"security architecture\", \"threat modeling\", \"vulnerability assessment\"
+- \"risk management\", \"compliance validation\", \"security governance\"
+
+#### **Business & Strategy Commands**
+- \"business case\", \"stakeholder management\", \"ROI analysis\"
+- \"strategic planning\", \"digital transformation\", \"innovation roadmap\""
+
+## Prompt Guidelines
+prompt_guidelines="### ✅ **ENTERPRISE PROMPT APPROACH**
+
+**Comprehensive enterprise approach optimizing for governance, compliance, and business value:**
+
+1. **Enterprise Governance Focus**
+   - Comprehensive governance frameworks and policy compliance
+   - Stakeholder management and executive communication
+   - Risk management and business continuity planning
+
+2. **Compliance & Regulatory Excellence**
+   - Industry-specific regulatory compliance requirements
+   - Audit trail maintenance and compliance reporting
+   - Security and privacy by design principles
+
+3. **Business Value Optimization**
+   - Clear business value measurement and ROI tracking
+   - Strategic alignment with enterprise objectives
+   - Stakeholder value creation and satisfaction
+
+4. **Technical Excellence Standards**
+   - Enterprise-grade architecture and design patterns
+   - Performance, scalability, and reliability requirements
+   - Advanced testing, monitoring, and quality assurance"
+
+## Agent Creation Rules
+agent_creation_rules="### 📋 **ENTERPRISE AGENT MANAGEMENT**
+
+**Complete enterprise agent ecosystem with governance and specialization:**
+
+- **Full Enterprise Coverage**: Utilize complete range of enterprise-specialized agents
+- **Governance Integration**: Strong governance, compliance, and risk management focus
+- **Strategic Alignment**: Enterprise architecture and strategic planning involvement
+- **Operations Excellence**: Comprehensive site reliability, platform, and operations agents
+- **Security Leadership**: Advanced security, compliance, and risk management capabilities
+- **Business Integration**: Strong business analysis, product management, and stakeholder coordination
+- **Quality Excellence**: Comprehensive quality assurance, testing, and validation processes"
+
+## Quality Gates
+quality_gates="### 🔍 **ENTERPRISE QUALITY FRAMEWORK**
+
+**Comprehensive enterprise quality assurance with governance and compliance:**
+
+- **Business Governance**: Strategic alignment, stakeholder approval, business value validation
+- **Architectural Excellence**: Enterprise architecture review, design pattern compliance, scalability validation
+- **Security & Compliance**: Comprehensive security testing, regulatory compliance validation, audit readiness
+- **Operational Readiness**: Production deployment validation, monitoring setup, disaster recovery testing
+- **Quality Excellence**: Comprehensive testing, performance validation, reliability verification
+- **Documentation Excellence**: Complete technical documentation, user guides, compliance documentation
+- **Change Management**: Formal change control, impact assessment, rollback procedures"
+
+## Framework Milestones
+framework_milestones="**Enterprise Project Milestones:**
+- ✅ **Strategic Planning** - Business case development, stakeholder alignment, strategic roadmap
+- ✅ **Enterprise Architecture** - Comprehensive architecture design, technology selection, governance framework
+- ✅ **Governance Framework** - Compliance framework, risk management, policy development
+- 🔄 **Platform Development** - Core platform development with enterprise requirements
+- 📋 **Security Implementation** - Comprehensive security architecture, threat protection, compliance validation
+- 📋 **Quality Assurance** - Enterprise testing framework, performance validation, reliability verification
+- 📋 **Operations Excellence** - Production deployment, monitoring, site reliability engineering
+- 📋 **Business Delivery** - User training, change management, business value realization
+- 📋 **Continuous Excellence** - Ongoing optimization, innovation, and strategic evolution"
+
+## Development Status
+development_status="**Enterprise Development Focus:**
+- **Strategic Value**: Clear strategic alignment and competitive advantage delivery
+- **Governance Excellence**: Comprehensive governance, compliance, and risk management
+- **Operational Excellence**: Enterprise-grade reliability, scalability, and performance
+- **Security Leadership**: Industry-leading security posture and threat protection
+- **Innovation Platform**: Enable business innovation while maintaining enterprise controls
+- **Stakeholder Success**: Comprehensive stakeholder value creation and satisfaction
+- **Continuous Evolution**: Ongoing optimization and strategic technology advancement"

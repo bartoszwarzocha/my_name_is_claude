@@ -1,0 +1,219 @@
+# SME (Small-Medium Enterprise) Project Template Variables
+
+## Project Scale Configuration
+project_scale_title="SME Enterprise"
+capabilities_list="- **Professional Development** with established processes and quality standards
+- **Comprehensive Agent Coverage** across full development lifecycle
+- **Enterprise-Ready Workflows** optimized for team collaboration and scalability
+- **Quality Assurance Framework** with automated testing and code review processes
+- **Security Implementation** with compliance and risk management capabilities
+- **Performance Optimization** for production-ready applications"
+
+## Business Domains
+business_domains_list="- **Business Applications**: CRM, ERP, business process automation, workflow management
+- **E-commerce Solutions**: Online stores, payment processing, inventory management
+- **Professional Services**: Client management, project tracking, billing systems
+- **Industry Solutions**: Specialized applications for healthcare, finance, logistics
+- **Integration Platforms**: API development, third-party integrations, data synchronization"
+
+## Project Goals
+project_goals_list="- **Business Value Delivery**: Solve real business problems with measurable ROI
+- **Professional Quality**: Enterprise-grade reliability, security, and performance
+- **Team Productivity**: Efficient development processes and collaboration workflows
+- **Scalable Architecture**: Support business growth and changing requirements
+- **Maintainable Codebase**: Long-term sustainability and ease of enhancement
+- **Compliance Readiness**: Meet industry standards and regulatory requirements"
+
+## Technology Stack
+technology_stack_list="- **Frontend Technologies**: {{detected_frontend}} with responsive design and accessibility
+- **Backend Technologies**: {{detected_backend}} with RESTful APIs and microservices architecture
+- **Database Technologies**: {{detected_database}} with backup, recovery, and optimization
+- **Security Framework**: Authentication, authorization, encryption, and audit trails
+- **Testing Suite**: Unit testing, integration testing, end-to-end testing, performance testing
+- **Deployment Pipeline**: CI/CD, automated testing, staging environments, production monitoring
+- **Development Tools**: {{detected_tools}} with code quality, documentation, and collaboration tools"
+
+## TODO Management Configuration
+todo_management_enabled="true"
+todo_hierarchy_level="hierarchical"
+auto_task_creation="true"
+progress_tracking="project"
+session_todos="true"
+agent_coordination="true"
+task_handoffs="true"
+
+todo_system_config="- **Epic Management**: true (Strategic business initiative tracking)
+- **Feature Breakdown**: true (Comprehensive feature planning and estimation)
+- **Task Granularity**: detailed (Thorough task planning for quality delivery)
+- **Subtask Tracking**: true (Detailed progress monitoring and dependencies)
+- **Daily Standups**: true (Regular team coordination and blocker resolution)
+- **Weekly Summaries**: true (Progress reporting and planning adjustments)
+- **Milestone Tracking**: true (Business milestone monitoring and delivery)
+- **External Tools**: optional (Integration with Jira, Asana, or similar tools)
+- **Automation Hooks**: true (Automated workflow and notification systems)"
+
+## Performance Requirements
+performance_requirements="- **Response Time**: < 2 seconds for typical user interactions
+- **Throughput**: Support 100-1,000 concurrent users efficiently
+- **Availability**: 99.5% uptime with planned maintenance windows
+- **Scalability**: Handle 10x growth in users and data volume
+- **Resource Efficiency**: Optimized server and database resource utilization"
+
+## Scalability Requirements
+scalability_requirements="- **User Growth**: Support 1,000-50,000 users with horizontal scaling
+- **Data Management**: Efficient handling of growing data volumes and complexity
+- **Feature Expansion**: Modular architecture supporting new features without disruption
+- **Team Scaling**: Framework supports 5-20 developers with proper coordination
+- **Geographic Distribution**: Multi-region deployment and content delivery optimization"
+
+## Reliability Requirements
+reliability_requirements="- **System Availability**: 99.5% uptime with automated monitoring and alerting
+- **Data Integrity**: Comprehensive backup, recovery, and validation systems
+- **Error Handling**: Graceful failure recovery with detailed logging and monitoring
+- **Performance Monitoring**: Real-time application and infrastructure monitoring
+- **Disaster Recovery**: Business continuity planning and tested recovery procedures"
+
+## Security Requirements
+security_requirements="- **Authentication & Authorization**: Multi-factor authentication, role-based access control
+- **Data Protection**: Encryption at rest and in transit, PII protection, GDPR compliance
+- **Application Security**: Input validation, SQL injection prevention, XSS protection
+- **Infrastructure Security**: Network security, firewall configuration, security updates
+- **Audit & Compliance**: Comprehensive audit trails, security monitoring, compliance reporting
+- **Vulnerability Management**: Regular security assessments and penetration testing"
+
+## Additional Agents
+additional_agents="### Core SME Development Team
+- **product-manager** - Product strategy and stakeholder management
+- **business-analyst** - Requirements gathering and process analysis
+- **software-architect** - System architecture and technology decisions
+- **frontend-engineer** - User interface and user experience development
+- **backend-engineer** - Business logic, APIs, and system integration
+- **data-engineer** - Database design, ETL processes, and analytics
+- **qa-engineer** - Test automation, quality assurance, and performance testing
+- **security-engineer** - Security architecture and vulnerability assessment
+- **deployment-engineer** - CI/CD pipelines and infrastructure management
+
+### Supporting Specialists
+- **ux-designer** - User research, design systems, and accessibility
+- **api-engineer** - Microservices architecture and API management
+- **reviewer** - Code review, quality validation, and compliance checking"
+
+## Integration List
+integration_list="- **Development Ecosystem**: Git workflows, code review, automated testing, documentation
+- **Quality Assurance**: SonarQube, automated testing suites, performance monitoring
+- **Security Tools**: Vulnerability scanning, dependency checking, security testing
+- **Deployment Automation**: CI/CD pipelines, container orchestration, blue-green deployment
+- **Monitoring & Analytics**: Application monitoring, business intelligence, user analytics
+- **Business Tools**: CRM integration, accounting systems, business process automation
+- **Communication**: Team collaboration, stakeholder reporting, project management tools"
+
+## External Dependencies
+external_dependencies_list="- **Cloud Infrastructure**: Professional-grade hosting with SLA guarantees
+- **Third-Party Services**: Payment processing, email services, SMS, analytics
+- **Enterprise APIs**: Business system integrations, industry-specific services
+- **Security Services**: SSL certificates, security monitoring, compliance tools
+- **Development Tools**: Professional IDEs, project management, collaboration platforms
+- **Business Intelligence**: Reporting tools, data visualization, analytics platforms"
+
+## Maintenance Rules
+maintenance_rules="### 🔧 **SME PROJECT MAINTENANCE**
+
+**Professional maintenance approach balancing quality and efficiency:**
+
+#### **Comprehensive Maintenance Standards**
+- **Documentation**: Maintain current architecture documentation, API docs, user guides
+- **Code Quality**: Regular code review, refactoring, and technical debt management
+- **Security**: Regular security updates, vulnerability assessments, compliance reviews
+- **Performance**: Ongoing performance monitoring, optimization, and capacity planning
+
+#### **Framework Integration Standards**
+- **Agent Coordination**: Full multi-agent workflow with specialization and handoffs
+- **Quality Gates**: Comprehensive testing, security validation, and performance verification
+- **Change Management**: Structured release process with testing and rollback procedures
+
+#### **Business Process Integration**
+- **Stakeholder Communication**: Regular progress reporting and requirement validation
+- **Project Management**: Integration with business project management and planning tools
+- **Compliance**: Maintain audit trails, documentation, and regulatory compliance"
+
+## Command Mapping
+command_mapping="### 🎯 **SME COMMAND PATTERNS**
+
+**Professional command recognition for business-focused development:**
+
+#### **Business Analysis Commands**
+- \"business requirements\", \"stakeholder analysis\", \"process mapping\"
+- \"user stories\", \"acceptance criteria\", \"business rules\"
+
+#### **Architecture Commands**
+- \"system design\", \"database architecture\", \"API design\"
+- \"security architecture\", \"performance requirements\", \"scalability planning\"
+
+#### **Development Commands**
+- \"feature implementation\", \"component development\", \"integration testing\"
+- \"code review\", \"quality assurance\", \"deployment pipeline\"
+
+#### **Project Management Commands**
+- \"project planning\", \"milestone tracking\", \"risk assessment\"
+- \"progress reporting\", \"stakeholder updates\", \"release planning\""
+
+## Prompt Guidelines
+prompt_guidelines="### ✅ **SME PROMPT APPROACH**
+
+**Balanced approach optimizing for business value and technical excellence:**
+
+1. **Business-Driven Development**
+   - Focus on business requirements and user value
+   - Comprehensive requirements analysis and validation
+   - Stakeholder communication and approval workflows
+
+2. **Professional Quality Standards**
+   - Comprehensive testing and validation criteria
+   - Security and compliance considerations
+   - Performance and scalability requirements
+
+3. **Team Collaboration**
+   - Multi-agent coordination and handoff protocols
+   - Clear documentation and communication standards
+   - Knowledge sharing and cross-training practices"
+
+## Agent Creation Rules
+agent_creation_rules="### 📋 **SME AGENT MANAGEMENT**
+
+**Comprehensive agent ecosystem for professional development:**
+
+- **Full Agent Coverage**: Utilize complete range of specialized agents
+- **Business Integration**: Strong product manager and business analyst involvement
+- **Quality Focus**: Comprehensive QA, security, and architecture review
+- **Process Maturity**: Established development processes and quality gates
+- **Team Coordination**: Clear roles, responsibilities, and handoff procedures"
+
+## Quality Gates
+quality_gates="### 🔍 **SME QUALITY FRAMEWORK**
+
+**Comprehensive quality assurance for business-critical applications:**
+
+- **Business Validation**: Requirements traceability, stakeholder approval, user acceptance
+- **Technical Excellence**: Code review, automated testing, performance validation
+- **Security Compliance**: Security testing, vulnerability assessment, compliance verification
+- **Production Readiness**: Deployment validation, monitoring setup, rollback procedures
+- **Documentation**: Comprehensive technical and user documentation"
+
+## Framework Milestones
+framework_milestones="**SME Project Milestones:**
+- ✅ **Business Requirements** - Comprehensive requirements analysis and stakeholder approval
+- ✅ **Architecture Design** - Complete system architecture and technology selection
+- ✅ **Development Foundation** - Core infrastructure, security, and development processes
+- 🔄 **Feature Development** - Iterative feature delivery with business validation
+- 📋 **Quality Assurance** - Comprehensive testing, security validation, and performance optimization
+- 📋 **Production Deployment** - Production-ready deployment with monitoring and support
+- 📋 **Business Delivery** - User training, documentation, and business value realization"
+
+## Development Status
+development_status="**SME Development Focus:**
+- **Business Value**: Clear ROI and business impact measurement
+- **Professional Quality**: Enterprise-grade reliability and maintainability
+- **Team Efficiency**: Collaborative development with clear processes
+- **Risk Management**: Proactive risk identification and mitigation
+- **Stakeholder Satisfaction**: Regular communication and expectation management
+- **Long-term Success**: Sustainable architecture and maintenance practices"

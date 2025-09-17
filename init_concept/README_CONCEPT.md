@@ -30,7 +30,7 @@ cd /path/to/your/project
 claude-code
 
 # Use the concept-to-CLAUDE.md generator prompt
-# Located at: .claude/prompts/init/claude_md_from_concept.md
+# Located at: .claude/prompts/project/claude_md_from_concept.md
 ```
 
 The prompt will:

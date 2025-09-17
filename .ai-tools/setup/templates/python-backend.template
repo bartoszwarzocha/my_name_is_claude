@@ -1,0 +1,91 @@
+# Python Backend Technology Template Variables
+
+## Technology-Specific Configuration
+detected_backend="Python, FastAPI/Django/Flask, SQLAlchemy/Django ORM"
+detected_database="PostgreSQL/SQLite with SQLAlchemy or Django ORM"
+detected_tools="pip/poetry, Black, isort, mypy, pytest"
+
+## Enhanced Technology Stack
+technology_stack_enhancements="### Python Backend Specialization
+- **Runtime Environment**: Python 3.11+ with async/await support and performance optimizations
+- **Web Framework**: FastAPI for modern APIs, Django for full-stack, Flask for microservices
+- **Type Safety**: Type hints with mypy static type checking and pydantic for data validation
+- **Database Integration**: SQLAlchemy Core/ORM, Django ORM, or async database drivers
+- **API Design**: FastAPI with automatic OpenAPI, Django REST Framework, or Flask-RESTful
+- **Authentication**: JWT, OAuth 2.0, Django Auth, or FastAPI security utilities
+- **Testing Suite**: pytest, pytest-asyncio, factory_boy for test data generation
+- **Performance**: uvicorn/gunicorn ASGI/WSGI servers, Redis caching, Celery for background tasks"
+
+## Python-Specific Business Domains
+enhanced_business_domains="### Python Application Categories
+- **Data-Driven Applications**: Analytics platforms, machine learning services, data processing pipelines
+- **Enterprise Web Applications**: Business management systems, CRM, ERP, workflow automation
+- **Scientific Computing**: Research platforms, simulation systems, computational analysis tools
+- **Financial Services**: Trading platforms, risk analysis, algorithmic trading, fintech APIs
+- **Healthcare Systems**: EMR systems, medical data analysis, regulatory compliance platforms
+- **AI/ML Services**: Machine learning APIs, recommendation engines, natural language processing"
+
+## Python Development Goals
+enhanced_project_goals="### Python-Specific Objectives
+- **Code Quality Excellence**: Clean, readable, maintainable code following PEP 8 and Python best practices
+- **Performance Optimization**: Efficient algorithms, database optimization, and async programming patterns
+- **Data Integration**: Seamless integration with databases, APIs, and data processing pipelines
+- **Security Implementation**: Secure coding practices, input validation, and vulnerability protection
+- **Testing Excellence**: Comprehensive test coverage with unit, integration, and end-to-end testing
+- **Production Deployment**: Robust deployment with monitoring, logging, and error tracking"
+
+## Python Technology Integration
+python_integration_list="- **Python Ecosystem**: FastAPI, Django, Flask, Starlette for web framework options
+- **Database Tools**: SQLAlchemy, Django ORM, asyncpg, psycopg2 for database integration
+- **Data Processing**: Pandas, NumPy, SciPy for data analysis and scientific computing
+- **Async Programming**: asyncio, aiohttp, databases for asynchronous operations
+- **Testing Tools**: pytest, pytest-asyncio, httpx for async testing, coverage for test coverage
+- **Code Quality**: Black, isort, flake8, mypy for code formatting and static analysis
+- **Development Experience**: Poetry for dependency management, pre-commit hooks, virtual environments"
+
+## Python Quality Standards
+python_quality_gates="### Python-Specific Quality Assurance
+
+**Code Quality Standards:**
+- **PEP 8 Compliance**: Consistent code formatting with Black and adherence to Python style guide
+- **Type Safety**: Comprehensive type hints with mypy static type checking
+- **Documentation**: Docstrings following Google or NumPy style, comprehensive API documentation
+- **Testing**: High test coverage with pytest, including unit, integration, and property-based testing
+- **Security**: Input validation with pydantic, secure coding practices, dependency scanning
+
+**Performance Standards:**
+- **Database Optimization**: Efficient queries, proper indexing, connection pooling
+- **Async Patterns**: Proper use of async/await for I/O-bound operations
+- **Memory Management**: Efficient data structures, garbage collection awareness
+- **Profiling**: Regular performance profiling and bottleneck identification"
+
+## Python Command Mapping
+python_commands="### Python-Specific Commands
+- **API Development**: \"create FastAPI\", \"implement Django REST\", \"design endpoints\"
+- **Data Processing**: \"setup pandas\", \"implement ETL\", \"data analysis\"
+- **Machine Learning**: \"train model\", \"implement ML API\", \"data science\"
+- **Testing**: \"run pytest\", \"test coverage\", \"integration testing\"
+- **Deployment**: \"deploy python app\", \"setup gunicorn\", \"configure production\""
+
+## Python Agent Specializations
+python_agents="### Python-Optimized Agent Focus
+
+**backend-engineer specialization:**
+- Expert in Python ecosystem, FastAPI/Django patterns, and async programming
+- Database integration with SQLAlchemy/Django ORM, API design, and security implementation
+- Performance optimization, caching strategies, and production deployment
+
+**data-engineer integration:**
+- Python data processing with Pandas, NumPy, and scientific computing libraries
+- ETL pipeline development, data validation with pydantic, and analytics integration
+- Database optimization, data modeling, and large-scale data processing
+
+**api-engineer focus:**
+- FastAPI expertise, automatic OpenAPI documentation, and async API development
+- RESTful API design, GraphQL with Strawberry/Graphene, and API versioning
+- Microservices architecture with Python, service discovery, and inter-service communication
+
+**security-engineer integration:**
+- Python security best practices, vulnerability assessment with safety and bandit
+- Secure coding patterns, authentication with PyJWT, and authorization frameworks
+- Security testing, penetration testing tools, and compliance validation"

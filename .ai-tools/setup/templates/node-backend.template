@@ -1,0 +1,91 @@
+# Node.js Backend Technology Template Variables
+
+## Technology-Specific Configuration
+detected_backend="Node.js, Express/Fastify, TypeScript, RESTful APIs"
+detected_database="PostgreSQL/MongoDB with ODM/ORM integration"
+detected_tools="npm/yarn, ESLint, Prettier, Node.js debugging tools"
+
+## Enhanced Technology Stack
+technology_stack_enhancements="### Node.js Backend Specialization
+- **Runtime Environment**: Node.js 18+ LTS with ES2022+ features and performance optimizations
+- **Web Framework**: Express.js, Fastify, or NestJS for scalable API development
+- **Type Safety**: TypeScript with strict configuration and comprehensive type definitions
+- **Database Integration**: Prisma, TypeORM, Mongoose for database abstraction and migrations
+- **API Design**: RESTful APIs, GraphQL with Apollo Server, or tRPC for type-safe APIs
+- **Authentication**: JWT, OAuth 2.0, Passport.js, or Auth0 integration
+- **Testing Suite**: Jest, Supertest, and database testing with test containers
+- **Performance**: Clustering, caching with Redis, compression, and monitoring"
+
+## Node.js-Specific Business Domains
+enhanced_business_domains="### Node.js Application Categories
+- **API Services**: RESTful APIs, GraphQL services, microservices architecture
+- **Real-time Applications**: WebSocket servers, chat applications, live collaboration tools
+- **Data Processing**: ETL pipelines, batch processing, stream processing with real-time analytics
+- **Enterprise Integration**: Legacy system integration, API gateways, service orchestration
+- **E-commerce Backend**: Payment processing, inventory management, order fulfillment systems
+- **Content Management**: Headless CMS, content APIs, media processing and delivery"
+
+## Node.js Development Goals
+enhanced_project_goals="### Node.js-Specific Objectives
+- **API Excellence**: Well-documented, versioned, and secure APIs with comprehensive testing
+- **Performance Optimization**: High-throughput, low-latency services with efficient resource usage
+- **Scalability Architecture**: Horizontal scaling, load balancing, and microservices patterns
+- **Security Implementation**: Authentication, authorization, input validation, and vulnerability protection
+- **Developer Productivity**: Efficient development workflow with hot reloading and debugging
+- **Production Readiness**: Comprehensive monitoring, logging, error handling, and deployment automation"
+
+## Node.js Technology Integration
+nodejs_integration_list="- **Node.js Ecosystem**: Express, Fastify, NestJS, Koa for web framework options
+- **Database Tools**: Prisma, TypeORM, Sequelize, Mongoose for database abstraction
+- **API Development**: Swagger/OpenAPI, GraphQL, tRPC, REST API design patterns
+- **Authentication**: Passport.js, Auth0, Firebase Auth, custom JWT implementation
+- **Testing Tools**: Jest, Mocha, Supertest, Test Containers for integration testing
+- **Performance**: Redis for caching, PM2 for process management, clustering for scalability
+- **Development Experience**: TypeScript, ESLint, Prettier, Husky, nodemon for development"
+
+## Node.js Quality Standards
+nodejs_quality_gates="### Node.js-Specific Quality Assurance
+
+**API Quality Standards:**
+- **Documentation**: Comprehensive API documentation with OpenAPI/Swagger specifications
+- **Testing**: Unit tests, integration tests, and API contract testing
+- **Security**: Input validation, authentication, authorization, and vulnerability scanning
+- **Performance**: Load testing, profiling, and performance monitoring
+- **Error Handling**: Comprehensive error handling with proper HTTP status codes
+
+**Code Quality Standards:**
+- **TypeScript**: Strict type checking and comprehensive interface definitions
+- **ESLint Configuration**: Node.js-specific linting rules and security best practices
+- **Code Structure**: Modular architecture with proper separation of concerns
+- **Database Integration**: Proper ORM/ODM usage, migrations, and connection management"
+
+## Node.js Command Mapping
+nodejs_commands="### Node.js-Specific Commands
+- **API Development**: \"create REST API\", \"implement GraphQL\", \"design endpoints\"
+- **Database**: \"setup database\", \"create migrations\", \"optimize queries\"
+- **Authentication**: \"implement auth\", \"setup JWT\", \"configure OAuth\"
+- **Testing**: \"test APIs\", \"integration testing\", \"load testing\"
+- **Deployment**: \"deploy backend\", \"setup monitoring\", \"configure production\""
+
+## Node.js Agent Specializations
+nodejs_agents="### Node.js-Optimized Agent Focus
+
+**backend-engineer specialization:**
+- Expert in Node.js ecosystem, Express/Fastify patterns, and async/await best practices
+- API design, database integration, authentication, and security implementation
+- Performance optimization, caching strategies, and production deployment
+
+**api-engineer integration:**
+- RESTful API design, GraphQL implementation, and API versioning strategies
+- Microservices architecture, service discovery, and inter-service communication
+- API documentation, testing, and contract-driven development
+
+**data-engineer focus:**
+- Database design, ORM/ODM patterns, and data migration strategies
+- ETL pipeline development, real-time data processing, and analytics integration
+- Database performance optimization and scaling strategies
+
+**security-engineer integration:**
+- Node.js security best practices, vulnerability assessment, and penetration testing
+- Authentication and authorization patterns, secure coding practices
+- Security monitoring, logging, and incident response for Node.js applications"

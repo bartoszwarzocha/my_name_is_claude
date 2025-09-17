@@ -1,0 +1,173 @@
+{
+  "project_path": "/mnt/e/AI/my_name_is_claude",
+  "technology_stack": {
+    "frontend": [
+      "react",
+      "angular",
+      "vue",
+      "typescript",
+      "javascript",
+      "html5",
+      "css3",
+      "tailwind",
+      "bootstrap",
+      "webpack",
+      "vite"
+    ],
+    "backend": [
+      "python",
+      "fastapi",
+      "django",
+      "flask",
+      "nodejs",
+      "express",
+      "nestjs",
+      "java",
+      "spring",
+      "csharp",
+      "dotnet",
+      "go",
+      "rust",
+      "php",
+      "ruby"
+    ],
+    "database": [
+      "postgresql",
+      "mysql",
+      "mongodb",
+      "redis",
+      "sqlite",
+      "elasticsearch",
+      "dynamodb",
+      "cassandra"
+    ],
+    "infrastructure": [
+      "docker",
+      "kubernetes",
+      "terraform",
+      "aws",
+      "azure",
+      "gcp",
+      "nginx",
+      "apache",
+      "jenkins",
+      "github_actions",
+      "gitlab_ci"
+    ],
+    "testing": [
+      "jest",
+      "pytest",
+      "junit",
+      "cypress",
+      "playwright",
+      "selenium",
+      "mocha",
+      "karma",
+      "jasmine"
+    ],
+    "mobile": [
+      "react_native",
+      "flutter",
+      "xamarin",
+      "ionic",
+      "cordova",
+      "android",
+      "ios",
+      "swift"
+    ],
+    "desktop": [
+      "electron",
+      "tauri",
+      "wxwidgets",
+      "qt",
+      "gtk",
+      "tkinter",
+      "winforms",
+      "wpf",
+      "javafx"
+    ],
+    "graphics": [
+      "opengl",
+      "vulkan",
+      "directx",
+      "openCV",
+      "threejs",
+      "webgl",
+      "unity",
+      "unreal",
+      "blender"
+    ],
+    "ai_ml": [
+      "anthropic",
+      "tensorflow",
+      "pytorch",
+      "scikit_learn",
+      "pandas",
+      "numpy",
+      "jupyter",
+      "opencv_ai",
+      "huggingface",
+      "openai"
+    ],
+    "confidence_score": 1.0
+  },
+  "complexity": {
+    "file_count": 354,
+    "code_lines": 2061,
+    "directory_depth": 5,
+    "dependency_count": 0,
+    "complexity_rating": "startup",
+    "complexity_score": 0.172688
+  },
+  "business_domain": {
+    "primary": "ecommerce",
+    "secondary": [
+      "fintech",
+      "healthcare",
+      "education",
+      "gaming",
+      "social",
+      "enterprise",
+      "api_integration",
+      "data_analytics",
+      "iot",
+      "ai_ml",
+      "devtools"
+    ],
+    "industry_vertical": "retail",
+    "compliance_requirements": [
+      "hipaa",
+      "pci_dss"
+    ],
+    "confidence_score": 1.0
+  },
+  "team_context": {
+    "estimated_team_size": "small",
+    "experience_indicators": [
+      "junior_level"
+    ],
+    "development_patterns": [],
+    "git_activity_level": "low",
+    "collaboration_patterns": [
+      "collaborative_development",
+      "feature_branch_workflow"
+    ]
+  },
+  "mcp_insights": {
+    "serena_available": false,
+    "serena_analysis": null,
+    "context7_available": false,
+    "context7_patterns": null,
+    "playwright_available": false,
+    "playwright_coverage": null,
+    "integration_quality_score": 0.0
+  },
+  "framework_config": {
+    "has_claude_md": true,
+    "content_length": 20565,
+    "has_todo_config": false,
+    "has_agent_config": true
+  },
+  "timestamp": "2025-09-16T18:31:25.493930",
+  "context_hash": "7e2e8a2d6c90c10b10132ccf3fc489a6"
+}

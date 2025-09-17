@@ -1,0 +1,85 @@
+# React Frontend Technology Template Variables
+
+## Technology-Specific Configuration
+detected_frontend="React 18+, TypeScript, Modern Build Tools (Vite/CRA)"
+detected_tools="npm/yarn, ESLint, Prettier, React Developer Tools"
+
+## Enhanced Technology Stack
+technology_stack_enhancements="### React Frontend Specialization
+- **UI Framework**: React 18+ with Hooks, Context API, and Concurrent Features
+- **Type Safety**: TypeScript with strict configuration and comprehensive type definitions
+- **State Management**: Redux Toolkit, Zustand, or React Query for server state
+- **Styling Solutions**: CSS Modules, Styled-Components, Emotion, or Tailwind CSS
+- **Build Tools**: Vite for development, Webpack for production optimization
+- **Testing Suite**: Jest, React Testing Library, Cypress for E2E testing
+- **Performance**: React.memo, useMemo, useCallback, code splitting, lazy loading
+- **Development Tools**: React DevTools, Redux DevTools, TypeScript integration"
+
+## React-Specific Business Domains
+enhanced_business_domains="### React Application Categories
+- **Single Page Applications**: Complex interactive dashboards and admin panels
+- **E-commerce Platforms**: Product catalogs, shopping carts, checkout flows
+- **Content Management**: Blog platforms, CMS interfaces, content creation tools
+- **Data Visualization**: Charts, graphs, real-time analytics dashboards
+- **Collaborative Tools**: Team workspaces, document editors, communication platforms
+- **Mobile-First Applications**: Progressive Web Apps with offline capabilities"
+
+## React Development Goals
+enhanced_project_goals="### React-Specific Objectives
+- **Component Reusability**: Build comprehensive component library and design system
+- **Performance Excellence**: Optimize bundle size, rendering performance, and user experience
+- **Developer Experience**: Efficient development workflow with hot reloading and debugging
+- **Accessibility Compliance**: WCAG 2.1 AA compliance with comprehensive screen reader support
+- **SEO Optimization**: Server-side rendering or static generation for improved discoverability
+- **Mobile Excellence**: Responsive design with excellent mobile user experience"
+
+## React Technology Integration
+react_integration_list="- **React Ecosystem**: React Router, React Query, React Hook Form, React Spring
+- **State Management**: Redux Toolkit, Zustand, Jotai, or Context API patterns
+- **UI Libraries**: Material-UI, Ant Design, Chakra UI, or custom component libraries
+- **Testing Tools**: Jest, React Testing Library, MSW for API mocking, Storybook for component testing
+- **Build & Deployment**: Vite, Create React App, Next.js, or custom Webpack configuration
+- **Performance Tools**: React DevTools Profiler, Lighthouse, Web Vitals monitoring
+- **Development Experience**: TypeScript, ESLint, Prettier, Husky for git hooks"
+
+## React Quality Standards
+react_quality_gates="### React-Specific Quality Assurance
+
+**Component Quality Standards:**
+- **Reusability**: Components designed for reuse across multiple contexts
+- **Type Safety**: Comprehensive TypeScript interfaces and prop definitions
+- **Testing Coverage**: Unit tests for logic, integration tests for user flows
+- **Performance**: Optimized rendering with proper memoization and lazy loading
+- **Accessibility**: Semantic HTML, ARIA attributes, keyboard navigation support
+
+**Code Quality Standards:**
+- **ESLint Configuration**: React-specific linting rules and best practices
+- **Component Structure**: Consistent file organization and naming conventions
+- **State Management**: Appropriate state management patterns for application complexity
+- **Bundle Optimization**: Tree shaking, code splitting, and asset optimization"
+
+## React Command Mapping
+react_commands="### React-Specific Commands
+- **Component Development**: \"create component\", \"build component library\", \"design system\"
+- **State Management**: \"setup redux\", \"implement context\", \"manage state\"
+- **Performance**: \"optimize bundle\", \"improve performance\", \"analyze bundle size\"
+- **Testing**: \"test components\", \"e2e testing\", \"setup storybook\"
+- **Deployment**: \"build for production\", \"deploy react app\", \"setup CI/CD\""
+
+## React Agent Specializations
+react_agents="### React-Optimized Agent Focus
+
+**frontend-engineer specialization:**
+- Expert in React ecosystem, hooks patterns, and modern React development
+- Component architecture, state management patterns, and performance optimization
+- TypeScript integration, testing strategies, and accessibility implementation
+
+**ux-designer integration:**
+- React component design systems and interactive prototyping
+- Material Design, Human Interface Guidelines adaptation for React
+- User experience testing and accessibility validation in React context
+
+**qa-engineer focus:**
+- React Testing Library, Jest, and Cypress testing strategies
+- Component testing, integration testing, and visual regression testing
+- Performance testing with React DevTools and Lighthouse integration"

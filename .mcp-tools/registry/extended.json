@@ -1,0 +1,382 @@
+{
+  "serena": {
+    "name": "Serena",
+    "category": "development",
+    "description": "Code Navigation & Project Analysis",
+    "install_method": "git_uv",
+    "repository": "https://github.com/oraios/serena",
+    "install_dir": "$HOME/tools/serena",
+    "dependencies": ["git", "uv"],
+    "technologies": ["python", "typescript", "java", "rust", "go", "cpp", "php"],
+    "register_cmd": "uv run --directory $HOME/tools/serena serena-mcp-server --context ide-assistant --project $PROJECT_DIR",
+    "priority": 1
+  },
+  "context7": {
+    "name": "Context7",
+    "category": "development",
+    "description": "Advanced Code Generation & Documentation",
+    "install_method": "docker",
+    "npm_package": "@upstash/context7-mcp",
+    "dependencies": ["docker"],
+    "technologies": ["nodejs", "typescript", "python", "java", "react", "angular", "vue"],
+    "register_cmd": "docker run --rm -i -v $PROJECT_DIR:/app context7-mcp",
+    "priority": 1
+  },
+  "github": {
+    "name": "GitHub",
+    "category": "development",
+    "description": "Repository Management & Git Operations",
+    "install_method": "npm",
+    "npm_package": "@modelcontextprotocol/server-github",
+    "dependencies": ["node", "npm", "gh"],
+    "technologies": ["all"],
+    "register_cmd": "npx @modelcontextprotocol/server-github",
+    "priority": 2
+  },
+  "gitlab": {
+    "name": "GitLab",
+    "category": "development",
+    "description": "GitLab Integration & CI/CD Management",
+    "install_method": "npm",
+    "npm_package": "@mcp/gitlab",
+    "dependencies": ["node", "npm"],
+    "technologies": ["all"],
+    "register_cmd": "npx @mcp/gitlab",
+    "priority": 3
+  },
+  "codebase": {
+    "name": "Codebase Search",
+    "category": "development",
+    "description": "Local Codebase Analysis & Search",
+    "install_method": "npm",
+    "npm_package": "@mcp/codebase",
+    "dependencies": ["node", "npm"],
+    "technologies": ["all"],
+    "register_cmd": "npx @mcp/codebase",
+    "priority": 3
+  },
+
+  "playwright": {
+    "name": "Playwright",
+    "category": "testing",
+    "description": "Web Automation & E2E Testing",
+    "install_method": "npm",
+    "npm_package": "@playwright/test",
+    "dependencies": ["node", "npm"],
+    "technologies": ["nodejs", "react", "angular", "vue", "nextjs"],
+    "register_cmd": "npx playwright",
+    "priority": 1
+  },
+  "cypress": {
+    "name": "Cypress",
+    "category": "testing",
+    "description": "Frontend E2E Testing Framework",
+    "install_method": "npm",
+    "npm_package": "@mcp/cypress",
+    "dependencies": ["node", "npm"],
+    "technologies": ["react", "angular", "vue", "nodejs"],
+    "register_cmd": "npx @mcp/cypress",
+    "priority": 2
+  },
+  "jest": {
+    "name": "Jest",
+    "category": "testing",
+    "description": "JavaScript Testing Framework Integration",
+    "install_method": "npm",
+    "npm_package": "@mcp/jest",
+    "dependencies": ["node", "npm"],
+    "technologies": ["nodejs", "react", "angular", "vue"],
+    "register_cmd": "npx @mcp/jest",
+    "priority": 2
+  },
+  "sonarqube": {
+    "name": "SonarQube",
+    "category": "testing",
+    "description": "Code Quality Analysis & Security Scanning",
+    "install_method": "docker",
+    "dependencies": ["docker"],
+    "technologies": ["java", "python", "nodejs", "csharp", "php"],
+    "register_cmd": "docker run --rm -d sonarqube:lts",
+    "priority": 3
+  },
+  "selenium": {
+    "name": "Selenium",
+    "category": "testing",
+    "description": "Web Browser Automation",
+    "install_method": "npm",
+    "npm_package": "@mcp/selenium",
+    "dependencies": ["node", "npm"],
+    "technologies": ["java", "python", "nodejs", "csharp"],
+    "register_cmd": "npx @mcp/selenium",
+    "priority": 3
+  },
+
+  "postgresql": {
+    "name": "PostgreSQL",
+    "category": "database",
+    "description": "PostgreSQL Database Operations",
+    "install_method": "npm",
+    "npm_package": "@modelcontextprotocol/server-postgres",
+    "dependencies": ["node", "npm", "psql"],
+    "technologies": ["python", "nodejs", "java", "php", "ruby"],
+    "register_cmd": "npx @modelcontextprotocol/server-postgres",
+    "priority": 1
+  },
+  "mysql": {
+    "name": "MySQL",
+    "category": "database",
+    "description": "MySQL Database Management",
+    "install_method": "npm",
+    "npm_package": "@mcp/mysql",
+    "dependencies": ["node", "npm", "mysql"],
+    "technologies": ["php", "java", "python", "nodejs"],
+    "register_cmd": "npx @mcp/mysql",
+    "priority": 2
+  },
+  "redis": {
+    "name": "Redis",
+    "category": "database",
+    "description": "Redis Cache & Data Operations",
+    "install_method": "npm",
+    "npm_package": "@mcp/redis",
+    "dependencies": ["node", "npm", "redis-cli"],
+    "technologies": ["nodejs", "python", "php", "java"],
+    "register_cmd": "npx @mcp/redis",
+    "priority": 2
+  },
+  "mongodb": {
+    "name": "MongoDB",
+    "category": "database",
+    "description": "MongoDB Document Database",
+    "install_method": "npm",
+    "npm_package": "@mcp/mongodb",
+    "dependencies": ["node", "npm", "mongosh"],
+    "technologies": ["nodejs", "python", "java"],
+    "register_cmd": "npx @mcp/mongodb",
+    "priority": 2
+  },
+  "rest-api": {
+    "name": "REST API",
+    "category": "api",
+    "description": "HTTP/REST API Testing & Operations",
+    "install_method": "npm",
+    "npm_package": "@mcp/rest-api",
+    "dependencies": ["node", "npm"],
+    "technologies": ["all"],
+    "register_cmd": "npx @mcp/rest-api",
+    "priority": 1
+  },
+  "graphql": {
+    "name": "GraphQL",
+    "category": "api",
+    "description": "GraphQL API Operations & Schema Management",
+    "install_method": "npm",
+    "npm_package": "@mcp/graphql",
+    "dependencies": ["node", "npm"],
+    "technologies": ["nodejs", "python", "java", "react"],
+    "register_cmd": "npx @mcp/graphql",
+    "priority": 2
+  },
+  "swagger": {
+    "name": "Swagger/OpenAPI",
+    "category": "api",
+    "description": "OpenAPI Specification & Documentation",
+    "install_method": "npm",
+    "npm_package": "@mcp/swagger",
+    "dependencies": ["node", "npm"],
+    "technologies": ["java", "nodejs", "python", "csharp"],
+    "register_cmd": "npx @mcp/swagger",
+    "priority": 2
+  },
+
+  "docker": {
+    "name": "Docker",
+    "category": "infrastructure",
+    "description": "Container Management & Operations",
+    "install_method": "npm",
+    "npm_package": "@mcp/docker",
+    "dependencies": ["node", "npm", "docker"],
+    "technologies": ["docker", "kubernetes"],
+    "register_cmd": "npx @mcp/docker",
+    "priority": 1
+  },
+  "kubernetes": {
+    "name": "Kubernetes",
+    "category": "infrastructure",
+    "description": "K8s Cluster Management & Operations",
+    "install_method": "npm",
+    "npm_package": "@mcp/kubernetes",
+    "dependencies": ["node", "npm", "kubectl"],
+    "technologies": ["docker", "kubernetes"],
+    "register_cmd": "npx @mcp/kubernetes",
+    "priority": 2
+  },
+  "terraform": {
+    "name": "Terraform",
+    "category": "infrastructure",
+    "description": "Infrastructure as Code Management",
+    "install_method": "npm",
+    "npm_package": "@mcp/terraform",
+    "dependencies": ["node", "npm", "terraform"],
+    "technologies": ["terraform", "aws", "azure", "gcp"],
+    "register_cmd": "npx @mcp/terraform",
+    "priority": 2
+  },
+  "aws": {
+    "name": "AWS",
+    "category": "cloud",
+    "description": "Amazon Web Services Integration",
+    "install_method": "npm",
+    "npm_package": "@mcp/aws",
+    "dependencies": ["node", "npm", "aws"],
+    "technologies": ["terraform", "kubernetes", "docker"],
+    "register_cmd": "npx @mcp/aws",
+    "priority": 1
+  },
+  "azure": {
+    "name": "Microsoft Azure",
+    "category": "cloud",
+    "description": "Azure Cloud Services Management",
+    "install_method": "npm",
+    "npm_package": "@mcp/azure",
+    "dependencies": ["node", "npm", "az"],
+    "technologies": ["csharp", "terraform", "kubernetes"],
+    "register_cmd": "npx @mcp/azure",
+    "priority": 2
+  },
+  "gcp": {
+    "name": "Google Cloud",
+    "category": "cloud",
+    "description": "Google Cloud Platform Integration",
+    "install_method": "npm",
+    "npm_package": "@mcp/gcp",
+    "dependencies": ["node", "npm", "gcloud"],
+    "technologies": ["terraform", "kubernetes", "python"],
+    "register_cmd": "npx @mcp/gcp",
+    "priority": 2
+  },
+
+  "openai": {
+    "name": "OpenAI",
+    "category": "ai",
+    "description": "GPT API Integration & Operations",
+    "install_method": "npm",
+    "npm_package": "@mcp/openai",
+    "dependencies": ["node", "npm"],
+    "technologies": ["python", "nodejs", "all"],
+    "register_cmd": "npx @mcp/openai",
+    "priority": 1
+  },
+  "anthropic": {
+    "name": "Anthropic Claude",
+    "category": "ai",
+    "description": "Claude API Direct Integration",
+    "install_method": "npm",
+    "npm_package": "@mcp/anthropic",
+    "dependencies": ["node", "npm"],
+    "technologies": ["python", "nodejs", "all"],
+    "register_cmd": "npx @mcp/anthropic",
+    "priority": 1
+  },
+  "huggingface": {
+    "name": "Hugging Face",
+    "category": "ai",
+    "description": "ML Model Hub Integration",
+    "install_method": "npm",
+    "npm_package": "@mcp/huggingface",
+    "dependencies": ["node", "npm"],
+    "technologies": ["python", "jupyter"],
+    "register_cmd": "npx @mcp/huggingface",
+    "priority": 2
+  },
+  "tensorflow": {
+    "name": "TensorFlow",
+    "category": "ai",
+    "description": "TensorFlow ML Operations",
+    "install_method": "npm",
+    "npm_package": "@mcp/tensorflow",
+    "dependencies": ["node", "npm"],
+    "technologies": ["python", "jupyter"],
+    "register_cmd": "npx @mcp/tensorflow",
+    "priority": 3
+  },
+
+  "slack": {
+    "name": "Slack",
+    "category": "productivity",
+    "description": "Team Communication Integration",
+    "install_method": "npm",
+    "npm_package": "@mcp/slack",
+    "dependencies": ["node", "npm"],
+    "technologies": ["all"],
+    "register_cmd": "npx @mcp/slack",
+    "priority": 1
+  },
+  "notion": {
+    "name": "Notion",
+    "category": "productivity",
+    "description": "Documentation & Knowledge Management",
+    "install_method": "npm",
+    "npm_package": "@mcp/notion",
+    "dependencies": ["node", "npm"],
+    "technologies": ["all"],
+    "register_cmd": "npx @mcp/notion",
+    "priority": 2
+  },
+  "jira": {
+    "name": "Jira",
+    "category": "productivity",
+    "description": "Issue Tracking & Project Management",
+    "install_method": "npm",
+    "npm_package": "@mcp/jira",
+    "dependencies": ["node", "npm"],
+    "technologies": ["all"],
+    "register_cmd": "npx @mcp/jira",
+    "priority": 2
+  },
+  "trello": {
+    "name": "Trello",
+    "category": "productivity",
+    "description": "Visual Project Management",
+    "install_method": "npm",
+    "npm_package": "@mcp/trello",
+    "dependencies": ["node", "npm"],
+    "technologies": ["all"],
+    "register_cmd": "npx @mcp/trello",
+    "priority": 3
+  },
+
+  "filesystem": {
+    "name": "File System",
+    "category": "system",
+    "description": "Advanced File Operations & Management",
+    "install_method": "npm",
+    "npm_package": "@modelcontextprotocol/server-filesystem",
+    "dependencies": ["node", "npm"],
+    "technologies": ["all"],
+    "register_cmd": "npx @modelcontextprotocol/server-filesystem",
+    "priority": 1
+  },
+  "ssh": {
+    "name": "SSH Remote",
+    "category": "system",
+    "description": "Remote System Access & Management",
+    "install_method": "npm",
+    "npm_package": "@mcp/ssh",
+    "dependencies": ["node", "npm", "ssh"],
+    "technologies": ["all"],
+    "register_cmd": "npx @mcp/ssh",
+    "priority": 2
+  },
+  "system-monitor": {
+    "name": "System Monitor",
+    "category": "system",
+    "description": "System Resources & Performance Monitoring",
+    "install_method": "npm",
+    "npm_package": "@mcp/system-monitor",
+    "dependencies": ["node", "npm"],
+    "technologies": ["all"],
+    "register_cmd": "npx @mcp/system-monitor",
+    "priority": 2
+  }
+}

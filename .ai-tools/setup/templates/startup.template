@@ -1,0 +1,173 @@
+# Startup Project Template Variables
+
+## Project Scale Configuration
+project_scale_title="Startup"
+capabilities_list="- **Rapid Development** with minimal overhead and maximum agility
+- **Essential Agent Coverage** for core development needs
+- **Streamlined Workflows** optimized for small teams and fast iteration
+- **Cost-Effective Setup** with focus on essential tools and minimal complexity"
+
+## Business Domains
+business_domains_list="- **Product Development**: Rapid prototyping, MVP development, user validation
+- **Technology Innovation**: Proof of concept, technical feasibility, early adoption
+- **Market Validation**: User feedback integration, feature prioritization, market fit
+- **Resource Optimization**: Efficient development processes, minimal overhead"
+
+## Project Goals
+project_goals_list="- **Speed to Market**: Deliver working software quickly to validate concepts
+- **Cost Efficiency**: Maximize value with minimal resource investment
+- **Technical Excellence**: Build quality foundation while maintaining development velocity
+- **User Focus**: Prioritize user needs and feedback-driven development
+- **Scalability Preparation**: Design for future growth without over-engineering"
+
+## Technology Stack
+technology_stack_list="- **Frontend Technologies**: {{detected_frontend}} with modern development practices
+- **Backend Technologies**: {{detected_backend}} with efficient, scalable architecture
+- **Database Technologies**: {{detected_database}} with growth-ready design
+- **Development Tools**: {{detected_tools}} optimized for rapid development
+- **Deployment**: {{detected_infrastructure}} with cost-effective cloud solutions"
+
+## TODO Management Configuration
+todo_management_enabled="true"
+todo_hierarchy_level="simple"
+auto_task_creation="true"
+progress_tracking="session"
+session_todos="true"
+agent_coordination="true"
+task_handoffs="true"
+
+todo_system_config="- **Epic Management**: false (Focus on immediate features)
+- **Feature Breakdown**: true (Essential feature planning)
+- **Task Granularity**: standard (Balanced detail for efficiency)
+- **Subtask Tracking**: false (Simplified tracking for speed)
+- **Daily Standups**: false (Informal communication preferred)
+- **Weekly Summaries**: true (Progress tracking and planning)
+- **Milestone Tracking**: true (Key deliverable monitoring)
+- **External Tools**: none (Integrated framework tools only)"
+
+## Performance Requirements
+performance_requirements="- **Development Speed**: Prioritize rapid iteration over complex optimization
+- **Resource Usage**: Efficient use of limited computational resources
+- **Response Time**: Good enough performance for MVP validation
+- **Scalability**: Design for 10x growth without immediate over-engineering"
+
+## Scalability Requirements
+scalability_requirements="- **User Growth**: Support 100-1,000 initial users with growth planning
+- **Feature Expansion**: Architecture supports adding features without rewrites
+- **Team Growth**: Framework scales from 1-5 developers efficiently
+- **Technology Evolution**: Easy migration to more complex solutions when needed"
+
+## Reliability Requirements
+reliability_requirements="- **Core Functionality**: 95% uptime for essential features
+- **Data Protection**: Essential data backup and recovery
+- **Error Handling**: Graceful failure with user-friendly messages
+- **Development Reliability**: Consistent development environment and processes"
+
+## Security Requirements
+security_requirements="- **Essential Security**: Basic authentication, input validation, secure deployment
+- **Data Protection**: User data privacy and basic encryption
+- **Access Control**: Simple role-based access for core functionality
+- **Development Security**: Secure coding practices and dependency management"
+
+## Additional Agents
+additional_agents="### Recommended Startup Agents
+- **frontend-engineer** - Primary UI/UX development
+- **backend-engineer** - Core business logic and API development
+- **qa-engineer** - Essential testing and quality assurance
+
+### Optional Supporting Agents (as needed)
+- **security-engineer** - Security validation and best practices
+- **deployment-engineer** - Deployment automation and infrastructure setup"
+
+## Integration List
+integration_list="- **Essential Development Tools**: Git, package managers, basic CI/CD
+- **Cloud Services**: Cost-effective hosting, database services, file storage
+- **Testing Tools**: Basic unit testing, integration testing frameworks
+- **Monitoring**: Basic application monitoring and error tracking
+- **Communication**: Team collaboration tools, user feedback systems"
+
+## External Dependencies
+external_dependencies_list="- **Cloud Hosting**: AWS/Azure/GCP for cost-effective deployment
+- **Third-Party APIs**: Essential external services integration
+- **Package Repositories**: npm, PyPI, Maven for dependency management
+- **Development Tools**: GitHub/GitLab for version control and collaboration"
+
+## Maintenance Rules
+maintenance_rules="### 🔧 **STARTUP PROJECT MAINTENANCE**
+
+**Simplified maintenance approach focused on speed and efficiency:**
+
+#### **Essential Maintenance Only**
+- Update framework documentation when adding major features
+- Maintain CLAUDE.md synchronization with project evolution
+- Simple git workflow with feature branches
+
+#### **Quality Standards**
+- Focus on working software over comprehensive documentation
+- Essential testing coverage for core functionality
+- Regular security updates for dependencies
+
+#### **Framework Integration**
+- Use TodoWrite for task management and coordination
+- Leverage agent coordination for efficient development
+- Maintain clean code practices without over-engineering"
+
+## Command Mapping
+command_mapping="### 🎯 **STARTUP COMMAND PATTERNS**
+
+**Simplified command recognition optimized for rapid development:**
+
+#### **Essential Commands**
+- Development: \"start coding\", \"implement feature\", \"fix bug\"
+- Testing: \"run tests\", \"check quality\", \"validate functionality\"
+- Deployment: \"deploy app\", \"setup infrastructure\", \"release version\"
+- Planning: \"plan sprint\", \"prioritize features\", \"user story\""
+
+## Prompt Guidelines
+prompt_guidelines="### ✅ **STARTUP PROMPT APPROACH**
+
+**Streamlined prompt usage focused on rapid delivery:**
+
+1. **Rapid Implementation Focus**
+   - Prioritize working solutions over perfect architecture
+   - Functional approach with quick adaptation
+   - Essential validation criteria only
+
+2. **Simplified Workflows**
+   - Minimize process overhead
+   - Focus on value-delivering activities
+   - Essential documentation only"
+
+## Agent Creation Rules
+agent_creation_rules="### 📋 **STARTUP AGENT MANAGEMENT**
+
+**Minimal agent overhead with maximum value delivery:**
+
+- Use core agents: frontend-engineer, backend-engineer, qa-engineer
+- Add specialized agents only when essential
+- Focus on coordination over specialization
+- Prioritize cross-functional capabilities"
+
+## Quality Gates
+quality_gates="### 🔍 **STARTUP QUALITY APPROACH**
+
+**Essential quality gates for rapid development:**
+
+- **Functional Testing**: Core features work as expected
+- **Security Basics**: Essential security practices implemented
+- **Performance Baseline**: Acceptable performance for MVP validation
+- **User Experience**: Basic usability and user feedback integration"
+
+## Framework Milestones
+framework_milestones="**Startup Project Milestones:**
+- ✅ **MVP Definition** - Core feature set defined and prioritized
+- ✅ **Technical Foundation** - Basic architecture and development setup
+- 🔄 **User Validation** - Early user feedback and iteration cycles
+- 📋 **Growth Planning** - Scalability considerations and next phase planning"
+
+## Development Status
+development_status="**Startup Development Focus:**
+- **Speed**: Rapid feature development and deployment cycles
+- **Learning**: User feedback integration and market validation
+- **Efficiency**: Resource optimization and cost management
+- **Quality**: Essential quality practices without over-engineering"

@@ -5,3 +5,34 @@
 /stats.sh
 /my_name_is_claudepilot/
 /copilot.md
+
+# Session Management - All session files stored in project_archive/sessions/
+SESSION_SUMMARY_*.md
+session_*.md
+*.session
+temp_session_*
+SESSION_CURRENT.md
+CONTINUATION_CONTEXT_*.md
+SESSION_TODOS_*.md
+project_archive/sessions/
+project_archive/tools/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# AI Tools temporary data
+.ai-tools/core/demo/training_data/temp/
+.ai-tools/core/models/trained_models/
+.ai-tools/temp/
+.ai-tools/core/data/ai_training_data/
+ai_tools_OLD_BACKUP/
+
+# Temporary pip files
+=*
+
+# Workspace
+workspace/
+documentation_map.txt

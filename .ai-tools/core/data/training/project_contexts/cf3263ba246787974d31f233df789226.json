@@ -1,0 +1,57 @@
+{
+  "project_path": "/tmp",
+  "technology_stack": {
+    "frontend": [],
+    "backend": [],
+    "database": [],
+    "infrastructure": [],
+    "testing": [],
+    "mobile": [],
+    "desktop": [],
+    "graphics": [],
+    "ai_ml": [
+      "anthropic"
+    ],
+    "confidence_score": 0.05
+  },
+  "complexity": {
+    "file_count": 1011,
+    "code_lines": 0,
+    "directory_depth": 2,
+    "dependency_count": 0,
+    "complexity_rating": "sme",
+    "complexity_score": 0.32
+  },
+  "business_domain": {
+    "primary": "general",
+    "secondary": [],
+    "industry_vertical": "technology",
+    "compliance_requirements": [],
+    "confidence_score": 0.1
+  },
+  "team_context": {
+    "estimated_team_size": "small",
+    "experience_indicators": [
+      "junior_level"
+    ],
+    "development_patterns": [
+      "microservices"
+    ],
+    "git_activity_level": "low",
+    "collaboration_patterns": []
+  },
+  "mcp_insights": {
+    "serena_available": false,
+    "serena_analysis": null,
+    "context7_available": false,
+    "context7_patterns": null,
+    "playwright_available": false,
+    "playwright_coverage": null,
+    "integration_quality_score": 0.0
+  },
+  "framework_config": {
+    "has_claude_md": false
+  },
+  "timestamp": "2025-09-17T11:54:17.505808",
+  "context_hash": "cf3263ba246787974d31f233df789226"
+}

@@ -1,0 +1,301 @@
+# CLAUDE.md – {{project_name}} Configuration
+
+## 0. Project Metadata
+
+- **project_name**: "{{project_name}}"
+- **project_description**: "{{project_description}}"
+- **project_version**: "{{project_version}}"
+- **framework_version**: "2.2.0"
+- **last_updated**: "{{current_date}}"
+- **primary_language**: "{{primary_language}}"
+- **business_domain**: "{{business_domain}}"
+- **project_scale**: "{{project_scale}}"
+- **development_stage**: "{{development_stage}}"
+
+## 1. Project Description
+
+{{project_description_extended}}
+
+**🏢 {{project_scale_title}} Capabilities:**
+{{capabilities_list}}
+
+---
+
+## 2. Domains and Goals
+
+### Business Domains
+{{business_domains_list}}
+
+### Main Project Goals
+{{project_goals_list}}
+
+---
+
+## 3. Technologies
+
+### Core Framework Technologies
+- **Prompt Engineering**: Markdown-based prompt library with functional design patterns
+- **Multi-Agent Orchestration**: Claude Code agent coordination and workflow management
+- **Session Management**: Advanced context analysis, state recovery, and continuation systems
+- **TodoWrite Integration**: Hierarchical task management with enterprise-grade tracking
+- **MCP Tools Integration**: Serena (project indexing), Context7 (context analysis), Playwright (web automation)
+- **Git Integration**: Advanced version control integration with automated change tracking
+- **Quality Assurance**: Automated validation, testing frameworks, and continuous improvement
+
+### Supported Development Stacks
+{{technology_stack_list}}
+
+---
+
+## 4. Agents and Roles
+
+The list of available agents and their competency scope is defined in files:
+
+### Core Strategy and Planning
+
+- **product-manager** - Product strategy, requirements gathering, stakeholder management
+- **business-analyst** - Business process analysis, requirements documentation, stakeholder communication
+- **reviewer** - Quality assurance, requirements validation, risk assessment
+
+### Project and Session Management
+
+- **session-manager** - Session lifecycle management, context preservation, state recovery, MCP tools coordination
+- **project-owner** - Project initialization, health monitoring, governance, framework configuration
+
+### Architecture and Design
+
+- **software-architect** - System architecture, technology selection, scalability planning
+- **ux-designer** - User experience design, design systems, accessibility, user research
+
+### Development
+
+- **frontend-engineer** - User interface development, responsive design, performance optimization
+- **backend-engineer** - Server-side systems, performance optimization, security, scalability
+- **api-engineer** - API design, microservices, service integration, distributed systems
+- **data-engineer** - Data architecture, ETL pipelines, analytics, database optimization
+
+### Quality and Security
+
+- **qa-engineer** - Test automation, quality processes, performance testing, continuous improvement
+- **security-engineer** - Application security, threat modeling, compliance, security architecture
+
+### Operations
+
+- **deployment-engineer** - DevOps, CI/CD pipelines, infrastructure automation, monitoring
+
+{{additional_agents}}
+
+Each agent's competency scope is located in the corresponding file in the `.claude/agents` directory. If you want to add a new agent or modify a role, edit the appropriate agent file.
+
+---
+
+## 5. Integrations and Dependencies
+
+### Framework-Specific Integrations
+- **MCP Tools Suite**:
+  - **Serena**: Project indexing, context management, and intelligent project navigation
+  - **Context7**: Advanced context analysis, pattern recognition, and semantic understanding
+  - **Playwright**: Web automation, testing, and browser-based development tasks
+
+### Development Ecosystem Integration
+{{integration_list}}
+
+### External Service Dependencies
+{{external_dependencies_list}}
+
+---
+
+## 6. Non-functional Requirements
+
+### Performance Requirements
+{{performance_requirements}}
+
+### Scalability Requirements
+{{scalability_requirements}}
+
+### Reliability Requirements
+{{reliability_requirements}}
+
+### Security Requirements
+{{security_requirements}}
+
+---
+
+## 7. Special Notes
+
+### Technological Constraints
+{{technological_constraints}}
+
+### Coding Style Preferences
+{{coding_style_preferences}}
+
+### Special Guidelines for Agents
+- **File Language Standard**: ALL framework files (prompts, documentation, code) MUST be written in English
+- **Conversation Language**: Conversations with users can be in Polish or English based on user preference
+- **Documentation Standards**: NEVER use quantitative information in documentation (avoid "X prompts", "Y agents")
+- **Work Directory Usage**: The `/work/` directory is the ONLY location for temporary files, scripts, and working documents - excluded from git via .gitignore
+- **Communication Style**: Professional, concise, and action-oriented communication
+- **Error Handling**: Always provide specific, actionable error messages and recovery suggestions
+- **Collaboration Protocol**: Agents must clearly communicate handoffs and dependencies
+- **Quality Standards**: Every agent output must meet enterprise-grade quality requirements
+
+---
+
+## 8. TODO Management Configuration
+
+### Task Management Strategy
+
+- **todo_management_enabled**: {{todo_management_enabled}}
+- **todo_hierarchy_level**: {{todo_hierarchy_level}}
+- **auto_task_creation**: {{auto_task_creation}}
+- **progress_tracking**: {{progress_tracking}}
+
+### TodoWrite Integration
+
+- **session_todos**: {{session_todos}}
+- **agent_coordination**: {{agent_coordination}}
+- **task_handoffs**: {{task_handoffs}}
+
+### Hierarchical TODO System Configuration
+
+{{todo_system_config}}
+
+---
+
+## 9. Contact and Project Owners
+
+### Project Ownership
+- **Framework Maintainer**: Claude Code Multi-Agent Framework Team
+- **Technical Architecture**: Distributed across specialized AI agents
+- **Business Strategy**: Product-manager and business-analyst agents
+- **Quality Assurance**: QA-engineer and security-engineer agents
+
+### Communication Channels
+- **Primary Interface**: Claude Code CLI and agent orchestration system
+- **Documentation**: Comprehensive prompt library and framework documentation
+- **Issue Tracking**: Integrated with TodoWrite hierarchical task management
+- **Version Control**: Git-based change management and collaboration
+
+### Governance Structure
+- **Framework Evolution**: Continuous improvement through usage analysis and feedback
+- **Quality Control**: Automated validation and manual review processes
+- **Security Oversight**: Regular security audits and vulnerability assessments
+- **Performance Monitoring**: Continuous performance optimization and bottleneck identification
+
+---
+
+## 10. Framework Roadmap Management
+
+### 📋 **ROADMAP ORGANIZATION STANDARDS**
+
+**All framework development planning MUST follow priority-based organization:**
+
+#### **1. Priority-Based Structure (MANDATORY)**
+- **🚨 CRITICAL PRIORITY** - Foundation enhancements that enable all subsequent development
+- **🔥 HIGH PRIORITY** - Significant functionality improvements building on critical foundation
+- **⭐ MEDIUM PRIORITY** - Advanced features for mature framework usage
+- **🔮 LOW PRIORITY** - Innovation and experimentation for framework evolution
+
+#### **2. Functional Category Division (REQUIRED)**
+Each priority level MUST be organized by functional categories:
+
+```markdown
+### 🤖 **[Priority] Agents**
+- Agent specifications and implementations
+
+### 📝 **[Priority] Prompts**
+- Prompt development and enhancement
+
+### ⚙️ **[Priority] Configuration**
+- CLAUDE.md and framework configuration improvements
+
+### 🔄 **[Priority] Workflows**
+- Multi-agent orchestration and coordination patterns
+
+### 📊 **[Priority] Analytics**
+- Monitoring, metrics, and intelligence features
+
+### 🛠️ **[Priority] Integrations**
+- External tools, MCP, and development environment integration
+
+### 🎨 **[Priority] User Experience**
+- Templates, visualization, and interface improvements
+```
+
+#### **3. Timeline-Free Planning (MANDATORY)**
+- **NEVER use specific dates** or timeline estimates in roadmap
+- **NEVER use version numbers** for planning (except current version reference)
+- **Use priority levels** to indicate implementation sequence
+- **Focus on impact and feasibility** rather than arbitrary timelines
+
+---
+
+## 11. Framework Development Maintenance Rules
+
+{{maintenance_rules}}
+
+---
+
+## 12. Command-Agent Mapping
+
+{{command_mapping}}
+
+---
+
+## 13. Prompt Development Guidelines
+
+{{prompt_guidelines}}
+
+---
+
+## 14. Agent Creation and Management Rules
+
+{{agent_creation_rules}}
+
+---
+
+## 15. Prompt Quality Gates and Validation
+
+{{quality_gates}}
+
+---
+
+## 16. Framework Directory Structure
+
+{{directory_structure}}
+
+---
+
+## 17. Prompt Library Status and Quality Assessment
+
+{{library_status}}
+
+---
+
+## 18. Change History
+
+### Version History
+
+- **Project Creation Date**: {{project_creation_date}}
+- **Current Version**: {{project_version}}
+- **Last Updated**: {{current_date}}
+- **Framework Status**: {{framework_status}}
+
+### Version Control Integration
+
+- **Repository**: {{repository_info}}
+- **Branch Strategy**: {{branch_strategy}}
+- **Version Tags**: {{version_tags}}
+- **Change Tracking**: {{change_tracking}}
+
+### Major Framework Milestones
+
+{{framework_milestones}}
+
+### Current Development Status
+
+{{development_status}}
+
+---
+
+*Fill in the above sections according to project requirements. Claude Code agents will automatically adapt their competencies based on this file.*
