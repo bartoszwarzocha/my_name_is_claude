@@ -23,11 +23,13 @@ __pycache__/
 *.pyo
 *.pyd
 
-# AI Tools temporary data
+# AI Tools temporary data and virtual environment
 .ai-tools/core/demo/training_data/temp/
 .ai-tools/core/models/trained_models/
 .ai-tools/temp/
 .ai-tools/core/data/ai_training_data/
+.ai-tools/venv/
+.ai-tools/ai_training_data/
 ai_tools_OLD_BACKUP/
 
 # Temporary pip files
