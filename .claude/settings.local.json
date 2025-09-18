@@ -490,7 +490,15 @@
       "Bash(do echo \"Copying framework to test$i...\")",
       "Bash(do echo \"=== Copying to $dir ===\")",
       "Bash(git commit:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(/mnt/e/AI/my_name_is_claude/ai-tools.sh:*)",
+      "Read(//tmp/test_wxwidgets_project/**)",
+      "Bash(do echo \"=== $dir ===\")",
+      "Bash(do echo \"=== Kopiowanie do test$i ===\")",
+      "Read(//mnt/e/C++/Projekty/Apps/wxwidgets_book_examples/OpenGL/**)",
+      "Bash(./prepare_tests.sh:*)",
+      "Bash(/mnt/e/AI/tests/copy_framework_to_project.sh)",
+      "Bash(/mnt/e/AI/tests/copy_everything_correctly.sh:*)"
     ],
     "deny": [
       "Bash(rm:*)",

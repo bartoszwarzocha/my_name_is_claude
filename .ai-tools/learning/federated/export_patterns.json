@@ -1,0 +1,17 @@
+{
+  "export_metadata": {
+    "export_id": "3550b56d-c9b8-469d-9bd6-5f5a55405925",
+    "export_timestamp": "2025-09-18T18:36:56.795989",
+    "anonymization_level": "high",
+    "pattern_count": 0,
+    "pattern_types": {
+      "technology": 0,
+      "agent_effectiveness": 0,
+      "evolution": 0,
+      "benchmark": 0
+    },
+    "framework_version": "3.0.0",
+    "privacy_compliance": "maximum"
+  },
+  "patterns": []
+}

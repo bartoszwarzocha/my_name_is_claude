@@ -161,15 +161,15 @@ select_from_list() {
 detect_project_technologies() {
     print_status "info" "Analyzing project structure and technologies..."
 
-    export PYTHONPATH="$AI_CORE_DIR:$PYTHONPATH"
+    export PYTHONPATH="$FRAMEWORK_ROOT/.ai-tools:$PYTHONPATH"
 
-    # Run technology detection
+    # Run technology detection with timeout
     local tech_output
-    tech_output=$(python3 -c "
+    tech_output=$(timeout 30 python3 -c "
 import sys
 import json
-sys.path.insert(0, '$AI_CORE_DIR')
-from core.data_collection_system import TechnologyDetector
+sys.path.insert(0, '$FRAMEWORK_ROOT/.ai-tools')
+from core.core.data_collection_system import TechnologyDetector
 
 try:
     detector = TechnologyDetector()
@@ -188,7 +188,10 @@ except Exception as e:
     print('{}')
 " 2>/dev/null)
 
-    if [[ -n "$tech_output" && "$tech_output" != "{}" ]]; then
+    if [[ $? -eq 124 ]]; then
+        print_status "warning" "Technology detection timed out (30s) - using fallback"
+        DETECTED_TECHNOLOGIES=()
+    elif [[ -n "$tech_output" && "$tech_output" != "{}" ]]; then
         DETECTED_TECHNOLOGIES=($(echo "$tech_output" | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
@@ -219,14 +222,14 @@ print(f\"{data.get('confidence', 0):.2f}\")
 get_agent_recommendations() {
     print_status "info" "Generating intelligent agent recommendations..."
 
-    export PYTHONPATH="$AI_CORE_DIR:$PYTHONPATH"
+    export PYTHONPATH="$FRAMEWORK_ROOT/.ai-tools:$PYTHONPATH"
 
     local agents_output
-    agents_output=$(python3 -c "
+    agents_output=$(timeout 30 python3 -c "
 import sys
 import json
-sys.path.insert(0, '$AI_CORE_DIR')
-from integration.ai_agent_selector import AgentSelectionEngine, AgentSelectionRequest
+sys.path.insert(0, '$FRAMEWORK_ROOT/.ai-tools')
+from core.integration.ai_agent_selector import AgentSelectionEngine, AgentSelectionRequest
 
 try:
     selector = AgentSelectionEngine('$PROJECT_DIR')
@@ -238,7 +241,10 @@ except Exception as e:
     print('[]')
 " 2>/dev/null)
 
-    if [[ -n "$agents_output" && "$agents_output" != "[]" ]]; then
+    if [[ $? -eq 124 ]]; then
+        print_status "warning" "Agent recommendations timed out (30s) - using fallback"
+        RECOMMENDED_AGENTS=("project-owner" "session-manager" "software-architect" "frontend-engineer" "backend-engineer" "qa-engineer")
+    elif [[ -n "$agents_output" && "$agents_output" != "[]" ]]; then
         readarray -t RECOMMENDED_AGENTS < <(echo "$agents_output" | python3 -c "
 import json, sys
 agents = json.load(sys.stdin)

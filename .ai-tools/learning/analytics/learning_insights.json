@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "project_id": "093c13fa",
+  "created_at": "2025-09-18T14:40:18.069676",
+  "last_updated": "2025-09-18T15:43:43.190463",
+  "learning_summary": {
+    "total_user_choices": 6,
+    "tracked_agents": 4,
+    "evolution_events": 0,
+    "learning_accuracy": 1.0
+  },
+  "patterns": [
+    "User consistently prefers frontend-engineer agent"
+  ],
+  "recommendations": []
+}

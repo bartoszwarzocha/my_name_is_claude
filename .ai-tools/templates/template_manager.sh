@@ -13,7 +13,8 @@ set -e
 
 readonly SCRIPT_VERSION="1.0.0"
 readonly PROJECT_DIR="$(pwd)"
-readonly TEMPLATES_DIR="$PROJECT_DIR/.ai-tools/templates"
+readonly FRAMEWORK_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+readonly TEMPLATES_DIR="$FRAMEWORK_ROOT/.ai-tools/templates"
 
 # Colors and formatting
 readonly COLOR_RED=$(tput setaf 1)

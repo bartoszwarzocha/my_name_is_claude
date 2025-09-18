@@ -1,0 +1,21 @@
+Przygotuj testy.
+
+1. W katalogu powyżej katalogu projektowego utwoórz katalok 'tests'. Jeśli katalog o tej nazwie już istnieje, usuń go.
+2. W katalogu 'tests' utówrz 10 katalogów o nazwach 'test1', 'test2', ..., 'test20'.
+3. Do każdego z katalogów 'test1', 'test2', ..., 'test20 skopiuj framework używając skryptu copy_framwework.sh z katalogu projektowego.
+4. Do każdego katalogu skopiuj apliakcję przykładową z katalogu Windows: e:\C++\Projekty\Apps\wxwidgets_book_examples\OpenGL\
+5. W katalogu 'test' utwórz plik testów:
+    - jden test na każdy katalog 'test1', 'test2', ..., 'test20'
+    - każdy test powinien dotyczyć odrębnego narzędzia AI (zgodnie z pozycjami menu w skrypcie ai-tools.sh)
+    - plik testów powinien umozliwiać łatwe odznaczenie ewfektów i zgłoszenie uwag (nie chcekcboxy)
+    - plik testów powinien być w formacie markdown
+    - plik testów powinien być nazwany 'tests_<data_i_godzina_utowrzenia>.md'
+6. Jeśli liczba testów narzędzi AI jest mniejsza, niż 15, dla pozostałytch testów ustaw scenariusze testowe:
+    - testy powinny dotyczyć w szczególności mechanizmu projektowego uczenia się AI
+    - testy powinny dotyczyć w szczególności korzystania z promptów w sekcji init
+    - testy powinny też dotyczyć funkcjonalnosci wykonanych w ostatnim czasie - ./project_archive/adaptive-learning-architecture-plan-2025-09-18.md
+    - dla każdego testu opisz DOKŁADNIE krok po kroku, jakie czynności należy wykonać, jakie polecenia wpisać
+    - dla każdego testu opisz, jakie efekty powinny być widoczne
+    - dla każdego testu opisz, jakie uwagi należy zgłosić
+7. W pliku testów umieść na początku spis treści z odnosnikami do poszczególnych testów.
+8. W pliku testów umieść na końcu sekcję 'Uwagi ogólne', w której opiszesz swoje ogólne wrażenia z korzystania z narzędzi AI.

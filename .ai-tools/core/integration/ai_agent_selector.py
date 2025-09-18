@@ -134,21 +134,218 @@ class AgentSelectionEngine:
         agents_dir = self.framework_root / ".claude" / "agents"
 
         if agents_dir.exists():
-            for category_dir in agents_dir.iterdir():
-                if category_dir.is_dir():
-                    for agent_file in category_dir.glob("*.md"):
-                        agent_name = agent_file.stem
-                        agents.append(agent_name)
+            # Recursively search for all .md files in subdirectories
+            for agent_file in agents_dir.rglob("*.md"):
+                agent_name = agent_file.stem
+                agents.append(agent_name)
 
         logger.info(f"Discovered {len(agents)} available agents")
         return sorted(agents)
+
+    def _parse_agent_file(self, agent_name: str) -> Dict[str, Any]:
+        """Parse agent file to extract capabilities"""
+        agents_dir = self.framework_root / ".claude" / "agents"
+
+        # Find the agent file
+        agent_file = None
+        for file_path in agents_dir.rglob(f"{agent_name}.md"):
+            agent_file = file_path
+            break
+
+        if not agent_file or not agent_file.exists():
+            logger.warning(f"Agent file not found for: {agent_name}")
+            return self._get_default_capabilities()
+
+        try:
+            with open(agent_file, 'r') as f:
+                content = f.read()
+
+            # Parse YAML header
+            if content.startswith('---'):
+                yaml_end = content.find('---', 3)
+                if yaml_end != -1:
+                    yaml_content = content[3:yaml_end].strip()
+                    description = self._extract_yaml_value(yaml_content, 'description')
+                else:
+                    description = ""
+            else:
+                description = ""
+
+            # Extract technologies from description
+            technologies = self._extract_technologies_from_description(description)
+
+            # Extract complexity preference based on description
+            complexity_preference = self._infer_complexity_preference(description)
+
+            # Extract project phases
+            project_phases = self._infer_project_phases(description, agent_name)
+
+            # Extract collaboration level
+            team_collaboration = self._infer_collaboration_level(description)
+
+            return {
+                'technologies': technologies,
+                'complexity_preference': complexity_preference,
+                'project_phases': project_phases,
+                'team_collaboration': team_collaboration,
+                'expertise_level': 'specialized',
+                'description': description
+            }
+
+        except Exception as e:
+            logger.warning(f"Error parsing agent file {agent_name}: {e}")
+            return self._get_default_capabilities()
+
+    def _extract_yaml_value(self, yaml_content: str, key: str) -> str:
+        """Extract value from YAML content"""
+        import re
+        pattern = rf'^{key}:\s*(.+)$'
+        match = re.search(pattern, yaml_content, re.MULTILINE)
+        return match.group(1).strip() if match else ""
+
+    def _extract_technologies_from_description(self, description: str) -> List[str]:
+        """Extract technologies from agent description"""
+        if not description:
+            return []
+
+        description_lower = description.lower()
+        technologies = []
+
+        # Technology mapping from description keywords
+        tech_keywords = {
+            'opengl': ['opengl', 'open gl'],
+            'vulkan': ['vulkan'],
+            'directx': ['directx', 'direct x'],
+            'wxwidgets': ['wxwidgets', 'wx widgets'],
+            'qt': ['qt'],
+            'react': ['react'],
+            'angular': ['angular'],
+            'vue': ['vue.js', 'vue'],
+            'python': ['python'],
+            'javascript': ['javascript', 'js'],
+            'typescript': ['typescript', 'ts'],
+            'java': ['java'],
+            'csharp': ['c#', 'csharp'],
+            'cpp': ['c++', 'cpp'],
+            'go': ['golang', 'go'],
+            'rust': ['rust'],
+            'docker': ['docker'],
+            'kubernetes': ['kubernetes', 'k8s'],
+            'aws': ['aws', 'amazon web services'],
+            'azure': ['azure'],
+            'gcp': ['google cloud', 'gcp'],
+            'postgresql': ['postgresql', 'postgres'],
+            'mysql': ['mysql'],
+            'mongodb': ['mongodb', 'mongo'],
+            'nodejs': ['node.js', 'nodejs'],
+            'express': ['express.js', 'express'],
+            'fastapi': ['fastapi'],
+            'django': ['django'],
+            'flask': ['flask'],
+            'tensorflow': ['tensorflow'],
+            'pytorch': ['pytorch'],
+            'pandas': ['pandas'],
+            'numpy': ['numpy'],
+            'testing': ['testing', 'test', 'quality assurance'],
+            'security': ['security', 'cybersecurity'],
+            'mobile': ['mobile', 'android', 'ios'],
+            'desktop': ['desktop', 'native'],
+            'graphics': ['graphics', '3d', '2d', 'rendering'],
+            'api': ['api', 'rest', 'graphql'],
+            'database': ['database', 'sql'],
+            'infrastructure': ['infrastructure', 'devops'],
+            'monitoring': ['monitoring', 'observability'],
+            'compliance': ['compliance', 'regulatory']
+        }
+
+        for tech, keywords in tech_keywords.items():
+            if any(keyword in description_lower for keyword in keywords):
+                technologies.append(tech)
+
+        return technologies
+
+    def _infer_complexity_preference(self, description: str) -> float:
+        """Infer complexity preference from description"""
+        if not description:
+            return 0.5
+
+        description_lower = description.lower()
+
+        # High complexity indicators
+        high_complexity_terms = ['enterprise', 'complex', 'advanced', 'expert', 'senior', 'architecture', 'system']
+        # Low complexity indicators
+        low_complexity_terms = ['simple', 'basic', 'junior', 'beginner']
+
+        high_score = sum(1 for term in high_complexity_terms if term in description_lower)
+        low_score = sum(1 for term in low_complexity_terms if term in description_lower)
+
+        if high_score > low_score:
+            return 0.8
+        elif low_score > high_score:
+            return 0.3
+        else:
+            return 0.6
+
+    def _infer_project_phases(self, description: str, agent_name: str) -> List[str]:
+        """Infer project phases from description and agent name"""
+        phases = []
+
+        if not description:
+            description = ""
+
+        description_lower = description.lower()
+        agent_lower = agent_name.lower()
+
+        # Phase mapping
+        if any(term in description_lower or term in agent_lower for term in ['architect', 'design', 'planning']):
+            phases.append('architecture')
+        if any(term in description_lower or term in agent_lower for term in ['develop', 'engineer', 'implementation']):
+            phases.append('development')
+        if any(term in description_lower or term in agent_lower for term in ['test', 'qa', 'quality']):
+            phases.append('quality_assurance')
+        if any(term in description_lower or term in agent_lower for term in ['deploy', 'operations', 'infrastructure']):
+            phases.append('deployment')
+        if any(term in description_lower or term in agent_lower for term in ['manage', 'coordinate', 'owner']):
+            phases.append('coordination')
+        if any(term in description_lower or term in agent_lower for term in ['security', 'compliance']):
+            phases.append('security')
+
+        return phases if phases else ['development']
+
+    def _infer_collaboration_level(self, description: str) -> str:
+        """Infer collaboration level from description"""
+        if not description:
+            return 'medium'
+
+        description_lower = description.lower()
+
+        if any(term in description_lower for term in ['team', 'collaboration', 'coordination', 'management']):
+            return 'high'
+        elif any(term in description_lower for term in ['specialist', 'expert', 'individual']):
+            return 'medium'
+        else:
+            return 'medium'
+
+    def _get_default_capabilities(self) -> Dict[str, Any]:
+        """Get default capabilities for unknown agents"""
+        return {
+            'technologies': [],
+            'complexity_preference': 0.5,
+            'project_phases': ['development'],
+            'team_collaboration': 'medium',
+            'expertise_level': 'general',
+            'description': ''
+        }
 
     def _load_agent_capabilities(self) -> Dict[str, Dict[str, Any]]:
         """Load agent capabilities and metadata"""
         capabilities = {}
 
-        # Define agent capabilities (simplified - in real implementation,
-        # this would parse from agent files)
+        # Dynamic agent parsing from actual files
+        for agent_name in self.available_agents:
+            capabilities[agent_name] = self._parse_agent_file(agent_name)
+
+        # Fallback hardcoded definitions for critical agents (if parsing fails)
         agent_definitions = {
             'frontend-engineer': {
                 'technologies': ['react', 'angular', 'vue', 'typescript', 'javascript'],
@@ -215,18 +412,17 @@ class AgentSelectionEngine:
             }
         }
 
+        # Add hardcoded definitions only for agents not dynamically parsed or as fallback
         for agent in self.available_agents:
-            if agent in agent_definitions:
-                capabilities[agent] = agent_definitions[agent]
-            else:
-                # Default capabilities for unknown agents
-                capabilities[agent] = {
-                    'technologies': [],
-                    'complexity_preference': 0.5,
-                    'project_phases': ['development'],
-                    'team_collaboration': 'medium',
-                    'expertise_level': 'general'
-                }
+            if agent not in capabilities:
+                # Use hardcoded definition if available
+                if agent in agent_definitions:
+                    capabilities[agent] = agent_definitions[agent]
+                    # Add missing description field
+                    capabilities[agent]['description'] = f"Hardcoded definition for {agent}"
+                else:
+                    # Use default capabilities for completely unknown agents
+                    capabilities[agent] = self._get_default_capabilities()
 
         return capabilities
 
@@ -237,10 +433,10 @@ class AgentSelectionEngine:
             return
 
         try:
-            # Import AI components (would be actual imports in real implementation)
-            from ai_tools.core.data_collection_system import ProjectContextAnalyzer
-            from ai_tools.core.feature_engineering import ProjectFeatureEncoder
-            from ai_tools.models.ensemble_recommender import create_default_ensemble
+            # Import AI components with relative imports
+            from ..core.data_collection_system import ProjectContextAnalyzer
+            from ..core.feature_engineering import ProjectFeatureEncoder
+            from ..models.ensemble_recommender import create_default_ensemble
 
             # Initialize components
             self.project_analyzer = ProjectContextAnalyzer()
@@ -250,12 +446,46 @@ class AgentSelectionEngine:
             # Try to load pre-trained models
             self._load_pretrained_models()
 
+            # Initialize adaptive learning integration
+            self._initialize_adaptive_learning()
+
             logger.info("✅ AI components initialized successfully")
 
         except Exception as e:
             logger.warning(f"⚠️ Failed to initialize AI components: {e}")
             logger.info("🔄 Falling back to rule-based selection")
             self.config.ai_enabled = False
+
+    def _initialize_adaptive_learning(self):
+        """Initialize adaptive learning integration with hybrid intelligence"""
+        try:
+            # Import hybrid intelligence system
+            sys.path.insert(0, str(self.framework_root / "learning"))
+            from learning.hybrid_intelligence import HybridIntelligenceSystem
+
+            # Initialize hybrid intelligence system
+            self.hybrid_intelligence = HybridIntelligenceSystem(str(self.framework_root))
+
+            if self.hybrid_intelligence.learning_enabled:
+                logger.info("🧠 Hybrid Intelligence System enabled (Universal + Adaptive)")
+            else:
+                logger.info("🔄 Hybrid Intelligence System initializing (Universal patterns active)")
+
+            # Keep backward compatibility
+            self.learning_integration = self.hybrid_intelligence
+
+        except Exception as e:
+            logger.warning(f"⚠️ Hybrid intelligence not available: {e}")
+            # Fallback to basic adaptive learning
+            try:
+                from learning.learning_integration import AdaptiveLearningIntegration
+                self.learning_integration = AdaptiveLearningIntegration(str(self.framework_root))
+                self.hybrid_intelligence = None
+                logger.info("🔄 Fallback to basic adaptive learning")
+            except Exception as e2:
+                logger.warning(f"⚠️ All learning systems unavailable: {e2}")
+                self.learning_integration = None
+                self.hybrid_intelligence = None
 
     def _load_pretrained_models(self):
         """Load pre-trained models if available"""
@@ -341,13 +571,72 @@ class AgentSelectionEngine:
             # Limit to max agents
             limited_recommendations = available_recommendations[:request.max_agents]
 
-            # Build response
+            # Get base recommendations
             recommended_agents = [rec.agent_name for rec in limited_recommendations]
             confidence_scores = {rec.agent_name: rec.confidence_score for rec in limited_recommendations}
             reasoning = {rec.agent_name: rec.reasoning for rec in limited_recommendations}
 
+            # Apply hybrid intelligence enhancement if available
+            if hasattr(self, 'hybrid_intelligence') and self.hybrid_intelligence:
+                try:
+                    # Use hybrid intelligence system for enhanced recommendations
+                    hybrid_context = {
+                        'technologies': project_context.get('technology_stack', {}).get('languages', []) +
+                                      project_context.get('technology_stack', {}).get('frameworks', []),
+                        'domain': project_context.get('business_domain', {}).get('type', 'general'),
+                        'complexity': project_context.get('complexity', {}).get('level', 'medium'),
+                        'task_type': request.context_data.get('task_type') if request.context_data else 'development',
+                        'project_phase': request.context_data.get('project_phase') if request.context_data else 'development',
+                        'has_frontend': 'frontend' in str(project_context).lower(),
+                        'has_backend': 'backend' in str(project_context).lower(),
+                        'has_database': 'database' in str(project_context).lower(),
+                        'has_api': 'api' in str(project_context).lower()
+                    }
+
+                    # Get hybrid recommendations
+                    hybrid_recs = self.hybrid_intelligence.get_hybrid_recommendations(hybrid_context)
+
+                    if hybrid_recs:
+                        logger.info("🧠 Applied Hybrid Intelligence System (Universal + Adaptive)")
+
+                        # Extract top recommendations from hybrid system
+                        hybrid_agents = [rec['agent'] for rec in hybrid_recs[:request.max_agents]]
+                        hybrid_scores = {rec['agent']: rec['confidence'] for rec in hybrid_recs}
+                        hybrid_reasoning = {rec['agent']: [rec['reasoning']] for rec in hybrid_recs}
+
+                        # Use hybrid recommendations
+                        recommended_agents = hybrid_agents
+                        confidence_scores = hybrid_scores
+                        reasoning = hybrid_reasoning
+
+                except Exception as e:
+                    logger.warning(f"Hybrid intelligence enhancement failed: {e}")
+
+                    # Fallback to basic adaptive learning if available
+                    if hasattr(self, 'learning_integration') and self.learning_integration:
+                        try:
+                            learning_context = {
+                                'task_type': request.context_data.get('task_type') if request.context_data else 'development',
+                                'project_phase': request.context_data.get('project_phase') if request.context_data else 'development'
+                            }
+
+                            enhanced_agents = self.learning_integration.enhance_agent_recommendations(
+                                base_recommendations=recommended_agents,
+                                context=learning_context
+                            )
+
+                            if enhanced_agents != recommended_agents:
+                                logger.info("🔄 Applied basic adaptive learning fallback")
+                                recommended_agents = enhanced_agents
+
+                        except Exception as e2:
+                            logger.warning(f"Adaptive learning fallback also failed: {e2}")
+
+            # Final recommendations
+            final_recommended_agents = recommended_agents
+
             return AgentSelectionResponse(
-                recommended_agents=recommended_agents,
+                recommended_agents=final_recommended_agents,
                 confidence_scores=confidence_scores,
                 reasoning=reasoning,
                 workflow_sequence=ml_recommendations.workflow_sequence,
@@ -356,7 +645,8 @@ class AgentSelectionEngine:
                 metadata={
                     'selection_method': 'ai_powered',
                     'ml_performance': ml_recommendations.model_performance,
-                    'project_context_hash': project_context.get('context_hash', 'unknown')
+                    'project_context_hash': project_context.get('context_hash', 'unknown'),
+                    'learning_enhanced': hasattr(self, 'learning_integration') and self.learning_integration is not None
                 }
             )
 
@@ -413,7 +703,7 @@ class AgentSelectionEngine:
             return self._emergency_fallback_selection(request)
 
     def _simple_project_analysis(self, project_path: str) -> Dict[str, Any]:
-        """Simple project analysis for rule-based selection"""
+        """Enhanced project analysis using TechnologyDetector"""
         analysis = {
             'has_frontend': False,
             'has_backend': False,
@@ -425,31 +715,51 @@ class AgentSelectionEngine:
         }
 
         try:
-            # Check for common files and directories
+            # Use TechnologyDetector for comprehensive analysis
+            from ..core.data_collection_system import TechnologyDetector
+            detector = TechnologyDetector()
+            tech_stack = detector.detect_technology_stack(project_path)
+
+            # Collect all detected technologies
+            all_technologies = (
+                tech_stack.frontend + tech_stack.backend + tech_stack.database +
+                tech_stack.infrastructure + tech_stack.testing + tech_stack.mobile +
+                tech_stack.desktop + tech_stack.graphics + tech_stack.ai_ml
+            )
+            analysis['technologies'] = all_technologies
+
+            # Set flags based on detected technologies
+            analysis['has_frontend'] = bool(tech_stack.frontend)
+            analysis['has_backend'] = bool(tech_stack.backend)
+            analysis['has_database'] = bool(tech_stack.database)
+            analysis['has_tests'] = bool(tech_stack.testing)
+            analysis['has_docker'] = 'docker' in tech_stack.infrastructure
+
+            # Fallback to file-based detection for additional indicators
             project = Path(project_path)
 
-            # Frontend indicators
-            if any((project / f).exists() for f in ['package.json', 'src/', 'public/', 'index.html']):
+            # Additional frontend indicators
+            if not analysis['has_frontend'] and any((project / f).exists() for f in ['package.json', 'src/', 'public/', 'index.html']):
                 analysis['has_frontend'] = True
                 analysis['technologies'].extend(['frontend', 'javascript'])
 
-            # Backend indicators
-            if any((project / f).exists() for f in ['requirements.txt', 'app.py', 'main.py', 'server.js']):
+            # Additional backend indicators
+            if not analysis['has_backend'] and any((project / f).exists() for f in ['requirements.txt', 'app.py', 'main.py', 'server.js']):
                 analysis['has_backend'] = True
                 analysis['technologies'].extend(['backend', 'api'])
 
-            # Database indicators
-            if any((project / f).exists() for f in ['database/', 'migrations/', 'models/', 'schema.sql']):
+            # Additional database indicators
+            if not analysis['has_database'] and any((project / f).exists() for f in ['database/', 'migrations/', 'models/', 'schema.sql']):
                 analysis['has_database'] = True
                 analysis['technologies'].append('database')
 
-            # Testing indicators
-            if any((project / f).exists() for f in ['tests/', 'test/', '__tests__/', 'spec/']):
+            # Additional testing indicators
+            if not analysis['has_tests'] and any((project / f).exists() for f in ['tests/', 'test/', '__tests__/', 'spec/']):
                 analysis['has_tests'] = True
                 analysis['technologies'].append('testing')
 
-            # Docker indicators
-            if any((project / f).exists() for f in ['Dockerfile', 'docker-compose.yml', '.dockerignore']):
+            # Additional Docker indicators
+            if not analysis['has_docker'] and any((project / f).exists() for f in ['Dockerfile', 'docker-compose.yml', '.dockerignore']):
                 analysis['has_docker'] = True
                 analysis['technologies'].append('infrastructure')
 
@@ -466,38 +776,65 @@ class AgentSelectionEngine:
         return analysis
 
     def _apply_selection_rules(self, project_analysis: Dict[str, Any]) -> Dict[str, float]:
-        """Apply selection rules to project analysis"""
+        """Apply intelligent selection rules using dynamic agent capabilities"""
         agent_scores = {}
 
-        # Always recommend core agents
+        # Always recommend core management agents
         agent_scores['project-owner'] = 0.95
         agent_scores['session-manager'] = 0.90
 
-        # Technology-based rules
-        if project_analysis['has_frontend']:
-            agent_scores['frontend-engineer'] = 0.85
+        # Get detected technologies from project analysis
+        detected_technologies = project_analysis.get('technologies', [])
 
-        if project_analysis['has_backend']:
-            agent_scores['backend-engineer'] = 0.85
-            agent_scores['api-engineer'] = 0.75
+        # Score agents based on technology matches
+        for agent_name, capabilities in self.agent_capabilities.items():
+            if agent_name in ['project-owner', 'session-manager']:
+                continue  # Already scored above
 
-        if project_analysis['has_database']:
-            agent_scores['data-engineer'] = 0.80
+            score = 0.0
+            agent_technologies = capabilities.get('technologies', [])
 
-        if project_analysis['has_tests']:
-            agent_scores['qa-engineer'] = 0.75
+            # Technology matching score
+            tech_matches = sum(1 for tech in agent_technologies if tech in detected_technologies)
+            if tech_matches > 0 and len(agent_technologies) > 0:
+                score += (tech_matches / len(agent_technologies)) * 0.6
 
-        if project_analysis['has_docker']:
-            agent_scores['deployment-engineer'] = 0.80
+            # Project analysis pattern matching
+            if project_analysis['has_frontend'] and any(tech in agent_technologies for tech in ['react', 'angular', 'vue', 'javascript', 'typescript']):
+                score += 0.3
+            if project_analysis['has_backend'] and any(tech in agent_technologies for tech in ['python', 'nodejs', 'java', 'api']):
+                score += 0.3
+            if project_analysis['has_database'] and any(tech in agent_technologies for tech in ['database', 'sql', 'postgresql', 'mongodb']):
+                score += 0.3
+            if project_analysis['has_tests'] and any(tech in agent_technologies for tech in ['testing', 'qa']):
+                score += 0.3
+            if project_analysis['has_docker'] and any(tech in agent_technologies for tech in ['docker', 'kubernetes', 'infrastructure']):
+                score += 0.3
 
-        # Complexity-based rules
-        if project_analysis['complexity'] == 'complex':
-            agent_scores['enterprise-architect'] = 0.75
-            agent_scores['security-engineer'] = 0.70
+            # Detected technology specific bonuses
+            if 'wxwidgets' in detected_technologies and any(tech in agent_technologies for tech in ['wxwidgets', 'desktop']):
+                score += 0.4
+            if 'opengl' in detected_technologies and any(tech in agent_technologies for tech in ['opengl', 'graphics']):
+                score += 0.4
+            if 'vulkan' in detected_technologies and any(tech in agent_technologies for tech in ['vulkan', 'graphics']):
+                score += 0.4
 
-        # Ensure all scores are within valid range
-        for agent in agent_scores:
-            agent_scores[agent] = max(0.0, min(1.0, agent_scores[agent]))
+            # Complexity-based adjustments
+            complexity_preference = capabilities.get('complexity_preference', 0.5)
+            if project_analysis['complexity'] == 'complex' and complexity_preference > 0.7:
+                score += 0.2
+            elif project_analysis['complexity'] == 'simple' and complexity_preference < 0.4:
+                score += 0.1
+
+            # Only add agents with meaningful scores
+            if score > 0.2:
+                agent_scores[agent_name] = min(1.0, score)
+
+        # Ensure core architecture agents for medium/complex projects
+        if project_analysis['complexity'] in ['medium', 'complex']:
+            if 'software-architect' in self.agent_capabilities:
+                base_score = 0.65 if project_analysis['complexity'] == 'medium' else 0.75
+                agent_scores['software-architect'] = max(agent_scores.get('software-architect', 0), base_score)
 
         return agent_scores
 
@@ -539,6 +876,101 @@ class AgentSelectionEngine:
             processing_time=0.0,
             metadata={'selection_method': 'emergency_fallback'}
         )
+
+    def record_user_selection(self, recommended_agents: List[str], selected_agent: str,
+                             context: Dict[str, Any] = None):
+        """Record user selection for hybrid intelligence system"""
+        # Try hybrid intelligence system first
+        if hasattr(self, 'hybrid_intelligence') and self.hybrid_intelligence:
+            try:
+                self.hybrid_intelligence.record_feedback(
+                    recommended_agents=recommended_agents,
+                    selected_agent=selected_agent,
+                    context=context or {}
+                )
+                logger.info(f"🧠 Recorded user selection for hybrid intelligence: {selected_agent}")
+            except Exception as e:
+                logger.warning(f"Failed to record hybrid intelligence feedback: {e}")
+
+        # Fallback to basic adaptive learning
+        elif hasattr(self, 'learning_integration') and self.learning_integration:
+            try:
+                task_type = context.get('task_type') if context else 'development'
+                project_phase = context.get('project_phase') if context else 'development'
+
+                self.learning_integration.record_user_selection(
+                    recommended_agents=recommended_agents,
+                    selected_agent=selected_agent,
+                    task_type=task_type,
+                    project_phase=project_phase
+                )
+                logger.info(f"📚 Recorded user selection for basic learning: {selected_agent}")
+            except Exception as e:
+                logger.warning(f"Failed to record user selection: {e}")
+
+    def record_task_outcome(self, agent_name: str, success: bool, task_type: str = None,
+                           completion_time: float = None, quality_score: float = None):
+        """Record task outcome for hybrid intelligence system"""
+        context = {
+            'task_type': task_type or 'development',
+            'completion_time': completion_time,
+            'quality_score': quality_score
+        }
+
+        # Try hybrid intelligence system first
+        if hasattr(self, 'hybrid_intelligence') and self.hybrid_intelligence:
+            try:
+                self.hybrid_intelligence.record_task_outcome(
+                    agent_name=agent_name,
+                    success=success,
+                    context=context
+                )
+                logger.info(f"🧠 Recorded task outcome for hybrid intelligence {agent_name}: {'✅' if success else '❌'}")
+            except Exception as e:
+                logger.warning(f"Failed to record hybrid intelligence task outcome: {e}")
+
+        # Fallback to basic adaptive learning
+        elif hasattr(self, 'learning_integration') and self.learning_integration:
+            try:
+                self.learning_integration.record_task_outcome(
+                    agent_name=agent_name,
+                    task_type=task_type or 'development',
+                    success=success,
+                    completion_time=completion_time,
+                    quality_score=quality_score
+                )
+                logger.info(f"📊 Recorded task outcome for basic learning {agent_name}: {'✅' if success else '❌'}")
+            except Exception as e:
+                logger.warning(f"Failed to record task outcome: {e}")
+
+    def get_learning_status(self) -> Dict[str, Any]:
+        """Get status of hybrid intelligence / adaptive learning system"""
+        # Try hybrid intelligence system first
+        if hasattr(self, 'hybrid_intelligence') and self.hybrid_intelligence:
+            try:
+                return self.hybrid_intelligence.get_system_status()
+            except Exception as e:
+                return {"error": f"Error getting hybrid intelligence status: {e}"}
+
+        # Fallback to basic adaptive learning
+        elif hasattr(self, 'learning_integration') and self.learning_integration:
+            try:
+                return self.learning_integration.get_learning_status()
+            except Exception as e:
+                return {"error": f"Error getting learning status: {e}"}
+
+        else:
+            return {"learning_enabled": False, "reason": "No learning system available"}
+
+    def get_agent_insights(self, agent_name: str) -> Dict[str, Any]:
+        """Get detailed insights for specific agent"""
+        if hasattr(self, 'learning_integration') and self.learning_integration:
+            try:
+                return self.learning_integration.get_agent_insights(agent_name)
+            except Exception as e:
+                return {"error": f"Error getting agent insights: {e}"}
+        else:
+            return {"learning_enabled": False, "reason": "Learning integration not available"}
 
 class PerformanceTracker:
     """Track performance metrics for agent selection"""

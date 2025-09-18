@@ -1,0 +1,158 @@
+[
+  {
+    "operation": "export",
+    "timestamp": "2025-09-18T18:34:07.896119",
+    "metadata": {
+      "export_id": "dd550ba9-de09-46c6-8348-9c3c95c9482f",
+      "export_timestamp": "2025-09-18T18:34:07.868396",
+      "anonymization_level": "high",
+      "pattern_count": 0,
+      "pattern_types": {
+        "technology": 0,
+        "agent_effectiveness": 0,
+        "evolution": 0,
+        "benchmark": 0
+      },
+      "framework_version": "3.0.0",
+      "privacy_compliance": "maximum"
+    }
+  },
+  {
+    "operation": "import",
+    "timestamp": "2025-09-18T18:34:07.916728",
+    "metadata": {
+      "import_id": "a5e37220-0487-435a-8921-3e45f967102d",
+      "source_export_id": "demo_export_001",
+      "patterns_imported": 3,
+      "import_timestamp": "2025-09-18T18:34:07.906357"
+    }
+  },
+  {
+    "operation": "export",
+    "timestamp": "2025-09-18T18:36:31.153238",
+    "metadata": {
+      "export_id": "7fe02a48-0eba-479c-9b06-4527ad8f4e7b",
+      "export_timestamp": "2025-09-18T18:36:31.139261",
+      "anonymization_level": "high",
+      "pattern_count": 0,
+      "pattern_types": {
+        "technology": 0,
+        "agent_effectiveness": 0,
+        "evolution": 0,
+        "benchmark": 0
+      },
+      "framework_version": "3.0.0",
+      "privacy_compliance": "maximum"
+    }
+  },
+  {
+    "operation": "import",
+    "timestamp": "2025-09-18T18:36:31.173617",
+    "metadata": {
+      "import_id": "c97b49d4-0997-4ff6-9500-bdb3d07774cf",
+      "source_export_id": "demo_export_001",
+      "patterns_imported": 0,
+      "import_timestamp": "2025-09-18T18:36:31.163378"
+    }
+  },
+  {
+    "operation": "export",
+    "timestamp": "2025-09-18T18:36:31.224363",
+    "metadata": {
+      "export_id": "d72b261e-41a1-4cf9-ae4e-98c91fff366f",
+      "export_timestamp": "2025-09-18T18:36:31.209653",
+      "anonymization_level": "high",
+      "pattern_count": 0,
+      "pattern_types": {
+        "technology": 0,
+        "agent_effectiveness": 0,
+        "evolution": 0,
+        "benchmark": 0
+      },
+      "framework_version": "3.0.0",
+      "privacy_compliance": "maximum"
+    }
+  },
+  {
+    "operation": "export",
+    "timestamp": "2025-09-18T18:36:31.361883",
+    "metadata": {
+      "export_id": "3f171ced-4409-4a41-9455-8caf18a7d894",
+      "export_timestamp": "2025-09-18T18:36:31.345749",
+      "anonymization_level": "high",
+      "pattern_count": 0,
+      "pattern_types": {
+        "technology": 0,
+        "agent_effectiveness": 0,
+        "evolution": 0,
+        "benchmark": 0
+      },
+      "framework_version": "3.0.0",
+      "privacy_compliance": "maximum"
+    }
+  },
+  {
+    "operation": "export",
+    "timestamp": "2025-09-18T18:36:56.583708",
+    "metadata": {
+      "export_id": "80fce577-fcf3-4a53-99a8-5e45dff3d2ad",
+      "export_timestamp": "2025-09-18T18:36:56.568968",
+      "anonymization_level": "high",
+      "pattern_count": 0,
+      "pattern_types": {
+        "technology": 0,
+        "agent_effectiveness": 0,
+        "evolution": 0,
+        "benchmark": 0
+      },
+      "framework_version": "3.0.0",
+      "privacy_compliance": "maximum"
+    }
+  },
+  {
+    "operation": "import",
+    "timestamp": "2025-09-18T18:36:56.607951",
+    "metadata": {
+      "import_id": "50a27fa4-e984-4df3-87e4-21abd567b269",
+      "source_export_id": "demo_export_001",
+      "patterns_imported": 0,
+      "import_timestamp": "2025-09-18T18:36:56.597865"
+    }
+  },
+  {
+    "operation": "export",
+    "timestamp": "2025-09-18T18:36:56.666730",
+    "metadata": {
+      "export_id": "93479c5b-2cec-428f-80c9-1cc49e8dbb2a",
+      "export_timestamp": "2025-09-18T18:36:56.650748",
+      "anonymization_level": "high",
+      "pattern_count": 0,
+      "pattern_types": {
+        "technology": 0,
+        "agent_effectiveness": 0,
+        "evolution": 0,
+        "benchmark": 0
+      },
+      "framework_version": "3.0.0",
+      "privacy_compliance": "maximum"
+    }
+  },
+  {
+    "operation": "export",
+    "timestamp": "2025-09-18T18:36:56.810667",
+    "metadata": {
+      "export_id": "3550b56d-c9b8-469d-9bd6-5f5a55405925",
+      "export_timestamp": "2025-09-18T18:36:56.795989",
+      "anonymization_level": "high",
+      "pattern_count": 0,
+      "pattern_types": {
+        "technology": 0,
+        "agent_effectiveness": 0,
+        "evolution": 0,
+        "benchmark": 0
+      },
+      "framework_version": "3.0.0",
+      "privacy_compliance": "maximum"
+    }
+  }
+]

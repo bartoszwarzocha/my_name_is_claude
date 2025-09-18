@@ -1,0 +1,104 @@
+{
+  "last_updated": "2025-09-18T18:36:56.873500",
+  "audit_logs": [
+    {
+      "timestamp": "2025-09-18T18:34:07.818934",
+      "operation": "privacy_configuration",
+      "details": {
+        "anonymization_level": "maximum",
+        "compliance_standards": [
+          "GDPR",
+          "CCPA",
+          "PIPEDA"
+        ],
+        "retention_days": 90,
+        "encryption_enabled": true
+      },
+      "privacy_impact": "configuration_updated",
+      "compliance_status": "compliant",
+      "audit_id": "5652fc0f-2b27-46b3-90a1-9f675122a2a0"
+    },
+    {
+      "timestamp": "2025-09-18T18:36:31.105108",
+      "operation": "privacy_configuration",
+      "details": {
+        "anonymization_level": "maximum",
+        "compliance_standards": [
+          "GDPR",
+          "CCPA",
+          "PIPEDA"
+        ],
+        "retention_days": 90,
+        "encryption_enabled": true
+      },
+      "privacy_impact": "configuration_updated",
+      "compliance_status": "compliant",
+      "audit_id": "7cf34e8c-666a-4d3a-8c1f-ece58683eb35"
+    },
+    {
+      "timestamp": "2025-09-18T18:36:31.399340",
+      "operation": "secure_export",
+      "details": {
+        "package_id": "export_20250918_183631_b1cf9203",
+        "pattern_count": 0,
+        "privacy_techniques": [
+          "identifier_removal",
+          "domain_generalization",
+          "timestamp_generalization",
+          "noise_addition",
+          "k_anonymity",
+          "differential_privacy",
+          "encryption"
+        ],
+        "compliance_standards": [
+          "GDPR",
+          "CCPA"
+        ]
+      },
+      "privacy_impact": "data_exported_with_maximum_protection",
+      "compliance_status": "compliant",
+      "audit_id": "e64cabe3-9759-4210-b20f-82bb3e78e815"
+    },
+    {
+      "timestamp": "2025-09-18T18:36:56.528956",
+      "operation": "privacy_configuration",
+      "details": {
+        "anonymization_level": "maximum",
+        "compliance_standards": [
+          "GDPR",
+          "CCPA",
+          "PIPEDA"
+        ],
+        "retention_days": 90,
+        "encryption_enabled": true
+      },
+      "privacy_impact": "configuration_updated",
+      "compliance_status": "compliant",
+      "audit_id": "bac26171-4e19-4191-8f94-4a74d2fa7811"
+    },
+    {
+      "timestamp": "2025-09-18T18:36:56.858886",
+      "operation": "secure_export",
+      "details": {
+        "package_id": "export_20250918_183656_7caf665d",
+        "pattern_count": 0,
+        "privacy_techniques": [
+          "identifier_removal",
+          "domain_generalization",
+          "timestamp_generalization",
+          "noise_addition",
+          "k_anonymity",
+          "differential_privacy",
+          "encryption"
+        ],
+        "compliance_standards": [
+          "GDPR",
+          "CCPA"
+        ]
+      },
+      "privacy_impact": "data_exported_with_maximum_protection",
+      "compliance_status": "compliant",
+      "audit_id": "842f2306-3430-4ebf-830b-76901ec33ced"
+    }
+  ]
+}

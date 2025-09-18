@@ -21,6 +21,7 @@ readonly PROJECT_DIR="$(pwd)"
 readonly PROJECT_NAME="$(basename "$PROJECT_DIR")"
 readonly AI_TOOLS_DIR="$PROJECT_DIR/.ai-tools"
 readonly AI_CORE_DIR="$AI_TOOLS_DIR/core"
+readonly VENV_PATH="$AI_TOOLS_DIR/venv"
 readonly PROJECT_ANALYZER="$AI_CORE_DIR/bin/project_analyzer.py"
 readonly FRAMEWORK_WIZARD="$AI_TOOLS_DIR/setup/framework_wizard.sh"
 readonly AGENT_DISCOVERY="$AI_TOOLS_DIR/discovery/simple_agent_browser.sh"
@@ -80,34 +81,151 @@ print_status() {
     esac
 }
 
+activate_venv_if_available() {
+    # Activate virtual environment if available
+    if [[ -f "$VENV_PATH/bin/activate" ]]; then
+        print_status "info" "Activating AI Tools virtual environment..."
+        source "$VENV_PATH/bin/activate"
+        print_status "success" "Virtual environment activated: $(python --version)"
+        return 0
+    else
+        print_status "warning" "Virtual environment not found at $VENV_PATH"
+        return 1
+    fi
+}
+
 check_dependencies() {
-    local missing_deps=()
+    local missing_system_deps=()
+    local missing_python_deps=()
+    local needs_sudo=false
+    local has_problems=false
+
+    print_status "info" "Checking AI Tools dependencies..."
+
+    # Try to activate venv first
+    activate_venv_if_available
 
     # Check Python
     if ! command -v python3 >/dev/null 2>&1; then
-        missing_deps+=("python3")
+        missing_system_deps+=("python3")
+    fi
+
+    # Check pip
+    if ! command -v pip3 >/dev/null 2>&1; then
+        missing_system_deps+=("python3-pip")
     fi
 
     # Check AI Tools directory
     if [[ ! -d "$AI_TOOLS_DIR" ]]; then
         print_status "error" "AI Tools directory not found: $AI_TOOLS_DIR"
         echo "Please ensure you're running this from the framework root directory."
-        exit 1
+        has_problems=true
     fi
 
     # Check core components
     if [[ ! -f "$PROJECT_ANALYZER" ]]; then
         print_status "error" "Project analyzer not found: $PROJECT_ANALYZER"
-        exit 1
+        has_problems=true
     fi
 
-    if [[ ${#missing_deps[@]} -gt 0 ]]; then
-        print_status "error" "Missing dependencies: ${missing_deps[*]}"
-        echo "Please install missing dependencies and try again."
-        exit 1
+    # Check Python ML dependencies with loading message
+    print_status "info" "Please wait... Testing Python ML dependencies..."
+    local ml_deps=("numpy" "pandas" "scikit-learn" "scipy" "joblib")
+    for dep in "${ml_deps[@]}"; do
+        # Handle special case for scikit-learn (imports as sklearn)
+        local import_name="$dep"
+        if [[ "$dep" == "scikit-learn" ]]; then
+            import_name="sklearn"
+        else
+            import_name="${dep//-/_}"
+        fi
+
+        if ! python3 -c "import ${import_name}" 2>/dev/null; then
+            missing_python_deps+=("$dep")
+        fi
+    done
+
+    # Report status
+    if [[ ${#missing_system_deps[@]} -gt 0 ]]; then
+        print_status "error" "Missing system dependencies: ${missing_system_deps[*]}"
+
+        # Suggest installation based on system
+        if command -v apt >/dev/null 2>&1; then
+            echo "${COLOR_YELLOW}Suggested fix:${COLOR_RESET} sudo apt update && sudo apt install ${missing_system_deps[*]}"
+            needs_sudo=true
+        elif command -v yum >/dev/null 2>&1; then
+            echo "${COLOR_YELLOW}Suggested fix:${COLOR_RESET} sudo yum install ${missing_system_deps[*]}"
+            needs_sudo=true
+        elif command -v brew >/dev/null 2>&1; then
+            echo "${COLOR_YELLOW}Suggested fix:${COLOR_RESET} brew install python3"
+        fi
+        echo ""
+        has_problems=true
     fi
 
-    print_status "success" "All dependencies found"
+    if [[ ${#missing_python_deps[@]} -gt 0 ]]; then
+        print_status "warning" "Missing Python ML dependencies: ${missing_python_deps[*]}"
+        echo "${COLOR_YELLOW}AI Tools will run in fallback mode without these dependencies.${COLOR_RESET}"
+        echo ""
+        echo "${COLOR_CYAN}${COLOR_BOLD}RECOMMENDED: Use AI Tools virtual environment${COLOR_RESET}"
+        if [[ -f "$VENV_PATH/bin/activate" ]]; then
+            echo "  ${COLOR_GREEN}1. Activate virtual environment:${COLOR_RESET}"
+            echo "     ${COLOR_WHITE}source $VENV_PATH/bin/activate${COLOR_RESET}"
+            echo "  ${COLOR_GREEN}2. Install dependencies:${COLOR_RESET}"
+            echo "     ${COLOR_WHITE}pip install ${missing_python_deps[*]}${COLOR_RESET}"
+            echo "  ${COLOR_GREEN}3. Run AI Tools again:${COLOR_RESET}"
+            echo "     ${COLOR_WHITE}./ai-tools.sh${COLOR_RESET}"
+        else
+            echo "  ${COLOR_GREEN}1. Create virtual environment:${COLOR_RESET}"
+            echo "     ${COLOR_WHITE}python3 -m venv $VENV_PATH${COLOR_RESET}"
+            echo "  ${COLOR_GREEN}2. Activate and install:${COLOR_RESET}"
+            echo "     ${COLOR_WHITE}source $VENV_PATH/bin/activate && pip install ${missing_python_deps[*]}${COLOR_RESET}"
+        fi
+        echo ""
+        echo "${COLOR_YELLOW}${COLOR_BOLD}ALTERNATIVE METHODS:${COLOR_RESET}"
+        echo "  ${COLOR_CYAN}System packages (Ubuntu/Debian):${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}sudo apt update && sudo apt install python3-numpy python3-pandas python3-sklearn python3-scipy${COLOR_RESET}"
+        echo "  ${COLOR_CYAN}User installation (if allowed):${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}pip3 install --user ${missing_python_deps[*]}${COLOR_RESET}"
+        echo "  ${COLOR_CYAN}Force installation (not recommended):${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}pip3 install --break-system-packages ${missing_python_deps[*]}${COLOR_RESET}"
+
+        echo ""
+        print_status "info" "Continuing with rule-based AI (fallback mode)..."
+        has_problems=true
+    fi
+
+    # If critical problems detected, require user acknowledgment
+    if [[ "$has_problems" == true ]]; then
+        echo ""
+        echo "${COLOR_BOLD}${COLOR_YELLOW}Options:${COLOR_RESET}"
+        echo "  ${COLOR_GREEN}[Enter]${COLOR_RESET} Continue to main menu"
+        echo "  ${COLOR_RED}[Esc]${COLOR_RESET}   Exit AI Tools"
+        echo ""
+        echo -n "${COLOR_BOLD}${COLOR_YELLOW}Choose action: ${COLOR_RESET}"
+
+        # Read single character without waiting for Enter
+        read -rsn1 key
+
+        # Handle escape sequence (Esc key sends ^[ which is \x1b)
+        if [[ "$key" == $'\x1b' ]]; then
+            echo ""
+            echo "${COLOR_RED}${ICON_ERROR} Exiting due to dependency issues...${COLOR_RESET}"
+            exit 1
+        elif [[ "$key" == "" ]]; then
+            # Enter key was pressed
+            echo ""
+            echo "${COLOR_GREEN}${ICON_SUCCESS} Continuing to main menu...${COLOR_RESET}"
+        else
+            # Any other key - treat as Enter
+            echo ""
+            echo "${COLOR_GREEN}${ICON_SUCCESS} Continuing to main menu...${COLOR_RESET}"
+        fi
+    fi
+
+    if [[ ${#missing_system_deps[@]} -eq 0 && ${#missing_python_deps[@]} -eq 0 ]]; then
+        print_status "success" "All dependencies found - Full AI capabilities enabled!"
+    fi
 }
 
 detect_project_type() {
@@ -154,8 +272,8 @@ run_project_analysis() {
     print_status "info" "Analyzing project: $target_path"
     echo ""
 
-    # Add AI core to Python path and run analyzer
-    export PYTHONPATH="$AI_CORE_DIR:$PYTHONPATH"
+    # Add AI tools to Python path and run analyzer
+    export PYTHONPATH="$AI_TOOLS_DIR:$PYTHONPATH"
 
     if python3 "$PROJECT_ANALYZER" "$target_path"; then
         print_status "success" "Project analysis completed"
@@ -172,12 +290,12 @@ run_technology_detection() {
     print_status "info" "Detecting technologies in: $target_path"
     echo ""
 
-    export PYTHONPATH="$AI_CORE_DIR:$PYTHONPATH"
+    export PYTHONPATH="$AI_TOOLS_DIR:$PYTHONPATH"
 
     python3 -c "
 import sys
-sys.path.insert(0, '$AI_CORE_DIR')
-from core.data_collection_system import TechnologyDetector
+sys.path.insert(0, '$AI_TOOLS_DIR')
+from core.core.data_collection_system import TechnologyDetector
 
 detector = TechnologyDetector()
 tech_stack = detector.detect_technology_stack('$target_path')
@@ -206,12 +324,12 @@ run_agent_recommendations() {
     print_status "info" "Generating agent recommendations for: $target_path"
     echo ""
 
-    export PYTHONPATH="$AI_CORE_DIR:$PYTHONPATH"
+    export PYTHONPATH="$AI_TOOLS_DIR:$PYTHONPATH"
 
     python3 -c "
 import sys
-sys.path.insert(0, '$AI_CORE_DIR')
-from integration.ai_agent_selector import AgentSelectionEngine, AgentSelectionRequest
+sys.path.insert(0, '$AI_TOOLS_DIR')
+from core.integration.ai_agent_selector import AgentSelectionEngine, AgentSelectionRequest
 
 try:
     selector = AgentSelectionEngine('$target_path')

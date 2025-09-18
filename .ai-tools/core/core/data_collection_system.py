@@ -290,7 +290,7 @@ class TechnologyDetector:
                                 logger.debug(f"Detected {tech} from file: {filename}")
 
             # For text files, check content for technology keywords
-            if filename.lower().endswith(('.py', '.js', '.ts', '.java', '.cs', '.go', '.rs', '.php', '.rb')):
+            if filename.lower().endswith(('.py', '.js', '.ts', '.java', '.cs', '.go', '.rs', '.php', '.rb', '.cpp', '.c', '.h', '.hpp', '.cc', '.cxx')):
                 self._analyze_file_content(file_path, detected)
 
         except Exception as e:

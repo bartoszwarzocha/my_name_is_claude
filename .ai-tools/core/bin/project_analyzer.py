@@ -18,15 +18,15 @@ import sys
 import json
 from pathlib import Path
 
-# Add the .ai-tools/core to Python path
-ai_tools_core = Path(__file__).parent.parent
-sys.path.insert(0, str(ai_tools_core))
+# Add the .ai-tools root to Python path
+ai_tools_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(ai_tools_root))
 
-from core.data_collection_system import ProjectContextAnalyzer
+from core.core.data_collection_system import ProjectContextAnalyzer
 
 def analyze_framework_itself():
     """Analyze the Claude Code Multi-Agent Framework itself"""
-    framework_path = str(ai_tools_core.parent.parent)
+    framework_path = str(ai_tools_root.parent)
 
     print("🎯 ANALYZING CLAUDE CODE MULTI-AGENT FRAMEWORK")
     print("=" * 80)

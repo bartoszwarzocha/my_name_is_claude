@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "anonymization_level": "high",
+  "share_technology_patterns": true,
+  "share_agent_effectiveness": true,
+  "share_evolution_patterns": true,
+  "share_industry_benchmarks": true,
+  "min_confidence_threshold": 0.7,
+  "max_patterns_per_export": 100,
+  "pattern_retention_days": 90
+}
