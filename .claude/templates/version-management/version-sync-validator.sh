@@ -64,7 +64,7 @@ echo ""
 # Extract versions from different files
 extract_version "README.md" 'Version-\K[0-9]+\.[0-9]+\.[0-9]+' "README Badge"
 extract_version "README.md" 'Current Version:\*\* \K[0-9]+\.[0-9]+\.[0-9]+' "README Current Version"
-extract_version "CLAUDE.md" '"project_version": "\K[0-9]+\.[0-9]+\.[0-9]+' "CLAUDE.md Project Version"
+extract_version "CLAUDE.md" '\*\*project_version\*\*: "\K[0-9]+\.[0-9]+\.[0-9]+' "CLAUDE.md Project Version"
 
 # Check docs/README.md if it exists
 if [[ -f "docs/README.md" ]]; then
