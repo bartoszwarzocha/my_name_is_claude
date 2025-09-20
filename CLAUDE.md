@@ -3,7 +3,7 @@
 ## Project Metadata
 - **project_name**: "my_name_is_claude"
 - **project_description**: "Claude Code Multi-Agent Framework - AI-Driven Software Engineering"
-- **project_version**: "3.0.0"
+- **project_version**: "3.0.1"
 - **primary_language**: "markdown" (prompts), "python/typescript" (tooling)
 - **business_domain**: "software_development_tools"
 - **project_scale**: "enterprise"

@@ -30,7 +30,7 @@ Advanced development framework featuring AI-powered agent selection, intelligent
 - **Multi-Agent Coordination** through TodoWrite workflow integration
 
 ### 🧠 AI-Powered Agent Selection
-- **Intelligent Project Analysis** across 15+ technology categories
+- **Intelligent Project Analysis** across comprehensive technology stack (languages, frameworks, databases, cloud, AI/ML, and more)
 - **Automated Agent Recommendations** with confidence scoring
 - **Dynamic Workflow Generation** based on project context
 - **50% Setup Time Reduction** through automation
