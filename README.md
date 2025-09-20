@@ -121,6 +121,7 @@ my_name_is_claude/
 2. **Installation**: Follow [Installation Guide](docs/getting-started/framework-installation.md)
 3. **Quick Start**: Try [First Steps Guide](docs/getting-started/first-steps.md)
 4. **AI Features**: Explore [AI Agent Selection](docs/reference/ai-agent-selection.md)
+5. **MCP Tools**: Setup [MCP Tools Manager](docs/reference/mcp-tools-usage.md) for advanced AI tools
 
 For existing projects: Copy `CLAUDE_template.md` to your project as `CLAUDE.md` and customize.
 

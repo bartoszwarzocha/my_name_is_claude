@@ -78,6 +78,7 @@ Complete technical reference and troubleshooting guides.
 | **[Agent System](reference/agent-system.md)** | Multi-agent architecture and coordination |
 | **[AI Agent Selection](reference/ai-agent-selection.md)** | Intelligent agent recommendation system |
 | **[MCP Integration](reference/mcp-integration.md)** | Model Context Protocol tools integration |
+| **[MCP Tools Manager Usage](reference/mcp-tools-usage.md)** | Complete MCP Tools Manager guide |
 | **[Prompt Library](reference/prompt-library.md)** | Professional prompt system architecture |
 | **[Session Management](reference/session-management.md)** | Advanced session handling and context preservation |
 | **[TODO Management](reference/todo-management.md)** | Hierarchical task management system |

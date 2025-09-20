@@ -512,7 +512,8 @@
       "Bash(do echo \"Checking $agent...\")",
       "Bash(if grep -q \"## Core.*Competencies\" /mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/*/$agent.md)",
       "Bash(then echo \"  ✓ Has Core Competencies section\")",
-      "Bash(else echo \"  ✗ No Core Competencies section found\")"
+      "Bash(else echo \"  ✗ No Core Competencies section found\")",
+      "Read(//home/bartosz/.mcp-tools/**)"
     ],
     "deny": [
       "Bash(rm:*)",
