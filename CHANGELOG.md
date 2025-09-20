@@ -5,6 +5,29 @@ All notable changes to the Claude Code Multi-Agent Framework will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.1] - 2025-09-20
+
+### Documentation Enhancement - MCP Tools Manager User Guide
+
+Minor release focused on improving user experience with MCP Tools Manager through comprehensive documentation and setup guidance.
+
+### Added
+- **MCP Tools Manager Documentation** - Complete user guide (`docs/reference/mcp-tools-usage.md`) with 200+ lines covering setup, troubleshooting, and best practices
+- **Documentation Integration** - Updated main README.md and docs/README.md with MCP Tools Manager references
+
+### Fixed
+- **MCP Tools Registry Setup** - Documented registry file location requirements (`~/.mcp-tools/registry/extended.json`)
+- **User Experience** - Resolved "empty screen" issue through proper setup instructions rather than code changes
+
+### Removed
+- **Repository Cleanup** - Removed accidentally committed `docs_backup/` working directory
+
+### Notes
+- **No Code Changes** - This release contains only documentation and setup improvements
+- **MCP Tools Script Unchanged** - `mcp-tools.sh` requires no modifications, only proper configuration
+
+---
+
 ## [3.0.0] - 2025-09-20
 
 ### Major Enhancement - Framework Optimization, Template-Driven Development & Documentation Reorganization
