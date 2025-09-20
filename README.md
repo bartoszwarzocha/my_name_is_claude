@@ -1,12 +1,12 @@
 # My Name Is Claude - Multi-Agent Framework
 
-[![Version](https://img.shields.io/badge/Version-3.0.0-FF6B35?style=flat-square&logo=tag&logoColor=white)](CHANGELOG.md) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Framework-FF6B35?style=flat-square&logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code) [![Fortune 500 Ready](https://img.shields.io/badge/Fortune%20500-Ready-00aa00?style=flat-square&logo=enterprise&logoColor=white)](#) [![AI-Powered](https://img.shields.io/badge/AI--Powered-Agent%20Selection-FF6B35?style=flat-square&logo=brain&logoColor=white)](docs/reference/ai-agent-selection.md) [![MIT License](https://img.shields.io/badge/License-MIT-00aaff?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-3.0.1-FF6B35?style=flat-square&logo=tag&logoColor=white)](CHANGELOG.md) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Framework-FF6B35?style=flat-square&logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code) [![Fortune 500 Ready](https://img.shields.io/badge/Fortune%20500-Ready-00aa00?style=flat-square&logo=enterprise&logoColor=white)](#) [![AI-Powered](https://img.shields.io/badge/AI--Powered-Agent%20Selection-FF6B35?style=flat-square&logo=brain&logoColor=white)](docs/reference/ai-agent-selection.md) [![MIT License](https://img.shields.io/badge/License-MIT-00aaff?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ## Enterprise-Grade Multi-Agent Development Framework
 
 Advanced development framework featuring AI-powered agent selection, intelligent project workflow generation, automatic workflow orchestration, and comprehensive multi-agent coordination for professional software development.
 
-**Current Version:** 3.0.0 | **Release Date:** September 17, 2025
+**Current Version:** 3.0.1 | **Release Date:** September 20, 2025
 
 ---
 
