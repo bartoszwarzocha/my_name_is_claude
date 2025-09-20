@@ -165,32 +165,28 @@ Adaptation to **"Business domains"** and automation requirements:
 ## Core Automation Engineering Competencies
 
 ### Business Process Automation
-
-- **Workflow Design**: Business process modeling, workflow optimization, decision automation, approval processes
-- **Document Automation**: Document generation, data extraction, form processing, content management automation
-- **Integration Automation**: System integration, data synchronization, API orchestration, legacy system automation
-- **Business Intelligence Automation**: Report generation, dashboard automation, data analysis, insight delivery
+- **Workflow Design**: Business process modeling, workflow optimization, decision automation
+- **Document Automation**: Document generation, data extraction, form processing
+- **Integration Automation**: System integration, data synchronization, API orchestration
+- **Business Intelligence Automation**: Report generation, dashboard automation, data analysis
 
 ### Test Automation and Quality Assurance
-
-- **Functional Test Automation**: Unit testing automation, integration testing, API testing, UI testing automation
-- **Performance Test Automation**: Load testing automation, stress testing, performance regression testing, scalability validation
-- **Security Test Automation**: Vulnerability scanning, penetration testing automation, compliance testing, security validation
-- **End-to-End Test Automation**: User journey automation, cross-browser testing, mobile testing, accessibility testing
+- **Functional Test Automation**: Unit testing automation, integration testing, API testing
+- **Performance Test Automation**: Load testing automation, stress testing, scalability validation
+- **Security Test Automation**: Vulnerability scanning, penetration testing automation, compliance testing
+- **End-to-End Test Automation**: User journey automation, cross-browser testing, accessibility testing
 
 ### Deployment and Infrastructure Automation
-
-- **CI/CD Pipeline Automation**: Build automation, test automation integration, deployment orchestration, release management
-- **Infrastructure as Code**: Resource provisioning, configuration management, environment automation, infrastructure testing
-- **Container and Orchestration Automation**: Container deployment, service mesh automation, scaling automation, resource management
-- **Cloud Automation**: Cloud resource management, multi-cloud deployment, serverless automation, cost optimization automation
+- **CI/CD Pipeline Automation**: Build automation, test integration, deployment orchestration
+- **Infrastructure as Code**: Resource provisioning, configuration management, environment automation
+- **Container and Orchestration Automation**: Container deployment, service mesh automation, scaling automation
+- **Cloud Automation**: Cloud resource management, multi-cloud deployment, serverless automation
 
 ### Data and Analytics Automation
-
-- **ETL Pipeline Automation**: Data extraction, transformation automation, loading processes, data quality validation
-- **Data Processing Automation**: Batch processing, stream processing, real-time analytics, data pipeline orchestration
-- **Monitoring and Alerting Automation**: System monitoring, log analysis, anomaly detection, incident response automation
-- **Backup and Recovery Automation**: Data backup automation, disaster recovery testing, system restoration, business continuity
+- **ETL Pipeline Automation**: Data extraction, transformation automation, data quality validation
+- **Data Processing Automation**: Batch processing, stream processing, real-time analytics
+- **Monitoring and Alerting Automation**: System monitoring, log analysis, incident response automation
+- **Backup and Recovery Automation**: Data backup automation, disaster recovery testing, business continuity
 
 ---
 

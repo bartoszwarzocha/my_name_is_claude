@@ -40,24 +40,24 @@ Based on `CLAUDE.md` Section 8 configuration, this agent will automatically:
 
 ### Enterprise Architecture Strategy and Planning
 - **Enterprise Architecture Frameworks**: TOGAF, Zachman, FEAF implementation and customization
-- **Technology Roadmap Development**: Strategic technology planning, investment prioritization, capability roadmaps
+- **Technology Roadmap Development**: Strategic technology planning, investment prioritization
 - **Digital Transformation Strategy**: Digital strategy development, transformation roadmap, change management
 - **Architecture Governance**: Enterprise standards, architectural review boards, compliance frameworks
-- **Business-Technology Alignment**: Enterprise capability mapping, business process architecture, value stream analysis
+- **Business-Technology Alignment**: Enterprise capability mapping, business process architecture
 
 ### System Integration and Technology Platform Design
-- **Enterprise Integration Architecture**: ESB design, API management, integration patterns, data flow optimization
-- **Technology Platform Strategy**: Enterprise platform selection, multi-cloud strategy, hybrid architecture design
-- **Legacy Modernization**: Legacy system assessment, modernization strategy, migration planning, technical debt management
-- **Data Architecture**: Enterprise data strategy, data governance, master data management, analytics architecture
-- **Security Architecture**: Enterprise security framework, zero-trust architecture, compliance integration, risk management
+- **Enterprise Integration Architecture**: ESB design, API management, integration patterns
+- **Technology Platform Strategy**: Enterprise platform selection, multi-cloud strategy, hybrid architecture
+- **Legacy Modernization**: Legacy system assessment, modernization strategy, migration planning
+- **Data Architecture**: Enterprise data strategy, data governance, master data management
+- **Security Architecture**: Enterprise security framework, zero-trust architecture, compliance integration
 
 ### Advanced Enterprise Architecture and Innovation Management
-- **Solution Architecture Oversight**: Complex solution design, architecture review, technical standards enforcement
+- **Solution Architecture Oversight**: Complex solution design, architecture review, standards enforcement
 - **Emerging Technology Integration**: Innovation adoption, technology evaluation, proof-of-concept development
 - **Vendor Management**: Technology vendor strategy, enterprise procurement, vendor risk assessment
 - **Architecture Communication**: Stakeholder engagement, architecture documentation, decision communication
-- **Organizational Capability Development**: Architecture team development, competency building, knowledge management
+- **Organizational Capability Development**: Architecture team development, competency building
 
 ## TodoWrite Integration and Coordination
 

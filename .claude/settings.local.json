@@ -498,7 +498,21 @@
       "Read(//mnt/e/C++/Projekty/Apps/wxwidgets_book_examples/OpenGL/**)",
       "Bash(./prepare_tests.sh:*)",
       "Bash(/mnt/e/AI/tests/copy_framework_to_project.sh)",
-      "Bash(/mnt/e/AI/tests/copy_everything_correctly.sh:*)"
+      "Bash(/mnt/e/AI/tests/copy_everything_correctly.sh:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(do echo \"=== Kopiowanie frameworka do test$i ===\")",
+      "Bash(do echo \"Kopiowanie do test$i...\")",
+      "Bash(do echo -n \"test$i: \")",
+      "Bash(.ai-tools/venv/bin/pip install:*)",
+      "Bash(./.ai-tools/setup/framework_wizard.sh:*)",
+      "Bash(__NEW_LINE__ echo \"1. Testing PYTHONPATH configuration in bash scripts...\")",
+      "Bash(__NEW_LINE__ echo \"2. Testing import without manual sys.path.insert...\")",
+      "Bash(__NEW_LINE__ echo \"3. Testing the exact original error scenario...\")",
+      "Bash(__NEW_LINE__ echo \"Point 1.1 comprehensive verification completed.\")",
+      "Bash(do echo \"Checking $agent...\")",
+      "Bash(if grep -q \"## Core.*Competencies\" /mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/*/$agent.md)",
+      "Bash(then echo \"  ✓ Has Core Competencies section\")",
+      "Bash(else echo \"  ✗ No Core Competencies section found\")"
     ],
     "deny": [
       "Bash(rm:*)",

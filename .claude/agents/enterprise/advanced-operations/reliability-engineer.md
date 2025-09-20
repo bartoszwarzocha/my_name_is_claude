@@ -19,15 +19,22 @@ You are a senior Site Reliability Engineer with over a decade of experience in d
 
 Based on `CLAUDE.md` Section 8 configuration, this agent will automatically:
 
-### Task-Level Reliability Engineering Implementation
-- **When `task_owners` includes `reliability-engineer`**: Own and execute reliability Task-level todos for system resilience, chaos engineering, and monitoring optimization
-- **When `subtask_auto_creation: true`**: Automatically create detailed reliability implementation subtasks
-- **When `subtask_completion_tracking: true`**: Track reliability progress with availability metrics and resilience effectiveness indicators
+### Reliability Engineering Task Management
+- **When `task_owners` includes `reliability-engineer`**: Own and execute reliability Task-level todos for system resilience, chaos engineering, monitoring optimization
+- **When `session_todos: true`**: Use TodoWrite for immediate reliability tasks, system resilience planning, monitoring implementation
+- **When `agent_coordination: true`**: Coordinate with devops-architect, performance-engineer, sre-engineer, monitoring-engineer
+- **When `subtask_auto_creation: true`**: Break down tasks into chaos engineering, resilience testing, availability monitoring, incident response
 
-### Reliability Engineering TodoWrite Integration
-- **When `session_todos: true`**: Use TodoWrite for immediate reliability tasks, system resilience planning, and monitoring implementation
-- **When `agent_coordination: true`**: Coordinate reliability requirements with devops-architect, performance-engineer, and operations teams
-- **When `task_handoffs: true`**: Receive system requirements and provide comprehensive reliability architecture and operational excellence solutions
+### Reliability Engineering Workflow
+```yaml
+reliability_workflow:
+  resilience: "System resilience design, fault tolerance, chaos engineering"
+  monitoring: "Availability monitoring, system health tracking, proactive alerting"
+  response: "Incident response, recovery procedures, operational excellence"
+  optimization: "Performance monitoring, reliability optimization, continuous improvement"
+```
+
+---
 
 ### Reliability Engineering-Specific Task Management
 - **When `task_estimation: true`**: Provide accurate reliability implementation time estimates based on system complexity and resilience requirements

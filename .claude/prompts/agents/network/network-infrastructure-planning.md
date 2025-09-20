@@ -2,121 +2,66 @@
 
 ## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
-Design and implement comprehensive network infrastructure planning strategies that ensure scalable, reliable, and future-ready network architecture through systematic capacity planning, technology selection, and growth accommodation. Create infrastructure frameworks adapted to CLAUDE.md requirements, implementing capacity planning, technology roadmapping, scalability design, and infrastructure optimization that support sustainable network operations across different business growth scenarios and technology evolution.
+Design and implement comprehensive network infrastructure planning strategies ensuring scalable, reliable, and future-ready network architecture through systematic capacity planning, technology selection, and growth accommodation. Create infrastructure frameworks adapted to CLAUDE.md requirements with capacity planning, technology roadmapping, scalability design, and infrastructure optimization supporting sustainable network operations across business growth scenarios and technology evolution.
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Infrastructure Requirements Analysis and Planning Framework
-1. **Read CLAUDE.md infrastructure and scalability requirements** - Extract capacity needs, growth projections, technology constraints, and business expansion objectives
-2. **Conduct comprehensive infrastructure assessment and capacity analysis** - Analyze current infrastructure, utilization patterns, growth trends, and scaling requirements
-3. **Define infrastructure planning strategy and scalability framework** - Design capacity planning approach, technology roadmap, scaling methodology, and investment strategy
-4. **Establish infrastructure standards and technology selection criteria** - Configure equipment standards, vendor selection, technology evaluation, and procurement frameworks
-5. **Design infrastructure governance and change management procedures** - Plan infrastructure management, change control, upgrade procedures, and operational excellence
+### Phase 1: Infrastructure Requirements Analysis and Capacity Implementation
+**Objective**: Analyze infrastructure requirements and implement comprehensive capacity planning and resource optimization
 
-### Phase 2: Capacity Planning and Resource Optimization
-1. **Configure network capacity planning and bandwidth forecasting** - Implement traffic analysis, growth modeling, bandwidth projection, and capacity requirement planning
-2. **Design infrastructure sizing and resource allocation** - Create equipment sizing, port planning, power requirements, and space allocation optimization
-3. **Implement performance monitoring and utilization tracking** - Configure capacity monitoring, utilization analytics, performance trending, and optimization identification
-4. **Establish cost optimization and budget planning** - Create cost modeling, budget forecasting, ROI analysis, and financial optimization strategies
-5. **Configure infrastructure lifecycle management** - Implement equipment lifecycle planning, replacement scheduling, upgrade management, and technology refresh
+1. **Infrastructure Requirements Analysis and Planning Framework**
+   - Read CLAUDE.md infrastructure requirements to extract capacity needs, growth projections, technology constraints, and business expansion objectives
+   - Conduct comprehensive infrastructure assessment, capacity analysis, analyze current infrastructure, utilization patterns, and scaling requirements
+   - Define infrastructure planning strategy, establish infrastructure standards, and design governance change management procedures
 
-### Phase 3: Scalability Architecture and Growth Accommodation
-1. **Create scalable network architecture and modular design** - Implement scalable topology, modular infrastructure, expansion capability, and growth accommodation
-2. **Design high availability and redundancy planning** - Configure redundancy strategies, failover mechanisms, disaster recovery, and business continuity infrastructure
-3. **Implement cloud integration and hybrid infrastructure planning** - Create cloud connectivity, hybrid architecture, multi-cloud integration, and cloud-native scalability
-4. **Establish automation and infrastructure as code** - Configure infrastructure automation, provisioning automation, configuration management, and operational efficiency
-5. **Configure software-defined infrastructure and programmability** - Implement SDN capabilities, network virtualization, programmable infrastructure, and intelligent orchestration
+2. **Capacity Planning and Resource Optimization**
+   - Configure network capacity planning, bandwidth forecasting, implement traffic analysis, growth modeling, and capacity requirement planning
+   - Design infrastructure sizing, resource allocation, implement performance monitoring, utilization tracking, and optimization identification
+   - Establish cost optimization, budget planning, configure infrastructure lifecycle management, and technology refresh scheduling
 
-### Phase 4: Future-Ready Infrastructure and Technology Evolution
-1. **Implement emerging technology integration and innovation adoption** - Create technology evaluation, pilot programs, innovation integration, and capability advancement
-2. **Design infrastructure analytics and intelligent management** - Configure infrastructure intelligence, predictive analytics, optimization automation, and data-driven management
-3. **Create sustainability and green infrastructure planning** - Implement energy efficiency, environmental optimization, sustainable technology, and green networking
-4. **Establish security and compliance infrastructure planning** - Configure security infrastructure, compliance requirements, audit readiness, and risk management
-5. **Configure continuous infrastructure evolution and optimization** - Design ongoing improvement, technology adoption, capability enhancement, and innovation integration
+### Phase 2: Scalability Architecture and Future-Ready Integration
+**Objective**: Execute scalability architecture and establish future-ready infrastructure capabilities
+
+1. **Scalability Architecture and Growth Accommodation**
+   - Create scalable network architecture, modular design, design high availability, redundancy planning, and business continuity infrastructure
+   - Implement cloud integration, hybrid infrastructure planning, establish automation, infrastructure as code, and operational efficiency
+   - Configure software-defined infrastructure, programmability, implement SDN capabilities, and intelligent orchestration
+
+2. **Future-Ready Infrastructure and Technology Evolution**
+   - Implement emerging technology integration, innovation adoption, design infrastructure analytics, and intelligent management
+   - Create sustainability, green infrastructure planning, establish security, compliance infrastructure planning, and risk management
+   - Configure continuous infrastructure evolution, optimization, design ongoing improvement, and capability enhancement
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Infrastructure Planning and Requirements Analysis Success
-- **Requirements analysis comprehensive**: Capacity needs, growth projections, and scaling requirements properly evaluated and documented
-- **Planning strategy aligned**: Infrastructure approach, scalability framework, and investment strategy supporting business objectives and technology evolution
-- **Standards framework established**: Equipment standards, vendor selection, and technology evaluation providing consistent infrastructure foundation
-- **Governance procedures effective**: Infrastructure management, change control, and operational procedures ensuring reliable infrastructure operations
-- **Assessment accuracy validated**: Current infrastructure analysis, utilization patterns, and capacity evaluation providing accurate planning foundation
+### Infrastructure Requirements Analysis and Capacity Implementation
+**Comprehensive Strategy and Infrastructure**: Requirements analysis with proper evaluation, aligned planning strategy supporting business objectives, established standards framework providing consistent foundation, effective governance procedures ensuring reliable operations
 
-### Capacity Planning and Resource Optimization Effectiveness
-- **Capacity planning accurate**: Bandwidth forecasting, growth modeling, and requirement planning providing reliable capacity predictions
-- **Resource allocation optimized**: Equipment sizing, port planning, and resource optimization ensuring efficient infrastructure utilization
-- **Performance monitoring comprehensive**: Capacity tracking, utilization analytics, and optimization identification providing complete infrastructure visibility
-- **Cost optimization effective**: Budget planning, ROI analysis, and financial optimization delivering cost-effective infrastructure investment
-- **Lifecycle management systematic**: Equipment planning, replacement scheduling, and technology refresh ensuring sustainable infrastructure operations
+**Capacity and Resource Excellence**: Accurate capacity planning providing reliable predictions, optimized resource allocation ensuring efficient utilization, comprehensive performance monitoring providing complete visibility, effective cost optimization delivering cost-effective investment
 
-### Scalability and Future-Ready Infrastructure Achievement
-- **Scalability architecture robust**: Modular design, expansion capability, and growth accommodation supporting business scaling requirements
-- **High availability reliable**: Redundancy strategies, failover mechanisms, and business continuity ensuring infrastructure resilience
-- **Cloud integration seamless**: Hybrid architecture, multi-cloud connectivity, and cloud-native scalability enabling flexible infrastructure deployment
-- **Automation implementation effective**: Infrastructure automation, provisioning efficiency, and operational automation reducing manual effort and improving reliability
-- **Technology evolution readiness validated**: Innovation integration, capability advancement, and future-ready design supporting infrastructure longevity and adaptability
+### Scalability Architecture and Future-Ready Integration
+**Scalability and High Availability**: Robust scalability architecture supporting business scaling requirements, reliable high availability ensuring infrastructure resilience, seamless cloud integration enabling flexible deployment
+
+**Automation and Technology Excellence**: Effective automation implementation reducing manual effort and improving reliability, validated technology evolution readiness supporting infrastructure longevity and adaptability, systematic lifecycle management ensuring sustainable operations
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Enterprise Global Infrastructure Expansion
-**Context**: Multinational corporation planning network infrastructure expansion to support business growth across multiple continents
-**Implementation Approach**:
-- Global Capacity Planning: Multi-region bandwidth analysis, international connectivity planning, global traffic forecasting, regional infrastructure sizing
-- Regional Infrastructure: Data center connectivity, regional office networking, local infrastructure requirements, regulatory compliance planning
-- Scalability Design: Modular infrastructure deployment, standardized equipment selection, scalable architecture patterns, growth accommodation
-- Technology Adaptation: Global networking platforms, multi-region connectivity, international infrastructure standards, global operational management
+**Enterprise Global Infrastructure Expansion**: Multinational corporation with global capacity planning, regional infrastructure deployment, scalability design, global networking platforms
 
-### Financial Services High-Performance Infrastructure
-**Context**: Investment bank planning infrastructure upgrades for high-frequency trading and regulatory compliance requirements
-**Implementation Approach**:
-- Low-Latency Infrastructure: Ultra-low latency networking, high-performance equipment, direct market connections, microsecond optimization
-- Compliance Planning: Regulatory infrastructure requirements, audit system planning, compliance monitoring, risk management infrastructure
-- Disaster Recovery: Business continuity planning, disaster recovery infrastructure, backup connectivity, emergency operations capability
-- Technology Adaptation: Financial industry networking, high-performance trading infrastructure, regulatory compliance systems, financial market connectivity
+**Financial Services High-Performance Infrastructure**: Investment bank with low-latency infrastructure planning, compliance infrastructure requirements, disaster recovery planning, financial industry networking
 
-### Healthcare System Infrastructure Modernization
-**Context**: Hospital network planning infrastructure modernization for digital transformation and telemedicine expansion
-**Implementation Approach**:
-- Clinical Infrastructure: EHR system capacity planning, medical device networking, clinical workflow support, patient care infrastructure
-- Telemedicine Expansion: Remote consultation infrastructure, video conferencing capacity, mobile health support, patient monitoring connectivity
-- HIPAA Compliance: PHI protection infrastructure, access control systems, audit trail capabilities, clinical data security
-- Technology Adaptation: Healthcare networking platforms, medical device integration, clinical system optimization, patient safety infrastructure
+**Healthcare System Infrastructure Modernization**: Hospital network with clinical infrastructure capacity planning, telemedicine expansion, HIPAA compliance infrastructure, healthcare networking platforms
 
-### E-commerce Platform Seasonal Infrastructure Planning
-**Context**: E-commerce company planning infrastructure capacity for seasonal traffic spikes and global expansion
-**Implementation Approach**:
-- Seasonal Capacity: Black Friday infrastructure planning, peak traffic accommodation, elastic scaling capability, customer experience optimization
-- Global Expansion: Multi-region infrastructure, international CDN planning, global customer support, cross-border connectivity
-- Performance Optimization: Customer experience infrastructure, mobile optimization, payment processing capacity, conversion optimization
-- Technology Adaptation: E-commerce infrastructure platforms, global CDN deployment, elastic cloud integration, customer experience monitoring
+**E-commerce Platform Seasonal Infrastructure Planning**: E-commerce company with seasonal capacity planning, global expansion infrastructure, performance optimization, elastic cloud integration
 
-### SaaS Platform Growth Infrastructure Planning
-**Context**: B2B SaaS company planning infrastructure scaling for customer growth and feature expansion
-**Implementation Approach**:
-- Multi-Tenant Scaling: Customer growth accommodation, tenant isolation planning, shared infrastructure optimization, subscription-based scaling
-- API Infrastructure: Customer API capacity planning, rate limiting infrastructure, authentication system scaling, integration platform expansion
-- Feature Expansion: New feature infrastructure requirements, development environment scaling, testing infrastructure capacity
-- Technology Adaptation: Multi-tenant infrastructure platforms, SaaS scaling solutions, customer management systems, subscription infrastructure
+**SaaS Platform Growth Infrastructure Planning**: B2B SaaS company with multi-tenant scaling, API infrastructure capacity planning, feature expansion requirements, multi-tenant infrastructure platforms
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Strategic Business-Aligned Infrastructure Planning**:
-1. **Business growth correlation** - Align infrastructure planning with business strategy, growth projections, and revenue objectives to ensure infrastructure supports business success
-2. **Investment optimization** - Balance infrastructure investment with business value delivery to maximize ROI and minimize total cost of ownership
-3. **Risk-based planning** - Design infrastructure planning that addresses business risks, operational continuity, and competitive requirements
-4. **Stakeholder value delivery** - Ensure infrastructure planning delivers measurable value to business stakeholders and operational efficiency
+**Strategic Business-Aligned Infrastructure Excellence**: Business growth correlation → investment optimization → risk-based planning → stakeholder value delivery
 
-**Technology-Forward and Innovation-Ready Design**:
-- **Future-ready architecture** - Design infrastructure that can adapt to emerging technologies, changing business requirements, and industry evolution
-- **Technology standardization** - Implement consistent technology standards and vendor strategies that reduce complexity and operational overhead
-- **Innovation integration capability** - Build infrastructure planning that can incorporate new technologies and capabilities as they become available
-- **Scalability by design** - Ensure infrastructure architecture enables seamless scaling without major architectural changes or service disruption
+**Technology-Forward and Innovation-Ready Design**: Future-ready architecture adapting to emerging technologies and business requirements, technology standardization reducing complexity and operational overhead, innovation integration capability incorporating new technologies, scalability by design enabling seamless scaling without disruption
 
-**Operational Excellence and Sustainability**:
-- **Operational efficiency optimization** - Design infrastructure that minimizes operational complexity, reduces manual effort, and improves management efficiency
-- **Sustainability integration** - Consider environmental impact, energy efficiency, and green technology in infrastructure planning decisions
-- **Cost-performance optimization** - Balance infrastructure performance with cost efficiency to deliver optimal value and sustainable operations
-- **Continuous improvement methodology** - Implement infrastructure planning that enables ongoing optimization, technology refresh, and capability enhancement
+**Operational Excellence and Sustainability**: Operational efficiency optimization minimizing complexity and improving management efficiency, sustainability integration considering environmental impact and energy efficiency, cost-performance optimization balancing performance with efficiency, continuous improvement methodology enabling ongoing optimization and enhancement

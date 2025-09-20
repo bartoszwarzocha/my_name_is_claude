@@ -2,121 +2,66 @@
 
 ## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
-Design and implement comprehensive chaos engineering and resilience testing frameworks that validate system reliability through controlled failure injection, hypothesis-driven experimentation, and systematic resilience validation. Create chaos engineering frameworks adapted to CLAUDE.md requirements, implementing failure simulation, resilience experiments, automated chaos testing, and reliability verification that support confident system operation across different technology stacks and operational environments.
+Design and implement comprehensive chaos engineering and resilience testing frameworks validating system reliability through controlled failure injection, hypothesis-driven experimentation, and systematic resilience validation. Create chaos engineering frameworks adapted to CLAUDE.md requirements with failure simulation, resilience experiments, automated chaos testing, and reliability verification supporting confident system operation across technology stacks and operational environments.
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Chaos Engineering Strategy and Framework Planning
-1. **Read CLAUDE.md chaos engineering and resilience requirements** - Extract reliability testing needs, failure simulation objectives, resilience validation priorities, and system criticality levels
-2. **Conduct comprehensive system analysis and failure mode identification** - Analyze system architecture, identify failure scenarios, assess blast radius, and prioritize chaos experiments
-3. **Define chaos engineering strategy and experimentation framework** - Design chaos approach, hypothesis formulation, experiment design, and resilience validation methodology
-4. **Establish chaos engineering governance and safety protocols** - Configure experiment approval, safety mechanisms, rollback procedures, and blast radius limitation
-5. **Design chaos tooling and automation infrastructure** - Plan chaos platforms, experiment automation, monitoring integration, and result analysis systems
+### Phase 1: Chaos Engineering Strategy and Failure Injection Implementation
+**Objective**: Analyze chaos requirements and implement comprehensive failure injection and experiment framework
 
-### Phase 2: Failure Injection and Chaos Experiment Implementation
-1. **Configure infrastructure failure injection and system chaos** - Implement server failures, network partitions, resource exhaustion, and infrastructure disruption experiments
-2. **Design application-level chaos and service failure simulation** - Create service unavailability, dependency failures, API errors, and application-specific chaos experiments
-3. **Implement network chaos and communication disruption** - Configure network latency injection, packet loss simulation, bandwidth limitations, and connectivity failures
-4. **Establish data layer chaos and storage failure testing** - Create database failures, data corruption simulation, backup system testing, and storage disruption experiments
-5. **Configure security chaos and threat simulation** - Implement security failure scenarios, attack simulation, access control testing, and security resilience validation
+1. **Chaos Engineering Strategy and Framework Planning**
+   - Read CLAUDE.md chaos engineering and resilience requirements to extract testing needs, failure simulation objectives, and system criticality levels
+   - Conduct comprehensive system analysis, identify failure scenarios, assess blast radius, and prioritize chaos experiments
+   - Define chaos engineering strategy, establish governance and safety protocols, and design tooling automation infrastructure
 
-### Phase 3: Automated Chaos Testing and Continuous Resilience
-1. **Create automated chaos experiment execution and scheduling** - Implement continuous chaos testing, scheduled experiments, automated execution, and result collection
-2. **Design resilience metrics and performance validation** - Configure resilience measurement, performance tracking, availability monitoring, and chaos impact assessment
-3. **Implement blast radius control and safety mechanisms** - Create experiment isolation, automatic rollback, safety monitoring, and risk mitigation controls
-4. **Establish chaos experiment analysis and learning integration** - Configure result analysis, hypothesis validation, improvement identification, and knowledge capture
-5. **Configure chaos engineering culture and team integration** - Implement chaos training, experiment participation, cross-team collaboration, and resilience mindset development
+2. **Failure Injection and Chaos Experiment Implementation**
+   - Configure infrastructure failure injection with server failures, network partitions, resource exhaustion, and infrastructure disruption experiments
+   - Design application-level chaos with service unavailability, dependency failures, and implement network chaos with latency injection
+   - Establish data layer chaos with database failures, storage disruption, and configure security chaos with threat simulation
 
-### Phase 4: Advanced Chaos Engineering and Reliability Intelligence
-1. **Implement intelligent chaos engineering and adaptive experiments** - Create AI-driven chaos selection, adaptive experimentation, intelligent failure injection, and optimized chaos scheduling
-2. **Design chaos engineering analytics and reliability insights** - Configure chaos data analysis, resilience trending, experiment effectiveness measurement, and reliability intelligence
-3. **Create game day exercises and disaster simulation** - Implement coordinated chaos events, disaster recovery testing, business continuity validation, and organizational resilience exercises
-4. **Establish chaos engineering evolution and capability advancement** - Configure chaos platform evolution, new experiment types, advanced failure simulation, and chaos innovation
-5. **Configure continuous chaos improvement and resilience optimization** - Design feedback integration, experiment refinement, chaos effectiveness improvement, and resilience advancement
+### Phase 2: Automated Testing and Advanced Intelligence
+**Objective**: Execute automated chaos testing and establish advanced reliability intelligence capabilities
+
+1. **Automated Chaos Testing and Continuous Resilience**
+   - Create automated chaos experiment execution and scheduling, implement continuous testing with automated execution and result collection
+   - Design resilience metrics and performance validation, implement blast radius control and safety mechanisms with automatic rollback
+   - Establish chaos experiment analysis and learning integration, configure chaos engineering culture and team integration
+
+2. **Advanced Chaos Engineering and Reliability Intelligence**
+   - Implement intelligent chaos engineering with AI-driven selection, adaptive experimentation, and optimized scheduling
+   - Design chaos engineering analytics and reliability insights, create game day exercises and disaster simulation
+   - Establish chaos engineering evolution, configure continuous improvement, and design feedback integration with resilience optimization
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Chaos Engineering Strategy and Framework Success
-- **System analysis comprehensive**: Architecture evaluation, failure mode identification, and chaos prioritization properly conducted and documented
-- **Chaos strategy aligned**: Experimentation framework, hypothesis methodology, and resilience validation supporting reliability objectives and business requirements
-- **Governance framework effective**: Safety protocols, approval processes, and risk controls ensuring safe and controlled chaos experimentation
-- **Tooling infrastructure operational**: Chaos platforms, automation systems, and monitoring integration providing comprehensive chaos engineering capability
-- **Safety mechanisms robust**: Blast radius control, rollback procedures, and risk mitigation protecting systems during chaos experiments
+### Chaos Engineering Strategy and Failure Injection Implementation
+**Comprehensive Strategy and Infrastructure**: System analysis with architecture evaluation and failure mode identification conducted, aligned chaos strategy supporting reliability objectives, effective governance framework ensuring safe experimentation, operational tooling infrastructure with comprehensive capability
 
-### Failure Injection and Experiment Implementation Effectiveness
-- **Infrastructure chaos comprehensive**: Server failures, network disruption, and resource exhaustion experiments validating infrastructure resilience
-- **Application chaos realistic**: Service failures, dependency disruption, and application-specific experiments testing application-level resilience
-- **Network chaos effective**: Latency injection, connectivity failures, and communication disruption validating network resilience and communication fault tolerance
-- **Data layer chaos thorough**: Database failures, storage disruption, and backup testing validating data layer resilience and recovery capabilities
-- **Security chaos valuable**: Threat simulation, access control testing, and security failure scenarios validating security resilience and incident response
+**Failure Injection and Experiment Excellence**: Comprehensive infrastructure chaos validating infrastructure resilience, realistic application chaos testing application-level resilience, effective network chaos validating communication fault tolerance, thorough data layer chaos validating recovery capabilities
 
-### Advanced Chaos and Continuous Resilience Achievement
-- **Automated chaos operational**: Continuous testing, scheduled experiments, and automated execution providing ongoing resilience validation
-- **Resilience metrics comprehensive**: Performance tracking, availability monitoring, and chaos impact assessment providing quantifiable resilience measurement
-- **Blast radius control effective**: Experiment isolation, safety monitoring, and automatic rollback ensuring controlled and safe chaos experimentation
-- **Learning integration systematic**: Result analysis, hypothesis validation, and improvement identification driving continuous resilience enhancement
-- **Chaos culture established**: Team training, experiment participation, and resilience mindset supporting organizational chaos engineering adoption
+### Automated Testing and Advanced Intelligence
+**Automated Testing and Resilience Excellence**: Operational automated chaos providing ongoing validation, comprehensive resilience metrics with quantifiable measurement, effective blast radius control ensuring safe experimentation
+
+**Intelligence and Culture Excellence**: Systematic learning integration driving continuous enhancement, established chaos culture supporting organizational adoption, advanced chaos engineering with AI-driven selection and reliability intelligence
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Financial Services Trading Platform Resilience Validation
-**Context**: Investment bank implementing chaos engineering for high-frequency trading platform with microsecond availability requirements
-**Implementation Approach**:
-- Trading System Chaos: Order execution failures, market data disruption, latency injection, trading algorithm stress testing
-- Market Connectivity Testing: Exchange connection failures, market data feed disruption, order routing chaos, connectivity resilience
-- Risk Management Validation: Risk calculation failures, compliance system testing, regulatory reporting disruption, audit system chaos
-- Technology Adaptation: High-frequency trading chaos tools, financial system resilience testing, market data simulation, trading platform validation
+**Financial Trading Platform**: Investment bank high-frequency trading with microsecond availability, order execution failures, market data disruption
 
-### Healthcare Clinical System Resilience Testing
-**Context**: Hospital network implementing chaos engineering for clinical systems with patient safety prioritization
-**Implementation Approach**:
-- Clinical System Chaos: EHR system failures, medical device disconnection, clinical workflow disruption, patient monitoring chaos
-- Patient Safety Validation: Emergency alert system testing, critical care system resilience, life support backup validation, clinical decision support chaos
-- HIPAA Compliance Testing: PHI system failures, access control disruption, audit system chaos, compliance monitoring resilience
-- Technology Adaptation: Healthcare chaos engineering, clinical system testing, patient safety validation, medical device resilience
+**Healthcare Clinical System**: Hospital network clinical systems with patient safety prioritization, EHR failures, medical device resilience
 
-### E-commerce Platform Seasonal Resilience Testing
-**Context**: E-commerce platform implementing chaos engineering for Black Friday and seasonal traffic resilience
-**Implementation Approach**:
-- Customer Experience Chaos: Shopping cart failures, checkout system disruption, payment processing chaos, customer service system testing
-- Traffic Surge Simulation: Load balancer failures, auto-scaling disruption, CDN chaos, database connection exhaustion
-- Payment System Resilience: Payment gateway failures, fraud detection system chaos, financial transaction disruption, PCI compliance testing
-- Technology Adaptation: E-commerce chaos tools, customer experience testing, seasonal resilience validation, payment system chaos
+**E-commerce Seasonal Platform**: Black Friday resilience with customer experience chaos, traffic surge simulation, payment system resilience
 
-### SaaS Multi-Tenant Platform Chaos Engineering
-**Context**: B2B SaaS platform implementing chaos engineering for multi-tenant resilience and customer SLA validation
-**Implementation Approach**:
-- Multi-Tenant Chaos: Customer isolation testing, tenant resource failures, shared infrastructure disruption, subscription system chaos
-- API Resilience Testing: Customer API failures, rate limiting chaos, authentication system disruption, integration endpoint testing
-- Customer SLA Validation: Service level chaos, availability disruption, performance degradation simulation, customer impact assessment
-- Technology Adaptation: Multi-tenant chaos tools, SaaS resilience testing, customer isolation validation, API chaos engineering
+**SaaS Multi-Tenant Platform**: B2B platform multi-tenant resilience with customer isolation testing, API resilience, SLA validation
 
-### Cloud-Native Microservices Chaos Engineering
-**Context**: Technology company implementing chaos engineering for cloud-native microservices architecture with service mesh integration
-**Implementation Approach**:
-- Microservices Chaos: Service failure injection, inter-service communication disruption, service mesh chaos, container orchestration testing
-- Cloud Infrastructure Testing: Cloud provider failures, availability zone disruption, managed service chaos, auto-scaling resilience
-- Service Mesh Resilience: Traffic routing failures, load balancer chaos, circuit breaker testing, service discovery disruption
-- Technology Adaptation: Kubernetes chaos engineering, service mesh testing, cloud-native resilience, microservices chaos tools
+**Cloud-Native Microservices**: Technology company microservices architecture with service mesh integration, Kubernetes chaos engineering
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Hypothesis-Driven Chaos Engineering**:
-1. **Scientific experimentation methodology** - Apply rigorous hypothesis formulation, controlled experiments, and statistical analysis to chaos engineering
-2. **Business impact correlation** - Design chaos experiments that validate business-critical reliability requirements and customer experience protection
-3. **Gradual experiment escalation** - Start with small-scale, low-risk experiments and gradually increase complexity and scope based on results
-4. **Learning-focused experimentation** - Use chaos engineering as a learning tool to understand system behavior and improve resilience
+**Hypothesis-Driven Chaos Engineering Excellence**: Scientific experimentation methodology → business impact correlation → gradual experiment escalation → learning-focused experimentation
 
-**Safe and Controlled Chaos Implementation**:
-- **Blast radius limitation** - Implement strict controls to limit the scope and impact of chaos experiments to prevent unintended consequences
-- **Comprehensive monitoring integration** - Ensure all chaos experiments have complete monitoring and observability to track impact and effectiveness
-- **Automated safety mechanisms** - Build automatic rollback and safety controls that can immediately halt experiments if they exceed safe parameters
-- **Risk assessment and approval** - Establish formal risk assessment and approval processes for chaos experiments, especially in production environments
+**Safe and Controlled Chaos Implementation**: Blast radius limitation implementing strict controls preventing unintended consequences, comprehensive monitoring integration ensuring complete observability, automated safety mechanisms building rollback controls, risk assessment and approval establishing formal processes
 
-**Continuous Resilience Validation**:
-- **Automated chaos integration** - Embed chaos engineering into CI/CD pipelines and regular operational procedures for continuous resilience validation
-- **Performance baseline protection** - Ensure chaos experiments validate that systems maintain performance standards under failure conditions
-- **Culture and mindset development** - Foster organizational culture that embraces failure as learning opportunity and views chaos engineering as essential reliability practice
-- **Continuous improvement methodology** - Use chaos engineering results to drive systematic improvements in system design, monitoring, and operational procedures
+**Continuous Resilience Validation**: Automated chaos integration embedding engineering into CI/CD pipelines, performance baseline protection ensuring standards maintenance, culture and mindset development fostering learning opportunities, continuous improvement methodology driving systematic enhancements

@@ -2,121 +2,68 @@
 
 ## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
-Design and implement comprehensive container orchestration platforms that enable scalable, resilient, and efficient containerized application deployment. Create systematic container management frameworks adapted to CLAUDE.md requirements, implementing container lifecycle management, service orchestration, scaling automation, and operational excellence that support enterprise container operations across different platforms and deployment scenarios.
+Design and implement comprehensive container orchestration platforms enabling scalable, resilient, and efficient containerized application deployment. Create systematic container management frameworks adapted to CLAUDE.md requirements with lifecycle management, service orchestration, scaling automation, and operational excellence across different platforms.
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Container Strategy Analysis and Orchestration Platform Planning
-1. **Read CLAUDE.md containerization and deployment requirements** - Extract application architecture, scaling needs, deployment patterns, and operational constraints
-2. **Analyze application containerization requirements and dependencies** - Assess containerization readiness, service dependencies, and resource requirements
-3. **Define container orchestration strategy and platform architecture** - Design orchestration approach, platform selection, and deployment framework
-4. **Establish container standards and deployment patterns** - Create container image standards, deployment templates, and operational procedures
-5. **Design container infrastructure and networking architecture** - Plan cluster architecture, networking strategy, and storage integration
+### Phase 1: Container Strategy and Platform Implementation
+**Objective**: Analyze requirements and implement comprehensive container orchestration infrastructure
 
-### Phase 2: Container Platform and Cluster Implementation
-1. **Configure container orchestration platform and cluster setup** - Implement Kubernetes/Docker Swarm clusters, node management, and platform configuration
-2. **Design container networking and service discovery** - Configure network policies, service mesh integration, ingress management, and DNS configuration
-3. **Implement container storage and data management** - Configure persistent storage, volume management, backup procedures, and data lifecycle management
-4. **Establish container security and access control** - Create security policies, RBAC configuration, network security, and container image security
-5. **Configure container monitoring and observability** - Implement logging, metrics collection, distributed tracing, and performance monitoring
+1. **Container Strategy Analysis and Platform Planning**
+   - Analyze CLAUDE.md containerization requirements to extract application architecture, scaling needs, and operational constraints
+   - Define container orchestration strategy with platform architecture, deployment framework, and standards establishment
+   - Design container infrastructure with networking architecture, cluster planning, and storage integration
 
-### Phase 3: Application Deployment and Service Management
-1. **Create container deployment automation and lifecycle management** - Implement deployment pipelines, rolling updates, health checking, and service lifecycle automation
-2. **Design scaling strategies and resource optimization** - Configure horizontal pod autoscaling, vertical scaling, cluster autoscaling, and resource management
-3. **Implement service mesh and traffic management** - Create service-to-service communication, traffic routing, load balancing, and circuit breaker patterns
-4. **Establish configuration management and secrets handling** - Configure ConfigMaps, Secrets management, environment-specific configuration, and secure credential handling
-5. **Configure disaster recovery and backup procedures** - Implement cluster backup, disaster recovery, business continuity, and data protection
+2. **Container Platform and Cluster Implementation**
+   - Configure container orchestration platform with Kubernetes/Docker Swarm clusters and node management
+   - Design container networking with service discovery, mesh integration, and security policy configuration
+   - Implement storage management, access control, monitoring, and observability with comprehensive logging
 
-### Phase 4: Advanced Orchestration Features and Operational Excellence
-1. **Implement multi-cluster and multi-cloud orchestration** - Create cluster federation, cross-cluster deployment, multi-cloud management, and hybrid orchestration
-2. **Design container performance optimization and resource efficiency** - Configure resource optimization, performance tuning, cost management, and efficiency monitoring
-3. **Create container compliance and security automation** - Implement policy enforcement, security scanning, compliance validation, and audit automation
-4. **Establish container analytics and operational intelligence** - Configure cluster analytics, performance insights, capacity planning, and optimization recommendations
-5. **Configure continuous improvement and platform evolution** - Design feedback loops, platform updates, capability enhancement, and operational optimization
+### Phase 2: Application Management and Advanced Features
+**Objective**: Implement application deployment management and advanced orchestration capabilities
+
+1. **Application Deployment and Service Management**
+   - Create container deployment automation with lifecycle management, rolling updates, and health checking
+   - Design scaling strategies with horizontal pod autoscaling, resource optimization, and cluster autoscaling
+   - Implement service mesh, traffic management, configuration handling, and disaster recovery procedures
+
+2. **Advanced Features and Operational Excellence**
+   - Implement multi-cluster orchestration with cross-cluster deployment, multi-cloud management, and hybrid capabilities
+   - Design performance optimization with resource efficiency, compliance automation, and security scanning
+   - Configure analytics, operational intelligence, continuous improvement, and platform evolution
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Container Strategy and Platform Implementation Success
-- **Container strategy comprehensive**: Orchestration approach, platform selection, and deployment framework aligned with application architecture and operational requirements
-- **Platform configuration optimal**: Cluster setup, node management, and platform configuration supporting application scalability and reliability requirements
-- **Standards establishment effective**: Container image standards, deployment templates, and operational procedures providing consistency and efficiency
-- **Infrastructure design scalable**: Cluster architecture, networking strategy, and storage integration supporting growth and performance requirements
-- **Security implementation robust**: Access control, network security, and image security protecting containerized applications and infrastructure
+### Container Strategy and Platform Excellence
+**Comprehensive Strategy and Configuration**: Orchestration approach and platform selection aligned with application architecture, optimal cluster setup supporting scalability and reliability, effective standards establishment providing consistency and efficiency
 
-### Application Deployment and Service Management Effectiveness
-- **Deployment automation reliable**: Deployment pipelines, lifecycle management, and automation enabling consistent and efficient application delivery
-- **Scaling strategies responsive**: Auto-scaling configuration, resource optimization, and scaling automation handling varying application loads effectively
-- **Service mesh integration functional**: Service communication, traffic management, and load balancing enabling reliable inter-service connectivity
-- **Configuration management secure**: ConfigMaps, Secrets handling, and configuration management maintaining application security and flexibility
-- **Recovery procedures tested**: Backup procedures, disaster recovery, and business continuity ensuring application and data protection
+**Infrastructure and Security**: Scalable infrastructure design supporting growth and performance requirements, robust security implementation protecting containerized applications and infrastructure
 
-### Advanced Features and Operational Excellence Achievement
-- **Multi-cluster orchestration operational**: Cluster federation, cross-cluster deployment, and multi-cloud management enabling enterprise-scale container operations
-- **Performance optimization effective**: Resource optimization, performance tuning, and efficiency monitoring maximizing infrastructure utilization
-- **Compliance automation comprehensive**: Policy enforcement, security scanning, and compliance validation maintaining container security and governance
-- **Analytics integration valuable**: Cluster analytics, performance insights, and capacity planning supporting data-driven container management decisions
-- **Continuous improvement established**: Platform evolution, capability enhancement, and operational optimization ensuring ongoing container platform excellence
+### Application Management and Advanced Features Excellence
+**Deployment and Service Management**: Reliable deployment automation enabling consistent application delivery, responsive scaling strategies handling varying loads effectively, functional service mesh integration enabling reliable connectivity
+
+**Advanced Features and Operations**: Operational multi-cluster orchestration enabling enterprise-scale operations, effective performance optimization maximizing infrastructure utilization, comprehensive compliance automation maintaining security and governance
 
 ## 4. 📚 USAGE EXAMPLES
 
-### E-commerce Microservices Container Platform
-**Context**: E-commerce platform requiring scalable microservices deployment with high availability and traffic management
-**Implementation Approach**:
-- Microservices Orchestration: Service deployment automation, inter-service communication, API gateway integration, service discovery automation
-- Traffic Management: Load balancing, traffic routing, canary deployments, A/B testing integration, customer experience optimization
-- Scaling Automation: Demand-based auto-scaling, seasonal traffic preparation, Black Friday scaling, resource optimization
-- Technology Adaptation: Kubernetes deployment, Istio service mesh, NGINX ingress, Prometheus monitoring, Grafana dashboards
+**Cross-Domain Container Orchestration Examples**
 
-### Financial Trading Container Infrastructure
-**Context**: Trading platform requiring ultra-low latency container deployment with high-frequency trading support
-**Implementation Approach**:
-- Low-Latency Optimization: Container performance tuning, network optimization, CPU affinity, memory optimization, latency monitoring
-- High-Availability Deployment: Multi-zone deployment, disaster recovery, business continuity, real-time failover, data consistency
-- Security Implementation: Financial-grade security, access controls, network isolation, audit logging, compliance monitoring
-- Technology Adaptation: Kubernetes with performance tuning, custom networking, high-performance storage, real-time monitoring
+**E-commerce Microservices Platform**: Service deployment automation with inter-service communication, load balancing with traffic routing and canary deployments, demand-based auto-scaling with seasonal preparation, and Kubernetes with Istio service mesh
 
-### Healthcare Clinical Container Platform
-**Context**: Hospital system requiring HIPAA-compliant container deployment for clinical applications and patient data processing
-**Implementation Approach**:
-- HIPAA Compliance: PHI protection, access control automation, audit logging, compliance monitoring, patient data security
-- Clinical Integration: EHR system containers, medical device connectivity, clinical workflow support, emergency access procedures
-- High Availability: Clinical system availability, patient safety priorities, disaster recovery, business continuity for healthcare
-- Technology Adaptation: HIPAA-compliant Kubernetes, healthcare security policies, clinical monitoring, patient safety automation
+**Financial Trading Infrastructure**: Container performance tuning with network optimization and CPU affinity, multi-zone deployment with disaster recovery, financial-grade security with audit logging, and Kubernetes with custom networking
 
-### SaaS Multi-Tenant Container Architecture
-**Context**: B2B SaaS platform requiring tenant-isolated container deployment with customer-specific scaling and configuration
-**Implementation Approach**:
-- Tenant Isolation: Customer data isolation, multi-tenant networking, tenant-specific resources, subscription-based scaling
-- Customer Management: Customer onboarding automation, tenant provisioning, customer-specific configuration, billing integration
-- Performance Management: Customer SLA compliance, performance monitoring, resource allocation, customer-specific optimization
-- Technology Adaptation: Multi-tenant Kubernetes, tenant isolation networking, customer resource management, SaaS monitoring
+**Healthcare Clinical Platform**: HIPAA compliance with PHI protection and access control automation, EHR system containers with medical device connectivity, clinical system availability with patient safety priorities, and HIPAA-compliant Kubernetes
 
-### Startup Container Development Platform
-**Context**: Technology startup requiring cost-effective container platform with rapid deployment and developer productivity
-**Implementation Approach**:
-- Cost Optimization: Resource efficiency, auto-scaling for cost control, spot instance integration, cost monitoring automation
-- Developer Experience: Local development integration, CI/CD automation, testing environment management, debugging support
-- Rapid Scaling: Growth-ready architecture, performance monitoring, scalability automation, platform evolution support
-- Technology Adaptation: Managed Kubernetes services, serverless containers, cloud-native monitoring, cost-effective solutions
+**SaaS Multi-Tenant Architecture**: Customer data isolation with multi-tenant networking, customer onboarding automation with tenant provisioning, customer SLA compliance with performance monitoring, and multi-tenant Kubernetes
+
+**Startup Development Platform**: Resource efficiency with auto-scaling for cost control, local development integration with CI/CD automation, growth-ready architecture with scalability automation, and managed Kubernetes services
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Application-Centric Container Design**:
-1. **Microservices enablement focus** - Design container orchestration that facilitates microservices architecture and independent service deployment
-2. **Developer experience optimization** - Create container platforms that enhance rather than complicate developer workflows and productivity
-3. **Application lifecycle integration** - Integrate container management with application development, testing, and deployment processes
-4. **Business requirement alignment** - Ensure container orchestration supports business scalability, availability, and performance requirements
+**Application-Centric Design**: Microservices enablement focus → developer experience optimization → application lifecycle integration → business requirement alignment
 
-**Reliable and Scalable Container Operations**:
-- **Production-ready platform design** - Implement container orchestration with enterprise-grade reliability, security, and operational capabilities
-- **Automated scaling and resource management** - Create intelligent scaling that optimizes resource utilization while maintaining application performance
-- **Comprehensive monitoring and observability** - Provide complete visibility into container performance, resource usage, and application health
-- **Security-first container management** - Build security into every aspect of container orchestration from image creation to runtime protection
+**Reliable and Scalable Operations**: Production-ready platform design with enterprise-grade capabilities, automated scaling and resource management with intelligent optimization, comprehensive monitoring and observability, security-first container management
 
-**Operational Excellence and Continuous Improvement**:
-- **Infrastructure automation and consistency** - Automate container platform management to reduce manual effort and ensure consistent operations
-- **Performance optimization and cost management** - Continuously optimize container resource utilization and infrastructure costs
-- **Platform evolution and capability advancement** - Regularly enhance container platform capabilities based on application needs and industry best practices
-- **Team collaboration and knowledge sharing** - Foster effective collaboration between development and operations teams through container platform design
+**Operational Excellence**: Infrastructure automation and consistency with reduced manual effort, performance optimization and cost management with continuous improvement, platform evolution and capability advancement, team collaboration and knowledge sharing

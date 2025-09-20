@@ -163,17 +163,31 @@ detect_project_technologies() {
 
     export PYTHONPATH="$FRAMEWORK_ROOT/.ai-tools:$PYTHONPATH"
 
-    # Run technology detection with timeout
-    local tech_output
-    tech_output=$(timeout 30 python3 -c "
+    # Retry logic for technology detection
+    local tech_output=""
+    local attempt=1
+    local max_attempts=3
+    local timeout_duration=30
+
+    while [[ $attempt -le $max_attempts && -z "$tech_output" ]]; do
+        if [[ $attempt -gt 1 ]]; then
+            print_status "info" "Retrying technology detection (attempt $attempt/$max_attempts)..."
+            timeout_duration=$((timeout_duration + 15))  # Increase timeout for retries
+        fi
+
+        # Run technology detection with timeout and retry
+        tech_output=$(timeout $timeout_duration python3 -c "
 import sys
 import json
 sys.path.insert(0, '$FRAMEWORK_ROOT/.ai-tools')
-from core.core.data_collection_system import TechnologyDetector
 
 try:
+    from core.core.data_collection_system import TechnologyDetector
+
+    print('INFO: Starting technology detection...', file=sys.stderr)
     detector = TechnologyDetector()
     tech_stack = detector.detect_technology_stack('$PROJECT_DIR')
+    print('INFO: Technology detection completed', file=sys.stderr)
 
     result = {
         'frontend': tech_stack.frontend[:5],
@@ -184,14 +198,41 @@ try:
         'confidence': tech_stack.confidence_score
     }
     print(json.dumps(result))
+
+except ImportError as e:
+    print(f'IMPORT_ERROR: {e}', file=sys.stderr)
+    print('{}')
 except Exception as e:
+    print(f'ERROR: {e}', file=sys.stderr)
     print('{}')
 " 2>/dev/null)
 
-    if [[ $? -eq 124 ]]; then
-        print_status "warning" "Technology detection timed out (30s) - using fallback"
-        DETECTED_TECHNOLOGIES=()
-    elif [[ -n "$tech_output" && "$tech_output" != "{}" ]]; then
+        local exit_code=$?
+
+        if [[ $exit_code -eq 124 ]]; then
+            print_status "warning" "Technology detection timed out (${timeout_duration}s) on attempt $attempt"
+            tech_output=""
+        elif [[ $exit_code -ne 0 ]]; then
+            print_status "warning" "Technology detection failed on attempt $attempt (exit code: $exit_code)"
+            tech_output=""
+        elif [[ -n "$tech_output" && "$tech_output" != "{}" ]]; then
+            print_status "success" "Technology detection succeeded on attempt $attempt"
+            break
+        else
+            print_status "warning" "Technology detection returned empty result on attempt $attempt"
+            tech_output=""
+        fi
+
+        ((attempt++))
+
+        # Brief pause between retries
+        if [[ $attempt -le $max_attempts ]]; then
+            sleep 2
+        fi
+    done
+
+    # Process results or fallback
+    if [[ -n "$tech_output" && "$tech_output" != "{}" ]]; then
         DETECTED_TECHNOLOGIES=($(echo "$tech_output" | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
@@ -224,27 +265,73 @@ get_agent_recommendations() {
 
     export PYTHONPATH="$FRAMEWORK_ROOT/.ai-tools:$PYTHONPATH"
 
-    local agents_output
-    agents_output=$(timeout 30 python3 -c "
+    # Retry logic for agent recommendations
+    local agents_output=""
+    local attempt=1
+    local max_attempts=3
+    local timeout_duration=30
+
+    while [[ $attempt -le $max_attempts && -z "$agents_output" ]]; do
+        if [[ $attempt -gt 1 ]]; then
+            print_status "info" "Retrying agent recommendations (attempt $attempt/$max_attempts)..."
+            timeout_duration=$((timeout_duration + 20))  # Increase timeout for retries
+        fi
+
+        # Run agent selection with timeout and retry
+        agents_output=$(timeout $timeout_duration python3 -c "
 import sys
 import json
 sys.path.insert(0, '$FRAMEWORK_ROOT/.ai-tools')
-from core.integration.ai_agent_selector import AgentSelectionEngine, AgentSelectionRequest
 
 try:
+    from core.integration.ai_agent_selector import AgentSelectionEngine, AgentSelectionRequest
+
+    print('INFO: Starting agent selection...', file=sys.stderr)
     selector = AgentSelectionEngine('$PROJECT_DIR')
-    request = AgentSelectionRequest(project_path='$PROJECT_DIR', max_agents=8)
+    request = AgentSelectionRequest(
+        project_path='$PROJECT_DIR',
+        max_agents=8,
+        selection_mode='hybrid'  # Use hybrid mode for better fallbacks
+    )
     response = selector.select_agents(request)
+    print('INFO: Agent selection completed', file=sys.stderr)
 
     print(json.dumps(response.recommended_agents))
+
+except ImportError as e:
+    print(f'IMPORT_ERROR: {e}', file=sys.stderr)
+    print('[]')
 except Exception as e:
+    print(f'ERROR: {e}', file=sys.stderr)
     print('[]')
 " 2>/dev/null)
 
-    if [[ $? -eq 124 ]]; then
-        print_status "warning" "Agent recommendations timed out (30s) - using fallback"
-        RECOMMENDED_AGENTS=("project-owner" "session-manager" "software-architect" "frontend-engineer" "backend-engineer" "qa-engineer")
-    elif [[ -n "$agents_output" && "$agents_output" != "[]" ]]; then
+        local exit_code=$?
+
+        if [[ $exit_code -eq 124 ]]; then
+            print_status "warning" "Agent recommendations timed out (${timeout_duration}s) on attempt $attempt"
+            agents_output=""
+        elif [[ $exit_code -ne 0 ]]; then
+            print_status "warning" "Agent recommendations failed on attempt $attempt (exit code: $exit_code)"
+            agents_output=""
+        elif [[ -n "$agents_output" && "$agents_output" != "[]" ]]; then
+            print_status "success" "Agent recommendations succeeded on attempt $attempt"
+            break
+        else
+            print_status "warning" "Agent recommendations returned empty result on attempt $attempt"
+            agents_output=""
+        fi
+
+        ((attempt++))
+
+        # Brief pause between retries
+        if [[ $attempt -le $max_attempts ]]; then
+            sleep 3
+        fi
+    done
+
+    # Process results or fallback
+    if [[ -n "$agents_output" && "$agents_output" != "[]" ]]; then
         readarray -t RECOMMENDED_AGENTS < <(echo "$agents_output" | python3 -c "
 import json, sys
 agents = json.load(sys.stdin)

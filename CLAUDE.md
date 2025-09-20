@@ -206,145 +206,27 @@ Agent competencies are defined in `.claude/agents/` directory.
 
 ---
 
-## 14. Agent Creation and Management Rules
+## Component Creation Standards
 
-### 📋 **Agent Creation Standards**
+**Template-Driven Development**: All new framework components must follow established templates to ensure consistency, quality, and integration.
 
-All new agents MUST follow the established framework pattern to ensure consistency, quality, and integration with the TodoWrite workflow system.
+### Agent Creation
+**Template**: `.claude/templates/agent_template.md`
+**Requirements**: 8 mandatory sections, enterprise-grade quality, TodoWrite integration, CLAUDE.md adaptation
+**Process**: Copy template → customize placeholders → validate structure → test integration
 
-#### **Mandatory Agent File Structure**
+### Prompt Creation
+**Template**: `.claude/templates/prompt_template.md`
+**Requirements**: 4 mandatory components, technology-agnostic design, quality gates compliance, functional approach
+**Process**: Copy template → define requirements → implement examples → validate quality gates
 
-**File Location:** `.claude/agents/[category]/[agent-name].md`
+### Quality Standards
+**Agent Standards**: Professional competencies (10+ years experience), complete TODO workflow integration, automatic CLAUDE.md adaptation, technology-agnostic design
+**Prompt Standards**: Functional design (WHAT not HOW), cross-technology examples, hardcoding violation prevention, enterprise-grade quality
 
-**Agent File Structure**: YAML header with name/description, 8 required sections including agent description, TODO integration, philosophy, specializations, competencies, implementations, and adaptation reminder
-
-**Key Sections**:
-1. Agent header with CLAUDE.md adaptation requirements
-2. TODO Management integration (mandatory)
-3. Role philosophy and principles
-4. Technology/business specializations
-5. Core competencies (technical, process, collaboration)
-6. Domain-specific implementations
-7. Role-specific specializations
-8. Final adaptation reminder
-
-#### **Agent Category Organization**
-
-**Directory Categories**: business, planner, design, architecture, frontend, api, data, security, quality, deployment
-
-### 🎯 **Agent Quality Standards**
-
-#### **Mandatory Quality Requirements**
-
-**Quality Requirements**: CLAUDE.md integration, TodoWrite workflow integration, functional approach compliance, professional standards (enterprise-grade, 10+ years experience)
-
-#### **Content Quality Standards**
-
-**Content Standards**: Completeness (comprehensive coverage, domain adaptation), Adaptability (multi-scale, multi-stack, multi-domain), Clarity (actionable guidance, clear workflows)
-
-### 🔧 **Agent Creation Process**
-
-#### **Step-by-Step Creation Workflow**
-
-**5-Step Process**: 1) Identify role need, 2) Define competencies, 3) Create structure, 4) Validate quality, 5) Integration testing
-
-#### **Agent Template Generator**
-
-**Template**: YAML header with name/description + 8 structured sections following established framework pattern
-
-### 🚫 **Agent Creation Restrictions**
-
-#### **Forbidden Practices**
-
-**Restrictions**: No quantitative info (use descriptive terms), no technology lock-in (must adapt), no hardcoded implementations, no agent overlap
-
-### 📊 **Agent Validation Checklist**
-
-**Validation Checklist**: File structure, TODO integration, CLAUDE.md adaptation, functional patterns, enterprise competencies, domain adaptations, collaboration protocols, consistency, technology-agnostic design
-
-### 🎯 **Agent Evolution and Maintenance**
-
-#### **Ongoing Agent Management**
-
-**Ongoing Management**: Regular updates (quarterly reviews), quality assurance (audits, feedback), framework alignment (evolution tracking)
-
-Remember: **Agent quality is fundamental to framework success. Every agent must represent world-class expertise while maintaining adaptability and integration with the TodoWrite workflow system.**
-
-### 🔗 **Agent-Prompt Binding System**
-
-To ensure seamless integration between specialized prompts and their corresponding agents, the framework implements an automatic agent activation system.
-
-#### **Automatic Agent Activation Rules**
-
-**Auto-Activation**: Directory-based binding - prompts in `.claude/prompts/agents/[category]/` automatically activate corresponding agents
-
-#### **Prompt Header Requirements for Agent Binding**
-
-**Header Requirements**: Agent activation notice, context adaptation note, TODO integration statement
-
-#### **Agent Activation Workflow**
-
-When any prompt from `.claude/prompts/agents/[category]/` is used:
-
-**Workflow**: 1) Auto agent selection based on prompt path, 2) Context loading (CLAUDE.md + TODO config), 3) Task execution (TodoWrite integration), 4) Quality assurance (enterprise standards)
-
-#### **Multi-Agent Coordination via Prompts**
-
-**Multi-Agent Coordination**: Primary agent leads (directory-based), secondary agents provide specialized input for complex tasks
-
-#### **Agent-Prompt Quality Standards**
-
-**Quality Standards**: Functional alignment (WHAT vs HOW), context adaptation (auto-adapt to stack/domain/config), seamless integration (auto selection + transparent TodoWrite)
-
-#### **Implementation Verification**
-
-**Verification**: Check prompt path → extract category → activate corresponding agent (with special mappings for planner→product-manager, quality→qa-engineer)
-
----
-
-## 15. Prompt Quality Gates and Validation
-
-### 🔍 **AUTOMATED PROMPT COMPLIANCE SYSTEM**
-
-This framework enforces automated quality gates to ensure all prompts meet enterprise-grade standards and maintain functional design principles.
-
-#### **Quality Gate Categories**
-
-**4 Quality Gate Categories**:
-1. **Structural** - 4 required sections (functional requirements, algorithms, validation, examples)
-2. **Functional Design** - No hardcoding violations, technology assumptions, rigid implementations
-3. **Technology Agnostic** - CLAUDE.md integration, project adaptation, scale support
-4. **Content Quality** - Professional standards, clear instructions, measurable criteria
-
-### 🎯 **AUTOMATED VALIDATION CHECKLIST**
-
-**Before any prompt is considered production-ready, it MUST pass all gates:**
-
-**Validation Gates**: 1) Structural (4 sections + formatting), 2) Functional Design (WHAT not HOW, technology-agnostic), 3) Technology Adaptability (multi-stack, multi-scale), 4) Quality (professional content, comprehensive coverage)
-
-### 🔧 **QUALITY GATE ENFORCEMENT PROCESS**
-
-#### **Automated Validation Pipeline**
-
-**3-Phase Pipeline**: 1) Pre-Integration (structure, compliance, quality), 2) Integration Testing (agent compatibility, framework consistency), 3) Production Readiness (100% quality metrics + integration tests)
-
-### 🚨 **QUALITY GATE VIOLATIONS AND REMEDIATION**
-
-#### **Violation Categories and Actions**
-
-**Violation Levels**: CRITICAL (block deployment - missing sections, hardcoding, no CLAUDE.md integration), HIGH (immediate fix - unclear criteria, missing examples), MEDIUM (next release - formatting, clarity)
-
-### 📊 **QUALITY METRICS AND MONITORING**
-
-#### **Framework-Wide Quality Tracking**
-
-**Quality Scorecard**: 100% structural compliance, functional design, technology agnostic, CLAUDE.md integration, professional standards
-**Monitoring**: Daily (new prompts), Weekly (framework-wide), Monthly (metrics review), Quarterly (comprehensive audit)
-
-#### **Quality Improvement Process**
-
-**Improvement Process**: 1) Quality assessment, 2) Prioritized remediation, 3) Functional redesign, 4) Integration validation, 5) Production deployment
-**Success Criteria**: 100% compliance across all quality dimensions (structural, functional, technology-agnostic, CLAUDE.md integration, professional standards)
+### Agent-Prompt Integration
+**Auto-Activation**: Prompts in `.claude/prompts/agents/[category]/` automatically activate corresponding agents
+**Coordination**: Multi-agent workflows through TodoWrite integration and framework orchestration
 
 ---
 
@@ -393,11 +275,13 @@ project_archive/         # Project documents and research
 └── research/           # Research notes and session files
 
 docs/                   # Comprehensive framework documentation
-├── getting-started/    # Installation and quick start
-├── user-guide/        # User documentation
-├── developer-guide/   # Developer documentation
-├── deployment/        # Production deployment guides
-└── examples/          # Usage examples
+├── getting-started/    # Installation and quick start guides
+├── ai-tools/          # AI tools step-by-step guides
+├── workflows/         # Development workflows
+├── advanced/          # Advanced configuration
+├── reference/         # Technical reference documentation
+├── examples/          # Real-world implementation examples
+└── architecture/      # System architecture and design
 
 project_archive/         # Project documents and session files (local only)
 ├── backups/             # System backups
@@ -418,10 +302,10 @@ examples/              # Real-world implementation examples
 **Achievements**: Session management (100% complete), agent implementation prompts (high quality), perfect structural compliance
 
 ## Version History
-**Current**: 2.2.0 (Production-ready)
+**Current**: 3.0.0 (Production-ready)
 **Created**: 2025-09-11
-**Major Milestones**: Framework foundation (v2.0.0), agent-prompt integration optimization (v2.1.0), AI tools migration (v2.2.0)
-**Status**: AI-powered agent selection operational, comprehensive agent-prompt binding, enterprise-grade AI tools integration, optimized project structure
+**Major Milestones**: Framework foundation (v2.0.0), agent-prompt integration optimization (v2.1.0), AI tools migration (v2.2.0), documentation reorganization and optimization (v3.0.0)
+**Status**: AI-powered agent selection operational, comprehensive agent-prompt binding, enterprise-grade AI tools integration, optimized project structure, reorganized documentation architecture
 
 ---
 

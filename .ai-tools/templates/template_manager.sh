@@ -38,6 +38,47 @@ readonly ICON_WIZARD="🧙"
 # UTILITY FUNCTIONS
 # =============================================================================
 
+# Timeout wrapper for read operations to prevent hanging
+safe_read() {
+    local timeout_duration=${1:-30}  # Default 30 second timeout
+    local prompt_var="$2"
+    local result_var="$3"
+
+    # Use timeout with read
+    if timeout "$timeout_duration" bash -c "read -r response; echo \"\$response\"" 2>/dev/null; then
+        return 0
+    else
+        echo ""  # Return empty on timeout
+        return 1
+    fi
+}
+
+# Enhanced read function with timeout protection
+safe_read_with_retry() {
+    local timeout_duration=${1:-30}
+    local max_retries=${2:-2}
+    local attempt=1
+
+    while [[ $attempt -le $max_retries ]]; do
+        if [[ $attempt -gt 1 ]]; then
+            print_status "warning" "Input timeout, retrying (attempt $attempt/$max_retries)..."
+        fi
+
+        local result
+        if result=$(timeout "$timeout_duration" bash -c "read -r response; echo \"\$response\"" 2>/dev/null); then
+            echo "$result"
+            return 0
+        fi
+
+        ((attempt++))
+        sleep 1
+    done
+
+    print_status "warning" "Input timeout after $max_retries attempts, using default"
+    echo ""
+    return 1
+}
+
 print_header() {
     clear
     echo ""
@@ -70,8 +111,13 @@ ask_question() {
     fi
     echo -n ": "
 
-    read -r response
-    echo "${response:-$default}"
+    local response
+    if response=$(safe_read_with_retry 30 2); then
+        echo "${response:-$default}"
+    else
+        print_status "warning" "Using default value due to input timeout"
+        echo "$default"
+    fi
 }
 
 # =============================================================================
@@ -205,15 +251,30 @@ generate_claude_md() {
 
     print_status "info" "Generating CLAUDE.md from $template_key template..."
 
-    # Read template and substitute variables
-    local content=$(cat "$template_file")
+    # Read template and substitute variables with error handling
+    local content
+    if ! content=$(cat "$template_file" 2>/dev/null); then
+        print_status "error" "Failed to read template file: $template_file"
+        return 1
+    fi
+
+    # Validate required variables are set
+    if [[ -z "$PROJECT_NAME" || -z "$PROJECT_DESCRIPTION" || -z "$BUSINESS_DOMAIN" || -z "$PROJECT_SCALE" ]]; then
+        print_status "error" "Missing required project configuration variables"
+        return 1
+    fi
+
+    # Variable substitution
     content=${content//\{\{PROJECT_NAME\}\}/$PROJECT_NAME}
     content=${content//\{\{PROJECT_DESCRIPTION\}\}/$PROJECT_DESCRIPTION}
     content=${content//\{\{BUSINESS_DOMAIN\}\}/$BUSINESS_DOMAIN}
     content=${content//\{\{PROJECT_SCALE\}\}/$PROJECT_SCALE}
 
-    # Write to CLAUDE.md
-    echo "$content" > "$output_file"
+    # Write to CLAUDE.md with error handling
+    if ! echo "$content" > "$output_file" 2>/dev/null; then
+        print_status "error" "Failed to write CLAUDE.md file: $output_file"
+        return 1
+    fi
 
     print_status "success" "CLAUDE.md generated successfully!"
     echo ""
@@ -241,8 +302,14 @@ select_template() {
 
         local template_keys=($(printf '%s\n' "${!TEMPLATES[@]}" | sort))
         echo -n "${COLOR_BOLD}Select template (1-${#template_keys[@]}, b, q): ${COLOR_RESET}"
-        read -r choice
-        echo ""
+
+        local choice
+        if choice=$(safe_read_with_retry 60 3); then
+            echo ""
+        else
+            print_status "warning" "Template selection timeout, returning to main menu"
+            return 0
+        fi
 
         if [[ "$choice" == "b" ]]; then
             return 0
@@ -254,12 +321,16 @@ select_template() {
             show_template_details "$selected_template"
 
             echo -n "${COLOR_BOLD}Use this template? (y/n): ${COLOR_RESET}"
-            read -r confirm
 
-            if [[ "$confirm" =~ ^[Yy] ]]; then
-                collect_project_info
-                generate_claude_md "$selected_template"
-                return 0
+            local confirm
+            if confirm=$(safe_read_with_retry 30 2); then
+                if [[ "$confirm" =~ ^[Yy] ]]; then
+                    collect_project_info
+                    generate_claude_md "$selected_template"
+                    return 0
+                fi
+            else
+                print_status "warning" "Template confirmation timeout, returning to template selection"
             fi
         else
             print_status "error" "Invalid selection"
@@ -303,7 +374,10 @@ show_existing_templates() {
     fi
     echo ""
     echo -n "${COLOR_YELLOW}Press Enter to continue...${COLOR_RESET}"
-    read -r
+
+    if ! safe_read_with_retry 30 1 >/dev/null; then
+        print_status "info" "Continuing automatically..."
+    fi
 }
 
 check_existing_claude_md() {
@@ -311,10 +385,15 @@ check_existing_claude_md() {
         echo "${COLOR_YELLOW}⚠️ CLAUDE.md already exists in this directory.${COLOR_RESET}"
         echo ""
         echo -n "${COLOR_BOLD}Overwrite existing CLAUDE.md? (y/n): ${COLOR_RESET}"
-        read -r overwrite
 
-        if [[ ! "$overwrite" =~ ^[Yy] ]]; then
-            print_status "info" "Template generation cancelled"
+        local overwrite
+        if overwrite=$(safe_read_with_retry 30 2); then
+            if [[ ! "$overwrite" =~ ^[Yy] ]]; then
+                print_status "info" "Template generation cancelled"
+                return 1
+            fi
+        else
+            print_status "warning" "Overwrite confirmation timeout, cancelling template generation"
             return 1
         fi
 
@@ -355,8 +434,14 @@ main() {
         show_main_menu
 
         echo -n "${COLOR_BOLD}${ICON_TEMPLATE} Select option: ${COLOR_RESET}"
-        read -r choice
-        echo ""
+
+        local choice
+        if choice=$(safe_read_with_retry 60 3); then
+            echo ""
+        else
+            print_status "warning" "Menu selection timeout, exiting"
+            exit 0
+        fi
 
         case "$choice" in
             "1")
@@ -364,7 +449,13 @@ main() {
                     select_template
                 fi
                 ;;
-            "2") show_available_templates; echo -n "${COLOR_YELLOW}Press Enter to continue...${COLOR_RESET}"; read -r ;;
+            "2")
+                show_available_templates
+                echo -n "${COLOR_YELLOW}Press Enter to continue...${COLOR_RESET}"
+                if ! safe_read_with_retry 30 1 >/dev/null; then
+                    print_status "info" "Continuing automatically..."
+                fi
+                ;;
             "3") show_existing_templates ;;
             "b")
                 echo "${ICON_SUCCESS} ${COLOR_GREEN}Returning to AI Tools...${COLOR_RESET}"

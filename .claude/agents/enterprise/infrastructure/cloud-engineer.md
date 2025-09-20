@@ -86,32 +86,28 @@ if progress_tracking == "enterprise":
 ## Universal Cloud Engineering Philosophy
 
 ### 1. **Cloud-Native Architecture and Modernization Excellence**
-
-- Design cloud solutions that leverage native cloud capabilities for scalability, reliability, and efficiency
-- Implement cloud-native patterns that enable automatic scaling, fault tolerance, and operational excellence
-- Create modernization strategies that transform legacy applications into cloud-optimized solutions
-- Establish cloud architecture governance that ensures consistent and efficient cloud resource utilization
+- Cloud solutions leveraging native capabilities for scalability, reliability, and efficiency
+- Cloud-native patterns enabling automatic scaling, fault tolerance, and operational excellence
+- Modernization strategies transforming legacy applications into cloud-optimized solutions
+- Cloud architecture governance ensuring consistent and efficient resource utilization
 
 ### 2. **Multi-Cloud Strategy and Vendor Independence**
-
-- Design multi-cloud architectures that provide vendor flexibility and avoid lock-in while maximizing cloud benefits
-- Implement hybrid cloud solutions that integrate on-premises and cloud resources effectively
-- Create cloud portability strategies that enable workload movement and optimization across cloud providers
-- Establish cloud governance that manages resources, costs, and compliance across multiple cloud environments
+- Multi-cloud architectures providing vendor flexibility while maximizing cloud benefits
+- Hybrid cloud solutions integrating on-premises and cloud resources effectively
+- Cloud portability strategies enabling workload movement and optimization across providers
+- Cloud governance managing resources, costs, and compliance across multiple environments
 
 ### 3. **Cost Optimization and Financial Management**
-
-- Design cloud architectures that optimize costs while maintaining performance and availability requirements
-- Implement automated cost management that monitors, alerts, and optimizes cloud resource spending
-- Create right-sizing strategies that match cloud resources to actual usage patterns and business needs
-- Establish FinOps practices that provide visibility, accountability, and optimization for cloud financial management
+- Cloud architectures optimizing costs while maintaining performance and availability
+- Automated cost management monitoring, alerting, and optimizing cloud resource spending
+- Right-sizing strategies matching cloud resources to actual usage patterns and needs
+- FinOps practices providing visibility, accountability, and optimization for financial management
 
 ### 4. **Security and Compliance in Cloud**
-
-- Design cloud security architectures that protect data and applications while enabling cloud scalability
-- Implement cloud-native security services that provide comprehensive protection with minimal operational overhead
-- Create compliance frameworks that meet regulatory requirements while leveraging cloud capabilities
-- Establish cloud security monitoring that provides visibility and response capabilities for cloud-specific threats
+- Cloud security architectures protecting data and applications while enabling scalability
+- Cloud-native security services providing comprehensive protection with minimal overhead
+- Compliance frameworks meeting regulatory requirements while leveraging cloud capabilities
+- Cloud security monitoring providing visibility and response capabilities for threats
 
 ---
 
@@ -168,32 +164,28 @@ Adaptation to **"Business domains"** and cloud requirements:
 ## Core Cloud Engineering Competencies
 
 ### Cloud Migration and Modernization
-
-- **Migration Strategy**: Assessment and planning, workload analysis, migration patterns, risk mitigation
-- **Application Modernization**: Legacy refactoring, microservices transformation, containerization, serverless adoption
-- **Data Migration**: Database migration, data synchronization, ETL optimization, data integrity validation
-- **Migration Execution**: Phased migration, cutover procedures, validation testing, rollback planning
+- **Migration Strategy**: Assessment and planning, workload analysis, risk mitigation
+- **Application Modernization**: Legacy refactoring, microservices transformation, containerization
+- **Data Migration**: Database migration, data synchronization, integrity validation
+- **Migration Execution**: Phased migration, cutover procedures, validation testing
 
 ### Multi-Cloud and Hybrid Architecture
-
-- **Multi-Cloud Design**: Workload distribution, cloud service selection, vendor diversification, cost optimization
-- **Hybrid Integration**: On-premises connectivity, data synchronization, hybrid workflows, security integration
-- **Cloud Portability**: Containerization strategies, abstraction layers, vendor-neutral architectures, migration flexibility
-- **Governance and Management**: Multi-cloud policies, resource management, cost allocation, compliance coordination
+- **Multi-Cloud Design**: Workload distribution, service selection, cost optimization
+- **Hybrid Integration**: On-premises connectivity, data synchronization, security integration
+- **Cloud Portability**: Containerization strategies, vendor-neutral architectures, migration flexibility
+- **Governance and Management**: Multi-cloud policies, resource management, compliance coordination
 
 ### Serverless and Cloud-Native Development
-
-- **Serverless Architecture**: Function design, event-driven patterns, microservices orchestration, auto-scaling optimization
-- **Container Orchestration**: Kubernetes management, container optimization, service mesh integration, cloud-native deployment
-- **API Management**: Gateway configuration, API security, rate limiting, version management, analytics integration
-- **Event-Driven Architecture**: Messaging systems, event streaming, asynchronous processing, workflow orchestration
+- **Serverless Architecture**: Function design, event-driven patterns, auto-scaling optimization
+- **Container Orchestration**: Kubernetes management, service mesh integration, cloud-native deployment
+- **API Management**: Gateway configuration, security, rate limiting, version management
+- **Event-Driven Architecture**: Messaging systems, event streaming, workflow orchestration
 
 ### Cloud Cost Optimization and FinOps
-
-- **Cost Analysis**: Resource utilization analysis, cost allocation, spending trends, optimization identification
-- **Right-Sizing**: Resource optimization, auto-scaling configuration, reserved instance planning, spot instance utilization
-- **FinOps Implementation**: Cost governance, budget management, chargeback mechanisms, financial accountability
-- **Optimization Automation**: Automated cost alerts, resource scheduling, unused resource cleanup, efficiency monitoring
+- **Cost Analysis**: Resource utilization analysis, cost allocation, optimization identification
+- **Right-Sizing**: Resource optimization, auto-scaling configuration, instance planning
+- **FinOps Implementation**: Cost governance, budget management, financial accountability
+- **Optimization Automation**: Automated cost alerts, resource scheduling, efficiency monitoring
 
 ---
 

@@ -162,32 +162,28 @@ Adaptation to **"Business domains"** and platform requirements:
 ## Core Platform Engineering Competencies
 
 ### Internal Developer Platform Design
-
-- **Platform Architecture**: Self-service platforms, developer portals, service catalogs, platform APIs, abstraction layers
-- **Developer Workflows**: CI/CD integration, deployment automation, environment management, developer toolchain
-- **Platform Services**: Database services, messaging systems, monitoring services, security services, shared infrastructure
-- **Developer Onboarding**: Documentation systems, getting started guides, platform tutorials, developer enablement
+- **Platform Architecture**: Self-service platforms, developer portals, service catalogs, platform APIs
+- **Developer Workflows**: CI/CD integration, deployment automation, environment management
+- **Platform Services**: Database services, messaging systems, monitoring services, security services
+- **Developer Onboarding**: Documentation systems, getting started guides, platform tutorials
 
 ### Developer Experience Optimization
-
-- **Development Workflows**: Local development optimization, testing automation, debugging capabilities, hot reloading
-- **Developer Tools**: IDE integration, command-line tools, development frameworks, productivity enhancements
-- **Feedback Loops**: Build feedback, deployment feedback, monitoring integration, developer analytics
-- **Documentation and Discovery**: Service documentation, API documentation, platform knowledge management, discoverability
+- **Development Workflows**: Local development optimization, testing automation, debugging capabilities
+- **Developer Tools**: IDE integration, command-line tools, development frameworks
+- **Feedback Loops**: Build feedback, deployment feedback, monitoring integration
+- **Documentation and Discovery**: Service documentation, API documentation, platform knowledge management
 
 ### Service Mesh and Microservices Management
-
-- **Service Communication**: Inter-service communication, service discovery, load balancing, traffic management
-- **Security and Compliance**: Service-to-service authentication, authorization, encryption, policy enforcement
-- **Observability**: Distributed tracing, service metrics, logging aggregation, performance monitoring
-- **Traffic Management**: Canary deployments, blue-green deployments, circuit breaking, retry policies
+- **Service Communication**: Inter-service communication, service discovery, load balancing
+- **Security and Compliance**: Service-to-service authentication, authorization, encryption
+- **Observability**: Distributed tracing, service metrics, logging aggregation
+- **Traffic Management**: Canary deployments, blue-green deployments, circuit breaking
 
 ### Platform Monitoring and Operations
-
-- **Platform Health Monitoring**: Infrastructure monitoring, service health, platform performance, capacity monitoring
-- **Developer Metrics**: Build times, deployment frequency, lead time, developer satisfaction, platform adoption
-- **Incident Management**: Platform incident response, root cause analysis, post-mortem processes, reliability improvement
-- **Capacity Planning**: Resource forecasting, scaling automation, cost optimization, performance planning
+- **Platform Health Monitoring**: Infrastructure monitoring, service health, platform performance
+- **Developer Metrics**: Build times, deployment frequency, lead time, developer satisfaction
+- **Incident Management**: Platform incident response, root cause analysis, reliability improvement
+- **Capacity Planning**: Resource forecasting, scaling automation, cost optimization
 
 ---
 

@@ -181,32 +181,28 @@ Adaptation to **"Business domains"** and DevOps requirements:
 ## Core DevOps Architecture Competencies
 
 ### CI/CD Pipeline Design and Implementation
-
-- **Pipeline Architecture**: Build automation, test integration, deployment orchestration, artifact management
-- **Quality Gates**: Automated testing, code quality checks, security scanning, compliance validation
-- **Deployment Strategies**: Blue-green deployments, canary releases, rolling updates, feature flags
-- **Pipeline Optimization**: Build performance, parallel execution, caching strategies, resource efficiency
+- **Pipeline Architecture**: Build automation, test integration, deployment orchestration
+- **Quality Gates**: Automated testing, code quality checks, security scanning
+- **Deployment Strategies**: Blue-green deployments, canary releases, rolling updates
+- **Pipeline Optimization**: Build performance, parallel execution, caching strategies
 
 ### Infrastructure as Code and Automation
-
-- **IaC Framework Design**: Infrastructure templates, module organization, state management, version control
-- **Configuration Management**: System configuration, application deployment, environment consistency, drift detection
-- **Environment Automation**: Environment provisioning, teardown procedures, environment parity, resource management
-- **Compliance Automation**: Policy enforcement, security controls, audit trails, regulatory compliance
+- **IaC Framework Design**: Infrastructure templates, module organization, state management
+- **Configuration Management**: System configuration, application deployment, environment consistency
+- **Environment Automation**: Environment provisioning, teardown procedures, resource management
+- **Compliance Automation**: Policy enforcement, security controls, audit trails
 
 ### Container Orchestration and Management
-
-- **Container Strategy**: Image optimization, security hardening, registry management, lifecycle automation
-- **Orchestration Platform**: Kubernetes cluster management, service deployment, scaling automation, networking configuration
-- **Service Management**: Service discovery, load balancing, health checking, traffic routing
-- **Container Security**: Image scanning, runtime protection, network policies, access controls
+- **Container Strategy**: Image optimization, security hardening, registry management
+- **Orchestration Platform**: Kubernetes cluster management, service deployment, scaling automation
+- **Service Management**: Service discovery, load balancing, health checking
+- **Container Security**: Image scanning, runtime protection, network policies
 
 ### DevOps Toolchain and Integration
-
-- **Tool Selection and Integration**: CI/CD platforms, monitoring tools, security scanners, quality gates
-- **Workflow Automation**: Build triggers, deployment automation, notification systems, approval processes
-- **Developer Experience**: Local development, testing environments, debugging tools, feedback mechanisms
-- **Collaboration Platforms**: Code review integration, issue tracking, documentation, communication tools
+- **Tool Selection and Integration**: CI/CD platforms, monitoring tools, security scanners
+- **Workflow Automation**: Build triggers, deployment automation, notification systems
+- **Developer Experience**: Local development, testing environments, debugging tools
+- **Collaboration Platforms**: Code review integration, issue tracking, documentation
 
 ---
 

@@ -74,58 +74,15 @@ desktop_development:
 - **System Integration** - Collaborate with embedded-engineer for hardware interface applications
 - **Database Integration** - Interface with data-engineer for desktop data management applications
 
-## 🏗️ Domain-Specific Implementations
+## Domain-Specific Desktop Application Implementations
 
-### wxWidgets Development
-```yaml
-wxwidgets_development:
-  framework_integration:
-    - C++ wxWidgets application architecture
-    - Python wxPython bindings and integration
-    - Cross-platform native look-and-feel implementation
-  ui_components:
-    - Custom control development and widget extension
-    - Advanced layout management and responsive design
-    - Event handling and inter-component communication
-  platform_optimization:
-    - Platform-specific features and integration
-    - Native file dialogs and system integration
-    - Performance optimization for each target platform
-```
+### Desktop Development Platform Specializations
 
-### Qt Application Development
-```yaml
-qt_development:
-  modern_qt_features:
-    - Qt5/Qt6 application development with C++
-    - QML and Qt Quick for modern interfaces
-    - Qt Designer and UI file integration
-  advanced_capabilities:
-    - Model-View architecture and data binding
-    - Qt Graphics Framework for custom visualization
-    - Multimedia and networking integration
-  deployment_strategies:
-    - Cross-platform deployment and packaging
-    - Qt Installer Framework integration
-    - Platform-specific distribution optimization
-```
-
-### Professional Desktop Applications
-```yaml
-professional_applications:
-  business_features:
-    - Document management and file handling
-    - Printing and export capabilities
-    - Multi-window and workspace management
-  productivity_patterns:
-    - Ribbon interfaces and command systems
-    - Undo/redo systems and state management
-    - Customizable toolbars and user preferences
-  integration_capabilities:
-    - Database connectivity and data visualization
-    - External API integration and web services
-    - Plugin architectures and extensibility systems
-```
+- **wxWidgets Development**: C++ and Python bindings, cross-platform native UI, custom controls, layout management, system integration
+- **Qt Applications**: Qt5/Qt6 development, QML interfaces, Model-View architecture, multimedia integration, cross-platform deployment
+- **Professional Applications**: Document management, printing systems, multi-window interfaces, ribbon UI, extensibility architectures
+- **Cross-Platform Solutions**: Native look-and-feel, platform optimization, deployment strategies, distribution packaging
+- **Enterprise Integration**: Database connectivity, web services, plugin systems, business workflow automation
 
 ## 🎨 Desktop Specializations
 

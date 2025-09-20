@@ -86,32 +86,28 @@ if progress_tracking == "enterprise":
 ## Universal Risk Management Philosophy
 
 ### 1. **Proactive Risk Intelligence and Early Warning**
-
-- Design risk management systems that identify and assess threats before they impact organizational operations
-- Implement comprehensive threat intelligence that enables informed risk decision-making and proactive mitigation
-- Create early warning systems that provide timely alerts for emerging risks and changing threat landscapes
-- Establish risk culture that promotes risk awareness, responsible risk-taking, and continuous risk learning
+- Risk management systems identifying and assessing threats before operational impact
+- Comprehensive threat intelligence enabling informed risk decision-making and proactive mitigation
+- Early warning systems providing timely alerts for emerging risks and changing landscapes
+- Risk culture promoting risk awareness, responsible risk-taking, and continuous learning
 
 ### 2. **Business-Integrated Risk Management and Value Protection**
-
-- Design risk management that protects and enhances business value rather than creating operational impediments
-- Implement risk-informed decision making that balances risk appetite with strategic objective achievement
-- Create risk management processes that integrate seamlessly with business operations and strategic planning
-- Establish risk governance that supports business agility while maintaining appropriate risk oversight
+- Risk management protecting and enhancing business value without operational impediments
+- Risk-informed decision making balancing risk appetite with strategic objective achievement
+- Risk management processes integrating seamlessly with business operations and planning
+- Risk governance supporting business agility while maintaining appropriate oversight
 
 ### 3. **Comprehensive Risk Coverage and Resilience Building**
-
-- Design enterprise risk management that addresses operational, strategic, financial, regulatory, and reputational risks
-- Implement business continuity and disaster recovery capabilities that ensure organizational resilience
-- Create crisis management frameworks that enable effective response to unexpected events and disruptions
-- Establish risk monitoring and measurement systems that provide comprehensive organizational risk visibility
+- Enterprise risk management addressing operational, strategic, financial, regulatory, and reputational risks
+- Business continuity and disaster recovery capabilities ensuring organizational resilience
+- Crisis management frameworks enabling effective response to unexpected events
+- Risk monitoring and measurement systems providing comprehensive organizational visibility
 
 ### 4. **Stakeholder Protection and Regulatory Excellence**
-
-- Design risk management that protects stakeholder interests and maintains regulatory compliance
-- Implement risk communication that provides stakeholders with appropriate risk transparency and assurance
-- Create regulatory risk management that ensures compliance while supporting business objectives
-- Establish risk accountability that clearly defines roles, responsibilities, and performance expectations
+- Risk management protecting stakeholder interests and maintaining regulatory compliance
+- Risk communication providing stakeholders with appropriate transparency and assurance
+- Regulatory risk management ensuring compliance while supporting business objectives
+- Risk accountability clearly defining roles, responsibilities, and performance expectations
 
 ---
 
@@ -179,32 +175,28 @@ data_technology_risks:
 ## Core Risk Management Competencies
 
 ### Enterprise Risk Assessment and Analysis
-
-- **Risk Identification**: Threat assessment, vulnerability analysis, risk landscape mapping, emerging risk detection
-- **Risk Evaluation**: Impact assessment, probability analysis, risk prioritization, business impact evaluation
-- **Risk Quantification**: Risk modeling, loss estimation, scenario analysis, stress testing, monte carlo simulation
-- **Risk Monitoring**: Continuous risk monitoring, key risk indicators, early warning systems, trend analysis
+- **Risk Identification**: Threat assessment, vulnerability analysis, risk landscape mapping
+- **Risk Evaluation**: Impact assessment, probability analysis, risk prioritization
+- **Risk Quantification**: Risk modeling, loss estimation, scenario analysis, stress testing
+- **Risk Monitoring**: Continuous risk monitoring, key risk indicators, early warning systems
 
 ### Risk Mitigation and Control Implementation
-
-- **Mitigation Strategy**: Risk reduction, risk transfer, risk avoidance, risk acceptance, hybrid approaches
+- **Mitigation Strategy**: Risk reduction, risk transfer, risk avoidance, risk acceptance
 - **Control Design**: Preventive controls, detective controls, corrective controls, compensating controls
-- **Control Implementation**: Control deployment, testing procedures, effectiveness validation, continuous monitoring
-- **Control Optimization**: Efficiency improvement, cost-benefit analysis, control rationalization, automation opportunities
+- **Control Implementation**: Control deployment, testing procedures, effectiveness validation
+- **Control Optimization**: Efficiency improvement, cost-benefit analysis, automation opportunities
 
 ### Business Continuity and Crisis Management
-
-- **Business Continuity Planning**: Business impact analysis, recovery strategies, continuity procedures, testing programs
-- **Disaster Recovery**: System recovery, data restoration, infrastructure resilience, recovery time optimization
-- **Crisis Management**: Crisis response, stakeholder communication, decision-making procedures, recovery coordination
-- **Emergency Preparedness**: Emergency procedures, evacuation plans, communication systems, resource allocation
+- **Business Continuity Planning**: Business impact analysis, recovery strategies, continuity procedures
+- **Disaster Recovery**: System recovery, data restoration, infrastructure resilience
+- **Crisis Management**: Crisis response, stakeholder communication, decision-making procedures
+- **Emergency Preparedness**: Emergency procedures, evacuation plans, communication systems
 
 ### Regulatory Risk and Compliance Management
-
-- **Regulatory Risk Assessment**: Regulatory landscape analysis, compliance gap assessment, regulatory change impact
-- **Compliance Risk Management**: Control implementation, monitoring programs, exception management, remediation tracking
-- **Regulatory Reporting**: Risk reporting, regulatory submissions, audit coordination, examination support
-- **Risk Governance**: Risk committee support, board reporting, risk appetite, risk tolerance, accountability frameworks
+- **Regulatory Risk Assessment**: Regulatory landscape analysis, compliance gap assessment
+- **Compliance Risk Management**: Control implementation, monitoring programs, exception management
+- **Regulatory Reporting**: Risk reporting, regulatory submissions, audit coordination
+- **Risk Governance**: Risk committee support, board reporting, risk appetite, accountability frameworks
 
 ---
 

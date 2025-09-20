@@ -2,121 +2,66 @@
 
 ## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
-Conduct systematic stakeholder requirements gathering that captures comprehensive business needs, processes, success criteria, and constraints through structured interviews, workshops, and analysis techniques. Create detailed requirements documentation that serves as the foundation for solution design while ensuring stakeholder alignment and traceability throughout the project lifecycle based on the business domain and organizational context in CLAUDE.md.
+Conduct systematic stakeholder requirements gathering capturing comprehensive business needs, processes, success criteria, and constraints through structured interviews and workshops. Create detailed requirements documentation serving as foundation for solution design while ensuring stakeholder alignment and traceability based on CLAUDE.md business domain context.
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Stakeholder Analysis and Engagement Planning
-1. **Identify and categorize key stakeholders** - Map all relevant stakeholders including decision makers, process owners, end users, and subject matter experts
-2. **Analyze stakeholder influence and interests** - Assess stakeholder power, influence, interest levels, and potential impact on project success
-3. **Plan engagement strategy and approach** - Design interview schedules, workshop formats, and communication methods appropriate for each stakeholder group
-4. **Establish requirements gathering objectives** - Define specific goals, scope boundaries, and success criteria for requirements collection activities
-5. **Prepare requirements discovery frameworks** - Create interview guides, workshop templates, and documentation structures for systematic requirements capture
+### Phase 1: Stakeholder Analysis and Requirements Discovery
+**Objective**: Identify stakeholders and capture comprehensive requirements
 
-### Phase 2: Requirements Discovery and Documentation
-1. **Conduct stakeholder interviews and workshops** - Execute systematic requirements gathering through one-on-one interviews, group workshops, and process observation sessions
-2. **Document functional and non-functional requirements** - Capture business capabilities, performance requirements, constraints, and quality attributes
-3. **Map current and future state processes** - Document existing workflows and envision future process improvements enabled by the solution
-4. **Identify integration and data requirements** - Understand system integration needs, data sources, and information flow requirements
-5. **Capture business rules and validation criteria** - Document decision logic, validation rules, approval processes, and compliance requirements
+1. **Stakeholder Analysis and Engagement Planning**
+   - Map key stakeholders including decision makers, process owners, end users, and subject matter experts
+   - Assess stakeholder power, influence, interest levels, and project impact
+   - Design interview schedules, workshop formats, and communication methods
 
-### Phase 3: Requirements Analysis and Validation
-1. **Analyze requirements for completeness and consistency** - Review captured requirements for gaps, conflicts, ambiguities, and missing information
-2. **Prioritize requirements based on business value** - Work with stakeholders to rank requirements by importance, urgency, and implementation complexity
-3. **Validate requirements with stakeholders** - Review documented requirements with stakeholders to ensure accuracy and completeness
-4. **Establish requirements traceability** - Create linkages between business objectives, stakeholder needs, and specific requirements
-5. **Define acceptance criteria and success metrics** - Establish measurable criteria for requirement satisfaction and project success validation
+2. **Requirements Discovery and Documentation**
+   - Execute systematic requirements gathering through interviews, workshops, and process observation
+   - Document functional and non-functional requirements, business capabilities, and quality attributes
+   - Map current and future state processes, integration needs, and business rules
 
-### Phase 4: Requirements Management and Handoff
-1. **Create comprehensive requirements documentation** - Develop business requirements document, process maps, and supporting analysis materials
-2. **Establish requirements change management process** - Define procedures for managing requirement changes throughout project lifecycle
-3. **Facilitate stakeholder sign-off and approval** - Obtain formal stakeholder approval for documented requirements and scope definition
-4. **Create handoff package for solution design** - Prepare requirements package for product management, UX design, and technical architecture teams
-5. **Establish ongoing stakeholder communication plan** - Define communication protocols for requirement clarifications and project updates
+### Phase 2: Requirements Validation and Management
+**Objective**: Validate requirements and establish management framework
+
+1. **Requirements Analysis and Validation**
+   - Analyze requirements for completeness, consistency, gaps, and conflicts
+   - Prioritize requirements by business value, importance, and implementation complexity
+   - Validate documented requirements with stakeholders for accuracy
+
+2. **Requirements Management and Handoff**
+   - Create comprehensive requirements documentation and change management process
+   - Facilitate stakeholder sign-off and prepare handoff package for solution design
+   - Establish ongoing communication protocols for clarifications and updates
 
 ## 3. ✅ VALIDATION CRITERIA
 
 ### Stakeholder Engagement and Requirements Coverage
-- **All relevant stakeholders identified and engaged**: Complete stakeholder map with appropriate representation from all affected groups and decision makers
-- **Requirements gathering approach systematic and thorough**: Structured interview and workshop processes ensuring comprehensive requirements capture
-- **Functional and non-functional requirements documented**: Complete specification of business capabilities, performance requirements, and quality attributes
-- **Business process understanding comprehensive**: Current and future state processes mapped with clear understanding of workflow improvements
-- **Integration and data requirements detailed**: System integration needs, data sources, and information flow requirements clearly specified
+**Complete Stakeholder Analysis**: All relevant stakeholders identified and engaged with appropriate representation, systematic and thorough requirements gathering approach with structured processes
 
-### Requirements Quality and Stakeholder Alignment
-- **Requirements clear, complete, and unambiguous**: Each requirement written in clear language with specific acceptance criteria and measurable outcomes
-- **Stakeholder priorities and constraints captured**: Business priorities, budget constraints, timeline requirements, and success criteria documented
-- **Requirements validated and approved by stakeholders**: Formal stakeholder review and sign-off on documented requirements and project scope
-- **Business rules and validation criteria specified**: Decision logic, approval processes, and compliance requirements clearly documented
-- **Traceability established between objectives and requirements**: Clear linkages between business goals, stakeholder needs, and specific requirements
+**Comprehensive Requirements Documentation**: Functional and non-functional requirements documented with complete business capabilities specification, comprehensive business process understanding with current and future state mapping, detailed integration and data requirements with clear specifications
 
-### Documentation and Handoff Quality
-- **Requirements documentation meets enterprise standards**: Professional documentation suitable for technical design and development handoff
-- **Success criteria and acceptance criteria measurable**: Clear definition of requirement satisfaction with objective measurement criteria
-- **Change management process established**: Procedures for managing requirement changes with stakeholder approval and impact assessment
-- **Handoff package complete for next phase**: Requirements organized and presented appropriately for product management and technical design
-- **Ongoing communication framework established**: Clear protocols for requirement clarification and stakeholder engagement throughout project
+### Requirements Quality and Management
+**Requirements Quality Excellence**: Clear, complete, and unambiguous requirements with specific acceptance criteria, stakeholder priorities and constraints captured with business priorities documentation, formal stakeholder validation and approval with documented sign-off
+
+**Documentation and Handoff Quality**: Professional documentation meeting enterprise standards suitable for technical handoff, measurable success criteria with objective measurement criteria, established change management process and complete handoff package for next phase
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Enterprise Resource Planning (ERP) Requirements
-**Project Context**: Large manufacturing company implementing new ERP system requiring comprehensive requirements gathering across multiple business units
-**Implementation Approach**:
-- Multi-Stakeholder Workshops: Facilitated sessions with representatives from finance, operations, supply chain, and IT to capture cross-functional requirements
-- Process Deep-Dives: Detailed analysis of financial processes, manufacturing workflows, and supply chain operations
-- Integration Requirements: Comprehensive analysis of existing system landscape and data integration needs
-- Change Management Planning: Assessment of organizational readiness and training requirements for new system adoption
+**Enterprise Resource Planning**: Multi-stakeholder workshops with finance, operations, and IT for cross-functional requirements, process analysis of manufacturing workflows, integration analysis of existing systems, change management planning
 
-### Healthcare Information System Requirements
-**Project Context**: Hospital system implementing new patient management system requiring detailed clinical workflow analysis and regulatory compliance
-**Implementation Approach**:
-- Clinical Workflow Analysis: In-depth interviews with doctors, nurses, and administrative staff to understand patient care processes
-- Regulatory Compliance Requirements: Analysis of HIPAA, medical record requirements, and clinical documentation standards
-- Patient Experience Requirements: Understanding of patient journey and touchpoint optimization opportunities
-- System Integration Needs: Analysis of existing EMR systems, laboratory systems, and third-party medical device integrations
+**Healthcare Information System**: Clinical workflow analysis with doctors and nurses, regulatory compliance analysis (HIPAA, medical records), patient experience requirements, EMR and medical device integration analysis
 
-### Financial Services Digital Banking Platform
-**Project Context**: Bank developing new digital banking platform requiring comprehensive customer experience and regulatory requirements analysis
-**Implementation Approach**:
-- Customer Journey Mapping: Analysis of customer interactions across all banking touchpoints and service channels
-- Regulatory and Compliance Requirements: Detailed understanding of banking regulations, security requirements, and audit trail needs
-- Product Portfolio Analysis: Requirements for loan origination, account management, payment processing, and investment services
-- Risk Management Requirements: Fraud detection, credit risk assessment, and regulatory reporting requirements
+**Financial Services Digital Banking**: Customer journey mapping across banking touchpoints, regulatory and compliance requirements with security analysis, product portfolio requirements for loans and payments, risk management requirements
 
-### E-commerce Platform Requirements Gathering
-**Project Context**: Retail company developing new e-commerce platform requiring multi-channel customer experience and inventory management requirements
-**Implementation Approach**:
-- Omnichannel Customer Experience: Requirements for consistent experience across web, mobile, and physical store interactions
-- Inventory and Order Management: Complex requirements for multi-location inventory, drop-shipping, and order fulfillment workflows
-- Marketing and Personalization Requirements: Customer segmentation, personalized recommendations, and targeted marketing campaign capabilities
-- Third-Party Integration Needs: Payment processors, shipping providers, tax calculation services, and marketing automation platforms
+**E-commerce Platform**: Omnichannel customer experience across web/mobile/store, inventory and order management for multi-location operations, marketing personalization requirements, third-party integration with payment and shipping providers
 
-### Government Digital Services Requirements
-**Project Context**: Municipal government developing citizen portal requiring comprehensive understanding of government service delivery processes
-**Implementation Approach**:
-- Citizen Service Journey Analysis: End-to-end analysis of permit applications, license renewals, tax payments, and other government services
-- Inter-Department Workflow Requirements: Understanding of approval processes, document routing, and collaboration between government departments
-- Accessibility and Compliance Requirements: ADA compliance, multilingual support, and government accessibility standards
-- Integration with Legacy Systems: Requirements for integrating with existing government databases, payment systems, and record-keeping systems
+**Government Digital Services**: Citizen service journey analysis for permits and payments, inter-department workflow requirements, accessibility and compliance requirements (ADA, multilingual), legacy system integration with government databases
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Business Domain-Adaptive Requirements Strategy**:
-1. **CLAUDE.md business context analysis** - Extract business domain, stakeholder types, and organizational complexity from project configuration
-2. **Industry-specific requirements framework application** - Apply appropriate requirements gathering techniques based on business domain and regulatory environment
-3. **Stakeholder engagement approach adaptation** - Tailor interview and workshop approaches to organizational culture and stakeholder preferences
-4. **Requirements documentation standards alignment** - Adapt documentation formats and detail levels to organizational standards and project complexity
+**Business Domain-Adaptive Strategy**: CLAUDE.md business context analysis → industry-specific requirements framework application → stakeholder engagement approach adaptation → documentation standards alignment
 
-**Requirements Gathering Excellence Patterns**:
-- **Systematic stakeholder engagement** - Ensure comprehensive stakeholder representation with structured interview and workshop processes
-- **Multi-perspective requirements validation** - Cross-validate requirements across different stakeholder groups to ensure completeness and accuracy
-- **Business process integration focus** - Understand requirements within broader business process context and workflow improvements
-- **Traceability and change management** - Establish clear requirement traceability and robust change management processes
+**Requirements Gathering Excellence**: Systematic stakeholder engagement with comprehensive representation, multi-perspective requirements validation across stakeholder groups, business process integration focus with workflow improvements, traceability and change management with robust processes
 
-**Quality Assurance and Stakeholder Alignment**:
-- **Formal validation and approval processes** - Implement structured review and sign-off procedures ensuring stakeholder agreement
-- **Clear acceptance criteria definition** - Establish measurable success criteria for each requirement with objective validation methods
-- **Comprehensive documentation standards** - Create professional documentation meeting enterprise standards for technical handoff
-- **Ongoing communication and collaboration** - Maintain stakeholder engagement throughout project with clear communication protocols
+**Quality Assurance and Alignment**: Formal validation and approval processes with structured review procedures, clear acceptance criteria with measurable success criteria, comprehensive documentation meeting enterprise standards, ongoing communication and collaboration throughout project

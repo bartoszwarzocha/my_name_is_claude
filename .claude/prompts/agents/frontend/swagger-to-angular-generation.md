@@ -2,121 +2,66 @@
 
 ## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
-Generate comprehensive, type-safe frontend API clients from OpenAPI/Swagger specifications that ensure seamless integration with frontend applications, proper TypeScript typing, and production-ready error handling and HTTP client configuration while adapting to the technology stack defined in CLAUDE.md.
+Generate comprehensive, type-safe frontend API clients from OpenAPI/Swagger specifications ensuring seamless integration with frontend applications, proper TypeScript typing, and production-ready error handling and HTTP client configuration while adapting to technology stack defined in CLAUDE.md.
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: API Specification Analysis and Planning
-1. **Analyze OpenAPI/Swagger specification and requirements** - Examine API endpoints, data models, authentication, and integration requirements
-2. **Design API client architecture and integration strategy** - Plan service layer structure, error handling, and application integration patterns
-3. **Plan type safety and data validation approach** - Design TypeScript interfaces, runtime validation, and type safety strategies
-4. **Establish authentication and security integration** - Plan authentication flows, token management, and security implementations
-5. **Define testing and quality assurance strategy** - Plan API client testing, mock strategies, and validation approaches
+### Phase 1: API Analysis and Client Generation
+**Objective**: Analyze API specifications and implement comprehensive client generation
 
-### Phase 2: API Client Generation and Implementation
-1. **Generate type-safe API client interfaces and models** - Create TypeScript interfaces, service classes, and data models from specifications
-2. **Implement HTTP client configuration and interceptors** - Configure request/response handling, authentication, and error management
-3. **Create service layer abstraction and integration** - Implement business logic layer, data transformation, and application integration
-4. **Apply error handling and resilience patterns** - Implement retry logic, circuit breakers, and graceful failure handling
-5. **Integrate authentication and authorization flows** - Implement OAuth, JWT, and other authentication patterns
+1. **API Specification Analysis and Planning**
+   - Analyze OpenAPI/Swagger specifications to examine endpoints, data models, and integration requirements
+   - Design API client architecture, plan type safety approach, and establish authentication integration
+   - Define testing strategy with API client testing, mock strategies, and validation approaches
 
-### Phase 3: Advanced Features and Optimization
-1. **Implement advanced HTTP features and optimization** - Add caching, request deduplication, and performance optimization
-2. **Create mock services and testing utilities** - Implement API mocking, test fixtures, and development utilities
-3. **Apply data transformation and validation** - Implement request/response transformation, validation, and sanitization
-4. **Integrate real-time features and WebSocket support** - Add streaming data, real-time updates, and bidirectional communication
-5. **Optimize bundle size and loading performance** - Apply tree shaking, code splitting, and lazy loading strategies
+2. **API Client Generation and Implementation**
+   - Generate type-safe interfaces, implement HTTP client configuration, and create service layer abstraction
+   - Apply error handling patterns, integrate authentication flows, and configure request/response handling
+   - Create TypeScript interfaces, retry logic, OAuth implementation, and graceful failure handling
 
-### Phase 4: Integration and Maintenance Excellence
-1. **Create comprehensive testing and validation** - Implement unit tests, integration tests, and contract testing
-2. **Establish API documentation and usage guides** - Create client documentation, examples, and integration instructions
-3. **Implement monitoring and error tracking** - Add API usage monitoring, error reporting, and performance analytics
-4. **Create update and maintenance procedures** - Plan API version management, client updates, and breaking change handling
-5. **Enable team collaboration and code generation workflows** - Establish automated generation, review processes, and team integration
+### Phase 2: Advanced Features and Integration Excellence
+**Objective**: Execute advanced features and establish integration excellence
+
+1. **Advanced Features and Optimization**
+   - Implement advanced HTTP features, create mock services, and apply data transformation with validation
+   - Integrate real-time features, optimize bundle size, and add caching with request deduplication
+   - Create WebSocket support, tree shaking, streaming data, code splitting, and performance optimization
+
+2. **Integration and Maintenance Excellence**
+   - Create comprehensive testing, establish documentation with usage guides, and implement monitoring
+   - Create update procedures, enable team collaboration, and configure automated generation workflows
+   - Implement unit tests, client documentation, API usage monitoring, version management, and team integration
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### API Client Generation and Type Safety
-- **API client generation comprehensive and accurate**: Complete coverage of API endpoints, proper method signatures, and accurate data models
-- **TypeScript integration excellent and type-safe**: Strong typing throughout, proper interface definitions, and compile-time error prevention
-- **Error handling robust and user-friendly**: Comprehensive error scenarios, meaningful error messages, and graceful failure handling
-- **Authentication integration secure and reliable**: Proper token management, secure storage, and authentication flow implementation
-- **Performance optimization effective**: Efficient HTTP client configuration, caching strategies, and bundle optimization
+### API Client Generation and Type Safety Excellence
+**Comprehensive Generation and Integration**: API client generation with complete coverage of endpoints and accurate data models, excellent TypeScript integration with strong typing and compile-time error prevention, robust error handling with comprehensive scenarios, secure authentication integration with proper token management
 
-### Code Quality and Integration Excellence
-- **Service layer architecture scalable and maintainable**: Clear separation of concerns, reusable patterns, and maintainable code structure
-- **Testing coverage comprehensive and meaningful**: Unit tests, integration tests, mock services, and contract testing implementation
-- **Documentation complete and actionable**: API client usage guides, integration examples, and troubleshooting documentation
-- **Development workflow integration smooth**: Automated generation, build integration, and team collaboration processes
-- **Maintenance and updates efficient**: Version management, breaking change handling, and automated update procedures
+**Code Quality and Architecture**: Scalable service layer architecture with clear separation of concerns, comprehensive testing coverage with meaningful implementation, complete documentation with actionable guides, smooth development workflow integration
 
 ### Application Integration and User Experience
-- **Frontend framework integration seamless**: Proper integration with React, Angular, Vue, or other frameworks specified in CLAUDE.md
-- **Data flow and state management optimal**: Efficient data fetching, caching, and state synchronization patterns
-- **Real-time features functional**: WebSocket integration, streaming data, and real-time update capabilities where applicable
-- **Mobile and responsive compatibility ensured**: Proper handling of network conditions, offline scenarios, and mobile optimization
-- **Security and compliance maintained**: Data protection, secure communication, and compliance with security requirements
+**Framework Integration and Performance**: Seamless frontend framework integration with frameworks specified in CLAUDE.md, optimal data flow with efficient fetching and caching, functional real-time features with WebSocket integration, ensured mobile compatibility with network optimization
+
+**Maintenance and Security Excellence**: Efficient maintenance and updates with version management, maintained security and compliance with data protection and secure communication
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Enterprise API Integration Platform
-**Project Context**: Large-scale enterprise application requiring integration with multiple internal and external APIs
-**Implementation Approach**:
-- Multi-API Client Generation: Automated generation from multiple OpenAPI specifications with consistent patterns
-- Enterprise Authentication: OAuth 2.0, SAML, and enterprise SSO integration with token management
-- Service Layer Architecture: Centralized API management, request/response transformation, and business logic abstraction
-- Error Handling and Resilience: Circuit breaker patterns, retry logic, and comprehensive error reporting
+**Enterprise API Integration Platform**: Large-scale enterprise with automated generation from multiple OpenAPI specifications, OAuth 2.0 enterprise SSO, centralized API management, circuit breaker patterns
 
-### E-commerce Platform API Client
-**Project Context**: High-traffic e-commerce platform requiring robust API integration for product, order, and payment services
-**Implementation Approach**:
-- Performance-Critical Integration: Optimized HTTP client configuration, caching strategies, and request deduplication
-- Payment and Security: Secure payment API integration, PCI compliance, and sensitive data handling
-- Real-time Features: Inventory updates, order status, and customer notifications via WebSocket integration
-- Mobile and Offline Support: Progressive enhancement, offline caching, and network resilience
+**E-commerce Platform API Client**: High-traffic e-commerce with optimized HTTP client configuration, secure payment API integration, inventory updates via WebSocket, progressive enhancement
 
-### Healthcare System API Integration
-**Project Context**: HIPAA-compliant healthcare application requiring secure integration with electronic health record systems
-**Implementation Approach**:
-- Security and Compliance: HIPAA-compliant API integration, data encryption, and audit trail implementation
-- Clinical Data Integration: HL7 FHIR API client generation, medical data validation, and clinical workflow support
-- Authentication and Authorization: Role-based access control, provider authentication, and patient consent management
-- Reliability and Monitoring: Comprehensive error tracking, performance monitoring, and clinical safety features
+**Healthcare System API Integration**: HIPAA-compliant healthcare with secure EHR integration, HL7 FHIR API generation, role-based access control, comprehensive error tracking
 
-### Financial Services Trading Platform
-**Project Context**: Real-time financial application requiring low-latency API integration for market data and trading
-**Implementation Approach**:
-- Real-time Market Data: WebSocket integration for live market feeds, streaming quotes, and price updates
-- Trading API Integration: Order management, trade execution, and risk management API clients
-- Performance and Latency: Optimized network communication, connection pooling, and minimal latency patterns
-- Regulatory Compliance: Audit trails, trade reporting, and regulatory compliance API integration
+**Financial Services Trading Platform**: Real-time financial with WebSocket market feeds, order management API clients, optimized network communication, audit trails
 
-### Educational Platform Learning API
-**Project Context**: Online learning management system requiring integration with content delivery, assessment, and analytics APIs
-**Implementation Approach**:
-- Content Management: Course content API integration, media delivery, and content synchronization
-- Assessment and Analytics: Quiz and assessment API clients, learning analytics, and progress tracking
-- Multi-tenant Architecture: Institution-specific API configuration, role-based access, and data isolation
-- Accessibility and Standards: Learning standards compliance (SCORM, xAPI), accessibility features, and inclusive design
+**Educational Platform Learning API**: Online learning management with course content API integration, quiz and assessment clients, institution-specific configuration, learning standards compliance
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Technology-Adaptive API Client Generation Strategy**:
-1. **Frontend framework detection** - Analyze CLAUDE.md to determine target frontend framework and generate appropriate client code
-2. **API specification analysis** - Examine OpenAPI/Swagger specifications to understand API structure and requirements
-3. **Authentication and security planning** - Design authentication integration appropriate for application security requirements
-4. **Performance optimization strategy** - Apply optimization techniques suitable for application performance needs and user experience
+**Technology-Adaptive API Client Excellence**: Frontend framework detection → API specification analysis → authentication and security planning → performance optimization strategy
 
-**API Client Excellence Patterns**:
-- **Type-safe client generation** - Comprehensive TypeScript integration with proper interfaces and compile-time validation
-- **Robust error handling** - Comprehensive error scenarios with meaningful messages and graceful failure recovery
-- **Performance-optimized integration** - HTTP client optimization, caching strategies, and efficient network communication
-- **Security-first implementation** - Secure authentication, token management, and data protection appropriate for application requirements
+**API Client Excellence Patterns**: Type-safe client generation with comprehensive TypeScript integration, robust error handling with meaningful messages, performance-optimized integration with caching strategies, security-first implementation with secure authentication
 
-**Quality Assurance and Team Integration**:
-- **Comprehensive testing strategy** - Unit tests, integration tests, mock services, and contract testing for reliable API integration
-- **Automated generation workflow** - Seamless integration with build processes, version control, and team development workflows
-- **Documentation and maintenance excellence** - Clear usage guides, update procedures, and team collaboration for sustainable API integration
-- **Monitoring and optimization** - API usage tracking, performance monitoring, and continuous improvement for optimal user experience
+**Quality Assurance and Team Integration**: Comprehensive testing strategy providing reliable API integration, automated generation workflow with seamless build integration, documentation and maintenance excellence with clear guides, monitoring and optimization ensuring optimal user experience

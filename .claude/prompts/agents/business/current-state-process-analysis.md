@@ -6,117 +6,64 @@ Conduct comprehensive analysis of existing business processes to identify ineffi
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Process Discovery and Stakeholder Engagement
-1. **Identify key business processes and stakeholders** - Map organizational processes, determine analysis scope, and engage process owners and users
-2. **Conduct stakeholder interviews and process observation** - Gather detailed process information through interviews, shadowing, and workflow observation
-3. **Document current state workflows and decision points** - Create comprehensive process maps including inputs, outputs, decision criteria, and handoffs
-4. **Catalog systems, tools, and data sources** - Inventory all technology components, integrations, and information sources involved in processes
-5. **Establish baseline performance metrics** - Measure current process performance including time, cost, quality, and user satisfaction metrics
+### Phase 1: Process Discovery and Analysis
+**Objective**: Conduct comprehensive process discovery and identify improvement opportunities
 
-### Phase 2: Process Analysis and Gap Identification
-1. **Analyze process flow efficiency and bottlenecks** - Identify delays, redundancies, manual interventions, and capacity constraints affecting performance
-2. **Evaluate data quality and information flow** - Assess data accuracy, completeness, consistency, and integration between systems and process steps
-3. **Assess compliance and risk management** - Review regulatory compliance, audit requirements, risk controls, and governance procedures
-4. **Identify automation and optimization opportunities** - Evaluate manual tasks, repetitive activities, and process steps suitable for automation or simplification
-5. **Benchmark performance against industry standards** - Compare current performance metrics with industry benchmarks and best practices
+1. **Process Discovery and Stakeholder Engagement**
+   - Analyze CLAUDE.md business domain to identify key processes and stakeholders for analysis scope determination
+   - Conduct stakeholder interviews and process observation to gather detailed workflow information through shadowing
+   - Document current state workflows with comprehensive process maps including inputs, outputs, and decision points
 
-### Phase 3: Opportunity Assessment and Prioritization
-1. **Quantify improvement potential and impact** - Calculate potential benefits from process improvements including cost savings, time reduction, and quality enhancement
-2. **Assess implementation feasibility and complexity** - Evaluate technical requirements, organizational change impact, and resource needs for improvements
-3. **Analyze stakeholder impact and change readiness** - Understand user impact, training requirements, and organizational readiness for process changes
-4. **Prioritize improvement opportunities** - Rank opportunities based on benefit potential, implementation complexity, and strategic alignment
-5. **Create improvement roadmap and implementation strategy** - Develop phased approach for process improvements with timeline and resource requirements
+2. **Process Analysis and Gap Identification**
+   - Analyze process flow efficiency to identify bottlenecks, delays, redundancies, and capacity constraints
+   - Evaluate data quality and information flow assessing accuracy, completeness, and system integration
+   - Assess compliance and risk management including regulatory requirements and identify automation opportunities
 
-### Phase 4: Documentation and Stakeholder Validation
-1. **Create comprehensive process documentation** - Develop detailed process maps, gap analysis reports, and improvement opportunity documentation
-2. **Validate findings with stakeholders** - Review analysis results with process owners, users, and leadership to ensure accuracy and completeness
-3. **Establish performance baseline and success metrics** - Document current state metrics and define success criteria for future improvements
-4. **Develop handoff documentation for solution design** - Create requirements and insights package for product management and technical design teams
-5. **Create communication and change management framework** - Develop stakeholder communication plan and change management strategy for improvements
+### Phase 2: Opportunity Assessment and Documentation
+**Objective**: Quantify improvement potential and create comprehensive documentation with stakeholder validation
+
+1. **Opportunity Assessment and Prioritization**
+   - Quantify improvement potential calculating cost savings, time reduction, and quality enhancement benefits
+   - Assess implementation feasibility evaluating technical requirements and organizational change impact
+   - Prioritize improvement opportunities based on benefit potential, complexity, and strategic alignment
+
+2. **Documentation and Stakeholder Validation**
+   - Create comprehensive process documentation with detailed maps, gap analysis, and improvement opportunities
+   - Validate findings with stakeholders including process owners and leadership for accuracy verification
+   - Establish performance baseline and create handoff documentation for solution design teams with change management framework
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Process Analysis Completeness and Accuracy
-- **Process documentation comprehensive and accurate**: All key workflows mapped with complete inputs, outputs, decision points, and stakeholder roles
-- **Performance baseline established with quantified metrics**: Current state performance measured with reliable data including time, cost, quality, and satisfaction metrics
-- **Gap analysis thorough and actionable**: Inefficiencies, bottlenecks, and improvement opportunities clearly identified with supporting evidence
-- **Stakeholder perspectives captured completely**: All relevant stakeholders interviewed with diverse viewpoints and experiences documented
-- **System and data flow analysis detailed**: Technology landscape mapped with integration points, data flows, and system capabilities assessed
+### Process Analysis Excellence
+**Completeness and Accuracy**: Comprehensive process documentation with accurate workflow mapping, established performance baseline with quantified metrics, thorough gap analysis with supporting evidence, completely captured stakeholder perspectives, detailed system and data flow analysis
 
-### Opportunity Identification and Business Value Assessment
-- **Improvement opportunities quantified and prioritized**: Benefits potential calculated with implementation complexity and resource requirements assessed
-- **Automation potential realistically assessed**: Manual tasks and repetitive activities evaluated with feasibility and ROI considerations
-- **Risk and compliance gaps identified**: Regulatory compliance issues, risk exposures, and governance improvements clearly documented
-- **Industry benchmarking and best practices applied**: Performance comparisons with industry standards providing context for improvement potential
-- **Implementation roadmap practical and achievable**: Phased improvement approach with realistic timelines and resource requirements
+**Opportunity Identification**: Quantified and prioritized improvement opportunities with assessed implementation complexity, realistically assessed automation potential with ROI considerations, identified risk and compliance gaps, applied industry benchmarking with best practices
 
-### Stakeholder Alignment and Documentation Quality
-- **Stakeholder validation achieved with formal sign-off**: Process owners and users agree with analysis findings and improvement recommendations
-- **Documentation quality meets enterprise standards**: Professional documentation suitable for executive review and technical handoff
-- **Change impact assessment comprehensive**: User impact, training needs, and organizational readiness properly evaluated
-- **Success criteria clearly defined and measurable**: Performance improvement targets established with measurement methodology
-- **Handoff package complete for next phase**: Requirements and insights properly organized for product management and technical design
+### Stakeholder Alignment and Quality
+**Validation and Documentation**: Achieved stakeholder validation with formal sign-off, documentation quality meeting enterprise standards for executive review, comprehensive change impact assessment with readiness evaluation
+
+**Implementation Readiness**: Clearly defined measurable success criteria with performance targets, complete handoff package organized for product management and technical design with practical implementation roadmap
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Healthcare Patient Care Process Analysis
-**Project Context**: Hospital system analyzing patient admission and discharge processes to improve efficiency and patient experience
-**Implementation Approach**:
-- Process Observation: Shadowing nurses, doctors, and administrative staff through complete patient care workflows
-- Performance Measurement: Time studies, error tracking, patient satisfaction scores, and resource utilization analysis
-- Technology Assessment: EMR system usage, integration gaps, manual documentation requirements, and workflow disruptions
-- Improvement Identification: Automation opportunities in documentation, communication workflows, and care coordination
+**Cross-Domain Process Analysis Examples**
 
-### Financial Services Loan Processing Analysis
-**Project Context**: Bank analyzing mortgage loan application and approval processes to reduce processing time and improve customer experience
-**Implementation Approach**:
-- End-to-End Process Mapping: Complete loan origination workflow from application through closing including all stakeholder touchpoints
-- Regulatory Compliance Review: Detailed analysis of compliance requirements, audit procedures, and risk management controls
-- System Integration Analysis: Assessment of multiple system integrations, data quality issues, and manual intervention points
-- Customer Experience Evaluation: Analysis of customer journey, communication touchpoints, and satisfaction pain points
+**Healthcare Patient Care**: Shadowing medical staff through complete patient workflows, time studies with error tracking and satisfaction scores, EMR system assessment with automation opportunities
 
-### Manufacturing Order Fulfillment Process Analysis
-**Project Context**: Manufacturing company analyzing order-to-cash process to improve delivery times and reduce operational costs
-**Implementation Approach**:
-- Supply Chain Process Mapping: Complete workflow from order receipt through production planning, manufacturing, and shipping
-- Performance Bottleneck Analysis: Identification of capacity constraints, scheduling inefficiencies, and quality control delays
-- ERP System Utilization Review: Assessment of enterprise system usage, data accuracy, and integration effectiveness
-- Cost Structure Analysis: Detailed cost analysis identifying opportunities for automation and process optimization
+**Financial Services Loan Processing**: End-to-end loan origination mapping with stakeholder touchpoints, regulatory compliance review with risk management controls, customer journey analysis with satisfaction pain points
 
-### Technology Services Project Delivery Analysis
-**Project Context**: IT services company analyzing project delivery processes to improve client satisfaction and project profitability
-**Implementation Approach**:
-- Project Lifecycle Assessment: Analysis of project initiation, planning, execution, and closure processes across multiple project types
-- Resource Management Evaluation: Assessment of resource allocation, utilization tracking, and capacity planning effectiveness
-- Client Communication Review: Analysis of client interaction patterns, status reporting, and satisfaction measurement processes
-- Quality Control Assessment: Evaluation of testing procedures, delivery standards, and defect management processes
+**Manufacturing Order Fulfillment**: Supply chain workflow mapping from order to shipping, performance bottleneck analysis with capacity constraints, ERP system utilization review with cost optimization
 
-### Government Agency Permit Processing Analysis
-**Project Context**: Municipal government analyzing business permit application and approval processes to improve citizen services
-**Implementation Approach**:
-- Citizen Journey Mapping: Complete analysis of permit application process from citizen perspective including all touchpoints
-- Regulatory Compliance Assessment: Review of legal requirements, approval criteria, and audit trail maintenance
-- Inter-Department Coordination Analysis: Evaluation of collaboration processes, information sharing, and decision coordination
-- Digital Transformation Opportunities: Assessment of paper-based processes, manual reviews, and automation potential
+**Technology Services Project Delivery**: Project lifecycle assessment with resource management evaluation, client communication review with satisfaction measurement, quality control assessment with testing procedures
+
+**Government Agency Permit Processing**: Citizen journey mapping with complete touchpoint analysis, regulatory compliance assessment with legal requirements, inter-department coordination with digital transformation opportunities
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Business Domain-Adaptive Process Analysis Strategy**:
-1. **CLAUDE.md business context analysis** - Extract business domain, organizational structure, and process complexity from project configuration
-2. **Industry-specific process framework application** - Apply relevant process analysis methodologies based on business domain and regulatory environment
-3. **Stakeholder engagement strategy adaptation** - Tailor interview approaches and workshop formats to organizational culture and stakeholder preferences
-4. **Performance measurement framework selection** - Choose appropriate metrics and benchmarks based on industry standards and business objectives
+**Business Domain-Adaptive Strategy**: CLAUDE.md business context analysis → industry-specific process framework application → stakeholder engagement strategy adaptation → performance measurement framework selection
 
-**Process Analysis Excellence Patterns**:
-- **Comprehensive stakeholder engagement** - Ensure all relevant perspectives captured through systematic interview and observation processes
-- **Data-driven performance baseline establishment** - Collect quantitative performance data to support analysis findings and improvement recommendations
-- **End-to-end process perspective** - Analyze complete workflows including upstream and downstream impacts and dependencies
-- **Technology and human factor integration** - Consider both system capabilities and human factors in process analysis and improvement recommendations
+**Process Analysis Excellence**: Comprehensive stakeholder engagement with systematic interview processes, data-driven performance baseline establishment, end-to-end process perspective with impact analysis, technology and human factor integration
 
-**Improvement Identification and Validation**:
-- **Quantified benefit assessment** - Calculate measurable benefits from process improvements with realistic assumptions and validation
-- **Implementation feasibility analysis** - Assess organizational readiness, technical requirements, and resource needs for recommended improvements
-- **Stakeholder validation and buy-in** - Ensure process owners and users agree with findings and support recommended improvements
-- **Actionable roadmap development** - Create practical implementation plan with clear priorities, timelines, and success criteria
+**Improvement Identification and Validation**: Quantified benefit assessment with realistic assumptions, implementation feasibility analysis with organizational readiness, stakeholder validation and buy-in with findings agreement, actionable roadmap development with clear priorities and success criteria

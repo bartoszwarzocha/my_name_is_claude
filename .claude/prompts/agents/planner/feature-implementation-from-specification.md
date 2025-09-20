@@ -11,127 +11,70 @@ Implement complete application features based on detailed specification document
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Specification Analysis and Requirements Extraction
-1. **Analyze specification documents and extract core requirements** - Parse business requirements, user stories, technical specifications, and acceptance criteria from provided documentation
-2. **Decompose features into implementable components** - Break down large features into manageable frontend, backend, and data layer components with clear interfaces
-3. **Identify dependencies and integration points** - Map feature dependencies, external system integrations, and cross-component communication requirements
-4. **Plan architecture and technology alignment** - Design feature architecture aligned with existing system design and technology stack specifications
-5. **Define validation criteria and quality gates** - Establish measurable success criteria and quality validation requirements for feature completion
+### Phase 1: Specification Analysis and Implementation Planning
+**Objective**: Analyze specifications and design comprehensive implementation strategy with cross-team coordination
 
-### Phase 2: Cross-Team Coordination and Implementation Planning
-1. **Design multi-layer implementation strategy** - Plan coordinated development across frontend, backend, and data layers with clear interface definitions
-2. **Create detailed task breakdown and assignment** - Generate specific implementation tasks for each development team with clear deliverables and timelines
-3. **Establish communication and handoff protocols** - Design team coordination procedures ensuring smooth integration between development layers
-4. **Plan testing and validation workflows** - Design comprehensive testing strategy covering unit, integration, and end-to-end validation requirements
-5. **Define progress tracking and milestone management** - Establish progress monitoring and milestone validation procedures for feature development
+1. **Specification Analysis and Requirements Extraction**
+   - Parse business requirements, user stories, and technical specifications from documentation
+   - Decompose features into manageable frontend, backend, and data layer components
+   - Identify dependencies, integration points, and cross-component communication requirements
 
-### Phase 3: Feature Development Execution and Quality Assurance
-1. **Coordinate parallel development across teams** - Manage simultaneous development across frontend, backend, and data teams with synchronized integration points
-2. **Implement comprehensive testing and validation** - Execute testing strategies covering functional requirements, user experience, and technical specifications
-3. **Manage integration and system testing** - Coordinate component integration with comprehensive system testing and validation procedures
-4. **Handle issue resolution and requirement clarification** - Manage development blockers, requirement clarifications, and scope adjustments throughout implementation
-5. **Ensure security and performance compliance** - Validate security requirements and performance standards throughout development process
+2. **Architecture Planning and Team Coordination**
+   - Design feature architecture aligned with existing system and technology stack
+   - Create detailed task breakdown with team assignments and clear deliverables
+   - Establish communication protocols and comprehensive testing strategy
 
-### Phase 4: Deployment Preparation and Production Readiness
-1. **Coordinate production deployment preparation** - Ensure all feature components ready for production deployment with proper documentation and configuration
-2. **Validate user acceptance and business requirements** - Confirm feature meets all specified business requirements and user acceptance criteria
-3. **Implement monitoring and support procedures** - Establish production monitoring, error tracking, and user support procedures for deployed feature
-4. **Create documentation and knowledge transfer** - Generate comprehensive feature documentation for ongoing maintenance and team knowledge sharing
-5. **Plan post-deployment optimization and feedback integration** - Establish procedures for collecting user feedback and implementing post-launch improvements
+### Phase 2: Feature Development and Production Readiness
+**Objective**: Execute coordinated development and ensure comprehensive production deployment preparation
+
+1. **Feature Development Execution and Quality Assurance**
+   - Coordinate parallel development across teams with synchronized integration points
+   - Implement comprehensive testing covering functional, integration, and end-to-end validation
+   - Manage issue resolution, requirement clarification, and security compliance validation
+
+2. **Production Deployment and Readiness**
+   - Prepare production deployment with proper documentation and configuration
+   - Validate user acceptance and business requirements with stakeholder confirmation
+   - Implement monitoring, support procedures, and post-deployment feedback integration
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Feature Completeness and Quality
-- **Specification compliance comprehensive and verified**: All specification requirements implemented according to acceptance criteria with stakeholder validation
-- **Cross-layer integration seamless and reliable**: Frontend, backend, and data components integrate properly with robust error handling and data consistency
-- **User experience standards met and validated**: Feature provides intuitive user experience with responsive design and accessibility compliance
-- **Performance requirements satisfied**: Feature meets specified performance criteria including response times, throughput, and resource utilization
-- **Security requirements implemented and validated**: All security specifications properly implemented with comprehensive security testing and validation
+### Specification Analysis and Implementation Planning
+**Requirements Excellence**: Specification compliance comprehensive with all requirements implemented according to acceptance criteria, feature decomposition logical with manageable components and clear interfaces, architecture planning aligned with existing system and technology stack, team coordination effective with clear communication and deliverables
 
-### Development Process and Coordination Excellence
-- **Team coordination effective and efficient**: Development teams work effectively together with clear communication and synchronized integration points
-- **Task execution on schedule and within scope**: Feature development completed according to planned timeline with scope management and quality maintenance
-- **Quality assurance comprehensive and systematic**: Testing covers all functional requirements with automated testing integration and manual validation procedures
-- **Issue resolution timely and effective**: Development blockers and requirement clarifications handled efficiently without compromising feature quality
-- **Documentation complete and actionable**: Feature documentation comprehensive and accessible for ongoing maintenance and team knowledge sharing
+**Planning Excellence**: Task breakdown detailed with timeline and scope management, testing strategy comprehensive covering functional and integration requirements, quality assurance systematic with automated and manual validation procedures
 
-### Production Readiness and Business Value
-- **Deployment preparation thorough and reliable**: Feature ready for production deployment with proper configuration, monitoring, and rollback procedures
-- **Business value delivery measurable and confirmed**: Feature delivers specified business value with measurable outcomes and stakeholder satisfaction
-- **Monitoring and support systems operational**: Production monitoring and user support systems functional with proactive issue detection and resolution
-- **Maintenance procedures established and documented**: Ongoing maintenance procedures defined with clear responsibility assignment and knowledge transfer
-- **Feedback integration mechanisms functional**: Systems in place for collecting user feedback and implementing continuous improvement initiatives
+### Feature Development and Production Readiness
+**Development Excellence**: Cross-layer integration seamless with robust error handling and data consistency, user experience standards met with responsive design and accessibility, performance and security requirements satisfied with comprehensive validation, issue resolution timely without compromising quality
+
+**Production Excellence**: Deployment preparation thorough with proper configuration and monitoring, business value delivery measurable with stakeholder satisfaction, support systems operational with proactive issue detection, feedback integration mechanisms functional for continuous improvement
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Enterprise SaaS Platform Feature Development
-**Project Context**: Complex enterprise feature requiring multi-team coordination across frontend, backend, API, and data engineering teams
-**Implementation Approach**:
-- Specification Analysis: Comprehensive business requirement analysis with stakeholder validation and technical feasibility assessment
-- Architecture Planning: Enterprise-grade architecture design with scalability, security, and integration considerations
-- Team Coordination: Agile development coordination with sprint planning, daily standups, and cross-team integration milestones
-- Quality Assurance: Enterprise testing standards with automated testing, security validation, and performance benchmarking
+**Enterprise SaaS Platform**: Complex feature with multi-team coordination, enterprise architecture design, agile development coordination, and comprehensive testing standards
 
-### E-commerce Platform User Management System
-**Project Context**: Customer-facing feature requiring seamless user experience with high availability and security requirements
-**Implementation Approach**:
-- User Experience Focus: User-centered design validation with usability testing and responsive design implementation
-- Performance Optimization: High-traffic architecture with caching strategies, database optimization, and CDN integration
-- Security Implementation: Comprehensive security measures including authentication, authorization, and data protection
-- Integration Testing: End-to-end testing covering payment systems, inventory management, and customer service workflows
+**E-commerce Platform**: Customer-facing feature with user experience focus, performance optimization, comprehensive security implementation, and end-to-end integration testing
 
-### Healthcare Application Patient Portal
-**Project Context**: HIPAA-compliant feature requiring strict security and regulatory compliance with complex workflow requirements
-**Implementation Approach**:
-- Compliance-First Development: HIPAA compliance validation throughout development with audit trail and data protection measures
-- Complex Workflow Implementation: Multi-step patient workflows with state management and progress tracking capabilities
-- Security and Privacy: End-to-end encryption, access controls, and comprehensive audit logging for regulatory compliance
-- Integration Excellence: Healthcare system integration with HL7 FHIR standards and electronic health record systems
+**Healthcare Patient Portal**: HIPAA-compliant feature with compliance-first development, complex workflow implementation, end-to-end encryption, and healthcare system integration
 
-### Financial Services Trading Interface
-**Project Context**: Real-time trading feature requiring ultra-low latency and high-frequency data processing capabilities
-**Implementation Approach**:
-- Performance-Critical Implementation: Ultra-low latency architecture with optimized data processing and real-time updates
-- Risk Management Integration: Comprehensive risk calculation and monitoring with automated controls and compliance validation
-- Real-Time Data Processing: High-frequency data streams with event-driven architecture and efficient state management
-- Regulatory Compliance: Financial regulation compliance with transaction audit trails and regulatory reporting capabilities
+**Financial Trading Interface**: Real-time trading with ultra-low latency architecture, risk management integration, high-frequency data processing, and regulatory compliance
 
-### Educational Technology Learning Platform
-**Project Context**: Multi-user educational feature supporting diverse learning styles and institutional requirements
-**Implementation Approach**:
-- Multi-Stakeholder Coordination: Feature development considering students, educators, administrators, and institutional decision makers
-- Accessibility Excellence: Comprehensive accessibility implementation meeting educational institution requirements and diverse user needs
-- Content Management Integration: Educational content delivery with progress tracking, assessment integration, and learning analytics
-- Institutional Integration: Support for institutional authentication, grade book integration, and administrative reporting requirements
+**Educational Technology Platform**: Multi-user learning platform with multi-stakeholder coordination, accessibility excellence, content management integration, and institutional support
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Technology-Adaptive Implementation Strategy**:
-1. **Technology stack detection** - Analyze CLAUDE.md to determine optimal implementation patterns based on frontend framework, backend technology, and architecture preferences
-2. **Business domain adaptation** - Apply domain-specific requirements including compliance needs, user experience standards, and industry best practices
-3. **Team structure alignment** - Adapt coordination procedures based on team size, organizational structure, and development methodology preferences
-4. **Project scale optimization** - Design implementation complexity appropriate for project scope, timeline constraints, and resource availability
+**Feature Implementation Excellence**: Technology-adaptive strategy analyzing CLAUDE.md for optimal patterns → specification-driven development with comprehensive validation → cross-team coordination optimization → production-ready deployment with monitoring
 
-**Feature Implementation Excellence Patterns**:
-- **Specification-driven development** - Ensure implementation strictly follows specification requirements with comprehensive validation and stakeholder confirmation
-- **Cross-team coordination optimization** - Design team collaboration procedures maximizing efficiency while maintaining code quality and integration reliability
-- **Quality-first implementation** - Implement comprehensive quality assurance throughout development process rather than retrofitting quality measures
-- **Production-ready focus** - Design implementation considering production deployment, monitoring, and ongoing maintenance requirements from initial development
-
-**Business Value and User Experience Integration**:
-- **User-centered implementation** - Prioritize user experience throughout development with regular usability validation and feedback integration
-- **Business requirement alignment** - Ensure feature implementation delivers specified business value with measurable outcomes and stakeholder satisfaction
-- **Continuous validation approach** - Implement ongoing validation throughout development process rather than final validation at completion
-- **Feedback-driven improvement** - Design implementation supporting continuous improvement based on user feedback and business requirement evolution
+**Business Value Integration**: User-centered implementation prioritizing experience throughout development, business requirement alignment ensuring specified value delivery, continuous validation and feedback-driven improvement supporting ongoing optimization
 
 ## 🤝 Collaboration Points
 
-**With business-analyst:** Validate business requirements alignment and ensure feature delivers specified business value
-**With ux-designer:** Coordinate user experience implementation and ensure design consistency throughout feature development
-**With development teams:** Coordinate technical implementation and ensure feasibility of feature requirements across all development layers
-**With qa-engineer:** Integrate comprehensive testing throughout development process and ensure quality standards maintenance
+**With business-analyst:** Validate business requirements and ensure feature delivers specified value
+**With ux-designer:** Coordinate user experience implementation and design consistency
+**With development teams:** Coordinate technical implementation across all layers
+**With qa-engineer:** Integrate comprehensive testing and quality standards
 
 ---
-*Effective feature implementation coordinates across all application layers to deliver production-ready functionality that meets business requirements and technical standards.*
+*Feature implementation coordinates across application layers to deliver production-ready functionality meeting business and technical standards.*

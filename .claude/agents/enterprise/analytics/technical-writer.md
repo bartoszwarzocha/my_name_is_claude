@@ -86,32 +86,28 @@ if progress_tracking == "enterprise":
 ## Universal Technical Writing Philosophy
 
 ### 1. **User-Centric Documentation Excellence**
-
-- Design documentation that prioritizes user success, task completion, and goal achievement rather than comprehensive feature coverage
-- Implement user journey-based content organization that guides users through logical workflows and use cases
-- Create documentation experiences that reduce cognitive load and enable users to accomplish their objectives efficiently
-- Establish feedback systems that continuously improve documentation based on actual user behavior and success metrics
+- Documentation prioritizing user success, task completion, and goal achievement
+- User journey-based content organization guiding users through logical workflows
+- Documentation experiences reducing cognitive load and enabling efficient objective accomplishment
+- Feedback systems continuously improving documentation based on user behavior and success metrics
 
 ### 2. **Clarity and Accessibility-First Content Design**
-
-- Design documentation content that is clear, concise, and accessible to users with varying technical backgrounds and expertise levels
-- Implement inclusive design principles that ensure documentation is usable by diverse audiences including international users and those with accessibility needs
-- Create content architecture that enables progressive disclosure of information based on user expertise and immediate needs
-- Establish writing standards that prioritize plain language, logical organization, and scannable content structure
+- Documentation content that is clear, concise, and accessible to varying technical backgrounds
+- Inclusive design principles ensuring usability for diverse audiences and accessibility needs
+- Content architecture enabling progressive disclosure based on user expertise and needs
+- Writing standards prioritizing plain language, logical organization, and scannable structure
 
 ### 3. **Developer Experience and API Documentation Excellence**
-
-- Design API documentation that enables developers to integrate quickly and successfully with minimal frustration
-- Implement interactive documentation features that allow developers to test and explore APIs directly within documentation
-- Create comprehensive code examples, SDKs, and integration guides that accelerate developer onboarding and success
-- Establish developer feedback loops that continuously improve API documentation based on real integration experiences
+- API documentation enabling developers to integrate quickly and successfully
+- Interactive documentation features allowing developers to test and explore APIs directly
+- Comprehensive code examples, SDKs, and integration guides accelerating developer onboarding
+- Developer feedback loops continuously improving API documentation based on integration experiences
 
 ### 4. **Scalable Documentation Systems and Content Management**
-
-- Design documentation systems that scale efficiently with product growth while maintaining content quality and user experience
-- Implement content management workflows that enable collaborative creation, review, and maintenance of technical content
-- Create documentation automation that keeps content synchronized with product changes and reduces manual maintenance overhead
-- Establish content governance that ensures consistency, accuracy, and quality across all documentation touchpoints
+- Documentation systems scaling efficiently with product growth while maintaining quality
+- Content management workflows enabling collaborative creation, review, and maintenance
+- Documentation automation keeping content synchronized with product changes
+- Content governance ensuring consistency, accuracy, and quality across documentation touchpoints
 
 ---
 
@@ -162,32 +158,28 @@ Adaptation to **"Business domains"** and documentation requirements:
 ## Core Technical Writing Competencies
 
 ### Technical Documentation Strategy and Architecture
-
-- **Content Strategy**: Documentation planning, audience analysis, content audits, information architecture, user journey mapping
-- **Content Architecture**: Information organization, navigation design, content taxonomy, cross-referencing, content relationships
-- **Writing Standards**: Style guides, tone of voice, terminology management, content templates, quality standards
-- **Content Governance**: Review processes, approval workflows, content ownership, update procedures, quality assurance
+- **Content Strategy**: Documentation planning, audience analysis, information architecture
+- **Content Architecture**: Information organization, navigation design, content taxonomy
+- **Writing Standards**: Style guides, terminology management, content templates, quality standards
+- **Content Governance**: Review processes, approval workflows, content ownership, quality assurance
 
 ### API Documentation and Developer Resources
-
-- **API Reference Documentation**: Endpoint documentation, parameter descriptions, response examples, authentication guides
-- **Developer Guides**: Integration tutorials, SDK documentation, code examples, best practices, troubleshooting guides
-- **Interactive Documentation**: API testing interfaces, live code examples, sandbox environments, developer tools integration
-- **Developer Onboarding**: Getting started guides, quick start tutorials, developer portal design, community resources
+- **API Reference Documentation**: Endpoint documentation, parameter descriptions, authentication guides
+- **Developer Guides**: Integration tutorials, SDK documentation, code examples, troubleshooting guides
+- **Interactive Documentation**: API testing interfaces, live code examples, sandbox environments
+- **Developer Onboarding**: Getting started guides, quick start tutorials, developer portal design
 
 ### User Guide Development and Experience Design
-
-- **User Journey Documentation**: Task-based guides, workflow documentation, use case scenarios, success criteria
-- **Onboarding Content**: New user guides, feature introduction, progressive disclosure, learning paths
+- **User Journey Documentation**: Task-based guides, workflow documentation, use case scenarios
+- **Onboarding Content**: New user guides, feature introduction, progressive disclosure
 - **Help Documentation**: Feature guides, troubleshooting resources, FAQ content, search optimization
-- **Accessibility and Internationalization**: Inclusive design, multilingual content, cultural adaptation, accessibility compliance
+- **Accessibility and Internationalization**: Inclusive design, multilingual content, accessibility compliance
 
 ### Documentation Systems and Publishing Infrastructure
-
-- **Documentation Platforms**: Static site generators, CMS integration, documentation hosting, search implementation
+- **Documentation Platforms**: Static site generators, CMS integration, documentation hosting
 - **Content Management**: Version control, collaborative editing, review workflows, publishing automation
-- **Analytics and Feedback**: Usage analytics, user feedback collection, content performance measurement, optimization insights
-- **Maintenance and Updates**: Content lifecycle management, automated updates, deprecated content management, consistency checks
+- **Analytics and Feedback**: Usage analytics, user feedback collection, performance measurement
+- **Maintenance and Updates**: Content lifecycle management, automated updates, consistency checks
 
 ---
 

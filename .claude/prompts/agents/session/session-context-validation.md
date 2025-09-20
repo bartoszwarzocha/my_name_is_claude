@@ -10,131 +10,71 @@ Validate session context integrity, detect corruption, and ensure reliable sessi
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Context Integrity Assessment and Validation
-1. **Validate stored session state files** - Check existence, format, and completeness of SESSION_STATE.md, SESSION_TODOS.md, and CONTINUATION_CONTEXT.md
-2. **Verify project state consistency** - Compare stored context with current project files, git history, and configuration changes
-3. **Assess context timestamp validity** - Evaluate context age, identify stale data, and determine if refresh is needed
-4. **Validate cross-reference accuracy** - Check internal references, file paths, and dependency relationships in stored context
-5. **Detect context corruption indicators** - Identify inconsistencies, missing data, or format violations in session files
+### Phase 1: Context Integrity and Project State Validation
+**Objective**: Validate session context integrity and project state consistency
 
-### Phase 2: Project State Synchronization Validation
-1. **Compare current vs stored project structure** - Validate directory structure, file existence, and organizational changes
-2. **Verify git repository consistency** - Check for new commits, branch changes, or repository state modifications
-3. **Assess configuration drift** - Compare current CLAUDE.md, package files, and environment settings with stored context
-4. **Validate external dependencies** - Check availability of databases, APIs, services, and integration points referenced in context
-5. **Identify breaking changes** - Detect modifications that could invalidate stored session assumptions or workflows
+1. **Context Integrity Assessment and Project Synchronization**
+   - Validate stored session state files (SESSION_STATE.md, SESSION_TODOS.md, CONTINUATION_CONTEXT.md)
+   - Verify project state consistency by comparing stored context with current files and git history
+   - Assess context timestamp validity and validate cross-reference accuracy
+   - Compare current vs stored project structure and verify git repository consistency
 
-### Phase 3: MCP Tools and Integration Validation
-1. **Verify MCP tools availability and status** - Check Serena, Context7, Playwright, and other configured tools accessibility
-2. **Validate tool configuration consistency** - Ensure MCP tool settings match current project requirements and stored context
-3. **Assess integration point functionality** - Test critical tool integrations and identify any configuration or connectivity issues
-4. **Check tool version compatibility** - Verify MCP tools versions are compatible with stored session requirements
-5. **Validate tool-specific context data** - Ensure Serena indices, Context7 mappings, and other tool data are current and accurate
+2. **MCP Tools Integration and Dependency Validation**
+   - Verify MCP tools availability (Serena, Context7, Playwright) and configuration consistency
+   - Assess integration point functionality and check tool version compatibility
+   - Validate external dependencies and identify breaking changes
+   - Ensure tool-specific context data is current and accurate
 
-### Phase 4: Context Repair and Recovery Strategies
-1. **Attempt automatic context repair** - Fix minor inconsistencies, update stale references, and resolve simple format issues
-2. **Generate context refresh recommendations** - Identify areas requiring manual review or complete context regeneration
-3. **Create validation report with actionable guidance** - Document all issues found with specific resolution steps
-4. **Provide session initialization alternatives** - Recommend whether to proceed with current context, refresh specific components, or restart completely
-5. **Establish context validation checkpoints** - Set up ongoing validation procedures to prevent future corruption
+### Phase 2: Context Repair and Quality Assurance
+**Objective**: Repair context issues and establish ongoing validation procedures
 
-### Phase 5: Quality Assurance and Monitoring Integration
-1. **Implement context health monitoring** - Create continuous validation processes for active sessions
-2. **Establish validation metrics and thresholds** - Define acceptable context quality levels and degradation indicators
-3. **Create validation automation** - Set up automatic context validation during session transitions and key operations
-4. **Generate validation performance analytics** - Track validation effectiveness and identify improvement opportunities
-5. **Integrate with framework quality gates** - Ensure context validation aligns with overall framework quality standards
+1. **Context Repair and Recovery Strategies**
+   - Attempt automatic context repair for minor inconsistencies and stale references
+   - Generate context refresh recommendations and create validation reports
+   - Provide session initialization alternatives based on validation results
+   - Establish context validation checkpoints to prevent future corruption
+
+2. **Quality Assurance and Monitoring Integration**
+   - Implement context health monitoring with continuous validation processes
+   - Establish validation metrics, thresholds, and automation procedures
+   - Generate validation performance analytics and improvement opportunities
+   - Integrate with framework quality gates for overall standard alignment
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Context Integrity Validation Success
-- **Session state files validated**: All required session files exist, are properly formatted, and contain complete data
-- **Project state consistency confirmed**: Current project structure matches stored context expectations with acceptable variance
-- **Context freshness verified**: Session context age is within acceptable limits or refresh strategy is defined
-- **Cross-references validated**: All internal references, file paths, and dependency relationships are accurate and current
-- **Corruption detection completed**: Any context corruption is identified with clear severity assessment and repair options
+### Validation and Recovery Standards
+**Context Integrity and Project Synchronization**:
+- Session state files validated with proper formatting and complete data
+- Project state consistency confirmed with acceptable variance and current cross-references
+- Structure consistency confirmed with git repository state validated and configuration alignment verified
+- Dependency availability confirmed and breaking changes identified with clear documentation
 
-### Project Synchronization Validation Success
-- **Structure consistency confirmed**: Project directory structure, critical files, and organizational changes properly assessed
-- **Git repository state validated**: Repository changes identified and compatibility with stored context determined
-- **Configuration alignment verified**: Current project configuration matches stored context or drift is properly documented
-- **Dependency availability confirmed**: All external dependencies and integration points are accessible and functional
-- **Breaking changes identified**: Any modifications that could impact session effectiveness are clearly documented
-
-### MCP Tools Integration Validation Success
-- **Tool availability confirmed**: All configured MCP tools are accessible and responding properly
-- **Configuration consistency verified**: MCP tool settings align with project requirements and stored session context
-- **Integration functionality validated**: Critical tool integrations tested and confirmed operational
-- **Version compatibility assured**: MCP tool versions compatible with session requirements and framework standards
-- **Tool-specific context validated**: All tool-generated context data is current, accurate, and properly synchronized
-
-### Recovery and Quality Assurance Success
-- **Context repair completed**: Automatic repairs applied successfully where possible without data loss
-- **Clear guidance provided**: Specific, actionable recommendations for resolving any identified context issues
-- **Validation report comprehensive**: Complete documentation of validation results with clear resolution paths
-- **Session readiness determined**: Clear recommendation on session initialization approach based on validation results
-- **Monitoring integration active**: Ongoing context validation and quality monitoring procedures established
+**Tool Integration and Quality Assurance**:
+- MCP tool availability confirmed with configuration consistency and integration functionality validated
+- Version compatibility assured and tool-specific context validated for accuracy and synchronization
+- Context repair completed with clear guidance provided and comprehensive validation reports
+- Session readiness determined with monitoring integration active for ongoing validation
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Standard Session Continuation Validation
-**Scenario**: Validating context before continuing development session from previous day
-**Validation Focus**:
-- Check SESSION_STATE.md for completeness and consistency
-- Verify no major project changes occurred overnight
-- Confirm MCP tools are functional and indices are current
-- Validate TODO status accuracy and project priorities remain relevant
+**Cross-Context Validation Examples**
 
-### Post-Interruption Context Recovery Validation
-**Scenario**: Validating session context after unexpected interruption or system crash
-**Validation Focus**:
-- Assess potential context corruption from incomplete save operations
-- Verify project state matches expectations at interruption time
-- Check for partial file updates or inconsistent state
-- Determine if emergency context reconstruction is needed
+**Standard Session Continuation**: Check SESSION_STATE.md completeness, verify no major changes, confirm MCP tools functional
 
-### Multi-Day Project Gap Validation
-**Scenario**: Resuming work after extended absence with potential significant project changes
-**Validation Focus**:
-- Comprehensive project state comparison with stored context
-- Git history analysis for major architectural or dependency changes
-- Complete MCP tools revalidation and reindexing if necessary
-- Assessment of context relevance and business priority shifts
+**Post-Interruption Recovery**: Assess potential corruption from incomplete saves, verify project state, check for partial updates
 
-### Team Handoff Context Validation
-**Scenario**: Validating context integrity before transferring session to different team member
-**Validation Focus**:
-- Ensure context completeness for knowledge transfer
-- Verify all external dependencies are accessible to new team member
-- Check that stored context contains sufficient detail for effective handoff
-- Validate MCP tools configuration matches team member's environment
+**Multi-Day Project Gap**: Comprehensive project state comparison, git history analysis, complete MCP tools revalidation
 
-### Production Deployment Context Validation
-**Scenario**: Validating development context before major deployment or release preparation
-**Validation Focus**:
-- Ensure development context aligns with production requirements
-- Verify no critical dependencies or configurations are missing
-- Check that session context supports deployment workflow requirements
-- Validate integration points and external service compatibility
+**Team Handoff Validation**: Ensure context completeness, verify dependencies accessible, validate MCP tools configuration
+
+**Production Deployment**: Ensure development context aligns with production, verify dependencies, validate integration points
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Systematic Context Validation Process**:
-1. **Comprehensive integrity assessment** - Systematic validation of all stored context components
-2. **Risk-based validation prioritization** - Focus validation efforts on highest-impact context elements
-3. **Intelligent repair and recovery** - Attempt automatic fixes while preserving context accuracy and completeness
-4. **Clear decision support** - Provide specific guidance for session initialization based on validation results
+**Validation Process**: Comprehensive integrity assessment → risk-based prioritization → intelligent repair → clear decision support
 
-**Adaptive Validation Strategies**:
-- **Fresh sessions**: Focus on project state analysis and MCP tools integration
-- **Continuation sessions**: Emphasize context consistency and freshness validation
-- **Recovery sessions**: Prioritize corruption detection and repair capabilities
-- **Handoff sessions**: Ensure context completeness and accessibility for different users
+**Adaptive Strategies**: Fresh sessions (project analysis), Continuation (consistency validation), Recovery (corruption detection), Handoff (completeness)
 
-**Quality Integration Approach**:
-- **Proactive validation** - Regular context health checks during active sessions
-- **Continuous monitoring** - Ongoing validation to prevent context degradation
-- **Framework integration** - Alignment with overall framework quality standards and procedures
-- **User experience focus** - Ensure validation enhances rather than impedes session productivity
+**Quality Integration**: Proactive validation, continuous monitoring, framework integration, user experience focus

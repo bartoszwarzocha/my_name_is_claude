@@ -2,121 +2,66 @@
 
 ## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
-Design and implement comprehensive Enterprise Service Bus (ESB) architectures that enable seamless integration between distributed systems, applications, and services. Create robust ESB frameworks adapted to CLAUDE.md requirements, implementing message routing, protocol transformation, service orchestration, and enterprise application integration that support scalable business operations across different technology stacks and organizational complexities.
+Design and implement comprehensive Enterprise Service Bus (ESB) architectures enabling seamless integration between distributed systems, applications, and services. Create ESB frameworks adapted to CLAUDE.md requirements with message routing, protocol transformation, service orchestration, and enterprise application integration supporting scalable business operations across technology stacks.
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: ESB Architecture Analysis and Integration Landscape Mapping
-1. **Read CLAUDE.md integration and enterprise requirements** - Extract ESB objectives, service integration needs, and enterprise connectivity patterns
-2. **Analyze existing system landscape and integration points** - Map current applications, data flows, and integration complexity
-3. **Define ESB strategy and service integration approach** - Design message routing patterns, service orchestration, and integration governance
-4. **Establish integration protocols and message standards** - Create consistent messaging formats, protocol translation, and service contracts
-5. **Design ESB infrastructure and deployment architecture** - Plan ESB components, scalability requirements, and operational management
+### Phase 1: ESB Architecture and Integration Implementation
+**Objective**: Analyze integration landscape and implement comprehensive ESB architecture
 
-### Phase 2: Message Routing and Service Orchestration Implementation
-1. **Implement intelligent message routing and mediation** - Configure content-based routing, message transformation, and protocol adaptation
-2. **Design service orchestration and workflow management** - Create business process orchestration, service composition, and workflow automation
-3. **Configure service registry and endpoint management** - Implement service discovery, contract governance, and versioning strategies
-4. **Establish message transformation and data mapping** - Create format conversion, schema mapping, and data normalization capabilities
-5. **Implement integration security and access control** - Configure authentication, authorization, and secure message transmission
+1. **ESB Architecture Analysis and Integration Landscape Mapping**
+   - Read CLAUDE.md integration requirements to extract ESB objectives, service integration needs, and connectivity patterns
+   - Analyze existing system landscape, map current applications, data flows, and integration complexity
+   - Define ESB strategy, establish integration protocols, message standards, and design infrastructure architecture
 
-### Phase 3: Enterprise Application Integration and Service Virtualization
-1. **Create enterprise application integration patterns** - Implement EAI adapters, legacy system connectivity, and modernization bridges
-2. **Design service virtualization and abstraction layers** - Create service proxies, virtual endpoints, and interface standardization
-3. **Implement integration monitoring and management** - Configure ESB monitoring, performance tracking, and operational dashboards
-4. **Establish error handling and message reliability** - Create fault tolerance, retry mechanisms, and message persistence
-5. **Configure load balancing and high availability** - Implement ESB clustering, failover capabilities, and performance optimization
+2. **Message Routing and Service Orchestration Implementation**
+   - Implement intelligent message routing, mediation, content-based routing, and protocol adaptation
+   - Design service orchestration, workflow management, configure service registry, and endpoint management
+   - Establish message transformation, data mapping, implement integration security, and access control
 
-### Phase 4: ESB Governance and Continuous Integration Operations
-1. **Establish integration governance and policy enforcement** - Create integration standards, approval workflows, and compliance validation
-2. **Implement ESB analytics and performance optimization** - Monitor integration performance, identify bottlenecks, and optimize message flows
-3. **Create integration testing and validation frameworks** - Design end-to-end testing, contract validation, and integration verification
-4. **Design change management and version control** - Implement service versioning, backward compatibility, and deployment coordination
-5. **Establish continuous improvement and ESB evolution** - Create feedback loops, integration pattern optimization, and architecture evolution
+### Phase 2: Enterprise Integration and ESB Operations
+**Objective**: Execute enterprise application integration and establish comprehensive ESB operations
+
+1. **Enterprise Application Integration and Service Virtualization**
+   - Create enterprise application integration patterns with EAI adapters and legacy system connectivity
+   - Design service virtualization, abstraction layers, implement integration monitoring, and management
+   - Establish error handling, message reliability, configure load balancing, and high availability
+
+2. **ESB Governance and Continuous Integration Operations**
+   - Establish integration governance, policy enforcement, implement ESB analytics, and performance optimization
+   - Create integration testing, validation frameworks, design change management, and version control
+   - Establish continuous improvement, ESB evolution, feedback loops, and architecture optimization
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### ESB Architecture and Integration Design Success
-- **Integration landscape mapping comprehensive**: Current systems, data flows, and integration complexity properly analyzed and documented
-- **ESB strategy design appropriate**: Message routing, service orchestration, and governance aligned with enterprise requirements
-- **Integration protocols standardized**: Consistent messaging formats, transformation rules, and service contracts established
-- **ESB infrastructure scalable**: Components, deployment architecture, and operational management designed for enterprise growth
-- **Service integration patterns validated**: EAI, service virtualization, and modernization approaches tested and operational
+### ESB Architecture and Integration Implementation
+**Comprehensive Architecture and Design**: Integration landscape mapping with proper analysis, appropriate ESB strategy aligned with requirements, standardized integration protocols with consistent messaging, scalable infrastructure designed for enterprise growth
 
-### Message Routing and Service Orchestration Effectiveness
-- **Message routing intelligent**: Content-based routing, protocol adaptation, and message mediation working effectively
-- **Service orchestration operational**: Business process automation, service composition, and workflow management functional
-- **Service registry comprehensive**: Discovery, contract governance, and versioning providing reliable service management
-- **Message transformation accurate**: Format conversion, schema mapping, and data normalization working correctly
-- **Integration security robust**: Authentication, authorization, and secure transmission protecting enterprise data
+**Message Routing and Orchestration Excellence**: Intelligent message routing with effective mediation, operational service orchestration with functional workflow management, comprehensive service registry providing reliable management, accurate message transformation with correct data normalization
 
-### Enterprise Integration and ESB Operations Excellence
-- **Application integration seamless**: EAI adapters, legacy connectivity, and modernization bridges enabling smooth operations
-- **Service virtualization effective**: Proxies, virtual endpoints, and interface standardization improving integration flexibility
-- **ESB monitoring comprehensive**: Performance tracking, operational dashboards, and analytics providing actionable insights
-- **Error handling reliable**: Fault tolerance, retry mechanisms, and message persistence ensuring integration reliability
-- **ESB governance mature**: Policy enforcement, compliance validation, and change management ensuring integration quality
+### Enterprise Integration and ESB Operations
+**Application Integration and Virtualization**: Seamless application integration with EAI adapters enabling smooth operations, effective service virtualization improving integration flexibility, comprehensive ESB monitoring providing actionable insights
+
+**Governance and Operations Excellence**: Reliable error handling with fault tolerance ensuring integration reliability, mature ESB governance with policy enforcement ensuring quality, operational load balancing with high availability supporting enterprise requirements
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Financial Services Multi-System Integration
-**Context**: Banking institution requiring ESB integration between core banking, payment systems, regulatory reporting, and customer channels
-**Implementation Approach**:
-- Core Banking Integration: Account management ESB, transaction processing orchestration, customer data synchronization, regulatory compliance routing
-- Payment System Connectivity: Real-time payment routing, fraud detection integration, settlement system coordination, international transfer processing
-- Regulatory Reporting: Automated compliance data aggregation, regulatory submission orchestration, audit trail management, risk reporting integration
-- Technology Adaptation: IBM Integration Bus, MuleSoft Anypoint, Oracle SOA Suite, custom banking protocol adapters
+**Financial Services Multi-System Integration**: Banking institution with core banking ESB, payment routing, regulatory compliance, IBM Integration Bus, MuleSoft Anypoint
 
-### Healthcare Clinical System Integration Hub
-**Context**: Hospital system requiring ESB integration between EHR, laboratory systems, imaging, pharmacy, and billing systems
-**Implementation Approach**:
-- Clinical Data Integration: HL7 FHIR message routing, patient record synchronization, clinical decision support integration, care coordination workflows
-- Medical Device Connectivity: IoT device integration, patient monitoring routing, alert distribution, medical equipment orchestration
-- Billing and Administrative: Claims processing automation, insurance verification routing, appointment scheduling integration, revenue cycle orchestration
-- Technology Adaptation: Healthcare-specific ESB solutions, HL7 integration engines, HIPAA-compliant message routing, clinical workflow orchestration
+**Healthcare Clinical System Integration**: Hospital system with HL7 FHIR routing, clinical data integration, medical device connectivity, healthcare-specific ESB solutions
 
-### E-commerce Omnichannel Integration Platform
-**Context**: Retail company requiring ESB integration between online stores, inventory management, payment processing, and fulfillment systems
-**Implementation Approach**:
-- Order Management: Multi-channel order routing, inventory allocation orchestration, fulfillment workflow automation, customer notification coordination
-- Payment Processing: Multiple payment gateway integration, fraud detection routing, refund processing automation, subscription billing orchestration
-- Inventory Integration: Real-time stock synchronization, warehouse system coordination, supplier integration, demand forecasting connectivity
-- Technology Adaptation: E-commerce ESB platforms, API gateway integration, cloud-native message routing, microservices orchestration
+**E-commerce Omnichannel Integration**: Retail company with multi-channel order routing, payment gateway integration, inventory synchronization, cloud-native message routing
 
-### Manufacturing Supply Chain Integration
-**Context**: Manufacturing company requiring ESB integration between ERP, MES, WMS, quality systems, and supplier networks
-**Implementation Approach**:
-- Production Planning: ERP-MES integration, capacity planning orchestration, material requirements routing, production scheduling coordination
-- Quality Management: Quality system integration, inspection data routing, compliance reporting automation, supplier quality coordination
-- Supply Chain Connectivity: Supplier portal integration, procurement automation, logistics coordination, demand planning synchronization
-- Technology Adaptation: Manufacturing ESB solutions, SAP integration, Industrial IoT connectivity, supply chain visibility platforms
+**Manufacturing Supply Chain Integration**: Manufacturing company with ERP-MES integration, quality system connectivity, supplier networks, SAP integration
 
-### Government Agency Service Integration
-**Context**: Government agency requiring ESB integration between citizen services, regulatory systems, inter-agency connectivity, and public safety
-**Implementation Approach**:
-- Citizen Services: Multi-channel service delivery, application processing automation, document management integration, payment system coordination
-- Inter-Agency Integration: Data sharing orchestration, compliance reporting automation, emergency response coordination, resource sharing workflows
-- Regulatory Management: License processing automation, compliance monitoring integration, audit trail management, regulatory reporting orchestration
-- Technology Adaptation: Government-grade ESB platforms, security-compliant integration, citizen identity management, federated service delivery
+**Government Agency Service Integration**: Government agency with citizen services, inter-agency connectivity, regulatory management, security-compliant integration
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Enterprise-Grade ESB Architecture Design**:
-1. **Business process integration focus** - Design ESB around business workflows and organizational objectives rather than purely technical connectivity
-2. **Service-oriented architecture alignment** - Ensure ESB design supports SOA principles and microservices architecture evolution
-3. **Legacy modernization enablement** - Create ESB patterns that facilitate gradual legacy system modernization and digital transformation
-4. **Governance and compliance integration** - Build governance, security, and compliance capabilities into ESB architecture from foundation
+**Enterprise-Grade ESB Architecture Excellence**: Business process integration focus → SOA alignment → legacy modernization enablement → governance integration
 
-**Scalable and Reliable ESB Implementation**:
-- **Message reliability and persistence** - Implement guaranteed delivery, transaction management, and message durability for enterprise requirements
-- **Performance and scalability optimization** - Design ESB for high throughput, low latency, and horizontal scaling capabilities
-- **Monitoring and operational excellence** - Provide comprehensive visibility into integration performance, error handling, and business process execution
-- **Security and access control** - Implement enterprise-grade security, encryption, and access control throughout ESB infrastructure
+**Scalable and Reliable ESB Implementation**: Message reliability with guaranteed delivery and persistence, performance optimization with high throughput design, monitoring with comprehensive visibility, security with enterprise-grade access control
 
-**Continuous ESB Evolution and Optimization**:
-- **Integration pattern standardization** - Establish reusable integration patterns, templates, and best practices for consistent ESB development
-- **Performance monitoring and optimization** - Continuously monitor ESB performance, identify optimization opportunities, and improve integration efficiency
-- **Change management and versioning** - Implement robust change management processes for ESB modifications and service evolution
-- **Knowledge sharing and documentation** - Maintain comprehensive ESB documentation, integration patterns, and operational procedures
+**Continuous ESB Evolution**: Integration pattern standardization with reusable templates, performance monitoring with optimization opportunities, change management with robust versioning, knowledge sharing with comprehensive documentation

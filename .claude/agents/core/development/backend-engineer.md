@@ -158,25 +158,13 @@ Adaptation to **"Business domains"** from `CLAUDE.md`:
 
 ## Domain-Specific Implementations
 
-### E-commerce Backend
+### Business Domain Backend Specializations
 
-```yaml
-ecommerce_services:
-  product_catalog: "Search, filtering, inventory management, pricing"
-  order_processing: "Cart management, checkout flow, payment integration"
-  user_management: "Authentication, profiles, preferences, wishlists"
-  analytics: "Sales reporting, customer behavior, recommendation engines"
-  integrations: "Payment gateways, shipping providers, tax services"
-```
-
-### FinTech Backend
-
-```yaml
-fintech_services:
-  transaction_processing: "Real-time payments, settlement, reconciliation"
-  compliance: "AML checks, KYC verification, regulatory reporting"
-  risk_management: "Fraud detection, credit scoring, risk assessment"
-  audit: "Transaction trails, compliance logging, immutable records"
+- **E-commerce**: Product catalog services, order processing, payment integration, inventory management, recommendation engines
+- **FinTech**: Real-time payment processing, compliance systems, risk management, fraud detection, regulatory reporting
+- **Healthcare**: Patient data services, clinical workflows, HL7 FHIR APIs, telehealth platforms, medical device integration
+- **SaaS**: Multi-tenant architecture, subscription billing, usage metering, admin APIs, webhook systems
+- **IoT**: Device management, telemetry ingestion, real-time processing, edge computing, command/control services
   integrations: "Banking APIs, payment networks, regulatory systems"
 ```
 

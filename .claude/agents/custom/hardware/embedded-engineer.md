@@ -74,58 +74,15 @@ embedded_development:
 - **System Architecture** - Collaborate with software-architect for embedded-cloud integration
 - **Graphics Integration** - Interface with graphics engineers for embedded display systems
 
-## 🏗️ Domain-Specific Implementations
+## Domain-Specific Embedded Systems Implementations
 
-### Arduino Development
-```yaml
-arduino_development:
-  platform_integration:
-    - Arduino IDE and PlatformIO development environments
-    - Library ecosystem integration and custom library development
-    - Board-specific optimization and peripheral utilization
-  project_patterns:
-    - Sensor data collection and processing
-    - Actuator control and automation systems
-    - Communication interface implementation
-  optimization_techniques:
-    - Memory usage optimization
-    - Real-time performance tuning
-    - Power consumption minimization
-```
+### Embedded Systems Platform Specializations
 
-### ESP32 Systems
-```yaml
-esp32_development:
-  advanced_features:
-    - Dual-core processing and task distribution
-    - Wi-Fi and Bluetooth integration patterns
-    - FreeRTOS task management and synchronization
-  connectivity_solutions:
-    - IoT cloud integration (AWS, Azure, Google Cloud)
-    - Mesh networking and device communication
-    - OTA firmware updates and remote management
-  performance_optimization:
-    - Memory management and heap optimization
-    - Wireless communication efficiency
-    - Real-time constraint handling
-```
-
-### Industrial Embedded Systems
-```yaml
-industrial_embedded:
-  control_systems:
-    - PID control algorithm implementation
-    - Real-time monitoring and feedback systems
-    - Industrial protocol integration (Modbus, CAN)
-  reliability_features:
-    - Watchdog timer implementation
-    - Error detection and recovery systems
-    - Fault tolerance and redundancy patterns
-  integration_patterns:
-    - HMI interface development
-    - Data logging and historical analysis
-    - Remote monitoring and diagnostics
-```
+- **Arduino Development**: IDE/PlatformIO environments, library ecosystems, sensor data processing, actuator control, memory optimization
+- **ESP32 Systems**: Dual-core processing, Wi-Fi/Bluetooth integration, FreeRTOS management, IoT cloud connectivity, OTA updates
+- **Industrial Embedded**: PID control algorithms, real-time monitoring, industrial protocols (Modbus, CAN), fault tolerance systems
+- **IoT Development**: Device communication, mesh networking, cloud integration, remote management, power optimization
+- **Real-Time Systems**: Constraint handling, task synchronization, performance optimization, reliability features
 
 ## 🎨 Embedded Specializations
 

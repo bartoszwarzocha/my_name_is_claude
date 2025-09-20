@@ -6,125 +6,62 @@ Implement comprehensive testing strategies and quality assurance frameworks for 
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Testing Strategy and Architecture Planning
-1. **Analyze application testing requirements and complexity** - Determine testing scope, critical user paths, and quality requirements
-2. **Design comprehensive testing pyramid strategy** - Plan unit testing, integration testing, and end-to-end testing approaches
-3. **Establish quality gates and CI/CD integration** - Design automated quality checks, performance budgets, and deployment gates
-4. **Plan cross-browser and device testing coverage** - Define browser matrix, device testing requirements, and compatibility standards
-5. **Define accessibility and performance testing strategy** - Plan WCAG compliance testing, performance benchmarks, and usability validation
+### Phase 1: Testing Strategy and Component Implementation
+**Objective**: Analyze testing requirements and implement comprehensive unit and component testing frameworks
 
-### Phase 2: Unit and Component Testing Implementation
-1. **Implement comprehensive unit testing framework** - Create test utilities, mocking strategies, and component testing patterns
-2. **Establish component testing and validation patterns** - Test component behavior, prop handling, and user interactions
-3. **Create advanced mocking and test data strategies** - Implement API mocking, service mocking, and test fixture management
-4. **Apply test-driven development practices** - Write tests first, establish red-green-refactor cycles, and maintain test quality
-5. **Implement code coverage and quality metrics** - Track coverage thresholds, quality metrics, and testing effectiveness
+1. **Testing Strategy and Architecture Planning**
+   - Analyze application testing requirements determining scope, critical user paths, and quality requirements
+   - Design comprehensive testing pyramid strategy with unit, integration, and end-to-end testing approaches
+   - Establish quality gates, CI/CD integration, cross-browser coverage, and accessibility testing strategy
 
-### Phase 3: Integration and End-to-End Testing
-1. **Design integration testing strategies** - Test component interaction, API integration, and data flow validation
-2. **Implement end-to-end testing framework** - Create user journey testing, critical path validation, and business workflow testing
-3. **Establish visual regression testing** - Implement screenshot comparison, responsive design validation, and UI consistency testing
-4. **Create performance and accessibility testing** - Test Core Web Vitals, WCAG compliance, and usability standards
-5. **Implement cross-browser and device testing** - Validate functionality across browser matrix and device types
+2. **Unit and Component Testing Implementation**
+   - Implement comprehensive unit testing framework with test utilities, mocking strategies, and component testing patterns
+   - Establish component testing validation, advanced mocking and test data strategies, test-driven development practices
+   - Implement code coverage, quality metrics tracking, and testing effectiveness measurement
 
-### Phase 4: Quality Assurance and Continuous Testing
-1. **Integrate testing into CI/CD pipelines** - Automate test execution, quality gates, and deployment validation
-2. **Implement monitoring and error tracking** - Create production monitoring, error reporting, and quality analytics
-3. **Establish testing documentation and guidelines** - Document testing patterns, best practices, and team procedures
-4. **Create test maintenance and optimization procedures** - Plan test refactoring, performance optimization, and technical debt management
-5. **Enable team collaboration and quality culture** - Establish code review processes, testing standards, and knowledge sharing
+### Phase 2: Integration Testing and Quality Assurance
+**Objective**: Execute integration and end-to-end testing and establish comprehensive quality assurance frameworks
+
+1. **Integration and End-to-End Testing**
+   - Design integration testing strategies with component interaction, API integration, and data flow validation
+   - Implement end-to-end testing framework with user journey testing and business workflow validation
+   - Establish visual regression testing, performance and accessibility testing, cross-browser and device testing
+
+2. **Quality Assurance and Continuous Testing**
+   - Integrate testing into CI/CD pipelines with automated execution, quality gates, and deployment validation
+   - Implement monitoring and error tracking with production monitoring and quality analytics
+   - Establish documentation, maintenance procedures, and team collaboration with quality culture development
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Testing Strategy and Implementation Quality
-- **Testing pyramid architecture comprehensive**: Unit, integration, and end-to-end testing strategies properly balanced and implemented
-- **Test coverage meaningful and effective**: High-quality tests covering critical paths, edge cases, and business logic requirements
-- **Quality gates and CI/CD integration functional**: Automated testing pipelines, deployment gates, and continuous quality assurance operational
-- **Cross-browser and device testing coverage adequate**: Testing matrix covering target browsers, devices, and compatibility requirements
-- **Performance and accessibility testing comprehensive**: Core Web Vitals compliance, WCAG validation, and usability standards met
+### Testing Strategy and Component Implementation
+**Testing Strategy Excellence**: Testing pyramid architecture with unit, integration, and end-to-end strategies properly balanced, test coverage meaningful covering critical paths and business logic requirements, quality gates and CI/CD integration functional with automated pipelines operational, cross-browser and device testing coverage adequate across target matrix
 
-### Test Implementation and Maintenance Excellence
-- **Unit and component testing robust**: Component behavior, prop validation, state management, and user interaction testing thorough
-- **Integration testing covers system interactions**: API integration, service communication, and data flow validation comprehensive
-- **End-to-end testing validates user workflows**: Critical user paths, business processes, and real-world usage scenarios covered
-- **Test maintenance and optimization effective**: Test refactoring, performance optimization, and technical debt management operational
-- **Testing documentation and guidelines complete**: Testing patterns, best practices, team procedures, and knowledge sharing established
+**Component Implementation Excellence**: Unit and component testing robust with behavior, prop validation, and user interaction testing thorough, performance and accessibility testing comprehensive with Core Web Vitals compliance and WCAG validation, test maintenance and optimization effective with refactoring and performance optimization operational
 
-### Quality Assurance and Team Collaboration
-- **Monitoring and error tracking operational**: Production monitoring, error reporting, quality analytics, and alerting systems functional
-- **Team testing culture and collaboration strong**: Code review processes, testing standards, knowledge sharing, and quality ownership established
-- **Testing tool integration seamless**: Testing frameworks, CI/CD pipelines, quality tools, and reporting systems properly integrated
-- **Test data and environment management efficient**: Test fixtures, mocking strategies, environment setup, and data management optimized
-- **Quality metrics and reporting actionable**: Coverage reports, quality dashboards, trend analysis, and improvement recommendations available
+### Integration Testing and Quality Assurance
+**Integration Testing Excellence**: Integration testing covering system interactions with API integration and data flow validation comprehensive, end-to-end testing validating user workflows with critical paths and business processes covered, testing documentation and guidelines complete with patterns and best practices established
+
+**Quality Assurance Excellence**: Monitoring and error tracking operational with production monitoring and quality analytics functional, team testing culture strong with code review processes and quality ownership established, testing tool integration seamless with frameworks and reporting systems properly integrated, quality metrics and reporting actionable with coverage reports and trend analysis available
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Enterprise Dashboard Testing Strategy
-**Project Context**: Complex business intelligence dashboard requiring comprehensive testing across multiple user roles and data visualization components
-**Implementation Approach**:
-- Multi-layer Testing Architecture: Unit tests for calculation functions, integration tests for data flow, end-to-end tests for user workflows
-- Performance Testing Focus: Core Web Vitals monitoring, large dataset rendering performance, real-time update validation
-- Accessibility Testing: Screen reader compatibility, keyboard navigation, high contrast mode validation
-- Cross-browser Compatibility: Testing matrix covering enterprise browser requirements, responsive design validation
+**Enterprise Dashboard**: Complex BI dashboard with multi-layer testing architecture, performance focus on Core Web Vitals monitoring, accessibility testing for screen reader compatibility, cross-browser testing matrix
 
-### E-commerce Platform Quality Assurance
-**Project Context**: High-traffic e-commerce platform requiring reliable checkout flow, payment processing, and inventory management testing
-**Implementation Approach**:
-- Critical Path Testing: Comprehensive checkout flow testing, payment integration validation, order management workflows
-- Performance Budget Enforcement: Page load time limits, Core Web Vitals thresholds, mobile performance optimization
-- Security Testing Integration: Payment form security, data protection validation, vulnerability scanning
-- A/B Testing Framework: Conversion optimization testing, feature flag validation, user experience measurement
+**E-commerce Platform**: High-traffic platform with critical path testing for checkout flow, performance budget enforcement, security testing integration, A/B testing framework
 
-### Healthcare Application Compliance Testing
-**Project Context**: HIPAA-compliant patient portal requiring rigorous testing for data protection, accessibility, and clinical workflows
-**Implementation Approach**:
-- Compliance Testing Framework: HIPAA compliance validation, data encryption testing, audit trail verification
-- Accessibility Excellence: WCAG AA compliance testing, assistive technology compatibility, medical terminology clarity
-- Clinical Workflow Validation: Patient data entry testing, appointment scheduling, provider communication workflows
-- Data Privacy Testing: Patient data masking, secure data transmission, role-based access control validation
+**Healthcare Application**: HIPAA-compliant portal with compliance testing framework, accessibility excellence for WCAG AA compliance, clinical workflow validation, data privacy testing
 
-### Financial Trading Platform Testing
-**Project Context**: Real-time financial application requiring high-performance testing, data accuracy, and regulatory compliance
-**Implementation Approach**:
-- Real-time Data Testing: Live market data validation, trading algorithm testing, risk management system validation
-- Performance Critical Testing: Sub-second response time requirements, memory leak detection, concurrent user testing
-- Regulatory Compliance: Financial regulation compliance testing, audit trail validation, risk reporting accuracy
-- Disaster Recovery Testing: System failover testing, data backup validation, business continuity verification
+**Financial Trading Platform**: Real-time application with live data testing, performance critical testing for sub-second response, regulatory compliance testing, disaster recovery testing
 
-### Educational Platform Learning Analytics
-**Project Context**: Online learning management system requiring comprehensive testing for learning outcomes, accessibility, and multi-device support
-**Implementation Approach**:
-- Learning Path Testing: Course navigation, progress tracking, assessment validation, certification workflows
-- Accessibility and Inclusion: Multiple learning modalities, cognitive load testing, international accessibility standards
-- Multi-device Validation: Responsive design testing, mobile learning optimization, offline capability testing
-- Analytics and Reporting: Learning outcome measurement, engagement analytics, institutional reporting validation
+**Educational Platform**: Learning management system with learning path testing, accessibility and inclusion for multiple modalities, multi-device validation, analytics and reporting measurement
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Technology-Adaptive Testing Strategy**:
-1. **Testing framework detection** - Analyze CLAUDE.md to determine optimal testing tools and frameworks based on technology stack
-2. **Quality requirements analysis** - Identify testing priorities based on business domain, user needs, and compliance requirements
-3. **CI/CD integration planning** - Design testing pipeline integration appropriate for deployment frequency and quality gates
-4. **Performance and accessibility testing strategy** - Apply testing approaches suitable for user experience and compliance requirements
+**Technology-Adaptive Testing Excellence**: Testing framework detection → quality requirements analysis → CI/CD integration planning → performance and accessibility testing strategy
 
-**Frontend Testing Excellence Patterns**:
-- **Comprehensive testing pyramid** - Balanced approach with unit, integration, and end-to-end testing strategies for optimal coverage
-- **Quality-first automation** - Automated testing pipelines with quality gates, performance budgets, and accessibility validation
-- **Cross-browser and device coverage** - Testing matrix covering target browsers, devices, and compatibility requirements
-- **Continuous quality monitoring** - Real-time quality metrics, error tracking, and performance monitoring for proactive quality management
+**Frontend Testing Excellence Patterns**: Comprehensive testing pyramid with balanced unit, integration, and end-to-end strategies, quality-first automation with testing pipelines and performance budgets, cross-browser and device coverage with testing matrix, continuous quality monitoring with real-time metrics and error tracking
 
-**Team Collaboration and Quality Culture**:
-- **Testing best practices integration** - Team training, code review processes, and quality ownership for sustainable testing culture
-- **Documentation and knowledge sharing** - Testing patterns, troubleshooting guides, and team collaboration for effective quality assurance
-- **Maintenance and optimization** - Test refactoring, performance optimization, and technical debt management for long-term testing success
-- **Quality metrics and reporting** - Coverage tracking, trend analysis, and actionable insights for continuous quality improvement
-
-
-
-
-```
-
-
-
+**Team Collaboration and Quality Culture**: Testing best practices integration with team training and quality ownership, documentation and knowledge sharing with testing patterns and troubleshooting guides, maintenance and optimization with test refactoring and performance optimization, quality metrics and reporting with coverage tracking and trend analysis

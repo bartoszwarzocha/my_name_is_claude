@@ -10,137 +10,71 @@ Restore development session context from previous session summary, analyze proje
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: State Recovery from Persistent Storage
-1. **Read session state from files** - Load SESSION_STATE.md, SESSION_TODOS.md, and CONTINUATION_CONTEXT.md
-2. **Parse previous session summary** - Extract accomplished tasks, pending work, decisions made, and session outcomes
-3. **Restore TODO status** - Rebuild task tracking from persisted TODO status and priorities
-4. **Analyze session gap timeframe** - Determine time elapsed, potential changes, and external factors since last session
-5. **Reconstruct work context** - Rebuild understanding of active development streams, priorities, and dependencies
+### Phase 1: State Recovery and Integration
+**Objective**: Restore session context and integrate with current project state
 
-### Phase 2: Current State Integration and Gap Analysis
-1. **Assess project changes** - Review git commits, file modifications, and configuration updates since last session
-2. **Validate framework status** - Check CLAUDE.md updates, agent configurations, and tool availability
-3. **Compare context deltas** - Identify differences between previous state and current project condition
-4. **Evaluate external impacts** - Consider dependency updates, requirement changes, and environmental shifts
-5. **Reconcile inconsistencies** - Resolve conflicts between historical context and current project state
+1. **State Recovery and Context Reconstruction**
+   - Load SESSION_STATE.md, SESSION_TODOS.md, and CONTINUATION_CONTEXT.md files
+   - Extract accomplished tasks, pending work, decisions made, and session outcomes
+   - Rebuild task tracking from persisted TODO status and priorities
+   - Analyze session gap timeframe and reconstruct work context
 
-### Phase 3: Priority Validation and Continuation Planning
-1. **Validate previous priorities** - Confirm business goals, timelines, and stakeholder requirements remain current
-2. **Assess momentum opportunities** - Identify work streams ready for immediate continuation or completion
-3. **Evaluate new constraints** - Consider changed limitations, blockers, or resource availability
-4. **Refine task priorities** - Update work order based on elapsed time, changes, and current urgency
-5. **Plan session integration** - Determine how to blend previous context with current development needs
+2. **Current State Integration and Gap Analysis**
+   - Review git commits, file modifications, and configuration updates since last session
+   - Validate framework status including CLAUDE.md updates and agent configurations
+   - Compare context deltas and evaluate external impacts on project state
+   - Reconcile inconsistencies between historical context and current reality
 
-### Phase 4: MCP Tools Integration and Synchronization (If Available)
-1. **Detect and validate Serena MCP** - Check for .serena directory and verify tool accessibility
-2. **Load Serena project context** - Retrieve current project index and navigation state from Serena
-3. **Synchronize with historical context** - Merge Serena's project knowledge with session summaries
-4. **Update Serena configuration** - Ensure tool settings reflect any project structure changes
-5. **Validate integrated context** - Confirm Serena and session summaries provide complete project understanding
+### Phase 2: Continuation Planning and Session Initialization
+**Objective**: Plan productive continuation and initialize session with integrated context
 
-### Phase 5: Session Initialization and Context Handoff
-1. **Synthesize comprehensive context** - Combine historical, current, and Serena information into unified session state
-2. **Configure TODO restoration** - Rebuild task tracking with updated priorities and current reality using TodoWrite tool
-3. **Prepare agent coordination** - Plan agent involvement based on continued and new requirements
-4. **Establish session objectives** - Define goals that build on previous progress while addressing current needs
-5. **Enable productive continuation** - Provide clear context for immediate productive work resumption
+1. **Priority Validation and MCP Tools Integration**
+   - Validate previous priorities and assess momentum opportunities
+   - Evaluate new constraints and refine task priorities based on current urgency
+   - Detect and integrate Serena MCP tools when available
+   - Synchronize Serena project context with historical session summaries
+
+2. **Session Initialization and Context Handoff**
+   - Synthesize comprehensive context combining historical, current, and tool information
+   - Configure TODO restoration with updated priorities using TodoWrite tool
+   - Prepare agent coordination and establish session objectives
+   - Enable productive continuation with clear context for immediate work resumption
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### State Recovery and Context Reconstruction Completeness
-- **Session state files successfully loaded**: SESSION_STATE.md, SESSION_TODOS.md, and CONTINUATION_CONTEXT.md read and parsed
-- **Historical context fully reconstructed**: Previous session accomplishments, decisions, and insights restored from persistent storage
-- **TODO status accurately restored**: Task tracking rebuilt from persisted state using TodoWrite tool
-- **Work streams mapped**: Incomplete tasks, blocked items, and pending deliverables catalogued from saved context
-- **Session continuity established**: Clear connection between previous work and current session goals
+### Recovery and Integration Standards
+**State Recovery and Context Quality**:
+- Session state files successfully loaded with historical context fully reconstructed
+- TODO status accurately restored and work streams mapped from saved context
+- Project changes assessed with framework status validated and context deltas identified
+- External impacts evaluated and inconsistencies resolved between historical and current state
 
-### Current State Integration Accuracy
-- **Project changes assessed**: All modifications, commits, and configuration updates since last session analyzed
-- **Framework status validated**: CLAUDE.md updates, agent changes, and tool availability confirmed
-- **Context deltas identified**: Differences between historical and current state clearly understood
-- **External impacts evaluated**: Dependency changes, requirement updates, and environmental shifts considered
-- **Inconsistencies resolved**: Conflicts between previous context and current reality reconciled
-
-### Continuation Planning Effectiveness
-- **Priorities validated and updated**: Business goals, timelines, and requirements confirmed or adjusted
-- **Momentum opportunities identified**: Ready-to-continue work streams and quick completion candidates found
-- **Resource constraints assessed**: Current limitations, blockers, and availability evaluated
-- **Session objectives defined**: Clear goals building on previous progress while addressing current needs
-- **Productive resumption enabled**: Context sufficient for immediate productive work continuation
-
-### MCP Tools Integration Quality (When Available)
-- **Serena MCP successfully detected**: Tool availability and accessibility properly verified
-- **Project context loaded**: Current project index and navigation state retrieved from Serena
-- **Context synchronization complete**: Serena knowledge merged with session summaries seamlessly
-- **Configuration updated**: Tool settings reflect any project structure changes since last session
-- **Integrated context validated**: Combined Serena and session data provides complete project understanding
+**Continuation and Tool Integration**:
+- Priorities validated with momentum opportunities identified and resource constraints assessed
+- Session objectives defined enabling productive resumption with clear continuation context
+- Serena MCP successfully detected when available with project context loaded and synchronized
+- Integrated context validated providing complete project understanding for immediate work resumption
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Feature Development Continuation
-**Previous Session Summary**: "Completed user authentication API, started frontend integration, blocked on design approval"
-**Gap Analysis**: 3 days elapsed, design approved, new security requirements added
-**Continuation Plan**:
-- Resume frontend integration with approved designs
-- Address new security requirements in authentication flow
-- Complete integration testing and documentation
-- Agents: frontend-engineer, security-engineer
+**Cross-Context Continuation Examples**
 
-### Bug Fix Session Resume
-**Previous Session Summary**: "Identified payment processing bug, implemented partial fix, needs staging environment testing"
-**Gap Analysis**: 1 day elapsed, staging environment restored, customer escalation received
-**Continuation Plan**:
-- Complete bug fix testing in staging environment
-- Validate fix with customer scenarios
-- Deploy to production with monitoring
-- Agents: qa-engineer, deployment-engineer
+**Feature Development**: Authentication API completed → design approved → resume frontend integration, address security requirements
 
-### Architecture Planning Continuation
-**Previous Session Summary**: "Completed microservices analysis, designed API contracts, pending team review"
-**Gap Analysis**: 1 week elapsed, team provided feedback, budget constraints identified
-**Continuation Plan**:
-- Incorporate team feedback into architecture design
-- Adjust scope based on budget constraints
-- Finalize implementation roadmap and resource plan
-- Agents: software-architect, business-analyst
+**Bug Fix Resume**: Payment bug identified, partial fix → staging restored → complete testing, validate scenarios, deploy
 
-### Data Pipeline Development Resume
-**Previous Session Summary**: "Built data ingestion module, started transformation logic, performance issues discovered"
-**Gap Analysis**: 2 days elapsed, new data sources added, infrastructure upgraded
-**Continuation Plan**:
-- Resolve performance issues in transformation logic
-- Integrate new data sources into pipeline
-- Leverage infrastructure upgrades for optimization
-- Agents: data-engineer, qa-engineer
+**Architecture Planning**: Microservices analysis done → team feedback received → incorporate feedback, adjust scope, finalize roadmap
 
-### Security Audit Follow-up
-**Previous Session Summary**: "Completed vulnerability scan, documented 5 critical issues, remediation plan started"
-**Gap Analysis**: 5 days elapsed, 3 issues fixed by team, compliance deadline moved up
-**Continuation Plan**:
-- Validate fixes for 3 resolved security issues
-- Accelerate remediation of remaining 2 critical issues
-- Update compliance documentation for moved deadline
-- Agents: security-engineer, qa-engineer
+**Data Pipeline Development**: Ingestion built, transformation started → new sources added → resolve performance, integrate sources
+
+**Security Audit Follow-up**: Vulnerability scan completed → 3 issues fixed → validate fixes, accelerate remaining remediation
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**State-Based Continuity Restoration Process**:
-1. **File-based state recovery** - Use Read tool to load SESSION_STATE.md, SESSION_TODOS.md, and CONTINUATION_CONTEXT.md
-2. **Deep summary analysis** - Extract all relevant context, decisions, and progress from persisted session state
-3. **TODO status restoration** - Use TodoWrite tool to rebuild task tracking from saved TODO status
-4. **Intelligent gap assessment** - Identify all changes and developments since last session
-5. **Context synthesis** - Merge historical and current information into coherent session state
+**Restoration Process**: File-based state recovery → deep summary analysis → TODO restoration → gap assessment → context synthesis
 
-**Adaptive Continuation Strategies**:
-- **Short gaps** (< 1 day): Focus on momentum maintenance and immediate task continuation
-- **Medium gaps** (1-7 days): Validate context, assess changes, adjust priorities as needed
-- **Long gaps** (> 7 days): Comprehensive re-analysis, context validation, priority reassessment
-- **Context changes**: Major changes require hybrid approach combining continuation with fresh analysis
+**Adaptive Strategies**: Short gaps (momentum maintenance), Medium gaps (context validation), Long gaps (comprehensive re-analysis), Context changes (hybrid approach)
 
-**Continuation Success Indicators**:
-- **Seamless work resumption** - No significant time lost to context rebuilding or confusion
-- **Preserved insights** - Previous learnings and decisions effectively carried forward
-- **Updated priorities** - Work order reflects current reality while maintaining valuable momentum
-- **Agent readiness** - Clear context available for immediate productive agent engagement
+**Success Indicators**: Seamless work resumption, preserved insights, updated priorities, agent readiness

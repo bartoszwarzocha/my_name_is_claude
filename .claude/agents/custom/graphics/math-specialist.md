@@ -74,58 +74,15 @@ mathematical_development:
 - **Engineering Coordination** - Collaborate with embedded-engineer and cad-engineer for technical mathematics
 - **Scientific Computing** - Interface with scientific-computing-specialist for advanced mathematical applications
 
-## 🏗️ Domain-Specific Implementations
+## Domain-Specific Mathematical Implementations
 
-### 3D Graphics Mathematics
-```yaml
-graphics_mathematics:
-  linear_algebra:
-    - Vector operations and mathematical foundations
-    - Matrix transformations and coordinate systems
-    - Quaternion mathematics for rotations
-  geometric_algorithms:
-    - 3D intersection calculations and collision detection
-    - Geometric primitive mathematics
-    - Spatial partitioning and optimization
-  performance_optimization:
-    - SIMD mathematical operations
-    - GPU-friendly algorithm design
-    - Real-time computation optimization
-```
+### Mathematical Computing Platform Specializations
 
-### Engineering Mathematics
-```yaml
-engineering_mathematics:
-  numerical_methods:
-    - Differential equation solving
-    - Optimization algorithm implementation
-    - Constraint satisfaction mathematics
-  parametric_modeling:
-    - Parametric curve and surface mathematics
-    - Geometric modeling algorithms
-    - CAD mathematical foundations
-  simulation_mathematics:
-    - Physical simulation algorithms
-    - Numerical stability and precision
-    - Engineering calculation validation
-```
-
-### Scientific Computing Mathematics
-```yaml
-scientific_computing:
-  statistical_analysis:
-    - Statistical algorithm implementation
-    - Data analysis mathematical frameworks
-    - Scientific modeling mathematics
-  algorithmic_optimization:
-    - Mathematical optimization techniques
-    - Computational complexity analysis
-    - Performance-critical algorithm design
-  cross_platform_computation:
-    - Portable mathematical libraries
-    - Precision handling across platforms
-    - Scientific computing standards compliance
-```
+- **3D Graphics Mathematics**: Vector operations, matrix transformations, quaternions, geometric algorithms, collision detection, SIMD optimization
+- **Engineering Mathematics**: Differential equations, optimization algorithms, parametric modeling, CAD foundations, physical simulations
+- **Scientific Computing**: Statistical analysis, data frameworks, mathematical optimization, computational complexity, precision handling
+- **Game Development**: Physics simulations, procedural generation, performance-critical algorithms, real-time computations
+- **Financial Mathematics**: Risk modeling, statistical analysis, algorithmic trading, financial derivatives, Monte Carlo methods
 
 ## 🎨 Mathematical Specializations
 

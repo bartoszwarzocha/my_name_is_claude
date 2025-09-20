@@ -36,87 +36,36 @@ Design and implement scalable microservices architecture that enables independen
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Service Architecture and Design Excellence
-- **Service boundaries properly defined**: Clear domain separation with minimal coupling and high cohesion between services
-- **Communication patterns efficiently implemented**: Appropriate synchronous/asynchronous patterns supporting business requirements
-- **Data management strategy comprehensive**: Database isolation with effective consistency and synchronization mechanisms
-- **Service discovery and routing operational**: Reliable service registration, discovery, and traffic management
-- **Resilience patterns effectively implemented**: Circuit breakers, retries, and graceful degradation protecting system stability
+### Microservices Architecture Excellence
+**Service Design**: Properly defined service boundaries with clear domain separation, efficient communication patterns with synchronous/asynchronous support, comprehensive data management with database isolation, operational service discovery and routing
 
-### Technology Integration and Implementation Quality
-- **Framework-specific patterns properly applied**: Implementation follows detected technology stack best practices and conventions
-- **API gateway functionality comprehensive**: Centralized routing, authentication, rate limiting, and traffic management operational
-- **Event-driven architecture functional**: Message brokers, event streaming, and saga patterns supporting business workflows
-- **Service mesh integration successful**: Traffic management, security policies, and observability features operational
-- **Container orchestration optimized**: Kubernetes or Docker Swarm deployment with proper resource management and scaling
+**Technology Integration**: Framework-specific patterns following technology stack best practices, comprehensive API gateway functionality, functional event-driven architecture with message brokers, successful service mesh integration
 
 ### Operational Excellence and Performance
-- **Monitoring and observability comprehensive**: Distributed tracing, metrics collection, and logging providing full system visibility
-- **Security controls effectively implemented**: Service-to-service authentication, network policies, and data protection mechanisms
-- **Performance requirements satisfied**: Response times, throughput, and scalability targets achieved across service boundaries
-- **Deployment automation functional**: CI/CD pipelines enabling independent service deployment with rollback capabilities
-- **Cost optimization strategies operational**: Resource utilization monitoring and optimization across microservices infrastructure
+**Operations and Security**: Comprehensive monitoring with distributed tracing, effectively implemented security controls with service authentication, satisfied performance requirements across service boundaries, functional deployment automation with CI/CD
+
+**Resource Optimization**: Optimized container orchestration with proper resource management, operational cost optimization strategies with resource utilization monitoring
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Enterprise E-commerce Platform Microservices
-**Project Context**: Large-scale e-commerce platform requiring independent scaling of product catalog, order processing, user management, and payment services
-**Implementation Approach**:
-- Service Decomposition: Customer Management, Product Catalog, Order Processing, Payment Gateway, Inventory Management, and Notification services
-- Communication Strategy: API Gateway for external traffic, event-driven architecture for internal service coordination
-- Data Management: Separate databases optimized for each service's specific requirements (SQL for transactions, NoSQL for catalog)
-- Technology Integration: Container orchestration with service mesh for traffic management and security
+**Cross-Domain Microservices Examples**
 
-### Financial Services Distributed Banking System
-**Project Context**: Banking platform requiring regulatory compliance, high availability, and secure transaction processing across multiple services
-**Implementation Approach**:
-- Compliance-First Architecture: Service boundaries aligned with regulatory requirements and audit trails
-- Security-Focused Communication: mTLS for all service-to-service communication, encrypted data at rest and in transit
-- Transaction Management: Distributed transaction patterns with compensation mechanisms for financial operations
-- Monitoring and Compliance: Comprehensive audit logging, real-time fraud detection, and regulatory reporting automation
+**Enterprise E-commerce**: Product catalog, order processing, payment gateway with service mesh, API gateway for external traffic, separate databases optimized per service
 
-### Healthcare Platform HIPAA-Compliant Microservices
-**Project Context**: Healthcare management system requiring patient data protection, provider workflow integration, and insurance processing
-**Implementation Approach**:
-- Privacy-by-Design Architecture: Service boundaries ensuring patient data isolation and consent management
-- Interoperability Integration: HL7 FHIR standard implementation across healthcare service boundaries
-- Security Implementation: Field-level encryption, comprehensive access logging, and patient consent tracking
-- Scalability Design: Independent scaling for patient management, appointment scheduling, and medical record processing
+**Financial Banking**: Compliance-first service boundaries with mTLS communication, distributed transaction patterns with compensation, comprehensive audit logging
 
-### IoT Platform Real-Time Data Processing
-**Project Context**: Industrial IoT platform processing millions of sensor readings with real-time analytics and device management
-**Implementation Approach**:
-- Event-Driven Architecture: High-throughput message streaming for sensor data ingestion and processing
-- Time-Series Optimization: Specialized databases and services optimized for time-series data storage and analytics
-- Edge Computing Integration: Distributed processing with edge nodes and centralized coordination services
-- Auto-Scaling Implementation: Dynamic service scaling based on data volume and processing requirements
+**Healthcare Platform**: Privacy-by-design architecture with patient data isolation, HL7 FHIR interoperability, field-level encryption with consent tracking
 
-### Multi-Tenant SaaS Platform Architecture
-**Project Context**: B2B SaaS platform supporting thousands of tenants with customizable workflows and integrations
-**Implementation Approach**:
-- Multi-Tenancy Patterns: Tenant isolation strategies across service boundaries with shared infrastructure optimization
-- Customization Framework: Plugin architecture allowing tenant-specific customizations without affecting other tenants
-- Integration Platform: Microservices supporting third-party API integration and webhook processing
-- Performance Isolation: Resource quotas and quality-of-service policies ensuring fair resource distribution
+**IoT Real-Time Processing**: High-throughput message streaming for sensor data, time-series optimized databases, edge computing integration with auto-scaling
+
+**Multi-Tenant SaaS**: Tenant isolation with shared infrastructure optimization, plugin architecture for customization, third-party integration platform
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Technology-Adaptive Microservices Strategy**:
-1. **CLAUDE.md configuration analysis** - Determine microservices framework and orchestration platform from project metadata
-2. **Service boundary identification** - Apply domain-driven design principles based on business domain analysis
-3. **Communication pattern selection** - Choose synchronous/asynchronous patterns appropriate for project scale and requirements
-4. **Technology stack integration** - Implement framework-specific microservices patterns and deployment strategies
+**Technology-Adaptive Strategy**: CLAUDE.md configuration analysis → service boundary identification → communication pattern selection → technology stack integration
 
-**Microservices Design Excellence**:
-- **Domain-driven service boundaries** - Services aligned with business capabilities and bounded contexts
-- **Resilience-first architecture** - Built-in fault tolerance, graceful degradation, and recovery mechanisms
-- **Observability integration** - Comprehensive monitoring, tracing, and logging across all service interactions
-- **Security-by-design implementation** - Service-to-service authentication, authorization, and data protection
+**Design Excellence**: Domain-driven service boundaries, resilience-first architecture with fault tolerance, comprehensive observability integration, security-by-design implementation
 
-**Scalability and Performance Integration**:
-- **Independent service scaling** - Auto-scaling policies and resource management optimized for each service
-- **Performance optimization strategies** - Caching, load balancing, and database optimization across service boundaries
-- **Operational excellence practices** - Automated deployment, monitoring, and incident response procedures
-- **Cost optimization mechanisms** - Resource utilization tracking and optimization strategies for distributed infrastructure
+**Scalability and Performance**: Independent service scaling with auto-scaling policies, performance optimization with caching and load balancing, operational excellence with automated deployment, cost optimization with resource tracking

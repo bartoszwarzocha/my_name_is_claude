@@ -74,58 +74,15 @@ electronics_development:
 - **Mechanical Integration** - Collaborate with mechanical engineers for enclosure and connector design
 - **Manufacturing Coordination** - Interface with manufacturing teams for production optimization
 
-## 🏗️ Domain-Specific Implementations
+## Domain-Specific Electronics Engineering Implementations
 
-### PCB Design and Layout
-```yaml
-pcb_development:
-  design_methodology:
-    - Schematic capture and circuit simulation
-    - Component placement optimization
-    - Multi-layer routing and via management
-  signal_integrity:
-    - High-speed design techniques
-    - Impedance control and matching
-    - EMI/EMC design considerations
-  manufacturing_optimization:
-    - DFM rule compliance
-    - Assembly and testing considerations
-    - Cost optimization strategies
-```
+### Electronics Engineering Platform Specializations
 
-### Embedded Electronics Integration
-```yaml
-embedded_electronics:
-  microcontroller_support:
-    - Power supply design for microcontrollers
-    - Crystal oscillator and timing circuits
-    - Reset and watchdog circuitry
-  peripheral_interfaces:
-    - Sensor interface circuits and signal conditioning
-    - Actuator driver circuits and protection
-    - Communication interface implementation (UART, SPI, I2C)
-  system_integration:
-    - Power management and distribution
-    - Protection circuits and fault tolerance
-    - Connector and mechanical interface design
-```
-
-### Industrial Electronics
-```yaml
-industrial_electronics:
-  robust_design:
-    - Industrial communication interfaces (RS-485, CAN, Ethernet)
-    - Isolation circuits and galvanic protection
-    - Environmental protection and ruggedization
-  power_systems:
-    - Industrial power supply design
-    - Motor drive circuits and control
-    - Power factor correction and efficiency optimization
-  compliance_standards:
-    - Safety standard compliance (IEC, UL)
-    - EMC compliance design
-    - Industrial certification requirements
-```
+- **PCB Design**: Schematic capture, circuit simulation, multi-layer routing, signal integrity, impedance control, EMI/EMC design
+- **Embedded Electronics**: Microcontroller support, sensor interfaces, communication protocols (UART, SPI, I2C), power management
+- **Industrial Electronics**: Robust communication interfaces (RS-485, CAN), isolation circuits, motor drives, safety compliance
+- **Power Systems**: Power supply design, motor control, efficiency optimization, power factor correction, distribution systems
+- **Compliance Engineering**: Safety standards (IEC, UL), EMC compliance, industrial certification, environmental protection
 
 ## 🎨 Electronics Specializations
 

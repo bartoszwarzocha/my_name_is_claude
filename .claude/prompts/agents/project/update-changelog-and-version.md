@@ -10,122 +10,62 @@ Manage project versioning strategy and maintain comprehensive changelog document
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Version Strategy Analysis and Planning
-1. **Assess current versioning approach** - Analyze existing version numbering, tagging practices, and release patterns
-2. **Evaluate semantic versioning compliance** - Determine adherence to semver principles and identify improvement opportunities
-3. **Analyze change impact patterns** - Review historical changes to understand breaking vs. non-breaking change frequency
-4. **Plan version numbering strategy** - Design appropriate versioning scheme for project type, audience, and release cadence
-5. **Establish release milestone planning** - Define major/minor/patch release criteria and timeline strategies
+### Phase 1: Version Strategy and Change History Analysis
+**Objective**: Analyze versioning requirements and implement comprehensive change history analysis and documentation
 
-### Phase 2: Change History Analysis and Documentation
-1. **Parse development history** - Extract changes from git commits, pull requests, and issue tracking systems
-2. **Categorize change types** - Classify changes as features, fixes, breaking changes, performance improvements, or maintenance
-3. **Identify unreleased changes** - Catalog all changes since last version release for upcoming release planning
-4. **Validate change descriptions** - Ensure change descriptions are accurate, clear, and useful for stakeholders
-5. **Map changes to version increments** - Determine appropriate version number changes based on change impact
+1. **Version Strategy Analysis and Planning**
+   - Assess current versioning approach analyzing version numbering, tagging practices, and release patterns
+   - Evaluate semantic versioning compliance determining adherence to semver principles
+   - Analyze change impact patterns, plan version numbering strategy, and establish release milestone planning
 
-### Phase 3: Changelog Generation and Enhancement
-1. **Generate structured changelog** - Create formatted changelog following established conventions and best practices
-2. **Enhance change descriptions** - Improve clarity and usefulness of change descriptions for different audiences
-3. **Add contextual information** - Include migration guides, deprecation notices, and impact assessments where needed
-4. **Organize for different audiences** - Structure information for developers, users, and business stakeholders appropriately
-5. **Cross-reference with documentation** - Link changelog entries to relevant documentation and migration guides
+2. **Change History Analysis and Documentation**
+   - Parse development history extracting changes from git commits, pull requests, and issue tracking systems
+   - Categorize change types classifying as features, fixes, breaking changes, or maintenance
+   - Identify unreleased changes, validate change descriptions, and map changes to version increments
 
-### Phase 4: Version Release and Communication Planning
-1. **Plan version increment strategy** - Determine next version number based on accumulated changes and impact analysis
-2. **Prepare release communication** - Draft release notes, announcements, and stakeholder communications
-3. **Establish version tagging process** - Plan git tagging, release branch management, and deployment coordination
-4. **Configure automated processes** - Set up automated version bumping, changelog generation, and release workflows
-5. **Plan stakeholder notification** - Organize communication to users, developers, and business stakeholders about releases
+### Phase 2: Changelog Generation and Release Management
+**Objective**: Execute changelog generation and establish comprehensive version release and communication planning
+
+1. **Changelog Generation and Enhancement**
+   - Generate structured changelog creating formatted documentation following established conventions
+   - Enhance change descriptions improving clarity for different audiences
+   - Add contextual information, organize for different audiences, and cross-reference with documentation
+
+2. **Version Release and Communication Planning**
+   - Plan version increment strategy determining next version number based on accumulated changes
+   - Prepare release communication drafting release notes and stakeholder communications
+   - Establish version tagging process, configure automated processes, and plan stakeholder notification
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Versioning Strategy and Compliance
-- **Semantic versioning properly applied**: Version numbers accurately reflect change impact (major/minor/patch)
-- **Consistent versioning practices**: All releases follow established versioning conventions and patterns
-- **Release planning aligned**: Version increments support business goals and technical roadmap requirements
-- **Breaking change management**: Major version increments properly used for incompatible changes
-- **Deprecation lifecycle managed**: Deprecated features properly versioned and communicated with migration timelines
+### Version Strategy and Change History Analysis
+**Versioning Strategy Excellence**: Semantic versioning properly applied with version numbers accurately reflecting change impact, consistent versioning practices with all releases following established conventions, release planning aligned supporting business goals and technical roadmap requirements, breaking change management with major version increments for incompatible changes
 
-### Changelog Quality and Completeness
-- **All significant changes documented**: Features, fixes, breaking changes, and improvements properly recorded
-- **Change descriptions clear and actionable**: Stakeholders can understand impact and required actions
-- **Appropriate categorization**: Changes properly classified by type and impact for easy consumption
-- **Migration guidance provided**: Breaking changes include clear upgrade instructions and compatibility notes
-- **Cross-references complete**: Links to relevant documentation, issues, and pull requests included
+**Change History Excellence**: Deprecation lifecycle managed with deprecated features properly versioned and communicated, all significant changes documented with features, fixes, and improvements recorded, change descriptions clear and actionable enabling stakeholder understanding, appropriate categorization with changes classified by type and impact
 
-### Process Integration and Automation
-- **Development workflow integrated**: Changelog and versioning incorporated into regular development processes
-- **Automation functional**: Automated version bumping and changelog generation working where appropriate
-- **Release process streamlined**: Version tagging, release notes, and stakeholder communication coordinated
-- **Quality standards maintained**: Consistent formatting, style, and information architecture across releases
-- **Stakeholder communication effective**: Appropriate audiences receive relevant version information through suitable channels
+### Changelog Generation and Release Management
+**Changelog Excellence**: Migration guidance provided with breaking changes including clear upgrade instructions, cross-references complete with links to relevant documentation and pull requests, development workflow integrated with changelog and versioning incorporated into processes, automation functional with version bumping and changelog generation working
+
+**Release Management Excellence**: Release process streamlined with version tagging and stakeholder communication coordinated, quality standards maintained with consistent formatting and information architecture, stakeholder communication effective with appropriate audiences receiving relevant information through suitable channels
 
 ## 4. 📚 USAGE EXAMPLES
 
-### API Library with Breaking Changes
-**Project Context**: JavaScript SDK with frequent API improvements, backward compatibility concerns
-**Versioning Strategy**:
-- Major versions for breaking API changes with migration guides
-- Minor versions for new features maintaining backward compatibility
-- Patch versions for bug fixes and performance improvements
-- Pre-release versions for beta testing new features
-- Detailed deprecation timeline spanning multiple minor versions
+**API Library with Breaking Changes**: JavaScript SDK with major versions for breaking changes, minor versions for new features, patch versions for fixes, pre-release versions for beta testing, detailed deprecation timelines
 
-### SaaS Platform with Regular Feature Releases
-**Project Context**: Web application with monthly feature releases, diverse user base
-**Versioning Strategy**:
-- Calendar-based versioning (YYYY.MM.PATCH) for predictable release communication
-- Feature flag coordination with version releases
-- Separate API versioning for integration stability
-- Changelog sections for different user types (admin, end-user, developer)
-- Release notes integrated with in-app notifications
+**SaaS Platform with Regular Releases**: Web application with calendar-based versioning (YYYY.MM.PATCH), feature flag coordination, separate API versioning, changelog sections for different user types, in-app release notes
 
-### Open Source CLI Tool
-**Project Context**: Command-line application with plugin ecosystem, semantic versioning requirements
-**Versioning Strategy**:
-- Strict semantic versioning for plugin compatibility
-- Automated changelog generation from conventional commits
-- Breaking change detection for command-line interface modifications
-- Plugin API versioning separate from application versioning
-- Community contribution tracking in changelog
+**Open Source CLI Tool**: Command-line application with strict semantic versioning for plugin compatibility, automated changelog generation, breaking change detection, separate plugin API versioning, community contribution tracking
 
-### Enterprise Application with Compliance Requirements
-**Project Context**: Financial services application with regulatory compliance and audit requirements
-**Versioning Strategy**:
-- Detailed change tracking for compliance and audit purposes
-- Security update categorization and priority communication
-- Rollback capability documentation for each version
-- Change approval workflow integration with version management
-- Compliance impact assessment for each version release
+**Enterprise Application with Compliance**: Financial services application with detailed change tracking for compliance, security update categorization, rollback capability documentation, change approval workflow integration, compliance impact assessment
 
-### Mobile Application with App Store Coordination
-**Project Context**: React Native app with iOS/Android distribution, feature rollout coordination
-**Versioning Strategy**:
-- Version coordination between app stores and backend services
-- Feature rollout planning with gradual deployment strategies
-- App store review timeline integration with version planning
-- User communication strategy for app updates and new features
-- Backend API compatibility maintenance across mobile app versions
+**Mobile Application with App Store**: React Native app with version coordination between app stores and backend, feature rollout planning, app store review timeline integration, user communication strategy, API compatibility maintenance
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Version Management Process**:
-1. **Comprehensive change analysis** - Review all changes since last version for impact assessment
-2. **Stakeholder-aware versioning** - Consider impact on different user types when planning version increments
-3. **Communication-focused approach** - Ensure version information serves stakeholder decision-making needs
-4. **Process automation where beneficial** - Automate routine tasks while maintaining human oversight for strategic decisions
+**Version Management Excellence**: Comprehensive change analysis → stakeholder-aware versioning → communication-focused approach → beneficial process automation
 
-**Quality Assurance for Versioning**:
-- **Change impact validation** - Confirm version increments appropriately reflect actual change impact
-- **Changelog accuracy verification** - Cross-reference changelog entries with actual changes and their effects
-- **Stakeholder communication testing** - Validate that version information serves intended audiences effectively
-- **Process consistency checking** - Ensure versioning and changelog practices remain consistent over time
+**Quality Assurance for Versioning**: Change impact validation confirming version increments appropriately reflect change impact, changelog accuracy verification cross-referencing entries with actual changes, stakeholder communication testing validating information serves intended audiences, process consistency checking ensuring practices remain consistent
 
-**Adaptive Versioning Strategies**:
-- **API-focused projects**: Emphasize backward compatibility tracking and breaking change management
-- **User-facing applications**: Focus on feature communication and user impact explanation
-- **Enterprise systems**: Prioritize compliance tracking, security updates, and rollback documentation
-- **Open source projects**: Emphasize community contribution tracking and plugin/extension compatibility
+**Adaptive Versioning Strategies**: API-focused projects emphasizing backward compatibility tracking and breaking change management, user-facing applications focusing on feature communication and impact explanation, enterprise systems prioritizing compliance tracking and rollback documentation, open source projects emphasizing community contribution tracking and compatibility

@@ -74,46 +74,15 @@ graphics_pipeline_development:
 - **Mathematical Coordination** - Collaborate with math-specialist for advanced computational geometry
 - **Hardware Integration** - Interface with embedded-engineer for hardware-accelerated graphics
 
-## 🏗️ Domain-Specific Implementations
+## Domain-Specific 3D Graphics Implementations
 
-### Desktop Graphics Applications
-```yaml
-desktop_3d_integration:
-  framework_integration:
-    - wxWidgets OpenGL canvas integration
-    - Qt OpenGL widget development
-    - Native window context management
-  performance_optimization:
-    - Multi-threaded rendering pipelines
-    - Efficient resource management
-    - Platform-specific GPU optimizations
-```
+### 3D Graphics Platform Specializations
 
-### CAD/Engineering Visualization
-```yaml
-engineering_graphics:
-  technical_rendering:
-    - Precision CAD model visualization
-    - Technical drawing integration
-    - Real-time manipulation interfaces
-  specialized_features:
-    - Wireframe and solid rendering modes
-    - Measurement and annotation overlays
-    - Engineering-specific visual feedback
-```
-
-### Scientific Computing Graphics
-```yaml
-scientific_visualization:
-  data_representation:
-    - Mathematical function visualization
-    - Scientific data rendering pipelines
-    - Real-time computational results display
-  integration_patterns:
-    - NumPy/SciPy data pipeline integration
-    - Scientific computing workflow support
-    - Research-grade visualization quality
-```
+- **Desktop Applications**: wxWidgets OpenGL integration, Qt OpenGL widgets, native context management, multi-threaded rendering pipelines
+- **CAD/Engineering**: Precision model visualization, technical drawing integration, wireframe/solid rendering, measurement overlays
+- **Scientific Computing**: Mathematical function visualization, scientific data pipelines, NumPy/SciPy integration, research-grade quality
+- **Gaming/Entertainment**: Real-time rendering, advanced shaders, physics integration, performance optimization
+- **AR/VR Applications**: Immersive environments, stereoscopic rendering, motion tracking, spatial computing
 
 ## 🎨 3D Graphics Specializations
 

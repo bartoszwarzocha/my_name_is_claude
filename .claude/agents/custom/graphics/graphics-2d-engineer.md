@@ -74,46 +74,15 @@ canvas_development:
 - **UI/UX Coordination** - Collaborate with ux-designer for visual design implementation
 - **Terminal Integration** - Interface with system interfaces for console graphics
 
-## 🏗️ Domain-Specific Implementations
+## Domain-Specific 2D Graphics Implementations
 
-### Desktop Application Graphics
-```yaml
-desktop_2d_integration:
-  framework_integration:
-    - wxWidgets custom drawing implementation
-    - Qt custom widget development with QPainter
-    - Native platform drawing context management
-  optimization_techniques:
-    - Efficient repainting strategies
-    - Graphics resource management
-    - Platform-specific acceleration
-```
+### 2D Graphics Platform Specializations
 
-### Terminal and Console Graphics
-```yaml
-terminal_graphics:
-  console_rendering:
-    - ANSI escape sequence graphics
-    - Color terminal support and fallbacks
-    - ASCII art and terminal-based visualization
-  cross_platform_support:
-    - Windows Console API integration
-    - Unix terminal capability detection
-    - Portable terminal graphics abstraction
-```
-
-### Data Visualization Graphics
-```yaml
-data_visualization:
-  chart_rendering:
-    - Real-time chart updates and animations
-    - Interactive data exploration interfaces
-    - Scientific plotting and technical graphs
-  integration_patterns:
-    - Data pipeline integration for live updates
-    - Export capabilities (PNG, SVG, PDF)
-    - Print-quality rendering support
-```
+- **Desktop Applications**: wxWidgets custom drawing, Qt QPainter integration, native drawing contexts, efficient repainting strategies
+- **Terminal Graphics**: ANSI escape sequences, color terminal support, ASCII art generation, cross-platform console rendering
+- **Data Visualization**: Real-time chart rendering, interactive exploration interfaces, scientific plotting, export capabilities
+- **Cross-Platform**: Framework-agnostic 2D libraries, platform abstraction, performance optimization across systems
+- **Web Integration**: Canvas API, WebGL 2D rendering, SVG graphics, responsive design for web applications
 
 ## 🎨 2D Graphics Specializations
 

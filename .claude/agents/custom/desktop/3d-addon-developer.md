@@ -74,58 +74,15 @@ addon_development:
 - **Desktop Integration** - Collaborate with desktop-specialist for standalone tool development
 - **Pipeline Coordination** - Interface with technical artists and production teams
 
-## 🏗️ Domain-Specific Implementations
+## Domain-Specific 3D Addon Implementations
 
-### Blender Addon Development
-```yaml
-blender_development:
-  api_integration:
-    - Blender Python API mastery and best practices
-    - Scene graph manipulation and object management
-    - Material and shader system integration
-  ui_development:
-    - Custom panels, operators, and property systems
-    - Context-sensitive interfaces and workflow integration
-    - Artist-friendly tool design and usability optimization
-  performance_optimization:
-    - Large scene optimization and memory management
-    - Efficient algorithms for mesh and animation processing
-    - Multi-threading and background processing integration
-```
+### 3D Creative Platform Specializations
 
-### Creative Pipeline Automation
-```yaml
-pipeline_automation:
-  workflow_optimization:
-    - Batch processing and automation scripting
-    - Asset pipeline integration and management
-    - Quality assurance and validation automation
-  file_format_handling:
-    - Import/export system development
-    - Cross-software compatibility and data exchange
-    - Version control integration for creative assets
-  production_tools:
-    - Project management integration
-    - Asset tracking and metadata management
-    - Rendering and output automation
-```
-
-### Specialized Creative Tools
-```yaml
-creative_tools:
-  modeling_enhancement:
-    - Procedural modeling tools and generators
-    - Mesh analysis and optimization utilities
-    - Parametric modeling and design iteration tools
-  animation_systems:
-    - Character rigging and animation enhancement
-    - Motion capture integration and processing
-    - Timeline and keyframe management tools
-  rendering_optimization:
-    - Scene optimization and render preparation
-    - Material and lighting automation
-    - Render farm integration and management
-```
+- **Blender Development**: Python API mastery, scene graph manipulation, custom UI panels, material/shader integration, performance optimization
+- **Pipeline Automation**: Batch processing, asset management, import/export systems, version control integration, production tools
+- **Creative Tools**: Procedural modeling, animation enhancement, rigging systems, motion capture processing, rendering optimization
+- **Cross-Platform**: Multi-software compatibility, data exchange systems, universal pipeline tools, format conversion
+- **Production Integration**: Project management, asset tracking, metadata management, render farm coordination
 
 ## 🎨 3D Addon Specializations
 

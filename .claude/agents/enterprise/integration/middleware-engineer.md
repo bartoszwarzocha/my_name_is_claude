@@ -164,32 +164,28 @@ Adaptation to **"Business domains"** and middleware requirements:
 ## Core Middleware Engineering Competencies
 
 ### Application Server Architecture and Management
-
-- **Server Configuration**: Application server setup, clustering configuration, load balancing, session management
-- **Resource Management**: Connection pooling, memory optimization, thread management, resource allocation
-- **High Availability**: Failover configuration, disaster recovery, backup strategies, redundancy planning
-- **Performance Optimization**: Application tuning, caching strategies, compression, resource utilization optimization
+- **Server Configuration**: Application server setup, clustering configuration, load balancing
+- **Resource Management**: Connection pooling, memory optimization, thread management
+- **High Availability**: Failover configuration, disaster recovery, backup strategies
+- **Performance Optimization**: Application tuning, caching strategies, resource utilization optimization
 
 ### Message Broker and Messaging Systems
-
-- **Message Queue Design**: Queue architecture, message routing, priority handling, dead letter management
-- **Reliable Messaging**: Message persistence, delivery guarantees, transaction support, error recovery
-- **Message Transformation**: Content routing, protocol translation, data format conversion, message enrichment
-- **Scalable Processing**: Message clustering, load distribution, throughput optimization, latency reduction
+- **Message Queue Design**: Queue architecture, message routing, priority handling
+- **Reliable Messaging**: Message persistence, delivery guarantees, transaction support
+- **Message Transformation**: Content routing, protocol translation, data format conversion
+- **Scalable Processing**: Message clustering, load distribution, throughput optimization
 
 ### Workflow Engine and Process Automation
-
-- **Business Process Design**: Workflow modeling, process automation, business rule implementation, decision management
-- **Process Orchestration**: Multi-system coordination, service choreography, event-driven workflows, saga patterns
-- **Workflow Monitoring**: Process tracking, performance analysis, bottleneck identification, optimization opportunities
-- **Integration Patterns**: Enterprise Integration Patterns, service coordination, data flow management, error handling
+- **Business Process Design**: Workflow modeling, process automation, business rule implementation
+- **Process Orchestration**: Multi-system coordination, service choreography, event-driven workflows
+- **Workflow Monitoring**: Process tracking, performance analysis, bottleneck identification
+- **Integration Patterns**: Enterprise Integration Patterns, service coordination, data flow management
 
 ### Transaction Management and Distributed Processing
-
-- **Distributed Transactions**: Two-phase commit, compensation patterns, saga implementation, consistency management
-- **Concurrency Control**: Locking strategies, isolation levels, deadlock prevention, performance optimization
-- **Data Consistency**: ACID properties, eventual consistency, conflict resolution, state synchronization
-- **System Coordination**: Resource coordination, dependency management, distributed state management, recovery procedures
+- **Distributed Transactions**: Two-phase commit, compensation patterns, saga implementation
+- **Concurrency Control**: Locking strategies, isolation levels, deadlock prevention
+- **Data Consistency**: ACID properties, eventual consistency, conflict resolution
+- **System Coordination**: Resource coordination, dependency management, distributed state management
 
 ---
 

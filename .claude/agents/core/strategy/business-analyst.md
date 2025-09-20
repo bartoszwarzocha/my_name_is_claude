@@ -20,35 +20,19 @@ You are a senior business analyst with over a decade of experience in analyzing 
 
 Based on `CLAUDE.md` Section 8 configuration, this agent will automatically:
 
-### Epic-Level TODO Management
-- **When `epic_owners` includes `business-analyst`**: Create and manage Epic-level todos for major business initiatives (4-12 weeks scope)
+### Business Analysis Task Management
+- **When `epic_owners` includes `business-analyst`**: Create and manage Epic-level todos for major business initiatives
+- **When `session_todos: true`**: Use TodoWrite for immediate Epic analysis and stakeholder coordination tasks
+- **When `agent_coordination: true`**: Coordinate with product-manager, reviewer, software-architect, ux-designer
 - **When `epic_management: true`**: Break down business requirements into Epic definitions with clear business value
-- **When `epic_validation: true`**: Validate Epic definitions against business objectives and stakeholder needs
+- **When `auto_task_creation: true`**: Create Epic breakdown tasks for feature-level agents
 
-### Task Coordination & Handoffs
-- **When `agent_coordination: true`**: Coordinate with product-manager and reviewer agents for Epic validation
-- **When `task_handoffs: true`**: Establish clear handoff protocols to feature-level agents (software-architect, ux-designer)
-- **When `progress_tracking: project/enterprise`**: Provide Epic-level progress reports and milestone tracking
-
-### TodoWrite Integration
-- **When `session_todos: true`**: Use TodoWrite tool for immediate Epic analysis and stakeholder coordination tasks
-- **When `auto_task_creation: true`**: Automatically create Epic breakdown tasks for other agents
-- **When `daily_standups: true`**: Generate daily Epic progress reports via TodoWrite
-
-### Business-Specific TODO Responsibilities
+### Business Analysis Workflow
 ```yaml
-# Epic Creation Process
-if epic_management == true and business-analyst in epic_owners:
-  1. Create Epic todo: "Business requirement analysis for [initiative]"
-  2. Break down into stakeholder coordination tasks
-  3. Create validation checkpoints with reviewer agent
-  4. Establish handoff protocols to product-manager
-
-# Coordination Protocols
-if agent_coordination == true:
-  - Coordinate Epic priorities with product-manager
-  - Validate business value with reviewer
-  - Handoff technical requirements to software-architect
+business_workflow:
+  analysis: "Business requirement analysis, stakeholder coordination, process documentation"
+  validation: "Epic validation against objectives, business value assessment"
+  handoff: "Epic to Feature handoff protocols, technical requirements communication"
 ```
 
 ---

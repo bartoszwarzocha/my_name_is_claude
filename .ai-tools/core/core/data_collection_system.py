@@ -49,6 +49,11 @@ class TechnologyStack:
     desktop: List[str]
     graphics: List[str]
     ai_ml: List[str]
+    blockchain: List[str]
+    cloud_infrastructure: List[str]
+    cybersecurity: List[str]
+    multimedia: List[str]
+    quantum: List[str]
     confidence_score: float
 
 @dataclass
@@ -108,113 +113,1044 @@ class TechnologyDetector:
 
     def __init__(self):
         self.technology_patterns = {
-            'frontend': {
-                'react': ['package.json', 'react', 'jsx', 'tsx'],
-                'angular': ['angular.json', '@angular', 'component.ts'],
-                'vue': ['vue.config.js', 'vue', '.vue'],
-                'typescript': ['tsconfig.json', '.ts', '.tsx'],
-                'javascript': ['package.json', '.js', '.jsx'],
-                'html5': ['.html', '.htm'],
-                'css3': ['.css', '.scss', '.sass', '.less'],
-                'tailwind': ['tailwind.config.js', 'tailwindcss'],
-                'bootstrap': ['bootstrap', 'bootstrap.css'],
-                'webpack': ['webpack.config.js', 'webpack'],
-                'vite': ['vite.config.js', 'vite']
+            # ========== PROGRAMMING LANGUAGES (Complete Coverage) ==========
+            'languages': {
+                # Compiled Languages - C Family
+                'cpp': ['.cpp', '.cxx', '.cc', '.C', '.c++', '.hpp', '.hxx', '.h++', '.hh', '#include <iostream>', 'std::', 'namespace'],
+                'c': ['.c', '.h', '#include <stdio.h>', 'printf', 'malloc', 'gcc'],
+                'objective_c': ['.m', '.mm', '@interface', '@implementation', 'NSString', 'Cocoa.h'],
+                'objective_cpp': ['.mm', '.M'],
+
+                # Modern Systems Languages
+                'rust': ['.rs', 'Cargo.toml', 'Cargo.lock', 'fn main', 'use std::', 'rustc'],
+                'go': ['.go', 'go.mod', 'go.sum', 'package main', 'import', 'func main'],
+                'zig': ['.zig', 'const std', 'pub fn', 'test'],
+                'carbon': ['.carbon', 'package', 'import Std'],
+                'nim': ['.nim', '.nims', '.nimble', 'proc main'],
+                'crystal': ['.cr', 'shards.yml', 'require'],
+                'dlang': ['.d', 'dub.json', 'import std', 'void main'],
+
+                # JVM Languages
+                'java': ['.java', '.class', '.jar', 'public class', 'public static void main', 'import java'],
+                'kotlin': ['.kt', '.kts', 'fun main', 'import kotlin'],
+                'scala': ['.scala', '.sc', 'def main', 'object', 'import scala'],
+                'groovy': ['.groovy', '.gvy', 'def main', '@Grab'],
+                'clojure': ['.clj', '.cljs', '.cljc', 'defn', 'project.clj'],
+
+                # .NET Languages
+                'csharp': ['.cs', '.csx', 'using System', 'public class', 'static void Main'],
+                'fsharp': ['.fs', '.fsx', '.fsi', 'let main', 'open System'],
+                'vbnet': ['.vb', 'Module', 'Sub Main', 'Imports System'],
+
+                # Functional Languages
+                'haskell': ['.hs', '.lhs', '.cabal', 'main = ', 'import Prelude'],
+                'ocaml': ['.ml', '.mli', '.opam', 'let main', 'open'],
+                'erlang': ['.erl', '.hrl', 'rebar.config', '-module', '-export'],
+                'elixir': ['.ex', '.exs', 'mix.exs', 'defmodule', 'def main'],
+                'elm': ['.elm', 'elm.json', 'main =', 'import'],
+
+                # Scripting Languages
+                'python': ['.py', '.pyw', '.pyx', 'def main', 'if __name__', 'import'],
+                'ruby': ['.rb', '.rbw', 'Gemfile', 'def main', 'require'],
+                'perl': ['.pl', '.pm', 'cpanfile', 'sub main', 'use strict'],
+                'php': ['.php', '.phtml', 'composer.json', '<?php', 'function main'],
+                'lua': ['.lua', 'main =', 'require', 'local'],
+                'tcl': ['.tcl', 'proc main', 'source'],
+                'powershell': ['.ps1', '.psm1', '.psd1', 'function Main', 'Import-Module'],
+                'bash': ['.sh', '.bash', '#!/bin/bash', 'function main'],
+                'zsh': ['.zsh', '#!/bin/zsh'],
+                'fish': ['.fish', '#!/usr/bin/fish'],
+
+                # Mobile Languages
+                'swift': ['.swift', 'Package.swift', 'import Foundation', 'func main'],
+                'dart': ['.dart', 'pubspec.yaml', 'void main', 'import'],
+
+                # Web Languages
+                'typescript': ['.ts', '.tsx', 'tsconfig.json', 'interface', 'type'],
+                'javascript': ['.js', '.jsx', '.mjs', 'package.json', 'function main'],
+                'coffeescript': ['.coffee', 'main =', '->'],
+
+                # Assembly Languages
+                'assembly_x86': ['.asm', '.s', '.S', '.nasm', 'mov eax', 'int 0x80'],
+                'assembly_arm': ['.s', '.S', 'mov r0', 'bx lr'],
+                'assembly_mips': ['.s', 'li $v0', 'syscall'],
+
+                # Legacy Languages
+                'fortran': ['.f90', '.f95', '.f03', '.f08', '.for', '.f', 'program main', 'end program'],
+                'cobol': ['.cob', '.cbl', 'IDENTIFICATION DIVISION', 'PROGRAM-ID'],
+                'pascal': ['.pas', '.pp', 'program main', 'begin', 'end.'],
+                'ada': ['.adb', '.ads', 'procedure Main', 'with Ada'],
+                'modula': ['.mod', '.def', 'MODULE', 'PROCEDURE Main'],
+
+                # Specialized Languages
+                'r': ['.R', '.r', 'DESCRIPTION', 'main <- function', 'library('],
+                'julia': ['.jl', 'Project.toml', 'function main', 'using'],
+                'matlab': ['.m', '.mat', 'function main', 'addpath'],
+                'mathematica': ['.nb', '.wl', '.m', 'Main :='],
+                'maple': ['.mw', '.maple', 'main := proc'],
+                'octave': ['.m', 'function main'],
+                'scilab': ['.sci', '.sce', 'function main'],
+                'sage': ['.sage', '.py', 'def main']
             },
-            'backend': {
-                'python': ['.py', 'requirements.txt', 'setup.py', 'pyproject.toml'],
-                'fastapi': ['fastapi', 'uvicorn'],
-                'django': ['django', 'manage.py', 'settings.py'],
-                'flask': ['flask', 'app.py'],
-                'nodejs': ['package.json', '.js', '.ts'],
-                'express': ['express', 'app.js'],
-                'nestjs': ['@nestjs', 'nest-cli.json'],
-                'java': ['.java', 'pom.xml', 'build.gradle'],
-                'spring': ['spring-boot', 'application.properties'],
-                'csharp': ['.cs', '.csproj', 'appsettings.json'],
-                'dotnet': ['dotnet', '.net'],
-                'go': ['.go', 'go.mod', 'go.sum'],
-                'rust': ['.rs', 'Cargo.toml', 'Cargo.lock'],
-                'php': ['.php', 'composer.json'],
-                'ruby': ['.rb', 'Gemfile', 'config.ru']
+
+            # ========== GUI FRAMEWORKS (Complete Desktop Coverage) ==========
+            'gui_frameworks': {
+                # C++ GUI Frameworks
+                'wxwidgets': ['wx/', 'wxApp', 'wxFrame', 'wxPanel', '#include <wx/', '.wxs', 'wxWidgets', 'wxUSE_'],
+                'qt5': ['Qt5/', 'QApplication', 'QWidget', 'QMainWindow', 'qt5-', '#include <Q', 'QT5_'],
+                'qt6': ['Qt6/', 'qt6-', 'QT += ', '.pro', '.pri', 'qt_add_', 'QT6_'],
+                'fltk': ['FL/', 'Fl_Window', 'Fl_Button', 'fltk-', '#include <FL/'],
+                'gtkmm': ['gtkmm/', 'Gtk::Window', 'Gtk::Application', '#include <gtkmm'],
+                'fox_toolkit': ['FX/', 'FXApp', 'FXMainWindow', '#include <fx.h>'],
+                'cegui': ['CEGUI/', 'cegui/', 'CEGUIBase', '#include <CEGUI'],
+                'imgui': ['imgui/', 'ImGui::', 'imgui.h', 'dear imgui', 'IMGUI_'],
+                'nana': ['nana/', 'nana::', 'nana/gui', '#include <nana'],
+                'nuklear': ['nuklear.h', 'NK_', 'nk_', '#include "nuklear.h"'],
+                'iced': ['iced::', 'iced_native', 'iced_winit'],
+
+                # .NET GUI Frameworks
+                'winforms': ['.designer.cs', 'System.Windows.Forms', 'Form1.cs', 'using System.Windows.Forms'],
+                'wpf': ['.xaml', 'System.Windows', 'Window.xaml', 'using System.Windows'],
+                'avalonia': ['Avalonia/', '.axaml', 'AvaloniaUI', 'using Avalonia'],
+                'maui': ['Microsoft.Maui', '.NET MAUI', 'Platforms/', 'using Microsoft.Maui'],
+                'uno': ['Uno.UI', 'uno-platform', 'using Uno'],
+
+                # Java GUI Frameworks
+                'swing': ['javax.swing', 'JFrame', 'JPanel', 'import javax.swing'],
+                'javafx': ['javafx', '.fxml', 'Stage', 'Scene', 'import javafx'],
+                'swt': ['org.eclipse.swt', 'Display', 'Shell', 'import org.eclipse.swt'],
+
+                # Python GUI Frameworks
+                'tkinter': ['tkinter', 'Tk()', 'mainloop', 'import tkinter'],
+                'pyqt5': ['PyQt5', 'QApplication', 'pyqt5-tools', 'from PyQt5'],
+                'pyqt6': ['PyQt6', 'pyqt6-tools', 'from PyQt6'],
+                'pyside2': ['PySide2', 'QtWidgets', 'from PySide2'],
+                'pyside6': ['PySide6', 'pyside6-uic', 'from PySide6'],
+                'kivy': ['kivy', 'App', 'runTouchApp', 'from kivy'],
+                'dear_pygui': ['dearpygui', 'dpg.', 'import dearpygui'],
+                'ttkbootstrap': ['ttkbootstrap', 'ttk.Style', 'import ttkbootstrap'],
+                'customtkinter': ['customtkinter', 'CTk', 'import customtkinter'],
+
+                # Cross-Platform Web-based
+                'electron': ['electron', 'main.js', 'renderer.js', 'package.json'],
+                'tauri': ['tauri/', 'tauri.conf.json', 'src-tauri/', '#[tauri::command]'],
+                'nwjs': ['nw.js', 'nwjs', 'package.json'],
+                'neutralino': ['neutralino', 'neutralino.config.json'],
+                'wails': ['wails', 'app.go', 'wails.json', 'embed.go'],
+
+                # Game UI Frameworks
+                'cegui_ogre': ['CEGUIOgreRenderer'],
+                'coherent_ui': ['coherent/', 'CoherentUI'],
+                'noesis_gui': ['NoesisGUI/', 'noesis'],
+                'scaleform': ['scaleform/', 'GFx']
             },
+
+            # ========== BACKEND ARCHITECTURES (Enterprise Coverage) ==========
+            'backend_architectures': {
+                # Web Servers
+                'nginx': ['nginx.conf', '/etc/nginx/', 'nginx', 'server {', 'location /'],
+                'apache': ['httpd.conf', '.htaccess', 'apache2', '<VirtualHost', 'LoadModule'],
+                'iis': ['web.config', 'applicationHost.config', 'system.webServer'],
+                'caddy': ['Caddyfile', 'caddy', ':80 {'],
+                'traefik': ['traefik.yml', 'traefik.toml', 'api:', 'entryPoints:'],
+                'lighttpd': ['lighttpd.conf', 'server.modules'],
+                'haproxy': ['haproxy.cfg', 'haproxy', 'global', 'defaults'],
+
+                # Application Servers
+                'tomcat': ['server.xml', 'context.xml', 'catalina', 'webapps/'],
+                'jetty': ['jetty.xml', 'jetty-web.xml', 'org.eclipse.jetty'],
+                'wildfly': ['standalone.xml', 'jboss', 'deployments/'],
+                'websphere': ['was.policy', 'ibm-web-ext', 'websphere'],
+                'weblogic': ['weblogic.xml', 'config.xml', 'oracle.weblogic'],
+                'glassfish': ['domain.xml', 'sun-web.xml', 'glassfish'],
+                'jboss': ['jboss-web.xml', 'jboss-deployment'],
+
+                # Microservices Platforms
+                'istio': ['istio/', 'VirtualService', 'DestinationRule', 'ServiceMesh'],
+                'consul': ['consul.hcl', 'consul-template', 'hashicorp/consul'],
+                'vault': ['vault.hcl', 'vault-agent', 'hashicorp/vault'],
+                'nomad': ['nomad.hcl', '.nomad', 'hashicorp/nomad'],
+                'linkerd': ['linkerd', 'policy.yaml', 'linkerd.io'],
+                'envoy': ['envoy.yaml', 'envoy-proxy', 'envoyproxy'],
+
+                # Message Brokers
+                'rabbitmq': ['rabbitmq.conf', 'rabbitmq-env', 'amqp://'],
+                'apache_kafka': ['server.properties', 'kafka-topics', 'kafka_'],
+                'activemq': ['activemq.xml', 'artemis', 'jms.'],
+                'nats': ['nats.conf', 'nats-streaming', 'nats://'],
+                'redis_streams': ['redis.conf', 'redis-server', 'XREAD'],
+                'pulsar': ['broker.conf', 'pulsar', 'pulsar://'],
+
+                # API Gateways
+                'kong': ['kong.conf', 'kong.yml', 'kong-'],
+                'ambassador': ['ambassador/', 'getambassador', 'ambassador.'],
+                'zuul': ['zuul.properties', 'netflix-zuul', '@EnableZuulProxy'],
+                'spring_cloud_gateway': ['spring-cloud-gateway', 'RouteLocator'],
+                'aws_api_gateway': ['serverless.yml', 'aws-api-gateway']
+            },
+
+            # ========== DATABASE SYSTEMS (Complete Coverage) ==========
             'database': {
-                'postgresql': ['postgres', 'postgresql', 'psql'],
-                'mysql': ['mysql', 'mariadb'],
-                'mongodb': ['mongodb', 'mongo', 'mongoose'],
-                'redis': ['redis', 'redis-server'],
-                'sqlite': ['sqlite', '.db', '.sqlite'],
-                'elasticsearch': ['elasticsearch', 'elastic'],
-                'dynamodb': ['dynamodb', 'aws-sdk'],
-                'cassandra': ['cassandra', 'datastax']
+                # Relational Databases
+                'postgresql': ['postgresql.conf', 'pg_hba.conf', 'psql', 'SELECT version()', 'CREATE TABLE'],
+                'mysql': ['my.cnf', 'mysql', 'mariadb', 'SHOW TABLES', 'ENGINE=InnoDB'],
+                'oracle': ['tnsnames.ora', 'oracle/', 'oci', 'SELECT * FROM dual', 'ORACLE_HOME'],
+                'sql_server': ['sql-server/', 'sqlcmd', '.mdf', '.ldf', 'USE master'],
+                'db2': ['db2/', 'db2inst', 'DB2_HOME', 'CONNECT TO'],
+                'sqlite': ['.sqlite', '.db', 'sqlite3', 'CREATE TABLE', '.schema'],
+                'h2': ['h2.mv.db', 'h2-', 'org.h2.Driver'],
+                'hsqldb': ['hsqldb/', '.script', 'org.hsqldb'],
+                'firebird': ['firebird/', '.fdb', '.gdb'],
+                'access': ['.mdb', '.accdb', 'Microsoft.Jet'],
+
+                # NoSQL Document Stores
+                'mongodb': ['mongod.conf', 'mongo', 'mongoose', 'db.collection', 'ObjectId'],
+                'couchdb': ['couchdb/', 'couchdb.ini', '_design/', 'map:'],
+                'couchbase': ['couchbase/', 'cb-', 'N1QL'],
+                'amazon_documentdb': ['documentdb', 'docdb'],
+
+                # Graph Databases
+                'neo4j': ['neo4j.conf', 'cypher', 'MATCH (', 'CREATE ('],
+                'arangodb': ['arangod.conf', 'arangodb', 'FOR doc IN'],
+                'orientdb': ['orientdb/', 'orientdb-server', 'SELECT FROM'],
+                'amazon_neptune': ['neptune', 'gremlin'],
+
+                # Column Family
+                'cassandra': ['cassandra.yaml', 'cqlsh', 'CREATE KEYSPACE', 'SELECT * FROM'],
+                'hbase': ['hbase-site.xml', 'hbase', 'org.apache.hadoop.hbase'],
+                'dynamodb': ['dynamodb', 'aws-sdk', 'boto3', 'scan('],
+
+                # Key-Value Stores
+                'redis': ['redis.conf', 'redis-server', 'redis-cli', 'SET key', 'GET key'],
+                'memcached': ['memcached.conf', 'memcached', 'set(', 'get('],
+                'etcd': ['etcd.conf', 'etcdctl', 'clientv3'],
+                'consul_kv': ['consul/', 'consul-kv', 'consul.kv'],
+                'hazelcast': ['hazelcast.xml', 'hazelcast-', 'IMap'],
+
+                # Search Engines
+                'elasticsearch': ['elasticsearch.yml', 'elastic', 'GET /_search', 'index:'],
+                'solr': ['solr.xml', 'solrconfig.xml', 'select?q='],
+                'opensearch': ['opensearch.yml', 'opensearch', '_search'],
+                'sphinx': ['sphinx.conf', 'searchd', 'SELECT * FROM'],
+
+                # Time Series Databases
+                'influxdb': ['influxdb.conf', 'influx', 'SELECT mean(', 'FROM'],
+                'prometheus': ['prometheus.yml', 'promql', 'scrape_configs:'],
+                'timescaledb': ['timescaledb', 'postgresql', 'CREATE HYPERTABLE'],
+                'victoriametrics': ['victoria-metrics', 'vmselect']
             },
-            'infrastructure': {
-                'docker': ['Dockerfile', 'docker-compose.yml', '.dockerignore'],
-                'kubernetes': ['k8s', 'kubectl', 'deployment.yaml'],
-                'terraform': ['.tf', 'terraform', 'terraform.tfstate'],
-                'aws': ['aws-cli', 'boto3', 'aws-sdk'],
-                'azure': ['azure-cli', 'az', 'azure-sdk'],
-                'gcp': ['gcloud', 'google-cloud', 'gcp'],
-                'nginx': ['nginx.conf', 'nginx'],
-                'apache': ['httpd.conf', 'apache'],
-                'jenkins': ['Jenkinsfile', 'jenkins'],
-                'github_actions': ['.github/workflows/', 'actions'],
-                'gitlab_ci': ['.gitlab-ci.yml', 'gitlab']
+
+            # ========== DESKTOP-SPECIFIC TECHNOLOGIES ==========
+            'desktop_specific': {
+                # Windows Desktop Technologies
+                'win32_api': ['windows.h', 'user32.lib', 'kernel32.lib', 'HWND', 'WINAPI'],
+                'mfc': ['afxwin.h', 'CWinApp', 'CFrameWnd', 'BEGIN_MESSAGE_MAP'],
+                'atl': ['atlbase.h', 'ATL', 'CComPtr', 'DECLARE_REGISTRY'],
+                'com': ['comdef.h', 'IUnknown', 'CoInitialize', 'HRESULT'],
+                'directx': ['d3d9.h', 'd3d11.h', 'directx-sdk', 'ID3D11Device'],
+                'directshow': ['dshow.h', 'directshow', 'IGraphBuilder'],
+                'wmi': ['wbemidl.h', 'WMI', 'IWbemServices'],
+                'powershell': ['.ps1', 'powershell', 'Get-', 'Set-'],
+
+                # macOS Desktop Technologies
+                'cocoa': ['Cocoa.h', 'NSApplication', 'NSViewController', '#import <Cocoa/Cocoa.h>'],
+                'core_foundation': ['CoreFoundation/', 'CFString', 'CFRelease'],
+                'core_graphics': ['CoreGraphics/', 'CGContext', 'CGPoint'],
+                'core_animation': ['CoreAnimation/', 'CALayer', 'CABasicAnimation'],
+                'app_kit': ['AppKit/', 'NSWindow', 'NSView'],
+                'swift_ui': ['SwiftUI', '@State', '@ObservedObject', 'NavigationView'],
+                'objective_c': ['.m', '.mm', '@interface', '@implementation'],
+
+                # Linux Desktop Technologies
+                'gtk3': ['gtk+-3.0', 'GtkWidget', 'gtk_init', '#include <gtk/gtk.h>'],
+                'gtk4': ['gtk4', 'gtk_application_new', 'GtkApplication'],
+                'kde': ['KDE/', 'kdelibs', 'plasma', 'KMainWindow'],
+                'x11': ['X11/', 'XOpenDisplay', 'xcb', '#include <X11/Xlib.h>'],
+                'wayland': ['wayland/', 'wl_display', 'wayland-client'],
+                'dbus': ['dbus/', 'dbus-1', 'dbus_connection'],
+                'systemd': ['systemd/', '.service', 'ExecStart='],
+
+                # Cross-Platform Native Frameworks
+                'sdl2': ['SDL2/', 'SDL_Init', 'SDL_CreateWindow', '#include <SDL2/SDL.h>'],
+                'allegro': ['allegro5/', 'al_init', 'ALLEGRO_DISPLAY'],
+                'sfml': ['SFML/', 'sf::RenderWindow', '#include <SFML/Graphics.hpp>'],
+                'raylib': ['raylib.h', 'InitWindow', 'BeginDrawing'],
+                'glfw': ['GLFW/', 'glfwInit', 'glfwCreateWindow', '#include <GLFW/glfw3.h>'],
+
+                # Multimedia Frameworks
+                'ffmpeg': ['ffmpeg/', 'libav', 'avcodec', 'av_register_all'],
+                'gstreamer': ['gstreamer/', 'gst-', 'gst_init'],
+                'vlc': ['vlc/', 'libvlc', 'libvlc_new'],
+                'opencv': ['opencv2/', 'cv::', '#include <opencv2/opencv.hpp>'],
+                'openal': ['AL/', 'alc', 'openal', 'alGenSources']
             },
-            'testing': {
-                'jest': ['jest', 'jest.config.js'],
-                'pytest': ['pytest', 'test_', '_test.py'],
-                'junit': ['junit', 'test', '.java'],
-                'cypress': ['cypress', 'cypress.json'],
-                'playwright': ['playwright', '@playwright'],
-                'selenium': ['selenium', 'webdriver'],
-                'mocha': ['mocha', 'mocha.opts'],
-                'karma': ['karma', 'karma.conf.js'],
-                'jasmine': ['jasmine', 'jasmine.json']
+
+            # ========== BUILD SYSTEMS & CONFIGURATION ==========
+            'build_systems': {
+                # Build Systems
+                'cmake': ['CMakeLists.txt', '.cmake', 'cmake-build/', 'add_executable', 'find_package'],
+                'autotools': ['configure.ac', 'Makefile.am', 'autogen.sh', 'AC_INIT', 'AM_INIT_AUTOMAKE'],
+                'meson': ['meson.build', 'meson_options.txt', 'project(', 'executable('],
+                'ninja': ['build.ninja', '.ninja', 'rule compile'],
+                'scons': ['SConstruct', 'SConscript', 'env = Environment'],
+                'waf': ['wscript', 'waf', 'def configure'],
+                'buck': ['BUCK', '.buckconfig', 'cxx_binary'],
+                'pants': ['BUILD', 'pants.ini', 'pants.toml'],
+                'please': ['BUILD.plz', '.plzconfig', 'cc_binary'],
+                'bazel': ['BUILD', 'WORKSPACE', 'cc_binary', 'cc_library'],
+                'qmake': ['.pro', '.pri', 'TARGET =', 'SOURCES +='],
+                'premake': ['premake5.lua', 'premake4.lua', 'workspace'],
+                'xcode': ['.xcodeproj', '.xcworkspace', 'project.pbxproj'],
+                'msbuild': ['.sln', '.vcxproj', '.csproj', '<Project'],
+                'make': ['Makefile', 'makefile', 'GNUmakefile', '$(CC)', '.PHONY'],
+
+                # Package Managers
+                'vcpkg': ['vcpkg.json', 'vcpkg-configuration.json', 'vcpkg install'],
+                'conan': ['conanfile.txt', 'conanfile.py', '[requires]'],
+                'hunter': ['cmake/Hunter/', 'HunterGate.cmake', 'hunter_add_package'],
+                'cpm': ['CPM.cmake', 'cpm-package-lock.cmake', 'CPMAddPackage'],
+                'nuget': ['packages.config', '.nuspec', 'PackageReference'],
+                'chocolatey': ['.chocolatey', 'chocolateyInstall.ps1', 'choco install'],
+
+                # IDE Project Files
+                'visual_studio': ['.sln', '.vcxproj', '.vcxproj.filters', 'Microsoft Visual Studio Solution'],
+                'qt_creator': ['.pro', '.pri', '.qbs', 'TEMPLATE = app'],
+                'code_blocks': ['.cbp', '.workspace', '<CodeBlocks_project_file>'],
+                'dev_cpp': ['.dev', '.layout', '[Project]'],
+                'clion': ['.idea/', 'CMakeLists.txt', '.idea/workspace.xml'],
+                'eclipse_cdt': ['.cproject', '.project', '<projectDescription>'],
+                'netbeans': ['nbproject/', 'Makefile-*', 'project.xml'],
+                'kdevelop': ['.kdev4/', '.kdev_include_paths', '.kdev4']
             },
-            'mobile': {
-                'react_native': ['react-native', 'metro.config.js'],
-                'flutter': ['flutter', 'pubspec.yaml', '.dart'],
-                'xamarin': ['xamarin', '.xamarin'],
-                'ionic': ['ionic', '@ionic'],
-                'cordova': ['cordova', 'config.xml'],
-                'android': ['android', 'build.gradle', 'AndroidManifest.xml'],
-                'ios': ['ios', '.xcodeproj', 'Info.plist'],
-                'swift': ['.swift', 'Package.swift']
-            },
-            'desktop': {
-                'electron': ['electron', 'main.js'],
-                'tauri': ['tauri', 'tauri.conf.json'],
-                'wxwidgets': ['wxwidgets', 'wx/', '.cpp'],
-                'qt': ['qt', 'cmake', '.pro'],
-                'gtk': ['gtk', 'glade'],
-                'tkinter': ['tkinter', 'tk'],
-                'winforms': ['winforms', '.designer.cs'],
-                'wpf': ['wpf', '.xaml'],
-                'javafx': ['javafx', '.fxml']
-            },
+
+            # ========== GRAPHICS & GAME DEVELOPMENT ==========
             'graphics': {
-                'opengl': ['opengl', 'glfw', 'glad', 'gl.h'],
-                'vulkan': ['vulkan', 'vk_', 'vulkan.h'],
-                'directx': ['directx', 'd3d11', 'd3d12'],
-                'openCV': ['opencv', 'cv2', 'opencv2'],
-                'threejs': ['three.js', 'threejs', 'three'],
-                'webgl': ['webgl', 'gl-'],
-                'unity': ['unity', '.unity', 'Assets/'],
-                'unreal': ['unreal', '.uproject', 'Source/'],
-                'blender': ['blender', 'bpy', '.blend']
+                # 3D Graphics APIs
+                'opengl': ['opengl', 'glfw', 'glad', 'glew', 'gl.h', '#include <GL/gl.h>', 'glBegin', 'glVertex'],
+                'vulkan': ['vulkan/', 'vk_', 'vulkan.h', 'VkInstance', 'vkCreateInstance'],
+                'directx9': ['d3d9.h', 'IDirect3DDevice9', 'D3DPRESENT_PARAMETERS'],
+                'directx11': ['d3d11.h', 'ID3D11Device', 'D3D11CreateDevice'],
+                'directx12': ['d3d12.h', 'ID3D12Device', 'D3D12CreateDevice'],
+                'metal': ['Metal/', 'MTL', 'id<MTLDevice>', '#include <Metal/Metal.h>'],
+                'webgl': ['webgl', 'gl-matrix', 'gl.createShader'],
+
+                # 2D Graphics Libraries
+                'sdl2_graphics': ['SDL2/', 'SDL.h', 'SDL_Renderer', 'SDL_CreateRenderer'],
+                'allegro_graphics': ['allegro5/', 'allegro.h', 'ALLEGRO_BITMAP'],
+                'sfml_graphics': ['SFML/', 'sf::', 'sf::Sprite', 'sf::Texture'],
+                'raylib_graphics': ['raylib.h', 'DrawCircle', 'LoadTexture'],
+                'cairo': ['cairo/', 'cairo.h', 'cairo_t', 'cairo_create'],
+                'skia': ['skia/', 'SkCanvas', 'SkPaint'],
+
+                # Image Processing
+                'opencv': ['opencv2/', 'cv2', 'cv::', 'Mat', 'imread'],
+                'imagemagick': ['Magick++', 'magick/', 'Image'],
+                'pil': ['PIL/', 'Pillow', 'from PIL import Image'],
+                'freeimage': ['FreeImage.h', 'FreeImage_Load'],
+                'devil': ['IL/', 'ilInit', 'ilLoadImage'],
+
+                # 3D Engines & Frameworks
+                'unity3d': ['.unity', 'Assets/', 'UnityEngine', 'MonoBehaviour'],
+                'unreal_engine': ['.uproject', 'Source/', 'UnrealEngine', 'UCLASS'],
+                'godot': ['.godot', '.gd', '.tscn', 'extends Node'],
+                'gamemaker': ['.gml', '.yy', 'instance_create'],
+                'construct': ['.c3p', 'Construct 3'],
+                'defold': ['.script', '.go', 'function init'],
+                'cocos2d': ['cocos2d/', 'CCSprite', 'CCScene'],
+                'love2d': ['main.lua', 'love.', 'function love.load'],
+                'panda3d': ['panda3d/', 'ShowBase', 'from panda3d'],
+                'irrlicht': ['irrlicht/', 'IrrlichtDevice', 'createDevice'],
+                'ogre3d': ['Ogre/', 'Ogre::', 'SceneManager'],
+                'cryengine': ['CryEngine/', 'IEntity', 'CRYENGINE'],
+
+                # Rendering Libraries
+                'pbrt': ['pbrt/', 'pbrt.h', 'Transform'],
+                'cycles': ['cycles/', 'bpy.', 'import bpy'],
+                'arnold': ['arnold/', 'ai.h', 'AiNode'],
+                'renderman': ['prman/', 'ri.h', 'RiBegin'],
+
+                # Web 3D
+                'three_js': ['three.js', 'THREE.', 'new THREE.Scene'],
+                'babylon_js': ['babylonjs', 'BABYLON.', 'new BABYLON.Scene'],
+                'aframe': ['aframe', 'a-scene', '<a-box>'],
+                'playcanvas': ['playcanvas', 'pc.Application']
             },
+
+            # ========== SCIENTIFIC & ENGINEERING ==========
+            'scientific': {
+                # Mathematics Software
+                'matlab': ['.m', '.mat', 'matlab', 'function main', 'addpath'],
+                'mathematica': ['.nb', '.wl', 'Mathematica', 'Manipulate'],
+                'maple': ['.mw', '.maple', 'main := proc'],
+                'sage': ['.sage', 'sagemath', 'def main'],
+                'octave': ['.m', 'octave', 'function main'],
+                'scilab': ['.sci', '.sce', 'function main'],
+                'r': ['.R', '.r', 'DESCRIPTION', 'main <- function', 'library('],
+                'julia': ['.jl', 'Project.toml', 'function main', 'using'],
+
+                # Simulation Software
+                'ansys': ['.ans', '.mac', 'ANSYS', '/PREP7'],
+                'abaqus': ['.inp', '.odb', 'Abaqus', '*HEADING'],
+                'nastran': ['.bdf', '.nas', 'MSC Nastran', 'BEGIN BULK'],
+                'openfoam': ['controlDict', 'fvSchemes', 'OpenFOAM', 'FoamFile'],
+                'comsol': ['.mph', 'COMSOL', 'Multiphysics'],
+
+                # CAD/CAE Libraries
+                'freecad': ['.FCStd', '.py', 'FreeCAD', 'import FreeCAD'],
+                'opencascade': ['opencascade/', 'TopoDS_', 'gp_Pnt'],
+                'cgal': ['CGAL/', 'cgal', 'CGAL::'],
+                'vtk': ['vtk/', 'vtkSmartPointer', 'vtkPolyData'],
+                'itk': ['itk/', 'itkImage', 'itk::Image'],
+                'pcl': ['pcl/', 'pcl::', 'pcl::PointCloud'],
+
+                # Physics Simulation
+                'geant4': ['G4', 'geant4/', 'G4RunManager'],
+                'root': ['TH1', 'TTree', '.root', '#include <TApplication.h>'],
+                'hep': ['fastjet/', 'pythia8/', 'CLHEP/'],
+
+                # Numerical Libraries
+                'eigen': ['Eigen/', 'Eigen::', 'Matrix3d'],
+                'armadillo': ['armadillo', 'arma::', 'mat'],
+                'blas': ['cblas.h', 'cblas_', 'BLAS'],
+                'lapack': ['lapack.h', 'clapack_', 'LAPACK'],
+                'mkl': ['mkl.h', 'MKL_', 'Intel MKL'],
+                'gsl': ['gsl/', 'gsl_', 'GNU Scientific Library']
+            },
+
+            # ========== EMBEDDED & IoT ==========
+            'embedded': {
+                # Microcontroller Platforms
+                'arduino': ['Arduino.h', '.ino', 'setup()', 'loop()', 'digitalWrite'],
+                'esp32': ['esp_', 'ESP32', 'freertos/', 'esp_wifi.h'],
+                'esp8266': ['ESP8266', 'esp8266/', 'ESP8266WiFi.h'],
+                'stm32': ['stm32', 'HAL_', 'CMSIS/', 'stm32f4xx.h'],
+                'pic': ['pic.h', '__CONFIG', 'TRIS', 'PORT'],
+                'avr': ['avr/', 'DDRB', 'PORTB', '#include <avr/io.h>'],
+                'msp430': ['msp430', 'wdt_', 'msp430.h'],
+                'nordic': ['nrf5', 'nrf_', 'nrf52', 'softdevice'],
+                'ti': ['driverlib/', 'TivaWare/', 'ti_drivers'],
+                'cypress': ['cy_', 'PSoC', 'Cypress'],
+                'microchip': ['pic32', 'harmony/', 'plib.h'],
+
+                # Real-Time Operating Systems
+                'freertos': ['FreeRTOS.h', 'xTaskCreate', 'vTaskDelay'],
+                'zephyr': ['zephyr/', 'k_thread', 'CONFIG_'],
+                'mbedos': ['mbed.h', 'mbed-os/', 'Thread'],
+                'riot': ['RIOT/', 'thread_create', 'msg_t'],
+                'contiki': ['contiki.h', 'PROCESS', 'AUTOSTART_PROCESSES'],
+                'nuttx': ['nuttx/', 'CONFIG_', 'main()'],
+                'tinyos': ['TinyOS', 'nesC', 'interface'],
+
+                # Communication Protocols
+                'can': ['can.h', 'CAN_', 'CanTxMsg'],
+                'modbus': ['modbus.h', 'mb_', 'modbus_'],
+                'mqtt': ['MQTTClient', 'paho', 'mosquitto'],
+                'lorawan': ['lorawan/', 'lora_', 'LoRaWAN'],
+                'bluetooth': ['bluetooth/', 'bt_', 'BluetoothSerial'],
+                'zigbee': ['zigbee/', 'zb_', 'ZigBee'],
+                'wifi': ['WiFi.h', 'wifi_', 'ESP8266WiFi'],
+                'ethernet': ['Ethernet.h', 'eth_', 'EthernetClient'],
+
+                # Industrial Protocols
+                'profibus': ['profibus/', 'pb_', 'PROFIBUS'],
+                'profinet': ['profinet/', 'pn_', 'PROFINET'],
+                'ethercat': ['ethercat/', 'ec_', 'EtherCAT'],
+                'devicenet': ['devicenet/', 'dn_', 'DeviceNet']
+            },
+
+            # ========== WEB FRONTEND (Extended) ==========
+            'frontend': {
+                # JavaScript Frameworks
+                'react': ['package.json', 'react', 'jsx', 'tsx', 'React.Component'],
+                'angular': ['angular.json', '@angular', 'component.ts', 'ng serve'],
+                'vue': ['vue.config.js', 'vue', '.vue', 'Vue.component'],
+                'svelte': ['svelte', '.svelte', 'svelte.config.js'],
+                'ember': ['ember-cli', '.ember-cli', 'Ember.Component'],
+                'backbone': ['backbone.js', 'Backbone.Model', 'Backbone.View'],
+                'knockout': ['knockout.js', 'ko.observable', 'data-bind'],
+                'polymer': ['polymer', 'PolymerElement', '@polymer'],
+                'lit': ['lit-element', 'LitElement', 'lit-html'],
+                'alpine': ['alpine.js', 'x-data', 'x-show'],
+                'stimulus': ['stimulus', 'data-controller', 'Stimulus.register'],
+
+                # CSS Frameworks
+                'bootstrap': ['bootstrap', 'bootstrap.css', 'container', 'row'],
+                'tailwind': ['tailwind.config.js', 'tailwindcss', '@apply'],
+                'bulma': ['bulma', 'bulma.css', 'column', 'section'],
+                'foundation': ['foundation', 'foundation.css', 'grid-x'],
+                'materialize': ['materialize', 'materialize.css', 'waves-effect'],
+                'semantic_ui': ['semantic-ui', 'semantic.css', 'ui segment'],
+                'chakra_ui': ['@chakra-ui', 'ChakraProvider', 'Box'],
+                'ant_design': ['antd', '@ant-design', 'import { Button }'],
+                'material_ui': ['@mui/material', '@material-ui', 'makeStyles'],
+
+                # Build Tools
+                'webpack': ['webpack.config.js', 'webpack', 'module.exports'],
+                'vite': ['vite.config.js', 'vite', 'import.meta.hot'],
+                'parcel': ['parcel', '.parcelrc', 'parcel-bundler'],
+                'rollup': ['rollup.config.js', 'rollup', 'export default'],
+                'esbuild': ['esbuild', 'esbuild.js', 'build.js'],
+                'snowpack': ['snowpack.config.js', 'snowpack', 'mount'],
+                'turbopack': ['turbopack', 'next.config.js'],
+
+                # TypeScript & Languages
+                'typescript': ['tsconfig.json', '.ts', '.tsx', 'interface', 'type'],
+                'javascript': ['package.json', '.js', '.jsx', 'function', 'const'],
+                'coffeescript': ['.coffee', 'coffee-script', '->'],
+                'purescript': ['.purs', 'purescript', 'module'],
+                'elm': ['.elm', 'elm.json', 'main ='],
+                'reasonml': ['.re', '.rei', 'reason', 'let'],
+                'clojurescript': ['.cljs', 'clojurescript', 'defn'],
+
+                # Static Site Generators
+                'gatsby': ['gatsby-config.js', 'gatsby', 'export { graphql }'],
+                'next': ['next.config.js', 'next', 'getStaticProps'],
+                'nuxt': ['nuxt.config.js', 'nuxt', 'asyncData'],
+                'gridsome': ['gridsome.config.js', 'gridsome'],
+                'hugo': ['config.toml', 'hugo', 'content/'],
+                'jekyll': ['_config.yml', '_posts/', 'jekyll'],
+                'eleventy': ['.eleventy.js', '11ty', 'eleventy']
+            },
+
+            # ========== BACKEND (Extended) ==========
+            'backend': {
+                # Python Frameworks
+                'python': ['.py', 'requirements.txt', 'setup.py', 'pyproject.toml'],
+                'django': ['django', 'manage.py', 'settings.py', 'from django'],
+                'flask': ['flask', 'app.py', 'from flask import'],
+                'fastapi': ['fastapi', 'uvicorn', 'from fastapi import'],
+                'tornado': ['tornado', 'tornado.web', 'RequestHandler'],
+                'pyramid': ['pyramid', 'pyramid.config', 'Configurator'],
+                'bottle': ['bottle', 'bottle.py', '@route'],
+                'cherrypy': ['cherrypy', 'cherrypy.expose'],
+                'falcon': ['falcon', 'falcon.API', 'on_get'],
+                'sanic': ['sanic', 'Sanic', 'from sanic import'],
+                'quart': ['quart', 'Quart', 'from quart import'],
+
+                # Node.js Frameworks
+                'nodejs': ['package.json', '.js', '.ts', 'require(', 'import'],
+                'express': ['express', 'app.js', 'app.listen'],
+                'koa': ['koa', 'Koa', 'ctx.body'],
+                'hapi': ['@hapi/hapi', 'server.route'],
+                'fastify': ['fastify', 'fastify()'],
+                'nestjs': ['@nestjs', 'nest-cli.json', '@Controller'],
+                'adonis': ['@adonisjs', 'ace', 'Route.get'],
+                'meteor': ['meteor', '.meteor/', 'Meteor.methods'],
+                'strapi': ['strapi', '@strapi/strapi'],
+                'loopback': ['loopback', '@loopback/core'],
+
+                # Java Frameworks
+                'java': ['.java', 'pom.xml', 'build.gradle', 'public class'],
+                'spring_boot': ['spring-boot', 'application.properties', '@SpringBootApplication'],
+                'spring_mvc': ['spring-webmvc', '@Controller', '@RequestMapping'],
+                'struts': ['struts', 'struts.xml', 'ActionSupport'],
+                'jersey': ['jersey', 'javax.ws.rs', '@GET'],
+                'play': ['play', 'application.conf', 'Action'],
+                'dropwizard': ['dropwizard', 'Application'],
+                'micronaut': ['micronaut', '@Controller'],
+                'quarkus': ['quarkus', 'application.properties'],
+                'helidon': ['helidon', 'io.helidon'],
+
+                # C# Frameworks
+                'csharp': ['.cs', '.csproj', 'appsettings.json', 'using System'],
+                'aspnet_core': ['Microsoft.AspNetCore', 'Startup.cs', '[ApiController]'],
+                'aspnet_mvc': ['System.Web.Mvc', '[Controller]', 'ActionResult'],
+                'aspnet_webapi': ['System.Web.Http', '[HttpGet]', 'ApiController'],
+                'nancy': ['Nancy', 'NancyModule'],
+                'servicestack': ['ServiceStack', 'IService'],
+
+                # Go Frameworks
+                'go': ['.go', 'go.mod', 'go.sum', 'package main'],
+                'gin': ['gin-gonic', 'gin.Default', 'router.GET'],
+                'echo': ['labstack/echo', 'echo.New', 'GET'],
+                'fiber': ['gofiber/fiber', 'fiber.New'],
+                'beego': ['beego', 'beego.Router'],
+                'revel': ['revel', 'revel.Controller'],
+                'iris': ['kataras/iris', 'iris.New'],
+
+                # Rust Frameworks
+                'rust': ['.rs', 'Cargo.toml', 'Cargo.lock', 'fn main'],
+                'actix_web': ['actix-web', 'HttpServer'],
+                'rocket': ['rocket', '#[get]'],
+                'warp': ['warp', 'warp::Filter'],
+                'tide': ['tide', 'tide::Request'],
+                'axum': ['axum', 'axum::Router'],
+
+                # PHP Frameworks
+                'php': ['.php', 'composer.json', '<?php'],
+                'laravel': ['laravel', 'artisan', 'Illuminate\\'],
+                'symfony': ['symfony', 'Symfony\\Component'],
+                'codeigniter': ['CodeIgniter', 'CI_Controller'],
+                'cakephp': ['cakephp', 'CakePHP'],
+                'zend': ['zend', 'Zend\\Framework'],
+                'yii': ['yii', 'CActiveRecord'],
+
+                # Ruby Frameworks
+                'ruby': ['.rb', 'Gemfile', 'require'],
+                'rails': ['rails', 'config/routes.rb', 'ApplicationController'],
+                'sinatra': ['sinatra', 'Sinatra::Base'],
+                'padrino': ['padrino', 'Padrino::Application'],
+                'hanami': ['hanami', 'Hanami::Action'],
+                'grape': ['grape', 'Grape::API']
+            },
+
+            # ========== TESTING FRAMEWORKS ==========
+            'testing': {
+                # JavaScript Testing
+                'jest': ['jest', 'jest.config.js', 'describe(', 'test('],
+                'mocha': ['mocha', 'mocha.opts', 'describe(', 'it('],
+                'jasmine': ['jasmine', 'jasmine.json', 'describe(', 'it('],
+                'karma': ['karma', 'karma.conf.js', 'karma start'],
+                'ava': ['ava', 'test(', 'import test from'],
+                'tape': ['tape', 'test(', 'require("tape")'],
+                'qunit': ['qunit', 'QUnit.test', 'QUnit.module'],
+
+                # Python Testing
+                'pytest': ['pytest', 'test_', '_test.py', 'def test_'],
+                'unittest': ['unittest', 'TestCase', 'def test_'],
+                'nose': ['nose', 'nosetests', '@with_setup'],
+                'behave': ['behave', '.feature', 'Given', 'When', 'Then'],
+                'robot': ['robot', '.robot', '*** Test Cases ***'],
+
+                # Java Testing
+                'junit': ['junit', 'test', '.java', '@Test'],
+                'testng': ['testng', '@Test', 'TestNG'],
+                'mockito': ['mockito', 'mock(', 'when('],
+                'hamcrest': ['hamcrest', 'assertThat', 'is('],
+
+                # C# Testing
+                'nunit': ['NUnit', '[Test]', 'Assert.AreEqual'],
+                'xunit': ['xUnit', '[Fact]', 'Assert.Equal'],
+                'mstest': ['MSTest', '[TestMethod]', 'Assert.AreEqual'],
+
+                # C++ Testing
+                'gtest': ['gtest', 'googletest', 'TEST(', 'EXPECT_EQ'],
+                'catch2': ['catch2', 'catch.hpp', 'TEST_CASE'],
+                'boost_test': ['boost/test', 'BOOST_AUTO_TEST_CASE'],
+                'cppunit': ['cppunit', 'CppUnit', 'CPPUNIT_TEST'],
+
+                # Browser Testing
+                'cypress': ['cypress', 'cypress.json', 'cy.visit'],
+                'playwright': ['playwright', '@playwright', 'page.goto'],
+                'selenium': ['selenium', 'webdriver', 'driver.get'],
+                'puppeteer': ['puppeteer', 'puppeteer.launch'],
+                'webdriverio': ['webdriverio', 'browser.url'],
+
+                # Load Testing
+                'jmeter': ['jmeter', '.jmx', 'TestPlan'],
+                'k6': ['k6', 'import http from'],
+                'locust': ['locust', 'HttpUser', '@task'],
+                'gatling': ['gatling', '.scala', 'Simulation']
+            },
+
+            # ========== MOBILE DEVELOPMENT ==========
+            'mobile': {
+                # Native iOS
+                'ios': ['ios', '.xcodeproj', 'Info.plist', 'UIViewController'],
+                'swift': ['.swift', 'Package.swift', 'import UIKit'],
+                'objective_c_ios': ['.m', '.mm', '@interface', 'UIKit/UIKit.h'],
+                'swiftui': ['SwiftUI', '@State', '@ObservedObject'],
+
+                # Native Android
+                'android': ['android', 'build.gradle', 'AndroidManifest.xml', 'MainActivity'],
+                'java_android': ['android', '.java', 'Activity', 'Intent'],
+                'kotlin_android': ['android', '.kt', 'Activity', 'Intent'],
+                'jetpack_compose': ['@Composable', 'androidx.compose'],
+
+                # Cross-Platform
+                'react_native': ['react-native', 'metro.config.js', 'React Native'],
+                'flutter': ['flutter', 'pubspec.yaml', '.dart', 'StatelessWidget'],
+                'xamarin': ['xamarin', '.xamarin', 'Xamarin.Forms'],
+                'ionic': ['ionic', '@ionic', 'ion-content'],
+                'cordova': ['cordova', 'config.xml', 'deviceready'],
+                'phonegap': ['phonegap', 'pg-'],
+                'nativescript': ['nativescript', 'tns-'],
+                'unity_mobile': ['unity', 'Assets/', 'MonoBehaviour'],
+
+                # Hybrid Frameworks
+                'capacitor': ['capacitor', '@capacitor/core'],
+                'quasar': ['quasar', 'quasar.conf.js'],
+                'framework7': ['framework7', 'framework7-react'],
+                'onsen_ui': ['onsen', 'onsenui']
+            },
+
+            # ========== AI & MACHINE LEARNING ==========
             'ai_ml': {
-                'tensorflow': ['tensorflow', 'tf.', 'keras'],
-                'pytorch': ['pytorch', 'torch', 'torchvision'],
-                'scikit_learn': ['sklearn', 'scikit-learn'],
-                'pandas': ['pandas', 'pd.'],
-                'numpy': ['numpy', 'np.'],
+                # Deep Learning Frameworks
+                'tensorflow': ['tensorflow', 'tf.', 'keras', 'import tensorflow'],
+                'pytorch': ['pytorch', 'torch', 'torchvision', 'import torch'],
+                'jax': ['jax', 'jax.numpy', 'import jax'],
+                'mxnet': ['mxnet', 'mx.', 'import mxnet'],
+                'caffe': ['caffe', 'caffe.proto', 'caffe/'],
+                'theano': ['theano', 'theano.tensor'],
+                'chainer': ['chainer', 'chainer.links'],
+                'cntk': ['cntk', 'import cntk'],
+
+                # ML Libraries
+                'scikit_learn': ['sklearn', 'scikit-learn', 'from sklearn'],
+                'pandas': ['pandas', 'pd.', 'import pandas'],
+                'numpy': ['numpy', 'np.', 'import numpy'],
+                'scipy': ['scipy', 'from scipy import'],
+                'statsmodels': ['statsmodels', 'import statsmodels'],
+                'xgboost': ['xgboost', 'xgb.', 'import xgboost'],
+                'lightgbm': ['lightgbm', 'lgb.', 'import lightgbm'],
+                'catboost': ['catboost', 'CatBoostRegressor'],
+
+                # Computer Vision
+                'opencv_ai': ['cv2', 'opencv-python', 'import cv2'],
+                'pillow': ['PIL', 'Pillow', 'from PIL import'],
+                'imageio': ['imageio', 'imread'],
+                'skimage': ['skimage', 'from skimage import'],
+                'albumentations': ['albumentations', 'import albumentations'],
+
+                # NLP Libraries
+                'nltk': ['nltk', 'import nltk'],
+                'spacy': ['spacy', 'import spacy'],
+                'gensim': ['gensim', 'from gensim import'],
+                'transformers': ['transformers', 'huggingface', 'from transformers'],
+                'bert': ['bert', 'BertModel'],
+                'openai': ['openai', 'gpt-', 'import openai'],
+                'anthropic': ['anthropic', 'claude', 'import anthropic'],
+
+                # Jupyter & Notebooks
                 'jupyter': ['jupyter', '.ipynb', 'nbconvert'],
-                'opencv_ai': ['cv2', 'opencv-python'],
-                'huggingface': ['transformers', 'huggingface'],
-                'openai': ['openai', 'gpt-'],
-                'anthropic': ['anthropic', 'claude']
+                'ipython': ['ipython', 'IPython'],
+                'google_colab': ['google.colab', 'from google.colab'],
+
+                # Visualization
+                'matplotlib': ['matplotlib', 'pyplot', 'import matplotlib'],
+                'seaborn': ['seaborn', 'sns.', 'import seaborn'],
+                'plotly': ['plotly', 'plotly.graph_objects'],
+                'bokeh': ['bokeh', 'from bokeh import'],
+                'altair': ['altair', 'import altair']
+            },
+
+            # ========== BLOCKCHAIN & WEB3 ==========
+            'blockchain': {
+                # Smart Contract Languages
+                'solidity': ['.sol', 'pragma solidity', 'contract', 'function', 'mapping', 'address'],
+                'vyper': ['.vy', 'vyper', '@public', '@internal', 'wei_value'],
+                'move': ['.move', 'module', 'script', 'resource', 'Move.toml'],
+                'ink': ['.rs', '#[ink::contract]', 'ink_lang', 'ink_storage'],
+                'clarity': ['.clar', '(define-', 'stacks', 'clarity'],
+                'cairo': ['.cairo', '%lang starknet', 'func', '@contract_interface'],
+                'yul': ['.yul', 'object', 'code', 'datacopy'],
+
+                # Blockchain Platforms
+                'ethereum': ['ethereum', 'eth', 'web3.js', 'ethers.js', 'truffle', 'hardhat'],
+                'bitcoin': ['bitcoin', 'btc', 'blockchain', 'satoshi', 'segwit'],
+                'binance_smart_chain': ['bsc', 'binance', 'pancakeswap', 'bep20'],
+                'polygon': ['polygon', 'matic', 'polygon-sdk'],
+                'avalanche': ['avalanche', 'avax', 'subnet'],
+                'solana': ['solana', 'sol', 'anchor', '@solana/web3.js'],
+                'cardano': ['cardano', 'ada', 'plutus', 'marlowe'],
+                'polkadot': ['polkadot', 'dot', 'substrate', 'kusama'],
+                'cosmos': ['cosmos', 'atom', 'tendermint', 'cosmos-sdk'],
+                'near': ['near', 'near-sdk', 'assemblyscript'],
+                'starknet': ['starknet', 'cairo', 'starkware'],
+                'tezos': ['tezos', 'xtz', 'ligo', 'michelson'],
+
+                # Development Frameworks
+                'truffle': ['truffle.js', 'truffle-config.js', 'migrations/', 'contracts/'],
+                'hardhat': ['hardhat.config.js', 'hardhat.config.ts', '@nomiclabs/hardhat'],
+                'foundry': ['foundry.toml', 'forge', 'cast', 'anvil'],
+                'brownie': ['brownie-config.yaml', 'brownie', 'from brownie import'],
+                'embark': ['embark.json', 'config/blockchain.js'],
+                'waffle': ['@ethereum-waffle', 'waffle.json'],
+                'ganache': ['ganache-cli', 'ganache', 'testrpc'],
+
+                # Web3 Libraries
+                'web3js': ['web3.js', 'web3', 'new Web3'],
+                'ethersjs': ['ethers.js', 'ethers', 'ethers.provider'],
+                'web3py': ['web3.py', 'from web3 import Web3'],
+                'drizzle': ['drizzle', '@drizzle/store'],
+                'moralis': ['moralis', 'Moralis.start'],
+
+                # DeFi & dApps
+                'defi': ['uniswap', 'compound', 'aave', 'yearn', 'dex', 'yield farming'],
+                'nft': ['erc721', 'erc1155', 'opensea', 'nft', 'metadata'],
+                'dao': ['dao', 'governance', 'voting', 'multisig'],
+                'oracle': ['chainlink', 'oracle', 'price feed'],
+
+                # Crypto Libraries
+                'cryptography_blockchain': ['secp256k1', 'bip39', 'hdwallet', 'merkle tree'],
+                'ipfs': ['ipfs', 'ipfs-api', 'pinata', 'filecoin']
+            },
+
+            # ========== CLOUD & INFRASTRUCTURE (Enhanced) ==========
+            'cloud_infrastructure': {
+                # Cloud Providers
+                'aws': ['aws-cli', 'boto3', 'lambda', 's3', 'ec2', 'cloudformation', 'aws-sdk'],
+                'azure': ['azure-cli', 'az', 'azure-functions', 'azure-storage', '@azure/'],
+                'gcp': ['gcloud', 'google-cloud', 'app-engine', 'cloud-functions', 'firebase'],
+                'alibaba_cloud': ['aliyun', 'alicloud', 'oss', 'ecs'],
+                'oracle_cloud': ['oci', 'oracle-cloud', 'oci-cli'],
+                'ibm_cloud': ['ibm-cloud', 'watson', 'cloudant'],
+                'digitalocean': ['digitalocean', 'doctl', 'droplet'],
+                'linode': ['linode', 'linode-cli'],
+                'vultr': ['vultr', 'vultr-cli'],
+
+                # Container Orchestration
+                'kubernetes': ['kubernetes', 'kubectl', 'k8s', 'deployment.yaml', 'service.yaml'],
+                'helm': ['helm', 'Chart.yaml', 'values.yaml', 'templates/'],
+                'istio': ['istio', 'virtualservice', 'destinationrule', 'gateway'],
+                'linkerd': ['linkerd', 'linkerd.io', 'l5d'],
+                'consul': ['consul', 'consul-template', 'service mesh'],
+                'nomad': ['nomad', 'nomad.hcl', 'job'],
+                'rancher': ['rancher', 'cattle', 'rke'],
+                'openshift': ['openshift', 'oc', 'red hat'],
+
+                # Infrastructure as Code
+                'terraform': ['terraform', '.tf', 'main.tf', 'provider', 'resource'],
+                'pulumi': ['pulumi', 'Pulumi.yaml', '@pulumi/'],
+                'cloudformation': ['cloudformation', '.yaml', 'AWSTemplateFormatVersion'],
+                'arm_templates': ['azuredeploy.json', 'Microsoft.Resources'],
+                'cdk': ['aws-cdk', '@aws-cdk/', 'cdk.json'],
+                'ansible': ['ansible', 'playbook.yml', 'hosts', 'roles/'],
+                'chef': ['chef', 'cookbook', 'recipe', 'Berksfile'],
+                'puppet': ['puppet', '.pp', 'manifests/', 'Puppetfile'],
+                'salt': ['salt', 'saltstack', '.sls', 'pillar/'],
+
+                # Monitoring & Observability
+                'prometheus': ['prometheus', 'prometheus.yml', 'metrics'],
+                'grafana': ['grafana', 'dashboard.json', 'datasource'],
+                'jaeger': ['jaeger', 'tracing', 'opentelemetry'],
+                'zipkin': ['zipkin', 'zipkin-server'],
+                'datadog': ['datadog', 'dd-agent', 'datadog.yaml'],
+                'new_relic': ['newrelic', 'new-relic', 'nr-agent'],
+                'elastic_stack': ['elasticsearch', 'logstash', 'kibana', 'beats'],
+                'splunk': ['splunk', 'splunkd', 'splunk-forwarder'],
+                'dynatrace': ['dynatrace', 'oneagent'],
+
+                # CI/CD Platforms
+                'jenkins': ['Jenkinsfile', 'jenkins', 'pipeline'],
+                'gitlab_ci': ['.gitlab-ci.yml', 'gitlab-runner'],
+                'github_actions': ['.github/workflows/', 'github-actions'],
+                'azure_devops': ['azure-pipelines.yml', 'azure-devops'],
+                'teamcity': ['teamcity', '.teamcity/'],
+                'bamboo': ['bamboo', 'bamboo-specs'],
+                'circleci': ['.circleci/config.yml', 'circleci'],
+                'travis': ['.travis.yml', 'travis-ci'],
+
+                # Serverless
+                'serverless_framework': ['serverless.yml', 'serverless', 'sls'],
+                'lambda': ['aws-lambda', 'lambda_function.py', 'handler'],
+                'azure_functions': ['function.json', 'host.json', 'azure-functions'],
+                'cloud_functions': ['functions-framework', 'cloud-functions'],
+                'vercel': ['vercel.json', 'vercel', 'now.json'],
+                'netlify': ['netlify.toml', '_redirects', 'netlify-lambda'],
+
+                # Load Balancers & CDN
+                'cloudflare': ['cloudflare', 'cf-', 'workers'],
+                'fastly': ['fastly', 'vcl'],
+                'cloudfront': ['cloudfront', 'distribution'],
+                'nginx_plus': ['nginx-plus', 'nginx+'],
+                'f5': ['f5', 'big-ip', 'ltm']
+            },
+
+            # ========== CYBERSECURITY TOOLS ==========
+            'cybersecurity': {
+                # Security Frameworks
+                'owasp': ['owasp', 'owasp-zap', 'dependency-check'],
+                'nist': ['nist', 'cybersecurity framework', 'csf'],
+                'iso27001': ['iso27001', 'iso 27001', 'isms'],
+                'cis': ['cis controls', 'cis benchmark'],
+                'sans': ['sans', 'sans framework'],
+
+                # Vulnerability Scanning
+                'nessus': ['nessus', '.nessus', 'tenable'],
+                'openvas': ['openvas', 'gvm', 'greenbone'],
+                'qualys': ['qualys', 'vmdr', 'was'],
+                'rapid7': ['nexpose', 'insightvm', 'metasploit'],
+                'acunetix': ['acunetix', 'web vulnerability'],
+                'checkmarx': ['checkmarx', 'sast', 'static analysis'],
+                'veracode': ['veracode', 'static analysis'],
+                'sonarqube': ['sonarqube', 'sonar-scanner', 'code quality'],
+
+                # Penetration Testing
+                'metasploit': ['metasploit', 'msfconsole', 'exploit'],
+                'burp_suite': ['burp', 'burp suite', 'portswigger'],
+                'nmap': ['nmap', 'nmap-scripts', 'port scan'],
+                'wireshark': ['wireshark', 'tshark', 'packet capture'],
+                'aircrack': ['aircrack-ng', 'wifi security'],
+                'john_the_ripper': ['john', 'password cracking'],
+                'hashcat': ['hashcat', 'hash cracking'],
+                'hydra': ['hydra', 'brute force'],
+                'sqlmap': ['sqlmap', 'sql injection'],
+                'nikto': ['nikto', 'web scanner'],
+                'gobuster': ['gobuster', 'directory brute'],
+                'ffuf': ['ffuf', 'fuzzing'],
+
+                # SIEM & Log Analysis
+                'splunk_security': ['splunk', 'splunk enterprise security'],
+                'elk_security': ['elasticsearch', 'elastic security'],
+                'qradar': ['qradar', 'ibm security'],
+                'sentinel': ['azure sentinel', 'microsoft sentinel'],
+                'arcsight': ['arcsight', 'micro focus'],
+                'logrhythm': ['logrhythm', 'siem'],
+                'phantom': ['phantom', 'soar'],
+                'demisto': ['demisto', 'cortex xsoar'],
+
+                # Endpoint Security
+                'antivirus': ['antivirus', 'endpoint protection'],
+                'edr': ['edr', 'endpoint detection'],
+                'crowdstrike': ['crowdstrike', 'falcon'],
+                'carbon_black': ['carbon black', 'cb response'],
+                'cylance': ['cylance', 'ai antivirus'],
+                'symantec': ['symantec', 'norton'],
+                'mcafee': ['mcafee', 'trellix'],
+
+                # Cryptography & PKI
+                'openssl': ['openssl', 'ssl', 'tls'],
+                'libsodium': ['libsodium', 'nacl', 'crypto'],
+                'bouncy_castle': ['bouncy castle', 'bc-java'],
+                'let_encrypt': ['letsencrypt', 'certbot', 'acme'],
+                'pki': ['pki', 'certificate authority', 'x509'],
+                'pgp': ['pgp', 'gpg', 'gnupg'],
+                'yubikey': ['yubikey', 'fido2', 'u2f'],
+
+                # Network Security
+                'firewall': ['iptables', 'pf', 'ufw', 'firewalld'],
+                'ids_ips': ['snort', 'suricata', 'zeek', 'bro'],
+                'vpn': ['openvpn', 'wireguard', 'ipsec'],
+                'proxy': ['squid', 'haproxy', 'nginx proxy'],
+                'waf': ['modsecurity', 'cloudflare waf', 'aws waf'],
+
+                # Compliance & Audit
+                'pci_dss': ['pci', 'payment card', 'compliance'],
+                'gdpr': ['gdpr', 'data protection', 'privacy'],
+                'hipaa': ['hipaa', 'healthcare', 'phi'],
+                'sox': ['sarbanes oxley', 'sox', 'financial'],
+                'audit': ['audit trail', 'compliance audit']
+            },
+
+            # ========== MULTIMEDIA & AUDIO/VIDEO ==========
+            'multimedia': {
+                # Audio Processing
+                'fmod': ['fmod', 'fmod_studio', 'FMOD_System'],
+                'openal': ['openal', 'AL_', 'alc', 'OpenAL32'],
+                'portaudio': ['portaudio', 'Pa_', 'portaudio.h'],
+                'jack': ['jack', 'jack_client', 'libjack'],
+                'alsa': ['alsa', 'snd_', 'asoundlib.h'],
+                'pulse_audio': ['pulseaudio', 'pa_', 'pulse/'],
+                'coreaudio': ['coreaudio', 'AudioUnit', 'AudioToolbox'],
+                'wasapi': ['wasapi', 'IAudioClient', 'mmdeviceapi'],
+                'rtaudio': ['rtaudio', 'RtAudio', 'rtaudio.h'],
+                'waveform': ['wave', 'wav', 'audio waveform'],
+
+                # Audio Libraries & Formats
+                'libsndfile': ['libsndfile', 'sndfile.h', 'sf_'],
+                'flac': ['flac', 'libflac', 'FLAC__'],
+                'ogg_vorbis': ['ogg', 'vorbis', 'oggvorbis'],
+                'opus': ['opus', 'libopus', 'opus_'],
+                'mp3lame': ['lame', 'mp3lame', 'lame_'],
+                'aac': ['aac', 'faac', 'libfaac'],
+                'speex': ['speex', 'libspeex'],
+
+                # Video Processing
+                'ffmpeg': ['ffmpeg', 'libav', 'avcodec', 'avformat'],
+                'gstreamer': ['gstreamer', 'gst-', 'GstElement'],
+                'opencv_video': ['opencv', 'cv2', 'VideoCapture', 'VideoWriter'],
+                'directshow': ['directshow', 'IBaseFilter', 'IMediaControl'],
+                'media_foundation': ['media foundation', 'IMFMediaSource'],
+                'avfoundation': ['avfoundation', 'AVPlayer', 'AVCaptureSession'],
+                'quicktime': ['quicktime', 'QTKit', 'QuickTime.h'],
+                'vlc': ['vlc', 'libvlc', 'vlc_'],
+
+                # Video Formats & Codecs
+                'h264': ['h264', 'x264', 'avc'],
+                'h265': ['h265', 'x265', 'hevc'],
+                'vp8': ['vp8', 'libvpx'],
+                'vp9': ['vp9', 'libvpx'],
+                'av1': ['av1', 'libaom', 'dav1d'],
+                'theora': ['theora', 'libtheora'],
+
+                # Streaming & Broadcasting
+                'webrtc': ['webrtc', 'peerconnection', 'mediastream'],
+                'rtmp': ['rtmp', 'librtmp', 'live streaming'],
+                'hls': ['hls', 'm3u8', 'http live streaming'],
+                'dash': ['dash', 'mpeg-dash', 'mpd'],
+                'rtp': ['rtp', 'rtcp', 'real-time protocol'],
+                'srt': ['srt', 'secure reliable transport'],
+                'obs': ['obs', 'obs studio', 'streaming'],
+                'wowza': ['wowza', 'streaming engine'],
+
+                # Image Processing (Extended)
+                'imagemagick_extended': ['imagemagick', 'magick++', 'convert'],
+                'graphicsmagick': ['graphicsmagick', 'gm'],
+                'pil_extended': ['pillow', 'pil', 'image processing'],
+                'gimp': ['gimp', 'xcf', 'gimp plugin'],
+                'photoshop': ['photoshop', 'psd', 'adobe'],
+
+                # 3D Audio
+                'steam_audio': ['steam audio', 'phonon'],
+                'oculus_audio': ['oculus audio', 'ovr audio'],
+                'resonance_audio': ['resonance audio', 'google spatial'],
+                'wwise': ['wwise', 'ak_', 'audiokinetic'],
+
+                # Media Servers
+                'plex': ['plex', 'plex media server'],
+                'emby': ['emby', 'emby server'],
+                'jellyfin': ['jellyfin', 'jellyfin server'],
+                'kodi': ['kodi', 'xbmc'],
+
+                # Multimedia Frameworks
+                'unity_audio': ['unity', 'AudioSource', 'AudioClip'],
+                'unreal_audio': ['unreal', 'USoundWave', 'FAudioDevice'],
+                'cef': ['cef', 'chromium embedded'],
+                'electron_media': ['electron', 'webcontents', 'media']
+            },
+
+            # ========== QUANTUM COMPUTING ==========
+            'quantum': {
+                # Quantum Languages
+                'qsharp': ['.qs', 'qsharp', 'Q#', 'Microsoft.Quantum'],
+                'qasm': ['.qasm', 'openqasm', 'qreg', 'creg'],
+                'quipper': ['.quip', 'quipper', 'quantum lambda'],
+                'silq': ['.slq', 'silq', 'quantum programming'],
+
+                # Quantum Frameworks
+                'qiskit': ['qiskit', 'from qiskit import', 'QuantumCircuit'],
+                'cirq': ['cirq', 'import cirq', 'cirq.Circuit'],
+                'pennylane': ['pennylane', 'import pennylane', '@qml.qnode'],
+                'forest': ['pyquil', 'forest', 'rigetti'],
+                'strawberry_fields': ['strawberryfields', 'photonic quantum'],
+                'qutip': ['qutip', 'quantum toolbox', 'Qobj'],
+                'quantum_inspire': ['quantuminspire', 'quantum inspire'],
+
+                # Quantum Cloud Platforms
+                'ibm_quantum': ['ibm quantum', 'qiskit-ibmq-provider'],
+                'aws_braket': ['aws braket', 'braket', 'amazon quantum'],
+                'google_quantum': ['google quantum', 'cirq-google'],
+                'azure_quantum': ['azure quantum', 'microsoft quantum'],
+                'rigetti_cloud': ['rigetti', 'qcs', 'quantum cloud'],
+                'ionq': ['ionq', 'ionq quantum'],
+                'xanadu': ['xanadu', 'pennylane-xanadu'],
+
+                # Quantum Simulators
+                'quantum_simulator': ['quantum simulator', 'state vector'],
+                'noise_simulation': ['noise model', 'quantum noise'],
+                'quantum_annealing': ['dwave', 'quantum annealing', 'qubo'],
+                'adiabatic_quantum': ['adiabatic', 'quantum adiabatic'],
+
+                # Quantum Algorithms
+                'quantum_algorithms': ['shor', 'grover', 'quantum fourier'],
+                'vqe': ['vqe', 'variational quantum eigensolver'],
+                'qaoa': ['qaoa', 'quantum approximate optimization'],
+                'quantum_ml': ['quantum machine learning', 'qml'],
+
+                # Quantum Hardware
+                'superconducting': ['superconducting', 'transmon', 'flux'],
+                'trapped_ion': ['trapped ion', 'ion trap'],
+                'photonic': ['photonic', 'linear optics'],
+                'neutral_atom': ['neutral atom', 'cold atom'],
+                'topological': ['topological', 'majorana'],
+
+                # Quantum Development Tools
+                'quantum_dev': ['quantum development kit', 'qdk'],
+                'quantum_composer': ['quantum composer', 'circuit composer'],
+                'quantum_lab': ['quantum lab', 'jupyter quantum'],
+                'quantum_visualization': ['quantum visualization', 'bloch sphere']
             }
         }
 
@@ -230,6 +1166,7 @@ class TechnologyDetector:
         """
         logger.info(f"Detecting technology stack for project: {project_path}")
 
+        # Initialize detection results for all comprehensive categories
         detected = {category: [] for category in self.technology_patterns.keys()}
         confidence_scores = []
 
@@ -255,16 +1192,22 @@ class TechnologyDetector:
 
             logger.info(f"Technology detection completed. Found {total_detections} technologies.")
 
+            # Map new comprehensive categories to TechnologyStack structure
             return TechnologyStack(
-                frontend=detected['frontend'],
-                backend=detected['backend'],
-                database=detected['database'],
-                infrastructure=detected['infrastructure'],
-                testing=detected['testing'],
-                mobile=detected['mobile'],
-                desktop=detected['desktop'],
-                graphics=detected['graphics'],
-                ai_ml=detected['ai_ml'],
+                frontend=detected.get('frontend', []) + detected.get('gui_frameworks', [])[:5],
+                backend=detected.get('backend', []) + detected.get('backend_architectures', [])[:5] + detected.get('languages', [])[:10],
+                database=detected.get('database', []),
+                infrastructure=detected.get('build_systems', []) + detected.get('backend_architectures', [])[:3] + detected.get('cloud_infrastructure', [])[:5],
+                testing=detected.get('testing', []),
+                mobile=detected.get('mobile', []),
+                desktop=detected.get('gui_frameworks', []) + detected.get('desktop_specific', []) + detected.get('build_systems', [])[:3],
+                graphics=detected.get('graphics', []) + detected.get('scientific', [])[:3],
+                ai_ml=detected.get('ai_ml', []) + detected.get('scientific', [])[:5] + detected.get('quantum', [])[:3],
+                blockchain=detected.get('blockchain', []),
+                cloud_infrastructure=detected.get('cloud_infrastructure', []),
+                cybersecurity=detected.get('cybersecurity', []),
+                multimedia=detected.get('multimedia', []),
+                quantum=detected.get('quantum', []),
                 confidence_score=confidence_score
             )
 
@@ -274,7 +1217,8 @@ class TechnologyDetector:
             return TechnologyStack(
                 frontend=[], backend=[], database=[], infrastructure=[],
                 testing=[], mobile=[], desktop=[], graphics=[], ai_ml=[],
-                confidence_score=0.0
+                blockchain=[], cloud_infrastructure=[], cybersecurity=[],
+                multimedia=[], quantum=[], confidence_score=0.0
             )
 
     def _analyze_file(self, file_path: str, filename: str, detected: Dict[str, List[str]]):
@@ -411,10 +1355,28 @@ class TechnologyDetector:
                         detected[category].append(tech)
 
     def _get_tech_category(self, tech: str) -> Optional[str]:
-        """Get the category for a given technology"""
+        """Get the category for a given technology - maps to TechnologyStack fields"""
+        # Create mapping from comprehensive categories to TechnologyStack fields
+        category_mapping = {
+            'languages': 'backend',
+            'gui_frameworks': 'desktop',
+            'backend_architectures': 'infrastructure',
+            'database': 'database',
+            'desktop_specific': 'desktop',
+            'build_systems': 'infrastructure',
+            'graphics': 'graphics',
+            'scientific': 'ai_ml',
+            'embedded': 'infrastructure',
+            'frontend': 'frontend',
+            'backend': 'backend',
+            'testing': 'testing',
+            'mobile': 'mobile',
+            'ai_ml': 'ai_ml'
+        }
+
         for category, technologies in self.technology_patterns.items():
             if tech in technologies:
-                return category
+                return category_mapping.get(category, category)
         return None
 
     def _map_config_to_technology(self, config_file: str, detected: Dict[str, List[str]]):
@@ -752,7 +1714,7 @@ class TeamContextAnalyzer:
 
     def analyze_team_context(self, project_path: str) -> TeamContext:
         """
-        Analyze team context from project indicators
+        Analyze team context from project indicators with circuit breaker
 
         Args:
             project_path: Path to project directory
@@ -762,20 +1724,56 @@ class TeamContextAnalyzer:
         """
         logger.info(f"Analyzing team context for: {project_path}")
 
-        try:
-            git_analysis = self._analyze_git_activity(project_path)
-            code_quality_indicators = self._analyze_code_quality_indicators(project_path)
-            project_structure_analysis = self._analyze_project_structure(project_path)
+        # Circuit breaker - maximum 30 seconds for entire team analysis
+        import signal
+        import time
 
+        def timeout_handler(signum, frame):
+            raise TimeoutError("Team context analysis timed out after 30 seconds")
+
+        # Set up timeout circuit breaker
+        start_time = time.time()
+        original_handler = signal.signal(signal.SIGALRM, timeout_handler)
+        signal.alarm(30)  # 30 second timeout
+
+        try:
+            # Optimized analysis with early exit capabilities
+            git_analysis = {}
+            code_quality_indicators = []
+            project_structure_analysis = {}
+
+            # Phase 1: Quick git analysis (max 10s already handled in function)
+            try:
+                git_analysis = self._analyze_git_activity(project_path)
+            except Exception as e:
+                logger.warning(f"Git analysis failed, using defaults: {e}")
+                git_analysis = {'commit_count': 0, 'contributor_count': 0, 'recent_activity': False}
+
+            # Phase 2: Code quality analysis (optimized to single pass)
+            try:
+                code_quality_indicators = self._analyze_code_quality_indicators(project_path)
+            except Exception as e:
+                logger.warning(f"Code quality analysis failed, using basic fallback: {e}")
+                code_quality_indicators = self._basic_quality_check(project_path)
+
+            # Phase 3: Project structure (lightweight, no heavy operations)
+            try:
+                project_structure_analysis = self._analyze_project_structure(project_path)
+            except Exception as e:
+                logger.warning(f"Project structure analysis failed, using defaults: {e}")
+                project_structure_analysis = {'modular_structure': False, 'separation_of_concerns': False}
+
+            # Quick analysis without heavy operations
             estimated_team_size = self._estimate_team_size(git_analysis)
             experience_indicators = self._identify_experience_indicators(
                 code_quality_indicators, project_structure_analysis
             )
-            development_patterns = self._identify_development_patterns(project_path)
+            development_patterns = self._identify_development_patterns_fast(project_path)
             git_activity_level = self._assess_git_activity_level(git_analysis)
             collaboration_patterns = self._identify_collaboration_patterns(git_analysis)
 
-            logger.info(f"Team context analysis complete: {estimated_team_size} team")
+            elapsed_time = time.time() - start_time
+            logger.info(f"Team context analysis complete: {estimated_team_size} team ({elapsed_time:.2f}s)")
 
             return TeamContext(
                 estimated_team_size=estimated_team_size,
@@ -785,8 +1783,34 @@ class TeamContextAnalyzer:
                 collaboration_patterns=collaboration_patterns
             )
 
+        except TimeoutError:
+            logger.warning(f"Team context analysis timed out for {project_path} - returning basic fallback")
+            return self._get_basic_team_context(project_path)
+
         except Exception as e:
             logger.error(f"Error analyzing team context: {e}")
+            return self._get_basic_team_context(project_path)
+
+        finally:
+            # Restore original signal handler and cancel alarm
+            signal.alarm(0)
+            signal.signal(signal.SIGALRM, original_handler)
+
+    def _get_basic_team_context(self, project_path: str) -> TeamContext:
+        """Fallback basic team context for when full analysis fails or times out"""
+        try:
+            # Very quick basic analysis - check if git repo exists
+            has_git = os.path.exists(os.path.join(project_path, '.git'))
+            has_readme = any(f.lower().startswith('readme') for f in os.listdir(project_path) if f)
+
+            return TeamContext(
+                estimated_team_size="small" if has_git else "unknown",
+                experience_indicators=["documentation"] if has_readme else [],
+                development_patterns=["git_workflow"] if has_git else [],
+                git_activity_level="unknown",
+                collaboration_patterns=[]
+            )
+        except:
             return TeamContext(
                 estimated_team_size="unknown",
                 experience_indicators=[],
@@ -796,7 +1820,7 @@ class TeamContextAnalyzer:
             )
 
     def _analyze_git_activity(self, project_path: str) -> Dict[str, Any]:
-        """Analyze git repository activity patterns"""
+        """Analyze git repository activity patterns with timeouts and error handling"""
         git_analysis = {
             'commit_count': 0,
             'contributor_count': 0,
@@ -807,50 +1831,71 @@ class TeamContextAnalyzer:
         }
 
         try:
-            if os.path.exists(os.path.join(project_path, '.git')):
-                # Get commit count
+            if not os.path.exists(os.path.join(project_path, '.git')):
+                logger.debug(f"No git repository found in {project_path}")
+                return git_analysis
+
+            # Set timeout for all git operations (10 seconds each)
+            git_timeout = 10
+
+            # Get commit count with timeout
+            try:
                 result = subprocess.run(
                     ['git', 'rev-list', '--count', 'HEAD'],
-                    cwd=project_path, capture_output=True, text=True
+                    cwd=project_path, capture_output=True, text=True, timeout=git_timeout
                 )
-                if result.returncode == 0:
+                if result.returncode == 0 and result.stdout.strip().isdigit():
                     git_analysis['commit_count'] = int(result.stdout.strip())
+            except (subprocess.TimeoutExpired, ValueError) as e:
+                logger.debug(f"Git commit count timeout/error: {e}")
 
-                # Get contributor count
+            # Get contributor count with timeout
+            try:
                 result = subprocess.run(
                     ['git', 'shortlog', '-sn', '--all'],
-                    cwd=project_path, capture_output=True, text=True
+                    cwd=project_path, capture_output=True, text=True, timeout=git_timeout
                 )
-                if result.returncode == 0:
-                    git_analysis['contributor_count'] = len(result.stdout.strip().split('\n'))
+                if result.returncode == 0 and result.stdout.strip():
+                    contributors = [line for line in result.stdout.strip().split('\n') if line.strip()]
+                    git_analysis['contributor_count'] = len(contributors)
+            except subprocess.TimeoutExpired as e:
+                logger.debug(f"Git contributor count timeout: {e}")
 
-                # Check recent activity (last 30 days)
+            # Check recent activity with timeout
+            try:
                 result = subprocess.run(
-                    ['git', 'log', '--since="30 days ago"', '--oneline'],
-                    cwd=project_path, capture_output=True, text=True
+                    ['git', 'log', '--since="30 days ago"', '--oneline', '--max-count=10'],
+                    cwd=project_path, capture_output=True, text=True, timeout=git_timeout
                 )
                 if result.returncode == 0:
-                    git_analysis['recent_activity'] = len(result.stdout.strip().split('\n')) > 1
+                    recent_commits = [line for line in result.stdout.strip().split('\n') if line.strip()]
+                    git_analysis['recent_activity'] = len(recent_commits) > 0
+            except subprocess.TimeoutExpired as e:
+                logger.debug(f"Git recent activity timeout: {e}")
 
-                # Get branch count
+            # Get branch count with timeout
+            try:
                 result = subprocess.run(
                     ['git', 'branch', '-a'],
-                    cwd=project_path, capture_output=True, text=True
+                    cwd=project_path, capture_output=True, text=True, timeout=git_timeout
                 )
-                if result.returncode == 0:
-                    git_analysis['branch_count'] = len(result.stdout.strip().split('\n'))
+                if result.returncode == 0 and result.stdout.strip():
+                    branches = [line for line in result.stdout.strip().split('\n') if line.strip()]
+                    git_analysis['branch_count'] = len(branches)
+            except subprocess.TimeoutExpired as e:
+                logger.debug(f"Git branch count timeout: {e}")
 
         except Exception as e:
-            logger.debug(f"Git analysis error: {e}")
+            logger.warning(f"Git analysis error for {project_path}: {e}")
 
         return git_analysis
 
     def _analyze_code_quality_indicators(self, project_path: str) -> List[str]:
-        """Identify code quality indicators"""
+        """Identify code quality indicators with optimized single directory traversal"""
         quality_indicators = []
 
         quality_files = {
-            'testing': ['test/', 'tests/', '__tests__/', '*.test.*', '*.spec.*'],
+            'testing': ['test/', 'tests/', '__tests__/', '.test.', '.spec.'],
             'linting': ['.eslintrc', '.pylintrc', 'tslint.json', '.flake8'],
             'formatting': ['.prettierrc', '.editorconfig', 'black.toml'],
             'ci_cd': ['.github/workflows/', '.gitlab-ci.yml', 'Jenkinsfile'],
@@ -859,15 +1904,69 @@ class TeamContextAnalyzer:
             'dependency_management': ['package-lock.json', 'poetry.lock', 'Pipfile.lock']
         }
 
-        for indicator, patterns in quality_files.items():
-            for pattern in patterns:
-                for root, dirs, files in os.walk(project_path):
-                    if any(pattern in file or pattern in root for file in files):
-                        if indicator not in quality_indicators:
-                            quality_indicators.append(indicator)
-                        break
+        try:
+            # Single optimized directory traversal with depth limit
+            max_depth = 5  # Limit directory depth for performance
+            found_indicators = set()
+
+            for root, dirs, files in os.walk(project_path):
+                # Calculate current depth and limit traversal
+                depth = root[len(project_path):].count(os.sep)
+                if depth >= max_depth:
+                    dirs[:] = []  # Don't go deeper
+                    continue
+
+                # Skip common ignore directories for performance
+                dirs[:] = [d for d in dirs if not d.startswith('.')
+                          and d not in ['node_modules', '__pycache__', 'venv', 'env', 'target', 'build', 'dist', '.git']]
+
+                # Check all patterns in single pass
+                for indicator, patterns in quality_files.items():
+                    if indicator in found_indicators:
+                        continue  # Already found this indicator
+
+                    for pattern in patterns:
+                        # Check if pattern matches any file or directory
+                        if (any(pattern in file for file in files) or
+                            any(pattern in root for _ in [None]) or
+                            any(pattern in d for d in dirs)):
+                            found_indicators.add(indicator)
+                            break
+
+                # Early exit if all indicators found
+                if len(found_indicators) == len(quality_files):
+                    break
+
+            quality_indicators = list(found_indicators)
+
+        except Exception as e:
+            logger.warning(f"Code quality analysis error for {project_path}: {e}")
+            # Fallback to basic checks if traversal fails
+            quality_indicators = self._basic_quality_check(project_path)
 
         return quality_indicators
+
+    def _basic_quality_check(self, project_path: str) -> List[str]:
+        """Fallback basic quality check for when full analysis fails"""
+        basic_indicators = []
+
+        # Quick checks for common files in root directory only
+        try:
+            root_files = os.listdir(project_path)
+
+            if any(f.startswith('README') for f in root_files):
+                basic_indicators.append('documentation')
+            if any('test' in f.lower() for f in root_files):
+                basic_indicators.append('testing')
+            if any(f in ['.eslintrc', '.pylintrc', 'tslint.json'] for f in root_files):
+                basic_indicators.append('linting')
+            if 'package-lock.json' in root_files or 'poetry.lock' in root_files:
+                basic_indicators.append('dependency_management')
+
+        except Exception as e:
+            logger.debug(f"Basic quality check error: {e}")
+
+        return basic_indicators
 
     def _analyze_project_structure(self, project_path: str) -> Dict[str, bool]:
         """Analyze project structure for organization patterns"""
@@ -957,6 +2056,42 @@ class TeamContextAnalyzer:
                         if os.path.isdir(os.path.join(project_path, d)) and 'service' in d.lower()]
         if len(services_dirs) > 1:
             patterns.append('microservices')
+
+        return patterns
+
+    def _identify_development_patterns_fast(self, project_path: str) -> List[str]:
+        """Fast version of development patterns identification with timeout protection"""
+        patterns = []
+
+        try:
+            # Quick checks with error handling - only check root directory for speed
+            root_items = os.listdir(project_path)
+            root_dirs = [item for item in root_items if os.path.isdir(os.path.join(project_path, item))]
+            root_files = [item for item in root_items if os.path.isfile(os.path.join(project_path, item))]
+
+            # Fast pattern detection
+            if any(d in ['test', 'tests', '__tests__'] for d in root_dirs):
+                patterns.append('test_driven')
+
+            if 'docker-compose.yml' in root_files or 'Dockerfile' in root_files:
+                patterns.append('containerized_development')
+
+            if any('api' in item.lower() for item in root_dirs + root_files):
+                patterns.append('api_first')
+
+            # Quick microservices check (limit to avoid long operations)
+            services_dirs = [d for d in root_dirs[:10] if 'service' in d.lower()]  # Limit to first 10 dirs
+            if len(services_dirs) > 1:
+                patterns.append('microservices')
+
+            # Git workflow pattern (quick check)
+            if '.git' in root_dirs:
+                patterns.append('git_workflow')
+
+        except Exception as e:
+            logger.debug(f"Fast development patterns analysis error: {e}")
+            # Return basic patterns if analysis fails
+            patterns = ['git_workflow'] if os.path.exists(os.path.join(project_path, '.git')) else []
 
         return patterns
 
@@ -1219,7 +2354,7 @@ class FrameworkUsageCollector:
 class ProjectContextAnalyzer:
     """Main class for comprehensive project context analysis"""
 
-    def __init__(self, data_collection_dir: str = "./ai_training_data"):
+    def __init__(self, data_collection_dir: str = "./.ai-tools/data"):
         self.technology_detector = TechnologyDetector()
         self.complexity_analyzer = ProjectComplexityAnalyzer()
         self.domain_classifier = BusinessDomainClassifier()

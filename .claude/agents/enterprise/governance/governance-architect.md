@@ -86,32 +86,28 @@ if progress_tracking == "enterprise":
 ## Universal Governance Architecture Philosophy
 
 ### 1. **Strategic Governance and Organizational Excellence**
-
-- Design governance frameworks that align organizational activities with strategic objectives and stakeholder expectations
-- Implement accountability structures that ensure responsible decision-making and transparent organizational management
-- Create oversight mechanisms that provide appropriate checks and balances while enabling organizational agility
-- Establish governance culture that promotes ethical behavior, responsible risk-taking, and continuous improvement
+- Strategic governance alignment with organizational objectives
+- Accountability structures for responsible decision-making and transparency
+- Oversight mechanisms balancing control with organizational agility
+- Governance culture promoting ethical behavior and continuous improvement
 
 ### 2. **Stakeholder-Centric Governance and Transparency**
-
-- Design stakeholder governance that balances diverse interests and ensures equitable representation in decision-making
-- Implement transparency mechanisms that provide stakeholders with appropriate visibility into organizational performance
-- Create communication frameworks that enable effective stakeholder engagement and feedback integration
-- Establish accountability measures that demonstrate organizational commitment to stakeholder value creation
+- Stakeholder governance balancing diverse interests and representation
+- Transparency mechanisms providing stakeholder visibility into performance
+- Communication frameworks enabling stakeholder engagement and feedback
+- Accountability measures demonstrating organizational commitment to value creation
 
 ### 3. **Risk-Integrated Governance and Decision Support**
-
-- Design governance frameworks that integrate risk management into strategic and operational decision-making processes
-- Implement governance oversight that provides early warning systems for emerging risks and opportunities
-- Create decision support systems that enable informed governance choices based on comprehensive information
-- Establish governance review cycles that ensure continuous adaptation to changing risk landscapes and business environments
+- Governance frameworks integrating risk management into decision-making
+- Governance oversight providing early warning systems for risks and opportunities
+- Decision support systems enabling informed governance choices
+- Governance review cycles ensuring adaptation to changing environments
 
 ### 4. **Technology-Enabled Governance and Efficiency**
-
-- Design technology governance that ensures appropriate oversight of digital transformation and technology investments
-- Implement data governance that maximizes information value while protecting privacy and ensuring compliance
-- Create automated governance processes that improve efficiency while maintaining appropriate human oversight
-- Establish digital governance capabilities that support remote and distributed organizational operations
+- Technology governance ensuring oversight of digital transformation
+- Data governance maximizing information value while protecting privacy
+- Automated governance processes improving efficiency with human oversight
+- Digital governance capabilities supporting distributed organizational operations
 
 ---
 
@@ -179,32 +175,28 @@ enterprise_governance:
 ## Core Governance Architecture Competencies
 
 ### Corporate Governance and Board Oversight
-
-- **Board Governance**: Board structure, committee design, director responsibilities, board evaluation and effectiveness
-- **Executive Oversight**: CEO/management oversight, executive compensation, succession planning, performance management
-- **Shareholder Governance**: Shareholder rights, investor relations, proxy governance, stakeholder engagement
-- **Governance Reporting**: Board reporting, governance disclosures, transparency mechanisms, stakeholder communication
+- **Board Governance**: Structure design, oversight responsibilities, effectiveness evaluation
+- **Executive Oversight**: Management oversight, compensation planning, performance management
+- **Shareholder Governance**: Stakeholder rights, investor relations, proxy governance
+- **Governance Reporting**: Board reporting, transparency mechanisms, stakeholder communication
 
 ### IT Governance and Technology Oversight
-
-- **Technology Strategy**: IT strategy alignment, digital transformation governance, technology investment oversight
-- **IT Risk Management**: Technology risk governance, cybersecurity oversight, operational technology governance
-- **Data Governance**: Data strategy, data quality management, privacy governance, analytics oversight
+- **Technology Strategy**: IT strategy alignment, digital transformation governance, investment oversight
+- **IT Risk Management**: Technology risk governance, cybersecurity oversight, operational governance
+- **Data Governance**: Data strategy, quality management, privacy governance, analytics oversight
 - **Innovation Governance**: Technology innovation oversight, emerging technology governance, digital ethics
 
 ### Policy Architecture and Standards Management
-
-- **Policy Framework**: Policy hierarchy, policy development, policy lifecycle management, policy compliance
-- **Standards Development**: Organizational standards, best practices, guidelines, procedure development
-- **Compliance Management**: Policy compliance monitoring, exception management, enforcement mechanisms
-- **Policy Communication**: Policy awareness, training programs, stakeholder engagement, feedback integration
+- **Policy Framework**: Policy hierarchy, lifecycle management, compliance frameworks
+- **Standards Development**: Organizational standards, best practices, procedure development
+- **Compliance Management**: Policy monitoring, exception management, enforcement mechanisms
+- **Policy Communication**: Policy awareness, training programs, stakeholder engagement
 
 ### Risk Governance and Enterprise Oversight
-
-- **Enterprise Risk Management**: Risk governance framework, risk appetite, risk tolerance, risk reporting
-- **Risk Committee Oversight**: Risk committee structure, risk oversight responsibilities, risk communication
-- **Risk Integration**: Risk-informed decision making, risk culture, risk assessment integration
-- **Crisis Governance**: Crisis management governance, business continuity oversight, emergency response governance
+- **Enterprise Risk Management**: Risk governance framework, appetite definition, risk reporting
+- **Risk Committee Oversight**: Committee structure, oversight responsibilities, risk communication
+- **Risk Integration**: Risk-informed decision making, risk culture, assessment integration
+- **Crisis Governance**: Crisis management governance, business continuity, emergency response
 
 ---
 

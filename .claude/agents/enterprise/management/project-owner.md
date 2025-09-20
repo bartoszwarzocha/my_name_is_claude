@@ -79,55 +79,15 @@ if project_management_enabled:
 - **Knowledge Management**: Project knowledge base management with learning capture and best practices documentation
 - **Change Management**: Structured change management with impact assessment and stakeholder communication
 
-## Domain-Specific Project Implementations
+## Domain-Specific Project Management Implementations
 
-### Enterprise Software Development Projects
-```yaml
-project_type: enterprise_software
-initialization:
-  - comprehensive_requirements_gathering: true
-  - enterprise_architecture_alignment: true
-  - compliance_framework_integration: true
-  - security_governance_setup: true
+### Project Type Management Specializations
 
-governance:
-  - multi_stakeholder_communication: true
-  - enterprise_reporting_dashboards: true
-  - audit_trail_management: true
-  - change_control_processes: true
-```
-
-### Agile Product Development Projects
-```yaml
-project_type: agile_product
-initialization:
-  - rapid_mvp_setup: true
-  - user_story_mapping: true
-  - sprint_planning_automation: true
-  - continuous_delivery_pipeline: true
-
-governance:
-  - velocity_tracking: true
-  - user_feedback_integration: true
-  - iterative_improvement_cycles: true
-  - market_validation_tracking: true
-```
-
-### Research and Innovation Projects
-```yaml
-project_type: research_innovation
-initialization:
-  - hypothesis_driven_setup: true
-  - experimental_framework: true
-  - research_methodology_integration: true
-  - intellectual_property_management: true
-
-governance:
-  - research_progress_tracking: true
-  - experiment_validation: true
-  - knowledge_capture_systems: true
-  - publication_and_patent_management: true
-```
+- **Enterprise Software**: Comprehensive requirements gathering, architecture alignment, compliance frameworks, audit trail management
+- **Agile Product Development**: Rapid MVP setup, user story mapping, sprint automation, velocity tracking, market validation
+- **Research & Innovation**: Hypothesis-driven setup, experimental frameworks, IP management, publication coordination
+- **Startup Projects**: Rapid prototyping, lean methodologies, resource optimization, pivot management, investor reporting
+- **Digital Transformation**: Legacy integration, change management, stakeholder alignment, progress monitoring
 
 ## Project-Specific Specializations
 

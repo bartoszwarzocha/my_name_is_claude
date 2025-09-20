@@ -10,124 +10,62 @@ Recover and restore development session context when normal session continuity h
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Disruption Assessment and State Analysis
-1. **Assess interruption impact** - Determine extent of context loss, missing information, and potential data integrity issues
-2. **Analyze available artifacts** - Inventory git history, file modifications, configuration states, and documentation
-3. **Reconstruct timeline** - Build understanding of recent development activity and project progression
-4. **Identify recovery complexity** - Evaluate what can be restored automatically vs. requires manual investigation
-5. **Determine recovery strategy** - Select optimal approach based on available information and project criticality
+### Phase 1: Disruption Assessment and Context Reconstruction
+**Objective**: Analyze disruption impact and implement comprehensive project context reconstruction and system validation
 
-### Phase 2: Project Context Reconstruction
-1. **Parse version control history** - Extract commit messages, file changes, and development patterns from git log
-2. **Analyze project structure changes** - Compare current state with previous stable configurations
-3. **Reconstruct work streams** - Identify active development areas, feature branches, and incomplete work
-4. **Extract business context** - Parse documentation, issue trackers, and communication artifacts for project priorities
-5. **Map dependency relationships** - Understand external integrations, blockers, and resource requirements
+1. **Disruption Assessment and State Analysis**
+   - Assess interruption impact determining extent of context loss and potential data integrity issues
+   - Analyze available artifacts inventorying git history, file modifications, and documentation
+   - Reconstruct timeline, identify recovery complexity, and determine optimal recovery strategy
 
-### Phase 3: System Integrity Validation and Environment Recovery
-1. **Validate build system integrity** - Test compilation, dependency resolution, and build pipeline functionality
-2. **Verify testing framework status** - Confirm test suites operational, coverage accurate, and quality metrics valid
-3. **Check development environment** - Validate IDE configurations, tool availability, and access credentials
-4. **Assess framework integration** - Confirm CLAUDE.md validity, agent availability, and TODO management operational
-5. **Validate external integrations** - Test connections to databases, APIs, deployment systems, and monitoring
+2. **Project Context Reconstruction and System Validation**
+   - Parse version control history extracting commit messages, file changes, and development patterns
+   - Analyze project structure changes, reconstruct work streams, and extract business context
+   - Validate build system integrity, verify testing framework status, and check development environment
 
-### Phase 4: MCP Tools Recovery and Integration (If Available)
-1. **Detect and assess Serena MCP** - Check for .serena directory and evaluate tool state after disruption
-2. **Recover Serena project index** - Restore or rebuild project indexing and navigation capabilities
-3. **Synchronize recovered context** - Merge rebuilt session context with Serena's project knowledge
-4. **Validate MCP tool functionality** - Ensure Serena search, navigation, and integration work properly
-5. **Update tool configuration** - Adjust Serena settings based on any project changes discovered during recovery
+### Phase 2: MCP Recovery and Session Restoration
+**Objective**: Execute MCP tools recovery and establish comprehensive session recovery and continuation planning
 
-### Phase 5: Productive Session Recovery and Continuation Planning
-1. **Synthesize recovered context** - Combine reconstructed, current, and Serena information into coherent understanding
-2. **Identify immediate priorities** - Determine most critical tasks based on recovered context and business needs
-3. **Plan recovery actions** - Create specific steps to address missing context, fix issues, and resume productivity
-4. **Establish monitoring** - Set up validation checks to prevent similar disruptions and ensure recovery success
-5. **Initialize productive session** - Provide clear context and next steps for effective work resumption
+1. **MCP Tools Recovery and Integration (If Available)**
+   - Detect and assess Serena MCP checking for .serena directory and evaluating tool state after disruption
+   - Recover Serena project index restoring or rebuilding project indexing and navigation capabilities
+   - Synchronize recovered context, validate MCP functionality, and update tool configuration
+
+2. **Productive Session Recovery and Continuation Planning**
+   - Synthesize recovered context combining reconstructed, current, and Serena information into coherent understanding
+   - Identify immediate priorities, plan recovery actions, and establish monitoring
+   - Initialize productive session providing clear context and next steps for effective work resumption
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Recovery Completeness and Accuracy
-- **Context gaps identified**: All missing information and unknown project state areas clearly documented
-- **Available artifacts fully analyzed**: Git history, file changes, configurations, and documentation comprehensively reviewed
-- **Timeline accurately reconstructed**: Recent development activity and project progression properly understood
-- **Work streams mapped**: Active development areas, incomplete work, and pending tasks identified
-- **Recovery strategy appropriate**: Selected approach matches available information and project needs
+### Disruption Assessment and Context Reconstruction
+**Recovery Completeness Excellence**: Context gaps identified with all missing information and unknown project state areas clearly documented, available artifacts fully analyzed with git history and configurations comprehensively reviewed, timeline accurately reconstructed with recent development activity properly understood, work streams mapped with active development areas and pending tasks identified
 
-### System Integrity and Environment Validation
-- **Build system operational**: Compilation, dependencies, and build pipeline confirmed functional
-- **Testing framework validated**: Test suites running correctly with accurate coverage and quality metrics
-- **Development environment ready**: IDE, tools, access, and configurations confirmed operational
-- **Framework integration intact**: CLAUDE.md, agents, and TODO management confirmed functional
-- **External integrations verified**: Database, API, deployment, and monitoring connections tested
+**System Validation Excellence**: Recovery strategy appropriate with selected approach matching available information and project needs, build system operational with compilation and dependencies confirmed functional, testing framework validated with test suites running correctly, development environment ready with IDE and configurations operational, framework integration intact with CLAUDE.md and agents functional
 
-### Session Recovery Quality and Productivity
-- **Critical context restored**: Sufficient project understanding for productive work resumption
-- **Immediate priorities identified**: Clear next steps based on business needs and recovered context
-- **Recovery plan actionable**: Specific steps to address gaps, fix issues, and resume development
-- **Monitoring established**: Validation checks and prevention measures implemented
-- **Productive session enabled**: Clear context and objectives for effective work continuation
+### MCP Recovery and Session Restoration
+**MCP Recovery Excellence**: External integrations verified with database, API, and monitoring connections tested, MCP tools recovery successful with Serena functionality restored and configuration updated, context synchronization complete with recovered information properly integrated
+
+**Session Recovery Excellence**: Critical context restored with sufficient project understanding for productive work resumption, immediate priorities identified with clear next steps based on business needs, recovery plan actionable with specific steps to address gaps, monitoring established with validation checks implemented, productive session enabled with clear context and objectives
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Git Repository Corruption Recovery
-**Disruption**: Local git repository corrupted, working directory changes unclear
-**Recovery Process**:
-- Clone fresh repository from remote, compare with local working directory
-- Identify uncommitted changes and work in progress
-- Validate build and test functionality after repository restoration
-- Reconstruct recent work context from file timestamps and content analysis
+**Git Repository Corruption**: Local repository corrupted with working directory changes unclear, recovery involves cloning fresh repository, identifying uncommitted changes, validating build functionality, reconstructing work context
 
-### Development Environment Failure
-**Disruption**: IDE crashed, session state lost, configuration corrupted
-**Recovery Process**:
-- Restore IDE configuration from backups or defaults
-- Analyze recent file modifications and open project artifacts
-- Validate development environment functionality and tool availability
-- Reconstruct work context from git history and project documentation
+**Development Environment Failure**: IDE crashed with session state lost, recovery involves restoring IDE configuration, analyzing recent modifications, validating environment functionality, reconstructing work context
 
-### Framework Configuration Corruption
-**Disruption**: CLAUDE.md corrupted, agent configurations lost, TODO management broken
-**Recovery Process**:
-- Restore CLAUDE.md from git history or regenerate from project analysis
-- Validate agent availability and framework integration
-- Reconstruct TODO management state from git commits and documentation
-- Re-establish session context from available project artifacts
+**Framework Configuration Corruption**: CLAUDE.md corrupted with agent configurations lost, recovery involves restoring CLAUDE.md from git history, validating agent availability, reconstructing TODO management state
 
-### System Crash During Development
-**Disruption**: Unexpected system shutdown, unsaved work potentially lost, session context unclear
-**Recovery Process**:
-- Check for auto-saved files, temporary backups, and IDE recovery files
-- Compare current state with last known git commit
-- Validate system integrity and development environment functionality
-- Reconstruct work progress from file modifications and available artifacts
+**System Crash During Development**: Unexpected shutdown with unsaved work potentially lost, recovery involves checking auto-saved files, comparing with last commit, validating system integrity, reconstructing work progress
 
-### Team Handoff Without Documentation
-**Disruption**: Taking over project from another developer without proper handoff documentation
-**Recovery Process**:
-- Analyze git history for development patterns and recent activity
-- Extract business context from project documentation and code comments
-- Identify active work streams and pending tasks from branch analysis
-- Establish development environment and validate project functionality
+**Team Handoff Without Documentation**: Taking over project without proper handoff, recovery involves analyzing git history patterns, extracting business context, identifying active work streams, establishing development environment
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Emergency Recovery Process**:
-1. **Rapid state assessment** - Quickly identify what information is available and what is missing
-2. **Systematic artifact analysis** - Methodically examine all available project artifacts and history
-3. **Intelligent context reconstruction** - Combine available information into coherent project understanding
-4. **Environment validation** - Ensure all systems and tools are functional before resuming work
+**Emergency Recovery Excellence**: Rapid state assessment → systematic artifact analysis → intelligent context reconstruction → environment validation
 
-**Recovery Strategy Selection**:
-- **Complete context loss**: Full project analysis and reconstruction from available artifacts
-- **Partial context loss**: Targeted recovery focusing on missing or corrupted information
-- **Environment corruption**: System and tool validation with context preservation
-- **Handoff scenarios**: Comprehensive project analysis with stakeholder context building
+**Recovery Strategy Selection**: Complete context loss requiring full project analysis and reconstruction from available artifacts, partial context loss needing targeted recovery focusing on missing information, environment corruption requiring system validation with context preservation, handoff scenarios needing comprehensive project analysis with stakeholder context building
 
-**Risk Mitigation and Prevention**:
-- **Regular state backup**: Establish automatic session summary and context preservation
-- **Environment monitoring**: Detect and prevent corruption or integrity issues
-- **Recovery validation**: Confirm successful recovery before resuming development work
-- **Documentation standards**: Maintain sufficient project documentation for emergency recovery
+**Risk Mitigation and Prevention**: Regular state backup establishing automatic session summary and context preservation, environment monitoring detecting and preventing corruption issues, recovery validation confirming successful recovery before resuming work, documentation standards maintaining sufficient project documentation for emergency recovery

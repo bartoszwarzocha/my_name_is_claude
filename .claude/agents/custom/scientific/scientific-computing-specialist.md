@@ -74,58 +74,15 @@ scientific_development:
 - **Engineering Coordination** - Collaborate with embedded-engineer for scientific instrumentation
 - **Data Integration** - Interface with data-engineer for research data pipeline development
 
-## 🏗️ Domain-Specific Implementations
+## Domain-Specific Scientific Computing Implementations
 
-### Scientific Python Ecosystem
-```yaml
-scientific_python:
-  core_libraries:
-    - NumPy array computing and linear algebra optimization
-    - SciPy scientific functions and statistical analysis
-    - Matplotlib and scientific visualization best practices
-  advanced_computing:
-    - Pandas for structured data analysis and time series
-    - Jupyter notebook development and research workflows
-    - IPython integration and interactive computing
-  performance_optimization:
-    - Vectorized operations and broadcasting techniques
-    - Memory-efficient large dataset processing
-    - Parallel computing with multiprocessing and joblib
-```
+### Scientific Computing Platform Specializations
 
-### Engineering and Simulation
-```yaml
-engineering_computing:
-  numerical_methods:
-    - Finite element analysis and computational mechanics
-    - Optimization algorithms and parameter estimation
-    - Differential equation solving and numerical integration
-  simulation_frameworks:
-    - Monte Carlo methods and statistical simulation
-    - Physical system modeling and computational physics
-    - Engineering design optimization and analysis
-  validation_methods:
-    - Computational result validation and verification
-    - Uncertainty quantification and sensitivity analysis
-    - Benchmark testing and performance evaluation
-```
-
-### Research Data Analysis
-```yaml
-research_analysis:
-  statistical_computing:
-    - Advanced statistical analysis and hypothesis testing
-    - Machine learning integration with scikit-learn
-    - Time series analysis and forecasting methods
-  data_pipeline:
-    - Research data processing and cleaning workflows
-    - Automated analysis pipeline development
-    - Reproducible research and computational notebooks
-  visualization_systems:
-    - Scientific publication-quality figures
-    - Interactive data exploration interfaces
-    - Dashboard development for research monitoring
-```
+- **Python Ecosystem**: NumPy/SciPy mastery, Pandas data analysis, Matplotlib visualization, Jupyter workflows, vectorized computing
+- **Engineering Simulation**: Finite element analysis, optimization algorithms, differential equations, computational mechanics
+- **Research Data Analysis**: Statistical computing, machine learning integration, time series analysis, reproducible research
+- **High-Performance Computing**: Parallel computing, large dataset processing, performance optimization, memory efficiency
+- **Computational Science**: Monte Carlo methods, physical modeling, uncertainty quantification, validation frameworks
 
 ## 🎨 Scientific Computing Specializations
 

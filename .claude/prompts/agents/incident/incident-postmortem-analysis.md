@@ -2,121 +2,66 @@
 
 ## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
-Design and implement comprehensive post-incident analysis procedures that facilitate blameless learning, systematic improvement, and organizational resilience building through thorough root cause analysis and actionable improvement implementation. Create robust postmortem frameworks adapted to CLAUDE.md requirements, establishing analysis methodologies, improvement tracking, and knowledge sharing that prevent incident recurrence across different technology stacks and business domains.
+Design and implement comprehensive post-incident analysis procedures facilitating blameless learning, systematic improvement, and organizational resilience through thorough root cause analysis and actionable improvement implementation. Create postmortem frameworks adapted to CLAUDE.md requirements with analysis methodologies, improvement tracking, and knowledge sharing preventing incident recurrence across technology stacks.
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Post-Incident Analysis Preparation and Data Collection
-1. **Read CLAUDE.md learning and improvement requirements** - Extract organizational learning priorities, improvement tracking needs, and knowledge sharing expectations
-2. **Collect comprehensive incident documentation** - Gather timeline data, decision logs, technical findings, communication records, and resolution details
-3. **Identify postmortem participants and stakeholders** - Select appropriate technical experts, business stakeholders, and organizational representatives
-4. **Schedule postmortem sessions and prepare analysis framework** - Plan analysis sessions, prepare templates, and establish psychological safety guidelines
-5. **Organize incident data and evidence** - Structure logs, metrics, communications, and decisions for systematic analysis
+### Phase 1: Analysis Preparation and Root Cause Investigation
+**Objective**: Prepare comprehensive analysis and conduct systematic root cause investigation
 
-### Phase 2: Root Cause Analysis and Contributing Factor Investigation
-1. **Facilitate blameless postmortem sessions** - Lead analysis focused on system and process improvements rather than individual accountability
-2. **Conduct systematic root cause analysis** - Apply structured methodologies to identify primary causes and contributing factors
-3. **Map incident timeline and decision points** - Create comprehensive incident flow, decision rationale, and alternative scenario analysis
-4. **Identify system vulnerabilities and process gaps** - Analyze architectural weaknesses, operational blind spots, and procedural deficiencies
-5. **Assess organizational and cultural factors** - Evaluate communication effectiveness, escalation procedures, and team coordination impacts
+1. **Post-Incident Analysis Preparation and Data Collection**
+   - Read CLAUDE.md learning requirements to extract organizational priorities, improvement tracking, and knowledge sharing
+   - Collect comprehensive incident documentation, identify postmortem participants, and schedule analysis sessions
+   - Organize incident data, prepare analysis framework, and establish psychological safety guidelines
 
-### Phase 3: Improvement Identification and Action Planning
-1. **Generate actionable improvement recommendations** - Create specific, measurable, and implementable improvements addressing identified issues
-2. **Prioritize improvements by impact and effort** - Rank recommendations based on incident prevention potential and implementation complexity
-3. **Assign ownership and accountability** - Designate responsible parties, timelines, and success criteria for each improvement action
-4. **Design improvement validation and measurement** - Establish metrics, testing procedures, and validation criteria for improvement effectiveness
-5. **Create improvement tracking and monitoring systems** - Implement progress tracking, milestone monitoring, and completion validation
+2. **Root Cause Analysis and Contributing Factor Investigation**
+   - Facilitate blameless postmortem sessions focused on system improvements rather than individual accountability
+   - Conduct systematic root cause analysis, map incident timeline, and identify system vulnerabilities
+   - Assess organizational factors, evaluate communication effectiveness, and analyze team coordination impacts
 
-### Phase 4: Knowledge Sharing and Organizational Learning Integration
-1. **Document comprehensive postmortem findings** - Create detailed postmortem reports with analysis, findings, and improvement plans
-2. **Share learnings across organization** - Disseminate insights, patterns, and improvements to relevant teams and stakeholders
-3. **Update incident response procedures and documentation** - Incorporate learnings into response procedures, runbooks, and operational documentation
-4. **Implement knowledge management and pattern recognition** - Create searchable incident knowledge base and pattern recognition capabilities
-5. **Track long-term organizational learning effectiveness** - Measure improvement implementation success and incident recurrence reduction
+### Phase 2: Improvement Planning and Organizational Learning
+**Objective**: Execute improvement identification and establish organizational learning integration
+
+1. **Improvement Identification and Action Planning**
+   - Generate actionable improvement recommendations addressing identified issues with measurable outcomes
+   - Prioritize improvements by prevention potential, assign ownership with timelines, and design validation metrics
+   - Create improvement tracking systems with progress monitoring and completion validation
+
+2. **Knowledge Sharing and Organizational Learning Integration**
+   - Document comprehensive postmortem findings and share learnings across organization
+   - Update incident response procedures, implement knowledge management, and create pattern recognition
+   - Track long-term organizational learning effectiveness and measure incident recurrence reduction
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Post-Mortem Process and Analysis Quality Success
-- **Comprehensive data collection completed**: All incident documentation, timeline data, and decision logs collected and organized systematically
-- **Postmortem participation appropriate**: Right mix of technical experts, business stakeholders, and organizational representatives engaged
-- **Blameless culture maintained**: Analysis focused on system and process improvements with psychological safety for honest discussion
-- **Analysis methodology systematic**: Structured root cause analysis applied comprehensively with thorough investigation of contributing factors
-- **Timeline and decision analysis complete**: Incident flow, decision rationale, and alternative scenarios thoroughly analyzed and documented
+### Analysis Preparation and Root Cause Investigation
+**Comprehensive Process and Quality**: Complete data collection with systematic organization, appropriate postmortem participation with balanced representation, maintained blameless culture with psychological safety for honest discussion
 
-### Root Cause Investigation and Improvement Planning Effectiveness
-- **Root causes accurately identified**: Primary causes and contributing factors properly identified through systematic investigation
-- **System vulnerabilities mapped**: Architectural weaknesses, operational gaps, and procedural deficiencies clearly documented
-- **Organizational factors assessed**: Communication, escalation, and coordination impacts properly evaluated and addressed
-- **Improvement recommendations actionable**: Specific, measurable, and implementable recommendations addressing identified root causes
-- **Improvement prioritization logical**: Recommendations ranked by prevention potential and implementation feasibility for optimal resource allocation
+**Analysis Methodology and Investigation**: Systematic root cause analysis with thorough investigation, accurate root cause identification with contributing factors, mapped system vulnerabilities with operational gaps clearly documented
 
-### Knowledge Sharing and Organizational Learning Integration Achievement
-- **Improvement ownership assigned**: Clear responsibility, timelines, and success criteria established for all improvement actions
-- **Progress tracking operational**: Improvement implementation monitoring, milestone tracking, and completion validation functional
-- **Knowledge sharing comprehensive**: Learnings, insights, and improvements disseminated effectively across relevant organizational teams
-- **Documentation updates completed**: Response procedures, runbooks, and operational documentation updated with incident learnings
-- **Organizational learning measured**: Long-term improvement effectiveness and incident recurrence reduction validated and tracked
+### Improvement Planning and Organizational Learning
+**Action Planning and Implementation**: Actionable improvement recommendations addressing root causes, logical prioritization by prevention potential, assigned ownership with clear timelines and success criteria
+
+**Knowledge Integration and Learning**: Operational progress tracking with implementation monitoring, comprehensive knowledge sharing across teams, completed documentation updates with incident learnings, measured organizational learning effectiveness
 
 ## 4. 📚 USAGE EXAMPLES
 
-### E-commerce Platform Database Corruption Post-Mortem
-**Context**: Database corruption during peak shopping period requiring comprehensive analysis of technical and process failures
-**Implementation Approach**:
-- Root Cause Analysis: Database maintenance procedure gaps, backup validation failures, monitoring blind spots, escalation delays
-- Contributing Factors: Insufficient testing procedures, communication gaps between teams, inadequate backup testing, monitoring threshold issues
-- Improvement Actions: Backup validation automation, enhanced monitoring implementation, communication procedure updates, testing protocol enhancement
-- Technology Adaptation: Database maintenance automation, monitoring enhancement, backup system improvement, escalation procedure optimization
+**E-commerce Platform Database Corruption Post-Mortem**: Database corruption during peak shopping with maintenance procedure gaps, backup validation automation, monitoring enhancement
 
-### Financial Trading System Market Data Feed Failure Analysis
-**Context**: Market data feed interruption causing trading delays with regulatory and customer impact requiring systematic improvement
-**Implementation Approach**:
-- Regulatory Analysis: Compliance procedure evaluation, notification timing assessment, regulatory reporting accuracy, market impact analysis
-- Technical Investigation: Feed redundancy failures, failover procedure gaps, monitoring inadequacies, recovery time optimization
-- Process Improvements: Regulatory notification automation, failover procedure enhancement, monitoring system upgrade, recovery optimization
-- Technology Adaptation: Feed redundancy improvement, automated failover implementation, enhanced monitoring, regulatory compliance automation
+**Financial Trading System Market Data Feed Analysis**: Market data interruption with regulatory impact requiring compliance evaluation, failover enhancement, automated monitoring
 
-### Healthcare EHR System Outage Comprehensive Post-Mortem
-**Context**: Electronic health record system failure affecting patient care requiring patient safety and compliance-focused analysis
-**Implementation Approach**:
-- Patient Safety Analysis: Clinical impact assessment, alternative workflow effectiveness, provider communication evaluation, care continuity analysis
-- Technical Root Causes: System architecture vulnerabilities, backup system failures, integration point weaknesses, recovery procedure gaps
-- Compliance Review: HIPAA incident procedures, audit trail completeness, regulatory notification requirements, data integrity validation
-- Technology Adaptation: EHR system resilience improvement, backup system enhancement, clinical workflow integration, compliance automation
+**Healthcare EHR System Outage Post-Mortem**: EHR failure affecting patient care with clinical impact assessment, system resilience improvement, compliance automation
 
-### SaaS Platform Multi-Tenant Service Degradation Analysis
-**Context**: Performance degradation affecting multiple enterprise customers requiring customer impact and SLA compliance analysis
-**Implementation Approach**:
-- Customer Impact Analysis: SLA violation assessment, customer communication effectiveness, business impact calculation, recovery prioritization
-- Technical Investigation: Multi-tenant resource contention, database performance issues, scaling procedure inadequacies, monitoring gaps
-- Business Process Review: Customer communication procedures, SLA management processes, escalation effectiveness, recovery coordination
-- Technology Adaptation: Multi-tenant resource optimization, performance monitoring enhancement, customer communication automation, SLA tracking improvement
+**SaaS Platform Multi-Tenant Service Degradation**: Performance degradation affecting customers with SLA violation assessment, resource optimization, communication automation
 
-### Global Infrastructure Cascade Failure Comprehensive Analysis
-**Context**: Regional outage causing global service disruption requiring cross-team and cross-region analysis and improvement
-**Implementation Approach**:
-- Global Impact Assessment: Regional dependency mapping, cascade failure analysis, communication coordination evaluation, recovery prioritization
-- Technical Root Causes: Infrastructure design vulnerabilities, failover procedure gaps, monitoring system limitations, capacity planning inadequacies
-- Coordination Analysis: Cross-region team coordination, communication effectiveness, resource sharing procedures, escalation management
-- Technology Adaptation: Infrastructure resilience design, global monitoring implementation, cross-region coordination automation, capacity management improvement
+**Global Infrastructure Cascade Failure Analysis**: Regional outage causing global disruption with dependency mapping, infrastructure resilience design, coordination automation
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Blameless Culture and Psychological Safety Emphasis**:
-1. **Individual accountability elimination** - Focus analysis on system and process failures rather than individual mistakes or decisions
-2. **Safe learning environment creation** - Encourage honest discussion, vulnerability sharing, and comprehensive analysis without fear of retribution
-3. **Systemic improvement focus** - Prioritize systematic improvements that prevent similar issues rather than individual behavior changes
-4. **Learning culture reinforcement** - Celebrate learning, improvement, and transparency while avoiding blame and punishment
+**Blameless Culture Post-Mortem Excellence**: Individual accountability elimination → safe learning environment creation → systemic improvement focus → learning culture reinforcement
 
-**Comprehensive and Methodical Analysis Approach**:
-- **Structured analysis methodology** - Apply systematic root cause analysis techniques consistently across all incidents
-- **Multiple perspective integration** - Include technical, business, operational, and customer perspectives in analysis
-- **Evidence-based investigation** - Base findings on data, logs, metrics, and objective evidence rather than assumptions
-- **Alternative scenario consideration** - Analyze what could have happened differently and evaluate decision effectiveness
+**Comprehensive Analysis Methodology**: Structured analysis with systematic techniques, multiple perspective integration, evidence-based investigation with objective findings, alternative scenario consideration
 
-**Actionable Improvement and Implementation Excellence**:
-- **Specific and measurable improvements** - Create concrete actions with clear success criteria and measurable outcomes
-- **Implementation accountability** - Assign clear ownership, timelines, and responsibility for improvement execution
-- **Progress tracking and validation** - Monitor improvement implementation and validate effectiveness over time
-- **Organizational learning integration** - Ensure learnings become part of organizational knowledge and operational procedures
+**Actionable Improvement Implementation**: Specific measurable improvements with clear success criteria, implementation accountability with ownership and timelines, progress tracking with validation, organizational learning integration

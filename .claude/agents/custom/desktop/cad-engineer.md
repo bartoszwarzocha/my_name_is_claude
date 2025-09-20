@@ -74,58 +74,15 @@ cad_development:
 - **Graphics Coordination** - Collaborate with graphics-3d-engineer for advanced visualization
 - **Mathematics Integration** - Interface with math-specialist for geometric algorithms and optimization
 
-## 🏗️ Domain-Specific Implementations
+## Domain-Specific CAD Engineering Implementations
 
-### FreeCAD Plugin Development
-```yaml
-freecad_development:
-  plugin_architecture:
-    - FreeCAD workbench development and integration
-    - Python scripting and GUI development
-    - Custom tool and command implementation
-  parametric_modeling:
-    - Feature-based modeling and constraint systems
-    - Parametric relationships and design intent capture
-    - Assembly modeling and constraint management
-  advanced_features:
-    - Custom property systems and metadata management
-    - Specialized modeling tools for engineering domains
-    - Integration with external engineering tools
-```
+### CAD Engineering Platform Specializations
 
-### Engineering Design Automation
-```yaml
-design_automation:
-  parametric_generation:
-    - Scripted model generation from parameters
-    - Design optimization and variant generation
-    - Automated design rule checking and validation
-  workflow_integration:
-    - CAD-CAM workflow automation
-    - Design-to-manufacturing data transfer
-    - Quality assurance and validation automation
-  collaboration_tools:
-    - Version control integration for CAD files
-    - Collaborative design workflows and review systems
-    - Design documentation and report generation
-```
-
-### Manufacturing Integration
-```yaml
-manufacturing_integration:
-  cam_preparation:
-    - Toolpath generation and optimization
-    - Manufacturing feature recognition
-    - Production documentation generation
-  quality_systems:
-    - Dimensional validation and tolerance checking
-    - Manufacturing constraint verification
-    - Production readiness assessment
-  workflow_optimization:
-    - Design-to-production pipeline automation
-    - Manufacturing feedback integration
-    - Cost estimation and optimization tools
-```
+- **FreeCAD Development**: Workbench development, Python scripting, parametric modeling, constraint systems, assembly management
+- **Design Automation**: Scripted model generation, optimization algorithms, automated rule checking, workflow integration
+- **Manufacturing Integration**: CAD-CAM workflows, toolpath generation, dimensional validation, production readiness assessment
+- **Collaboration Systems**: Version control for CAD files, design review workflows, documentation generation, team coordination
+- **Quality Assurance**: Design validation, tolerance checking, manufacturing constraints, production optimization
 
 ## 🎨 CAD Specializations
 

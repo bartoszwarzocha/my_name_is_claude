@@ -2,121 +2,66 @@
 
 ## 1. 🎯 FUNCTIONAL REQUIREMENTS
 
-Design and implement comprehensive business process automation strategies that eliminate manual tasks, optimize workflow efficiency, and improve operational effectiveness through intelligent process orchestration. Create automation frameworks adapted to CLAUDE.md requirements, implementing workflow automation, document processing, decision automation, and business rule implementation that support streamlined operations across different business domains and organizational structures.
+Design and implement comprehensive business process automation strategies eliminating manual tasks, optimizing workflow efficiency, and improving operational effectiveness through intelligent process orchestration. Create automation frameworks adapted to CLAUDE.md requirements with workflow automation, document processing, decision automation, and business rule implementation supporting streamlined operations across business domains.
 
 ## 2. 🔄 HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Process Analysis and Automation Strategy Planning
-1. **Read CLAUDE.md business process and automation requirements** - Extract automation objectives, workflow efficiency needs, business rule complexity, and operational improvement priorities
-2. **Conduct comprehensive business process analysis and mapping** - Analyze current workflows, identify automation opportunities, map process dependencies, and assess optimization potential
-3. **Define automation strategy and process optimization approach** - Design automation methodology, prioritization framework, and workflow enhancement strategy
-4. **Establish process automation architecture and integration framework** - Create automation infrastructure, system integration patterns, and workflow orchestration design
-5. **Design automation validation and quality assurance procedures** - Plan process testing, validation criteria, and automation effectiveness measurement
+### Phase 1: Process Analysis and Automation Implementation
+**Objective**: Analyze business processes and implement comprehensive automation strategies
 
-### Phase 2: Workflow Automation and Process Implementation
-1. **Configure workflow automation engines and orchestration platforms** - Implement workflow management, process orchestration, task automation, and business rule engines
-2. **Design document processing and data automation** - Create document workflows, data extraction automation, form processing, and content management automation
-3. **Implement decision automation and business rule management** - Configure automated decision-making, business logic automation, approval workflows, and conditional processing
-4. **Establish integration automation and system connectivity** - Create API automation, system integration, data synchronization, and cross-platform communication
-5. **Configure user interface and process interaction automation** - Implement user workflow automation, notification systems, dashboard automation, and stakeholder communication
+1. **Process Analysis and Automation Strategy Planning**
+   - Read CLAUDE.md business process requirements to extract automation objectives and operational priorities
+   - Conduct comprehensive business process analysis, identify automation opportunities, and assess optimization potential
+   - Define automation strategy, methodology, prioritization framework, and establish architecture integration framework
 
-### Phase 3: Advanced Process Optimization and Intelligence
-1. **Create intelligent process optimization and adaptive workflows** - Implement dynamic process adjustment, performance-based optimization, intelligent routing, and adaptive business rules
-2. **Design process analytics and performance monitoring** - Configure workflow metrics, process performance tracking, bottleneck identification, and efficiency measurement
-3. **Implement exception handling and process resilience** - Create error handling workflows, failure recovery, process rollback, and resilience patterns
-4. **Establish compliance automation and audit trail management** - Configure regulatory compliance automation, audit logging, documentation generation, and compliance reporting
-5. **Configure process scalability and resource optimization** - Implement auto-scaling workflows, resource management, load balancing, and capacity optimization
+2. **Workflow Automation and Process Implementation**
+   - Configure workflow automation engines, orchestration platforms, and implement business rule engines
+   - Design document processing, data automation, decision automation, and business rule management
+   - Establish integration automation, system connectivity, user interface automation, and stakeholder communication
 
-### Phase 4: Continuous Improvement and Process Evolution
-1. **Implement process intelligence and optimization analytics** - Create process mining, performance analysis, improvement identification, and optimization recommendations
-2. **Design continuous process improvement and evolution** - Configure process monitoring, feedback loops, iterative optimization, and capability advancement
-3. **Create process automation governance and management** - Implement automation standards, quality control, change management, and operational governance
-4. **Establish business value measurement and ROI tracking** - Configure automation effectiveness metrics, business impact measurement, cost savings analysis, and ROI calculation
-5. **Configure process innovation and emerging technology integration** - Design future-ready automation, technology adoption, innovation integration, and capability expansion
+### Phase 2: Advanced Optimization and Continuous Improvement
+**Objective**: Implement advanced optimization, analytics, and continuous improvement capabilities
+
+1. **Advanced Process Optimization and Intelligence**
+   - Create intelligent process optimization with adaptive workflows and performance-based optimization
+   - Design process analytics, performance monitoring, exception handling, and process resilience
+   - Establish compliance automation, audit trail management, and configure scalability optimization
+
+2. **Continuous Improvement and Process Evolution**
+   - Implement process intelligence, optimization analytics, and continuous improvement evolution
+   - Create process automation governance, management, business value measurement, and ROI tracking
+   - Configure process innovation and emerging technology integration for future-ready automation
 
 ## 3. ✅ VALIDATION CRITERIA
 
-### Process Analysis and Automation Strategy Success
-- **Process analysis comprehensive**: Current workflow mapping, automation opportunity identification, and optimization potential properly evaluated and documented
-- **Automation strategy aligned**: Process optimization approach, prioritization framework, and workflow enhancement supporting business objectives and efficiency goals
-- **Architecture design optimal**: Automation infrastructure, integration patterns, and orchestration framework enabling scalable and maintainable process automation
-- **Validation procedures effective**: Process testing, quality assurance, and effectiveness measurement providing reliable automation validation
-- **Integration framework robust**: System connectivity, data synchronization, and cross-platform communication supporting seamless process automation
+### Process Analysis and Automation Strategy Excellence
+**Comprehensive Analysis and Strategy**: Process analysis with current workflow mapping and automation opportunity identification, aligned automation strategy with process optimization approach supporting business objectives, optimal architecture design with scalable automation infrastructure
 
-### Workflow Implementation and Process Automation Effectiveness
-- **Workflow automation reliable**: Process orchestration, task automation, and business rule implementation delivering consistent and accurate process execution
-- **Document processing efficient**: Automated document handling, data extraction, and content management reducing manual effort and improving accuracy
-- **Decision automation intelligent**: Automated decision-making, business logic implementation, and approval workflows ensuring consistent and compliant process execution
-- **System integration seamless**: API automation, data synchronization, and cross-platform connectivity enabling efficient information flow and process coordination
-- **User interaction optimized**: Workflow interfaces, notification systems, and stakeholder communication enhancing user experience and process participation
+**Validation and Integration**: Effective validation procedures with process testing and quality assurance, robust integration framework with system connectivity and seamless process automation
 
-### Advanced Optimization and Continuous Improvement Achievement
-- **Process optimization effective**: Intelligent workflow adjustment, performance optimization, and adaptive processing delivering measurable efficiency improvements
-- **Analytics implementation valuable**: Process performance tracking, bottleneck identification, and efficiency measurement providing actionable optimization insights
-- **Exception handling robust**: Error management, failure recovery, and process resilience ensuring reliable automation operation under various conditions
-- **Compliance automation comprehensive**: Regulatory compliance, audit trail management, and documentation generation meeting governance and regulatory requirements
-- **Continuous improvement operational**: Process monitoring, feedback loops, and iterative optimization delivering sustained automation enhancement and business value
+### Implementation and Optimization Excellence
+**Workflow and Decision Automation**: Reliable workflow automation with consistent process execution, efficient document processing reducing manual effort, intelligent decision automation with compliant process execution, seamless system integration with efficient information flow
+
+**Advanced Optimization and Improvement**: Effective process optimization with measurable efficiency improvements, valuable analytics implementation with actionable insights, robust exception handling with reliable automation operation, comprehensive compliance automation with regulatory requirements, operational continuous improvement with sustained business value
 
 ## 4. 📚 USAGE EXAMPLES
 
-### Financial Services Regulatory Process Automation
-**Context**: Banking institution automating regulatory compliance processes, customer onboarding, and audit reporting workflows
-**Implementation Approach**:
-- Compliance Automation: KYC process automation, regulatory reporting workflows, audit trail generation, compliance monitoring automation
-- Customer Processing: Account opening automation, credit assessment workflows, customer communication automation, documentation processing
-- Risk Management: Risk assessment automation, fraud detection workflows, regulatory calculation automation, compliance validation
-- Technology Adaptation: Workflow automation platforms, document processing systems, compliance management tools, regulatory reporting automation
+**Financial Services Regulatory Process Automation**: KYC process automation with regulatory reporting workflows, account opening automation with credit assessment, risk assessment automation with fraud detection, workflow automation platforms with compliance management tools
 
-### Healthcare Clinical Workflow Automation
-**Context**: Hospital system automating patient care workflows, clinical documentation, and administrative processes
-**Implementation Approach**:
-- Clinical Workflows: Patient admission automation, clinical decision support workflows, medication management automation, discharge planning
-- Documentation Automation: Medical record processing, clinical note generation, billing automation, insurance claim processing
-- Compliance Processing: HIPAA compliance workflows, audit documentation, clinical quality reporting, regulatory submission automation
-- Technology Adaptation: Healthcare workflow systems, clinical automation tools, EHR integration, medical device automation
+**Healthcare Clinical Workflow Automation**: Patient admission automation with clinical decision support, medical record processing with billing automation, HIPAA compliance workflows with clinical quality reporting, healthcare workflow systems with EHR integration
 
-### E-commerce Order Processing Automation
-**Context**: E-commerce platform automating order fulfillment, inventory management, and customer service workflows
-**Implementation Approach**:
-- Order Management: Order processing automation, inventory allocation workflows, shipping automation, customer notification systems
-- Customer Service: Support ticket automation, return processing workflows, refund automation, customer communication
-- Inventory Operations: Stock management automation, supplier integration workflows, purchase order automation, demand forecasting
-- Technology Adaptation: E-commerce automation platforms, inventory management systems, customer service automation, supply chain integration
+**E-commerce Order Processing Automation**: Order processing automation with inventory allocation workflows, support ticket automation with return processing, stock management automation with supplier integration, e-commerce automation platforms with supply chain integration
 
-### SaaS Customer Operations Automation
-**Context**: B2B SaaS platform automating customer onboarding, subscription management, and support processes
-**Implementation Approach**:
-- Customer Onboarding: Account setup automation, configuration workflows, training automation, success tracking processes
-- Subscription Management: Billing automation, usage tracking workflows, subscription modification automation, revenue processing
-- Support Operations: Ticket routing automation, escalation workflows, knowledge base automation, customer communication
-- Technology Adaptation: Customer success platforms, subscription management automation, support automation tools, CRM integration
+**SaaS Customer Operations Automation**: Account setup automation with configuration workflows, billing automation with usage tracking, ticket routing automation with escalation workflows, customer success platforms with CRM integration
 
-### Manufacturing Production Process Automation
-**Context**: Manufacturing company automating production workflows, quality control, and supply chain processes
-**Implementation Approach**:
-- Production Automation: Manufacturing workflow orchestration, quality control automation, equipment integration, production scheduling
-- Supply Chain: Vendor integration workflows, procurement automation, inventory optimization, logistics automation
-- Quality Management: Quality inspection automation, compliance documentation, certification processes, audit trail management
-- Technology Adaptation: Manufacturing execution systems, supply chain automation, quality management platforms, production integration
+**Manufacturing Production Process Automation**: Manufacturing workflow orchestration with quality control automation, vendor integration workflows with procurement automation, quality inspection automation with compliance documentation, manufacturing execution systems with production integration
 
 ---
 
 ## 🎯 EXECUTION APPROACH
 
-**Business-Centric Process Automation**:
-1. **Business value prioritization** - Focus automation efforts on processes that deliver the highest business impact and operational efficiency
-2. **User experience optimization** - Design automated workflows that improve user experience rather than simply replacing manual tasks
-3. **Stakeholder engagement integration** - Ensure business stakeholders are involved in automation design and validate process improvements
-4. **Change management integration** - Implement automation with comprehensive change management to ensure successful adoption and utilization
+**Business-Centric Process Automation**: Business value prioritization → user experience optimization → stakeholder engagement integration → change management integration
 
-**Intelligent and Adaptive Process Design**:
-- **Smart process orchestration** - Design workflows that can adapt to changing business conditions and optimize themselves over time
-- **Exception handling excellence** - Implement robust error handling and edge case management to ensure reliable automation operation
-- **Data-driven process optimization** - Use process analytics and performance data to continuously improve automation effectiveness
-- **Scalable automation architecture** - Build automation frameworks that can grow and evolve with changing business requirements
+**Intelligent and Adaptive Process Design**: Smart process orchestration with adaptive workflows, exception handling excellence with robust error management, data-driven process optimization with performance analytics, scalable automation architecture with evolving business requirements
 
-**Governance and Quality Assurance Focus**:
-- **Automation testing and validation** - Implement comprehensive testing to ensure automated processes work correctly under all conditions
-- **Compliance and audit readiness** - Build automation with audit trails, compliance tracking, and regulatory requirement fulfillment
-- **Process documentation and knowledge management** - Maintain comprehensive documentation to support automation maintenance and knowledge transfer
-- **Continuous monitoring and improvement** - Establish ongoing monitoring to ensure automation continues to deliver business value and identify optimization opportunities
+**Governance and Quality Assurance Focus**: Automation testing and validation with comprehensive testing, compliance and audit readiness with regulatory fulfillment, process documentation and knowledge management with maintenance support, continuous monitoring and improvement with business value optimization

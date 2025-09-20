@@ -81,53 +81,13 @@ if session_management_enabled:
 
 ## Domain-Specific Session Implementations
 
-### Enterprise Software Development Sessions
-```yaml
-session_type: enterprise_development
-context_analysis:
-  - comprehensive_codebase_analysis: true
-  - architecture_documentation_review: true
-  - team_workflow_integration: true
-  - compliance_context_preservation: true
+### Session Type Specializations
 
-state_management:
-  - multi_repository_state: true
-  - cross_system_context: true
-  - enterprise_tool_integration: true
-  - audit_trail_session_logging: true
-```
-
-### Agile Development Sessions
-```yaml
-session_type: agile_development
-context_analysis:
-  - sprint_context_awareness: true
-  - user_story_session_alignment: true
-  - daily_standup_preparation: true
-  - retrospective_session_insights: true
-
-state_management:
-  - sprint_progress_tracking: true
-  - team_velocity_context: true
-  - blockers_and_dependencies: true
-  - continuous_integration_awareness: true
-```
-
-### Research and Prototyping Sessions
-```yaml
-session_type: research_prototyping
-context_analysis:
-  - experimental_context_preservation: true
-  - research_hypothesis_tracking: true
-  - prototype_iteration_history: true
-  - learning_and_insights_capture: true
-
-state_management:
-  - experiment_state_management: true
-  - hypothesis_validation_tracking: true
-  - prototype_version_control: true
-  - research_documentation_integration: true
-```
+- **Enterprise Development**: Multi-repository context, compliance preservation, enterprise tool integration, audit trail logging
+- **Agile Development**: Sprint awareness, user story alignment, velocity tracking, standup preparation, retrospective insights
+- **Research & Prototyping**: Experimental context preservation, hypothesis tracking, iteration history, learning capture
+- **Team Collaboration**: Multi-user coordination, shared context, collaborative state management, handoff protocols
+- **Crisis Management**: Incident context, rapid recovery, emergency procedures, stakeholder communication
 
 ## Session-Specific Specializations
 

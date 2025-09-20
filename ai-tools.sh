@@ -81,16 +81,235 @@ print_status() {
     esac
 }
 
+setup_virtual_environment() {
+    print_status "info" "Setting up AI Tools virtual environment..."
+    echo ""
+
+    # Check if python3-venv is available (Ubuntu/Debian requirement)
+    if ! python3 -c "import venv" 2>/dev/null; then
+        print_status "error" "Python venv module not available"
+        echo ""
+        echo "${COLOR_YELLOW}${COLOR_BOLD}SOLUTION:${COLOR_RESET}"
+        if command -v apt >/dev/null 2>&1; then
+            echo "  ${COLOR_GREEN}Install python3-venv:${COLOR_RESET}"
+            echo "     ${COLOR_WHITE}sudo apt update && sudo apt install python3-venv python3-pip${COLOR_RESET}"
+        else
+            echo "  ${COLOR_GREEN}Install Python virtual environment support for your system${COLOR_RESET}"
+        fi
+        return 1
+    fi
+
+    # Create virtual environment
+    print_status "info" "Creating virtual environment..."
+    if python3 -m venv "$VENV_PATH" --system-site-packages; then
+        print_status "success" "Virtual environment created at $VENV_PATH"
+    else
+        print_status "error" "Failed to create virtual environment"
+        echo ""
+        echo "${COLOR_YELLOW}${COLOR_BOLD}TROUBLESHOOTING:${COLOR_RESET}"
+        echo "  ${COLOR_GREEN}Option 1 - Install missing packages:${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}sudo apt update && sudo apt install python3-venv python3-pip${COLOR_RESET}"
+        echo "  ${COLOR_GREEN}Option 2 - Try without system packages:${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}python3 -m venv $VENV_PATH${COLOR_RESET}"
+        return 1
+    fi
+
+    # Ensure pip is available in virtual environment
+    print_status "info" "Setting up pip in virtual environment..."
+    if ! [[ -f "$VENV_PATH/bin/pip" ]]; then
+        "$VENV_PATH/bin/python" -m ensurepip --upgrade 2>/dev/null || {
+            print_status "warning" "ensurepip failed, trying get-pip.py..."
+            curl -s https://bootstrap.pypa.io/get-pip.py | "$VENV_PATH/bin/python" || {
+                print_status "error" "Failed to install pip in virtual environment"
+                return 1
+            }
+        }
+    fi
+
+    # Verify pip installation
+    if [[ -f "$VENV_PATH/bin/pip" ]]; then
+        print_status "success" "Pip available in virtual environment"
+    else
+        print_status "error" "Pip not found in virtual environment"
+        return 1
+    fi
+
+    # Install dependencies using virtual environment pip
+    print_status "info" "Installing AI Tools dependencies..."
+    echo "  ${COLOR_CYAN}Installing: numpy pandas scikit-learn requests scipy joblib${COLOR_RESET}"
+
+    # Try installation with progress feedback
+    if "$VENV_PATH/bin/pip" install --quiet --upgrade pip setuptools wheel; then
+        print_status "success" "Updated pip and build tools"
+    else
+        print_status "warning" "Failed to update pip, continuing..."
+    fi
+
+    if "$VENV_PATH/bin/pip" install numpy pandas scikit-learn requests scipy joblib; then
+        print_status "success" "All dependencies installed successfully"
+        echo ""
+        print_status "info" "Verifying installations..."
+
+        # Quick verification
+        if "$VENV_PATH/bin/python" -c "import numpy, pandas, sklearn, requests, scipy, joblib; print('✅ All imports successful')" 2>/dev/null; then
+            print_status "success" "All dependencies verified working"
+            return 0
+        else
+            print_status "warning" "Some dependencies may not be working correctly"
+            return 0
+        fi
+    else
+        print_status "error" "Failed to install some dependencies"
+        echo ""
+        echo "${COLOR_YELLOW}${COLOR_BOLD}ALTERNATIVE SOLUTIONS:${COLOR_RESET}"
+        echo "  ${COLOR_GREEN}Option 1 - Use system packages:${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}sudo apt install python3-numpy python3-pandas python3-sklearn python3-scipy${COLOR_RESET}"
+        echo "  ${COLOR_GREEN}Option 2 - Manual installation:${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}$VENV_PATH/bin/pip install --user numpy pandas scikit-learn${COLOR_RESET}"
+        echo "  ${COLOR_GREEN}Option 3 - Continue without ML features:${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}AI Tools will work in fallback mode${COLOR_RESET}"
+        return 1
+    fi
+}
+
+show_manual_setup_guide() {
+    clear
+    echo "${COLOR_CYAN}${COLOR_BOLD}${ICON_INFO} AI Tools Manual Setup Guide${COLOR_RESET}"
+    echo "=========================================="
+    echo ""
+    echo "${COLOR_GREEN}${COLOR_BOLD}Quick Setup (Recommended):${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}1. Run: ./ai-tools.sh${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}2. Answer 'y' when asked to create virtual environment${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}3. Wait for automatic installation to complete${COLOR_RESET}"
+    echo ""
+    echo "${COLOR_GREEN}${COLOR_BOLD}Manual Setup Steps:${COLOR_RESET}"
+    echo ""
+    echo "${COLOR_YELLOW}Step 1: Install system requirements (Ubuntu/WSL)${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}sudo apt update${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}sudo apt install python3-venv python3-pip python3-dev${COLOR_RESET}"
+    echo ""
+    echo "${COLOR_YELLOW}Step 2: Create virtual environment${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}python3 -m venv $VENV_PATH${COLOR_RESET}"
+    echo ""
+    echo "${COLOR_YELLOW}Step 3: Activate virtual environment${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}source $VENV_PATH/bin/activate${COLOR_RESET}"
+    echo ""
+    echo "${COLOR_YELLOW}Step 4: Install AI Tools dependencies${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}pip install numpy pandas scikit-learn requests scipy joblib${COLOR_RESET}"
+    echo ""
+    echo "${COLOR_YELLOW}Step 5: Test installation${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}./ai-tools.sh${COLOR_RESET}"
+    echo ""
+    echo "${COLOR_GREEN}${COLOR_BOLD}Alternative: System packages (faster but less isolated)${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}sudo apt install python3-numpy python3-pandas python3-sklearn python3-scipy${COLOR_RESET}"
+    echo ""
+    echo "${COLOR_GREEN}${COLOR_BOLD}Troubleshooting:${COLOR_RESET}"
+    echo "  ${COLOR_CYAN}• If 'externally-managed-environment' error:${COLOR_RESET}"
+    echo "    ${COLOR_WHITE}Always use virtual environment or system packages${COLOR_RESET}"
+    echo "  ${COLOR_CYAN}• If pip missing in venv:${COLOR_RESET}"
+    echo "    ${COLOR_WHITE}$VENV_PATH/bin/python -m ensurepip --upgrade${COLOR_RESET}"
+    echo "  ${COLOR_CYAN}• If WSL performance issues:${COLOR_RESET}"
+    echo "    ${COLOR_WHITE}Consider using system packages for faster startup${COLOR_RESET}"
+    echo ""
+}
+
 activate_venv_if_available() {
-    # Activate virtual environment if available
-    if [[ -f "$VENV_PATH/bin/activate" ]]; then
+    # Check if virtual environment exists and is properly configured
+    if [[ -f "$VENV_PATH/bin/activate" ]] && [[ -f "$VENV_PATH/bin/pip" ]]; then
         print_status "info" "Activating AI Tools virtual environment..."
         source "$VENV_PATH/bin/activate"
         print_status "success" "Virtual environment activated: $(python --version)"
         return 0
+    elif [[ -f "$VENV_PATH/bin/activate" ]] && [[ ! -f "$VENV_PATH/bin/pip" ]]; then
+        print_status "warning" "Virtual environment exists but is incomplete (missing pip)"
+        echo ""
+        echo "${COLOR_BOLD}${COLOR_YELLOW}Repair Options:${COLOR_RESET}"
+        echo "  ${COLOR_GREEN}[y]${COLOR_RESET} Recreate virtual environment (recommended)"
+        echo "  ${COLOR_GREEN}[r]${COLOR_RESET} Try to repair existing environment"
+        echo "  ${COLOR_GREEN}[m]${COLOR_RESET} Show manual setup guide"
+        echo "  ${COLOR_GREEN}[s]${COLOR_RESET} Skip and continue in fallback mode"
+        echo "  ${COLOR_GREEN}[q]${COLOR_RESET} Quit"
+        echo ""
+        read -p "Choose option (y/r/m/s/q): " -r
+
+        case "$REPLY" in
+            [Yy]*)
+                print_status "info" "Removing broken virtual environment..."
+                rm -rf "$VENV_PATH"
+                setup_virtual_environment
+                return $?
+                ;;
+            [Rr]*)
+                print_status "info" "Attempting to repair virtual environment..."
+                "$VENV_PATH/bin/python" -m ensurepip --upgrade || {
+                    print_status "error" "Repair failed. Recreating environment..."
+                    rm -rf "$VENV_PATH"
+                    setup_virtual_environment
+                    return $?
+                }
+                if [[ -f "$VENV_PATH/bin/pip" ]]; then
+                    print_status "success" "Virtual environment repaired"
+                    source "$VENV_PATH/bin/activate"
+                    return 0
+                else
+                    print_status "error" "Repair failed. Please recreate environment."
+                    return 1
+                fi
+                ;;
+            [Mm]*)
+                show_manual_setup_guide
+                echo ""
+                read -p "Press Enter to return to main menu..." -r
+                return 1
+                ;;
+            [Ss]*)
+                print_status "info" "Continuing in fallback mode (limited AI features)"
+                return 1
+                ;;
+            [Qq]*)
+                print_status "info" "Exiting AI Tools"
+                exit 0
+                ;;
+            *)
+                print_status "info" "Invalid option. Continuing in fallback mode."
+                return 1
+                ;;
+        esac
     else
         print_status "warning" "Virtual environment not found at $VENV_PATH"
-        return 1
+        echo ""
+        echo "${COLOR_BOLD}${COLOR_YELLOW}Setup Options:${COLOR_RESET}"
+        echo "  ${COLOR_GREEN}[y]${COLOR_RESET} Automatic setup (recommended)"
+        echo "  ${COLOR_GREEN}[m]${COLOR_RESET} Show manual setup guide"
+        echo "  ${COLOR_GREEN}[s]${COLOR_RESET} Skip and continue in fallback mode"
+        echo "  ${COLOR_GREEN}[q]${COLOR_RESET} Quit"
+        echo ""
+        read -p "Choose option (y/m/s/q): " -r
+
+        case "$REPLY" in
+            [Yy]*)
+                setup_virtual_environment
+                return $?
+                ;;
+            [Mm]*)
+                show_manual_setup_guide
+                echo ""
+                read -p "Press Enter to return to main menu..." -r
+                return 1
+                ;;
+            [Ss]*)
+                print_status "info" "Continuing in fallback mode (limited AI features)"
+                return 1
+                ;;
+            [Qq]*)
+                print_status "info" "Exiting AI Tools"
+                exit 0
+                ;;
+            *)
+                print_status "info" "Invalid option. Continuing in fallback mode."
+                return 1
+                ;;
+        esac
     fi
 }
 
@@ -542,6 +761,7 @@ show_main_menu() {
     echo "${COLOR_WHITE}${COLOR_BOLD}────────────────────────────────────────────────────────────────${COLOR_RESET}"
     echo "${COLOR_YELLOW}[s]${COLOR_RESET} System Status          ${COLOR_WHITE}- Check AI tools status${COLOR_RESET}"
     echo "${COLOR_YELLOW}[u]${COLOR_RESET} Tutorial               ${COLOR_WHITE}- Basic usage tutorial${COLOR_RESET}"
+    echo "${COLOR_YELLOW}[m]${COLOR_RESET} Manual Setup Guide     ${COLOR_WHITE}- Step-by-step installation help${COLOR_RESET}"
     echo "${COLOR_YELLOW}[h]${COLOR_RESET} Help                   ${COLOR_WHITE}- Show detailed help${COLOR_RESET}"
     echo "${COLOR_YELLOW}[q]${COLOR_RESET} Quit                   ${COLOR_WHITE}- Exit AI tools${COLOR_RESET}"
     echo ""
@@ -631,6 +851,12 @@ run_interactive_menu() {
                 ;;
             "s"|"S")
                 show_system_status
+                echo ""
+                echo -n "${COLOR_YELLOW}Press Enter to continue...${COLOR_RESET}"
+                read -r
+                ;;
+            "m"|"M")
+                show_manual_setup_guide
                 echo ""
                 echo -n "${COLOR_YELLOW}Press Enter to continue...${COLOR_RESET}"
                 read -r

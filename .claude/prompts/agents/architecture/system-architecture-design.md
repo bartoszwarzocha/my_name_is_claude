@@ -16,140 +16,69 @@ Design comprehensive system architecture that delivers:
 
 ## 2. HIGH-LEVEL ALGORITHMS
 
-### Phase 1: Project Analysis and Context Discovery
-1. **Read CLAUDE.md Configuration**
-   - Extract primary_language, business_domain, project_scale, development_stage
-   - Identify non-functional requirements and quality priorities
-   - Determine team size, complexity, and technical constraints
+### Phase 1: Context Analysis and Pattern Selection
+**Objective**: Analyze project requirements and select appropriate architectural patterns
 
-2. **Discover Existing Architecture**
-   - Analyze current project structure and technology stack
-   - Identify architectural patterns already in use
-   - Assess scalability bottlenecks and improvement opportunities
+1. **Project Analysis and Requirements Discovery**
+   - Extract CLAUDE.md configuration (primary_language, business_domain, project_scale, development_stage)
+   - Analyze current project structure, technology stack, and existing architectural patterns
+   - Map functional requirements to components and define non-functional requirements
+   - Identify integration points, compliance constraints, and scalability bottlenecks
 
-3. **Requirements Analysis**
-   - Map functional requirements to architectural components
-   - Define non-functional requirements (performance, security, scalability)
-   - Identify integration points with external systems
-   - Document compliance and regulatory constraints
-
-### Phase 2: Architecture Pattern Selection and Design
-1. **Pattern Selection Strategy**
-   - **Monolithic**: Small teams, simple domains, rapid prototyping needs
-   - **Layered/Clean**: Medium complexity, clear separation of concerns required
-   - **Microservices**: Large teams, complex domains, independent scaling needs
-   - **Event-Driven**: High decoupling, async processing, real-time requirements
-   - **Serverless**: Variable workloads, quick deployment, cost optimization
-
-2. **Technology-Specific Adaptation**
-   - Detect technology stack from project configuration and existing code
-   - Apply appropriate architectural patterns for detected technologies
-   - Ensure compatibility with existing development tools and frameworks
-   - Optimize for team expertise and technology ecosystem
-
-3. **Quality Attributes Integration**
-   - Design performance optimization strategies
-   - Integrate security architecture and controls
-   - Plan scalability approaches (horizontal/vertical)
+2. **Architecture Pattern Selection and Design**
+   - Select patterns: Monolithic (small teams), Layered/Clean (medium complexity), Microservices (large teams), Event-Driven (real-time), Serverless (variable workloads)
+   - Apply technology-specific adaptations for detected stack with development tool compatibility
+   - Design performance optimization, security architecture, and scalability approaches
    - Ensure maintainability through proper separation of concerns
 
-### Phase 3: Architecture Documentation and Implementation Planning
-1. **Create Architecture Diagrams**
-   - System context diagram showing boundaries and interfaces
-   - Container diagram with application and database components
-   - Component diagram detailing internal structure
-   - Deployment diagram with infrastructure and networking
+### Phase 2: Documentation and Implementation Planning
+**Objective**: Create comprehensive architecture documentation and implementation guidelines
 
-2. **Define Implementation Standards**
-   - Coding standards aligned with technology stack
-   - Testing strategies (unit, integration, end-to-end)
-   - Development workflow and quality gates
-   - Documentation requirements for APIs and components
+1. **Architecture Documentation Creation**
+   - Create system context, container, component, and deployment diagrams
+   - Define coding standards, testing strategies, and development workflows
+   - Document API requirements and component interaction patterns
+   - Establish quality gates and validation criteria
 
-3. **Technology Stack Recommendations**
-   - Backend framework selection with justification
-   - Frontend technology choices based on requirements
-   - Database selection (SQL/NoSQL) matching data patterns
-   - Infrastructure and deployment strategy
+2. **Technology Stack and Implementation Planning**
+   - Recommend backend/frontend frameworks with justification
+   - Select database technologies matching data patterns
+   - Plan infrastructure and deployment strategies
+   - Create implementation roadmap with development phases
 
 ## 3. VALIDATION CRITERIA
 
-### SUCCESS CRITERIA:
-- **Architecture Alignment**: Design matches CLAUDE.md configuration and detected technology stack
-- **Scalability Validation**: Architecture supports project scale (startup/SME/enterprise) requirements
-- **Quality Attributes**: Performance, security, and maintainability requirements clearly addressed
-- **Implementation Readiness**: Clear development guidelines and technology recommendations provided
-- **Integration Compatibility**: Architecture integrates with existing systems and development tools
-- **Team Enablement**: Architecture documentation enables efficient development team execution
+### Success Criteria and Quality Gates
+**Architecture Validation**:
+- Design alignment with CLAUDE.md configuration and detected technology stack
+- Scalability support for project scale (startup/SME/enterprise) requirements
+- Clear performance, security, and maintainability requirements addressed
+- Implementation readiness with development guidelines and technology recommendations
 
-### ARCHITECTURE QUALITY GATES:
-- **Technology Compatibility**: 100% alignment with detected technology stack
-- **Pattern Appropriateness**: Selected architectural pattern matches project scale and complexity
-- **Documentation Completeness**: All required diagrams and implementation guidelines provided
-- **Security Integration**: Security architecture and controls properly integrated
-- **Performance Planning**: Performance requirements and optimization strategies defined
+**Quality Assurance**:
+- 100% technology compatibility with detected stack
+- Appropriate pattern selection matching project scale and complexity
+- Complete documentation with required diagrams and implementation guidelines
+- Integrated security architecture and performance optimization strategies
 
 ## 4. USAGE EXAMPLES
 
-### Startup Project (CLAUDE.md: project_scale="startup", primary_language="python")
-```
-1. Detect Python/FastAPI stack from CLAUDE.md and project structure
-2. Recommend monolithic layered architecture for rapid development
-3. Design simple deployment strategy with container-based infrastructure
-4. Focus on MVP features with clear evolution path to microservices
-5. Provide basic performance and security guidelines for startup scale
-```
+**Cross-Scale Architecture Examples**
 
-### SME Project (CLAUDE.md: project_scale="sme", primary_language="typescript")
-```
-1. Detect Node.js/React stack from CLAUDE.md and existing code
-2. Recommend clean architecture with clear separation of concerns
-3. Design modular architecture enabling team growth and feature expansion
-4. Plan database strategy supporting business growth requirements
-5. Integrate comprehensive testing and quality assurance frameworks
-```
+**Startup Project** (Python/FastAPI): Monolithic layered architecture for rapid development with simple container deployment and MVP focus
 
-### Enterprise Project (CLAUDE.md: project_scale="enterprise", business_domain="financial_services")
-```
-1. Detect enterprise Java/Spring ecosystem from CLAUDE.md configuration
-2. Recommend microservices architecture with domain-driven design
-3. Design comprehensive security architecture for financial compliance
-4. Plan scalable infrastructure with high availability and disaster recovery
-5. Integrate enterprise monitoring, logging, and observability requirements
-```
+**SME Project** (TypeScript/Node.js/React): Clean architecture with modular design enabling team growth and comprehensive testing frameworks
 
-### Legacy Migration (existing complex codebase with mixed technologies)
-```
-1. Analyze existing architecture patterns and technology dependencies
-2. Design incremental migration strategy preserving business continuity
-3. Recommend strangler fig pattern for gradual system modernization
-4. Plan technology standardization while minimizing disruption
-5. Create comprehensive testing strategy for migration validation
-```
+**Enterprise Project** (Java/Spring, Financial Services): Microservices with domain-driven design, comprehensive security, and enterprise monitoring
 
-### Cross-Platform Desktop Application (CLAUDE.md: primary_language="python", platform="desktop")
-```
-1. Detect desktop application requirements from CLAUDE.md configuration
-2. Recommend MVP (Model-View-Presenter) pattern for GUI applications
-3. Design event-driven architecture for responsive user interfaces
-4. Plan cross-platform compatibility and deployment strategies
-5. Integrate desktop-specific considerations (offline mode, local storage)
-```
+**Legacy Migration** (Mixed Technologies): Incremental strangler fig pattern with technology standardization and comprehensive testing strategy
+
+**Cross-Platform Desktop** (Python Desktop): MVP pattern with event-driven architecture, cross-platform compatibility, and offline considerations
 
 ---
 
-**DELIVERABLES:**
-- System Architecture Document with comprehensive diagrams and explanations
-- Technology Stack Recommendations with detailed justifications
-- Architecture Decision Records documenting key design choices
-- Implementation Roadmap with development phases and milestones
-- Quality Attribute Requirements with validation criteria and testing strategies
+**Deliverables**: System architecture document, technology stack recommendations, architecture decision records, implementation roadmap, quality requirements
 
-**COLLABORATION POINTS:**
-- **business-analyst**: Validate architecture supports business requirements and processes
-- **security-engineer**: Integrate security architecture, threat modeling, and compliance controls
-- **data-engineer**: Coordinate data architecture, storage strategies, and analytics requirements
-- **deployment-engineer**: Align infrastructure architecture with deployment and scaling strategies
+**Collaboration**: business-analyst (requirements validation), security-engineer (security integration), data-engineer (data architecture), deployment-engineer (infrastructure alignment)
 
----
-*Well-designed system architecture provides the foundation for scalable, maintainable, and high-quality software solutions.*
+*Well-designed architecture provides the foundation for scalable, maintainable, high-quality solutions.*

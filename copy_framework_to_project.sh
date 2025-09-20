@@ -244,8 +244,28 @@ copy_item() {
     fi
 
     if [[ "$item_type" == "directory" ]]; then
-        cp -r "$source" "$target"
-        print_status "copy" "Copied directory: $(basename "$source")"
+        # Special handling for .ai-tools directory to exclude venv/
+        if [[ "$(basename "$source")" == ".ai-tools" ]]; then
+            print_status "copy" "Copying .ai-tools directory (excluding virtual environment)..."
+            mkdir -p "$target"
+
+            # Copy all subdirectories except venv/
+            for item in "$source"/*; do
+                if [[ -e "$item" ]]; then
+                    local item_name="$(basename "$item")"
+                    if [[ "$item_name" != "venv" ]]; then
+                        cp -r "$item" "$target/"
+                        print_status "copy" "  ✓ $(basename "$item")"
+                    else
+                        print_status "info" "  ⏭ Skipping virtual environment (venv/)"
+                    fi
+                fi
+            done
+            print_status "success" "Completed .ai-tools directory copy"
+        else
+            cp -r "$source" "$target"
+            print_status "copy" "Copied directory: $(basename "$source")"
+        fi
     else
         cp "$source" "$target"
         print_status "copy" "Copied file: $(basename "$source") → $(basename "$target")"

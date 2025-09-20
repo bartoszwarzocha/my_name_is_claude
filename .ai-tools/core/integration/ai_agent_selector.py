@@ -505,16 +505,29 @@ class AgentSelectionEngine:
             logger.warning(f"⚠️ Error loading pre-trained models: {e}")
 
     def select_agents(self, request: AgentSelectionRequest) -> AgentSelectionResponse:
-        """Main agent selection method"""
+        """Main agent selection method with timeout protection"""
         start_time = time.time()
+
+        # Master timeout for entire selection process (90 seconds)
+        import signal
+
+        def master_timeout_handler(signum, frame):
+            raise TimeoutError("Agent selection process timed out after 90 seconds")
+
+        original_master_handler = signal.signal(signal.SIGALRM, master_timeout_handler)
+        signal.alarm(90)  # 90 second master timeout
 
         try:
             # Track the request
             self.performance_tracker.track_request(request)
 
-            if self.config.ai_enabled and self.ml_ensemble:
+            logger.info(f"🎯 Starting agent selection for {request.project_path} (mode: {request.selection_mode})")
+
+            if self.config.ai_enabled and self.ml_ensemble and request.selection_mode in ['ai', 'hybrid']:
+                logger.info(f"🤖 Attempting AI-powered selection for {request.project_path}")
                 response = self._ai_powered_selection(request)
             else:
+                logger.info(f"📋 Using rule-based selection for {request.project_path}")
                 response = self._rule_based_selection(request)
 
             # Add processing time
@@ -523,35 +536,103 @@ class AgentSelectionEngine:
             # Track the response
             self.performance_tracker.track_response(response)
 
+            logger.info(f"✅ Agent selection completed for {request.project_path} in {response.processing_time:.2f}s")
             return response
 
+        except TimeoutError as e:
+            logger.error(f"🚨 Master timeout reached for {request.project_path}: {e}")
+            # Emergency fallback with minimal processing
+            return self._emergency_fallback_selection(request, start_time)
+
         except Exception as e:
-            logger.error(f"Error in agent selection: {e}")
+            logger.error(f"🚨 Unexpected error in agent selection for {request.project_path}: {e}")
+            # Emergency fallback
+            return self._emergency_fallback_selection(request, start_time)
 
-            # Fallback to basic selection
-            fallback_response = self._emergency_fallback_selection(request)
-            fallback_response.processing_time = time.time() - start_time
-            fallback_response.fallback_used = True
+        finally:
+            # Cleanup master timeout
+            try:
+                signal.alarm(0)
+                signal.signal(signal.SIGALRM, original_master_handler)
+            except Exception as cleanup_error:
+                logger.debug(f"Master timeout cleanup error (non-critical): {cleanup_error}")
 
-            return fallback_response
+    def _emergency_fallback_selection(self, request: AgentSelectionRequest, start_time: float) -> AgentSelectionResponse:
+        """Ultra-fast emergency fallback when everything else fails"""
+        logger.warning(f"🆘 Using emergency fallback selection for {request.project_path}")
+
+        # Hardcoded minimal agent set - no analysis, just basic defaults
+        emergency_agents = ["project-owner", "session-manager", "software-architect"]
+
+        # Quick technology-based additions (minimal file checking)
+        try:
+            project_path = Path(request.project_path)
+            if any(f.suffix in ['.py'] for f in project_path.glob('*.py')):
+                emergency_agents.append("backend-engineer")
+            if any(f.suffix in ['.js', '.ts', '.tsx', '.jsx'] for f in project_path.glob('*')):
+                emergency_agents.append("frontend-engineer")
+            if any(f.name in ['package.json', 'requirements.txt'] for f in project_path.glob('*')):
+                emergency_agents.append("qa-engineer")
+        except:
+            pass  # Ignore any errors in emergency mode
+
+        # Limit to max agents
+        final_agents = emergency_agents[:request.max_agents]
+
+        return AgentSelectionResponse(
+            recommended_agents=final_agents,
+            confidence_scores={agent: 0.5 for agent in final_agents},
+            reasoning={agent: ["Emergency fallback selection"] for agent in final_agents},
+            workflow_sequence=final_agents,
+            fallback_used=True,
+            processing_time=time.time() - start_time,
+            metadata={
+                'selection_method': 'emergency_fallback',
+                'reason': 'timeout_or_error'
+            }
+        )
 
     def _ai_powered_selection(self, request: AgentSelectionRequest) -> AgentSelectionResponse:
-        """AI-powered agent selection using ML models"""
+        """AI-powered agent selection using ML models with circuit breaker"""
         logger.info(f"🤖 Using AI-powered agent selection for {request.project_path}")
 
+        # Circuit breaker for AI selection - max 60 seconds total
+        import signal
+        import time
+
+        def timeout_handler(signum, frame):
+            raise TimeoutError("AI-powered selection timed out after 60 seconds")
+
+        # Set up timeout circuit breaker
+        original_handler = signal.signal(signal.SIGALRM, timeout_handler)
+        signal.alarm(60)  # 60 second timeout for entire AI selection
+
         try:
-            # Analyze project context
+            # Analyze project context with timeout protection
             if request.context_data:
                 project_context = request.context_data
             else:
-                context_obj = self.project_analyzer.analyze_project(request.project_path)
-                project_context = {
-                    'technology_stack': asdict(context_obj.technology_stack),
-                    'complexity': asdict(context_obj.complexity),
-                    'business_domain': asdict(context_obj.business_domain),
-                    'team_context': asdict(context_obj.team_context),
-                    'mcp_insights': asdict(context_obj.mcp_insights)
-                }
+                try:
+                    # Protected project analysis with shorter timeout (45s)
+                    signal.alarm(45)  # Reduce timeout for project analysis
+                    logger.info(f"🔄 Starting project analysis for {request.project_path}")
+
+                    context_obj = self.project_analyzer.analyze_project(request.project_path)
+                    project_context = {
+                        'technology_stack': asdict(context_obj.technology_stack),
+                        'complexity': asdict(context_obj.complexity),
+                        'business_domain': asdict(context_obj.business_domain),
+                        'team_context': asdict(context_obj.team_context),
+                        'mcp_insights': asdict(context_obj.mcp_insights)
+                    }
+                    logger.info(f"✅ Project analysis completed for {request.project_path}")
+
+                except TimeoutError:
+                    logger.warning(f"⏰ Project analysis timed out for {request.project_path}, using fallback")
+                    raise TimeoutError("Project analysis timeout - falling back to rule-based")
+                except Exception as e:
+                    logger.warning(f"❌ Project analysis failed for {request.project_path}: {e}")
+                    raise Exception(f"Project analysis failed: {e}")
 
             # Extract features
             features = self.feature_encoder.encode_single_project(project_context)
@@ -650,9 +731,23 @@ class AgentSelectionEngine:
                 }
             )
 
-        except Exception as e:
-            logger.warning(f"AI selection failed: {e}, falling back to rule-based")
+        except TimeoutError as e:
+            logger.warning(f"⏰ AI selection timed out for {request.project_path}: {e}")
+            logger.info(f"🔄 Falling back to rule-based selection for {request.project_path}")
             return self._rule_based_selection(request)
+
+        except Exception as e:
+            logger.warning(f"❌ AI selection failed for {request.project_path}: {e}")
+            logger.info(f"🔄 Falling back to rule-based selection for {request.project_path}")
+            return self._rule_based_selection(request)
+
+        finally:
+            # Critical cleanup - restore signal handler and cancel alarm
+            try:
+                signal.alarm(0)  # Cancel any pending alarm
+                signal.signal(signal.SIGALRM, original_handler)  # Restore original handler
+            except Exception as cleanup_error:
+                logger.debug(f"Signal cleanup error (non-critical): {cleanup_error}")
 
     def _rule_based_selection(self, request: AgentSelectionRequest) -> AgentSelectionResponse:
         """Rule-based agent selection fallback"""

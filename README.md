@@ -1,6 +1,6 @@
 # My Name Is Claude - Multi-Agent Framework
 
-[![Version](https://img.shields.io/badge/Version-3.0.0-FF6B35?style=flat-square&logo=tag&logoColor=white)](CHANGELOG.md) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Framework-FF6B35?style=flat-square&logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code) [![Fortune 500 Ready](https://img.shields.io/badge/Fortune%20500-Ready-00aa00?style=flat-square&logo=enterprise&logoColor=white)](#) [![AI-Powered](https://img.shields.io/badge/AI--Powered-Agent%20Selection-FF6B35?style=flat-square&logo=brain&logoColor=white)](docs/user-guide/ai-features/agent-selection.md) [![MIT License](https://img.shields.io/badge/License-MIT-00aaff?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-3.0.0-FF6B35?style=flat-square&logo=tag&logoColor=white)](CHANGELOG.md) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Framework-FF6B35?style=flat-square&logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code) [![Fortune 500 Ready](https://img.shields.io/badge/Fortune%20500-Ready-00aa00?style=flat-square&logo=enterprise&logoColor=white)](#) [![AI-Powered](https://img.shields.io/badge/AI--Powered-Agent%20Selection-FF6B35?style=flat-square&logo=brain&logoColor=white)](docs/reference/ai-agent-selection.md) [![MIT License](https://img.shields.io/badge/License-MIT-00aaff?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ## Enterprise-Grade Multi-Agent Development Framework
 
@@ -12,12 +12,12 @@ Advanced development framework featuring AI-powered agent selection, intelligent
 
 ## 📚 Documentation
 
-**📖 [Complete Documentation](docs/index.md)** - Start here for full framework guide
+**📖 [Complete Documentation](docs/README.md)** - Start here for full framework guide
 
 **Quick Links:**
-- **⚡ [Quick Start](docs/getting-started/quick-start.md)** - 10-minute introduction
-- **🛠️ [Installation](docs/getting-started/installation.md)** - Setup instructions
-- **🧠 [AI Agent Selection](docs/user-guide/ai-features/agent-selection.md)** - AI-powered features
+- **⚡ [Quick Start](docs/getting-started/first-steps.md)** - 20-minute guided introduction
+- **🛠️ [Installation](docs/getting-started/framework-installation.md)** - Complete setup instructions
+- **🧠 [AI Agent Selection](docs/reference/ai-agent-selection.md)** - AI-powered features
 
 ---
 
@@ -85,14 +85,14 @@ my_name_is_claude/
 │   ├── integration/           # Framework integration
 │   ├── data/                  # Training data and patterns
 │   └── demo/                  # Demonstrations and examples
-├── docs/                      # User and developer documentation
-│   ├── getting-started/       # Installation and quick start
-│   ├── user-guide/           # User documentation
-│   ├── developer-guide/      # Developer documentation
-│   ├── deployment/           # Production deployment guides
-│   ├── framework/            # Framework-specific documentation
-│   ├── architecture/         # System architecture diagrams
-│   └── examples/             # Real-world implementation examples
+├── docs/                      # Comprehensive framework documentation
+│   ├── getting-started/       # Installation and quick start guides
+│   ├── ai-tools/             # AI tools step-by-step guides
+│   ├── workflows/            # Development workflows
+│   ├── advanced/             # Advanced configuration
+│   ├── reference/            # Technical reference documentation
+│   ├── examples/             # Real-world implementation examples
+│   └── architecture/         # System architecture and design
 ├── project_archive/           # Project documents and research
 │   ├── designs/               # Technical design documents
 │   ├── implementations/       # Implementation summaries
@@ -117,10 +117,10 @@ my_name_is_claude/
 *Zero-configuration setup with AI-powered project analysis and automated workflow generation.*
 
 **📚 Alternative Setup**:
-1. **Documentation First**: Read [Complete Documentation](docs/index.md)
-2. **Installation**: Follow [Installation Guide](docs/getting-started/installation.md)
-3. **Quick Start**: Try [10-minute introduction](docs/getting-started/quick-start.md)
-4. **AI Features**: Explore [AI Agent Selection](docs/user-guide/ai-features/agent-selection.md)
+1. **Documentation First**: Read [Complete Documentation](docs/README.md)
+2. **Installation**: Follow [Installation Guide](docs/getting-started/framework-installation.md)
+3. **Quick Start**: Try [First Steps Guide](docs/getting-started/first-steps.md)
+4. **AI Features**: Explore [AI Agent Selection](docs/reference/ai-agent-selection.md)
 
 For existing projects: Copy `CLAUDE_template.md` to your project as `CLAUDE.md` and customize.
 
@@ -128,7 +128,7 @@ For existing projects: Copy `CLAUDE_template.md` to your project as `CLAUDE.md` 
 
 ## 🤝 Contributing
 
-Contributions welcome! Please read our development guidelines in the [Developer Guide](docs/developer-guide/) and follow the standards defined in [CLAUDE.md](CLAUDE.md).
+Contributions welcome! Please read our development guidelines in the [Advanced Configuration](docs/advanced/) and follow the standards defined in [CLAUDE.md](CLAUDE.md).
 
 ---
 
