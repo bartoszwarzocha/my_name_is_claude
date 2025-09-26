@@ -17,7 +17,7 @@ class AgentStandardizer:
     def __init__(self, framework_root: str):
         self.framework_root = Path(framework_root)
         self.agents_dir = self.framework_root / ".claude/agents"
-        self.template_file = self.framework_root / ".claude/templates/unified-agent-template.md"
+        self.template_file = self.framework_root / ".claude/templates/agent_template.md"
 
         # Load template
         self.template_content = self._load_template()
