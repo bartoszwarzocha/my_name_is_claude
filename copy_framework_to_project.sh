@@ -8,7 +8,7 @@
 # Handles both new and existing projects with safety checks.
 #
 # Version: 1.0.0
-# Framework: Claude Code Multi-Agent Framework v3.0.0
+# Framework: Claude Code Multi-Agent Framework v3.1.0
 # =============================================================================
 
 set -e
@@ -17,8 +17,8 @@ set -e
 # CONFIGURATION
 # =============================================================================
 
-readonly SCRIPT_VERSION="1.0.0"
-readonly FRAMEWORK_VERSION="3.0.0"
+readonly SCRIPT_VERSION="1.1.0"
+readonly FRAMEWORK_VERSION="3.1.0"
 readonly SCRIPT_NAME="Framework Copy Script"
 
 # Colors for output
@@ -54,12 +54,16 @@ readonly ESSENTIAL_FILES=(
     "ai-tools.sh"
     "mcp-tools.sh"
     "VERSION"
+    "CLAUDE_template.md"
+    "copy_framework_to_project.sh"
 )
 
 # Special files with name changes
 readonly SPECIAL_FILES=(
     "LICENSE:FRAMEWORK_LICENSE"
-    "CLAUDE.md:CLAUDE_template.md"
+    "README.md:FRAMEWORK_README.md"
+    "CHANGELOG.md:FRAMEWORK_CHANGELOG.md"
+    "FRAMEWORK_ROADMAP.md:FRAMEWORK_ROADMAP.md"
 )
 
 # =============================================================================
@@ -244,8 +248,10 @@ copy_item() {
     fi
 
     if [[ "$item_type" == "directory" ]]; then
-        # Special handling for .ai-tools directory to exclude venv/
-        if [[ "$(basename "$source")" == ".ai-tools" ]]; then
+        # Special handling for different directories
+        local dir_name="$(basename "$source")"
+
+        if [[ "$dir_name" == ".ai-tools" ]]; then
             print_status "copy" "Copying .ai-tools directory (excluding virtual environment)..."
             mkdir -p "$target"
 
@@ -262,6 +268,30 @@ copy_item() {
                 fi
             done
             print_status "success" "Completed .ai-tools directory copy"
+
+        elif [[ "$dir_name" == ".claude" ]]; then
+            print_status "copy" "Copying .claude directory (excluding monitoring and sensitive files)..."
+            mkdir -p "$target"
+
+            # Copy specific subdirectories only
+            local claude_dirs=("agents" "prompts" "hooks" "templates" "assets")
+            for subdir in "${claude_dirs[@]}"; do
+                if [[ -d "$source/$subdir" ]]; then
+                    cp -r "$source/$subdir" "$target/"
+                    print_status "copy" "  ✓ $subdir"
+                fi
+            done
+
+            # Copy settings.local.json if it exists
+            if [[ -f "$source/settings.local.json" ]]; then
+                cp "$source/settings.local.json" "$target/"
+                print_status "copy" "  ✓ settings.local.json"
+            fi
+
+            print_status "info" "  ⏭ Skipping monitoring/ (enterprise internal)"
+            print_status "info" "  ⏭ Skipping docs/ (framework internal)"
+            print_status "success" "Completed .claude directory copy"
+
         else
             cp -r "$source" "$target"
             print_status "copy" "Copied directory: $(basename "$source")"
@@ -339,9 +369,11 @@ perform_copy() {
         echo ""
         print_status "info" "Next steps:"
         echo "  1. Navigate to: $target"
-        echo "  2. Review CLAUDE_template.md and customize for your project"
+        echo "  2. Review CLAUDE_template.md and customize as CLAUDE.md for your project"
         echo "  3. Run: ./ai-tools.sh to start using the framework"
-        echo "  4. Check FRAMEWORK_LICENSE for framework licensing terms"
+        echo "  4. Setup MCP tools: ./mcp-tools.sh"
+        echo "  5. Check FRAMEWORK_LICENSE for framework licensing terms"
+        echo "  6. Read FRAMEWORK_README.md for complete framework documentation"
     fi
 }
 

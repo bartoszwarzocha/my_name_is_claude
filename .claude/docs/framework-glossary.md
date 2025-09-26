@@ -1,6 +1,6 @@
 # Claude Code Framework - Comprehensive Terminology Glossary
 
-**Version**: 3.0.1
+**Version**: 3.1.0
 **Last Updated**: 2025-09-26
 **Scope**: Complete framework terminology reference
 
