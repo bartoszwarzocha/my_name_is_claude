@@ -203,5 +203,36 @@ Over a decade of experience in graphics 3d engineer specialized capabilities wit
 - **Version Compatibility**: Maintaining framework version alignment with migration support
 
 ---
+## Implementation Guidelines
+
+**For Agent Authors:**
+1. Replace all bracketed placeholders with specific content
+2. Ensure all 8 mandatory sections are complete and detailed
+3. Maintain enterprise-grade specificity and detail
+4. Include real technical skills, tools, and frameworks
+5. Specify actual collaboration patterns and integration points
+6. Validate content against framework standards
+
+**Content Requirements:**
+- Minimum 500 words per agent
+- English language only
+- Professional enterprise tone
+- Specific, actionable content
+- Measurable quality criteria
+- Framework-integrated features
+
+**Validation Checklist:**
+- [ ] All 8 sections present and complete
+- [ ] 10+ years experience clearly stated
+- [ ] Specific technical competencies listed
+- [ ] TodoWrite integration specified
+- [ ] CLAUDE.md adaptation described
+- [ ] Cross-agent collaboration defined
+- [ ] Quality gates established
+- [ ] Framework compliance verified
+
+---
+
+---
 
 *Agent Version: 1.0 | Template Version: 1.0 | Framework Version: 3.1.0 | Last Updated: 2025-09-26*

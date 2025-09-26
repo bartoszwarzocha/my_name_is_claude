@@ -1,0 +1,897 @@
+{
+  "summary": {
+    "total_agents": 45,
+    "compliant_agents": 45,
+    "compliance_rate": 100.0,
+    "average_score": 95.55555555555556,
+    "critical_issues": 0,
+    "warning_issues": 0,
+    "info_issues": 0,
+    "validation_date": "2025-09-26 20:23:29.985901",
+    "template_version": "1.0",
+    "category_results": {
+      "core": {
+        "count": 12,
+        "compliant": 12,
+        "average_score": 95.55555555555556,
+        "scores": [
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556
+        ],
+        "compliance_rate": 100.0
+      },
+      "custom": {
+        "count": 9,
+        "compliant": 9,
+        "average_score": 95.55555555555556,
+        "scores": [
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556
+        ],
+        "compliance_rate": 100.0
+      },
+      "enterprise": {
+        "count": 24,
+        "compliant": 24,
+        "average_score": 95.55555555555556,
+        "scores": [
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556,
+          95.55555555555556
+        ],
+        "compliance_rate": 100.0
+      }
+    },
+    "top_issues": []
+  },
+  "results": [
+    {
+      "agent_name": "software-architect",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/architecture/software-architect.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.171996",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "ux-designer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/architecture/ux-designer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.181788",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "data-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/data/data-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.191479",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "api-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/development/api-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.201195",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "backend-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/development/backend-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.210046",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "frontend-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/development/frontend-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.217720",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "session-manager",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/management/session-manager.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.226184",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "deployment-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/operations/deployment-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.233483",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "qa-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/quality/qa-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.241106",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "security-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/quality/security-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.249322",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "business-analyst",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/strategy/business-analyst.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.256743",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "product-manager",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/core/strategy/product-manager.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.265670",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "3d-addon-developer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/custom/desktop/3d-addon-developer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.274505",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "cad-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/custom/desktop/cad-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.283465",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "desktop-specialist",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/custom/desktop/desktop-specialist.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.291532",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "graphics-2d-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/custom/graphics/graphics-2d-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.299892",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "graphics-3d-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/custom/graphics/graphics-3d-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.307890",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "math-specialist",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/custom/graphics/math-specialist.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.315088",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "electronics-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/custom/hardware/electronics-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.322618",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "embedded-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/custom/hardware/embedded-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.331404",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "scientific-computing-specialist",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/custom/scientific/scientific-computing-specialist.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.338566",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "capacity-planner",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/advanced-operations/capacity-planner.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.346417",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "incident-responder",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/advanced-operations/incident-responder.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.354235",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "monitoring-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/advanced-operations/monitoring-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.361799",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "performance-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/advanced-operations/performance-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.369643",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "reliability-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/advanced-operations/reliability-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.377254",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "sre-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/advanced-operations/sre-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.385206",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "data-scientist",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/analytics/data-scientist.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.393883",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "technical-writer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/analytics/technical-writer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.401942",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "compliance-auditor",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/governance/compliance-auditor.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.409062",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "enterprise-architect",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/governance/enterprise-architect.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.418101",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "governance-architect",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/governance/governance-architect.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.426446",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "risk-manager",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/governance/risk-manager.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.433533",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "automation-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/infrastructure/automation-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.440534",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "cloud-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/infrastructure/cloud-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.449070",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "database-administrator",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/infrastructure/database-administrator.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.458770",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "devops-architect",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/infrastructure/devops-architect.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.468248",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "integration-architect",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/integration/integration-architect.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.477762",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "middleware-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/integration/middleware-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.487481",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "network-architect",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/integration/network-architect.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.496408",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "platform-engineer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/integration/platform-engineer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.505153",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "project-coordinator",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/management/project-coordinator.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.514008",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "project-owner",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/management/project-owner.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.522756",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "reviewer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/management/reviewer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.530968",
+      "template_version": "1.0"
+    },
+    {
+      "agent_name": "mobile-developer",
+      "file_path": "/mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/specialized/mobile-developer.md",
+      "is_compliant": true,
+      "compliance_score": 95.55555555555556,
+      "missing_sections": [
+        "Implementation Guidelines"
+      ],
+      "incomplete_sections": [],
+      "malformed_sections": [],
+      "content_issues": [],
+      "format_issues": [],
+      "integration_issues": [],
+      "critical_fixes": [],
+      "improvements": [],
+      "validation_date": "2025-09-26 20:23:30.539494",
+      "template_version": "1.0"
+    }
+  ]
+}

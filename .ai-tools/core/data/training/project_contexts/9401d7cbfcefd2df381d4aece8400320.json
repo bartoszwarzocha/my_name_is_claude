@@ -1,0 +1,121 @@
+{
+  "project_path": "/mnt/e/AI/my_name_is_claude",
+  "technology_stack": {
+    "frontend": [
+      "reasonml"
+    ],
+    "backend": [
+      "bash",
+      "assembly_x86",
+      "assembly_arm",
+      "assembly_mips",
+      "objective_c",
+      "matlab",
+      "mathematica",
+      "octave",
+      "zig"
+    ],
+    "database": [],
+    "infrastructure": [
+      "openshift",
+      "alibaba_cloud"
+    ],
+    "testing": [
+      "junit"
+    ],
+    "mobile": [
+      "objective_c_ios"
+    ],
+    "desktop": [
+      "objective_c"
+    ],
+    "graphics": [
+      "matlab",
+      "octave",
+      "armadillo"
+    ],
+    "ai_ml": [
+      "anthropic",
+      "matlab",
+      "octave",
+      "armadillo"
+    ],
+    "blockchain": [
+      "cardano",
+      "defi",
+      "move"
+    ],
+    "cloud_infrastructure": [
+      "openshift",
+      "alibaba_cloud"
+    ],
+    "cybersecurity": [],
+    "multimedia": [
+      "plex",
+      "pil_extended"
+    ],
+    "quantum": [],
+    "confidence_score": 1.0
+  },
+  "complexity": {
+    "file_count": 565,
+    "code_lines": 30260,
+    "directory_depth": 5,
+    "dependency_count": 0,
+    "complexity_rating": "sme",
+    "complexity_score": 0.46157999999999993
+  },
+  "business_domain": {
+    "primary": "fintech",
+    "secondary": [
+      "healthcare",
+      "ecommerce",
+      "education",
+      "gaming",
+      "social",
+      "enterprise",
+      "api_integration",
+      "data_analytics",
+      "iot",
+      "ai_ml",
+      "devtools"
+    ],
+    "industry_vertical": "financial_services",
+    "compliance_requirements": [
+      "hipaa",
+      "pci_dss"
+    ],
+    "confidence_score": 1.0
+  },
+  "team_context": {
+    "estimated_team_size": "small",
+    "experience_indicators": [
+      "junior_level"
+    ],
+    "development_patterns": [
+      "git_workflow"
+    ],
+    "git_activity_level": "medium",
+    "collaboration_patterns": [
+      "collaborative_development",
+      "feature_branch_workflow"
+    ]
+  },
+  "mcp_insights": {
+    "serena_available": false,
+    "serena_analysis": null,
+    "context7_available": false,
+    "context7_patterns": null,
+    "playwright_available": false,
+    "playwright_coverage": null,
+    "integration_quality_score": 0.0
+  },
+  "framework_config": {
+    "has_claude_md": true,
+    "content_length": 18071,
+    "has_todo_config": false,
+    "has_agent_config": true
+  },
+  "timestamp": "2025-09-26T20:47:01.160400",
+  "context_hash": "9401d7cbfcefd2df381d4aece8400320"
+}

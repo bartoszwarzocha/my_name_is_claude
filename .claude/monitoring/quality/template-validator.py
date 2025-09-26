@@ -77,7 +77,8 @@ class TemplateValidator:
             "Performance Standards",
             "Collaboration",
             "Integration",
-            "Quality Gates"
+            "Quality Gates",
+            "Implementation Guidelines"
         ]
 
         # Required subsections for comprehensive validation
