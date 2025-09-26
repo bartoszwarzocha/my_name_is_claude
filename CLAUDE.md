@@ -248,7 +248,8 @@ Agent competencies are defined in `.claude/agents/` directory.
 .claude/prompts/
 ├── init/                # Project initialization prompts
 ├── agents/              # Agent-specific prompts (auto-binding)
-└── workflows/           # Multi-agent orchestration
+├── workflows/           # Multi-agent orchestration
+└── tools/               # Framework utility and maintenance prompts
 .claude/docs/            # Framework documentation
 .claude/templates/       # Configuration templates
 │   ├── version-management/  # Version management system templates

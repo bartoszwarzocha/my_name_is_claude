@@ -516,7 +516,8 @@
       "Read(//home/bartosz/.mcp-tools/**)",
       "Bash(git clean:*)",
       "Bash(.claude/templates/version-management/version-sync-validator.sh:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(git show-branch:*)"
     ],
     "deny": [
       "Bash(rm:*)",
