@@ -1,0 +1,223 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Claude Code Framework - Developer Dashboard",
+    "tags": ["claude-code", "developer", "productivity"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Personal Productivity Metrics",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_developer_tasks_completed{user=\"$user\"}",
+            "legendFormat": "Tasks Completed Today"
+          },
+          {
+            "expr": "claude_developer_avg_task_time{user=\"$user\"}",
+            "legendFormat": "Avg Task Time (hours)"
+          },
+          {
+            "expr": "claude_developer_productivity_score{user=\"$user\"}",
+            "legendFormat": "Productivity Score"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": null},
+                {"color": "yellow", "value": 70},
+                {"color": "green", "value": 85}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 6, "w": 8, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Agent Usage Patterns",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "sum by (agent_name) (claude_agent_usage_count{user=\"$user\"})",
+            "legendFormat": "{{agent_name}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "hideFrom": {
+                "vis": false
+              }
+            }
+          }
+        },
+        "gridPos": {"h": 6, "w": 8, "x": 8, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Code Quality Trends",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "claude_code_quality_score{user=\"$user\"}",
+            "legendFormat": "Code Quality Score"
+          },
+          {
+            "expr": "claude_code_complexity_score{user=\"$user\"}",
+            "legendFormat": "Code Complexity"
+          },
+          {
+            "expr": "claude_test_coverage{user=\"$user\"}",
+            "legendFormat": "Test Coverage (%)"
+          }
+        ],
+        "yAxes": [
+          {"label": "Score", "min": 0, "max": 100}
+        ],
+        "gridPos": {"h": 6, "w": 8, "x": 16, "y": 0}
+      },
+      {
+        "id": 4,
+        "title": "Learning Progress",
+        "type": "bargauge",
+        "targets": [
+          {
+            "expr": "claude_skill_level{user=\"$user\", skill=\"framework_basics\"}",
+            "legendFormat": "Framework Basics"
+          },
+          {
+            "expr": "claude_skill_level{user=\"$user\", skill=\"agent_coordination\"}",
+            "legendFormat": "Agent Coordination"
+          },
+          {
+            "expr": "claude_skill_level{user=\"$user\", skill=\"advanced_features\"}",
+            "legendFormat": "Advanced Features"
+          },
+          {
+            "expr": "claude_skill_level{user=\"$user\", skill=\"customization\"}",
+            "legendFormat": "Customization"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "continuous-GrYlRd"},
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 6}
+      },
+      {
+        "id": 5,
+        "title": "Framework Feature Usage",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "claude_feature_usage_count{user=\"$user\"}",
+            "legendFormat": "{{feature_name}}"
+          },
+          {
+            "expr": "claude_feature_usage_time{user=\"$user\"}",
+            "legendFormat": "{{feature_name}}_time"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "renameByName": {
+                "feature_name": "Feature",
+                "Value": "Usage Count",
+                "Value_time": "Time Spent (hours)"
+              }
+            }
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 6}
+      },
+      {
+        "id": 6,
+        "title": "Daily Activity Timeline",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "claude_activity_timeline{user=\"$user\"}",
+            "legendFormat": "{{activity_type}}"
+          }
+        ],
+        "xAxis": {
+          "mode": "time"
+        },
+        "yAxes": [
+          {"label": "Activity Count", "min": 0}
+        ],
+        "gridPos": {"h": 6, "w": 12, "x": 0, "y": 14}
+      },
+      {
+        "id": 7,
+        "title": "Collaboration Metrics",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_collaboration_score{user=\"$user\"}",
+            "legendFormat": "Collaboration Score"
+          },
+          {
+            "expr": "claude_knowledge_sharing_count{user=\"$user\"}",
+            "legendFormat": "Knowledge Shares"
+          },
+          {
+            "expr": "claude_help_requests{user=\"$user\"}",
+            "legendFormat": "Help Requests"
+          }
+        ],
+        "gridPos": {"h": 6, "w": 12, "x": 12, "y": 14}
+      },
+      {
+        "id": 8,
+        "title": "Personal Goals Progress",
+        "type": "bargauge",
+        "targets": [
+          {
+            "expr": "claude_personal_goal_progress{user=\"$user\"}",
+            "legendFormat": "{{goal_name}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "continuous-BlPu"},
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          }
+        },
+        "gridPos": {"h": 6, "w": 24, "x": 0, "y": 20}
+      }
+    ],
+    "templating": {
+      "list": [
+        {
+          "name": "user",
+          "type": "query",
+          "query": "label_values(claude_developer_tasks_completed, user)",
+          "current": {
+            "value": "$__user.login",
+            "text": "$__user.login"
+          }
+        }
+      ]
+    },
+    "time": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "refresh": "1m"
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Claude Code Framework - Operations Dashboard",
+    "tags": ["claude-code", "operations", "technical"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "System Health Overview",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_framework_uptime",
+            "legendFormat": "Uptime (%)"
+          },
+          {
+            "expr": "claude_framework_error_rate",
+            "legendFormat": "Error Rate (%)"
+          },
+          {
+            "expr": "claude_framework_response_time_p95",
+            "legendFormat": "P95 Response Time (ms)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "steps": [
+                {"color": "green", "value": null},
+                {"color": "yellow", "value": 95},
+                {"color": "red", "value": 99}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 6, "w": 12, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Agent Execution Performance",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(claude_agent_executions_total[5m])",
+            "legendFormat": "Executions/sec - {{agent_name}}"
+          },
+          {
+            "expr": "claude_agent_execution_duration_seconds",
+            "legendFormat": "Duration - {{agent_name}}"
+          }
+        ],
+        "yAxes": [
+          {"label": "Executions/sec", "min": 0},
+          {"label": "Duration (s)", "min": 0}
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Resource Utilization",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "claude_framework_cpu_usage",
+            "legendFormat": "CPU Usage (%)"
+          },
+          {
+            "expr": "claude_framework_memory_usage",
+            "legendFormat": "Memory Usage (%)"
+          },
+          {
+            "expr": "claude_framework_disk_usage",
+            "legendFormat": "Disk Usage (%)"
+          }
+        ],
+        "yAxes": [
+          {"label": "Usage %", "min": 0, "max": 100}
+        ],
+        "gridPos": {"h": 6, "w": 8, "x": 0, "y": 6}
+      },
+      {
+        "id": 4,
+        "title": "AI Tools Performance",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "claude_ai_tool_accuracy",
+            "legendFormat": "{{tool_name}} Accuracy"
+          },
+          {
+            "expr": "claude_ai_tool_response_time",
+            "legendFormat": "{{tool_name}} Response Time"
+          },
+          {
+            "expr": "claude_ai_tool_usage_count",
+            "legendFormat": "{{tool_name}} Usage Count"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {},
+              "renameByName": {
+                "tool_name": "AI Tool",
+                "Accuracy": "Accuracy (%)",
+                "Response Time": "Response Time (ms)",
+                "Usage Count": "Usage Count"
+              }
+            }
+          }
+        ],
+        "gridPos": {"h": 6, "w": 8, "x": 8, "y": 6}
+      },
+      {
+        "id": 5,
+        "title": "Quality Gates Performance",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_quality_gate_pass_rate",
+            "legendFormat": "Pass Rate (%)"
+          },
+          {
+            "expr": "claude_quality_gate_execution_time",
+            "legendFormat": "Avg Execution Time (s)"
+          },
+          {
+            "expr": "claude_quality_gate_issues_detected",
+            "legendFormat": "Issues Detected"
+          }
+        ],
+        "gridPos": {"h": 6, "w": 8, "x": 16, "y": 6}
+      },
+      {
+        "id": 6,
+        "title": "Agent Coordination Metrics",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "claude_agent_handoff_success_rate",
+            "legendFormat": "Handoff Success Rate (%)"
+          },
+          {
+            "expr": "claude_agent_handoff_duration",
+            "legendFormat": "Handoff Duration (s)"
+          },
+          {
+            "expr": "claude_agent_coordination_conflicts",
+            "legendFormat": "Coordination Conflicts"
+          }
+        ],
+        "gridPos": {"h": 6, "w": 12, "x": 0, "y": 12}
+      },
+      {
+        "id": 7,
+        "title": "MCP Tools Integration Status",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_mcp_tool_availability",
+            "legendFormat": "{{tool_name}} Availability"
+          },
+          {
+            "expr": "claude_mcp_tool_response_time",
+            "legendFormat": "{{tool_name}} Response Time"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": null},
+                {"color": "yellow", "value": 95},
+                {"color": "green", "value": 99}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 6, "w": 12, "x": 12, "y": 12}
+      },
+      {
+        "id": 8,
+        "title": "Error Analysis",
+        "type": "logs",
+        "targets": [
+          {
+            "expr": "{job=\"claude-framework\"} |= \"ERROR\"",
+            "legendFormat": "Framework Errors"
+          },
+          {
+            "expr": "{job=\"claude-agents\"} |= \"ERROR\"",
+            "legendFormat": "Agent Errors"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 18}
+      }
+    ],
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "refresh": "30s"
+  }
+}

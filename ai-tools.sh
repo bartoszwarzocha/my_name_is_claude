@@ -13,7 +13,7 @@ set -e
 
 # Version and metadata
 readonly SCRIPT_VERSION="1.0.0"
-readonly FRAMEWORK_VERSION="3.0.0"
+readonly FRAMEWORK_VERSION="3.1.0"
 readonly SCRIPT_NAME="AI Tools Launcher"
 
 # Paths and directories

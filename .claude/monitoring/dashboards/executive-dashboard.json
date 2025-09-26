@@ -1,0 +1,149 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Claude Code Framework - Executive Dashboard",
+    "tags": ["claude-code", "executive", "kpi"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Framework ROI Metrics",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_framework_productivity_improvement",
+            "legendFormat": "Productivity Improvement (%)"
+          },
+          {
+            "expr": "claude_framework_cost_savings",
+            "legendFormat": "Cost Savings ($)"
+          },
+          {
+            "expr": "claude_framework_time_to_market_reduction",
+            "legendFormat": "Time to Market Reduction (%)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "basic"
+            },
+            "mappings": [],
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": null},
+                {"color": "yellow", "value": 20},
+                {"color": "green", "value": 50}
+              ]
+            },
+            "unit": "percent"
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "User Adoption Metrics",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "claude_framework_active_users",
+            "legendFormat": "Active Users"
+          },
+          {
+            "expr": "claude_framework_new_users",
+            "legendFormat": "New Users (Weekly)"
+          },
+          {
+            "expr": "claude_framework_user_retention",
+            "legendFormat": "User Retention (%)"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Users",
+            "min": 0
+          },
+          {
+            "label": "Retention %",
+            "min": 0,
+            "max": 100
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Development Velocity",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_framework_tasks_completed_per_day",
+            "legendFormat": "Tasks/Day"
+          },
+          {
+            "expr": "claude_framework_average_task_completion_time",
+            "legendFormat": "Avg Task Time (hours)"
+          },
+          {
+            "expr": "claude_framework_quality_score",
+            "legendFormat": "Quality Score"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": null},
+                {"color": "yellow", "value": 70},
+                {"color": "green", "value": 85}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 6, "w": 8, "x": 0, "y": 8}
+      },
+      {
+        "id": 4,
+        "title": "Agent Performance Overview",
+        "type": "heatmap",
+        "targets": [
+          {
+            "expr": "claude_agent_execution_time_bucket",
+            "legendFormat": "{{agent_name}}"
+          }
+        ],
+        "gridPos": {"h": 6, "w": 8, "x": 8, "y": 8}
+      },
+      {
+        "id": 5,
+        "title": "Business Value Delivered",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_framework_features_delivered",
+            "legendFormat": "Features Delivered"
+          },
+          {
+            "expr": "claude_framework_bugs_prevented",
+            "legendFormat": "Bugs Prevented"
+          },
+          {
+            "expr": "claude_framework_security_issues_prevented",
+            "legendFormat": "Security Issues Prevented"
+          }
+        ],
+        "gridPos": {"h": 6, "w": 8, "x": 16, "y": 8}
+      }
+    ],
+    "time": {
+      "from": "now-30d",
+      "to": "now"
+    },
+    "refresh": "5m"
+  }
+}

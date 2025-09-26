@@ -1,0 +1,196 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Claude Code Framework - Quality Dashboard",
+    "tags": ["claude-code", "quality", "metrics"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Overall Quality Score",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_framework_quality_score",
+            "legendFormat": "Quality Score"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": 0},
+                {"color": "yellow", "value": 75},
+                {"color": "green", "value": 90}
+              ]
+            },
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Quality Gate Scores",
+        "type": "bargauge",
+        "targets": [
+          {
+            "expr": "claude_quality_gate_score",
+            "legendFormat": "{{gate_name}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "continuous-GrYlRd"},
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Framework Readiness Level",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_framework_readiness_level",
+            "legendFormat": "Readiness Level"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {"options": {"0": {"text": "Needs Improvement"}}},
+              {"options": {"1": {"text": "Development Ready"}}},
+              {"options": {"2": {"text": "Near Production"}}},
+              {"options": {"3": {"text": "Production Ready"}}},
+              {"options": {"4": {"text": "Enterprise Ready"}}}
+            ]
+          }
+        },
+        "gridPos": {"h": 6, "w": 8, "x": 0, "y": 8}
+      },
+      {
+        "id": 4,
+        "title": "Quality Issues Detected",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_quality_issues_detected",
+            "legendFormat": "{{severity}} issues"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "steps": [
+                {"color": "green", "value": 0},
+                {"color": "yellow", "value": 1},
+                {"color": "red", "value": 5}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 6, "w": 8, "x": 8, "y": 8}
+      },
+      {
+        "id": 5,
+        "title": "Template Compliance Rate",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "claude_template_compliance_rate",
+            "legendFormat": "{{template_type}} compliance"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        },
+        "gridPos": {"h": 6, "w": 8, "x": 16, "y": 8}
+      },
+      {
+        "id": 6,
+        "title": "Quality Trends",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "claude_framework_quality_score",
+            "legendFormat": "Overall Quality"
+          },
+          {
+            "expr": "claude_quality_gate_score",
+            "legendFormat": "{{gate_name}}"
+          }
+        ],
+        "yAxes": [
+          {"label": "Score", "min": 0, "max": 100}
+        ],
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 14}
+      },
+      {
+        "id": 7,
+        "title": "Agent Quality Distribution",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "claude_agent_quality_score",
+            "legendFormat": "{{agent_name}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "hideFrom": {
+                "vis": false
+              }
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 22}
+      },
+      {
+        "id": 8,
+        "title": "Quality Assessment History",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "claude_quality_assessments_total",
+            "legendFormat": "Total Assessments"
+          },
+          {
+            "expr": "claude_quality_assessment_duration_seconds",
+            "legendFormat": "Assessment Duration"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "renameByName": {
+                "Total Assessments": "Assessment Count",
+                "Assessment Duration": "Duration (seconds)"
+              }
+            }
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 22}
+      }
+    ],
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "refresh": "5m"
+  }
+}

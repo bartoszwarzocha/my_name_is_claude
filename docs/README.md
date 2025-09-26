@@ -61,6 +61,13 @@ Deep customization and enterprise-grade configuration for specialized needs.
 | **[Custom Agent Development](advanced/custom-agent-development.md)** | Expert | Specialized agents |
 | **[Hooks & Automation](advanced/hooks-automation.md)** | Advanced | Workflow automation |
 
+#### **🆕 v3.1.0 Enterprise Systems (NEW)**
+| Guide | Audience | Purpose |
+|-------|----------|---------|
+| **[Monitoring & Analytics](advanced/monitoring-analytics.md)** | Enterprise | Real-time framework monitoring and performance analytics |
+| **[Quality Assessment](advanced/quality-assessment.md)** | Technical | Automated quality validation and continuous improvement |
+| **[Agent Template Standard](advanced/agent-template-standard.md)** | Developers | Unified agent development and standardization guidelines |
+
 ### **📋 Reference Documentation**
 Complete technical reference and troubleshooting guides.
 
@@ -139,6 +146,11 @@ Technical architecture documentation and system design.
 2. [Team Collaboration](workflows/team-collaboration.md) → Multi-team coordination
 3. [Custom Agent Development](advanced/custom-agent-development.md) → Enterprise-specific agents
 
+**🆕 v3.1.0 Enterprise Features:**
+- [Monitoring & Analytics](advanced/monitoring-analytics.md) → Real-time framework monitoring and ROI tracking
+- [Quality Assessment](advanced/quality-assessment.md) → Automated quality validation and compliance
+- [Agent Template Standard](advanced/agent-template-standard.md) → Enterprise-grade agent standardization
+
 **Next Steps:**
 - [Agent System](reference/agent-system.md) → Technical architecture understanding
 - [Examples](examples/README.md) → Real-world implementation patterns
@@ -213,5 +225,5 @@ Technical architecture documentation and system design.
 *Claude Code Framework - Accelerating development through intelligent AI collaboration*
 
 **Documentation Status**: ✅ Complete and Organized
-**Framework Version**: 3.0.0
-**Last Updated**: 2025-09-20
+**Framework Version**: 3.1.0
+**Last Updated**: 2025-09-26

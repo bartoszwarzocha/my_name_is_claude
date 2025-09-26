@@ -513,7 +513,10 @@
       "Bash(if grep -q \"## Core.*Competencies\" /mnt/e/AI/my_name_is_claude/.claude/agents/enterprise/*/$agent.md)",
       "Bash(then echo \"  ✓ Has Core Competencies section\")",
       "Bash(else echo \"  ✗ No Core Competencies section found\")",
-      "Read(//home/bartosz/.mcp-tools/**)"
+      "Read(//home/bartosz/.mcp-tools/**)",
+      "Bash(git clean:*)",
+      "Bash(.claude/templates/version-management/version-sync-validator.sh:*)",
+      "Bash(python3:*)"
     ],
     "deny": [
       "Bash(rm:*)",
