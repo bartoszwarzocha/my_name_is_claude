@@ -1,70 +1,27 @@
-# AI Troubleshoot Command
+---
+description: Debug and resolve AI tools issues
+argument-hint: [--component=name] [--verbose]
+---
 
-**Command**: `/ai-troubleshoot`
-**Category**: AI-Tools Shortcuts
-**Description**: Debug AI tools issues
+Diagnose and fix AI tools problems:
 
-## Usage
+1. Run comprehensive AI tools diagnostics
+2. Check system dependencies and requirements
+3. Validate configuration files and settings
+4. Test AI model connectivity and performance
+5. Analyze error logs and system status
+6. Generate troubleshooting report with:
+   - Issue identification and classification
+   - Root cause analysis
+   - Step-by-step resolution instructions
+   - Prevention recommendations
+   - System health verification
 
-```
-/ai-troubleshoot
-/ai-troubleshoot --verbose
-/ai-troubleshoot --fix-common
-```
+Arguments: $ARGUMENTS
 
-## Functionality
+**Argument Handling Logic:**
+- If arguments contain "--component=name": Focus troubleshooting on specific component (e.g., "--component=agents", "--component=prompts", "--component=integration")
+- If arguments contain "--verbose": Include detailed debugging information, logs analysis, and comprehensive diagnostic data
+- If no arguments or empty: Perform general AI tools health check and identify common issues
 
-Diagnoses and fixes common AI Tools issues automatically.
-
-### Common Issues
-- Virtual environment problems
-- Agent configuration errors
-- MCP tools connectivity
-- Framework integration issues
-- Performance problems
-- Permission issues
-
-### Output Format
-```
-🔧 AI TOOLS TROUBLESHOOTING
-
-Project: book_writing_app
-Diagnosing: AI Tools Environment
-Issues Found: 2
-
-🔍 DIAGNOSTIC RESULTS:
-
-⚠️ ISSUE #1: Virtual Environment
-Problem: Python packages not accessible
-Cause: Virtual environment not properly activated
-Solution: ✅ FIXED - Reactivated venv
-
-⚠️ ISSUE #2: Agent Configuration
-Problem: desktop-specialist agent not responding
-Cause: Missing agent dependency
-Solution: ✅ FIXED - Installed missing dependency
-
-✅ SYSTEM HEALTH:
-• Python environment: Operational
-• AI Tools core: Functional
-• Agent system: All agents responsive
-• MCP tools: Connected
-• Framework integration: Complete
-
-🚑 AUTO-FIXES APPLIED:
-1. Rebuilt virtual environment
-2. Reinstalled missing dependencies
-3. Reset agent configurations
-4. Cleared temporary caches
-5. Validated framework integration
-
-✨ TROUBLESHOOTING COMPLETE
-AI Tools Status: 🟢 FULLY OPERATIONAL
-```
-
-## Integration
-
-- AI Tools diagnostic system
-- Automatic issue resolution
-- Framework health monitoring
-- Agent system validation
+Output: Diagnostic report with automated fixes and manual resolution steps.
