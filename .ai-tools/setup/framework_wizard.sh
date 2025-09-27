@@ -257,7 +257,9 @@ print(f\"{data.get('confidence', 0):.2f}\")
     else
         print_status "warning" "Technology detection failed - will use manual input"
         DETECTED_TECHNOLOGIES=()
+        return 1
     fi
+    return 0
 }
 
 get_agent_recommendations() {
@@ -269,7 +271,7 @@ get_agent_recommendations() {
     local agents_output=""
     local attempt=1
     local max_attempts=3
-    local timeout_duration=30
+    local timeout_duration=90
 
     while [[ $attempt -le $max_attempts && -z "$agents_output" ]]; do
         if [[ $attempt -gt 1 ]]; then
@@ -339,10 +341,12 @@ for agent in agents:
     print(agent)
 ")
         print_status "success" "Generated ${#RECOMMENDED_AGENTS[@]} agent recommendations"
+        return 0
     else
         # Fallback recommendations
         RECOMMENDED_AGENTS=("project-owner" "session-manager" "software-architect" "frontend-engineer" "backend-engineer" "qa-engineer")
         print_status "warning" "Using fallback agent recommendations"
+        return 1
     fi
 }
 
@@ -389,9 +393,17 @@ phase_1_welcome() {
 phase_2_project_analysis() {
     print_step "2" "Intelligent Project Analysis"
 
-    detect_project_technologies
+    # Technology detection with error handling
+    if ! detect_project_technologies; then
+        print_status "warning" "Technology detection failed, using manual input"
+    fi
     echo ""
-    get_agent_recommendations
+
+    # Agent recommendations with error handling
+    if ! get_agent_recommendations; then
+        print_status "warning" "Agent recommendations failed, using fallback agents"
+        RECOMMENDED_AGENTS=("project-owner" "session-manager" "software-architect" "frontend-engineer" "backend-engineer" "qa-engineer")
+    fi
     echo ""
 
     # Get project basic info
