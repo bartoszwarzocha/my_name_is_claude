@@ -166,9 +166,9 @@ class TechnologyDetector:
                 'dart': ['.dart', 'pubspec.yaml', 'void main', 'import'],
 
                 # Web Languages
-                'typescript': ['.ts', '.tsx', 'tsconfig.json', 'interface', 'type'],
-                'javascript': ['.js', '.jsx', '.mjs', 'package.json', 'function main'],
-                'coffeescript': ['.coffee', 'main =', '->'],
+                'typescript': ['.ts', '.tsx', 'tsconfig.json'],
+                'javascript': ['.js', '.jsx', '.mjs', 'package.json'],
+                'coffeescript': ['.coffee'],
 
                 # Assembly Languages
                 'assembly_x86': ['.asm', '.s', '.S', '.nasm', 'mov eax', 'int 0x80'],
@@ -594,9 +594,9 @@ class TechnologyDetector:
                 'turbopack': ['turbopack', 'next.config.js'],
 
                 # TypeScript & Languages
-                'typescript': ['tsconfig.json', '.ts', '.tsx', 'interface', 'type'],
-                'javascript': ['package.json', '.js', '.jsx', 'function', 'const'],
-                'coffeescript': ['.coffee', 'coffee-script', '->'],
+                'typescript': ['tsconfig.json', '.ts', '.tsx'],
+                'javascript': ['package.json', '.js', '.jsx'],
+                'coffeescript': ['.coffee', 'coffee-script'],
                 'purescript': ['.purs', 'purescript', 'module'],
                 'elm': ['.elm', 'elm.json', 'main ='],
                 'reasonml': ['.re', '.rei', 'reason', 'let'],
@@ -1175,9 +1175,15 @@ class TechnologyDetector:
             for root, dirs, files in os.walk(project_path):
                 # Skip common ignore directories
                 dirs[:] = [d for d in dirs if not d.startswith('.')
-                          and d not in ['node_modules', '__pycache__', 'venv', 'env', 'target', 'build']]
+                          and d not in ['node_modules', '__pycache__', 'venv', 'env', 'target', 'build',
+                                       'docs', 'documentation', 'doc', 'html', 'out', 'output', 'dist',
+                                       'public', 'assets', 'static', 'resources', 'vendor', 'third_party']]
 
                 for file in files:
+                    # Skip framework files that might be copied to the project
+                    if self._is_framework_file(file):
+                        continue
+
                     file_path = os.path.join(root, file)
                     self._analyze_file(file_path, file, detected)
 
@@ -1243,10 +1249,45 @@ class TechnologyDetector:
     def _analyze_file_content(self, file_path: str, detected: Dict[str, List[str]]):
         """Analyze file content for technology imports and usage"""
         try:
+            filename = os.path.basename(file_path).lower()
+            file_ext = os.path.splitext(filename)[1]
+
+            # Define strong file extension mappings to prevent wrong detections
+            strong_extension_mappings = {
+                '.cpp': 'cpp', '.cxx': 'cpp', '.cc': 'cpp', '.C': 'cpp', '.c++': 'cpp',
+                '.hpp': 'cpp', '.hxx': 'cpp', '.h++': 'cpp', '.hh': 'cpp',
+                '.c': 'c', '.h': 'c',
+                '.py': 'python', '.pyx': 'python',
+                '.js': 'javascript', '.jsx': 'javascript', '.mjs': 'javascript',
+                '.ts': 'typescript', '.tsx': 'typescript',
+                '.java': 'java',
+                '.cs': 'csharp',
+                '.go': 'go',
+                '.rs': 'rust',
+                '.php': 'php',
+                '.rb': 'ruby',
+                '.swift': 'swift',
+                '.kt': 'kotlin',
+                '.scala': 'scala'
+            }
+
+            # If file has a strong extension mapping, only detect that technology and skip content analysis
+            if file_ext in strong_extension_mappings:
+                primary_tech = strong_extension_mappings[file_ext]
+
+                # Find the right category for this technology
+                for category, technologies in self.technology_patterns.items():
+                    if primary_tech in technologies:
+                        if primary_tech not in detected[category]:
+                            detected[category].append(primary_tech)
+                            logger.debug(f"Detected {primary_tech} from file extension: {filename}")
+                        break
+                return  # Skip content analysis for files with strong extension mappings
+
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read().lower()
 
-                # Look for import statements and technology usage
+                # Look for import statements and technology usage only for files without strong extensions
                 for category, technologies in self.technology_patterns.items():
                     for tech, patterns in technologies.items():
                         for pattern in patterns:
@@ -1257,6 +1298,26 @@ class TechnologyDetector:
 
         except Exception as e:
             logger.debug(f"Error reading file content {file_path}: {e}")
+
+    def _is_framework_file(self, filename: str) -> bool:
+        """Check if file is part of the My Name Is Claude framework and should be excluded from analysis"""
+        framework_files = {
+            'ai-tools.sh', 'mcp-tools.sh', 'copy_framework_to_project.sh',
+            'FRAMEWORK_LICENSE', 'FRAMEWORK_README.md', 'FRAMEWORK_CHANGELOG.md',
+            'FRAMEWORK_ROADMAP.md', 'CLAUDE_template.md', 'VERSION'
+        }
+
+        # Check exact framework file names
+        if filename in framework_files:
+            return True
+
+        # Check framework patterns
+        if (filename.startswith('FRAMEWORK_') or
+            filename.startswith('CLAUDE_') or
+            filename.endswith('-tools.sh')):
+            return True
+
+        return False
 
     def _analyze_package_files(self, project_path: str, detected: Dict[str, List[str]]):
         """Analyze package configuration files for dependencies"""
