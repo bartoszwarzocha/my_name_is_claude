@@ -18,7 +18,7 @@ set -e
 # =============================================================================
 
 readonly SCRIPT_VERSION="1.1.0"
-readonly FRAMEWORK_VERSION="3.1.0"
+readonly FRAMEWORK_VERSION="3.2.0"
 readonly SCRIPT_NAME="Framework Copy Script"
 
 # Colors for output
@@ -274,7 +274,7 @@ copy_item() {
             mkdir -p "$target"
 
             # Copy specific subdirectories only
-            local claude_dirs=("agents" "prompts" "hooks" "templates" "assets")
+            local claude_dirs=("agents" "prompts" "commands" "hooks" "templates" "assets" "docs")
             for subdir in "${claude_dirs[@]}"; do
                 if [[ -d "$source/$subdir" ]]; then
                     cp -r "$source/$subdir" "$target/"

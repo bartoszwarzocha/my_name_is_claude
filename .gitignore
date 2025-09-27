@@ -43,3 +43,7 @@ workspace/
 documentation_map.txt
 # Local instruction files
 PRAWDZIWA_instrukcja_*.md
+instrukcja_*.md
+INSTRUKCJA_*.md
+INSTRUCTION_*.md
+instruction_*.md
