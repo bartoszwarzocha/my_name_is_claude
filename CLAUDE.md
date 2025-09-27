@@ -159,6 +159,8 @@ Agent competencies are defined in `.claude/agents/` directory.
 
 **Process**: Always verify actual structure with `ls`, show one level deep only, update based on filesystem reality
 
+**CRITICAL REMINDER**: After creating new directories (like `.claude/commands/`), ALWAYS update README.md directory tree to reflect the new structure. Check for missing directories in all documentation before any release or major update.
+
 #### **5. Consistency Requirements**
 - **Maintain consistency** between English files and Polish conversations
 - **Use established terminology** from framework specification
