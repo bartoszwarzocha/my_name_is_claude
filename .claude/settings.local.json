@@ -517,7 +517,12 @@
       "Bash(git clean:*)",
       "Bash(.claude/templates/version-management/version-sync-validator.sh:*)",
       "Bash(python3:*)",
-      "Bash(git show-branch:*)"
+      "Bash(git show-branch:*)",
+      "Bash(do)",
+      "Bash(if [ -f \"/mnt/e/AI/my_name_is_claude/$file\" ])",
+      "Bash(then)",
+      "Bash(else)",
+      "Bash(if [ -d \"/mnt/e/AI/my_name_is_claude/$path\" ])"
     ],
     "deny": [
       "Bash(rm:*)",

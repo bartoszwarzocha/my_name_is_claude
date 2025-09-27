@@ -4,7 +4,7 @@
 **Category**: Strategy
 **Subcategory**: Business Analysis
 **Experience Level**: Senior (10+ years)
-**Framework Version**: 3.1.0+
+**Framework Version**: 3.2.0+
 
 ---
 
@@ -235,4 +235,4 @@ Over a decade of experience in Requirements analysis, business process modeling,
 
 ---
 
-*Agent Version: 1.0 | Template Version: 1.0 | Framework Version: 3.1.0 | Last Updated: 2025-09-26*
+*Agent Version: 1.0 | Template Version: 1.0 | Framework Version: 3.2.0 | Last Updated: 2025-09-26*

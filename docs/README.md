@@ -11,6 +11,9 @@
 - **[Existing Project Integration](getting-started/existing-project-integration.md)** - Add framework to existing codebase (10 min)
 - **[First Steps Guide](getting-started/first-steps.md)** - Complete post-installation setup and first AI task (20 min)
 
+**⚡ New: Slash Commands (v3.1.0)**
+- **[Slash Commands Reference](reference/slash-commands.md)** - 28 specialized commands for instant access to framework features
+
 ---
 
 ## 📚 Documentation Structure
@@ -75,7 +78,8 @@ Complete technical reference and troubleshooting guides.
 |-----------|------|---------|
 | **[Agent Reference](reference/agent-reference.md)** | Catalog | Complete agent catalog with competencies |
 | **[Agents Overview](reference/agents-overview.md)** | Guide | Agent system architecture and usage |
-| **[Command Reference](reference/command-reference.md)** | Reference | CLI commands and framework scripts |
+| **[Command Reference](reference/command-reference.md)** | Reference | CLI commands, framework scripts, and 28 slash commands |
+| **[Slash Commands](reference/slash-commands.md)** | Reference | Complete guide to 28 specialized slash commands |
 | **[Prompt Reference](reference/prompt-reference.md)** | Catalog | Complete prompt library with specifications |
 | **[Troubleshooting](reference/troubleshooting.md)** | Support | Common problems and solutions |
 
@@ -106,6 +110,11 @@ Technical architecture documentation and system design.
 | Documentation | Type | Content |
 |---------------|------|---------|
 | **[Architecture Overview](architecture/README.md)** | Technical | System architecture and design patterns |
+| **[Agent Ecosystem](architecture/diagrams/agent-ecosystem.md)** | Diagram | Multi-agent system architecture |
+| **[Agent Workflows](architecture/diagrams/agent-workflows.md)** | Diagram | Agent coordination patterns |
+| **[Framework Overview](architecture/diagrams/framework-overview.md)** | Diagram | Complete framework architecture |
+| **[Technology Integration](architecture/diagrams/technology-integration.md)** | Diagram | Technology stack integration |
+| **[User Journeys](architecture/diagrams/user-journeys.md)** | Diagram | User interaction flows |
 
 ---
 

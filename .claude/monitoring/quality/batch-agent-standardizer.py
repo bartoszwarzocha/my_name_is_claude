@@ -175,7 +175,7 @@ class AgentStandardizer:
    • Total Agents: {len(agent_files)}
    • Standardized: {standardized_count}
    • Skipped: {skipped_count}
-   • Framework Version: 3.1.0
+   • Framework Version: 3.2.0
 """)
 
     def _discover_agent_files(self) -> List[Path]:
@@ -200,7 +200,7 @@ class AgentStandardizer:
 
             # Check for new template markers
             new_template_markers = [
-                "**Framework Version**: 3.1.0+",
+                "**Framework Version**: 3.2.0+",
                 "## Core Competencies",
                 "## Approach",
                 "## Key Responsibilities",
@@ -266,7 +266,7 @@ class AgentStandardizer:
 **Category**: {metadata['category']}
 **Subcategory**: {metadata['subcategory']}
 **Experience Level**: Senior (10+ years)
-**Framework Version**: 3.1.0+
+**Framework Version**: 3.2.0+
 
 ---
 
@@ -495,7 +495,7 @@ Over a decade of experience in {metadata['domain_focus']} with deep expertise in
         """Generate agent footer"""
         return f"""---
 
-*Agent Version: 1.0 | Template Version: 1.0 | Framework Version: 3.1.0 | Last Updated: {datetime.now().strftime('%Y-%m-%d')}*"""
+*Agent Version: 1.0 | Template Version: 1.0 | Framework Version: 3.2.0 | Last Updated: {datetime.now().strftime('%Y-%m-%d')}*"""
 
 def main():
     """Main execution function"""

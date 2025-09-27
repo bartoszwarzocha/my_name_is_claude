@@ -380,9 +380,109 @@ The framework provides intelligent command suggestions based on:
 - **Agent Unavailable** - Suggests alternative agents or approaches
 - **Integration Failure** - Provides fallback commands and recovery options
 
+## ⚡ Slash Commands
+
+**New in Framework v3.1.0:** Complete collection of specialized slash commands for rapid development workflows.
+
+The framework provides 28 specialized slash commands organized in 7 categories for instant access to specific functionality without menu navigation.
+
+### 🤖 Agent Management Commands
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/agent-select [technology]` | Automatic agent selection based on tech stack | `/agent-select "python wxpython"` |
+| `/agent-status` | Display all active agents and their workload | `/agent-status --detailed` |
+| `/agent-handoff [from] [to]` | Transfer tasks between agents | `/agent-handoff desktop-specialist backend-engineer` |
+| `/agent-expertise [domain]` | Find agents with specific expertise | `/agent-expertise "database optimization"` |
+
+### 📊 Project Analysis Commands
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/health-check` | Comprehensive project health analysis | `/health-check --detailed` |
+| `/stack-analysis` | Technology stack compatibility analysis | `/stack-analysis --recommendations` |
+| `/dependency-check` | Dependencies and security validation | `/dependency-check --security` |
+| `/architecture-review` | Architecture review with software-architect | `/architecture-review --patterns` |
+
+### ⚡ AI-Tools Shortcuts
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/ai-setup` | Quick AI tools setup without menu | `/ai-setup --advanced` |
+| `/ai-validate` | Fast quality validation | `/ai-validate --fix` |
+| `/ai-optimize` | Performance optimization suggestions | `/ai-optimize --performance` |
+| `/ai-troubleshoot` | Debug AI tools issues | `/ai-troubleshoot --verbose` |
+
+### 🔧 Framework Management Commands
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/framework-update` | Update framework in project | `/framework-update --backup` |
+| `/framework-sync` | Sync with main framework repo | `/framework-sync --agents-only` |
+| `/framework-backup` | Backup current configuration | `/framework-backup --compress` |
+| `/framework-restore [backup]` | Restore from backup | `/framework-restore fw-backup-a7f8d9e2` |
+
+### 📋 TodoWrite Integration Commands
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/todo-epic [name]` | Create new epic with task breakdown | `/todo-epic "User Authentication System"` |
+| `/todo-sprint` | Display current sprint status | `/todo-sprint --planning` |
+| `/todo-agent-tasks [agent]` | Tasks assigned to specific agent | `/todo-agent-tasks backend-engineer` |
+| `/todo-dependencies` | Analyze task dependencies | `/todo-dependencies --critical-path` |
+
+### 🚀 Workflow Commands
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/start-feature [name]` | Initialize feature with agent team | `/start-feature "Real-time Collaboration"` |
+| `/code-review` | Multi-agent code review | `/code-review --security-focus` |
+| `/testing-strategy` | Setup comprehensive testing | `/testing-strategy --performance` |
+| `/deployment-prep` | Deployment preparation | `/deployment-prep --environment=production` |
+
+### 🔍 Development Helpers
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/find-agent [skill]` | Find agent with specific skill | `/find-agent "opengl programming"` |
+| `/quick-docs [topic]` | Instant documentation access | `/quick-docs wxpython` |
+| `/example-code [pattern]` | Code examples for patterns | `/example-code "mvc pattern"` |
+| `/best-practices [area]` | Best practices for development area | `/best-practices python` |
+
+### Command Features
+
+**Intelligent Integration:**
+- **Auto-completion** - Smart suggestions based on project context
+- **Agent Routing** - Automatic agent assignment for each command
+- **Context Awareness** - Commands adapt to current project state
+- **TodoWrite Sync** - Automatic task creation and progress tracking
+- **Multi-Agent Coordination** - Seamless agent collaboration
+
+**Usage Patterns:**
+```bash
+# Quick project health check
+/health-check
+
+# Start new feature development
+/start-feature "Export System"
+
+# Get help with specific technology
+/quick-docs "sqlite optimization"
+
+# Find expert for specific domain
+/find-agent "performance optimization"
+
+# Setup comprehensive testing
+/testing-strategy --feature="export-system"
+```
+
+**Command Documentation:**
+Each slash command has complete documentation in `.claude/commands/` directory with detailed usage examples, options, and integration patterns.
+
 ---
 
 **See also:**
+- [Slash Commands](slash-commands.md) - Complete slash commands reference and guide
 - [Agent Reference](agent-reference.md) - Complete agent documentation
 - [Prompt Reference](prompt-reference.md) - Agent-specific prompts
-- [Session Management](../core-features/session-management.md) - Session commands detailed usage
+- [Session Management](session-management.md) - Session commands detailed usage

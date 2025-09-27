@@ -5,6 +5,47 @@ All notable changes to the Claude Code Multi-Agent Framework will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - 2025-09-27
+
+### Slash Commands System & Documentation Tools - Minor Release
+
+Significant productivity enhancement release introducing comprehensive slash commands system, documentation automation tools, and framework release workflows for improved developer experience.
+
+### Added
+- **⚡ Comprehensive Slash Commands System** - 28 specialized commands across 7 categories for instant development workflows
+  - **Agent Management (4 commands)** - `/agent-select`, `/agent-status`, `/agent-handoff`, `/agent-expertise`
+  - **Project Analysis (4 commands)** - `/health-check`, `/stack-analysis`, `/dependency-check`, `/architecture-review`
+  - **AI-Tools Shortcuts (4 commands)** - `/ai-setup`, `/ai-validate`, `/ai-optimize`, `/ai-troubleshoot`
+  - **Framework Management (4 commands)** - `/framework-update`, `/framework-sync`, `/framework-backup`, `/framework-restore`
+  - **TodoWrite Integration (4 commands)** - `/todo-epic`, `/todo-sprint`, `/todo-agent-tasks`, `/todo-dependencies`
+  - **Workflow Commands (4 commands)** - `/start-feature`, `/code-review`, `/testing-strategy`, `/deployment-prep`
+  - **Development Helpers (4 commands)** - `/find-agent`, `/quick-docs`, `/example-code`, `/best-practices`
+- **📚 Documentation Automation Tools** - Comprehensive documentation management and validation systems
+  - **Documentation Update Tool** - Complete 4-phase documentation update and validation system
+  - **Framework Release Workflow** - Systematic release management with quality gates and validation
+  - **Link Validation System** - Automated verification of documentation cross-references and structure
+  - **Version Synchronization** - Automated version consistency across all framework components
+
+### Enhanced
+- **🎯 Developer Experience** - Streamlined workflows with instant command access without menu navigation
+- **📖 Documentation Quality** - Improved accuracy and consistency across all documentation files
+- **🔄 Release Management** - Automated release workflows with comprehensive validation checkpoints
+- **⚙️ Framework Maintenance** - Enhanced tools for framework updates and synchronization
+
+### Technical Improvements
+- **Command System Architecture** - Modular command structure in `.claude/commands/` directory
+- **TodoWrite Integration** - Seamless task management integration across all slash commands
+- **Agent Coordination** - Enhanced multi-agent workflows through command-driven coordination
+- **Quality Validation** - Integrated quality checks and automated compliance verification
+
+### Framework Status
+- **Agent Compliance**: 45/45 agents (100% compliance)
+- **Quality Score**: 92.3/100
+- **Slash Commands**: 28 specialized commands operational
+- **Documentation Coverage**: Complete with automated validation
+
+---
+
 ## [3.1.0] - 2025-09-26
 
 ### Enterprise Analytics & Quality Systems - Major Release
