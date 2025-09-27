@@ -70,51 +70,51 @@ Enterprise-grade development framework featuring real-time monitoring, quality a
 
 ```text
 my_name_is_claude/
-├── .claude/                    # Framework core
+├── .claude/                  # Framework core
 │   ├── agents/                 # Agent definitions (45 agents)
 │   │   ├── core/               # Core development agents
 │   │   ├── enterprise/         # Enterprise operation agents
 │   │   └── custom/             # Specialized technology agents
-│   ├── prompts/               # Comprehensive prompt library
+│   ├── prompts/              # Comprehensive prompt library
 │   │   ├── agents/             # Agent-specific prompts
 │   │   ├── workflows/          # Multi-agent orchestration
 │   │   └── init/               # Project initialization
-│   ├── monitoring/            # Enterprise monitoring & analytics systems
+│   ├── monitoring/           # Enterprise monitoring & analytics systems
 │   │   ├── dashboards/         # Grafana dashboards (Executive, Operations, Quality)
 │   │   ├── quality/            # Quality assessment and validation systems
 │   │   ├── metrics/            # Metrics collection and monitoring
 │   │   └── scripts/            # Monitoring setup and automation
-│   ├── docs/                  # Framework documentation and glossary
-│   ├── setup/                 # Interactive Framework Setup Wizard
-│   ├── workflow/              # Intelligent Workflow Generation System
-│   ├── hooks/                 # Automation and event hooks
-│   ├── templates/             # Configuration templates (unified agent standard)
-│   └── assets/                # Visual diagrams and assets
-├── .ai-tools/core/                  # AI-Powered Agent Selection
-│   ├── core/                  # Core AI components
-│   ├── models/                # ML models for recommendations
-│   ├── integration/           # Framework integration
-│   ├── data/                  # Training data and patterns
-│   └── demo/                  # Demonstrations and examples
-├── docs/                      # Comprehensive framework documentation
-│   ├── getting-started/       # Installation and quick start guides
-│   ├── ai-tools/             # AI tools step-by-step guides
-│   ├── workflows/            # Development workflows
-│   ├── advanced/             # Advanced configuration
-│   ├── reference/            # Technical reference documentation
-│   ├── examples/             # Real-world implementation examples
-│   └── architecture/         # System architecture and design
-├── project_archive/           # Project documents and research
-│   ├── designs/               # Technical design documents
-│   ├── implementations/       # Implementation summaries
-│   ├── research/              # Research notes and sessions
-│   └── roadmaps/              # Development roadmap archives
-├── CLAUDE.md                  # Framework specification
-├── CLAUDE_template.md         # Project template
-├── FRAMEWORK_ROADMAP.md       # Development roadmap
-├── CHANGELOG.md               # Version history and updates
-├── mcp-tools.sh               # MCP tools setup automation
-└── ai-tools.sh                # AI-powered development tools launcher
+│   ├── docs/                 # Framework documentation and glossary
+│   ├── setup/                  # Interactive Framework Setup Wizard
+│   ├── workflow/               # Intelligent Workflow Generation System
+│   ├── hooks/                  # Automation and event hooks
+│   ├── templates/              # Configuration templates (unified agent standard)
+│   └── assets/                 # Visual diagrams and assets
+├── .ai-tools/core/           # AI-Powered Agent Selection
+│   ├── core/                   # Core AI components
+│   ├── models/                 # ML models for recommendations
+│   ├── integration/            # Framework integration
+│   ├── data/                   # Training data and patterns
+│   └── demo/                   # Demonstrations and examples
+├── docs/                     # Comprehensive framework documentation
+│   ├── getting-started/        # Installation and quick start guides
+│   ├── ai-tools/               # AI tools step-by-step guides
+│   ├── workflows/              # Development workflows
+│   ├── advanced/               # Advanced configuration
+│   ├── reference/              # Technical reference documentation
+│   ├── examples/               # Real-world implementation examples
+│   └── architecture/           # System architecture and design
+├── project_archive/          # Project documents and research
+│   ├── designs/                # Technical design documents
+│   ├── implementations/        # Implementation summaries
+│   ├── research/               # Research notes and sessions
+│   └── roadmaps/               # Development roadmap archives
+├── CLAUDE.md                 # Framework specification
+├── CLAUDE_template.md        # Project template
+├── FRAMEWORK_ROADMAP.md      # Development roadmap
+├── CHANGELOG.md              # Version history and updates
+├── mcp-tools.sh              # MCP tools setup automation
+└── ai-tools.sh               # AI-powered development tools launcher
 ```
 
 ---
