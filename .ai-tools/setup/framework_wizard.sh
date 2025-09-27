@@ -16,7 +16,7 @@ readonly FRAMEWORK_VERSION="2.2.0"
 readonly WIZARD_NAME="Framework Setup Wizard"
 
 # Paths and directories
-readonly PROJECT_DIR="$(pwd)"
+readonly PROJECT_DIR="${1:-$(pwd)}"
 readonly PROJECT_NAME="$(basename "$PROJECT_DIR")"
 readonly FRAMEWORK_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 readonly SETUP_DIR="$FRAMEWORK_ROOT/.ai-tools/setup"
@@ -182,20 +182,22 @@ import json
 sys.path.insert(0, '$FRAMEWORK_ROOT/.ai-tools')
 
 try:
-    from core.core.data_collection_system import TechnologyDetector
+    from core.core.simple_technology_detector import SimpleTechnologyDetector
 
     print('INFO: Starting technology detection...', file=sys.stderr)
-    detector = TechnologyDetector()
+    detector = SimpleTechnologyDetector()
     tech_stack = detector.detect_technology_stack('$PROJECT_DIR')
     print('INFO: Technology detection completed', file=sys.stderr)
 
+    # Convert simplified result to format expected by rest of wizard
+    all_technologies = tech_stack.languages + tech_stack.frameworks + tech_stack.build_tools
+
     result = {
-        'frontend': tech_stack.frontend[:5],
-        'backend': tech_stack.backend[:5],
-        'database': tech_stack.database[:3],
-        'infrastructure': tech_stack.infrastructure[:3],
-        'testing': tech_stack.testing[:3],
-        'confidence': tech_stack.confidence_score
+        'technologies': all_technologies[:10],  # Limit to top 10 technologies
+        'languages': tech_stack.languages,
+        'frameworks': tech_stack.frameworks,
+        'build_tools': tech_stack.build_tools,
+        'confidence': tech_stack.confidence
     }
     print(json.dumps(result))
 
@@ -236,9 +238,8 @@ except Exception as e:
         DETECTED_TECHNOLOGIES=($(echo "$tech_output" | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
-all_techs = []
-for category in ['frontend', 'backend', 'database', 'infrastructure', 'testing']:
-    all_techs.extend(data.get(category, []))
+# Use the simplified format with direct technologies list
+all_techs = data.get('technologies', [])
 print(' '.join(all_techs[:10]))
 "))
 
@@ -267,16 +268,16 @@ get_agent_recommendations() {
 
     export PYTHONPATH="$FRAMEWORK_ROOT/.ai-tools:$PYTHONPATH"
 
-    # Retry logic for agent recommendations
+    # Simplified retry logic for agent recommendations
     local agents_output=""
     local attempt=1
-    local max_attempts=3
-    local timeout_duration=90
+    local max_attempts=2
+    local timeout_duration=5  # 5 seconds should be more than enough
 
     while [[ $attempt -le $max_attempts && -z "$agents_output" ]]; do
         if [[ $attempt -gt 1 ]]; then
             print_status "info" "Retrying agent recommendations (attempt $attempt/$max_attempts)..."
-            timeout_duration=$((timeout_duration + 20))  # Increase timeout for retries
+            timeout_duration=10  # Only 10 seconds for retry
         fi
 
         # Run agent selection with timeout and retry
@@ -286,14 +287,14 @@ import json
 sys.path.insert(0, '$FRAMEWORK_ROOT/.ai-tools')
 
 try:
-    from core.integration.ai_agent_selector import AgentSelectionEngine, AgentSelectionRequest
+    from core.integration.simple_agent_selector import SimpleAgentSelector, AgentSelectionRequest
 
     print('INFO: Starting agent selection...', file=sys.stderr)
-    selector = AgentSelectionEngine('$PROJECT_DIR')
+    selector = SimpleAgentSelector()
     request = AgentSelectionRequest(
         project_path='$PROJECT_DIR',
         max_agents=8,
-        selection_mode='hybrid'  # Use hybrid mode for better fallbacks
+        selection_mode='auto'
     )
     response = selector.select_agents(request)
     print('INFO: Agent selection completed', file=sys.stderr)

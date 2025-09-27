@@ -514,9 +514,9 @@ run_technology_detection() {
     python3 -c "
 import sys
 sys.path.insert(0, '$AI_TOOLS_DIR')
-from core.core.data_collection_system import TechnologyDetector
+from core.core.simple_technology_detector import SimpleTechnologyDetector
 
-detector = TechnologyDetector()
+detector = SimpleTechnologyDetector()
 tech_stack = detector.detect_technology_stack('$target_path')
 
 print('${COLOR_CYAN}Technology Stack Detection Results:${COLOR_RESET}')
@@ -548,7 +548,7 @@ run_agent_recommendations() {
     python3 -c "
 import sys
 sys.path.insert(0, '$AI_TOOLS_DIR')
-from core.integration.ai_agent_selector import AgentSelectionEngine, AgentSelectionRequest
+from core.integration.simple_agent_selector import SimpleAgentSelector as AgentSelectionEngine, AgentSelectionRequest
 
 try:
     selector = AgentSelectionEngine('$target_path')

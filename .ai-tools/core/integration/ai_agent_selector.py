@@ -434,14 +434,29 @@ class AgentSelectionEngine:
 
         try:
             # Import AI components with relative imports
-            from ..core.data_collection_system import ProjectContextAnalyzer
-            from ..core.feature_engineering import ProjectFeatureEncoder
-            from ..models.ensemble_recommender import create_default_ensemble
+            # Use simplified systems for compatibility
+            from ..core.simple_technology_detector import SimpleTechnologyDetector
+            from dataclasses import dataclass
+            from typing import Any, Dict
 
-            # Initialize components
-            self.project_analyzer = ProjectContextAnalyzer()
-            self.feature_encoder = ProjectFeatureEncoder()
-            self.ml_ensemble = create_default_ensemble()
+            # Create compatibility wrapper for ProjectContextAnalyzer
+            @dataclass
+            class MockProjectContext:
+                technology_stack: Any
+
+            class ProjectContextAnalyzerCompat:
+                def __init__(self):
+                    self.tech_detector = SimpleTechnologyDetector()
+
+                def analyze_project(self, project_path: str):
+                    tech_stack = self.tech_detector.detect_technology_stack(project_path)
+                    return MockProjectContext(technology_stack=tech_stack)
+
+            # Initialize simplified components
+            self.project_analyzer = ProjectContextAnalyzerCompat()
+            # Disable ML components for simplified system
+            self.feature_encoder = None
+            self.ml_ensemble = None
 
             # Try to load pre-trained models
             self._load_pretrained_models()
@@ -810,25 +825,28 @@ class AgentSelectionEngine:
         }
 
         try:
-            # Use TechnologyDetector for comprehensive analysis
-            from ..core.data_collection_system import TechnologyDetector
-            detector = TechnologyDetector()
+            # Use SimpleTechnologyDetector for analysis
+            from ..core.simple_technology_detector import SimpleTechnologyDetector
+            detector = SimpleTechnologyDetector()
             tech_stack = detector.detect_technology_stack(project_path)
 
-            # Collect all detected technologies
-            all_technologies = (
-                tech_stack.frontend + tech_stack.backend + tech_stack.database +
-                tech_stack.infrastructure + tech_stack.testing + tech_stack.mobile +
-                tech_stack.desktop + tech_stack.graphics + tech_stack.ai_ml
-            )
+            # Collect all detected technologies (simplified format)
+            all_technologies = tech_stack.languages + tech_stack.frameworks + tech_stack.build_tools
             analysis['technologies'] = all_technologies
 
-            # Set flags based on detected technologies
-            analysis['has_frontend'] = bool(tech_stack.frontend)
-            analysis['has_backend'] = bool(tech_stack.backend)
-            analysis['has_database'] = bool(tech_stack.database)
-            analysis['has_tests'] = bool(tech_stack.testing)
-            analysis['has_docker'] = 'docker' in tech_stack.infrastructure
+            # Set flags based on detected technologies (simplified categorization)
+            frontend_techs = {'javascript', 'typescript', 'react', 'angular', 'vue', 'html', 'css'}
+            backend_techs = {'python', 'java', 'c#', 'go', 'rust', 'php', 'ruby', 'django', 'flask', 'spring'}
+            database_techs = {'postgresql', 'mysql', 'mongodb', 'redis'}
+
+            all_lower = [tech.lower() for tech in all_technologies]
+            analysis['has_frontend'] = any(tech in frontend_techs for tech in all_lower)
+            analysis['has_backend'] = any(tech in backend_techs for tech in all_lower)
+            analysis['has_database'] = any(tech in database_techs for tech in all_lower)
+            testing_techs = {'pytest', 'jest', 'junit'}
+            infrastructure_techs = {'docker', 'kubernetes'}
+            analysis['has_tests'] = any(tech.lower() in testing_techs for tech in all_technologies)
+            analysis['has_docker'] = any(tech.lower() in infrastructure_techs for tech in all_technologies)
 
             # Fallback to file-based detection for additional indicators
             project = Path(project_path)

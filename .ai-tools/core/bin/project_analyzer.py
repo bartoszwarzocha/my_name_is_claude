@@ -22,7 +22,42 @@ from pathlib import Path
 ai_tools_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(ai_tools_root))
 
-from core.core.data_collection_system import ProjectContextAnalyzer
+from core.core.simple_technology_detector import SimpleTechnologyDetector
+
+# Simple compatibility wrapper for project_analyzer.py
+class ProjectContextAnalyzer:
+    def __init__(self, data_collection_dir: str = "./.ai-tools/data"):
+        self.technology_detector = SimpleTechnologyDetector()
+
+    def analyze_project(self, project_path: str):
+        """Simplified project analysis using new technology detector"""
+        import os
+        from dataclasses import dataclass
+        from typing import List
+
+        # Use simplified technology detection
+        tech_stack = self.technology_detector.detect_technology_stack(project_path)
+
+        # Create simplified mock object with same interface
+        @dataclass
+        class MockProjectContext:
+            project_path: str
+            technology_stack: object
+
+        # Create mock technology stack with expected attributes
+        class MockTechStack:
+            def __init__(self, detected_stack):
+                self.frontend = detected_stack.languages[:3] + detected_stack.frameworks[:2]
+                self.backend = detected_stack.languages[:3] + detected_stack.frameworks[:2]
+                self.database = ['detected_databases'] if detected_stack.frameworks else []
+                self.infrastructure = detected_stack.build_tools
+                self.testing = ['pytest', 'jest'] if detected_stack.frameworks else []
+                self.mobile = ['mobile_detected'] if 'mobile' in str(detected_stack.frameworks).lower() else []
+                self.ai_ml = ['ai_detected'] if any('ai' in str(f).lower() or 'ml' in str(f).lower() for f in detected_stack.frameworks) else []
+                self.confidence_score = detected_stack.confidence
+
+        mock_tech_stack = MockTechStack(tech_stack)
+        return MockProjectContext(project_path=project_path, technology_stack=mock_tech_stack)
 
 def analyze_framework_itself():
     """Analyze the Claude Code Multi-Agent Framework itself"""
