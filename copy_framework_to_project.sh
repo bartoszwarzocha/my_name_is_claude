@@ -302,6 +302,60 @@ copy_item() {
     fi
 }
 
+update_gitignore() {
+    local target="$1"
+    local gitignore_path="$target/.gitignore"
+
+    print_status "info" "Updating .gitignore in target project..."
+
+    # Check if .gitignore exists, create if not
+    if [[ ! -f "$gitignore_path" ]]; then
+        print_status "info" "Creating .gitignore file in target project"
+        touch "$gitignore_path"
+    fi
+
+    # Check if framework section already exists
+    if grep -q "# My Name Is Claude Framework Files" "$gitignore_path" 2>/dev/null; then
+        print_status "warning" "Framework section already exists in .gitignore, skipping update"
+        return 0
+    fi
+
+    # Add framework section to .gitignore
+    cat >> "$gitignore_path" << 'EOF'
+
+# =============================================================================
+# My Name Is Claude Framework Files
+# =============================================================================
+# These files are copied from the My Name Is Claude framework and should not
+# be tracked in this project's git repository. They are managed separately.
+
+# Framework directories
+.ai-tools/
+.claude/
+.mcp-tools/
+init_concept/
+
+# Framework scripts and files
+ai-tools.sh
+mcp-tools.sh
+VERSION
+CLAUDE_template.md
+copy_framework_to_project.sh
+
+# Framework documentation
+FRAMEWORK_LICENSE
+FRAMEWORK_README.md
+FRAMEWORK_CHANGELOG.md
+FRAMEWORK_ROADMAP.md
+
+# End My Name Is Claude Framework Files
+# =============================================================================
+EOF
+
+    print_status "success" "Added framework files to .gitignore"
+    return 0
+}
+
 perform_copy() {
     local target="$1"
     local dry_run="$2"
@@ -364,8 +418,14 @@ perform_copy() {
 
     if [[ "$dry_run" == "true" ]]; then
         print_status "info" "Dry run completed. Use without --dry-run to perform actual copy."
+        print_status "info" "Note: .gitignore would also be updated to exclude framework files."
     else
         print_status "success" "Framework copy completed successfully!"
+
+        # Update .gitignore to exclude copied framework files
+        echo ""
+        update_gitignore "$target"
+
         echo ""
         print_status "info" "Next steps:"
         echo "  1. Navigate to: $target"
@@ -374,6 +434,7 @@ perform_copy() {
         echo "  4. Setup MCP tools: ./mcp-tools.sh"
         echo "  5. Check FRAMEWORK_LICENSE for framework licensing terms"
         echo "  6. Read FRAMEWORK_README.md for complete framework documentation"
+        echo "  7. Framework files have been added to .gitignore automatically"
     fi
 }
 
