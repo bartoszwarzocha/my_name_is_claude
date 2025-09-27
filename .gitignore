@@ -41,3 +41,5 @@ agent_selections/
 # Workspace
 workspace/
 documentation_map.txt
+# Local instruction files
+PRAWDZIWA_instrukcja_*.md
