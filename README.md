@@ -78,15 +78,15 @@ my_name_is_claude/
 │   ├── prompts/              # Comprehensive prompt library
 │   │   ├── agents/             # Agent-specific prompts
 │   │   ├── workflows/          # Multi-agent orchestration
-│   │   └── init/               # Project initialization
+│   │   ├── init/               # Project initialization
+│   │   └── tools/              # Framework automation tools
+│   ├── commands/             # Slash commands system (28 specialized commands)
 │   ├── monitoring/           # Enterprise monitoring & analytics systems
 │   │   ├── dashboards/         # Grafana dashboards (Executive, Operations, Quality)
 │   │   ├── quality/            # Quality assessment and validation systems
 │   │   ├── metrics/            # Metrics collection and monitoring
 │   │   └── scripts/            # Monitoring setup and automation
 │   ├── docs/                 # Framework documentation and glossary
-│   ├── setup/                  # Interactive Framework Setup Wizard
-│   ├── workflow/               # Intelligent Workflow Generation System
 │   ├── hooks/                  # Automation and event hooks
 │   ├── templates/              # Configuration templates (unified agent standard)
 │   └── assets/                 # Visual diagrams and assets
