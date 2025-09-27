@@ -1,4 +1,4 @@
-# Session Management - Claude Code Framework
+# Session Management - My Name Is Claude
 
 **Status:** Production Ready ✅
 
@@ -6,7 +6,7 @@ Advanced session lifecycle management with state recovery, context preservation,
 
 ## 🎯 Overview
 
-The Claude Code Framework provides sophisticated session management capabilities that enable:
+The My Name Is Claude provides sophisticated session management capabilities that enable:
 
 - **State Recovery**: Automatic restoration of work context after interruptions
 - **Context Preservation**: Intelligent maintenance of project context across sessions

@@ -4,7 +4,7 @@
 
 ## 🎯 Custom Agent Overview
 
-**Custom agents extend Claude Code Framework with specialized expertise for unique domains:**
+**Custom agents extend My Name Is Claude with specialized expertise for unique domains:**
 
 - **🏢 Industry Specialization** - Financial services, healthcare, gaming, IoT
 - **🔧 Technology Focus** - Specific frameworks, tools, or platforms

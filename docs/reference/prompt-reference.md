@@ -1,4 +1,4 @@
-# Prompt Reference - Claude Code Framework
+# Prompt Reference - My Name Is Claude
 
 **Status:** Production Ready ✅
 
@@ -6,7 +6,7 @@ Complete reference catalog of all prompts in the Claude Code Multi-Agent Framewo
 
 ## 🎯 Overview
 
-The Claude Code Framework provides a comprehensive library of professional-grade prompts that automatically activate corresponding specialized agents. All prompts follow functional design principles and adapt to project-specific requirements.
+The My Name Is Claude provides a comprehensive library of professional-grade prompts that automatically activate corresponding specialized agents. All prompts follow functional design principles and adapt to project-specific requirements.
 
 ## 🔗 Agent-Prompt Binding System
 

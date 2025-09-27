@@ -360,7 +360,7 @@ TodoWrite({
 
 ## Framework Integration Highlights
 
-This example showcases Claude Code Framework v2.1.0's enterprise migration capabilities:
+This example showcases My Name Is Claude v2.1.0's enterprise migration capabilities:
 
 - ✅ **Legacy System Reverse Engineering** through coordinated business and technical analysis
 - ✅ **Test-Driven Development Methodology** led by qa-engineer across all agents

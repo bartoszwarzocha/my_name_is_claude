@@ -1,4 +1,4 @@
-# Hooks & Automation - Claude Code Framework
+# Hooks & Automation - My Name Is Claude
 
 **Status:** Production Ready ✅
 

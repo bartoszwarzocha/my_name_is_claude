@@ -323,7 +323,7 @@ TodoWrite({
 
 ## Framework Integration Highlights
 
-This example demonstrates Claude Code Framework v2.1.0's desktop development capabilities:
+This example demonstrates My Name Is Claude v2.1.0's desktop development capabilities:
 
 - ✅ **Desktop-Specific Agent Activation** via specialized wxWidgets prompts
 - ✅ **UX-to-Implementation Pipeline** with seamless design-to-code coordination

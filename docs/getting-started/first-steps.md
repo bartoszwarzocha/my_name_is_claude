@@ -1,4 +1,4 @@
-# First Steps with Claude Code Framework
+# First Steps with My Name Is Claude
 
 *Complete post-installation guide for getting productive with the framework immediately*
 
@@ -11,7 +11,7 @@
 - ✅ Complete your first AI-assisted development task
 - ✅ Understand core framework workflows
 
-**By the end, you'll be productive with Claude Code Framework and ready for advanced features.**
+**By the end, you'll be productive with My Name Is Claude and ready for advanced features.**
 
 ---
 
@@ -454,7 +454,7 @@ bash ai-tools.sh --help
 
 ---
 
-**🎉 Congratulations! You're now productive with Claude Code Framework!**
+**🎉 Congratulations! You're now productive with My Name Is Claude!**
 
 **What you've accomplished:**
 - ✅ **Framework Installation Validated** - Everything working correctly

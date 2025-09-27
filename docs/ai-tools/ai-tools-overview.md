@@ -2,7 +2,7 @@
 
 *Understanding and leveraging AI tools for maximum development productivity*
 
-## 🎯 What Are AI Tools in Claude Code Framework?
+## 🎯 What Are AI Tools in My Name Is Claude?
 
 AI Tools are intelligent development assistants that work seamlessly with Claude Code agents to:
 

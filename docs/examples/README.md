@@ -1,4 +1,4 @@
-# Claude Code Framework Examples
+# My Name Is Claude Examples
 
 **Documentation Type:** Implementation Examples
 **Last Updated:** 2025-09-17

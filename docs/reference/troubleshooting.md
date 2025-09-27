@@ -1,4 +1,4 @@
-# Troubleshooting Guide - Claude Code Framework
+# Troubleshooting Guide - My Name Is Claude
 
 **Status:** Production Ready ✅
 
@@ -370,7 +370,7 @@ This guide provides systematic solutions for common issues with framework compon
 #!/bin/bash
 # Framework diagnostic script
 
-echo "=== Claude Code Framework Diagnostic ==="
+echo "=== My Name Is Claude Diagnostic ==="
 
 echo "1. Checking CLAUDE.md..."
 [[ -f "CLAUDE.md" ]] && echo "✅ CLAUDE.md exists" || echo "❌ CLAUDE.md missing"

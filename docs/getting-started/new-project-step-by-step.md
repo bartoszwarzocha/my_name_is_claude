@@ -14,7 +14,7 @@ By the end of this guide you'll have:
 
 ## 📋 Prerequisites
 
-- ✅ Claude Code Framework [installed](installation.md)
+- ✅ My Name Is Claude [installed](installation.md)
 - ✅ Python 3.8+
 - ✅ Git repository (new or empty)
 - ✅ Basic project information (name, tech stack, domain)
@@ -336,6 +336,6 @@ python ./.ai-tools/core/demo/demo_project_analyzer.py .
 
 ---
 
-**🎉 Congratulations!** Your new project is now integrated with Claude Code Framework and ready for productive development.
+**🎉 Congratulations!** Your new project is now integrated with My Name Is Claude and ready for productive development.
 
 **Next recommended read:** [Development Workflow Guide](../workflows/development-workflow.md)

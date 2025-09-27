@@ -1,12 +1,12 @@
-# Command Reference - Claude Code Framework
+# Command Reference - My Name Is Claude
 
 **Status:** Production Ready ✅
 
-Comprehensive reference for all Claude Code Framework commands with intelligent command recognition and multi-language support.
+Comprehensive reference for all My Name Is Claude commands with intelligent command recognition and multi-language support.
 
 ## 🎯 Overview
 
-The Claude Code Framework provides intelligent command recognition that automatically maps user inputs to appropriate agent-prompt combinations. Commands work in both Polish and English with fuzzy matching and intent recognition.
+The My Name Is Claude provides intelligent command recognition that automatically maps user inputs to appropriate agent-prompt combinations. Commands work in both Polish and English with fuzzy matching and intent recognition.
 
 ## 🔗 Command-Agent Mapping System
 

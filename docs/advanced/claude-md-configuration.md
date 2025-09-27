@@ -1,6 +1,6 @@
 # CLAUDE.md Configuration Guide
 
-*Complete reference for configuring Claude Code Framework through CLAUDE.md*
+*Complete reference for configuring My Name Is Claude through CLAUDE.md*
 
 ## 🎯 Configuration Overview
 

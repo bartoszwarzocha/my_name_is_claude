@@ -1,10 +1,10 @@
 # Framework Customization Guide
 
-*Advanced customization patterns for adapting Claude Code Framework to specific needs*
+*Advanced customization patterns for adapting My Name Is Claude to specific needs*
 
 ## 🎯 Customization Overview
 
-**Claude Code Framework is designed for deep customization to match your organization's specific requirements:**
+**My Name Is Claude is designed for deep customization to match your organization's specific requirements:**
 
 - **🏢 Enterprise Patterns** - Adapt to corporate standards and processes
 - **🔧 Technology Integration** - Support custom tools and frameworks
@@ -529,7 +529,7 @@ class SlackIntegration:
 #### **GitHub Actions Integration**
 ```yaml
 # .github/workflows/claude-code-integration.yml
-name: Claude Code Framework Integration
+name: My Name Is Claude Integration
 
 on:
   pull_request:
@@ -543,7 +543,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Claude Code Framework
+      - name: Setup My Name Is Claude
         run: |
           pip install -r .claude/requirements.txt
           python .claude/setup/framework-setup.py
@@ -690,6 +690,6 @@ class CustomAlerts:
 
 ---
 
-**🎉 You're now ready to customize Claude Code Framework for your specific needs!**
+**🎉 You're now ready to customize My Name Is Claude for your specific needs!**
 
 **Remember:** Effective customization balances organizational requirements with framework maintainability. Start with configuration, then gradually add deeper customizations as needed.

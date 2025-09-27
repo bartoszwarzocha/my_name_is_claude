@@ -1,6 +1,6 @@
 # Team Collaboration Workflow
 
-*Advanced patterns for multi-developer coordination using Claude Code Framework*
+*Advanced patterns for multi-developer coordination using My Name Is Claude*
 
 ## 🎯 Team Collaboration Overview
 

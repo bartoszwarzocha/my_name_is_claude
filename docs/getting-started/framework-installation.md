@@ -1,10 +1,10 @@
 # Framework Installation Guide
 
-*Complete guide for installing Claude Code Framework in new or existing projects*
+*Complete guide for installing My Name Is Claude in new or existing projects*
 
 ## 🎯 Installation Overview
 
-**Claude Code Framework can be installed in two ways:**
+**My Name Is Claude can be installed in two ways:**
 
 1. **🆕 New Project Installation** - Adding framework to a new project directory
 2. **🔄 Existing Project Integration** - Adding framework to an existing codebase
@@ -23,7 +23,7 @@
 - **Memory**: 4GB+ RAM (8GB+ recommended for AI features)
 
 ### **Required Access**
-- Claude Code Framework source directory (this repository)
+- My Name Is Claude source directory (this repository)
 - Target project directory (read/write permissions)
 - Internet connection (for Python dependencies)
 
@@ -410,6 +410,6 @@ cd /path/to/claude-code-framework
 
 ---
 
-**🎉 You're now ready to use Claude Code Framework in your project!**
+**🎉 You're now ready to use My Name Is Claude in your project!**
 
 **Remember:** Proper installation is the foundation for productive development. Take time to configure CLAUDE.md accurately for optimal AI agent recommendations.

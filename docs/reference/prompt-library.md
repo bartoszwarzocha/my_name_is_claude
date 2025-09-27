@@ -1,4 +1,4 @@
-# Prompt Library - Claude Code Framework
+# Prompt Library - My Name Is Claude
 
 **Status:** Production Ready ✅
 

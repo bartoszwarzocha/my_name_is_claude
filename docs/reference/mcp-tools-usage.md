@@ -251,7 +251,7 @@ System automatycznie sugeruje najlepsze narzędzia dla twojego projektu.
 
 - **Serena**: https://github.com/oraios/serena
 - **MCP Specification**: https://modelcontextprotocol.io/
-- **Claude Code Framework**: [docs/README.md](../README.md)
+- **My Name Is Claude**: [docs/README.md](../README.md)
 
 ## 📝 Notatki Końcowe
 

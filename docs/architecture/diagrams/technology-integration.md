@@ -189,7 +189,7 @@ graph TB
 
 ```mermaid
 graph TB
-    subgraph "Claude Code Framework"
+    subgraph "My Name Is Claude"
         FRAMEWORK[Framework Core<br/>Agent Orchestration]
         MCP_MANAGER[MCP Tools Manager<br/>32 Professional Tools]
     end
@@ -375,7 +375,7 @@ graph LR
 
 ```mermaid
 graph TB
-    subgraph "Claude Code Framework"
+    subgraph "My Name Is Claude"
         CORE[Framework Core<br/>Enterprise Ready]
         ENTERPRISE_AGENTS[Enterprise Agents<br/>24 Specialized Agents]
     end

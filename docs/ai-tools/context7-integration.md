@@ -1,6 +1,6 @@
 # Context7 Integration Guide - Complete Setup and Usage
 
-*Step-by-step guide for integrating Context7 with Claude Code Framework for advanced code generation*
+*Step-by-step guide for integrating Context7 with My Name Is Claude for advanced code generation*
 
 ## 🎯 What is Context7?
 
@@ -12,7 +12,7 @@
 - **📚 Documentation Generation** - API docs, user guides, technical specifications
 - **🔧 Infrastructure as Code** - Deploy configurations and pipeline automation
 
-**Integration with Claude Code Framework accelerates development by 70-90%.**
+**Integration with My Name Is Claude accelerates development by 70-90%.**
 
 ---
 
@@ -25,7 +25,7 @@
 - **Network**: Stable internet connection for AI model access
 
 ### **Development Environment:**
-- **Claude Code Framework**: Version 2.0.0 or higher
+- **My Name Is Claude**: Version 2.0.0 or higher
 - **Git**: Version 2.20 or higher
 - **Node.js**: Version 18 or higher (recommended)
 - **Python**: Version 3.9 or higher
@@ -132,7 +132,7 @@ your-project/
 # **/*.context7.generated
 ```
 
-### **Step 4: Claude Code Framework Integration (3 minutes)**
+### **Step 4: My Name Is Claude Integration (3 minutes)**
 
 #### **Update CLAUDE.md Configuration**
 ```markdown

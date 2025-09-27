@@ -1,4 +1,4 @@
-# Agent Overview - Claude Code Framework
+# Agent Overview - My Name Is Claude
 
 **Status:** Production Ready ✅
 
@@ -6,7 +6,7 @@ Comprehensive overview of the Claude Code Multi-Agent Framework's AI agent ecosy
 
 ## 🎯 Agent System Overview
 
-The Claude Code Framework provides a sophisticated ecosystem of specialized AI agents, each representing over a decade of expert-level experience in their domain. The agent system enables intelligent automation across the complete software development lifecycle.
+The My Name Is Claude provides a sophisticated ecosystem of specialized AI agents, each representing over a decade of expert-level experience in their domain. The agent system enables intelligent automation across the complete software development lifecycle.
 
 ## 🏗️ Agent Architecture
 

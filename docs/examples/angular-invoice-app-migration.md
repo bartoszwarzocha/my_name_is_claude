@@ -291,7 +291,7 @@ TodoWrite({
 
 ## Framework Integration Highlights
 
-This example showcases Claude Code Framework v2.1.0's revolutionary capabilities:
+This example showcases My Name Is Claude v2.1.0's revolutionary capabilities:
 
 - ✅ **Automatic Agent Activation** via directory-based prompt binding
 - ✅ **Zero Manual Configuration** with intelligent technology adaptation

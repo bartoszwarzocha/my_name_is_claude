@@ -1,6 +1,6 @@
 # Project Initialization Workflows
 
-*Complete guide for starting projects with Claude Code Framework - new and existing*
+*Complete guide for starting projects with My Name Is Claude - new and existing*
 
 ## 🎯 Workflow Overview
 
@@ -100,7 +100,7 @@ cp -r /path/to/claude-framework/.ai-tools ./
 
 # Framework commit
 git add .claude/ .ai-tools/ CLAUDE.md
-git commit -m "Add Claude Code Framework integration"
+git commit -m "Add My Name Is Claude integration"
 ```
 
 #### **Step 2.3: Configure CLAUDE.md**

@@ -1,10 +1,10 @@
-# Claude Code Framework Documentation
+# My Name Is Claude Documentation
 
-*Complete documentation for AI-driven software engineering with Claude Code Framework*
+*Complete documentation for AI-driven software engineering with My Name Is Claude*
 
 ## 🚀 Quick Start
 
-**New to Claude Code Framework? Start here:**
+**New to My Name Is Claude? Start here:**
 
 - **[Framework Installation](getting-started/framework-installation.md)** - Complete guide using copy_framework_to_project.sh
 - **[New Project Setup](getting-started/new-project-step-by-step.md)** - Create new project with framework (15 min)
@@ -231,7 +231,7 @@ Technical architecture documentation and system design.
 
 ---
 
-*Claude Code Framework - Accelerating development through intelligent AI collaboration*
+*My Name Is Claude - Accelerating development through intelligent AI collaboration*
 
 **Documentation Status**: ✅ Complete and Organized
 **Framework Version**: 3.1.0

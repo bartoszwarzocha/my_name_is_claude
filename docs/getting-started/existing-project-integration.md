@@ -1,6 +1,6 @@
 # Existing Project Integration - Step by Step Guide
 
-*Integrate Claude Code Framework with your existing project in 10 minutes*
+*Integrate My Name Is Claude with your existing project in 10 minutes*
 
 ## 🎯 What You'll Accomplish
 
@@ -14,7 +14,7 @@ By the end of this guide you'll have:
 
 ## 📋 Prerequisites
 
-- ✅ Claude Code Framework [installed](installation.md)
+- ✅ My Name Is Claude [installed](installation.md)
 - ✅ Existing project with git repository
 - ✅ Basic understanding of your current tech stack
 - ✅ Write access to project root directory
@@ -440,7 +440,7 @@ alias claude-agent="python ./.ai-tools/core/integration/ai_agent_selector.py"
 
 ---
 
-**🎉 Success!** Your existing project is now enhanced with Claude Code Framework capabilities.
+**🎉 Success!** Your existing project is now enhanced with My Name Is Claude capabilities.
 
 **Next recommended actions:**
 - **[Development Workflow](../workflows/development-workflow.md)** - Optimize your enhanced development process

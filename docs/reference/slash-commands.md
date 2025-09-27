@@ -4,7 +4,7 @@
 **Status:** Production Ready ✅
 **Total Commands:** 28
 
-The Claude Code Framework provides a comprehensive collection of slash commands for rapid access to specialized functionality without menu navigation.
+The My Name Is Claude provides a comprehensive collection of slash commands for rapid access to specialized functionality without menu navigation.
 
 ## 📋 Quick Reference
 

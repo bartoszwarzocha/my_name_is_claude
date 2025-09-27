@@ -1,6 +1,6 @@
 # Crisis Management Workflow
 
-*Emergency response and recovery procedures using Claude Code Framework*
+*Emergency response and recovery procedures using My Name Is Claude*
 
 ## 🚨 Crisis Response Overview
 

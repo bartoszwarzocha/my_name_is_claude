@@ -1,4 +1,4 @@
-# Agent Reference - Claude Code Framework
+# Agent Reference - My Name Is Claude
 
 **Status:** Production Ready ✅
 
@@ -6,7 +6,7 @@ Complete reference documentation for all specialized AI agents in the Claude Cod
 
 ## 🎯 Overview
 
-The Claude Code Framework provides a comprehensive ecosystem of specialized AI agents covering the complete enterprise development lifecycle. Each agent represents over a decade of expert-level experience in their domain.
+The My Name Is Claude provides a comprehensive ecosystem of specialized AI agents covering the complete enterprise development lifecycle. Each agent represents over a decade of expert-level experience in their domain.
 
 ## 🏗️ Agent Categories
 

@@ -1,6 +1,6 @@
 # Serena Integration Guide - Complete Setup and Usage
 
-*Step-by-step guide for integrating Serena MCP with Claude Code Framework*
+*Step-by-step guide for integrating Serena MCP with My Name Is Claude*
 
 ## 🎯 What is Serena?
 
@@ -12,7 +12,7 @@
 - **🐛 Debug Assistance** - Trace execution paths and find root causes
 - **🔧 Refactoring Support** - Safe code restructuring with impact analysis
 
-**Integration with Claude Code Framework enhances development workflow by 60-80%.**
+**Integration with My Name Is Claude enhances development workflow by 60-80%.**
 
 ---
 
@@ -25,7 +25,7 @@
 - **Network**: Internet connection for initial setup and updates
 
 ### **Development Environment:**
-- **Claude Code Framework**: Version 2.0.0 or higher
+- **My Name Is Claude**: Version 2.0.0 or higher
 - **Git**: Version 2.20 or higher
 - **Python**: Version 3.8 or higher (for MCP integration)
 - **Node.js**: Version 16 or higher (if analyzing JavaScript projects)
@@ -138,7 +138,7 @@ analysis:
   performance_analysis: true
 ```
 
-### **Step 4: Claude Code Framework Integration (2 minutes)**
+### **Step 4: My Name Is Claude Integration (2 minutes)**
 
 #### **Update CLAUDE.md Configuration**
 ```markdown
@@ -488,7 +488,7 @@ serena index --rebuild
 
 #### **Integration Issues**
 ```bash
-# Issue: Claude Code Framework doesn't detect Serena
+# Issue: My Name Is Claude doesn't detect Serena
 # Solution: Verify CLAUDE.md configuration
 grep -E "serena|MCP" CLAUDE.md
 # Add if missing:

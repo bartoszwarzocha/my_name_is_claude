@@ -4,7 +4,7 @@
 
 ```mermaid
 flowchart TD
-    START[👋 New to Claude Code Framework] --> DISCOVER{How did you discover?}
+    START[👋 New to My Name Is Claude] --> DISCOVER{How did you discover?}
 
     DISCOVER -->|Documentation| READ_DOCS[📖 Read README.md<br/>⏱️ 5 minutes]
     DISCOVER -->|Recommendation| QUICK_START[🚀 Quick Start Guide<br/>⏱️ 3 minutes]
