@@ -45,7 +45,7 @@ Agent competencies are defined in `.claude/agents/` directory.
 ## Framework Guidelines
 **Constraints**: Open-source preference, platform agnostic (Windows/macOS/Linux), minimal dependencies, Claude AI optimized
 **Style**: Readability first, functional design (WHAT not HOW), consistent naming, comprehensive documentation
-**Agent Rules**: English files, Polish/English conversations, no quantitative documentation, use `/work/` for temp files, professional communication, specific error handling, clear collaboration, enterprise quality
+**Agent Rules**: English files, Polish/English conversations, no quantitative documentation, **MANDATORY: ALL temporary/working files MUST be created ONLY in `/work/` directory - NEVER in project root**, professional communication, specific error handling, clear collaboration, enterprise quality
 
 ## TODO Management
 **Core**: Hierarchical system with TodoWrite integration, agent coordination, auto task creation, enterprise tracking
