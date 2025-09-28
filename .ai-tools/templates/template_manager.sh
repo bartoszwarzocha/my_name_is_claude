@@ -112,7 +112,21 @@ ask_question() {
     echo -n ": "
 
     local response
-    read -r response
+    # Add timeout and check if stdin is available
+    if [[ -t 0 ]]; then
+        # Interactive terminal - use read with timeout
+        read -r -t 30 response 2>/dev/null || {
+            echo ""
+            print_status "warning" "Input timeout - using default value"
+            response="$default"
+        }
+    else
+        # Non-interactive - use default immediately
+        echo ""
+        print_status "info" "Non-interactive mode - using default value"
+        response="$default"
+    fi
+
     echo "${response:-$default}"
 }
 
@@ -381,7 +395,16 @@ select_template() {
         echo -n "${COLOR_BOLD}Select template (1-${#template_keys[@]}, b, q): ${COLOR_RESET}"
 
         local choice
-        read -r choice
+        # Use timeout-protected read to prevent hanging
+        if [[ -t 0 ]]; then
+            read -r -t 30 choice 2>/dev/null || {
+                print_status "warning" "Input timeout - returning to menu"
+                return 0
+            }
+        else
+            print_status "info" "Non-interactive mode - returning to menu"
+            return 0
+        fi
         echo ""
 
         if [[ "$choice" == "b" ]]; then
@@ -396,7 +419,16 @@ select_template() {
             echo -n "${COLOR_BOLD}Use this template? (y/n): ${COLOR_RESET}"
 
             local confirm
-            read -r confirm
+            # Use timeout-protected read to prevent hanging
+            if [[ -t 0 ]]; then
+                read -r -t 30 confirm 2>/dev/null || {
+                    print_status "warning" "Input timeout - assuming 'no'"
+                    confirm="n"
+                }
+            else
+                print_status "info" "Non-interactive mode - assuming 'no'"
+                confirm="n"
+            fi
             if [[ "$confirm" =~ ^[Yy] ]]; then
                 collect_project_info
                 generate_claude_md "$selected_template"
@@ -444,7 +476,14 @@ show_existing_templates() {
     fi
     echo ""
     echo -n "${COLOR_YELLOW}Press Enter to continue...${COLOR_RESET}"
-    read -r
+    # Use timeout-protected read to prevent hanging
+    if [[ -t 0 ]]; then
+        read -r -t 30 2>/dev/null || {
+            print_status "info" "Input timeout - continuing"
+        }
+    else
+        print_status "info" "Non-interactive mode - continuing"
+    fi
 }
 
 check_existing_claude_md() {
@@ -454,7 +493,16 @@ check_existing_claude_md() {
         echo -n "${COLOR_BOLD}Overwrite existing CLAUDE.md? (y/n): ${COLOR_RESET}"
 
         local overwrite
-        read -r overwrite
+        # Use timeout-protected read to prevent hanging
+        if [[ -t 0 ]]; then
+            read -r -t 30 overwrite 2>/dev/null || {
+                print_status "warning" "Input timeout - assuming 'no'"
+                overwrite="n"
+            }
+        else
+            print_status "info" "Non-interactive mode - assuming 'no'"
+            overwrite="n"
+        fi
         if [[ ! "$overwrite" =~ ^[Yy] ]]; then
             print_status "info" "Template generation cancelled"
             return 1
@@ -508,7 +556,16 @@ main() {
         echo -n "${COLOR_BOLD}${ICON_TEMPLATE} Select option: ${COLOR_RESET}"
 
         local choice
-        read -r choice
+        # Use timeout-protected read to prevent hanging
+        if [[ -t 0 ]]; then
+            read -r -t 30 choice 2>/dev/null || {
+                print_status "warning" "Input timeout - exiting"
+                exit 0
+            }
+        else
+            print_status "info" "Non-interactive mode - exiting"
+            exit 0
+        fi
         echo ""
 
         case "$choice" in
@@ -520,7 +577,14 @@ main() {
             "2")
                 show_available_templates
                 echo -n "${COLOR_YELLOW}Press Enter to continue...${COLOR_RESET}"
-                read -r
+                # Use timeout-protected read to prevent hanging
+                if [[ -t 0 ]]; then
+                    read -r -t 30 2>/dev/null || {
+                        print_status "info" "Input timeout - continuing"
+                    }
+                else
+                    print_status "info" "Non-interactive mode - continuing"
+                fi
                 ;;
             "3") show_existing_templates ;;
             "r")
