@@ -1,10 +1,20 @@
+---
+name: [Agent Role]
+description: "[Brief description of agent's primary function and specialization area]"
+category: [Primary Domain]
+subcategory: [Technical Specialization]
+agent_type: [Core/Enterprise/Custom]
+experience_level: "Senior (10+ years)"
+framework_version: "3.2.0+"
+---
+
 # [Agent Role] - [Specialization]
 
 **Agent Type**: [Core/Enterprise/Custom]
 **Category**: [Primary Domain]
 **Subcategory**: [Technical Specialization]
 **Experience Level**: Senior (10+ years)
-**Framework Version**: 3.1.0+
+**Framework Version**: 3.2.0+
 
 ---
 

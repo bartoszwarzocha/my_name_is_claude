@@ -20,10 +20,10 @@ AI Tools are intelligent development assistants that work seamlessly with Claude
 *Intelligent agent recommendation system*
 
 **What it does:**
-- Analyzes your project's technology stack
-- Detects project complexity and business domain
-- Recommends optimal agents for your specific needs
-- Adapts recommendations based on project evolution
+- Analyzes your project's technology stack automatically
+- Detects programming languages, frameworks, and tools
+- Recommends optimal agents for your specific technologies
+- Supports comprehensive technology detection including graphics, desktop, and web technologies
 
 **When to use:**
 - ✅ Starting new projects
@@ -33,19 +33,22 @@ AI Tools are intelligent development assistants that work seamlessly with Claude
 
 **Example:**
 ```bash
-# Automatic analysis
-python ./.ai-tools/core/demo/demo_project_analyzer.py .
+# Automatic analysis using main launcher
+./ai-tools.sh
+
+# Select "[r] Agent Recommendations"
+# Enter your project path: /path/to/your/project
 
 # Results:
-# 🎯 PROJECT ANALYSIS
-# Technology Stack: React + Node.js + PostgreSQL
-# Business Domain: E-commerce
-# Complexity: SME (Score: 0.67)
+# 🎯 DETECTED TECHNOLOGIES
+# Languages: C++, Python
+# Frameworks: wxWidgets, OpenGL
+# Build Tools: CMake, vcpkg
 #
 # 🤖 RECOMMENDED AGENTS
-# Primary: frontend-engineer (confidence: 0.92)
-# Backend: api-engineer (confidence: 0.89)
-# Quality: security-engineer (confidence: 0.84)
+# Graphics Development: graphics-engineer
+# Desktop Applications: desktop-developer
+# System Architecture: software-architect
 ```
 
 ### **2. Serena MCP (External Integration)**
@@ -142,7 +145,8 @@ python ./.ai-tools/core/demo/demo_project_analyzer.py .
 #### **✅ Step 1: Verify AI Tools Availability**
 ```bash
 # Check AI Agent Selector (built-in)
-python ./.ai-tools/core/demo/demo_project_analyzer.py .
+./ai-tools.sh
+# Should show menu with AI tools options
 
 # Check Serena availability
 ls .serena/ 2>/dev/null && echo "✅ Serena available" || echo "❌ Serena not installed"
@@ -168,20 +172,30 @@ ls .serena/ 2>/dev/null && echo "✅ Serena available" || echo "❌ Serena not i
 
 **For new projects:**
 ```bash
-"Analyze my project and recommend optimal development workflow"
-# → AI Agent Selector analyzes → Recommends agents → You choose workflow
+# Run AI tools launcher
+./ai-tools.sh
+
+# Select "[r] Agent Recommendations"
+# Enter your project path when prompted
+# Review detected technologies and recommended agents
 ```
 
 **For existing projects:**
 ```bash
-"Review my codebase and suggest improvements"
-# → Serena analyzes code → AI suggests agents → You get improvement plan
+# Use Framework Wizard for comprehensive setup
+./ai-tools.sh
+# Select "[w] Project Setup Wizard"
+# Choose your project directory
+# Follow the guided setup process
 ```
 
-**For feature development:**
+**For technology detection:**
 ```bash
-"I want to build user authentication - guide me through the process"
-# → AI recommends security-engineer + api-engineer → Context7 generates → Serena optimizes
+# Quick technology analysis
+./ai-tools.sh
+# Select "[r] Agent Recommendations"
+# Enter project path: /path/to/your/project
+# Review detected languages, frameworks, and tools
 ```
 
 ### **💡 Pro Tips for AI Tools:**
@@ -197,83 +211,94 @@ ls .serena/ 2>/dev/null && echo "✅ Serena available" || echo "❌ Serena not i
 ### **Frontend Developer Workflow:**
 
 ```bash
-# 1. Project analysis
-"Analyze my React project and recommend frontend optimization strategy"
+# 1. Technology detection and agent selection
+./ai-tools.sh  # Select "[r] Agent Recommendations"
+# Input: /path/to/react/project
+# Output: Detects React, TypeScript, recommends frontend-engineer
 
-# 2. Component development (Context7)
-"Generate responsive user dashboard with charts and data tables"
+# 2. Framework setup assistance
+./ai-tools.sh  # Select "[w] Project Setup Wizard"
+# Guided setup for Claude Code framework integration
 
-# 3. Code optimization (Serena)
-"Analyze component performance and optimize re-rendering patterns"
+# 3. Agent activation (manual)
+# Use recommended frontend-engineer agent for development tasks
 
-# 4. Quality assurance
-"Review frontend accessibility and generate WCAG compliance tests"
+# 4. Quality validation (if needed)
+./ai-tools.sh  # Select "[v] Quality Validation" for code review
 ```
 
 ### **Backend Developer Workflow:**
 
 ```bash
-# 1. API analysis
-"Analyze my REST API and recommend security and performance improvements"
+# 1. Technology detection and agent selection
+./ai-tools.sh  # Select "[r] Agent Recommendations"
+# Input: /path/to/backend/project
+# Output: Detects Node.js/Python/Java, recommends backend-engineer
 
-# 2. Feature development (Context7)
-"Generate payment processing service with Stripe integration and error handling"
+# 2. Framework integration
+./ai-tools.sh  # Select "[w] Project Setup Wizard"
+# Setup Claude Code framework for backend project
 
-# 3. Performance optimization (Serena)
-"Identify database query bottlenecks and optimize data access patterns"
+# 3. Agent coordination (manual)
+# Use recommended backend-engineer and security-engineer agents
 
-# 4. Security review
-"Perform comprehensive security analysis of API endpoints"
+# 4. Quality validation
+./ai-tools.sh  # Select "[v] Quality Validation" for code review
 ```
 
 ### **Full-Stack Developer Workflow:**
 
 ```bash
-# 1. Architecture planning
-"Design full-stack architecture for e-commerce platform"
+# 1. Multi-project analysis
+./ai-tools.sh  # Select "[r] Agent Recommendations"
+# Analyze both frontend and backend projects separately
+# Get recommendations for frontend-engineer + backend-engineer
 
-# 2. Coordinated development
-"Generate frontend and backend for product catalog with real-time search"
+# 2. Framework setup for both layers
+./ai-tools.sh  # Select "[w] Project Setup Wizard"
+# Setup framework for integrated full-stack development
 
-# 3. Integration optimization (Serena)
-"Analyze frontend-backend communication and optimize API calls"
+# 3. Coordinated agent usage (manual)
+# Use multiple agents: frontend-engineer, backend-engineer, api-engineer
 
-# 4. End-to-end testing (Context7)
-"Generate comprehensive integration tests for complete user workflows"
+# 4. Quality validation across stack
+./ai-tools.sh  # Select "[v] Quality Validation" for comprehensive review
 ```
 
 ### **DevOps/Platform Engineer Workflow:**
 
 ```bash
-# 1. Infrastructure analysis
-"Analyze current deployment pipeline and recommend optimizations"
+# 1. Infrastructure project analysis
+./ai-tools.sh  # Select "[r] Agent Recommendations"
+# Input: /path/to/infrastructure/project
+# Output: Detects Docker, Kubernetes, recommends deployment-engineer
 
-# 2. Infrastructure generation (Context7)
-"Generate Kubernetes manifests and CI/CD pipeline for microservices"
+# 2. Framework integration for DevOps
+./ai-tools.sh  # Select "[w] Project Setup Wizard"
+# Setup Claude Code framework for infrastructure projects
 
-# 3. Monitoring setup (Serena + Context7)
-"Set up comprehensive monitoring and alerting for production systems"
+# 3. Specialized agent activation (manual)
+# Use deployment-engineer and security-engineer agents
 
-# 4. Security hardening
-"Review infrastructure security and implement compliance frameworks"
+# 4. Infrastructure quality validation
+./ai-tools.sh  # Select "[v] Quality Validation" for infrastructure review
 ```
 
-## 📊 AI Tools Performance Metrics
+## 📊 AI Tools Benefits
 
-### **Productivity Improvements:**
+### **Framework Integration Benefits:**
 
-- **🚀 Development Speed**: 60-80% faster feature development with Context7
-- **🐛 Bug Resolution**: 70% faster debugging with Serena analysis
-- **🎯 Code Quality**: 85% reduction in code review issues with AI recommendations
-- **⚡ Performance**: 50% improvement in application performance through AI optimization
-- **🔒 Security**: 90% reduction in security vulnerabilities with AI security reviews
+- **🚀 Setup Speed**: Faster project setup with automated technology detection
+- **🎯 Agent Selection**: Intelligent recommendations based on detected technologies
+- **🔧 Configuration**: Guided framework integration and setup
+- **📋 Quality Assurance**: Built-in validation and quality checking tools
 
-### **Learning Acceleration:**
+### **Technology Detection Accuracy:**
 
-- **📚 Best Practices**: AI tools teach best practices through generated code
-- **🏗️ Architecture Patterns**: Learn enterprise patterns through AI-generated architectures
-- **🧪 Testing Strategies**: Comprehensive testing approaches through AI test generation
-- **🔧 Optimization Techniques**: Performance optimization through AI analysis
+- **📚 Comprehensive Coverage**: Supports web, desktop, graphics, and backend technologies
+- **🏗️ Framework Recognition**: Detects popular frameworks and build tools
+- **🧪 Build System Support**: Recognizes CMake, npm, pip, and other build systems
+- **🔧 Graphics Libraries**: Specialized detection for OpenGL, wxWidgets, and graphics frameworks
 
 ## 🚨 Important Considerations
 
@@ -301,26 +326,25 @@ ls .serena/ 2>/dev/null && echo "✅ Serena available" || echo "❌ Serena not i
 4. **Access Controls** - Ensure proper access controls for AI tools
 5. **Audit Trail** - Maintain records of AI-assisted development decisions
 
-## 🎯 Success Metrics
+## 🎯 Usage Tracking
 
-### **Track Your AI Tools Impact:**
+### **Monitor AI Tools Usage:**
 
 ```bash
-# Development velocity
-- Features delivered per sprint (before/after AI tools)
-- Time to implement new features
-- Code review cycle time
+# Framework integration success
+- Time to set up Claude Code framework in new projects
+- Accuracy of technology detection
+- Appropriateness of agent recommendations
+
+# Team adoption
+- Frequency of AI tools usage
+- Developer satisfaction with tool recommendations
+- Reduction in setup and configuration time
 
 # Quality improvements
-- Bug reports per release
-- Security vulnerabilities found
-- Code coverage percentage
-- Performance benchmark improvements
-
-# Team satisfaction
-- Developer productivity survey scores
-- AI tools usage frequency
-- Learning and skill development rate
+- Consistency of framework setup across projects
+- Reduction in configuration errors
+- Improved agent selection for specific tasks
 ```
 
 ## 📚 Next Steps
@@ -332,11 +356,11 @@ ls .serena/ 2>/dev/null && echo "✅ Serena available" || echo "❌ Serena not i
 3. **[Hybrid AI Workflows](hybrid-workflows.md)** - Combine multiple AI tools effectively
 4. **[AI Troubleshooting](troubleshooting-ai.md)** - Solve common AI tools issues
 
-### **Advanced AI integration:**
+### **Framework integration:**
 
-1. **[Custom AI Workflows](../workflows/ai-enhanced-development.md)** - Create team-specific AI workflows
-2. **[Enterprise AI Setup](../advanced/enterprise-ai-deployment.md)** - Scale AI tools across organization
-3. **[AI Performance Optimization](../advanced/ai-performance-tuning.md)** - Optimize AI tools for your environment
+1. **[Getting Started Guide](../getting-started/)** - Complete framework setup instructions
+2. **[Agent Configuration](../advanced/)** - Advanced agent selection and customization
+3. **[Workflow Integration](../workflows/)** - Integrate AI tools with development workflows
 
 ---
 

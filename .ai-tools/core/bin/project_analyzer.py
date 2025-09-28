@@ -43,6 +43,12 @@ class ProjectContextAnalyzer:
         class MockProjectContext:
             project_path: str
             technology_stack: object
+            complexity: object = None
+            business_domain: object = None
+            team_context: object = None
+            mcp_insights: object = None
+            timestamp: str = None
+            context_hash: str = None
 
         # Create mock technology stack with expected attributes
         class MockTechStack:
@@ -55,9 +61,61 @@ class ProjectContextAnalyzer:
                 self.mobile = ['mobile_detected'] if 'mobile' in str(detected_stack.frameworks).lower() else []
                 self.ai_ml = ['ai_detected'] if any('ai' in str(f).lower() or 'ml' in str(f).lower() for f in detected_stack.frameworks) else []
                 self.confidence_score = detected_stack.confidence
+                self.confidence = detected_stack.confidence  # For backward compatibility
+
+        # Create mock complexity object
+        class MockComplexity:
+            def __init__(self):
+                self.complexity_rating = 'sme'  # Default rating
+                self.file_count = 100
+                self.code_lines = 5000
+                self.complexity_score = 0.5
+
+        # Create mock business domain object
+        class MockBusinessDomain:
+            def __init__(self):
+                self.primary = 'software_development'
+                self.secondary = ['technology']
+                self.industry_vertical = 'technology'
+                self.compliance_requirements = ['basic_security']
+                self.confidence = 0.7
+
+        # Create mock team context object
+        class MockTeamContext:
+            def __init__(self):
+                self.size = 'small'
+                self.experience = 'mixed'
+                self.preferences = ['agile', 'modern_tools']
+
+        # Create mock MCP insights object
+        class MockMCPInsights:
+            def __init__(self):
+                self.available = False
+                self.recommendations = []
 
         mock_tech_stack = MockTechStack(tech_stack)
-        return MockProjectContext(project_path=project_path, technology_stack=mock_tech_stack)
+        mock_complexity = MockComplexity()
+        mock_business_domain = MockBusinessDomain()
+        mock_team_context = MockTeamContext()
+        mock_mcp_insights = MockMCPInsights()
+
+        import datetime
+        import hashlib
+
+        # Generate timestamp and context hash
+        timestamp = datetime.datetime.now().isoformat()
+        context_hash = hashlib.md5(f"{project_path}_{timestamp}".encode()).hexdigest()[:8]
+
+        return MockProjectContext(
+            project_path=project_path,
+            technology_stack=mock_tech_stack,
+            complexity=mock_complexity,
+            business_domain=mock_business_domain,
+            team_context=mock_team_context,
+            mcp_insights=mock_mcp_insights,
+            timestamp=timestamp,
+            context_hash=context_hash
+        )
 
 def analyze_framework_itself():
     """Analyze the Claude Code Multi-Agent Framework itself"""

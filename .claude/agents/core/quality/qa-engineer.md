@@ -1,3 +1,13 @@
+---
+name: Qa Engineer
+description: "Quality assurance engineer implementing comprehensive testing strategies, automation frameworks, and quality gates for enterprise software"
+category: Quality
+subcategory: Quality Assurance
+agent_type: Core
+experience_level: "Senior (10+ years)"
+framework_version: "3.2.0+"
+---
+
 # QA Engineer - Quality Excellence
 
 **Agent Type**: Core

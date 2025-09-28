@@ -1,3 +1,13 @@
+---
+name: Reviewer
+description: "Reviewer specialist providing expert guidance and implementation support for enterprise-scale projects"
+category: Management
+subcategory: Project Management
+agent_type: Enterprise
+experience_level: "Senior (10+ years)"
+framework_version: "3.2.0+"
+---
+
 # Reviewer - Specialized Enterprise
 
 **Agent Type**: Enterprise

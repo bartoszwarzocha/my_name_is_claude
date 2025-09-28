@@ -526,7 +526,11 @@
       "Read(//mnt/e/C++/Projekty/Libs/**)",
       "Read(//home/bartosz/.claude/**)",
       "Bash(do echo \"Processing $file...\")",
-      "Bash(if ! grep -q \"^---\" \"$file\")"
+      "Bash(if ! grep -q \"^---\" \"$file\")",
+      "Read(//mnt/e/**)",
+      "Bash(do echo \"=== Checking $file ===\" grep -r \"from.*$file\\|import.*$file\" /mnt/e/AI/my_name_is_claude/.ai-tools/ --exclude-dir=venv --exclude-dir=__pycache__)",
+      "Bash(tee:*)",
+      "Bash(./add_yaml_headers.sh:*)"
     ],
     "deny": [
       "Bash(rm:*)",

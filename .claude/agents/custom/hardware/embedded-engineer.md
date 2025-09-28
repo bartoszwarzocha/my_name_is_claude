@@ -1,3 +1,13 @@
+---
+name: Embedded Engineer
+description: "Embedded systems engineer developing firmware, real-time systems, microcontroller programming, and hardware-software integration"
+category: Hardware
+subcategory: Electronics
+agent_type: Custom
+experience_level: "Senior (10+ years)"
+framework_version: "3.2.0+"
+---
+
 # Embedded Engineer - Specialized Custom
 
 **Agent Type**: Custom

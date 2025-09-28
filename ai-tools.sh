@@ -347,19 +347,11 @@ check_dependencies() {
         has_problems=true
     fi
 
-    # Check Python ML dependencies with loading message
-    print_status "info" "Please wait... Testing Python ML dependencies..."
-    local ml_deps=("numpy" "pandas" "scikit-learn" "scipy" "joblib")
-    for dep in "${ml_deps[@]}"; do
-        # Handle special case for scikit-learn (imports as sklearn)
-        local import_name="$dep"
-        if [[ "$dep" == "scikit-learn" ]]; then
-            import_name="sklearn"
-        else
-            import_name="${dep//-/_}"
-        fi
-
-        if ! python3 -c "import ${import_name}" 2>/dev/null; then
+    # Check essential Python dependencies (simplified AI tools don't need ML libraries)
+    print_status "info" "Checking essential Python dependencies..."
+    local essential_deps=("json" "pathlib" "dataclasses" "typing")
+    for dep in "${essential_deps[@]}"; do
+        if ! python3 -c "import ${dep}" 2>/dev/null; then
             missing_python_deps+=("$dep")
         fi
     done
@@ -551,7 +543,7 @@ sys.path.insert(0, '$AI_TOOLS_DIR')
 from core.integration.simple_agent_selector import SimpleAgentSelector as AgentSelectionEngine, AgentSelectionRequest
 
 try:
-    selector = AgentSelectionEngine('$target_path')
+    selector = AgentSelectionEngine()
     request = AgentSelectionRequest(project_path='$target_path', max_agents=8)
     response = selector.select_agents(request)
 

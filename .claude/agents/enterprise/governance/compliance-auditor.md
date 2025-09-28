@@ -1,3 +1,13 @@
+---
+name: Compliance Auditor
+description: "Compliance Auditor specialist providing expert guidance and implementation support for enterprise-scale projects"
+category: General
+subcategory: Software Development
+agent_type: Enterprise
+experience_level: "Senior (10+ years)"
+framework_version: "3.2.0+"
+---
+
 # Compliance Auditor - Specialized Enterprise
 
 **Agent Type**: Enterprise

@@ -157,13 +157,13 @@ validate_agent_files() {
             ((invalid_agents++))
         fi
 
-        # Check for TODO Management section
-        if grep -q "## .*TODO.*Management" "$agent_file"; then
-            # Valid TODO section found
+        # Check for TodoWrite Integration section
+        if grep -q "TodoWrite Integration" "$agent_file"; then
+            # Valid TodoWrite Integration section found
             :
         else
-            print_status "warn" "Agent $agent_name missing TODO Management section"
-            record_result "warn" "agents" "Agent $agent_name missing TODO Management section"
+            print_status "warn" "Agent $agent_name missing TodoWrite Integration section"
+            record_result "warn" "agents" "Agent $agent_name missing TodoWrite Integration section"
         fi
 
         # Check for CLAUDE.md adaptation
