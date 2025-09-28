@@ -46,8 +46,8 @@ AI Tools are intelligent development assistants that work seamlessly with Claude
 # Build Tools: CMake, vcpkg
 #
 # 🤖 RECOMMENDED AGENTS
-# Graphics Development: graphics-engineer
-# Desktop Applications: desktop-developer
+# Graphics Development: graphics-3d-engineer
+# Desktop Applications: desktop-specialist
 # System Architecture: software-architect
 ```
 
