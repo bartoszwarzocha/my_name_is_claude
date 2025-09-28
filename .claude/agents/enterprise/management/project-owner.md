@@ -35,10 +35,10 @@ Over a decade of experience in project owner specialized capabilities with deep 
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, JavaScript, SQL
+- Project management tools, Analytics
+- Business intelligence, Reporting
+- Strategic planning, Stakeholder management
 
 ## Approach
 

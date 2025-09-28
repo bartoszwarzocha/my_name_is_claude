@@ -35,10 +35,10 @@ Over a decade of experience in reliability engineer specialized capabilities wit
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, Go, Bash, YAML
+- Prometheus, Grafana, Chaos engineering
+- Load testing, Performance analysis
+- SRE practices, Reliability engineering
 
 ## Approach
 

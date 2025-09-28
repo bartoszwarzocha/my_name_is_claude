@@ -35,10 +35,10 @@ Over a decade of experience in risk manager specialized capabilities with deep e
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, R, SQL, Excel/VBA
+- Risk management tools, Analytics
+- Monte Carlo simulations, Statistics
+- Risk modeling, Compliance
 
 ## Approach
 

@@ -35,10 +35,10 @@ Over a decade of experience in data scientist specialized capabilities with deep
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, R, SQL, Scala, Julia
+- TensorFlow, PyTorch, Scikit-learn, Keras
+- Pandas, NumPy, Matplotlib, Seaborn
+- Jupyter, MLflow, Kubeflow, Apache Spark
 
 ## Approach
 

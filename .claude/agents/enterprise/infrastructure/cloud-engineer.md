@@ -35,10 +35,10 @@ Over a decade of experience in cloud engineer specialized capabilities with deep
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, Bash, Go, YAML, JSON
+- AWS, Azure, GCP, Kubernetes, Docker
+- Terraform, CloudFormation, Ansible
+- Infrastructure as Code, DevOps
 
 ## Approach
 

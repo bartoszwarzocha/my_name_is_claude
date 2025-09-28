@@ -35,10 +35,10 @@ Over a decade of experience in embedded engineer specialized capabilities with d
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- C, C++, Assembly, Python
+- FreeRTOS, Zephyr, Arduino, STM32
+- ARM Cortex, AVR, PIC, ESP32
+- Real-time systems, IoT, Microcontrollers
 
 ## Approach
 

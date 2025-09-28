@@ -35,10 +35,10 @@ Over a decade of experience in enterprise architect specialized capabilities wit
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Java, C#, Python, JavaScript
+- Spring, .NET, Microservices, SOA
+- Enterprise patterns, Cloud platforms
+- System design, Integration patterns
 
 ## Approach
 

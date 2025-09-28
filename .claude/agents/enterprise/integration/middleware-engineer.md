@@ -35,10 +35,10 @@ Over a decade of experience in middleware engineer specialized capabilities with
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Java, Python, C#, JavaScript
+- Apache Kafka, RabbitMQ, ActiveMQ
+- Spring Integration, Apache Camel
+- Message brokers, Integration patterns
 
 ## Approach
 

@@ -530,7 +530,10 @@
       "Read(//mnt/e/**)",
       "Bash(do echo \"=== Checking $file ===\" grep -r \"from.*$file\\|import.*$file\" /mnt/e/AI/my_name_is_claude/.ai-tools/ --exclude-dir=venv --exclude-dir=__pycache__)",
       "Bash(tee:*)",
-      "Bash(./add_yaml_headers.sh:*)"
+      "Bash(./add_yaml_headers.sh:*)",
+      "Bash(__NEW_LINE__ echo \"=== BUSINESS DOMAINS ===\")",
+      "Bash(__NEW_LINE__ echo \"Python ML:\")",
+      "Bash(__NEW_LINE__ echo \"Java Enterprise:\")"
     ],
     "deny": [
       "Bash(rm:*)",

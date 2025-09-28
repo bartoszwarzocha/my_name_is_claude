@@ -35,10 +35,10 @@ Over a decade of experience in sre engineer specialized capabilities with deep e
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, Go, Bash, YAML
+- Kubernetes, Prometheus, Grafana
+- Terraform, Ansible, SLO/SLI
+- Site reliability, Observability
 
 ## Approach
 

@@ -35,10 +35,10 @@ Over a decade of experience in integration architect specialized capabilities wi
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Java, Python, C#, JavaScript
+- Apache Camel, MuleSoft, WSO2
+- REST, SOAP, GraphQL, Message Queues
+- Enterprise integration, API design
 
 ## Approach
 

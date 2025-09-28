@@ -35,10 +35,10 @@ Over a decade of experience in 3d addon developer specialized capabilities with 
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, C++, C#, JavaScript
+- Blender API, Maya API, 3ds Max SDK
+- Qt, PyQt, PySide, MEL scripting
+- Blender Add-on development, Maya plugins
 
 ## Approach
 

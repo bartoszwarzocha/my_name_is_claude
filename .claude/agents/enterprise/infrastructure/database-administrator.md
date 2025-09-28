@@ -35,10 +35,10 @@ Over a decade of experience in database administrator specialized capabilities w
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- SQL, Python, Bash, PowerShell
+- PostgreSQL, MySQL, Oracle, MongoDB
+- Redis, Elasticsearch, InfluxDB
+- Database optimization, Backup/Recovery
 
 ## Approach
 

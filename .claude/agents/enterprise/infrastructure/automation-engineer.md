@@ -35,10 +35,10 @@ Over a decade of experience in automation engineer specialized capabilities with
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, Bash, PowerShell, YAML
+- Ansible, Puppet, Chef, Terraform
+- Jenkins, GitLab CI, Azure DevOps
+- Infrastructure automation, CI/CD
 
 ## Approach
 

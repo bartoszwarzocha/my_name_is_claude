@@ -35,10 +35,10 @@ Over a decade of experience in technical writer specialized capabilities with de
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Markdown, HTML, CSS, JavaScript
+- GitBook, Confluence, Sphinx, Jekyll
+- Documentation tools, Version control
+- Technical writing, Information architecture
 
 ## Approach
 

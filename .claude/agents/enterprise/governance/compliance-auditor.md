@@ -35,10 +35,10 @@ Over a decade of experience in compliance auditor specialized capabilities with 
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, SQL, PowerShell, Bash
+- GRC tools, SIEM, Vulnerability scanners
+- GDPR, SOX, HIPAA, ISO 27001
+- Compliance frameworks, Risk assessment
 
 ## Approach
 

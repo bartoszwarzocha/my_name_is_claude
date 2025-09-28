@@ -35,10 +35,10 @@ Over a decade of experience in desktop specialist specialized capabilities with 
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- C++, C, Python, JavaScript, TypeScript
+- wxWidgets, Qt, Electron, GTK, FLTK
+- CMake, QMake, Visual Studio, Qt Creator
+- Cross-platform development, GUI design
 
 ## Approach
 

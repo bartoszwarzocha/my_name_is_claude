@@ -35,10 +35,10 @@ Over a decade of experience in incident responder specialized capabilities with 
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, Bash, PowerShell
+- SIEM tools, Incident management
+- Forensics tools, Log analysis
+- Incident response, Security operations
 
 ## Approach
 

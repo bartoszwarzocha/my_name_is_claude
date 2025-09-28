@@ -35,10 +35,10 @@ Over a decade of experience in devops architect specialized capabilities with de
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, Bash, Go, YAML
+- Kubernetes, Docker, Jenkins, GitLab CI
+- Prometheus, Grafana, ELK Stack
+- CI/CD, Infrastructure automation
 
 ## Approach
 

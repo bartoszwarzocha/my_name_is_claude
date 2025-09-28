@@ -35,10 +35,10 @@ Over a decade of experience in graphics 3d engineer specialized capabilities wit
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- C++, C, GLSL, HLSL, Python
+- OpenGL, Vulkan, DirectX, OpenGL ES
+- GLFW, GLAD, GLEW, Assimp, SDL
+- CMake, Visual Studio, GCC, Clang
 
 ## Approach
 

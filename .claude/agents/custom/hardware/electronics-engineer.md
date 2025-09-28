@@ -35,10 +35,10 @@ Over a decade of experience in electronics engineer specialized capabilities wit
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- C, C++, Python, VHDL, Verilog
+- KiCad, Altium Designer, Eagle, LTSpice
+- Arduino, Raspberry Pi, ESP32, STM32
+- Circuit design, PCB layout, Embedded systems
 
 ## Approach
 

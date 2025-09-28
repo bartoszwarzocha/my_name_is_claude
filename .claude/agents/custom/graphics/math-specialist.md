@@ -35,10 +35,10 @@ Over a decade of experience in math specialist specialized capabilities with dee
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, C++, MATLAB, R, Julia
+- NumPy, SciPy, SymPy, Eigen, BLAS
+- Mathematica, Maple, Octave, Sage
+- Linear algebra, Calculus, Statistics
 
 ## Approach
 

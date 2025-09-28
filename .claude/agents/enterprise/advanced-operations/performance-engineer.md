@@ -35,10 +35,10 @@ Over a decade of experience in performance engineer specialized capabilities wit
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- C++, C, Rust, Go, Java, Python
+- OpenMP, MPI, CUDA, OpenCL, TBB
+- Valgrind, Perf, VTune, Profilers
+- CMake, GCC, Clang, Optimization
 
 ## Approach
 

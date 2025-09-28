@@ -35,10 +35,10 @@ Over a decade of experience in graphics 2d engineer specialized capabilities wit
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- C++, Python, JavaScript, GLSL, HLSL
+- OpenCV, PIL, Skia, Cairo, SVG
+- Canvas API, WebGL, HTML5 Canvas
+- Image processing, Vector graphics, Rasterization
 
 ## Approach
 

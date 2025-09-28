@@ -35,10 +35,10 @@ Over a decade of experience in platform engineer specialized capabilities with d
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, Go, Bash, YAML
+- Kubernetes, Docker, Service Mesh
+- API Gateway, Load Balancers
+- Platform development, Developer tools
 
 ## Approach
 

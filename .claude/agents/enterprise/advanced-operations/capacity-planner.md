@@ -35,10 +35,10 @@ Over a decade of experience in capacity planner specialized capabilities with de
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, R, SQL, MATLAB
+- Capacity planning tools, Analytics
+- Performance monitoring, Forecasting
+- Resource optimization, Scaling
 
 ## Approach
 

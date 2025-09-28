@@ -35,10 +35,10 @@ Over a decade of experience in mobile developer specialized capabilities with de
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Swift, Kotlin, Dart, JavaScript
+- React Native, Flutter, Xamarin
+- iOS SDK, Android SDK, Cordova
+- Mobile app development, Cross-platform
 
 ## Approach
 

@@ -35,10 +35,10 @@ Over a decade of experience in project coordinator specialized capabilities with
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, JavaScript, SQL
+- Jira, Confluence, Microsoft Project
+- Agile tools, Gantt charts, Reporting
+- Project management, Coordination
 
 ## Approach
 

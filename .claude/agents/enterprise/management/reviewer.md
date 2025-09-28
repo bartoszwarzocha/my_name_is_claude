@@ -35,10 +35,10 @@ Over a decade of experience in reviewer specialized capabilities with deep exper
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, JavaScript, Java, C++
+- Code review tools, Static analysis
+- SonarQube, CodeClimate, ESLint
+- Code quality, Best practices
 
 ## Approach
 

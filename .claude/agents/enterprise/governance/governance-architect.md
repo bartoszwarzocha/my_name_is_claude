@@ -35,10 +35,10 @@ Over a decade of experience in governance architect specialized capabilities wit
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, PowerShell, SQL
+- Governance tools, Policy engines
+- Identity management, Access control
+- Enterprise governance, Compliance
 
 ## Approach
 

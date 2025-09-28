@@ -35,10 +35,10 @@ Over a decade of experience in cad engineer specialized capabilities with deep e
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- C++, C#, Python, AutoLISP, VBA
+- SolidWorks API, AutoCAD API, CATIA
+- OpenCASCADE, FreeCAD, Fusion 360 API
+- Parametric modeling, CAD/CAM systems
 
 ## Approach
 

@@ -35,10 +35,10 @@ Over a decade of experience in network architect specialized capabilities with d
 - **Quality Assurance** - Leadership in enterprise-grade quality standards and validation processes
 
 **Technical Proficiencies:**
-- Industry-standard tools
-- Modern frameworks
-- Best practices
-- Enterprise solutions
+- Python, Bash, Network protocols
+- Cisco, Juniper, F5, Palo Alto
+- BGP, OSPF, MPLS, SDN
+- Network design, Security, Performance
 
 ## Approach
 
