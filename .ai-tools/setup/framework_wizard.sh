@@ -176,17 +176,24 @@ detect_project_technologies() {
         fi
 
         # Run technology detection with timeout and retry
+        export FRAMEWORK_ROOT PROJECT_DIR
         tech_output=$(timeout $timeout_duration python3 -c "
 import sys
 import json
-sys.path.insert(0, '$FRAMEWORK_ROOT/.ai-tools')
+import os
+
+framework_root = os.environ.get('FRAMEWORK_ROOT')
+project_dir = os.environ.get('PROJECT_DIR')
+ai_tools_path = f'{framework_root}/.ai-tools'
+
+sys.path.insert(0, ai_tools_path)
 
 try:
     from core.core.simple_technology_detector import SimpleTechnologyDetector
 
     print('INFO: Starting technology detection...', file=sys.stderr)
     detector = SimpleTechnologyDetector()
-    tech_stack = detector.detect_technology_stack('$PROJECT_DIR')
+    tech_stack = detector.detect_technology_stack(project_dir)
     print('INFO: Technology detection completed', file=sys.stderr)
 
     # Convert simplified result to format expected by rest of wizard
@@ -281,10 +288,17 @@ get_agent_recommendations() {
         fi
 
         # Run agent selection with timeout and retry
+        export FRAMEWORK_ROOT PROJECT_DIR
         agents_output=$(timeout $timeout_duration python3 -c "
 import sys
 import json
-sys.path.insert(0, '$FRAMEWORK_ROOT/.ai-tools')
+import os
+
+framework_root = os.environ.get('FRAMEWORK_ROOT')
+project_dir = os.environ.get('PROJECT_DIR')
+ai_tools_path = f'{framework_root}/.ai-tools'
+
+sys.path.insert(0, ai_tools_path)
 
 try:
     from core.integration.simple_agent_selector import SimpleAgentSelector, AgentSelectionRequest
@@ -292,7 +306,7 @@ try:
     print('INFO: Starting agent selection...', file=sys.stderr)
     selector = SimpleAgentSelector()
     request = AgentSelectionRequest(
-        project_path='$PROJECT_DIR',
+        project_path=project_dir,
         max_agents=8,
         selection_mode='auto'
     )

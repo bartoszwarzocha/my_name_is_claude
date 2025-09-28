@@ -112,56 +112,132 @@ ask_question() {
     echo -n ": "
 
     local response
-    if response=$(safe_read_with_retry 30 2); then
-        echo "${response:-$default}"
-    else
-        print_status "warning" "Using default value due to input timeout"
-        echo "$default"
-    fi
+    read -r response
+    echo "${response:-$default}"
 }
 
 # =============================================================================
-# TEMPLATE DEFINITIONS
+# DYNAMIC TEMPLATE DISCOVERY
 # =============================================================================
 
-declare -A TEMPLATES=(
-    ["react-app"]="React Application with TypeScript"
-    ["python-app"]="Python Application with FastAPI/Django"
-    ["node-api"]="Node.js API with TypeScript"
-    ["angular-app"]="Angular Application with TypeScript"
-    ["fullstack-mern"]="MERN Stack (MongoDB, Express, React, Node.js)"
-    ["ai-rag-system"]="AI RAG System with Python & LangChain"
-    ["arduino-iot"]="Arduino IoT Project with C++"
-    ["python-desktop-database"]="Python Desktop App with wxPython & SQLite"
-    ["wxwidgets-cpp"]="wxWidgets C++ Desktop Application"
-    ["enterprise-rest-api"]="Enterprise REST API (Java/C#/.NET)"
+# Dynamic arrays populated by scan_templates()
+declare -A TEMPLATES
+declare -A TEMPLATE_DESCRIPTIONS
+declare -A TEMPLATE_AGENTS
+
+# Technology-based agent mapping for automatic agent recommendations
+declare -A TECH_AGENT_MAP=(
+    ["react"]="frontend-engineer, ux-designer"
+    ["angular"]="frontend-engineer, ux-designer, software-architect"
+    ["python"]="backend-engineer, data-engineer"
+    ["fastapi"]="api-engineer, backend-engineer"
+    ["django"]="backend-engineer, data-engineer"
+    ["node.js"]="api-engineer, backend-engineer"
+    ["typescript"]="frontend-engineer, backend-engineer"
+    ["javascript"]="frontend-engineer, backend-engineer"
+    ["cpp"]="desktop-specialist, software-architect"
+    ["c++"]="desktop-specialist, software-architect"
+    ["wxwidgets"]="desktop-specialist, graphics-2d-engineer"
+    ["mern"]="frontend-engineer, backend-engineer, api-engineer, data-engineer"
+    ["arduino"]="embedded-engineer, electronics-engineer"
+    ["iot"]="embedded-engineer, electronics-engineer, backend-engineer"
+    ["rag"]="data-engineer, backend-engineer, api-engineer"
+    ["langchain"]="data-engineer, backend-engineer"
+    ["enterprise"]="enterprise-architect, security-engineer"
+    ["api"]="api-engineer, backend-engineer"
+    ["desktop"]="desktop-specialist, ux-designer"
+    ["database"]="data-engineer, database-administrator"
 )
 
-declare -A TEMPLATE_DESCRIPTIONS=(
-    ["react-app"]="Modern React application with TypeScript, hooks, and comprehensive testing. Perfect for SPAs and frontend-focused projects."
-    ["python-app"]="Python application with clean architecture, FastAPI/Django, and production-ready deployment. Ideal for backend services and APIs."
-    ["node-api"]="High-performance Node.js API with TypeScript, Express.js, and comprehensive validation. Great for RESTful APIs and microservices."
-    ["angular-app"]="Enterprise-grade Angular application with NgRx, Material Design, and scalable architecture. Perfect for large-scale applications."
-    ["fullstack-mern"]="Complete MERN stack application with TypeScript, authentication, and real-time features. Ideal for full-stack web applications."
-    ["ai-rag-system"]="Advanced RAG system with Python, LangChain, vector databases, and LLM integration. Perfect for AI-powered knowledge systems."
-    ["arduino-iot"]="Arduino-based IoT project with sensor integration, WiFi connectivity, and cloud data transmission. Ideal for embedded IoT solutions."
-    ["python-desktop-database"]="Professional desktop application with wxPython GUI and SQLite database. Perfect for cross-platform desktop tools."
-    ["wxwidgets-cpp"]="Native C++ desktop application with wxWidgets framework. Ideal for high-performance cross-platform desktop software."
-    ["enterprise-rest-api"]="Enterprise-grade REST API with comprehensive security, monitoring, and compliance. Perfect for mission-critical business systems."
-)
+scan_templates() {
+    print_status "info" "Scanning template directory for available templates..."
 
-declare -A TEMPLATE_AGENTS=(
-    ["react-app"]="frontend-engineer, ux-designer, qa-engineer"
-    ["python-app"]="backend-engineer, api-engineer, database-administrator"
-    ["node-api"]="api-engineer, backend-engineer, security-engineer"
-    ["angular-app"]="frontend-engineer, ux-designer, software-architect"
-    ["fullstack-mern"]="frontend-engineer, backend-engineer, api-engineer, data-engineer"
-    ["ai-rag-system"]="data-engineer, backend-engineer, api-engineer"
-    ["arduino-iot"]="embedded-engineer, electronics-engineer, backend-engineer"
-    ["python-desktop-database"]="desktop-specialist, data-engineer, ux-designer"
-    ["wxwidgets-cpp"]="desktop-specialist, graphics-2d-engineer, software-architect"
-    ["enterprise-rest-api"]="enterprise-architect, api-engineer, security-engineer"
-)
+    # Clear existing arrays
+    for key in "${!TEMPLATES[@]}"; do
+        unset TEMPLATES["$key"]
+        unset TEMPLATE_DESCRIPTIONS["$key"]
+        unset TEMPLATE_AGENTS["$key"]
+    done
+
+    # Find all .md files in templates directory
+    local template_files=()
+    while IFS= read -r -d '' file; do
+        template_files+=("$file")
+    done < <(find "$TEMPLATES_DIR" -name "*.md" -type f -print0 2>/dev/null)
+
+    local template_count=0
+
+    for template_file in "${template_files[@]}"; do
+        local template_key=$(basename "$template_file" .md)
+
+        # Skip if it's the template_manager.sh itself
+        if [[ "$template_key" == "template_manager" ]]; then
+            continue
+        fi
+
+        # Extract template name from first line (# CLAUDE.md – Template Name)
+        local template_name=""
+        local first_line=$(head -n 1 "$template_file" 2>/dev/null)
+        if [[ "$first_line" =~ ^#[[:space:]]*CLAUDE\.md[[:space:]]*–[[:space:]]*(.+)$ ]]; then
+            template_name="${BASH_REMATCH[1]}"
+        else
+            # Fallback: use filename with spaces
+            template_name=$(echo "$template_key" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
+        fi
+
+        # Extract description from Project Overview section
+        local description=""
+        local in_overview=false
+        local overview_content=""
+
+        while IFS= read -r line; do
+            if [[ "$line" =~ ^##[[:space:]]*Project[[:space:]]*Overview[[:space:]]*$ ]]; then
+                in_overview=true
+                continue
+            elif [[ "$line" =~ ^##[[:space:]]*.*$ ]] && [[ "$in_overview" == true ]]; then
+                break
+            elif [[ "$in_overview" == true ]] && [[ "$line" =~ ^[A-Z].*\.[[:space:]]*$ ]]; then
+                overview_content="$line"
+                break
+            fi
+        done < "$template_file"
+
+        if [[ -n "$overview_content" ]]; then
+            description="$overview_content"
+        else
+            description="Template for $template_name development."
+        fi
+
+        # Generate recommended agents based on template key and name
+        local recommended_agents="qa-engineer"
+        local template_lower=$(echo "$template_key $template_name" | tr '[:upper:]' '[:lower:]')
+
+        for tech in "${!TECH_AGENT_MAP[@]}"; do
+            if [[ "$template_lower" =~ $tech ]]; then
+                recommended_agents="$recommended_agents, ${TECH_AGENT_MAP[$tech]}"
+            fi
+        done
+
+        # Remove duplicates and clean up
+        recommended_agents=$(echo "$recommended_agents" | tr ',' '\n' | sort -u | tr '\n' ',' | sed 's/,$//' | sed 's/^,//')
+
+        # Populate arrays
+        TEMPLATES["$template_key"]="$template_name"
+        TEMPLATE_DESCRIPTIONS["$template_key"]="$description"
+        TEMPLATE_AGENTS["$template_key"]="$recommended_agents"
+
+        ((template_count++))
+    done
+
+    print_status "success" "Discovered $template_count templates"
+
+    if [[ $template_count -eq 0 ]]; then
+        print_status "warning" "No templates found in $TEMPLATES_DIR"
+        return 1
+    fi
+
+    return 0
+}
 
 # =============================================================================
 # TEMPLATE GENERATION FUNCTIONS
@@ -173,7 +249,8 @@ show_available_templates() {
     echo ""
 
     local i=1
-    for template_key in "${!TEMPLATES[@]}"; do
+    local template_keys=($(printf '%s\n' "${!TEMPLATES[@]}" | sort))
+    for template_key in "${template_keys[@]}"; do
         local template_name="${TEMPLATES[$template_key]}"
         local template_desc="${TEMPLATE_DESCRIPTIONS[$template_key]}"
 
@@ -304,12 +381,8 @@ select_template() {
         echo -n "${COLOR_BOLD}Select template (1-${#template_keys[@]}, b, q): ${COLOR_RESET}"
 
         local choice
-        if choice=$(safe_read_with_retry 60 3); then
-            echo ""
-        else
-            print_status "warning" "Template selection timeout, returning to main menu"
-            return 0
-        fi
+        read -r choice
+        echo ""
 
         if [[ "$choice" == "b" ]]; then
             return 0
@@ -323,14 +396,11 @@ select_template() {
             echo -n "${COLOR_BOLD}Use this template? (y/n): ${COLOR_RESET}"
 
             local confirm
-            if confirm=$(safe_read_with_retry 30 2); then
-                if [[ "$confirm" =~ ^[Yy] ]]; then
-                    collect_project_info
-                    generate_claude_md "$selected_template"
-                    return 0
-                fi
-            else
-                print_status "warning" "Template confirmation timeout, returning to template selection"
+            read -r confirm
+            if [[ "$confirm" =~ ^[Yy] ]]; then
+                collect_project_info
+                generate_claude_md "$selected_template"
+                return 0
             fi
         else
             print_status "error" "Invalid selection"
@@ -346,14 +416,14 @@ show_existing_templates() {
     print_status "info" "Scanning template directory: $TEMPLATES_DIR"
     echo ""
 
-    # Check each template dynamically from TEMPLATES array
+    # Check each template dynamically from scanned TEMPLATES array
     local available_count=0
     local missing_count=0
 
-    # Explicit template list for reliable iteration
-    local template_list="ai-rag-system angular-app arduino-iot enterprise-rest-api fullstack-mern node-api python-app python-desktop-database react-app wxwidgets-cpp"
+    # Use sorted template keys for consistent display
+    local template_keys=($(printf '%s\n' "${!TEMPLATES[@]}" | sort))
 
-    for template_key in $template_list; do
+    for template_key in "${template_keys[@]}"; do
         local template_name="${TEMPLATES[$template_key]}"
         local template_file="$TEMPLATES_DIR/${template_key}.md"
 
@@ -374,10 +444,7 @@ show_existing_templates() {
     fi
     echo ""
     echo -n "${COLOR_YELLOW}Press Enter to continue...${COLOR_RESET}"
-
-    if ! safe_read_with_retry 30 1 >/dev/null; then
-        print_status "info" "Continuing automatically..."
-    fi
+    read -r
 }
 
 check_existing_claude_md() {
@@ -387,13 +454,9 @@ check_existing_claude_md() {
         echo -n "${COLOR_BOLD}Overwrite existing CLAUDE.md? (y/n): ${COLOR_RESET}"
 
         local overwrite
-        if overwrite=$(safe_read_with_retry 30 2); then
-            if [[ ! "$overwrite" =~ ^[Yy] ]]; then
-                print_status "info" "Template generation cancelled"
-                return 1
-            fi
-        else
-            print_status "warning" "Overwrite confirmation timeout, cancelling template generation"
+        read -r overwrite
+        if [[ ! "$overwrite" =~ ^[Yy] ]]; then
+            print_status "info" "Template generation cancelled"
             return 1
         fi
 
@@ -411,9 +474,13 @@ show_main_menu() {
     echo "${COLOR_YELLOW}[1]${COLOR_RESET} Generate Project Template  ${COLOR_WHITE}- Create CLAUDE.md from template${COLOR_RESET}"
     echo "${COLOR_YELLOW}[2]${COLOR_RESET} Browse Templates           ${COLOR_WHITE}- View available templates${COLOR_RESET}"
     echo "${COLOR_YELLOW}[3]${COLOR_RESET} Template Library Status    ${COLOR_WHITE}- Check template availability${COLOR_RESET}"
+    echo "${COLOR_YELLOW}[r]${COLOR_RESET} Rescan Templates           ${COLOR_WHITE}- Refresh template list${COLOR_RESET}"
     echo ""
     echo "${COLOR_YELLOW}[b]${COLOR_RESET} Back to AI Tools           ${COLOR_WHITE}- Return to main menu${COLOR_RESET}"
     echo "${COLOR_YELLOW}[q]${COLOR_RESET} Quit                       ${COLOR_WHITE}- Exit template manager${COLOR_RESET}"
+    echo ""
+    echo "${COLOR_CYAN}💡 Tip: Add custom templates by placing .md files in:${COLOR_RESET}"
+    echo "   ${COLOR_WHITE}$TEMPLATES_DIR/${COLOR_RESET}"
     echo ""
 }
 
@@ -422,12 +489,17 @@ show_main_menu() {
 # =============================================================================
 
 main() {
+    # Initialize templates by scanning directory
+    if ! scan_templates; then
+        print_status "error" "Failed to scan templates directory"
+        exit 1
+    fi
+
     while true; do
         print_header
 
-        # Show quick stats
-        local available_templates=$(find "$TEMPLATES_DIR" -name "*.md" -not -name "template_manager.sh" -type f | wc -l)
-        echo "${COLOR_GREEN}Available Templates:${COLOR_RESET} $available_templates"
+        # Show dynamic stats
+        echo "${COLOR_GREEN}Available Templates:${COLOR_RESET} ${#TEMPLATES[@]}"
         echo "${COLOR_GREEN}Current Directory:${COLOR_RESET} $PROJECT_DIR"
         echo ""
 
@@ -436,12 +508,8 @@ main() {
         echo -n "${COLOR_BOLD}${ICON_TEMPLATE} Select option: ${COLOR_RESET}"
 
         local choice
-        if choice=$(safe_read_with_retry 60 3); then
-            echo ""
-        else
-            print_status "warning" "Menu selection timeout, exiting"
-            exit 0
-        fi
+        read -r choice
+        echo ""
 
         case "$choice" in
             "1")
@@ -452,11 +520,13 @@ main() {
             "2")
                 show_available_templates
                 echo -n "${COLOR_YELLOW}Press Enter to continue...${COLOR_RESET}"
-                if ! safe_read_with_retry 30 1 >/dev/null; then
-                    print_status "info" "Continuing automatically..."
-                fi
+                read -r
                 ;;
             "3") show_existing_templates ;;
+            "r")
+                print_status "info" "Rescanning templates directory..."
+                scan_templates
+                ;;
             "b")
                 echo "${ICON_SUCCESS} ${COLOR_GREEN}Returning to AI Tools...${COLOR_RESET}"
                 exit 0
