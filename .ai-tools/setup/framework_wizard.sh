@@ -630,7 +630,7 @@ phase_3_technology_configuration() {
         fi
     fi
 
-    PROJECT_CONFIG[technologies]=$(IFS=','; echo "${DETECTED_TECHNOLOGIES[*]}")
+    PROJECT_CONFIG[technologies]=$(IFS=', '; echo "${DETECTED_TECHNOLOGIES[*]}")
 }
 
 phase_4_agent_selection() {
@@ -688,7 +688,7 @@ phase_4_agent_selection() {
         fi
     fi
 
-    PROJECT_CONFIG[agents]=$(IFS=','; echo "${RECOMMENDED_AGENTS[*]}")
+    PROJECT_CONFIG[agents]=$(IFS=', '; echo "${RECOMMENDED_AGENTS[*]}")
 }
 
 phase_5_framework_features() {
