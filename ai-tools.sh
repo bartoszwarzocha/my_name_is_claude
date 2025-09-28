@@ -260,8 +260,6 @@ activate_venv_if_available() {
                 ;;
             [Mm]*)
                 show_manual_setup_guide
-                echo ""
-                read -p "Press Enter to return to main menu..." -r
                 return 1
                 ;;
             [Ss]*)
@@ -295,8 +293,6 @@ activate_venv_if_available() {
                 ;;
             [Mm]*)
                 show_manual_setup_guide
-                echo ""
-                read -p "Press Enter to return to main menu..." -r
                 return 1
                 ;;
             [Ss]*)
