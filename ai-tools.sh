@@ -136,7 +136,7 @@ setup_virtual_environment() {
 
     # Install dependencies using virtual environment pip
     print_status "info" "Installing AI Tools dependencies..."
-    echo "  ${COLOR_CYAN}Installing: numpy pandas scikit-learn requests scipy joblib${COLOR_RESET}"
+    echo "  ${COLOR_CYAN}Installing: PyYAML pytest requests${COLOR_RESET}"
 
     # Try installation with progress feedback
     if "$VENV_PATH/bin/pip" install --quiet --upgrade pip setuptools wheel; then
@@ -145,13 +145,13 @@ setup_virtual_environment() {
         print_status "warning" "Failed to update pip, continuing..."
     fi
 
-    if "$VENV_PATH/bin/pip" install numpy pandas scikit-learn requests scipy joblib; then
+    if "$VENV_PATH/bin/pip" install PyYAML pytest requests; then
         print_status "success" "All dependencies installed successfully"
         echo ""
         print_status "info" "Verifying installations..."
 
         # Quick verification
-        if "$VENV_PATH/bin/python" -c "import numpy, pandas, sklearn, requests, scipy, joblib; print('✅ All imports successful')" 2>/dev/null; then
+        if "$VENV_PATH/bin/python" -c "import yaml, pytest, requests; print('✅ All imports successful')" 2>/dev/null; then
             print_status "success" "All dependencies verified working"
             return 0
         else
@@ -163,9 +163,9 @@ setup_virtual_environment() {
         echo ""
         echo "${COLOR_YELLOW}${COLOR_BOLD}ALTERNATIVE SOLUTIONS:${COLOR_RESET}"
         echo "  ${COLOR_GREEN}Option 1 - Use system packages:${COLOR_RESET}"
-        echo "     ${COLOR_WHITE}sudo apt install python3-numpy python3-pandas python3-sklearn python3-scipy${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}sudo apt install python3-yaml python3-pytest python3-requests${COLOR_RESET}"
         echo "  ${COLOR_GREEN}Option 2 - Manual installation:${COLOR_RESET}"
-        echo "     ${COLOR_WHITE}$VENV_PATH/bin/pip install --user numpy pandas scikit-learn${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}$VENV_PATH/bin/pip install --user PyYAML pytest requests${COLOR_RESET}"
         echo "  ${COLOR_GREEN}Option 3 - Continue without ML features:${COLOR_RESET}"
         echo "     ${COLOR_WHITE}AI Tools will work in fallback mode${COLOR_RESET}"
         return 1
@@ -195,13 +195,13 @@ show_manual_setup_guide() {
     echo "  ${COLOR_WHITE}source $VENV_PATH/bin/activate${COLOR_RESET}"
     echo ""
     echo "${COLOR_YELLOW}Step 4: Install AI Tools dependencies${COLOR_RESET}"
-    echo "  ${COLOR_WHITE}pip install numpy pandas scikit-learn requests scipy joblib${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}pip install PyYAML pytest requests${COLOR_RESET}"
     echo ""
     echo "${COLOR_YELLOW}Step 5: Test installation${COLOR_RESET}"
     echo "  ${COLOR_WHITE}./ai-tools.sh${COLOR_RESET}"
     echo ""
     echo "${COLOR_GREEN}${COLOR_BOLD}Alternative: System packages (faster but less isolated)${COLOR_RESET}"
-    echo "  ${COLOR_WHITE}sudo apt install python3-numpy python3-pandas python3-sklearn python3-scipy${COLOR_RESET}"
+    echo "  ${COLOR_WHITE}sudo apt install python3-yaml python3-pytest python3-requests${COLOR_RESET}"
     echo ""
     echo "${COLOR_GREEN}${COLOR_BOLD}Troubleshooting:${COLOR_RESET}"
     echo "  ${COLOR_CYAN}• If 'externally-managed-environment' error:${COLOR_RESET}"
@@ -375,7 +375,7 @@ check_dependencies() {
     fi
 
     if [[ ${#missing_python_deps[@]} -gt 0 ]]; then
-        print_status "warning" "Missing Python ML dependencies: ${missing_python_deps[*]}"
+        print_status "warning" "Missing Python dependencies: ${missing_python_deps[*]}"
         echo "${COLOR_YELLOW}AI Tools will run in fallback mode without these dependencies.${COLOR_RESET}"
         echo ""
         echo "${COLOR_CYAN}${COLOR_BOLD}RECOMMENDED: Use AI Tools virtual environment${COLOR_RESET}"
@@ -395,7 +395,7 @@ check_dependencies() {
         echo ""
         echo "${COLOR_YELLOW}${COLOR_BOLD}ALTERNATIVE METHODS:${COLOR_RESET}"
         echo "  ${COLOR_CYAN}System packages (Ubuntu/Debian):${COLOR_RESET}"
-        echo "     ${COLOR_WHITE}sudo apt update && sudo apt install python3-numpy python3-pandas python3-sklearn python3-scipy${COLOR_RESET}"
+        echo "     ${COLOR_WHITE}sudo apt update && sudo apt install python3-yaml python3-pytest python3-requests${COLOR_RESET}"
         echo "  ${COLOR_CYAN}User installation (if allowed):${COLOR_RESET}"
         echo "     ${COLOR_WHITE}pip3 install --user ${missing_python_deps[*]}${COLOR_RESET}"
         echo "  ${COLOR_CYAN}Force installation (not recommended):${COLOR_RESET}"

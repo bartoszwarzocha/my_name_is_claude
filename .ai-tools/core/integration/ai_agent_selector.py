@@ -4,7 +4,7 @@ AI-Powered Agent Selection - Intelligent Agent Selector
 Claude Code Multi-Agent Framework Enhancement
 
 This module implements the AI-enhanced agent selection system that integrates
-machine learning models with the existing agent-prompt binding framework.
+rule-based agent selection with the existing agent-prompt binding framework.
 
 Components:
 - AI Agent Selection Engine
@@ -458,8 +458,8 @@ class AgentSelectionEngine:
             self.feature_encoder = None
             self.ml_ensemble = None
 
-            # Try to load pre-trained models
-            self._load_pretrained_models()
+            # Initialize rule-based selection system
+            self._initialize_rule_system()
 
             # Initialize adaptive learning integration
             self._initialize_adaptive_learning()
@@ -502,22 +502,28 @@ class AgentSelectionEngine:
                 self.learning_integration = None
                 self.hybrid_intelligence = None
 
-    def _load_pretrained_models(self):
-        """Load pre-trained models if available"""
-        models_dir = self.framework_root / "ai_tools" / "models"
-
+    def _initialize_rule_system(self):
+        """Initialize rule-based agent selection system"""
         try:
-            # Check for pre-trained ensemble
-            ensemble_path = models_dir / "trained_ensemble.json"
-            if ensemble_path.exists():
-                logger.info("📦 Loading pre-trained ensemble models...")
-                # In real implementation, would load actual trained models
-                logger.info("✅ Pre-trained models loaded")
-            else:
-                logger.info("🔄 No pre-trained models found, using default configuration")
+            logger.info("📋 Initializing rule-based agent selection system...")
+            # Initialize rule-based configuration
+            self._load_agent_rules()
+            logger.info("✅ Rule-based selection system ready")
 
         except Exception as e:
-            logger.warning(f"⚠️ Error loading pre-trained models: {e}")
+            logger.warning(f"⚠️ Error initializing rule system: {e}")
+
+    def _load_agent_rules(self):
+        """Load agent selection rules and patterns"""
+        # Initialize basic rule patterns for agent selection
+        self.agent_rules = {
+            'frontend': ['frontend-engineer', 'ux-designer'],
+            'backend': ['backend-engineer', 'api-engineer'],
+            'database': ['data-engineer', 'database-administrator'],
+            'testing': ['qa-engineer'],
+            'security': ['security-engineer'],
+            'infrastructure': ['deployment-engineer', 'devops-architect']
+        }
 
     def select_agents(self, request: AgentSelectionRequest) -> AgentSelectionResponse:
         """Main agent selection method with timeout protection"""
@@ -608,7 +614,7 @@ class AgentSelectionEngine:
         )
 
     def _ai_powered_selection(self, request: AgentSelectionRequest) -> AgentSelectionResponse:
-        """AI-powered agent selection using ML models with circuit breaker"""
+        """AI-powered agent selection using rule-based system with circuit breaker"""
         logger.info(f"🤖 Using AI-powered agent selection for {request.project_path}")
 
         # Circuit breaker for AI selection - max 60 seconds total
@@ -652,8 +658,8 @@ class AgentSelectionEngine:
             # Extract features
             features = self.feature_encoder.encode_single_project(project_context)
 
-            # Get ML recommendations
-            ml_recommendations = self.ml_ensemble.recommend_agents(
+            # Get rule-based recommendations
+            rule_recommendations = self._get_rule_based_recommendations(
                 features.tolist() if hasattr(features, 'tolist') else features,
                 confidence_threshold=request.confidence_threshold
             )
@@ -740,7 +746,7 @@ class AgentSelectionEngine:
                 processing_time=0.0,  # Will be set by caller
                 metadata={
                     'selection_method': 'ai_powered',
-                    'ml_performance': ml_recommendations.model_performance,
+                    'rule_performance': rule_recommendations.selection_confidence,
                     'project_context_hash': project_context.get('context_hash', 'unknown'),
                     'learning_enhanced': hasattr(self, 'learning_integration') and self.learning_integration is not None
                 }

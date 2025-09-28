@@ -33,5 +33,5 @@ python3 -c "import yaml; print('✅ PyYAML:', yaml.__version__)" 2>/dev/null || 
 python3 -c "import pytest; print('✅ pytest:', pytest.__version__)" 2>/dev/null || echo "❌ pytest installation failed"
 
 echo ""
-echo "🚀 AI Tools ready for technology detection and analysis!"
+echo "🚀 AI Tools ready for technology detection and agent recommendations!"
 echo "   Run: python3 .ai-tools/core/bin/project_analyzer.py"

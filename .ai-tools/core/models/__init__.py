@@ -1,3 +1,3 @@
 """
-AI Tools ML Models - Ensemble recommender and machine learning components
+AI Tools Models - Intelligent agent selection and project analysis components
 """
