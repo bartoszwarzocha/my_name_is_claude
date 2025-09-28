@@ -550,11 +550,17 @@ try:
     print('${COLOR_CYAN}AI Agent Recommendations:${COLOR_RESET}')
     print('=' * 50)
 
+    # Show agents with reasoning
     for i, agent in enumerate(response.recommended_agents, 1):
-        print(f'${COLOR_GREEN}{i}.${COLOR_RESET} {agent}')
+        if response.agent_reasoning and agent in response.agent_reasoning:
+            technologies = ', '.join(response.agent_reasoning[agent])
+            print(f'${COLOR_GREEN}{i}.${COLOR_RESET} {agent} ${COLOR_YELLOW}→ because of:${COLOR_RESET} {technologies}')
+        else:
+            reason = 'Core project management' if agent in ['project-owner', 'session-manager', 'software-architect', 'qa-engineer'] else 'General utility'
+            print(f'${COLOR_GREEN}{i}.${COLOR_RESET} {agent} ${COLOR_YELLOW}→ because of:${COLOR_RESET} {reason}')
 
-    if hasattr(response, 'reasoning'):
-        print(f'\\n${COLOR_YELLOW}Selection Method:${COLOR_RESET} Rule-based (fallback)')
+    print(f'\\n${COLOR_YELLOW}Selection Method:${COLOR_RESET} Technology-based matching')
+    print(f'${COLOR_YELLOW}Confidence:${COLOR_RESET} {response.confidence:.2f}')
 
 except Exception as e:
     print(f'${COLOR_RED}Error: {e}${COLOR_RESET}')

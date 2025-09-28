@@ -22,6 +22,57 @@ class TechnologyStack:
     frameworks: List[str]
     build_tools: List[str]
     confidence: float
+    business_domain: str = "software_development_tools"
+
+    # Legacy compatibility for ai-tools.sh
+    @property
+    def frontend(self) -> List[str]:
+        """Frontend technologies from languages and frameworks"""
+        frontend_techs = []
+        frontend_indicators = ['javascript', 'typescript', 'react', 'angular', 'vue', 'svelte', 'html', 'css', 'scss', 'sass']
+
+        for tech in self.languages + self.frameworks:
+            if any(indicator in tech.lower() for indicator in frontend_indicators):
+                frontend_techs.append(tech)
+        return frontend_techs
+
+    @property
+    def backend(self) -> List[str]:
+        """Backend technologies from languages and frameworks"""
+        backend_techs = []
+        backend_indicators = ['python', 'java', 'c++', 'c#', 'go', 'rust', 'php', 'ruby', 'node', 'django', 'flask', 'fastapi', 'express', 'spring']
+
+        for tech in self.languages + self.frameworks:
+            if any(indicator in tech.lower() for indicator in backend_indicators):
+                backend_techs.append(tech)
+        return backend_techs
+
+    @property
+    def database(self) -> List[str]:
+        """Database technologies detected"""
+        db_techs = []
+        db_indicators = ['postgresql', 'mysql', 'mongodb', 'redis', 'sqlite', 'oracle', 'cassandra', 'elasticsearch']
+
+        for tech in self.frameworks:
+            if any(indicator in tech.lower() for indicator in db_indicators):
+                db_techs.append(tech)
+        return db_techs if db_techs else ['detected_databases']
+
+    @property
+    def infrastructure(self) -> List[str]:
+        """Infrastructure and deployment technologies"""
+        infra_techs = []
+        infra_indicators = ['docker', 'kubernetes', 'cmake', 'make', 'vcpkg', 'conan', 'maven', 'gradle']
+
+        for tech in self.build_tools + self.frameworks:
+            if any(indicator in tech.lower() for indicator in infra_indicators):
+                infra_techs.append(tech)
+        return infra_techs if infra_techs else [tool.title() for tool in self.build_tools[:2]]  # Return first 2 build tools
+
+    @property
+    def confidence_score(self) -> float:
+        """Alias for confidence for legacy compatibility"""
+        return self.confidence
 
 class SimpleTechnologyDetector:
     """Simplified technology detector - accurate and fast"""
@@ -157,11 +208,15 @@ class SimpleTechnologyDetector:
         total_files = sum(1 for _ in self._walk_project(project_path))
         confidence = min(1.0, (len(languages) + len(frameworks)) / max(5, total_files * 0.1))
 
+        # 5. Detect business domain
+        business_domain = self._detect_business_domain(project_path, languages, frameworks)
+
         return TechnologyStack(
             languages=sorted(list(languages)),
             frameworks=sorted(list(frameworks)),
             build_tools=sorted(list(build_tools)),
-            confidence=confidence
+            confidence=confidence,
+            business_domain=business_domain
         )
 
     def _walk_project(self, project_path: Path):
@@ -346,6 +401,76 @@ class SimpleTechnologyDetector:
         except (json.JSONDecodeError, AttributeError):
             pass
         return frameworks
+
+    def _detect_business_domain(self, project_path: Path, languages: Set[str], frameworks: Set[str]) -> str:
+        """Detect business domain based on technology stack and project structure"""
+
+        # Convert to lowercase for matching
+        tech_indicators = [tech.lower() for tech in list(languages) + list(frameworks)]
+        project_name = project_path.name.lower()
+
+        # Check file structure patterns
+        directory_indicators = []
+        try:
+            for item in project_path.iterdir():
+                if item.is_dir():
+                    directory_indicators.append(item.name.lower())
+        except:
+            pass
+
+        # Business domain patterns
+        domain_patterns = {
+            'graphics_3d': ['opengl', 'vulkan', 'directx', 'assimp', 'glfw', 'blender', '3d', 'graphics'],
+            'desktop_application': ['wxwidgets', 'qt', 'gtk', 'electron', 'desktop', 'gui', 'app'],
+            'web_development': ['react', 'angular', 'vue', 'django', 'flask', 'express', 'web', 'frontend', 'backend'],
+            'data_science': ['tensorflow', 'pytorch', 'pandas', 'numpy', 'jupyter', 'scikit-learn', 'data', 'ml', 'ai'],
+            'game_development': ['unity', 'unreal', 'sdl', 'game', 'engine', 'graphics'],
+            'mobile_development': ['react_native', 'flutter', 'swift', 'kotlin', 'android', 'ios', 'mobile'],
+            'embedded_systems': ['arduino', 'raspberry', 'embedded', 'iot', 'sensor', 'microcontroller'],
+            'scientific_computing': ['matlab', 'numpy', 'scipy', 'opencv', 'scientific', 'simulation', 'research'],
+            'enterprise_software': ['spring', 'hibernate', 'enterprise', 'erp', 'crm', 'business'],
+            'financial_technology': ['blockchain', 'crypto', 'banking', 'finance', 'payment', 'trading'],
+            'cloud_infrastructure': ['docker', 'kubernetes', 'aws', 'azure', 'cloud', 'infrastructure', 'devops'],
+            'security_tools': ['cybersecurity', 'encryption', 'security', 'auth', 'ssl', 'vulnerability'],
+            'educational_tools': ['education', 'learning', 'tutorial', 'course', 'academic'],
+            'content_management': ['cms', 'blog', 'content', 'publisher', 'media'],
+            'ecommerce': ['shop', 'store', 'ecommerce', 'cart', 'payment', 'product', 'retail'],
+            'communication': ['chat', 'messaging', 'email', 'social', 'communication', 'network'],
+            'productivity_tools': ['productivity', 'office', 'document', 'editor', 'tool', 'utility'],
+            'healthcare': ['health', 'medical', 'patient', 'hospital', 'clinic', 'pharma'],
+            'logistics': ['shipping', 'logistics', 'transport', 'delivery', 'warehouse', 'supply'],
+            'hr_management': ['hr', 'human', 'resource', 'employee', 'payroll', 'recruitment']
+        }
+
+        # Score each domain
+        domain_scores = {}
+        all_indicators = tech_indicators + [project_name] + directory_indicators
+
+        for domain, patterns in domain_patterns.items():
+            score = 0
+            for pattern in patterns:
+                for indicator in all_indicators:
+                    if pattern in indicator:
+                        score += 1
+            domain_scores[domain] = score
+
+        # Find the best match
+        if domain_scores:
+            best_domain = max(domain_scores.items(), key=lambda x: x[1])
+            if best_domain[1] > 0:  # At least one match
+                return best_domain[0]
+
+        # Default classification based on primary technology
+        if any('c++' in tech or 'opengl' in tech for tech in tech_indicators):
+            return 'software_development_tools'
+        elif any('python' in tech or 'django' in tech for tech in tech_indicators):
+            return 'web_development'
+        elif any('react' in tech or 'angular' in tech for tech in tech_indicators):
+            return 'web_development'
+        elif any('java' in tech or 'spring' in tech for tech in tech_indicators):
+            return 'enterprise_software'
+        else:
+            return 'software_development_tools'  # General fallback
 
 
 # Compatibility layer for existing framework wizard

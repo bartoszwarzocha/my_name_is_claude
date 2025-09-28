@@ -25,6 +25,7 @@ class AgentSelectionResponse:
     recommended_agents: List[str]
     confidence: float
     processing_time: float
+    agent_reasoning: Dict[str, List[str]] = None  # Agent -> reasons (technologies that triggered it)
 
 class SimpleAgentSelector:
     """Fast, reliable agent selection based on technology patterns"""
@@ -131,12 +132,16 @@ class SimpleAgentSelector:
         # Start with core agents
         recommended_agents = list(self.core_agents)
 
-        # Add technology-specific agents
+        # Add technology-specific agents with reasoning
         agent_scores = {}
+        agent_reasoning = {}
         for tech in all_technologies:
             if tech in self.technology_agent_map:
                 for agent in self.technology_agent_map[tech]:
                     agent_scores[agent] = agent_scores.get(agent, 0) + 1
+                    if agent not in agent_reasoning:
+                        agent_reasoning[agent] = []
+                    agent_reasoning[agent].append(tech)
 
         # Sort agents by relevance score and add top ones
         sorted_agents = sorted(agent_scores.items(), key=lambda x: x[1], reverse=True)
@@ -153,7 +158,8 @@ class SimpleAgentSelector:
         return AgentSelectionResponse(
             recommended_agents=recommended_agents[:request.max_agents],
             confidence=confidence,
-            processing_time=processing_time
+            processing_time=processing_time,
+            agent_reasoning=agent_reasoning
         )
 
 
