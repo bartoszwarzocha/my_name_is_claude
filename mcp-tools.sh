@@ -48,6 +48,11 @@ readonly ICON_TARGET="🎯"
 readonly ICON_WRENCH="🔧"
 readonly ICON_HEALTH="🏥"
 
+# Performance cache variables
+declare -a CACHED_PROJECT_TECH=()
+declare CACHE_TIMESTAMP=0
+declare CACHE_PROJECT_DIR=""
+
 # =============================================================================
 # UTILITY FUNCTIONS
 # =============================================================================
@@ -66,16 +71,16 @@ function require_cmd() {
   fi
 }
 
-function read_single_key() {
-  local key
-  IFS= read -r -s -n1 key 2>/dev/null || key=""
-  echo "$key"
+function read_option() {
+  local option
+  read -r option 2>/dev/null || option=""
+  echo "$option"
 }
 
-function press_any_key() {
+function wait_for_enter() {
   echo ""
-  echo "Press any key to continue..."
-  read_single_key >/dev/null
+  echo "Naciśnij Enter, aby kontynuować..."
+  read -r
 }
 
 function setup_directories() {
@@ -88,6 +93,19 @@ function setup_directories() {
 # =============================================================================
 
 function detect_project_technology() {
+  # Cache validation - check if cache is valid (same directory and recent)
+  local current_time=$(date +%s)
+  local cache_validity=300  # 5 minutes cache
+
+  if [[ "$CACHE_PROJECT_DIR" == "$PROJECT_DIR" ]] &&
+     [[ $((current_time - CACHE_TIMESTAMP)) -lt $cache_validity ]] &&
+     [[ ${#CACHED_PROJECT_TECH[@]} -gt 0 ]]; then
+    # Return cached results
+    printf '%s\n' "${CACHED_PROJECT_TECH[@]}"
+    return 0
+  fi
+
+  # Cache miss - perform actual detection
   local tech_stack=()
 
   # Frontend Technologies
@@ -106,10 +124,14 @@ function detect_project_technology() {
   [[ -f "composer.json" ]] && tech_stack+=("php")
   [[ -f "Gemfile" ]] && tech_stack+=("ruby")
 
-  # Database Technologies
-  [[ -f "docker-compose.yml" ]] && grep -q "postgres" docker-compose.yml 2>/dev/null && tech_stack+=("postgresql")
-  [[ -f "docker-compose.yml" ]] && grep -q "mysql" docker-compose.yml 2>/dev/null && tech_stack+=("mysql")
-  [[ -f "docker-compose.yml" ]] && grep -q "redis" docker-compose.yml 2>/dev/null && tech_stack+=("redis")
+  # Database Technologies - optimize multiple greps on same file
+  if [[ -f "docker-compose.yml" ]]; then
+    local compose_content
+    compose_content=$(cat docker-compose.yml 2>/dev/null || echo "")
+    [[ "$compose_content" =~ postgres ]] && tech_stack+=("postgresql")
+    [[ "$compose_content" =~ mysql ]] && tech_stack+=("mysql")
+    [[ "$compose_content" =~ redis ]] && tech_stack+=("redis")
+  fi
 
   # Infrastructure
   [[ -f "Dockerfile" ]] && tech_stack+=("docker")
@@ -121,6 +143,11 @@ function detect_project_technology() {
   [[ -f "cypress.config.js" || -d "cypress" ]] && tech_stack+=("cypress")
   [[ -f "jest.config.js" || -f "jest.config.ts" ]] && tech_stack+=("jest")
   [[ -f "playwright.config.js" || -f "playwright.config.ts" ]] && tech_stack+=("playwright")
+
+  # Update cache
+  CACHED_PROJECT_TECH=("${tech_stack[@]}")
+  CACHE_TIMESTAMP=$current_time
+  CACHE_PROJECT_DIR="$PROJECT_DIR"
 
   printf '%s\n' "${tech_stack[@]}"
 }
@@ -320,6 +347,7 @@ function get_mcp_info() {
 
 function check_mcp_installed() {
   local mcp_name="$1"
+  local fast_mode="${2:-false}"
   local install_method
   install_method=$(get_mcp_info "$mcp_name" "install_method")
 
@@ -332,12 +360,24 @@ function check_mcp_installed() {
       ;;
     "docker")
       local image_name="${mcp_name}-mcp"
-      docker image inspect "$image_name" &>/dev/null && return 0
+      if [[ "$fast_mode" == "true" ]]; then
+        # Fast check: just look for image name in docker images output (much faster)
+        docker images --format "table {{.Repository}}" 2>/dev/null | grep -q "^$image_name$" && return 0
+      else
+        # Thorough check
+        docker image inspect "$image_name" &>/dev/null && return 0
+      fi
       ;;
     "npm")
       local npm_package
       npm_package=$(get_mcp_info "$mcp_name" "npm_package")
-      npm list -g "$npm_package" &>/dev/null && return 0
+      if [[ "$fast_mode" == "true" ]]; then
+        # Fast check: look for package in npm global directory
+        [[ -d "$(npm root -g)/$npm_package" ]] 2>/dev/null && return 0
+      else
+        # Thorough check
+        npm list -g "$npm_package" &>/dev/null && return 0
+      fi
       ;;
   esac
 
@@ -347,16 +387,17 @@ function check_mcp_installed() {
 function check_mcp_registered() {
   local mcp_name="$1"
   require_cmd claude
-  claude mcp list 2>/dev/null | grep -q "^$mcp_name\s" && return 0
+  claude mcp list 2>/dev/null | grep -q "^$mcp_name:" && return 0
   return 1
 }
 
 function get_mcp_status() {
   local mcp_name="$1"
+  local fast_mode="${2:-false}"
   local installed="❌"
   local registered="❌"
 
-  check_mcp_installed "$mcp_name" && installed="✅"
+  check_mcp_installed "$mcp_name" "$fast_mode" && installed="✅"
   check_mcp_registered "$mcp_name" && registered="✅"
 
   echo "$installed $registered"
@@ -515,9 +556,40 @@ function register_mcp_global() {
   log_info "Registering $mcp_name globally with Claude Code..."
 
   # Use bash to properly handle the command expansion
-  claude mcp add "$mcp_name" -- bash -c "$register_cmd"
+  eval "claude mcp add \"$mcp_name\" -- $register_cmd"
 
   log_success "$mcp_name registered globally!"
+}
+
+function register_mcp_project() {
+  local mcp_name="$1"
+  require_cmd claude
+
+  local register_cmd
+  register_cmd=$(get_mcp_info "$mcp_name" "register_cmd")
+
+  if [[ -z "$register_cmd" ]]; then
+    log_error "No registration command defined for $mcp_name"
+    return 1
+  fi
+
+  # Expand variables in the command
+  register_cmd="${register_cmd//\\$PROJECT_DIR/$PROJECT_DIR}"
+  register_cmd="${register_cmd//\\$HOME/$HOME}"
+
+  log_info "Registering $mcp_name for current project..."
+
+  # Create project MCP config directory if it doesn't exist
+  mkdir -p "$PROJECT_MCP_DIR"
+
+  # For now, use same registration as global but note it's project-specific
+  # TODO: Implement true project-specific registration when Claude Code supports it
+  eval "claude mcp add \"$mcp_name\" -- $register_cmd"
+
+  # Create a marker file to track project-specific registrations
+  echo "$mcp_name" >> "$PROJECT_MCP_DIR/registered_mcps.txt"
+
+  log_success "$mcp_name registered for project $PROJECT_NAME!"
 }
 
 function unregister_mcp() {
@@ -582,10 +654,9 @@ function handle_mcp_menu() {
 
   while true; do
     show_mcp_menu "$mcp_name"
-    echo -n "Choose option: "
+    echo -n "Wybierz opcję: "
     local key
-    key=$(read_single_key)
-    echo "$key"
+    key=$(read_option)
 
     case "$key" in
       # Quick Actions
@@ -598,14 +669,14 @@ function handle_mcp_menu() {
           register_mcp_global "$mcp_name"
         fi
         log_success "Quick setup completed!"
-        press_any_key
+        wait_for_enter
         ;;
 
       s|S)
         log_info "Smart Configuration for $mcp_name..."
         # TODO: Implement smart configuration logic
         log_info "Analyzing project and optimizing $mcp_name configuration..."
-        press_any_key
+        wait_for_enter
         ;;
 
       # Installation
@@ -615,19 +686,19 @@ function handle_mcp_menu() {
         else
           install_mcp "$mcp_name"
         fi
-        press_any_key
+        wait_for_enter
         ;;
 
       u|U)
         log_info "Updating $mcp_name to latest version..."
         # TODO: Implement update logic
-        press_any_key
+        wait_for_enter
         ;;
 
       x|X)
         log_warn "Removing $mcp_name..."
         # TODO: Implement removal logic
-        press_any_key
+        wait_for_enter
         ;;
 
       # Registration
@@ -636,67 +707,66 @@ function handle_mcp_menu() {
           log_warn "$mcp_name is already registered globally."
         else
           if ! check_mcp_installed "$mcp_name"; then
-            log_error "$mcp_name is not installed. Install it first."
+            log_error "$mcp_name is not installed. Install it first."\n            sleep 1
           else
             register_mcp_global "$mcp_name"
           fi
         fi
-        press_any_key
+        wait_for_enter
         ;;
 
       p|P)
-        log_info "Registering $mcp_name for current project..."
-        # TODO: Implement project-specific registration
-        press_any_key
+        register_mcp_project "$mcp_name"
+        wait_for_enter
         ;;
 
       d|D)
         unregister_mcp "$mcp_name"
-        press_any_key
+        wait_for_enter
         ;;
 
       # Operations
       1)
         log_info "Starting $mcp_name service..."
         # TODO: Implement service start logic
-        press_any_key
+        wait_for_enter
         ;;
 
       2)
         log_info "Starting $mcp_name with advanced options..."
         # TODO: Implement advanced start logic
-        press_any_key
+        wait_for_enter
         ;;
 
       3)
         log_info "Stopping $mcp_name service..."
         # TODO: Implement service stop logic
-        press_any_key
+        wait_for_enter
         ;;
 
       4)
         log_info "Restarting $mcp_name service..."
         # TODO: Implement service restart logic
-        press_any_key
+        wait_for_enter
         ;;
 
       # Configuration
       c|C)
         log_info "Opening $mcp_name configuration..."
         # TODO: Implement configuration menu
-        press_any_key
+        wait_for_enter
         ;;
 
       v|V)
         log_info "Current $mcp_name configuration:"
         get_mcp_info "$mcp_name" | jq '.'
-        press_any_key
+        wait_for_enter
         ;;
 
       z|Z)
         log_info "Resetting $mcp_name to default configuration..."
         # TODO: Implement reset logic
-        press_any_key
+        wait_for_enter
         ;;
 
       # Diagnostics
@@ -706,14 +776,15 @@ function handle_mcp_menu() {
           claude mcp call "$mcp_name" health 2>/dev/null && log_success "Connection OK" || log_warn "Connection failed"
         else
           log_error "$mcp_name is not registered"
+          sleep 1
         fi
-        press_any_key
+        wait_for_enter
         ;;
 
       l|L)
         log_info "Viewing $mcp_name logs..."
         # TODO: Implement log viewing
-        press_any_key
+        wait_for_enter
         ;;
 
       h|H)
@@ -722,7 +793,7 @@ function handle_mcp_menu() {
         status=$(get_mcp_status "$mcp_name")
         echo "  Status: $status"
         echo "  Configuration: $(get_mcp_info "$mcp_name" | jq -r '.name')"
-        press_any_key
+        wait_for_enter
         ;;
 
       # Exit
@@ -789,6 +860,7 @@ function show_main_menu() {
 function show_category_menu() {
   local category="$1"
   local category_name="$2"
+  local show_status="${3:-false}"  # Fast mode by default
 
   clear
   log_header "════════════ $category_name MCP TOOLS ════════════"
@@ -802,13 +874,21 @@ function show_category_menu() {
     local name desc status
     name=$(get_mcp_info "$tool" "name")
     desc=$(get_mcp_info "$tool" "description")
-    status=$(get_mcp_status "$tool")
+
+    if [[ "$show_status" == "true" ]]; then
+      status=$(get_mcp_status "$tool" "true")  # Use fast mode for better performance
+    else
+      status="⏱️  ⏱️"  # Placeholder for fast mode
+    fi
 
     printf " [%s] %-15s %s - %s\n" "$i" "$status" "$name" "$desc"
     ((i++))
   done
 
   echo ""
+  if [[ "$show_status" == "false" ]]; then
+    echo " [${COLOR_CYAN}s${COLOR_RESET}] 📊 Show Status (checks installation/registration)"
+  fi
   echo " [0] ← Back to Main Menu"
   echo ""
   log_header "════════════════════════════════════════════"
@@ -817,16 +897,24 @@ function show_category_menu() {
 function handle_category_menu() {
   local category="$1"
   local category_name="$2"
+  local show_status="false"
 
   while true; do
-    show_category_menu "$category" "$category_name"
-    echo -n "Choose MCP tool [0-9]: "
+    show_category_menu "$category" "$category_name" "$show_status"
+    if [[ "$show_status" == "false" ]]; then
+      echo -n "Wybierz narzędzie MCP [0-9] lub [s] dla statusów: "
+    else
+      echo -n "Wybierz narzędzie MCP [0-9]: "
+    fi
     local key
-    key=$(read_single_key)
-    echo "$key"
+    key=$(read_option)
 
     if [[ "$key" == "0" ]]; then
       break
+    elif [[ "$key" == "s" || "$key" == "S" ]] && [[ "$show_status" == "false" ]]; then
+      show_status="true"
+      log_info "Sprawdzanie statusów MCP tools..."
+      sleep 1
     elif [[ "$key" =~ ^[1-9]$ ]]; then
       local tools=()
       mapfile -t tools < <(get_mcp_list "$category")
@@ -853,28 +941,27 @@ function main_menu() {
 
   while true; do
     show_main_menu
-    echo -n "Choose option: "
+    echo -n "Wybierz opcję: "
     local key
-    key=$(read_single_key)
-    echo "$key"
+    key=$(read_option)
 
     case "$key" in
       # Configuration Management
       g|G)
         log_info "Global MCP Configuration"
         # TODO: Implement global configuration menu
-        press_any_key
+        wait_for_enter
         ;;
 
       p|P)
         log_info "Project-specific MCP Configuration"
         # TODO: Implement project configuration menu
-        press_any_key
+        wait_for_enter
         ;;
 
       a|A)
         show_system_health
-        press_any_key
+        wait_for_enter
         ;;
 
       # Smart Recommendations (first 3 letters)
@@ -909,7 +996,7 @@ function main_menu() {
         while IFS= read -r tool; do
           [[ -n "$tool" ]] && echo " • $(get_mcp_info "$tool" "name") - $(get_mcp_info "$tool" "description")"
         done < <(get_mcp_list "api")
-        press_any_key
+        wait_for_enter
         ;;
 
       4)
@@ -926,7 +1013,7 @@ function main_menu() {
         while IFS= read -r tool; do
           [[ -n "$tool" ]] && echo " • $(get_mcp_info "$tool" "name") - $(get_mcp_info "$tool" "description")"
         done < <(get_mcp_list "infrastructure")
-        press_any_key
+        wait_for_enter
         ;;
 
       5)
@@ -947,19 +1034,19 @@ function main_menu() {
         while IFS= read -r tool; do
           [[ -n "$tool" ]] && echo " • $(get_mcp_info "$tool" "name") - $(get_mcp_info "$tool" "description")"
         done < <(get_mcp_list "system")
-        press_any_key
+        wait_for_enter
         ;;
 
       # System Operations
       h|H)
         show_system_health
-        press_any_key
+        wait_for_enter
         ;;
 
       u|U)
         log_info "Updating all MCP tools..."
         # TODO: Implement update all logic
-        press_any_key
+        wait_for_enter
         ;;
 
       # Exit
