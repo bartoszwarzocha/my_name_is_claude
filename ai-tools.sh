@@ -211,6 +211,8 @@ show_manual_setup_guide() {
     echo "  ${COLOR_CYAN}• If WSL performance issues:${COLOR_RESET}"
     echo "    ${COLOR_WHITE}Consider using system packages for faster startup${COLOR_RESET}"
     echo ""
+    echo -n "${COLOR_YELLOW}Press Enter to return to main menu...${COLOR_RESET}"
+    read -r
 }
 
 activate_venv_if_available() {
@@ -855,9 +857,6 @@ run_interactive_menu() {
                 ;;
             "m"|"M")
                 show_manual_setup_guide
-                echo ""
-                echo -n "${COLOR_YELLOW}Press Enter to continue...${COLOR_RESET}"
-                read -r
                 ;;
             "h"|"H")
                 show_help
