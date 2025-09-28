@@ -275,24 +275,18 @@ Agent competencies are defined in `.claude/agents/` directory.
 .claude/hooks/           # Automation scripts
 
 .ai-tools/               # AI-Powered Development Tools
-├── core/                # AI-Powered Agent Selection infrastructure
-│   ├── core/            # Core AI components
-│   │   ├── data_collection_system.py
-│   │   ├── feature_engineering.py
-│   │   ├── workflow_orchestration_engine.py
-│   │   ├── production_deployment.py
-│   │   └── testing_validation_framework.py
-│   ├── models/          # ML models for agent selection
-│   │   └── ensemble_recommender.py
+├── core/                # Core AI components and logic
+│   ├── bin/             # Executable scripts and analyzers
+│   ├── core/            # Technology detection and analysis
+│   ├── demo/            # Demonstrations and tutorials
+│   ├── discovery/       # Agent discovery system
 │   ├── integration/     # Framework integration layer
-│   │   └── ai_agent_selector.py
-│   ├── demo/            # Demonstrations and examples
-│   │   ├── demo_project_analyzer.py
-│   │   └── training_data/
-│   ├── data/            # Training data and datasets
-│   └── bin/             # Executable scripts
+│   └── models/          # System models and interfaces
+├── discovery/           # Agent discovery tools
 ├── setup/               # Installation and configuration tools
-└── workflow/            # Workflow automation tools
+│   └── templates/       # Setup template system
+├── templates/           # Project templates and generators
+└── validation/          # Quality validation tools
 
 project_archive/         # Project documents and research
 ├── designs/             # Technical design documents
@@ -328,10 +322,10 @@ examples/              # Real-world implementation examples
 **Achievements**: Session management (100% complete), agent implementation prompts (high quality), perfect structural compliance
 
 ## Version History
-**Current**: 3.1.0 (Enterprise Analytics-Ready)
+**Current**: 3.2.0 (Clean Architecture & Optimized Systems)
 **Created**: 2025-09-11
-**Major Milestones**: Framework foundation (v2.0.0), agent-prompt integration optimization (v2.1.0), AI tools migration (v2.2.0), documentation reorganization and optimization (v3.0.0), comprehensive quality systems and analytics (v3.1.0)
-**Status**: Real-time monitoring operational, comprehensive quality validation systems, unified agent template standardization complete, enterprise-grade visualization and analytics dashboards, automated terminology consistency checking
+**Major Milestones**: Framework foundation (v2.0.0), agent-prompt integration optimization (v2.1.0), AI tools migration (v2.2.0), documentation reorganization and optimization (v3.0.0), comprehensive quality systems and analytics (v3.1.0), ML dependencies cleanup and system optimization (v3.2.0)
+**Status**: Optimized architecture with cleaned dependencies, enhanced confidence algorithms, mandatory file organization rules, comprehensive quality validation systems, unified agent template standardization complete
 
 ---
 

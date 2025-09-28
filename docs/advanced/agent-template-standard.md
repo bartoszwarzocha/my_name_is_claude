@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Claude Code Multi-Agent Framework v3.1.0 introduces a Unified Agent Template Standard designed to ensure consistency, quality, and integration across all 45 framework agents. This standard provides a comprehensive structure for agent definition while maintaining flexibility for specialized competencies.
+The Claude Code Multi-Agent Framework v3.2.0 introduces a Unified Agent Template Standard designed to ensure consistency, quality, and integration across all 45 framework agents. This standard provides a comprehensive structure for agent definition while maintaining flexibility for specialized competencies.
 
 ## Template Architecture
 
@@ -542,7 +542,7 @@ python .claude/templates/generate-agent-docs.py --agent [agent-name]
 ```python
 # Batch Agent Standardizer Implementation
 class BatchAgentStandardizer:
-    def __init__(self, template_version="3.1.0"):
+    def __init__(self, template_version="3.2.0"):
         self.template_version = template_version
         self.unified_template = load_unified_template()
         self.validation_rules = load_validation_rules()
@@ -576,7 +576,7 @@ class BatchAgentStandardizer:
         return validation_result
 ```
 
-#### Standardization Results (v3.1.0)
+#### Standardization Results (v3.2.0)
 - **Total Agents**: 45
 - **Successfully Standardized**: 43 (95.6%)
 - **Already Compliant**: 2 (4.4%)

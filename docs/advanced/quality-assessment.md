@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Claude Code Multi-Agent Framework v3.1.0 introduces a comprehensive Quality Assessment Framework designed to automatically evaluate, monitor, and improve the overall quality of the framework components, ensuring enterprise-grade standards and continuous improvement.
+The Claude Code Multi-Agent Framework v3.2.0 introduces a comprehensive Quality Assessment Framework designed to automatically evaluate, monitor, and improve the overall quality of the framework components, ensuring enterprise-grade standards and continuous improvement.
 
 ## Architecture
 
@@ -169,7 +169,7 @@ def validate_agent_template(agent_file_path):
 - **Quality Preservation** - Preservation of unique agent value while standardizing format
 - **Validation Checks** - Comprehensive validation of standardized agents
 
-#### Standardization Results (v3.1.0)
+#### Standardization Results (v3.2.0)
 - **Total Agents**: 45
 - **Successfully Standardized**: 43 (95.6%)
 - **Already Compliant**: 2 (4.4%)
