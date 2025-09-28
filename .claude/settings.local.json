@@ -8,7 +8,10 @@
       "Bash(tree:*)",
       "Bash(awk:*)",
       "Bash(sort:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []

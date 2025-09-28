@@ -204,9 +204,8 @@ class SimpleTechnologyDetector:
                 except Exception:
                     pass  # Skip files we can't read
 
-        # 4. Calculate confidence based on detection consistency
-        total_files = sum(1 for _ in self._walk_project(project_path))
-        confidence = min(1.0, (len(languages) + len(frameworks)) / max(5, total_files * 0.1))
+        # 4. Calculate confidence based on detection quality
+        confidence = self._calculate_confidence(languages, frameworks, build_tools, project_path)
 
         # 5. Detect business domain
         business_domain = self._detect_business_domain(project_path, languages, frameworks)
@@ -218,6 +217,57 @@ class SimpleTechnologyDetector:
             confidence=confidence,
             business_domain=business_domain
         )
+
+    def _calculate_confidence(self, languages: set, frameworks: set, build_tools: set, project_path: Path) -> float:
+        """
+        Calculate confidence score based on detection quality metrics
+
+        Confidence factors:
+        - Number of detected technologies (more = better)
+        - Category diversity (languages + frameworks + build_tools)
+        - Presence of configuration files
+        - Not dependent on total file count (unlike old algorithm)
+        """
+        # Base score from detected technologies
+        total_technologies = len(languages) + len(frameworks) + len(build_tools)
+        if total_technologies == 0:
+            return 0.0
+
+        # Technology diversity bonus (0.0 - 0.3)
+        categories_found = 0
+        if languages: categories_found += 1
+        if frameworks: categories_found += 1
+        if build_tools: categories_found += 1
+        diversity_bonus = categories_found * 0.1
+
+        # Configuration files bonus (0.0 - 0.2)
+        config_files_found = 0
+        config_indicators = [
+            'package.json', 'requirements.txt', 'Pipfile', 'pyproject.toml',
+            'pom.xml', 'build.gradle', 'Cargo.toml', 'go.mod', 'composer.json',
+            'Gemfile', 'CMakeLists.txt', 'Makefile', 'vcpkg.json', 'conanfile.txt'
+        ]
+
+        for config_file in config_indicators:
+            if (project_path / config_file).exists():
+                config_files_found += 1
+
+        config_bonus = min(0.2, config_files_found * 0.05)
+
+        # Base confidence from technology count (scaled)
+        # 1-2 techs: 0.3-0.5, 3-5 techs: 0.5-0.7, 6+ techs: 0.7-0.9
+        if total_technologies <= 2:
+            base_confidence = 0.3 + (total_technologies * 0.1)
+        elif total_technologies <= 5:
+            base_confidence = 0.5 + ((total_technologies - 2) * 0.067)
+        else:
+            base_confidence = min(0.9, 0.7 + ((total_technologies - 5) * 0.03))
+
+        # Combine all factors
+        confidence = base_confidence + diversity_bonus + config_bonus
+
+        # Ensure confidence is between 0.0 and 1.0
+        return min(1.0, max(0.0, confidence))
 
     def _walk_project(self, project_path: Path):
         """Walk project directory, skipping common ignore directories"""
