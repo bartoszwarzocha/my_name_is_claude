@@ -102,8 +102,13 @@ ask_question() {
     fi
     echo -n ": "
 
-    read -r response
-    echo "${response:-$default}"
+    # Ensure we're reading from the correct stdin
+    if read -r response </dev/tty; then
+        echo "${response:-$default}"
+    else
+        echo "ERROR: Failed to read user input" >&2
+        echo "$default"
+    fi
 }
 
 ask_yes_no() {
@@ -118,7 +123,7 @@ ask_yes_no() {
         fi
         echo -n ": "
 
-        read -r response
+        read -r response </dev/tty
         response="${response:-$default}"
 
         case "$response" in
@@ -144,7 +149,10 @@ select_from_list() {
     echo ""
 
     while true; do
-        choice=$(ask_question "Select option (1-${#options[@]})" "1")
+        echo -n "${COLOR_CYAN}Select option (1-${#options[@]})${COLOR_RESET} ${COLOR_YELLOW}[1]${COLOR_RESET}: "
+        read -r choice </dev/tty
+        choice="${choice:-1}"
+
         if [[ "$choice" =~ ^[0-9]+$ ]] && [[ "$choice" -ge 1 ]] && [[ "$choice" -le "${#options[@]}" ]]; then
             echo "${options[$((choice-1))]}"
             return 0
@@ -279,12 +287,12 @@ get_agent_recommendations() {
     local agents_output=""
     local attempt=1
     local max_attempts=2
-    local timeout_duration=5  # 5 seconds should be more than enough
+    local timeout_duration=20  # 20 seconds for agent discovery and technology mapping
 
     while [[ $attempt -le $max_attempts && -z "$agents_output" ]]; do
         if [[ $attempt -gt 1 ]]; then
             print_status "info" "Retrying agent recommendations (attempt $attempt/$max_attempts)..."
-            timeout_duration=10  # Only 10 seconds for retry
+            timeout_duration=30  # Increase retry timeout to 30 seconds
         fi
 
         # Run agent selection with timeout and retry
@@ -296,8 +304,17 @@ import os
 
 framework_root = os.environ.get('FRAMEWORK_ROOT')
 project_dir = os.environ.get('PROJECT_DIR')
-ai_tools_path = f'{framework_root}/.ai-tools'
 
+# Debug environment variables
+print(f'DEBUG: FRAMEWORK_ROOT={framework_root}', file=sys.stderr)
+print(f'DEBUG: PROJECT_DIR={project_dir}', file=sys.stderr)
+
+if not framework_root or not project_dir:
+    print('ERROR: Environment variables not set', file=sys.stderr)
+    print('[]')
+    sys.exit(1)
+
+ai_tools_path = f'{framework_root}/.ai-tools'
 sys.path.insert(0, ai_tools_path)
 
 try:
@@ -349,20 +366,29 @@ except Exception as e:
 
     # Process results or fallback
     if [[ -n "$agents_output" && "$agents_output" != "[]" ]]; then
-        readarray -t RECOMMENDED_AGENTS < <(echo "$agents_output" | python3 -c "
+        # Simple JSON parsing - extract just the JSON array part
+        json_part=$(echo "$agents_output" | tail -n 1)
+
+        # Validate it's proper JSON array
+        if echo "$json_part" | python3 -c "import json, sys; json.load(sys.stdin)" 2>/dev/null; then
+            # Parse the JSON array into bash array
+            readarray -t RECOMMENDED_AGENTS < <(echo "$json_part" | python3 -c "
 import json, sys
 agents = json.load(sys.stdin)
 for agent in agents:
     print(agent)
 ")
-        print_status "success" "Generated ${#RECOMMENDED_AGENTS[@]} agent recommendations"
-        return 0
-    else
-        # Fallback recommendations
-        RECOMMENDED_AGENTS=("project-owner" "session-manager" "software-architect" "frontend-engineer" "backend-engineer" "qa-engineer")
-        print_status "warning" "Using fallback agent recommendations"
-        return 1
+            print_status "success" "Generated ${#RECOMMENDED_AGENTS[@]} agent recommendations"
+            return 0
+        else
+            print_status "warning" "Agent recommendations parsing failed, using fallback"
+        fi
     fi
+
+    # Fallback recommendations
+    RECOMMENDED_AGENTS=("project-owner" "session-manager" "software-architect" "frontend-engineer" "backend-engineer" "qa-engineer")
+    print_status "warning" "Using fallback agent recommendations"
+    return 0  # Success with fallback - don't fail entire wizard
 }
 
 # =============================================================================
@@ -415,30 +441,111 @@ phase_2_project_analysis() {
     echo ""
 
     # Agent recommendations with error handling
-    if ! get_agent_recommendations; then
-        print_status "warning" "Agent recommendations failed, using fallback agents"
-        RECOMMENDED_AGENTS=("project-owner" "session-manager" "software-architect" "frontend-engineer" "backend-engineer" "qa-engineer")
-    fi
+    get_agent_recommendations  # Function handles its own fallback logic
     echo ""
 
     # Get project basic info
-    PROJECT_CONFIG[project_name]=$(ask_question "Project name" "$PROJECT_NAME")
-    PROJECT_CONFIG[project_description]=$(ask_question "Project description" "AI-powered development project")
-    PROJECT_CONFIG[project_version]=$(ask_question "Initial version" "1.0.0")
+    echo "🎯 PHASE 3: Project Configuration"
+    echo "============================================================"
+    echo ""
+
+    # Project basic info with inline reads (fixed input handling)
+    echo -n "${COLOR_CYAN}Project name${COLOR_RESET} ${COLOR_YELLOW}[${PROJECT_NAME}]${COLOR_RESET}: "
+    read -r temp_project_name </dev/tty
+    PROJECT_CONFIG[project_name]="${temp_project_name:-$PROJECT_NAME}"
+
+    echo -n "${COLOR_CYAN}Project description${COLOR_RESET} ${COLOR_YELLOW}[AI-powered development project]${COLOR_RESET}: "
+    read -r temp_project_description </dev/tty
+    PROJECT_CONFIG[project_description]="${temp_project_description:-AI-powered development project}"
+
+    echo -n "${COLOR_CYAN}Initial version${COLOR_RESET} ${COLOR_YELLOW}[1.0.0]${COLOR_RESET}: "
+    read -r temp_project_version </dev/tty
+    PROJECT_CONFIG[project_version]="${temp_project_version:-1.0.0}"
 
     echo ""
-    PROJECT_CONFIG[primary_language]=$(select_from_list "Primary programming language" \
-        "TypeScript" "JavaScript" "Python" "Java" "C#" "Go" "Rust" "PHP" "Other")
 
-    PROJECT_CONFIG[business_domain]=$(select_from_list "Business domain" \
-        "web_development" "mobile_development" "data_science" "fintech" "healthcare" \
-        "ecommerce" "education" "gaming" "enterprise" "api_services" "other")
+    # Primary programming language selection (inline to avoid deadlock)
+    echo "${COLOR_CYAN}Primary programming language:${COLOR_RESET}"
+    echo ""
+    languages=("TypeScript" "JavaScript" "Python" "Java" "C#" "Go" "Rust" "PHP" "Other")
+    for i in "${!languages[@]}"; do
+        echo "  ${COLOR_YELLOW}[$((i+1))]${COLOR_RESET} ${languages[$i]}"
+    done
+    echo ""
+    while true; do
+        echo -n "${COLOR_CYAN}Select option (1-${#languages[@]})${COLOR_RESET} ${COLOR_YELLOW}[1]${COLOR_RESET}: "
+        read -r choice </dev/tty
+        choice="${choice:-1}"
+        if [[ "$choice" =~ ^[0-9]+$ ]] && [[ "$choice" -ge 1 ]] && [[ "$choice" -le "${#languages[@]}" ]]; then
+            PROJECT_CONFIG[primary_language]="${languages[$((choice-1))]}"
+            break
+        else
+            echo "${COLOR_RED}Invalid selection. Please choose 1-${#languages[@]}${COLOR_RESET}"
+        fi
+    done
+    echo ""
 
-    PROJECT_CONFIG[project_scale]=$(select_from_list "Project scale" \
-        "startup" "sme" "enterprise")
+    # Business domain selection (inline to avoid deadlock)
+    echo "${COLOR_CYAN}Business domain:${COLOR_RESET}"
+    echo ""
+    domains=("web_development" "mobile_development" "data_science" "fintech" "healthcare" "ecommerce" "education" "gaming" "enterprise" "api_services" "other")
+    for i in "${!domains[@]}"; do
+        echo "  ${COLOR_YELLOW}[$((i+1))]${COLOR_RESET} ${domains[$i]}"
+    done
+    echo ""
+    while true; do
+        echo -n "${COLOR_CYAN}Select option (1-${#domains[@]})${COLOR_RESET} ${COLOR_YELLOW}[1]${COLOR_RESET}: "
+        read -r choice </dev/tty
+        choice="${choice:-1}"
+        if [[ "$choice" =~ ^[0-9]+$ ]] && [[ "$choice" -ge 1 ]] && [[ "$choice" -le "${#domains[@]}" ]]; then
+            PROJECT_CONFIG[business_domain]="${domains[$((choice-1))]}"
+            break
+        else
+            echo "${COLOR_RED}Invalid selection. Please choose 1-${#domains[@]}${COLOR_RESET}"
+        fi
+    done
+    echo ""
 
-    PROJECT_CONFIG[development_stage]=$(select_from_list "Development stage" \
-        "planning" "development" "testing" "production" "maintenance")
+    # Project scale selection (inline to avoid deadlock)
+    echo "${COLOR_CYAN}Project scale:${COLOR_RESET}"
+    echo ""
+    scales=("startup" "sme" "enterprise")
+    for i in "${!scales[@]}"; do
+        echo "  ${COLOR_YELLOW}[$((i+1))]${COLOR_RESET} ${scales[$i]}"
+    done
+    echo ""
+    while true; do
+        echo -n "${COLOR_CYAN}Select option (1-${#scales[@]})${COLOR_RESET} ${COLOR_YELLOW}[1]${COLOR_RESET}: "
+        read -r choice </dev/tty
+        choice="${choice:-1}"
+        if [[ "$choice" =~ ^[0-9]+$ ]] && [[ "$choice" -ge 1 ]] && [[ "$choice" -le "${#scales[@]}" ]]; then
+            PROJECT_CONFIG[project_scale]="${scales[$((choice-1))]}"
+            break
+        else
+            echo "${COLOR_RED}Invalid selection. Please choose 1-${#scales[@]}${COLOR_RESET}"
+        fi
+    done
+    echo ""
+
+    # Development stage selection (inline to avoid deadlock)
+    echo "${COLOR_CYAN}Development stage:${COLOR_RESET}"
+    echo ""
+    stages=("planning" "development" "testing" "production" "maintenance")
+    for i in "${!stages[@]}"; do
+        echo "  ${COLOR_YELLOW}[$((i+1))]${COLOR_RESET} ${stages[$i]}"
+    done
+    echo ""
+    while true; do
+        echo -n "${COLOR_CYAN}Select option (1-${#stages[@]})${COLOR_RESET} ${COLOR_YELLOW}[1]${COLOR_RESET}: "
+        read -r choice </dev/tty
+        choice="${choice:-1}"
+        if [[ "$choice" =~ ^[0-9]+$ ]] && [[ "$choice" -ge 1 ]] && [[ "$choice" -le "${#stages[@]}" ]]; then
+            PROJECT_CONFIG[development_stage]="${stages[$((choice-1))]}"
+            break
+        else
+            echo "${COLOR_RED}Invalid selection. Please choose 1-${#stages[@]}${COLOR_RESET}"
+        fi
+    done
 }
 
 phase_3_technology_configuration() {
@@ -457,9 +564,9 @@ phase_3_technology_configuration() {
 
     if ask_yes_no "Add additional technologies manually?"; then
         echo ""
-        echo "Enter additional technologies (comma-separated):"
+        echo -n "${COLOR_CYAN}Additional technologies (comma-separated)${COLOR_RESET}: "
         local additional_techs
-        additional_techs=$(ask_question "Additional technologies" "")
+        read -r additional_techs </dev/tty
 
         if [[ -n "$additional_techs" ]]; then
             IFS=',' read -ra ADDR <<< "$additional_techs"
@@ -493,8 +600,9 @@ phase_4_agent_selection() {
         echo "  ${COLOR_CYAN}• devops-architect${COLOR_RESET} - For complex deployment needs"
         echo ""
 
+        echo -n "${COLOR_CYAN}Add agents (comma-separated)${COLOR_RESET}: "
         local additional_agents
-        additional_agents=$(ask_question "Add agents (comma-separated)" "")
+        read -r additional_agents </dev/tty
 
         if [[ -n "$additional_agents" ]]; then
             IFS=',' read -ra ADDR <<< "$additional_agents"

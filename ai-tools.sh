@@ -213,6 +213,7 @@ show_manual_setup_guide() {
     echo ""
     echo -n "${COLOR_YELLOW}Press Enter to return to main menu...${COLOR_RESET}"
     read -r
+    return 0
 }
 
 activate_venv_if_available() {
@@ -260,7 +261,6 @@ activate_venv_if_available() {
                 ;;
             [Mm]*)
                 show_manual_setup_guide
-                return 1
                 ;;
             [Ss]*)
                 print_status "info" "Continuing in fallback mode (limited AI features)"
@@ -293,7 +293,6 @@ activate_venv_if_available() {
                 ;;
             [Mm]*)
                 show_manual_setup_guide
-                return 1
                 ;;
             [Ss]*)
                 print_status "info" "Continuing in fallback mode (limited AI features)"
