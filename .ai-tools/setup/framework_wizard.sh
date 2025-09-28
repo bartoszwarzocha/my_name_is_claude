@@ -464,10 +464,62 @@ phase_2_project_analysis() {
 
     echo ""
 
-    # Primary programming language selection (inline to avoid deadlock)
+    # Primary programming language selection (detected first, then supplementary)
     echo "${COLOR_CYAN}Primary programming language:${COLOR_RESET}"
     echo ""
-    languages=("TypeScript" "JavaScript" "Python" "Java" "C#" "Go" "Rust" "PHP" "Other")
+
+    # Build dynamic language list: detected first, then supplementary without duplicates
+    local detected_langs=()
+    local supplementary_langs=("TypeScript" "JavaScript" "Python" "Java" "C#" "Go" "Rust" "PHP" "Ruby" "Swift" "Kotlin" "Scala" "C" "C++" "Dart" "Other")
+
+    # Extract programming languages from detected technologies
+    for tech in "${DETECTED_TECHNOLOGIES[@]}"; do
+        tech_lower=$(echo "$tech" | tr '[:upper:]' '[:lower:]')
+        case "$tech_lower" in
+            "python"|"javascript"|"typescript"|"java"|"c++"|"c#"|"go"|"rust"|"php"|"ruby"|"swift"|"kotlin"|"scala"|"c"|"dart")
+                detected_langs+=("$tech")
+                ;;
+        esac
+    done
+
+    # Build final languages array: detected first, then supplementary (no duplicates)
+    local languages=()
+
+    # Add detected languages first
+    if [[ ${#detected_langs[@]} -gt 0 ]]; then
+        echo "  ${COLOR_GREEN}📍 Detected languages:${COLOR_RESET}"
+        for lang in "${detected_langs[@]}"; do
+            languages+=("$lang")
+        done
+        echo ""
+    fi
+
+    # Add supplementary languages (skip duplicates)
+    local added_supplementary=false
+    for supp_lang in "${supplementary_langs[@]}"; do
+        local is_duplicate=false
+        for det_lang in "${detected_langs[@]}"; do
+            if [[ "${supp_lang,,}" == "${det_lang,,}" ]]; then
+                is_duplicate=true
+                break
+            fi
+        done
+
+        if [[ "$is_duplicate" == false ]]; then
+            if [[ "$added_supplementary" == false ]]; then
+                echo "  ${COLOR_YELLOW}📋 Additional options:${COLOR_RESET}"
+                added_supplementary=true
+            fi
+            languages+=("$supp_lang")
+
+            # Limit to ~15 total options
+            if [[ ${#languages[@]} -ge 15 ]]; then
+                break
+            fi
+        fi
+    done
+
+    echo ""
     for i in "${!languages[@]}"; do
         echo "  ${COLOR_YELLOW}[$((i+1))]${COLOR_RESET} ${languages[$i]}"
     done
@@ -488,7 +540,7 @@ phase_2_project_analysis() {
     # Business domain selection (inline to avoid deadlock)
     echo "${COLOR_CYAN}Business domain:${COLOR_RESET}"
     echo ""
-    domains=("web_development" "mobile_development" "data_science" "fintech" "healthcare" "ecommerce" "education" "gaming" "enterprise" "api_services" "other")
+    domains=("development_library" "software_framework" "web_development" "mobile_development" "desktop_application" "game_development" "graphics_engine" "data_science" "machine_learning" "fintech" "healthcare" "ecommerce" "education" "enterprise_software" "api_services" "devops_tools" "security_tools" "testing_framework" "other")
     for i in "${!domains[@]}"; do
         echo "  ${COLOR_YELLOW}[$((i+1))]${COLOR_RESET} ${domains[$i]}"
     done
@@ -509,7 +561,7 @@ phase_2_project_analysis() {
     # Project scale selection (inline to avoid deadlock)
     echo "${COLOR_CYAN}Project scale:${COLOR_RESET}"
     echo ""
-    scales=("startup" "sme" "enterprise")
+    scales=("startup (small team, rapid development)" "sme (Small-Medium Enterprise, structured processes)" "enterprise (large scale, complex requirements)")
     for i in "${!scales[@]}"; do
         echo "  ${COLOR_YELLOW}[$((i+1))]${COLOR_RESET} ${scales[$i]}"
     done
@@ -519,7 +571,9 @@ phase_2_project_analysis() {
         read -r choice </dev/tty
         choice="${choice:-1}"
         if [[ "$choice" =~ ^[0-9]+$ ]] && [[ "$choice" -ge 1 ]] && [[ "$choice" -le "${#scales[@]}" ]]; then
-            PROJECT_CONFIG[project_scale]="${scales[$((choice-1))]}"
+            # Extract just the key part (before the space)
+            local scale_choice="${scales[$((choice-1))]}"
+            PROJECT_CONFIG[project_scale]="${scale_choice%% *}"
             break
         else
             echo "${COLOR_RED}Invalid selection. Please choose 1-${#scales[@]}${COLOR_RESET}"
@@ -586,7 +640,29 @@ phase_4_agent_selection() {
     echo ""
 
     for i in "${!RECOMMENDED_AGENTS[@]}"; do
-        echo "  ${COLOR_GREEN}$((i+1)).${COLOR_RESET} ${RECOMMENDED_AGENTS[$i]}"
+        local agent_name="${RECOMMENDED_AGENTS[$i]}"
+        local agent_spec=""
+
+        # Get agent specializations based on agent name patterns
+        case "$agent_name" in
+            *"frontend"*) agent_spec="${COLOR_CYAN}Frontend: React, Vue, Angular, TypeScript${COLOR_RESET}" ;;
+            *"backend"*) agent_spec="${COLOR_CYAN}Backend: APIs, databases, server-side logic${COLOR_RESET}" ;;
+            *"api"*) agent_spec="${COLOR_CYAN}APIs: REST, GraphQL, microservices${COLOR_RESET}" ;;
+            *"data"*) agent_spec="${COLOR_CYAN}Data: ML, analytics, data pipelines${COLOR_RESET}" ;;
+            *"security"*) agent_spec="${COLOR_CYAN}Security: authentication, encryption, compliance${COLOR_RESET}" ;;
+            *"qa"*|*"quality"*) agent_spec="${COLOR_CYAN}Quality: testing, automation, CI/CD${COLOR_RESET}" ;;
+            *"deployment"*|*"devops"*) agent_spec="${COLOR_CYAN}Deployment: Docker, Kubernetes, cloud${COLOR_RESET}" ;;
+            *"mobile"*) agent_spec="${COLOR_CYAN}Mobile: iOS, Android, React Native${COLOR_RESET}" ;;
+            *"desktop"*) agent_spec="${COLOR_CYAN}Desktop: wxWidgets, Qt, Electron${COLOR_RESET}" ;;
+            *"graphics"*) agent_spec="${COLOR_CYAN}Graphics: OpenGL, Vulkan, 3D/2D rendering${COLOR_RESET}" ;;
+            *"performance"*) agent_spec="${COLOR_CYAN}Performance: optimization, profiling, scalability${COLOR_RESET}" ;;
+            *"project-owner"*) agent_spec="${COLOR_CYAN}Management: project coordination, planning${COLOR_RESET}" ;;
+            *"session-manager"*) agent_spec="${COLOR_CYAN}Framework: session management, context${COLOR_RESET}" ;;
+            *"architect"*) agent_spec="${COLOR_CYAN}Architecture: system design, patterns${COLOR_RESET}" ;;
+            *) agent_spec="${COLOR_CYAN}General: project development support${COLOR_RESET}" ;;
+        esac
+
+        echo "  ${COLOR_GREEN}$((i+1)).${COLOR_RESET} ${agent_name} ${COLOR_GRAY}→${COLOR_RESET} $agent_spec"
     done
 
     echo ""
@@ -782,13 +858,24 @@ phase_7_completion() {
     if ask_yes_no "Open CLAUDE.md for review?"; then
         if command -v code >/dev/null 2>&1; then
             code "$TARGET_CLAUDE_MD"
+            echo ""
+            echo "${COLOR_GREEN}✅ CLAUDE.md opened in VS Code${COLOR_RESET}"
         elif command -v nano >/dev/null 2>&1; then
             nano "$TARGET_CLAUDE_MD"
+            echo ""
+            echo "${COLOR_GREEN}✅ CLAUDE.md editor closed${COLOR_RESET}"
         else
             echo "${COLOR_CYAN}Generated CLAUDE.md:${COLOR_RESET}"
             echo "Path: $TARGET_CLAUDE_MD"
         fi
     fi
+
+    echo ""
+    echo "${COLOR_GREEN}${COLOR_BOLD}🎉 Framework Setup Complete!${COLOR_RESET}"
+    echo "${COLOR_CYAN}The Claude Code Multi-Agent Framework has been successfully configured for your project.${COLOR_RESET}"
+    echo ""
+    echo -n "${COLOR_YELLOW}Press Enter to finish...${COLOR_RESET}"
+    read -r </dev/tty
 
     echo ""
     print_status "success" "Welcome to the Claude Code Multi-Agent Framework! ${ICON_ROCKET}"
