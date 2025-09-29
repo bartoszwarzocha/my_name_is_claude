@@ -37,7 +37,8 @@
       "Bash(time:*)",
       "Bash(./work/test_performance.sh:*)",
       "Bash(./work/test_fast_checks.sh:*)",
-      "Bash(./work/test_full_workflow.sh:*)"
+      "Bash(./work/test_full_workflow.sh:*)",
+      "Bash(./ai-tools.sh status:*)"
     ],
     "deny": [],
     "ask": []

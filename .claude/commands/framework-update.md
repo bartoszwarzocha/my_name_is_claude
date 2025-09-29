@@ -15,7 +15,7 @@ Arguments: $ARGUMENTS
 
 **Argument Handling Logic:**
 - Parse arguments to understand update scope and version
-- If version specified: Update to specific version (e.g., "v3.2.0", "latest", "stable")
+- If version specified: Update to specific version (e.g., "v3.2.1", "latest", "stable")
 - If specific components mentioned: Update only those components (e.g., "agents", "prompts", "tools")
 - If no arguments or empty: Perform complete framework update to latest stable version
 

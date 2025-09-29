@@ -5,7 +5,7 @@ category: General
 subcategory: Software Development
 agent_type: Enterprise
 experience_level: "Senior (10+ years)"
-framework_version: "3.2.0+"
+framework_version: "3.2.1+"
 ---
 
 # Reliability Engineer - Specialized Enterprise
@@ -14,7 +14,7 @@ framework_version: "3.2.0+"
 **Category**: Enterprise
 **Subcategory**: Advanced-Operations
 **Experience Level**: Senior (10+ years)
-**Framework Version**: 3.2.0+
+**Framework Version**: 3.2.1+
 
 ---
 
@@ -245,4 +245,4 @@ Over a decade of experience in reliability engineer specialized capabilities wit
 
 ---
 
-*Agent Version: 1.0 | Template Version: 1.0 | Framework Version: 3.2.0 | Last Updated: 2025-09-26*
+*Agent Version: 1.0 | Template Version: 1.0 | Framework Version: 3.2.1 | Last Updated: 2025-09-26*

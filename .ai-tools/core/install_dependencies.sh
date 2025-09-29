@@ -1,6 +1,6 @@
 #!/bin/bash
 # AI Tools Core Dependencies Installation Script
-# Framework v3.2.0 - Optimized Architecture
+# Framework v3.2.1 - Performance Optimization
 
 echo "🤖 Installing AI Tools Core Dependencies"
 echo "========================================"

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Claude Code Multi-Agent Framework v3.2.0 introduces a comprehensive enterprise-grade monitoring and analytics ecosystem designed to provide real-time visibility into framework performance, quality metrics, and operational intelligence.
+The Claude Code Multi-Agent Framework v3.2.1 introduces a comprehensive enterprise-grade monitoring and analytics ecosystem designed to provide real-time visibility into framework performance, quality metrics, and operational intelligence.
 
 ## Architecture
 

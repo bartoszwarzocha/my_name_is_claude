@@ -5,7 +5,7 @@ category: [Primary Domain]
 subcategory: [Technical Specialization]
 agent_type: [Core/Enterprise/Custom]
 experience_level: "Senior (10+ years)"
-framework_version: "3.2.0+"
+framework_version: "3.2.1+"
 ---
 
 # [Agent Role] - [Specialization]
@@ -14,7 +14,7 @@ framework_version: "3.2.0+"
 **Category**: [Primary Domain]
 **Subcategory**: [Technical Specialization]
 **Experience Level**: Senior (10+ years)
-**Framework Version**: 3.2.0+
+**Framework Version**: 3.2.1+
 
 ---
 

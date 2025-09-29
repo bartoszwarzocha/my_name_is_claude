@@ -18,7 +18,7 @@ set -e
 # =============================================================================
 
 readonly SCRIPT_VERSION="1.1.0"
-readonly FRAMEWORK_VERSION="3.2.0"
+readonly FRAMEWORK_VERSION="3.2.1"
 readonly SCRIPT_NAME="Framework Copy Script"
 
 # Colors for output

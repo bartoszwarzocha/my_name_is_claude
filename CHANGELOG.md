@@ -5,6 +5,38 @@ All notable changes to the Claude Code Multi-Agent Framework will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.1] - 2025-09-29
+
+### Performance Optimization & System Cleanup - Patch Release
+
+Critical maintenance release focusing on framework performance optimization, MCP tools enhancement, wizard improvements, and comprehensive system cleanup for improved stability and user experience.
+
+### Enhanced
+- **🚀 MCP Tools Performance** - Significant optimization of MCP tools script execution and reliability
+- **🎯 Framework Wizard UI/UX** - Major improvements to setup wizard interface with enhanced user experience
+- **⚡ Input Handling** - Fixed framework wizard input handling deadlocks and improved responsiveness
+- **📚 Setup Guides** - Complete removal of duplicate prompts in manual setup guides
+- **🔧 ML Dependencies** - Comprehensive cleanup of unused ML dependencies and optimized package installation
+- **🧠 AI/ML Detection** - Restored accurate AI/ML project detection capabilities after cleanup
+
+### Fixed
+- **🔍 Technology Detection** - Enhanced accuracy for C++ project detection and framework identification
+- **📋 CLAUDE.md Formatting** - Improved list formatting with proper spacing after commas
+- **⚙️ Template Manager** - Resolved hanging issues in ML package installation and template management
+- **🎮 Manual Setup** - Fixed double Enter prompt issues in ai-tools.sh manual setup guide
+- **📁 File Organization** - Strengthened mandatory file organization rules with clarifying guidelines
+
+### Added
+- **📝 Clarifying Rules** - Added non-negotiable file organization rules to CLAUDE.md for improved project structure
+- **🔒 Gitignore Management** - Automatic .gitignore management in copy_framework_to_project.sh
+- **📊 Performance Monitoring** - Enhanced framework performance tracking and optimization systems
+
+### Technical Improvements
+- **Framework Name Consistency** - Standardized framework naming across all components
+- **Confidence Algorithm** - Improved AI confidence algorithms after ML dependencies cleanup
+- **Architecture Optimization** - Cleaned and optimized framework architecture for better performance
+- **Quality Validation** - Enhanced automated quality validation systems
+
 ## [3.2.0] - 2025-09-27
 
 ### Slash Commands System & Documentation Tools - Minor Release
