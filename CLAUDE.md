@@ -47,7 +47,7 @@ Agent competencies are defined in `.claude/agents/` directory.
 **Style**: Readability first, functional design (WHAT not HOW), consistent naming, comprehensive documentation
 **Agent Rules**: English files, Polish/English conversations, no quantitative documentation, professional communication, specific error handling, clear collaboration, enterprise quality
 
-## File Organization Rules - BEZDYSKUSYJNE I OBOWIĄZKOWE
+## File Organization Rules - MANDATORY
 **CRITICAL**: These rules are NON-NEGOTIABLE and MUST be followed without exception:
 
 1. **TEMPORARY AND WORKING FILES** → `/work/` directory ONLY
@@ -55,12 +55,12 @@ Agent competencies are defined in `.claude/agents/` directory.
    - Scripts created during development/debugging process
    - Any file that is not permanent part of the framework
    - **NEVER create these files in project root or any other location**
-
 2. **CONCEPTUAL AND DEVELOPMENT DOCUMENTATION** → `/project_archive/` directory ONLY
    - Conceptual files, implementation reports, development notes
    - Execution reports, analysis documents, research findings
    - Development files, design documents, implementation guides
    - **ALL non-code documentation that describes development process**
+3. **CLARIFYING INTENT** → ALWAYS ask clarifying questions whenever it is less than 90% confident in user intent
 
 **VIOLATION OF THESE RULES IS UNACCEPTABLE AND MUST BE IMMEDIATELY CORRECTED**
 
@@ -73,7 +73,7 @@ Agent competencies are defined in `.claude/agents/` directory.
 - **Enterprise**: Complete system + external integration
 
 ## Project Ownership
-**Team**: Claude Code Multi-Agent Framework Team with distributed AI agent architecture
+**Team**: Bartosz Warzocha & 'My Name Is Clode' Claude Code Multi-Agent Framework Team with distributed AI agent architecture
 **Interface**: Claude Code CLI, comprehensive documentation, TodoWrite integration, Git-based collaboration
 **Governance**: Continuous improvement, automated quality control, security oversight, performance monitoring
 
