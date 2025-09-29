@@ -35,6 +35,9 @@ ai_tools_OLD_BACKUP/
 ai_training_data/
 agent_selections/
 
+# MCP Serena project files
+.serena/
+
 # Temporary pip files
 =*
 
