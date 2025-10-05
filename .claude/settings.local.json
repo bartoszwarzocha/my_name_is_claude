@@ -50,7 +50,10 @@
       "Bash(while read line)",
       "Bash(do echo \"Feature enabled: $line\")",
       "Bash(/mnt/e/AI/my_name_is_claude/work/model-config-tests/test-suite.sh)",
-      "Bash(/mnt/e/AI/my_name_is_claude/work/model-config-tests/usage-examples.sh)"
+      "Bash(/mnt/e/AI/my_name_is_claude/work/model-config-tests/usage-examples.sh)",
+      "Bash(./work/validate_links.sh:*)",
+      "Bash(do)",
+      "mcp__serena__find_symbol"
     ],
     "deny": [],
     "ask": []

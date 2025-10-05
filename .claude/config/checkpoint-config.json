@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "3.7.0",
+  "description": "Advanced Checkpoint System - Revolutionary state management with semantic rollback",
+  "lastUpdated": "2025-10-05",
+
+  "enabled": true,
+  "autoCheckpointEnabled": true,
+
+  "checkpointLevels": {
+    "agent_execution": {
+      "enabled": true,
+      "description": "Checkpoint before and after agent execution",
+      "auto_trigger": true,
+      "retention_count": 50,
+      "retention_days": 7
+    },
+    "quality_gate": {
+      "enabled": true,
+      "description": "Checkpoint before critical quality validation",
+      "auto_trigger": true,
+      "retention_count": 30,
+      "retention_days": 14
+    },
+    "commit_preparation": {
+      "enabled": true,
+      "description": "Checkpoint before git commit",
+      "auto_trigger": true,
+      "retention_count": 100,
+      "retention_days": 30
+    },
+    "manual": {
+      "enabled": true,
+      "description": "User-created checkpoints",
+      "auto_trigger": false,
+      "retention_count": 200,
+      "retention_days": 90
+    }
+  },
+
+  "autoTriggers": {
+    "pre_agent_execution": {
+      "enabled": true,
+      "agents": ["all"],
+      "exclude_agents": ["qa-engineer"],
+      "checkpoint_level": "agent_execution",
+      "label_format": "before_{agent_type}_{timestamp}"
+    },
+    "post_agent_success": {
+      "enabled": true,
+      "agents": ["all"],
+      "checkpoint_level": "agent_execution",
+      "label_format": "after_{agent_type}_success_{timestamp}"
+    },
+    "pre_quality_gate": {
+      "enabled": true,
+      "quality_gates": ["pre-commit", "pre-push", "pre-deploy"],
+      "checkpoint_level": "quality_gate",
+      "label_format": "before_{gate_name}_{timestamp}"
+    },
+    "pre_commit": {
+      "enabled": true,
+      "checkpoint_level": "commit_preparation",
+      "label_format": "before_commit_{timestamp}",
+      "include_staged_files": true
+    },
+    "pre_refactoring": {
+      "enabled": true,
+      "keywords": ["refactor", "redesign", "restructure"],
+      "checkpoint_level": "agent_execution",
+      "label_format": "before_refactoring_{timestamp}"
+    },
+    "critical_operation": {
+      "enabled": true,
+      "operations": ["database_migration", "deployment", "major_update"],
+      "checkpoint_level": "manual",
+      "label_format": "before_{operation}_{timestamp}"
+    }
+  },
+
+  "semanticLabeling": {
+    "enabled": true,
+    "categories": {
+      "feature": {
+        "keywords": ["implement", "add", "create", "new"],
+        "color": "green",
+        "icon": "✨"
+      },
+      "bugfix": {
+        "keywords": ["fix", "bug", "issue", "error"],
+        "color": "red",
+        "icon": "🐛"
+      },
+      "refactoring": {
+        "keywords": ["refactor", "restructure", "redesign", "optimize"],
+        "color": "blue",
+        "icon": "♻️"
+      },
+      "testing": {
+        "keywords": ["test", "spec", "unit", "integration"],
+        "color": "yellow",
+        "icon": "🧪"
+      },
+      "documentation": {
+        "keywords": ["docs", "readme", "documentation", "guide"],
+        "color": "purple",
+        "icon": "📚"
+      },
+      "architecture": {
+        "keywords": ["architecture", "design", "structure", "system"],
+        "color": "orange",
+        "icon": "🏗️"
+      }
+    },
+    "auto_categorize": true
+  },
+
+  "rollbackPolicies": {
+    "validate_before_rollback": true,
+    "create_rollback_checkpoint": true,
+    "preserve_current_state": true,
+    "conflict_resolution": "interactive",
+    "safety_checks": {
+      "check_uncommitted_changes": true,
+      "warn_on_file_conflicts": true,
+      "verify_checkpoint_integrity": true
+    }
+  },
+
+  "storage": {
+    "base_path": ".ai-tools/checkpoint/storage",
+    "compression": "gzip",
+    "max_checkpoint_size_mb": 100,
+    "max_total_storage_gb": 5,
+    "cleanup_policy": "oldest_first",
+    "metadata_format": "json"
+  },
+
+  "checkpointContent": {
+    "include_files": true,
+    "include_git_state": true,
+    "include_session_context": true,
+    "include_agent_state": true,
+    "include_todo_state": true,
+    "exclude_patterns": [
+      "node_modules/**",
+      ".venv/**",
+      "*.pyc",
+      "__pycache__/**",
+      ".git/objects/**",
+      "*.log"
+    ]
+  },
+
+  "multiAgentCoordination": {
+    "enabled": true,
+    "per_agent_checkpoints": true,
+    "parallel_agent_safety": true,
+    "agent_isolation": true,
+    "conflict_detection": {
+      "enabled": true,
+      "auto_merge": false,
+      "require_manual_resolution": true
+    }
+  },
+
+  "quickRewind": {
+    "enabled": true,
+    "semantic_search": true,
+    "fuzzy_matching": true,
+    "examples": {
+      "by_description": "rewind to 'before bug fix'",
+      "by_time": "rewind to '2 hours ago'",
+      "by_agent": "rewind to 'last software-architect checkpoint'",
+      "by_category": "rewind to 'last working state'",
+      "by_count": "rewind 3 steps"
+    }
+  },
+
+  "visualization": {
+    "checkpoint_timeline": true,
+    "agent_activity_graph": true,
+    "rollback_history": true,
+    "export_formats": ["json", "html", "markdown"]
+  },
+
+  "performance": {
+    "async_checkpoint_creation": true,
+    "parallel_file_processing": true,
+    "incremental_checkpoints": true,
+    "delta_compression": true,
+    "max_checkpoint_time_seconds": 30
+  },
+
+  "notifications": {
+    "checkpoint_created": {
+      "enabled": true,
+      "channels": ["console"],
+      "format": "✅ Checkpoint created: {label}"
+    },
+    "rollback_completed": {
+      "enabled": true,
+      "channels": ["console", "desktop"],
+      "format": "⏮️ Rolled back to: {label}"
+    },
+    "auto_cleanup": {
+      "enabled": true,
+      "channels": ["console"],
+      "format": "🧹 Cleaned up {count} old checkpoints"
+    }
+  },
+
+  "integrations": {
+    "session_manager": {
+      "enabled": true,
+      "sync_checkpoints_with_sessions": true,
+      "restore_session_on_rollback": true
+    },
+    "todowrite": {
+      "enabled": true,
+      "checkpoint_todo_state": true,
+      "restore_todos_on_rollback": true
+    },
+    "quality_gates": {
+      "enabled": true,
+      "auto_checkpoint_before_gates": true,
+      "rollback_on_gate_failure": false
+    },
+    "git": {
+      "enabled": true,
+      "track_git_state": true,
+      "warn_on_uncommitted_changes": true
+    }
+  },
+
+  "cli": {
+    "commands": {
+      "create": "checkpoint create [label] [--manual|--level <level>]",
+      "list": "checkpoint list [--filter <category>] [--last <n>]",
+      "rewind": "checkpoint rewind <target> [--dry-run]",
+      "delete": "checkpoint delete <checkpoint_id> [--force]",
+      "info": "checkpoint info <checkpoint_id>",
+      "timeline": "checkpoint timeline [--visual]",
+      "cleanup": "checkpoint cleanup [--older-than <days>]"
+    }
+  },
+
+  "experimentalFeatures": {
+    "ai_checkpoint_suggestions": {
+      "enabled": false,
+      "description": "AI suggests optimal checkpoint timing",
+      "confidence_threshold": 0.85
+    },
+    "predictive_rollback": {
+      "enabled": false,
+      "description": "Predict rollback needs before failures",
+      "accuracy_target": 0.90
+    },
+    "cross_session_checkpoints": {
+      "enabled": false,
+      "description": "Share checkpoints across development sessions",
+      "team_collaboration": false
+    }
+  }
+}

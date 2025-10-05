@@ -1,12 +1,12 @@
 # My Name Is Claude - Multi-Agent Framework
 
-[![Version](https://img.shields.io/badge/Version-3.6.0-FF6B35?style=flat-square&logo=tag&logoColor=white)](CHANGELOG.md) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Framework-FF6B35?style=flat-square&logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code) [![Fortune 500 Ready](https://img.shields.io/badge/Fortune%20500-Ready-00aa00?style=flat-square&logo=enterprise&logoColor=white)](#) [![Cost Optimized](https://img.shields.io/badge/Cost-50%25%20Savings-00aa00?style=flat-square&logo=dollar&logoColor=white)](#) [![MIT License](https://img.shields.io/badge/License-MIT-00aaff?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-3.7.0-FF6B35?style=flat-square&logo=tag&logoColor=white)](CHANGELOG.md) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Framework-FF6B35?style=flat-square&logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code) [![Fortune 500 Ready](https://img.shields.io/badge/Fortune%20500-Ready-00aa00?style=flat-square&logo=enterprise&logoColor=white)](#) [![Cost Optimized](https://img.shields.io/badge/Cost-50%25%20Savings-00aa00?style=flat-square&logo=dollar&logoColor=white)](#) [![MIT License](https://img.shields.io/badge/License-MIT-00aaff?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ## Enterprise-Grade Multi-Agent Development Framework
 
 Enterprise-grade development framework featuring **intelligent cost optimization** (50% API savings), **context-aware communication styles**, **advanced checkpoint architecture**, **parallel agent execution**, **background task management**, real-time monitoring, quality assurance systems, AI-powered agent selection, and comprehensive multi-agent coordination for Fortune 500 software development.
 
-**Current Version:** 3.6.0 | **Release Date:** October 5, 2025
+**Current Version:** 3.7.0 | **Release Date:** October 5, 2025
 
 ---
 
