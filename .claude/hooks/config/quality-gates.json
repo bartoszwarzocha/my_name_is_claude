@@ -1,0 +1,245 @@
+{
+  "version": "3.4.0",
+  "description": "Quality Gate Definitions and Thresholds",
+
+  "pre_commit": {
+    "enabled": true,
+    "blocking": true,
+    "timeout_seconds": 300,
+    "gates": [
+      {
+        "name": "code-linting",
+        "priority": "high",
+        "hooks": ["lint-code.py"],
+        "failure_action": "block",
+        "thresholds": {
+          "max_errors": 0,
+          "max_warnings": 10
+        }
+      },
+      {
+        "name": "type-checking",
+        "priority": "high",
+        "hooks": ["type-check.py"],
+        "failure_action": "block",
+        "thresholds": {
+          "max_errors": 0
+        }
+      },
+      {
+        "name": "unit-tests",
+        "priority": "critical",
+        "hooks": ["unit-tests.py"],
+        "failure_action": "block",
+        "thresholds": {
+          "min_coverage_percent": 80,
+          "min_pass_rate": 100
+        }
+      },
+      {
+        "name": "security-scan",
+        "priority": "critical",
+        "hooks": ["security-scan.py"],
+        "failure_action": "block",
+        "thresholds": {
+          "max_high_severity": 0,
+          "max_medium_severity": 5
+        }
+      },
+      {
+        "name": "format-validation",
+        "priority": "medium",
+        "hooks": ["validate-formatting.py"],
+        "failure_action": "warn",
+        "auto_fix": true
+      }
+    ]
+  },
+
+  "pre_push": {
+    "enabled": true,
+    "blocking": true,
+    "timeout_seconds": 600,
+    "gates": [
+      {
+        "name": "integration-tests",
+        "priority": "critical",
+        "hooks": ["integration-tests.py"],
+        "failure_action": "block",
+        "thresholds": {
+          "min_pass_rate": 95,
+          "max_flakiness_percent": 5
+        }
+      },
+      {
+        "name": "performance-tests",
+        "priority": "high",
+        "hooks": ["performance-tests.py"],
+        "failure_action": "block",
+        "thresholds": {
+          "max_response_time_ms": 2000,
+          "max_memory_usage_mb": 1000,
+          "min_throughput_rps": 100
+        }
+      },
+      {
+        "name": "coverage-validation",
+        "priority": "critical",
+        "hooks": ["coverage-check.py"],
+        "failure_action": "block",
+        "thresholds": {
+          "min_line_coverage": 80,
+          "min_branch_coverage": 75,
+          "min_function_coverage": 85
+        }
+      },
+      {
+        "name": "dependency-audit",
+        "priority": "high",
+        "hooks": ["dependency-audit.py"],
+        "failure_action": "warn",
+        "thresholds": {
+          "max_critical_vulnerabilities": 0,
+          "max_high_vulnerabilities": 0,
+          "max_outdated_dependencies": 10
+        }
+      }
+    ]
+  },
+
+  "pre_deploy": {
+    "enabled": true,
+    "blocking": true,
+    "timeout_seconds": 1800,
+    "gates": [
+      {
+        "name": "smoke-tests",
+        "priority": "critical",
+        "hooks": ["smoke-tests.py"],
+        "failure_action": "block",
+        "thresholds": {
+          "min_pass_rate": 100
+        }
+      },
+      {
+        "name": "security-audit",
+        "priority": "critical",
+        "hooks": ["security-audit.py"],
+        "failure_action": "block",
+        "thresholds": {
+          "max_critical_issues": 0,
+          "max_high_issues": 0,
+          "compliance_score_min": 95
+        }
+      },
+      {
+        "name": "compliance-validation",
+        "priority": "critical",
+        "hooks": ["compliance-validation.py"],
+        "failure_action": "block",
+        "required_standards": ["GDPR", "SOC2", "OWASP"],
+        "thresholds": {
+          "min_compliance_percent": 100
+        }
+      },
+      {
+        "name": "load-tests",
+        "priority": "high",
+        "hooks": ["load-tests.py"],
+        "failure_action": "block",
+        "thresholds": {
+          "min_concurrent_users": 1000,
+          "max_error_rate_percent": 1,
+          "max_p95_response_time_ms": 3000
+        }
+      }
+    ]
+  },
+
+  "post_deploy": {
+    "enabled": true,
+    "blocking": false,
+    "timeout_seconds": 300,
+    "gates": [
+      {
+        "name": "monitoring-setup",
+        "priority": "high",
+        "hooks": ["setup-monitoring.py"],
+        "failure_action": "alert",
+        "verification": {
+          "prometheus_endpoint": true,
+          "grafana_dashboards": true,
+          "alertmanager_rules": true
+        }
+      },
+      {
+        "name": "rollback-preparation",
+        "priority": "critical",
+        "hooks": ["prepare-rollback.py"],
+        "failure_action": "alert",
+        "verification": {
+          "backup_created": true,
+          "rollback_script_validated": true
+        }
+      },
+      {
+        "name": "health-checks",
+        "priority": "critical",
+        "hooks": ["health-checks.py"],
+        "failure_action": "alert",
+        "thresholds": {
+          "min_health_score": 95,
+          "max_error_rate_percent": 1
+        }
+      },
+      {
+        "name": "stakeholder-notification",
+        "priority": "low",
+        "hooks": ["notify-stakeholders.py"],
+        "failure_action": "log"
+      }
+    ]
+  },
+
+  "thresholds": {
+    "global": {
+      "max_execution_time_seconds": 1800,
+      "max_retries": 3,
+      "retry_delay_seconds": 5
+    },
+    "code_quality": {
+      "min_maintainability_index": 70,
+      "max_cyclomatic_complexity": 10,
+      "max_function_length_lines": 50,
+      "max_file_length_lines": 500
+    },
+    "security": {
+      "min_security_score": 90,
+      "max_critical_vulnerabilities": 0,
+      "max_high_vulnerabilities": 0,
+      "required_security_headers": true
+    },
+    "performance": {
+      "max_build_time_seconds": 600,
+      "max_test_time_seconds": 300,
+      "max_deployment_time_seconds": 600
+    }
+  },
+
+  "notifications": {
+    "on_gate_failure": {
+      "enabled": true,
+      "channels": ["console", "file", "slack"],
+      "severity_levels": ["critical", "high"]
+    },
+    "on_gate_warning": {
+      "enabled": true,
+      "channels": ["console", "file"]
+    },
+    "on_threshold_breach": {
+      "enabled": true,
+      "channels": ["console", "file", "email"],
+      "notify_on": ["critical", "high"]
+    }
+  }
+}

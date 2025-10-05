@@ -1,0 +1,144 @@
+{
+  "version": "3.4.0",
+  "enabled": true,
+  "description": "Advanced Hooks Framework - Global Configuration",
+
+  "execution": {
+    "parallel": true,
+    "max_concurrent_hooks": 5,
+    "timeout_seconds": 300,
+    "retries": 3,
+    "retry_delay_seconds": 5
+  },
+
+  "error_handling": {
+    "continue_on_failure": false,
+    "log_errors": true,
+    "log_level": "INFO",
+    "notify_on_failure": true,
+    "notification_channels": ["console", "file"],
+    "error_log_path": "project_archive/logs/hooks-errors.log"
+  },
+
+  "performance": {
+    "priority_levels": {
+      "critical": {
+        "weight": 1000,
+        "timeout_multiplier": 2.0,
+        "max_retries": 5
+      },
+      "high": {
+        "weight": 100,
+        "timeout_multiplier": 1.5,
+        "max_retries": 3
+      },
+      "medium": {
+        "weight": 10,
+        "timeout_multiplier": 1.0,
+        "max_retries": 2
+      },
+      "low": {
+        "weight": 1,
+        "timeout_multiplier": 0.5,
+        "max_retries": 1
+      }
+    },
+    "execution_tracking": true,
+    "performance_metrics": true
+  },
+
+  "security": {
+    "validate_hooks": true,
+    "sandboxed_execution": true,
+    "require_permissions": true,
+    "audit_logging": true,
+    "audit_log_path": "project_archive/logs/hooks-audit.log"
+  },
+
+  "hook_types": {
+    "agent-lifecycle": {
+      "enabled": true,
+      "pre_agent": {
+        "enabled": true,
+        "timeout_seconds": 60,
+        "continue_on_failure": false
+      },
+      "post_agent": {
+        "enabled": true,
+        "timeout_seconds": 300,
+        "continue_on_failure": true
+      }
+    },
+    "quality-gates": {
+      "enabled": true,
+      "pre_commit": {
+        "enabled": true,
+        "timeout_seconds": 300,
+        "blocking": true
+      },
+      "pre_push": {
+        "enabled": true,
+        "timeout_seconds": 600,
+        "blocking": true
+      },
+      "pre_deploy": {
+        "enabled": true,
+        "timeout_seconds": 1800,
+        "blocking": true
+      },
+      "post_deploy": {
+        "enabled": true,
+        "timeout_seconds": 300,
+        "blocking": false
+      }
+    },
+    "documentation": {
+      "enabled": true,
+      "auto_update": true,
+      "timeout_seconds": 120
+    },
+    "performance": {
+      "enabled": true,
+      "continuous_monitoring": true,
+      "alert_thresholds": {
+        "agent_execution_time_seconds": 120,
+        "memory_usage_mb": 1000,
+        "cpu_usage_percent": 80
+      }
+    }
+  },
+
+  "integrations": {
+    "git": {
+      "enabled": true,
+      "hooks_path": ".git/hooks",
+      "auto_install": true
+    },
+    "ci_cd": {
+      "enabled": false,
+      "platform": "github-actions",
+      "config_path": ".github/workflows"
+    },
+    "monitoring": {
+      "enabled": true,
+      "prometheus": {
+        "enabled": false,
+        "port": 8000
+      },
+      "grafana": {
+        "enabled": false,
+        "dashboards_path": ".claude/monitoring/dashboards"
+      }
+    }
+  },
+
+  "hooks_directory": ".claude/hooks",
+  "custom_hooks_directory": ".claude/hooks/custom",
+
+  "defaults": {
+    "priority": "medium",
+    "timeout_seconds": 60,
+    "retries": 2,
+    "continue_on_failure": false
+  }
+}

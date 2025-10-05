@@ -1,0 +1,239 @@
+{
+  "version": "3.4.0",
+  "description": "Agent-Specific Hook Mappings",
+
+  "backend-engineer": {
+    "pre_hooks": [
+      {
+        "name": "validate-requirements",
+        "path": "agent-lifecycle/pre-agent/validate-requirements.py",
+        "priority": "critical",
+        "timeout": 30
+      },
+      {
+        "name": "check-dependencies",
+        "path": "agent-lifecycle/pre-agent/check-dependencies.py",
+        "priority": "high",
+        "timeout": 60
+      },
+      {
+        "name": "verify-database-connection",
+        "path": "agent-lifecycle/pre-agent/verify-database.py",
+        "priority": "medium",
+        "timeout": 15
+      }
+    ],
+    "post_hooks": [
+      {
+        "name": "unit-tests",
+        "path": "quality-gates/pre-commit/unit-tests.py",
+        "priority": "critical",
+        "timeout": 300
+      },
+      {
+        "name": "security-scan",
+        "path": "agent-lifecycle/post-agent/security-scan.py",
+        "priority": "critical",
+        "timeout": 180
+      },
+      {
+        "name": "api-tests",
+        "path": "quality-gates/pre-commit/api-tests.py",
+        "priority": "high",
+        "timeout": 120
+      },
+      {
+        "name": "update-api-docs",
+        "path": "documentation/generate-api-docs.py",
+        "priority": "low",
+        "timeout": 60
+      }
+    ]
+  },
+
+  "frontend-engineer": {
+    "pre_hooks": [
+      {
+        "name": "validate-requirements",
+        "path": "agent-lifecycle/pre-agent/validate-requirements.py",
+        "priority": "critical",
+        "timeout": 30
+      },
+      {
+        "name": "check-npm-dependencies",
+        "path": "agent-lifecycle/pre-agent/check-npm-deps.py",
+        "priority": "high",
+        "timeout": 45
+      }
+    ],
+    "post_hooks": [
+      {
+        "name": "lint-code",
+        "path": "quality-gates/pre-commit/lint-code.py",
+        "priority": "high",
+        "timeout": 60
+      },
+      {
+        "name": "type-check",
+        "path": "quality-gates/pre-commit/type-check.py",
+        "priority": "high",
+        "timeout": 90
+      },
+      {
+        "name": "component-tests",
+        "path": "quality-gates/pre-commit/component-tests.py",
+        "priority": "critical",
+        "timeout": 300
+      },
+      {
+        "name": "accessibility-check",
+        "path": "agent-lifecycle/post-agent/accessibility-check.py",
+        "priority": "medium",
+        "timeout": 120
+      }
+    ]
+  },
+
+  "qa-engineer": {
+    "pre_hooks": [
+      {
+        "name": "validate-requirements",
+        "path": "agent-lifecycle/pre-agent/validate-requirements.py",
+        "priority": "critical",
+        "timeout": 30
+      }
+    ],
+    "post_hooks": [
+      {
+        "name": "test-coverage-report",
+        "path": "quality-gates/pre-push/coverage-check.py",
+        "priority": "critical",
+        "timeout": 180
+      },
+      {
+        "name": "integration-tests",
+        "path": "quality-gates/pre-push/integration-tests.py",
+        "priority": "critical",
+        "timeout": 600
+      },
+      {
+        "name": "performance-tests",
+        "path": "quality-gates/pre-push/performance-tests.py",
+        "priority": "high",
+        "timeout": 300
+      }
+    ]
+  },
+
+  "security-engineer": {
+    "pre_hooks": [
+      {
+        "name": "validate-requirements",
+        "path": "agent-lifecycle/pre-agent/validate-requirements.py",
+        "priority": "critical",
+        "timeout": 30
+      },
+      {
+        "name": "check-security-tools",
+        "path": "agent-lifecycle/pre-agent/check-security-tools.py",
+        "priority": "critical",
+        "timeout": 45
+      }
+    ],
+    "post_hooks": [
+      {
+        "name": "deep-security-scan",
+        "path": "quality-gates/pre-deploy/security-audit.py",
+        "priority": "critical",
+        "timeout": 600
+      },
+      {
+        "name": "vulnerability-assessment",
+        "path": "agent-lifecycle/post-agent/vulnerability-scan.py",
+        "priority": "critical",
+        "timeout": 300
+      },
+      {
+        "name": "compliance-check",
+        "path": "quality-gates/pre-deploy/compliance-validation.py",
+        "priority": "critical",
+        "timeout": 180
+      }
+    ]
+  },
+
+  "deployment-engineer": {
+    "pre_hooks": [
+      {
+        "name": "validate-requirements",
+        "path": "agent-lifecycle/pre-agent/validate-requirements.py",
+        "priority": "critical",
+        "timeout": 30
+      },
+      {
+        "name": "check-deployment-tools",
+        "path": "agent-lifecycle/pre-agent/check-deployment-tools.py",
+        "priority": "critical",
+        "timeout": 60
+      }
+    ],
+    "post_hooks": [
+      {
+        "name": "smoke-tests",
+        "path": "quality-gates/pre-deploy/smoke-tests.py",
+        "priority": "critical",
+        "timeout": 300
+      },
+      {
+        "name": "setup-monitoring",
+        "path": "quality-gates/post-deploy/setup-monitoring.py",
+        "priority": "high",
+        "timeout": 120
+      },
+      {
+        "name": "prepare-rollback",
+        "path": "quality-gates/post-deploy/prepare-rollback.py",
+        "priority": "critical",
+        "timeout": 60
+      },
+      {
+        "name": "health-checks",
+        "path": "quality-gates/post-deploy/health-checks.py",
+        "priority": "critical",
+        "timeout": 180
+      }
+    ]
+  },
+
+  "_default": {
+    "description": "Default hooks for all agents",
+    "pre_hooks": [
+      {
+        "name": "validate-requirements",
+        "path": "agent-lifecycle/pre-agent/validate-requirements.py",
+        "priority": "critical",
+        "timeout": 30
+      },
+      {
+        "name": "prepare-context",
+        "path": "agent-lifecycle/pre-agent/prepare-context.py",
+        "priority": "medium",
+        "timeout": 20
+      }
+    ],
+    "post_hooks": [
+      {
+        "name": "quality-check",
+        "path": "agent-lifecycle/post-agent/quality-check.py",
+        "priority": "high",
+        "timeout": 120
+      },
+      {
+        "name": "update-metrics",
+        "path": "agent-lifecycle/post-agent/update-metrics.py",
+        "priority": "low",
+        "timeout": 30
+      }
+    ]
+  }
+}

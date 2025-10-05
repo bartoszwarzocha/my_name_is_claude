@@ -1,0 +1,281 @@
+{
+  "version": "3.4.0",
+  "description": "Performance Monitoring and Alerting Configuration",
+
+  "metrics": {
+    "agent_performance": {
+      "enabled": true,
+      "track": [
+        "execution_time_seconds",
+        "memory_usage_mb",
+        "cpu_usage_percent",
+        "success_rate_percent",
+        "error_count",
+        "retry_count"
+      ],
+      "aggregation_interval_seconds": 60,
+      "retention_days": 90
+    },
+    "hook_performance": {
+      "enabled": true,
+      "track": [
+        "hook_execution_time_seconds",
+        "hook_success_rate",
+        "hook_failure_count",
+        "hook_retry_count",
+        "hook_timeout_count"
+      ],
+      "aggregation_interval_seconds": 60,
+      "retention_days": 30
+    },
+    "quality_metrics": {
+      "enabled": true,
+      "track": [
+        "test_coverage_percent",
+        "code_quality_score",
+        "security_score",
+        "bug_count",
+        "vulnerability_count"
+      ],
+      "aggregation_interval_seconds": 3600,
+      "retention_days": 365
+    },
+    "system_metrics": {
+      "enabled": true,
+      "track": [
+        "total_memory_usage_mb",
+        "total_cpu_usage_percent",
+        "disk_usage_percent",
+        "network_io_mbps",
+        "active_processes"
+      ],
+      "aggregation_interval_seconds": 30,
+      "retention_days": 7
+    }
+  },
+
+  "thresholds": {
+    "agent_execution": {
+      "max_execution_time_seconds": 120,
+      "max_memory_usage_mb": 1000,
+      "max_cpu_usage_percent": 80,
+      "min_success_rate_percent": 95
+    },
+    "hook_execution": {
+      "max_execution_time_seconds": 300,
+      "max_failure_rate_percent": 5,
+      "max_timeout_rate_percent": 2
+    },
+    "system_health": {
+      "max_memory_usage_percent": 80,
+      "max_cpu_usage_percent": 75,
+      "max_disk_usage_percent": 85
+    }
+  },
+
+  "alerts": {
+    "agent_performance_degradation": {
+      "enabled": true,
+      "severity": "high",
+      "condition": "execution_time > threshold * 1.5",
+      "channels": ["console", "file"],
+      "cooldown_seconds": 300
+    },
+    "agent_failure_spike": {
+      "enabled": true,
+      "severity": "critical",
+      "condition": "error_count > 5 in 60 seconds",
+      "channels": ["console", "file", "email"],
+      "cooldown_seconds": 600
+    },
+    "hook_timeout": {
+      "enabled": true,
+      "severity": "high",
+      "condition": "hook_timeout_count > 0",
+      "channels": ["console", "file"],
+      "cooldown_seconds": 300
+    },
+    "quality_degradation": {
+      "enabled": true,
+      "severity": "medium",
+      "condition": "code_quality_score < 70 OR test_coverage < 80",
+      "channels": ["console", "file"],
+      "cooldown_seconds": 3600
+    },
+    "security_issue_detected": {
+      "enabled": true,
+      "severity": "critical",
+      "condition": "vulnerability_count > 0 AND severity >= high",
+      "channels": ["console", "file", "email", "slack"],
+      "cooldown_seconds": 0
+    },
+    "system_resource_exhaustion": {
+      "enabled": true,
+      "severity": "critical",
+      "condition": "memory_usage > 90% OR cpu_usage > 90% OR disk_usage > 95%",
+      "channels": ["console", "file", "email"],
+      "cooldown_seconds": 300
+    }
+  },
+
+  "dashboards": {
+    "agent_overview": {
+      "enabled": true,
+      "panels": [
+        {
+          "title": "Agent Execution Times",
+          "type": "time_series",
+          "metrics": ["agent_performance.execution_time_seconds"],
+          "refresh_interval_seconds": 30
+        },
+        {
+          "title": "Agent Success Rate",
+          "type": "gauge",
+          "metrics": ["agent_performance.success_rate_percent"],
+          "refresh_interval_seconds": 60
+        },
+        {
+          "title": "Memory Usage",
+          "type": "line_chart",
+          "metrics": ["agent_performance.memory_usage_mb"],
+          "refresh_interval_seconds": 30
+        }
+      ]
+    },
+    "quality_overview": {
+      "enabled": true,
+      "panels": [
+        {
+          "title": "Test Coverage Trend",
+          "type": "line_chart",
+          "metrics": ["quality_metrics.test_coverage_percent"],
+          "refresh_interval_seconds": 3600
+        },
+        {
+          "title": "Code Quality Score",
+          "type": "gauge",
+          "metrics": ["quality_metrics.code_quality_score"],
+          "refresh_interval_seconds": 3600
+        },
+        {
+          "title": "Security Vulnerabilities",
+          "type": "bar_chart",
+          "metrics": ["quality_metrics.vulnerability_count"],
+          "refresh_interval_seconds": 3600
+        }
+      ]
+    },
+    "system_health": {
+      "enabled": true,
+      "panels": [
+        {
+          "title": "CPU Usage",
+          "type": "gauge",
+          "metrics": ["system_metrics.total_cpu_usage_percent"],
+          "refresh_interval_seconds": 30
+        },
+        {
+          "title": "Memory Usage",
+          "type": "gauge",
+          "metrics": ["system_metrics.total_memory_usage_mb"],
+          "refresh_interval_seconds": 30
+        },
+        {
+          "title": "Disk Usage",
+          "type": "gauge",
+          "metrics": ["system_metrics.disk_usage_percent"],
+          "refresh_interval_seconds": 60
+        }
+      ]
+    }
+  },
+
+  "integrations": {
+    "prometheus": {
+      "enabled": false,
+      "endpoint": "http://localhost:9090",
+      "scrape_interval_seconds": 30,
+      "labels": {
+        "environment": "production",
+        "service": "my-name-is-claude",
+        "version": "3.4.0"
+      }
+    },
+    "grafana": {
+      "enabled": false,
+      "endpoint": "http://localhost:3000",
+      "api_key": "${GRAFANA_API_KEY}",
+      "organization": "my-name-is-claude"
+    },
+    "elasticsearch": {
+      "enabled": false,
+      "hosts": ["http://localhost:9200"],
+      "index_pattern": "hooks-metrics-*",
+      "retention_days": 30
+    }
+  },
+
+  "reporting": {
+    "daily_summary": {
+      "enabled": true,
+      "schedule": "0 9 * * *",
+      "recipients": ["console", "file"],
+      "include": [
+        "agent_execution_summary",
+        "hook_execution_summary",
+        "quality_metrics_summary",
+        "alert_summary"
+      ]
+    },
+    "weekly_report": {
+      "enabled": true,
+      "schedule": "0 9 * * 1",
+      "recipients": ["file", "email"],
+      "include": [
+        "performance_trends",
+        "quality_trends",
+        "top_failures",
+        "optimization_recommendations"
+      ]
+    },
+    "monthly_report": {
+      "enabled": false,
+      "schedule": "0 9 1 * *",
+      "recipients": ["file", "email"],
+      "include": [
+        "executive_summary",
+        "cost_analysis",
+        "capacity_planning",
+        "strategic_recommendations"
+      ]
+    }
+  },
+
+  "data_retention": {
+    "metrics": {
+      "raw_data_days": 7,
+      "aggregated_1min_days": 30,
+      "aggregated_1hour_days": 90,
+      "aggregated_1day_days": 365
+    },
+    "logs": {
+      "debug_days": 1,
+      "info_days": 7,
+      "warning_days": 30,
+      "error_days": 90,
+      "critical_days": 365
+    },
+    "alerts": {
+      "active_days": 30,
+      "resolved_days": 90
+    }
+  },
+
+  "export": {
+    "enabled": true,
+    "formats": ["json", "csv", "prometheus"],
+    "output_directory": "project_archive/logs/metrics",
+    "compression": true,
+    "encryption": false
+  }
+}
