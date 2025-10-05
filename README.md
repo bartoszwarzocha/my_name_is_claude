@@ -1,12 +1,12 @@
 # My Name Is Claude - Multi-Agent Framework
 
-[![Version](https://img.shields.io/badge/Version-3.3.0-FF6B35?style=flat-square&logo=tag&logoColor=white)](CHANGELOG.md) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Framework-FF6B35?style=flat-square&logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code) [![Fortune 500 Ready](https://img.shields.io/badge/Fortune%20500-Ready-00aa00?style=flat-square&logo=enterprise&logoColor=white)](#) [![Cost Optimized](https://img.shields.io/badge/Cost-50%25%20Savings-00aa00?style=flat-square&logo=dollar&logoColor=white)](#) [![MIT License](https://img.shields.io/badge/License-MIT-00aaff?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-3.5.0-FF6B35?style=flat-square&logo=tag&logoColor=white)](CHANGELOG.md) [![Claude Code](https://img.shields.io/badge/Claude%20Code-Framework-FF6B35?style=flat-square&logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code) [![Fortune 500 Ready](https://img.shields.io/badge/Fortune%20500-Ready-00aa00?style=flat-square&logo=enterprise&logoColor=white)](#) [![Cost Optimized](https://img.shields.io/badge/Cost-50%25%20Savings-00aa00?style=flat-square&logo=dollar&logoColor=white)](#) [![MIT License](https://img.shields.io/badge/License-MIT-00aaff?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ## Enterprise-Grade Multi-Agent Development Framework
 
-Enterprise-grade development framework featuring **intelligent cost optimization** (50% API savings), **context-aware communication styles**, **advanced checkpoint architecture**, **parallel agent execution**, real-time monitoring, quality assurance systems, AI-powered agent selection, and comprehensive multi-agent coordination for Fortune 500 software development.
+Enterprise-grade development framework featuring **intelligent cost optimization** (50% API savings), **context-aware communication styles**, **advanced checkpoint architecture**, **parallel agent execution**, **background task management**, real-time monitoring, quality assurance systems, AI-powered agent selection, and comprehensive multi-agent coordination for Fortune 500 software development.
 
-**Current Version:** 3.3.0 | **Release Date:** October 5, 2025
+**Current Version:** 3.5.0 | **Release Date:** October 5, 2025
 
 ---
 
@@ -64,6 +64,14 @@ Enterprise-grade development framework featuring **intelligent cost optimization
 - **Framework Glossary** - Interactive terminology system with 50+ key terms
 - **Template Validation Engine** - Automated compliance checking and reporting
 
+### 🔄 Background Task Management (NEW in v3.5.0)
+- **Non-Blocking Task Execution** with process isolation and intelligent scheduling
+- **Multi-Channel Notifications** - Console, desktop, file, and email alerts
+- **Comprehensive Analysis Engines** - Security scanning, performance profiling, code quality analysis
+- **Auto-Triggering System** - File watching, git hooks, scheduled tasks
+- **Smart Task Scheduling** - Priority-based queue with adaptive learning
+- **Enterprise Reliability** - State persistence, crash recovery, resource monitoring
+
 ---
 
 ## 🏗️ Project Structure
@@ -81,13 +89,14 @@ my_name_is_claude/
 │   │   ├── init/               # Project initialization
 │   │   └── tools/              # Framework automation tools
 │   ├── commands/             # Slash commands system (28 specialized commands)
-│   ├── config/               # Advanced configuration systems (v3.3.0)
+│   ├── config/               # Advanced configuration systems (v3.5.0)
 │   │   ├── model-profiles.json      # Cost optimization profiles
 │   │   ├── agent-model-mapping.json # Agent-to-model mappings
 │   │   ├── cost-optimization.json   # Budget and optimization
 │   │   ├── output-styles.json       # Communication styles
 │   │   ├── checkpoint-system.json   # State management architecture
 │   │   ├── parallel-agents.json     # Parallel execution framework
+│   │   ├── background-tasks.json    # Background task management (v3.5.0)
 │   │   └── INFO.md                  # Configuration guide pointer
 │   ├── checkpoints/          # Checkpoint storage (gitignored)
 │   ├── monitoring/           # Enterprise monitoring & analytics systems
@@ -99,8 +108,11 @@ my_name_is_claude/
 │   ├── hooks/                  # Automation and event hooks
 │   ├── templates/              # Configuration templates (unified agent standard)
 │   └── assets/                 # Visual diagrams and assets
-├── .ai-tools/core/           # AI-Powered Agent Selection
-│   ├── core/                   # Core AI components
+├── .ai-tools/                # AI-Powered Development Tools
+│   ├── core/                   # AI agent selection and recommendations
+│   ├── background/             # Background task management system (v3.5.0)
+│   │   ├── core/               # Task execution, queue, notifications, analysis
+│   │   └── background_task_manager.py  # Main orchestrator
 │   ├── models/                 # ML models for recommendations
 │   ├── integration/            # Framework integration
 │   ├── data/                   # Training data and patterns
