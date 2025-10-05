@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "description": "Cost optimization and budget management configuration for intelligent API usage",
+  "lastUpdated": "2025-10-05",
+
+  "budgetConfiguration": {
+    "enabled": true,
+    "currency": "USD",
+    "budgetPeriod": "monthly",
+    "budgets": {
+      "daily": {
+        "limit": 50,
+        "warningThreshold": 0.8,
+        "criticalThreshold": 0.95,
+        "autoDowngradeOnExceed": true
+      },
+      "weekly": {
+        "limit": 300,
+        "warningThreshold": 0.8,
+        "criticalThreshold": 0.9,
+        "autoDowngradeOnExceed": true
+      },
+      "monthly": {
+        "limit": 1000,
+        "warningThreshold": 0.75,
+        "criticalThreshold": 0.9,
+        "autoDowngradeOnExceed": false
+      }
+    },
+    "projectScaleBudgets": {
+      "startup": {
+        "monthlyLimit": 500,
+        "prioritization": "cost_efficiency",
+        "aggressiveOptimization": true
+      },
+      "sme": {
+        "monthlyLimit": 2000,
+        "prioritization": "balanced",
+        "aggressiveOptimization": false
+      },
+      "enterprise": {
+        "monthlyLimit": 10000,
+        "prioritization": "quality_first",
+        "aggressiveOptimization": false
+      }
+    }
+  },
+
+  "costTracking": {
+    "trackByAgent": true,
+    "trackByProfile": true,
+    "trackByProject": true,
+    "trackByPhase": true,
+    "granularity": "per_request",
+    "metrics": [
+      "total_tokens_used",
+      "total_cost_usd",
+      "cost_per_agent",
+      "cost_per_profile",
+      "cost_per_day",
+      "cost_per_week",
+      "cost_per_month",
+      "cost_trend_7day",
+      "cost_trend_30day",
+      "projected_monthly_cost"
+    ],
+    "exportFormats": ["json", "csv", "dashboard"],
+    "retentionDays": 90
+  },
+
+  "optimizationStrategies": {
+    "autoDowngrade": {
+      "enabled": true,
+      "conditions": [
+        {
+          "condition": "budget_utilization > 0.85 && task_complexity === 'simple'",
+          "action": "downgrade_to_fast",
+          "reason": "Cost optimization for simple tasks at high budget utilization"
+        },
+        {
+          "condition": "budget_utilization > 0.95",
+          "action": "downgrade_one_level",
+          "reason": "Critical budget threshold - reduce cost per operation"
+        },
+        {
+          "condition": "daily_budget_exceeded",
+          "action": "use_fast_profile_only",
+          "reason": "Daily budget exceeded - minimize costs"
+        }
+      ],
+      "notifyOnDowngrade": true,
+      "allowManualOverride": true
+    },
+
+    "intelligentCaching": {
+      "enabled": true,
+      "cacheStrategy": "semantic_similarity",
+      "cacheHitReduction": "95%",
+      "cacheDuration": "24h",
+      "cacheScope": ["agent_responses", "code_analysis", "documentation_generation"]
+    },
+
+    "batchProcessing": {
+      "enabled": true,
+      "batchSize": 10,
+      "batchDelay": "2s",
+      "costReduction": "15-20%",
+      "applicableTo": ["code_review", "documentation_update", "quality_checks"]
+    },
+
+    "peakHourAvoidance": {
+      "enabled": false,
+      "peakHours": ["09:00-11:00", "14:00-16:00"],
+      "delayNonCriticalTasks": true,
+      "estimatedSavings": "10-15%"
+    }
+  },
+
+  "alertConfiguration": {
+    "enabled": true,
+    "channels": ["console", "log_file"],
+    "alertLevels": {
+      "info": {
+        "enabled": true,
+        "triggers": [
+          "budget_50_percent",
+          "profile_change",
+          "cost_optimization_applied"
+        ]
+      },
+      "warning": {
+        "enabled": true,
+        "triggers": [
+          "budget_75_percent",
+          "budget_80_percent",
+          "high_cost_agent_usage",
+          "unexpected_cost_spike"
+        ]
+      },
+      "critical": {
+        "enabled": true,
+        "triggers": [
+          "budget_90_percent",
+          "budget_95_percent",
+          "budget_exceeded",
+          "auto_downgrade_triggered"
+        ]
+      }
+    },
+    "customAlerts": [
+      {
+        "name": "quality_profile_overuse",
+        "condition": "quality_profile_usage > 0.3 && project_scale === 'startup'",
+        "message": "Quality profile usage exceeds 30% for startup project - consider optimization",
+        "severity": "warning"
+      },
+      {
+        "name": "fast_profile_underuse",
+        "condition": "fast_profile_usage < 0.1 && budget_utilization > 0.7",
+        "message": "Fast profile is underutilized while budget utilization is high - optimization opportunity",
+        "severity": "info"
+      }
+    ]
+  },
+
+  "costEstimation": {
+    "modelPricing": {
+      "claude-3-opus-20240229": {
+        "input_per_1k_tokens": 0.015,
+        "output_per_1k_tokens": 0.075,
+        "relative_cost": 3.0
+      },
+      "claude-sonnet-4-5-20250929": {
+        "input_per_1k_tokens": 0.003,
+        "output_per_1k_tokens": 0.015,
+        "relative_cost": 1.0
+      },
+      "claude-3-sonnet-20240229": {
+        "input_per_1k_tokens": 0.003,
+        "output_per_1k_tokens": 0.015,
+        "relative_cost": 1.0
+      },
+      "claude-3-haiku-20240307": {
+        "input_per_1k_tokens": 0.00025,
+        "output_per_1k_tokens": 0.00125,
+        "relative_cost": 0.3
+      }
+    },
+    "averageTaskTokens": {
+      "simple_task": 2000,
+      "moderate_task": 8000,
+      "complex_task": 20000,
+      "architecture_task": 50000
+    },
+    "projectedSavings": {
+      "baseline_monthly_cost": 1000,
+      "with_optimization": 500,
+      "savings_percentage": 50,
+      "roi_months": 1
+    }
+  },
+
+  "reportingConfiguration": {
+    "enabled": true,
+    "reportFrequency": "weekly",
+    "reportTypes": [
+      "cost_summary",
+      "agent_usage_analysis",
+      "optimization_opportunities",
+      "budget_projection",
+      "roi_analysis"
+    ],
+    "reportFormat": "markdown",
+    "includeCharts": true,
+    "autoEmailReports": false,
+    "reportRecipients": ["project_owner", "business_analyst"]
+  },
+
+  "advancedOptimization": {
+    "mlBasedPrediction": {
+      "enabled": true,
+      "predictUsagePatterns": true,
+      "optimizeScheduling": true,
+      "modelAccuracy": "85%"
+    },
+    "contextOptimization": {
+      "enabled": true,
+      "smartContextPruning": true,
+      "contextCompressionRatio": 0.7,
+      "maintainQuality": true
+    },
+    "parallelExecution": {
+      "enabled": false,
+      "maxConcurrentAgents": 3,
+      "costMultiplier": 1.2,
+      "speedupFactor": 2.5,
+      "useWhenCritical": true
+    }
+  },
+
+  "complianceAndGovernance": {
+    "enforceSpendingLimits": true,
+    "requireApprovalForQualityProfile": {
+      "enabled": false,
+      "threshold": 100,
+      "approvers": ["project_owner", "business_analyst"]
+    },
+    "auditTrail": {
+      "enabled": true,
+      "logAllCostDecisions": true,
+      "retentionDays": 365
+    },
+    "costAllocationTags": {
+      "enabled": true,
+      "tags": ["project", "team", "phase", "agent", "business_unit"]
+    }
+  },
+
+  "recommendations": {
+    "currentOptimizationLevel": "moderate",
+    "suggestedActions": [
+      {
+        "action": "increase_fast_profile_usage",
+        "impact": "20% cost reduction",
+        "effort": "low",
+        "priority": "high"
+      },
+      {
+        "action": "enable_intelligent_caching",
+        "impact": "15% cost reduction",
+        "effort": "low",
+        "priority": "high"
+      },
+      {
+        "action": "implement_batch_processing",
+        "impact": "10% cost reduction",
+        "effort": "medium",
+        "priority": "medium"
+      },
+      {
+        "action": "optimize_context_usage",
+        "impact": "10% cost reduction",
+        "effort": "medium",
+        "priority": "medium"
+      }
+    ],
+    "bestPractices": [
+      "Use Quality profile only for critical architecture and security tasks",
+      "Default to Balanced profile for most development work",
+      "Use Fast profile for simple tasks, documentation updates, and quick checks",
+      "Enable auto-downgrade to prevent budget overruns",
+      "Monitor cost trends weekly to identify optimization opportunities",
+      "Review agent usage patterns monthly for efficiency improvements"
+    ]
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "description": "Output Styles System - Context-aware communication patterns for different stakeholders",
+  "lastUpdated": "2025-10-05",
+
+  "styles": {
+    "technical": {
+      "name": "Technical Style",
+      "description": "Detailed technical communication for developers and engineers",
+      "targetAudience": ["developers", "engineers", "technical_leads"],
+      "characteristics": {
+        "verbosity": "detailed",
+        "technicality": "high",
+        "codeExamples": "abundant",
+        "businessContext": "minimal",
+        "formality": "informal"
+      },
+      "format": {
+        "structure": "code-first",
+        "headings": "technical_terms",
+        "bullets": "implementation_details",
+        "examples": "code_snippets_with_comments"
+      },
+      "communicationPatterns": {
+        "explanationStyle": "bottom-up",
+        "detailLevel": "comprehensive",
+        "assumedKnowledge": "high",
+        "jargonUsage": "encouraged",
+        "stepByStep": true
+      },
+      "contentGuidelines": {
+        "includeCodeSnippets": true,
+        "includeArchitectureDiagrams": true,
+        "includePerformanceMetrics": true,
+        "includeBusinessValue": false,
+        "includeROI": false,
+        "includeTimelines": false
+      },
+      "exampleScenarios": [
+        "Code implementation explanation",
+        "Technical architecture documentation",
+        "API integration guide",
+        "Performance optimization analysis",
+        "Debugging walkthrough",
+        "Algorithm explanation"
+      ]
+    },
+
+    "executive": {
+      "name": "Executive Style",
+      "description": "High-level business communication for C-level and management",
+      "targetAudience": ["executives", "managers", "stakeholders", "business_owners"],
+      "characteristics": {
+        "verbosity": "concise",
+        "technicality": "low",
+        "codeExamples": "none",
+        "businessContext": "extensive",
+        "formality": "formal"
+      },
+      "format": {
+        "structure": "executive_summary_first",
+        "headings": "business_outcomes",
+        "bullets": "key_points_only",
+        "examples": "business_scenarios"
+      },
+      "communicationPatterns": {
+        "explanationStyle": "top-down",
+        "detailLevel": "high-level",
+        "assumedKnowledge": "minimal",
+        "jargonUsage": "avoided",
+        "stepByStep": false
+      },
+      "contentGuidelines": {
+        "includeCodeSnippets": false,
+        "includeArchitectureDiagrams": false,
+        "includePerformanceMetrics": false,
+        "includeBusinessValue": true,
+        "includeROI": true,
+        "includeTimelines": true,
+        "includeRiskAnalysis": true,
+        "includeResourceRequirements": true
+      },
+      "exampleScenarios": [
+        "Project status report",
+        "Budget justification",
+        "Strategic technology decisions",
+        "Risk assessment summary",
+        "ROI analysis",
+        "Quarterly review"
+      ]
+    },
+
+    "educational": {
+      "name": "Educational Style",
+      "description": "Step-by-step learning-focused communication with explanations",
+      "targetAudience": ["learners", "students", "junior_developers", "newcomers"],
+      "characteristics": {
+        "verbosity": "expansive",
+        "technicality": "progressive",
+        "codeExamples": "abundant_with_explanation",
+        "businessContext": "contextual",
+        "formality": "friendly"
+      },
+      "format": {
+        "structure": "tutorial",
+        "headings": "clear_learning_objectives",
+        "bullets": "step_by_step_instructions",
+        "examples": "progressive_examples"
+      },
+      "communicationPatterns": {
+        "explanationStyle": "scaffolded",
+        "detailLevel": "comprehensive_with_context",
+        "assumedKnowledge": "low",
+        "jargonUsage": "explained",
+        "stepByStep": true,
+        "encouragement": true
+      },
+      "contentGuidelines": {
+        "includeCodeSnippets": true,
+        "includeArchitectureDiagrams": true,
+        "includePerformanceMetrics": false,
+        "includeBusinessValue": false,
+        "includeROI": false,
+        "includeTimelines": false,
+        "includePrerequisites": true,
+        "includeLearningObjectives": true,
+        "includePracticeExercises": true,
+        "includeCommonMistakes": true
+      },
+      "exampleScenarios": [
+        "Getting started tutorial",
+        "Concept explanation",
+        "Best practices guide",
+        "Troubleshooting guide",
+        "Framework overview",
+        "Technology comparison"
+      ]
+    },
+
+    "code_review": {
+      "name": "Code Review Style",
+      "description": "Concise, actionable feedback for code review processes",
+      "targetAudience": ["developers", "code_reviewers", "quality_engineers"],
+      "characteristics": {
+        "verbosity": "minimal",
+        "technicality": "high",
+        "codeExamples": "targeted",
+        "businessContext": "none",
+        "formality": "professional"
+      },
+      "format": {
+        "structure": "issue-focused",
+        "headings": "severity_based",
+        "bullets": "actionable_items",
+        "examples": "before_after_snippets"
+      },
+      "communicationPatterns": {
+        "explanationStyle": "direct",
+        "detailLevel": "precise",
+        "assumedKnowledge": "high",
+        "jargonUsage": "standard",
+        "stepByStep": false,
+        "tone": "constructive"
+      },
+      "contentGuidelines": {
+        "includeCodeSnippets": true,
+        "includeArchitectureDiagrams": false,
+        "includePerformanceMetrics": true,
+        "includeBusinessValue": false,
+        "includeROI": false,
+        "includeTimelines": false,
+        "includeSeverityLevels": true,
+        "includeRecommendations": true,
+        "includeAlternatives": true
+      },
+      "severityLevels": {
+        "critical": "Security vulnerabilities, data loss risks, system crashes",
+        "major": "Performance issues, architectural problems, maintainability concerns",
+        "minor": "Code style, naming conventions, documentation improvements",
+        "suggestion": "Optimization opportunities, alternative approaches"
+      },
+      "exampleScenarios": [
+        "Pull request review",
+        "Code quality assessment",
+        "Security audit",
+        "Performance review",
+        "Best practices validation",
+        "Refactoring suggestions"
+      ]
+    }
+  },
+
+  "contextualSelection": {
+    "enabled": true,
+    "rules": [
+      {
+        "condition": "audience === 'executive' || role.includes('manager')",
+        "style": "executive",
+        "reason": "Business stakeholders need high-level, ROI-focused communication"
+      },
+      {
+        "condition": "task_type === 'code_review' || task_type === 'pull_request'",
+        "style": "code_review",
+        "reason": "Code review requires concise, actionable feedback"
+      },
+      {
+        "condition": "audience === 'learner' || experience_level === 'junior'",
+        "style": "educational",
+        "reason": "Learning scenarios need detailed, step-by-step explanations"
+      },
+      {
+        "condition": "audience === 'developer' || role === 'engineer'",
+        "style": "technical",
+        "reason": "Technical audience needs detailed implementation information"
+      }
+    ],
+    "defaultStyle": "technical"
+  },
+
+  "languageSupport": {
+    "enabled": true,
+    "supportedLanguages": ["en", "pl"],
+    "stylePreservation": true,
+    "description": "Styles work across languages - tone and structure preserved"
+  },
+
+  "agentDefaults": {
+    "software-architect": "technical",
+    "frontend-engineer": "technical",
+    "backend-engineer": "technical",
+    "security-engineer": "technical",
+    "business-analyst": "executive",
+    "product-manager": "executive",
+    "technical-writer": "educational",
+    "qa-engineer": "code_review",
+    "reviewer": "code_review"
+  },
+
+  "customization": {
+    "allowUserOverride": true,
+    "allowAgentSpecific": true,
+    "allowContextSpecific": true,
+    "cachePreferences": true
+  },
+
+  "qualityGuidelines": {
+    "technical": {
+      "minCodeExamples": 2,
+      "maxParagraphLength": 150,
+      "requireCodeComments": true,
+      "requireDiagrams": false
+    },
+    "executive": {
+      "maxResponseLength": 500,
+      "requireExecutiveSummary": true,
+      "requireROI": true,
+      "requireTimeline": true
+    },
+    "educational": {
+      "requireLearningObjectives": true,
+      "requireExamples": true,
+      "requirePracticeExercises": false,
+      "maxComplexityLevel": "intermediate"
+    },
+    "code_review": {
+      "requireSeverity": true,
+      "requireActionItems": true,
+      "maxIssuesPerReview": 20,
+      "requireBeforeAfter": true
+    }
+  },
+
+  "templates": {
+    "technical": {
+      "header": "## Technical Implementation\n\n",
+      "codeBlock": "```{language}\n{code}\n```\n\n**Explanation:** {explanation}\n\n",
+      "architectureDiagram": "### Architecture Overview\n\n```mermaid\n{diagram}\n```\n\n",
+      "footer": "\n---\n\n**Next Steps:**\n{next_steps}"
+    },
+    "executive": {
+      "header": "# Executive Summary\n\n**Objective:** {objective}\n\n**Impact:** {impact}\n\n**Timeline:** {timeline}\n\n---\n\n",
+      "keyPoints": "## Key Points\n\n{points}\n\n",
+      "roi": "## Return on Investment\n\n- **Investment:** {investment}\n- **Expected Return:** {return}\n- **Payback Period:** {period}\n\n",
+      "footer": "\n---\n\n**Recommendation:** {recommendation}"
+    },
+    "educational": {
+      "header": "# {title}\n\n## Learning Objectives\n\n{objectives}\n\n## Prerequisites\n\n{prerequisites}\n\n---\n\n",
+      "step": "### Step {number}: {title}\n\n{explanation}\n\n```{language}\n{code}\n```\n\n**Why this works:** {reasoning}\n\n",
+      "practice": "## Practice Exercise\n\n{exercise}\n\n",
+      "footer": "\n---\n\n## Summary\n\n{summary}\n\n**What you learned:**\n{learned}\n\n**Next steps:**\n{next}"
+    },
+    "code_review": {
+      "header": "# Code Review Feedback\n\n**Reviewed:** {file}\n**Reviewer:** {reviewer}\n**Date:** {date}\n\n---\n\n",
+      "issue": "### {severity}: {title}\n\n**Location:** {location}\n\n**Issue:**\n{description}\n\n**Current:**\n```{language}\n{before}\n```\n\n**Suggested:**\n```{language}\n{after}\n```\n\n**Reasoning:** {explanation}\n\n",
+      "summary": "## Summary\n\n- Critical: {critical}\n- Major: {major}\n- Minor: {minor}\n- Suggestions: {suggestions}\n\n**Overall Assessment:** {assessment}\n\n",
+      "footer": "\n---\n\n**Action Required:** {action}"
+    }
+  }
+}
