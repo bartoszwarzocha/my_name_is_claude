@@ -510,4 +510,4 @@ Settings:
 **See also:**
 - [Agent System](agent-system.md) - Multi-agent coordination patterns
 - [Session Management](session-management.md) - Context and state management
-- [Hooks & Automation](../user-guide/advanced/hooks-automation.md) - Automated workflows
+- [Hooks & Automation](../advanced/hooks-automation.md) - Automated workflows

@@ -498,8 +498,8 @@ Week 4: Full Integration and Evaluation
 **🎯 Next Steps:**
 
 1. **[Crisis Management Workflow](crisis-management.md)** - Emergency response procedures
-2. **[Performance Optimization](performance-optimization.md)** - Team and process optimization
-3. **[Advanced Agent Coordination](../agents/multi-agent-coordination.md)** - Complex agent orchestration
+2. **[Performance Optimization](../advanced/performance-optimization.md)** - Team and process optimization
+3. **[Advanced Agent Coordination](../architecture/diagrams/agent-workflows.md)** - Complex agent orchestration
 4. **[Enterprise Team Scaling](../advanced/enterprise-team-scaling.md)** - Large organization patterns
 
 **Remember:** Successful team collaboration requires clear communication, shared standards, and continuous improvement. Use the framework to enhance your team's natural collaboration patterns.

@@ -336,4 +336,4 @@ Effective agent utilization includes:
 - [Core Agents](core-agents.md) - Essential development agents
 - [Enterprise Agents](enterprise-agents.md) - Advanced enterprise agents
 - [Custom Agents](custom-agents.md) - Specialized technology agents
-- [Agent Reference](../../reference/agent-reference.md) - Complete agent catalog
+- [Agent Reference](agent-reference.md) - Complete agent catalog

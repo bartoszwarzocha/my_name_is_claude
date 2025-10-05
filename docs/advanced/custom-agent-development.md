@@ -690,9 +690,9 @@ class CustomAgentMetrics:
 3. **[Performance Tuning](performance-tuning.md)** - Optimize agent performance
 
 ### **Specialized Guides:**
-1. **[Industry Agent Examples](../examples/industry-agents.md)** - More industry-specific examples
-2. **[Technology Agent Examples](../examples/technology-agents.md)** - Technology-focused agents
-3. **[Agent Integration Patterns](../patterns/agent-integration.md)** - Advanced integration patterns
+1. **[Real-World Examples](../examples/README.md)** - Industry and technology-specific agent examples
+2. **[Agent Workflows](../architecture/diagrams/agent-workflows.md)** - Agent coordination patterns
+3. **[Agents Overview](../reference/agents-overview.md)** - Complete agent system documentation
 
 ---
 

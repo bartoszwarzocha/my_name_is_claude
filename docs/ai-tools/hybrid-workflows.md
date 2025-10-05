@@ -507,8 +507,8 @@ ROI Timeline:
 
 ### **Mastering Hybrid Workflows:**
 1. **[Performance Optimization](../advanced/performance-optimization.md)** - Advanced performance analysis patterns
-2. **[Security Framework](../security/security-framework.md)** - Comprehensive security workflows
-3. **[Enterprise Scaling](../advanced/enterprise-scaling.md)** - Scale hybrid workflows across teams
+2. **[Enterprise Scaling](../advanced/enterprise-scaling.md)** - Scale hybrid workflows across teams
+3. **[Monitoring & Analytics](../advanced/monitoring-analytics.md)** - Monitor workflow effectiveness
 
 ### **Tool-Specific Deep Dives:**
 1. **[Serena Integration](serena-integration.md)** - Master Serena analysis capabilities

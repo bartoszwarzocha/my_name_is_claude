@@ -695,4 +695,4 @@ def validate_agent_template_compliance(agent_file_path):
 
 ---
 
-*For detailed template implementation guidance and tools, see the [Agent Development Guide](../reference/agent-development.md) and [Template Implementation Tools](../reference/template-tools.md).*
+*For detailed template implementation guidance and tools, refer to the framework templates in `.claude/templates/agent_template.md` and the custom agent development documentation.*

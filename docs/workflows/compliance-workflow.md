@@ -324,8 +324,8 @@ class ComplianceReporter:
 ## 🔗 Related Documentation
 
 - **[Enterprise Deployment](../advanced/enterprise-deployment.md)** - Compliance in deployment
-- **[Security Best Practices](../reference/security-best-practices.md)** - Security guidelines
 - **[Team Collaboration](team-collaboration.md)** - Team compliance workflows
+- **[Troubleshooting](../reference/troubleshooting.md)** - Common compliance issues
 
 ---
 

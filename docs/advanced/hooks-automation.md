@@ -181,7 +181,7 @@ export AGENT_HANDOFF_ENABLED CONFLICT_RESOLUTION_AUTO
 
 ### Session Management Integration
 
-Hooks integrate with [Session Management](../../core-features/session-management.md):
+Hooks integrate with [Session Management](../reference/session-management.md):
 
 - **Session Start:** Initialize hook logging and state tracking
 - **Session Continue:** Restore hook state and continue monitoring
@@ -385,6 +385,6 @@ export HOOK_DEBUG=true
 ---
 
 **See also:**
-- [Session Management](../../core-features/session-management.md) - State and context management
-- [TODO Management](../../core-features/todo-management.md) - Task coordination system
-- [Agent System](../../core-features/agent-system.md) - Multi-agent coordination
+- [Session Management](../reference/session-management.md) - State and context management
+- [TODO Management](../reference/todo-management.md) - Task coordination system
+- [Agent System](../reference/agent-system.md) - Multi-agent coordination

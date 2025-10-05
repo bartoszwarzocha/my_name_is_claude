@@ -399,8 +399,8 @@ Management Escalation:
 **🎯 Next Steps:**
 
 1. **[Performance Optimization](../advanced/performance-optimization.md)** - Prevent performance-related crises
-2. **[Security Hardening](../security/security-framework.md)** - Reduce security incident likelihood
-3. **[Monitoring Setup](../operations/monitoring-and-alerting.md)** - Early crisis detection
-4. **[Team Training](../team/crisis-response-training.md)** - Crisis response skill development
+2. **[Monitoring & Analytics](../advanced/monitoring-analytics.md)** - Early crisis detection and alerting
+3. **[Team Collaboration](team-collaboration.md)** - Crisis response coordination
+4. **[Troubleshooting Guide](../reference/troubleshooting.md)** - Common crisis scenarios and solutions
 
 **Remember:** Effective crisis management requires preparation, coordination, and continuous learning. Regular drills and post-mortem analysis improve response effectiveness over time.

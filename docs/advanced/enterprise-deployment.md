@@ -583,7 +583,7 @@ find "$BACKUP_DIR" -name "*.tar.gz" -mtime +30 -delete
 - **[CLAUDE.md Configuration](claude-md-configuration.md)** - Framework configuration reference
 - **[Monitoring & Analytics](monitoring-analytics.md)** - Detailed monitoring setup
 - **[Performance Optimization](performance-optimization.md)** - Performance tuning guide
-- **[Security Best Practices](../reference/security-best-practices.md)** - Security guidelines
+- **Security Best Practices** - Follow framework security guidelines in CLAUDE.md
 
 ---
 

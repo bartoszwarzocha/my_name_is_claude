@@ -314,4 +314,4 @@ All monitoring configuration files are located in:
 
 ---
 
-*For additional support with monitoring and analytics configuration, consult the [Framework Support Guide](../reference/support.md) or contact the development team.*
+*For additional support with monitoring and analytics configuration, consult the [Troubleshooting Guide](../reference/troubleshooting.md) or refer to framework documentation in CLAUDE.md.*

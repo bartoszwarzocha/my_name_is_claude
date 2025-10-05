@@ -457,6 +457,6 @@ For complex issues beyond this troubleshooting guide:
 ---
 
 **See also:**
-- [Session Management](../core-features/session-management.md) - Detailed session troubleshooting
-- [Agent System](../core-features/agent-system.md) - Agent activation and coordination
-- [TODO Management](../core-features/todo-management.md) - TodoWrite integration issues
+- [Session Management](session-management.md) - Detailed session troubleshooting
+- [Agent System](agent-system.md) - Agent activation and coordination
+- [TODO Management](todo-management.md) - TodoWrite integration issues

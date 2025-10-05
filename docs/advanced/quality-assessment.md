@@ -429,4 +429,4 @@ python .claude/monitoring/quality/agent-analyzer.py --agent software-architect -
 
 ---
 
-*For additional information on quality assessment configuration and customization, see the [Framework Configuration Guide](../reference/configuration.md).*
+*For additional information on quality assessment configuration and customization, see the [CLAUDE.md Configuration Guide](claude-md-configuration.md).*

@@ -347,6 +347,6 @@ Every agent ensures:
 ---
 
 **See also:**
-- [Agent System](../core-features/agent-system.md) - Agent architecture and coordination
+- [Agent System](agent-system.md) - Agent architecture and coordination
 - [Command Reference](command-reference.md) - Agent activation commands
 - [Prompt Reference](prompt-reference.md) - Agent-specific prompts

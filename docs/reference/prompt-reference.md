@@ -341,4 +341,4 @@ When using prompts:
 **See also:**
 - [Agent Reference](agent-reference.md) - Complete agent documentation
 - [Command Reference](command-reference.md) - Command-agent mapping
-- [Prompt Library](../core-features/prompt-library.md) - Detailed prompt system documentation
+- [Prompt Library](prompt-library.md) - Detailed prompt system documentation
