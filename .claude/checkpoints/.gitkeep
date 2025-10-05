@@ -1,0 +1,13 @@
+# Checkpoints Directory
+
+This directory is used for storing checkpoint files created by the Advanced Checkpoint System.
+
+**Structure:**
+- `agent_execution/` - Per-agent execution checkpoints
+- `quality_gate/` - Pre-validation checkpoints
+- `commit_preparation/` - Pre-commit checkpoints
+- `manual/` - User-created checkpoints
+
+**Note:** This directory is gitignored. Only the structure is preserved in version control.
+
+See `.claude/config/checkpoint-system.json` for complete system specification.

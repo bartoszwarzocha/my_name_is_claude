@@ -113,7 +113,7 @@
 - **Cost Optimization Features** - Budget tracking, auto-downgrade, intelligent caching, batch processing
 - **Project Scale Templates** - Startup/SME/Enterprise configurations
 - **Configuration Files** - model-profiles.json (7.3 KB), agent-model-mapping.json (21 KB), cost-optimization.json (8 KB)
-- **Documentation** - Comprehensive guides (README.md 9.7 KB, integration-guide.md 16 KB)
+- **Documentation** - Comprehensive guide (v3.3.0-features-guide.md), configuration overview (INFO.md)
 - **Testing** - 28 comprehensive tests (100% pass rate), usage examples, cost calculator
 
 #### **B. Output Styles System (Quick Win #2)** ✅
@@ -124,7 +124,7 @@
   - Code Review (reviewers) - Concise, actionable
 - **Intelligent Auto-Selection** - Based on agent type, task, and audience
 - **Language Support** - English/Polish with preserved tone
-- **Configuration Files** - output-styles.json (12 KB), output-styles-guide.md (15 KB)
+- **Configuration Files** - output-styles.json (12 KB)
 
 #### **C. Advanced Checkpoint System (CRITICAL Architecture)** ✅
 - **Multi-Level Checkpointing** - Agent execution, quality gates, commit preparation, manual

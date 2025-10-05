@@ -30,6 +30,7 @@ Everything you need to begin using the framework immediately.
 | **[CLAUDE.md Generation](getting-started/claude-md-generation.md)** | 10 min | AI-powered configuration generation |
 | **[Interactive Setup Wizard](getting-started/interactive-framework-setup-wizard.md)** | 5 min | Zero-configuration automated setup |
 | **[AI Tools Dependencies](getting-started/ai-tools-dependencies.md)** | 5 min | Python dependencies for AI features |
+| **[v3.3.0 Features Guide](getting-started/v3.3.0-features-guide.md)** | 15 min | Cost optimization, output styles, checkpoints, parallel agents |
 
 ### **🤖 AI Tools Mastery**
 Learn to leverage AI tools for maximum development productivity.

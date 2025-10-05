@@ -81,6 +81,15 @@ my_name_is_claude/
 │   │   ├── init/               # Project initialization
 │   │   └── tools/              # Framework automation tools
 │   ├── commands/             # Slash commands system (28 specialized commands)
+│   ├── config/               # Advanced configuration systems (v3.3.0)
+│   │   ├── model-profiles.json      # Cost optimization profiles
+│   │   ├── agent-model-mapping.json # Agent-to-model mappings
+│   │   ├── cost-optimization.json   # Budget and optimization
+│   │   ├── output-styles.json       # Communication styles
+│   │   ├── checkpoint-system.json   # State management architecture
+│   │   ├── parallel-agents.json     # Parallel execution framework
+│   │   └── INFO.md                  # Configuration guide pointer
+│   ├── checkpoints/          # Checkpoint storage (gitignored)
 │   ├── monitoring/           # Enterprise monitoring & analytics systems
 │   │   ├── dashboards/         # Grafana dashboards (Executive, Operations, Quality)
 │   │   ├── quality/            # Quality assessment and validation systems

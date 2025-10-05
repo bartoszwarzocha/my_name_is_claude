@@ -28,8 +28,7 @@ Major framework enhancement introducing intelligent cost optimization system (50
 - `.claude/config/model-profiles.json` (7.3 KB) - Profile definitions and characteristics
 - `.claude/config/agent-model-mapping.json` (21 KB) - Complete agent-to-profile mappings
 - `.claude/config/cost-optimization.json` (8 KB) - Budget management and optimization settings
-- `.claude/config/README.md` (9.7 KB) - Comprehensive configuration documentation
-- `.claude/config/integration-guide.md` (16 KB) - Developer integration guide
+- `.claude/config/INFO.md` - Configuration overview and guide pointer
 
 **Testing & Validation:**
 - `work/model-config-tests/test-suite.sh` - 28 comprehensive tests (100% pass rate)
@@ -52,7 +51,6 @@ Major framework enhancement introducing intelligent cost optimization system (50
 
 **Configuration Files:**
 - `.claude/config/output-styles.json` (12 KB) - Complete style definitions and templates
-- `.claude/config/output-styles-guide.md` (15 KB) - Quick reference and usage examples
 
 **Expected Impact:** Better stakeholder communication, reduced misunderstanding, faster decision-making
 
@@ -152,12 +150,10 @@ These configurations provide the foundation for automatic integration when Claud
 - `.claude/config/checkpoint-system.json`
 - `.claude/config/parallel-agents.json`
 
-**Documentation (5 files):**
-- `.claude/config/README.md`
-- `.claude/config/integration-guide.md`
-- `.claude/config/output-styles-guide.md`
-- `.claude/checkpoints/README.md`
-- `work/implementation-summary.md`
+**Documentation (3 files):**
+- `.claude/config/INFO.md` - Configuration overview and guide pointer
+- `docs/getting-started/v3.3.0-features-guide.md` - Comprehensive features guide
+- `work/implementation-summary.md` - Implementation details
 
 **Testing & Tools (3 files):**
 - `work/model-config-tests/test-suite.sh`

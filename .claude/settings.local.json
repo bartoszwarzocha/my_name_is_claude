@@ -38,7 +38,19 @@
       "Bash(./work/test_performance.sh:*)",
       "Bash(./work/test_fast_checks.sh:*)",
       "Bash(./work/test_full_workflow.sh:*)",
-      "Bash(./ai-tools.sh status:*)"
+      "Bash(./ai-tools.sh status:*)",
+      "Bash(git rm:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "mcp__serena__list_dir",
+      "Bash(mkdir:*)",
+      "Bash(for:*)",
+      "Bash(do echo \"Validating $file...\")",
+      "Bash(done)",
+      "Bash(while read line)",
+      "Bash(do echo \"Feature enabled: $line\")",
+      "Bash(/mnt/e/AI/my_name_is_claude/work/model-config-tests/test-suite.sh)",
+      "Bash(/mnt/e/AI/my_name_is_claude/work/model-config-tests/usage-examples.sh)"
     ],
     "deny": [],
     "ask": []

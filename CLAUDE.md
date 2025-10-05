@@ -42,7 +42,7 @@ Agent competencies are defined in `.claude/agents/` directory.
 **Agent Mapping**: Complete mapping for all agents with task-specific overrides and intelligent auto-selection
 **Cost Management**: Budget tracking, alerts, auto-downgrade strategies, usage analytics, ROI reporting
 **Configuration**: `.claude/config/model-profiles.json`, `agent-model-mapping.json`, `cost-optimization.json`
-**Documentation**: Comprehensive guides in `.claude/config/README.md` and `integration-guide.md`
+**Documentation**: Comprehensive guide in `docs/getting-started/v3.3.0-features-guide.md`, overview in `.claude/config/INFO.md`
 
 ## Output Styles
 **Context-Aware Communication**: Four specialized styles for different stakeholders and scenarios
@@ -50,7 +50,7 @@ Agent competencies are defined in `.claude/agents/` directory.
 **Auto-Selection**: Intelligent style matching based on agent type, task, and audience
 **Language Support**: English/Polish with preserved tone and structure across languages
 **Configuration**: `.claude/config/output-styles.json`
-**Documentation**: Quick reference in `.claude/config/output-styles-guide.md`
+**Documentation**: Comprehensive guide in `docs/getting-started/v3.3.0-features-guide.md`
 
 ## Advanced Checkpoint System
 **Revolutionary State Management**: 70% reduction in development rework through intelligent rollback
@@ -311,14 +311,8 @@ Agent competencies are defined in `.claude/agents/` directory.
 ├── output-styles.json           # Communication style definitions
 ├── checkpoint-system.json       # Advanced state management
 ├── parallel-agents.json         # Concurrent execution configuration
-├── README.md                    # Configuration documentation
-├── integration-guide.md         # Developer integration guide
-└── output-styles-guide.md       # Output styles quick reference
-.claude/checkpoints/      # Checkpoint storage (gitignored)
-├── agent_execution/      # Agent-level checkpoints
-├── quality_gate/         # Quality validation checkpoints
-├── commit_preparation/   # Pre-commit checkpoints
-└── manual/               # User-created checkpoints
+└── INFO.md                      # Configuration overview and guide pointer
+.claude/checkpoints/      # Checkpoint storage (gitignored, contains .gitkeep)
 .claude/templates/       # Configuration templates
 │   ├── version-management/  # Version management system templates
 .claude/hooks/           # Automation scripts
