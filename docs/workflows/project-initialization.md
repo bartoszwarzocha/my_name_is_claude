@@ -643,7 +643,7 @@ Team_Member_4: "Preparing auth security tests with security-engineer"
 
 1. **[Development Workflow](development-workflow.md)** - Standard development process with framework
 2. **[Team Collaboration](team-collaboration.md)** - Advanced team coordination patterns
-3. **[Agent Selection Guide](../agents/agent-selection-guide.md)** - Choose optimal agents for tasks
+3. **[Agent Selection Guide](../reference/ai-agent-selection.md)** - Choose optimal agents for tasks
 4. **[AI Tools Integration](../ai-tools/ai-tools-overview.md)** - Leverage AI for maximum productivity
 
 **Remember:** Project initialization is foundation for productive development. Take time to set up properly for long-term success.

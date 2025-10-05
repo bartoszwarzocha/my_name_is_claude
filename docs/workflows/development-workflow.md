@@ -555,7 +555,7 @@ Deployment: Container orchestration, service mesh, monitoring
 
 1. **[Team Collaboration Workflow](team-collaboration.md)** - Advanced team coordination patterns
 2. **[Crisis Management Workflow](crisis-management.md)** - Emergency response procedures
-3. **[Agent Selection Guide](../agents/agent-selection-guide.md)** - Optimize agent usage
+3. **[Agent Selection Guide](../reference/ai-agent-selection.md)** - Optimize agent usage
 4. **[AI Tools Integration](../ai-tools/hybrid-workflows.md)** - Advanced AI workflow patterns
 
 **Remember:** Consistent workflow execution leads to predictable, high-quality results. Adapt the workflow to your team's needs while maintaining quality standards.

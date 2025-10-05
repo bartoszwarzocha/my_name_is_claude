@@ -375,14 +375,14 @@ cd /path/to/claude-code-framework
 ## 🎯 Next Steps After Installation
 
 ### **Immediate Next Steps**
-1. **[Configure CLAUDE.md](claude-md-configuration.md)** - Customize for your project
+1. **[Configure CLAUDE.md](../advanced/claude-md-configuration.md)** - Customize for your project
 2. **[First AI-Assisted Task](first-steps.md)** - Complete your first framework-guided development
 3. **[AI Tools Overview](../ai-tools/ai-tools-overview.md)** - Learn about available AI capabilities
 
 ### **For New Projects**
 1. **[New Project Step-by-Step](new-project-step-by-step.md)** - Complete new project setup
 2. **[Development Workflow](../workflows/development-workflow.md)** - Standard development process
-3. **[Agent Selection Guide](../agents/agent-selection-guide.md)** - Choose optimal agents
+3. **[Agent Selection Guide](../reference/ai-agent-selection.md)** - Choose optimal agents
 
 ### **For Existing Projects**
 1. **[Existing Project Integration](existing-project-integration.md)** - Advanced integration patterns

@@ -426,9 +426,9 @@ export AI_TOOLS_DISABLED=true
 ## 📞 Getting Help
 
 ### **Self-Help Resources:**
-1. **[Installation Guide](../getting-started/installation.md)** - Reinstall framework components
+1. **[Installation Guide](../getting-started/framework-installation.md)** - Reinstall framework components
 2. **[Configuration Guide](../advanced/claude-md-configuration.md)** - Fix configuration issues
-3. **[Framework Architecture](../advanced/framework-architecture.md)** - Understand system design
+3. **[AI Agent Selection](../reference/ai-agent-selection.md)** - Understand agent system
 
 ### **Community Support:**
 1. **Framework Documentation** - Check latest docs for known issues

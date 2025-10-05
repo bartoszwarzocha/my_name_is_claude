@@ -14,7 +14,7 @@ By the end of this guide you'll have:
 
 ## 📋 Prerequisites
 
-- ✅ My Name Is Claude [installed](installation.md)
+- ✅ My Name Is Claude [installed](framework-installation.md)
 - ✅ Existing project with git repository
 - ✅ Basic understanding of your current tech stack
 - ✅ Write access to project root directory
@@ -444,5 +444,5 @@ alias claude-agent="python ./.ai-tools/core/integration/ai_agent_selector.py"
 
 **Next recommended actions:**
 - **[Development Workflow](../workflows/development-workflow.md)** - Optimize your enhanced development process
-- **[Agent Selection Guide](../agents/agent-selection-guide.md)** - Choose the best agents for your specific needs
+- **[Agent Selection Guide](../reference/ai-agent-selection.md)** - Choose the best agents for your specific needs
 - **[Team Collaboration](../workflows/team-collaboration.md)** - Scale framework usage across your team

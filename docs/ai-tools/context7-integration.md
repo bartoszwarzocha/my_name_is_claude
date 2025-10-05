@@ -629,7 +629,7 @@ context7 regenerate tests --target "src/**/*.ts"
 
 ### **Framework Integration:**
 1. **[Development Workflow](../workflows/development-workflow.md)** - Integrate Context7 into daily development
-2. **[Agent Selection Guide](../agents/agent-selection-guide.md)** - Optimize agent-Context7 coordination
+2. **[Agent Selection Guide](../reference/ai-agent-selection.md)** - Optimize agent-Context7 coordination
 3. **[Team Collaboration](../workflows/team-collaboration.md)** - Share Context7 templates and standards
 
 ---

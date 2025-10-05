@@ -511,7 +511,7 @@ serena config --set cache.max_memory=512MB
 3. **[Performance Optimization](../advanced/performance-optimization.md)** - Advanced performance analysis
 
 ### **Framework Integration:**
-1. **[Agent Selection Guide](../agents/agent-selection-guide.md)** - Optimize agent usage with Serena data
+1. **[Agent Selection Guide](../reference/ai-agent-selection.md)** - Optimize agent usage with Serena data
 2. **[Development Workflow](../workflows/development-workflow.md)** - Integrate Serena into daily development
 3. **[Crisis Management](../workflows/crisis-management.md)** - Use Serena for incident response
 

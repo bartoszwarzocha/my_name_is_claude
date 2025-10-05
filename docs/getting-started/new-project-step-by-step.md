@@ -14,7 +14,7 @@ By the end of this guide you'll have:
 
 ## 📋 Prerequisites
 
-- ✅ My Name Is Claude [installed](installation.md)
+- ✅ My Name Is Claude [installed](framework-installation.md)
 - ✅ Python 3.8+
 - ✅ Git repository (new or empty)
 - ✅ Basic project information (name, tech stack, domain)
@@ -280,7 +280,7 @@ After successful setup, choose your next step:
 
 ### For Development Focus:
 1. **[Development Workflow](../workflows/development-workflow.md)** - Standard development process
-2. **[Agent Selection Guide](../agents/agent-selection-guide.md)** - Choose the right agents
+2. **[Agent Selection Guide](../reference/ai-agent-selection.md)** - Choose the right agents
 3. **[AI Tools Integration](../ai-tools/ai-tools-overview.md)** - Leverage AI for development
 
 ### For Team Setup:
