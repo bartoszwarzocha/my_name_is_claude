@@ -1,0 +1,215 @@
+{
+  "version": "3.5.0",
+  "description": "Background Task Management System Configuration",
+  "enabled": true,
+
+  "execution": {
+    "max_concurrent_tasks": 5,
+    "task_timeout_seconds": 3600,
+    "check_interval_seconds": 5,
+    "cleanup_interval_seconds": 300,
+    "process_isolation": true,
+    "auto_restart_on_failure": true,
+    "max_retries": 3,
+    "retry_delay_seconds": 10
+  },
+
+  "resource_limits": {
+    "max_memory_mb": 2048,
+    "max_cpu_percent": 50,
+    "max_disk_io_mbps": 100,
+    "priority": "low"
+  },
+
+  "notification_system": {
+    "enabled": true,
+    "channels": {
+      "console": {
+        "enabled": true,
+        "min_severity": "info"
+      },
+      "desktop": {
+        "enabled": true,
+        "min_severity": "warning",
+        "platform_specific": {
+          "linux": "notify-send",
+          "macos": "osascript",
+          "windows": "toast"
+        }
+      },
+      "file": {
+        "enabled": true,
+        "log_file": "project_archive/logs/background-tasks.log",
+        "min_severity": "info",
+        "rotation": {
+          "max_size_mb": 10,
+          "max_files": 5
+        }
+      },
+      "email": {
+        "enabled": false,
+        "smtp_server": "${SMTP_SERVER}",
+        "smtp_port": 587,
+        "from_email": "${FROM_EMAIL}",
+        "to_email": "${TO_EMAIL}",
+        "min_severity": "error"
+      }
+    },
+    "notification_templates": {
+      "task_started": "🚀 Background task started: {task_name}",
+      "task_completed": "✅ Task completed: {task_name} ({duration}s)",
+      "task_failed": "❌ Task failed: {task_name} - {error}",
+      "task_timeout": "⏱️  Task timeout: {task_name} (>{timeout}s)",
+      "high_resource_usage": "⚠️  High resource usage: {resource} at {percent}%"
+    }
+  },
+
+  "task_types": {
+    "security_scan": {
+      "enabled": true,
+      "auto_trigger": {
+        "on_file_change": true,
+        "on_commit": false,
+        "interval_minutes": 30
+      },
+      "priority": "high",
+      "timeout_seconds": 600,
+      "notification_on_complete": true,
+      "notification_on_issues": true
+    },
+    "performance_profile": {
+      "enabled": true,
+      "auto_trigger": {
+        "on_file_change": false,
+        "on_test_run": true,
+        "interval_minutes": 0
+      },
+      "priority": "medium",
+      "timeout_seconds": 1800,
+      "notification_on_complete": true,
+      "notification_on_issues": true
+    },
+    "test_runner": {
+      "enabled": true,
+      "auto_trigger": {
+        "on_file_change": true,
+        "on_commit": false,
+        "debounce_seconds": 10
+      },
+      "priority": "high",
+      "timeout_seconds": 1200,
+      "notification_on_complete": false,
+      "notification_on_issues": true
+    },
+    "code_analysis": {
+      "enabled": true,
+      "auto_trigger": {
+        "on_file_change": false,
+        "on_commit": true,
+        "interval_minutes": 60
+      },
+      "priority": "low",
+      "timeout_seconds": 900,
+      "notification_on_complete": false,
+      "notification_on_issues": true
+    },
+    "technical_debt_tracker": {
+      "enabled": true,
+      "auto_trigger": {
+        "on_file_change": false,
+        "interval_minutes": 1440
+      },
+      "priority": "low",
+      "timeout_seconds": 600,
+      "notification_on_complete": true,
+      "notification_on_issues": false
+    },
+    "dependency_audit": {
+      "enabled": true,
+      "auto_trigger": {
+        "on_package_change": true,
+        "interval_minutes": 1440
+      },
+      "priority": "medium",
+      "timeout_seconds": 300,
+      "notification_on_complete": false,
+      "notification_on_issues": true
+    }
+  },
+
+  "monitoring": {
+    "enabled": true,
+    "metrics": {
+      "task_execution_time": true,
+      "task_success_rate": true,
+      "resource_usage": true,
+      "queue_length": true,
+      "concurrent_tasks": true
+    },
+    "metrics_file": "project_archive/logs/background-tasks-metrics.json",
+    "retention_days": 30
+  },
+
+  "storage": {
+    "task_results_dir": "project_archive/background-tasks/results",
+    "task_logs_dir": "project_archive/background-tasks/logs",
+    "task_state_file": "project_archive/background-tasks/state.json",
+    "retention_days": 7,
+    "cleanup_on_startup": true
+  },
+
+  "triggers": {
+    "file_watch": {
+      "enabled": true,
+      "paths": [
+        "**/*.py",
+        "**/*.js",
+        "**/*.ts",
+        "**/*.jsx",
+        "**/*.tsx"
+      ],
+      "exclude_paths": [
+        "**/node_modules/**",
+        "**/.venv/**",
+        "**/venv/**",
+        "**/.git/**",
+        "**/dist/**",
+        "**/build/**"
+      ]
+    },
+    "git_hooks": {
+      "enabled": true,
+      "pre_commit": ["code_analysis"],
+      "post_commit": ["security_scan"],
+      "pre_push": ["test_runner", "performance_profile"]
+    },
+    "scheduled": {
+      "enabled": true,
+      "tasks": [
+        {
+          "name": "daily_security_scan",
+          "task_type": "security_scan",
+          "schedule": "0 2 * * *"
+        },
+        {
+          "name": "daily_technical_debt",
+          "task_type": "technical_debt_tracker",
+          "schedule": "0 3 * * *"
+        },
+        {
+          "name": "weekly_dependency_audit",
+          "task_type": "dependency_audit",
+          "schedule": "0 4 * * 0"
+        }
+      ]
+    }
+  },
+
+  "ui": {
+    "enabled": true,
+    "dashboard_port": 8080,
+    "show_progress": true,
+    "show_logs": true,
+    "auto_open_browser": false
+  }
+}
