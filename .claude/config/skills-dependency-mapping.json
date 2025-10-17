@@ -1,0 +1,367 @@
+{
+  "version": "1.0.0",
+  "framework_version": "3.10.0",
+  "description": "Agent collaboration patterns and cross-skill dependencies for Claude Skills architecture",
+  "last_updated": "2025-10-17",
+
+  "collaboration_model": {
+    "within_skill": {
+      "description": "Agents within same skill can directly reference each other",
+      "mechanism": "Claude navigates SKILL.md to find referenced agent instructions",
+      "example": "In Development skill: frontend-engineer → backend-engineer → api-engineer"
+    },
+    "cross_skill": {
+      "description": "Agents in different skills collaborate through Foundation skill orchestration",
+      "mechanism": "session-manager (Foundation skill) coordinates between skills",
+      "example": "software-architect (Architecture skill) → frontend-engineer (Development skill) coordinated by session-manager"
+    },
+    "foundation_role": {
+      "description": "Foundation skill provides orchestration layer for all multi-agent workflows",
+      "agents": ["session-manager", "product-manager", "business-analyst"],
+      "always_required": true
+    }
+  },
+
+  "skill_dependencies": {
+    "foundation": {
+      "depends_on": [],
+      "depended_by": ["architecture", "development", "data", "quality", "security", "operations", "custom"],
+      "role": "Orchestrator - coordinates all other skills",
+      "collaboration_pattern": "Hub-and-spoke: Foundation at center, domains as spokes"
+    },
+
+    "architecture": {
+      "depends_on": ["foundation"],
+      "frequently_used_with": ["development", "quality", "security", "operations"],
+      "role": "Design authority - provides architectural guidance to implementation teams",
+      "key_collaborations": [
+        {
+          "agent": "software-architect",
+          "collaborates_with": [
+            {"agent": "frontend-engineer", "skill": "development", "pattern": "architecture_to_implementation"},
+            {"agent": "backend-engineer", "skill": "development", "pattern": "architecture_to_implementation"},
+            {"agent": "security-engineer", "skill": "security", "pattern": "architecture_review"},
+            {"agent": "deployment-engineer", "skill": "operations", "pattern": "architecture_to_infrastructure"}
+          ]
+        },
+        {
+          "agent": "ux-designer",
+          "collaborates_with": [
+            {"agent": "frontend-engineer", "skill": "development", "pattern": "design_to_implementation"},
+            {"agent": "product-manager", "skill": "foundation", "pattern": "design_validation"}
+          ]
+        }
+      ]
+    },
+
+    "development": {
+      "depends_on": ["foundation", "architecture"],
+      "frequently_used_with": ["quality", "data"],
+      "role": "Implementation - builds systems according to architectural designs",
+      "internal_collaboration": {
+        "description": "High collaboration within Development skill",
+        "patterns": [
+          "frontend-engineer ↔ backend-engineer (API contract)",
+          "backend-engineer ↔ api-engineer (service design)",
+          "frontend-engineer ↔ api-engineer (API consumption)"
+        ]
+      },
+      "key_collaborations": [
+        {
+          "agent": "frontend-engineer",
+          "collaborates_with": [
+            {"agent": "backend-engineer", "skill": "development", "pattern": "api_contract"},
+            {"agent": "api-engineer", "skill": "development", "pattern": "api_integration"},
+            {"agent": "ux-designer", "skill": "architecture", "pattern": "ui_implementation"},
+            {"agent": "qa-engineer", "skill": "quality", "pattern": "testing_collaboration"}
+          ]
+        },
+        {
+          "agent": "backend-engineer",
+          "collaborates_with": [
+            {"agent": "data-engineer", "skill": "data", "pattern": "data_integration"},
+            {"agent": "security-engineer", "skill": "security", "pattern": "security_review"},
+            {"agent": "performance-engineer", "skill": "quality", "pattern": "performance_optimization"}
+          ]
+        },
+        {
+          "agent": "api-engineer",
+          "collaborates_with": [
+            {"agent": "security-engineer", "skill": "security", "pattern": "api_security"},
+            {"agent": "qa-engineer", "skill": "quality", "pattern": "api_testing"}
+          ]
+        }
+      ]
+    },
+
+    "data": {
+      "depends_on": ["foundation"],
+      "frequently_used_with": ["development", "operations"],
+      "role": "Data platform - provides data infrastructure and analytics",
+      "key_collaborations": [
+        {
+          "agent": "data-engineer",
+          "collaborates_with": [
+            {"agent": "backend-engineer", "skill": "development", "pattern": "data_pipeline_integration"},
+            {"agent": "devops-architect", "skill": "operations", "pattern": "data_infrastructure"},
+            {"agent": "business-analyst", "skill": "foundation", "pattern": "requirements_analysis"}
+          ]
+        },
+        {
+          "agent": "data-scientist",
+          "collaborates_with": [
+            {"agent": "backend-engineer", "skill": "development", "pattern": "model_deployment"},
+            {"agent": "data-engineer", "skill": "data", "pattern": "feature_engineering"}
+          ]
+        }
+      ]
+    },
+
+    "quality": {
+      "depends_on": ["foundation"],
+      "frequently_used_with": ["development", "security", "operations"],
+      "role": "Quality assurance - validates implementations against requirements",
+      "key_collaborations": [
+        {
+          "agent": "qa-engineer",
+          "collaborates_with": [
+            {"agent": "frontend-engineer", "skill": "development", "pattern": "ui_testing"},
+            {"agent": "backend-engineer", "skill": "development", "pattern": "integration_testing"},
+            {"agent": "api-engineer", "skill": "development", "pattern": "api_testing"},
+            {"agent": "security-engineer", "skill": "security", "pattern": "security_testing"}
+          ]
+        },
+        {
+          "agent": "performance-engineer",
+          "collaborates_with": [
+            {"agent": "backend-engineer", "skill": "development", "pattern": "performance_optimization"},
+            {"agent": "sre-engineer", "skill": "operations", "pattern": "performance_monitoring"}
+          ]
+        },
+        {
+          "agent": "reviewer",
+          "collaborates_with": [
+            {"agent": "software-architect", "skill": "architecture", "pattern": "architecture_review"},
+            {"agent": "security-engineer", "skill": "security", "pattern": "security_code_review"}
+          ]
+        }
+      ]
+    },
+
+    "security": {
+      "depends_on": ["foundation"],
+      "frequently_used_with": ["architecture", "development", "quality", "operations"],
+      "role": "Security and compliance - ensures security standards and regulatory compliance",
+      "key_collaborations": [
+        {
+          "agent": "security-engineer",
+          "collaborates_with": [
+            {"agent": "software-architect", "skill": "architecture", "pattern": "threat_modeling"},
+            {"agent": "backend-engineer", "skill": "development", "pattern": "secure_coding"},
+            {"agent": "api-engineer", "skill": "development", "pattern": "api_security"},
+            {"agent": "qa-engineer", "skill": "quality", "pattern": "security_testing"},
+            {"agent": "devops-architect", "skill": "operations", "pattern": "infrastructure_security"}
+          ]
+        },
+        {
+          "agent": "compliance-auditor",
+          "collaborates_with": [
+            {"agent": "governance-architect", "skill": "security", "pattern": "compliance_framework"},
+            {"agent": "business-analyst", "skill": "foundation", "pattern": "regulatory_requirements"}
+          ]
+        }
+      ]
+    },
+
+    "operations": {
+      "depends_on": ["foundation"],
+      "frequently_used_with": ["development", "security", "quality"],
+      "role": "Infrastructure and reliability - provides deployment, monitoring, and incident response",
+      "internal_collaboration": {
+        "description": "High collaboration within Operations skill (largest skill with 7 agents)",
+        "patterns": [
+          "deployment-engineer → devops-architect (deployment strategy)",
+          "sre-engineer → monitoring-engineer (observability)",
+          "incident-responder → reliability-engineer (incident management)",
+          "capacity-planner → sre-engineer (resource planning)"
+        ]
+      },
+      "key_collaborations": [
+        {
+          "agent": "deployment-engineer",
+          "collaborates_with": [
+            {"agent": "backend-engineer", "skill": "development", "pattern": "deployment_pipeline"},
+            {"agent": "security-engineer", "skill": "security", "pattern": "secure_deployment"}
+          ]
+        },
+        {
+          "agent": "sre-engineer",
+          "collaborates_with": [
+            {"agent": "backend-engineer", "skill": "development", "pattern": "reliability_engineering"},
+            {"agent": "performance-engineer", "skill": "quality", "pattern": "performance_monitoring"}
+          ]
+        },
+        {
+          "agent": "incident-responder",
+          "collaborates_with": [
+            {"agent": "security-engineer", "skill": "security", "pattern": "security_incidents"},
+            {"agent": "qa-engineer", "skill": "quality", "pattern": "post_incident_testing"}
+          ]
+        }
+      ]
+    },
+
+    "custom": {
+      "depends_on": ["foundation"],
+      "frequently_used_with": ["development", "quality"],
+      "role": "Specialized domains - graphics, hardware, desktop, scientific computing",
+      "note": "Custom agents are domain-specific and have limited cross-skill collaboration except with Foundation and Development",
+      "key_collaborations": [
+        {
+          "agent": "graphics-3d-engineer",
+          "collaborates_with": [
+            {"agent": "performance-engineer", "skill": "quality", "pattern": "graphics_performance"},
+            {"agent": "backend-engineer", "skill": "development", "pattern": "rendering_backend"}
+          ]
+        },
+        {
+          "agent": "embedded-engineer",
+          "collaborates_with": [
+            {"agent": "electronics-engineer", "skill": "custom", "pattern": "hardware_software_integration"},
+            {"agent": "qa-engineer", "skill": "quality", "pattern": "embedded_testing"}
+          ]
+        }
+      ]
+    }
+  },
+
+  "collaboration_patterns": {
+    "architecture_to_implementation": {
+      "description": "Architect provides design, implementation team builds it",
+      "flow": "Architecture → Development",
+      "typical_agents": ["software-architect → frontend-engineer/backend-engineer"],
+      "deliverables": ["Architecture Decision Records", "System diagrams", "Technology recommendations"]
+    },
+
+    "api_contract": {
+      "description": "Frontend and backend agree on API interface",
+      "flow": "Development ↔ Development (bidirectional)",
+      "typical_agents": ["frontend-engineer ↔ backend-engineer ↔ api-engineer"],
+      "deliverables": ["API specification (OpenAPI/GraphQL schema)", "Contract tests"]
+    },
+
+    "security_review": {
+      "description": "Security engineer reviews design/implementation for vulnerabilities",
+      "flow": "Any → Security → Any (review cycle)",
+      "typical_agents": ["Any agent → security-engineer → feedback"],
+      "deliverables": ["Threat model", "Security findings", "Remediation recommendations"]
+    },
+
+    "testing_collaboration": {
+      "description": "QA engineer works with development team for test strategy",
+      "flow": "Quality ↔ Development (iterative)",
+      "typical_agents": ["qa-engineer ↔ frontend/backend/api-engineer"],
+      "deliverables": ["Test plan", "Test automation", "Quality metrics"]
+    },
+
+    "deployment_pipeline": {
+      "description": "Operations team deploys code from development team",
+      "flow": "Development → Operations",
+      "typical_agents": ["backend-engineer → deployment-engineer → sre-engineer"],
+      "deliverables": ["Deployment artifacts", "Infrastructure configuration", "Monitoring setup"]
+    },
+
+    "data_integration": {
+      "description": "Backend integrates with data pipelines",
+      "flow": "Data ↔ Development (bidirectional)",
+      "typical_agents": ["data-engineer ↔ backend-engineer"],
+      "deliverables": ["Data schemas", "API endpoints", "Data quality rules"]
+    },
+
+    "performance_optimization": {
+      "description": "Performance engineer optimizes implementation",
+      "flow": "Quality → Development → Quality (feedback loop)",
+      "typical_agents": ["performance-engineer → backend-engineer → validation"],
+      "deliverables": ["Performance benchmarks", "Optimization recommendations", "Load test results"]
+    }
+  },
+
+  "workflow_compositions": {
+    "full_stack_web_development": {
+      "skills_required": ["foundation", "architecture", "development", "quality"],
+      "primary_collaboration": "architecture → development → quality",
+      "coordination_by": "session-manager (foundation)",
+      "typical_agent_flow": [
+        "product-manager (foundation) → define requirements",
+        "business-analyst (foundation) → analyze requirements",
+        "software-architect (architecture) → design system",
+        "ux-designer (architecture) → design UI/UX",
+        "frontend-engineer (development) → implement UI",
+        "backend-engineer (development) → implement logic",
+        "api-engineer (development) → implement APIs",
+        "qa-engineer (quality) → test implementation",
+        "deployment-engineer (operations - optional) → deploy"
+      ]
+    },
+
+    "security_and_compliance_audit": {
+      "skills_required": ["foundation", "security", "quality"],
+      "primary_collaboration": "security ↔ quality",
+      "coordination_by": "business-analyst (foundation)",
+      "typical_agent_flow": [
+        "business-analyst (foundation) → compliance requirements",
+        "security-engineer (security) → threat modeling",
+        "compliance-auditor (security) → compliance assessment",
+        "qa-engineer (quality) → security testing",
+        "reviewer (quality) → security code review"
+      ]
+    },
+
+    "data_pipeline_development": {
+      "skills_required": ["foundation", "data", "operations", "quality"],
+      "primary_collaboration": "data → operations",
+      "coordination_by": "session-manager (foundation)",
+      "typical_agent_flow": [
+        "business-analyst (foundation) → data requirements",
+        "data-engineer (data) → pipeline design",
+        "data-scientist (data - optional) → feature engineering",
+        "devops-architect (operations) → infrastructure setup",
+        "qa-engineer (quality) → data quality testing",
+        "monitoring-engineer (operations) → observability"
+      ]
+    },
+
+    "incident_response": {
+      "skills_required": ["foundation", "operations", "security"],
+      "primary_collaboration": "operations ↔ security",
+      "coordination_by": "session-manager (foundation)",
+      "typical_agent_flow": [
+        "incident-responder (operations) → incident assessment",
+        "sre-engineer (operations) → impact analysis",
+        "security-engineer (security - if security incident) → security assessment",
+        "reliability-engineer (operations) → recovery plan",
+        "post-mortem by reviewer (quality)"
+      ]
+    }
+  },
+
+  "cross_skill_coordination_guidelines": {
+    "rule_1": "Foundation skill (session-manager) ALWAYS coordinates multi-skill workflows",
+    "rule_2": "Agents within same skill can reference each other directly",
+    "rule_3": "Cross-skill collaboration goes through Foundation orchestration",
+    "rule_4": "Load all required skills at workflow start (can't dynamically load mid-workflow)",
+    "rule_5": "Maximum 8 skills per request - choose skill combinations based on workflow type",
+    "rule_6": "Architecture and Security skills frequently needed together for reviews",
+    "rule_7": "Development and Quality skills always paired for implementation workflows"
+  },
+
+  "skill_loading_recommendations": {
+    "minimal_viable": ["foundation"],
+    "development_focused": ["foundation", "architecture", "development", "quality"],
+    "enterprise_platform": ["foundation", "architecture", "security", "operations", "quality"],
+    "data_intensive": ["foundation", "data", "operations", "development", "quality"],
+    "specialized_graphics": ["foundation", "custom", "development", "quality"],
+    "compliance_audit": ["foundation", "security", "quality"],
+    "full_coverage": ["foundation", "architecture", "development", "data", "quality", "security", "operations", "custom"]
+  }
+}

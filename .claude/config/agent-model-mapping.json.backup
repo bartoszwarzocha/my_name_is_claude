@@ -1,0 +1,649 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "description": "Intelligent agent-to-model mapping for optimal performance and cost efficiency",
+  "lastUpdated": "2025-10-05",
+
+  "agentMappings": {
+    "software-architect": {
+      "defaultProfile": "quality",
+      "reasoning": "Architecture decisions require maximum quality and depth of analysis",
+      "taskSpecificOverrides": {
+        "quick_review": "balanced",
+        "documentation": "balanced",
+        "critical_design": "quality",
+        "proof_of_concept": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "frontend-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "UI development benefits from balanced speed and quality",
+      "taskSpecificOverrides": {
+        "ui_tweaks": "fast",
+        "component_design": "balanced",
+        "accessibility_audit": "quality",
+        "performance_optimization": "quality"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "backend-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Backend development requires reliable quality with good speed",
+      "taskSpecificOverrides": {
+        "bug_fix": "fast",
+        "api_implementation": "balanced",
+        "database_design": "quality",
+        "scalability_design": "quality"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "critical"
+    },
+
+    "qa-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Quality assurance needs thoroughness with reasonable speed",
+      "taskSpecificOverrides": {
+        "smoke_test": "fast",
+        "integration_test": "balanced",
+        "security_test": "quality",
+        "regression_test": "balanced"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "deployment-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Deployment requires reliability and moderate speed",
+      "taskSpecificOverrides": {
+        "configuration": "fast",
+        "deployment_strategy": "quality",
+        "rollback_plan": "quality",
+        "monitoring_setup": "balanced"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "critical"
+    },
+
+    "security-engineer": {
+      "defaultProfile": "quality",
+      "reasoning": "Security cannot compromise on quality and thoroughness",
+      "taskSpecificOverrides": {
+        "quick_scan": "balanced",
+        "security_audit": "quality",
+        "threat_modeling": "quality",
+        "compliance_check": "quality"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "ux-designer": {
+      "defaultProfile": "balanced",
+      "reasoning": "UX design balances creativity with analytical rigor",
+      "taskSpecificOverrides": {
+        "wireframe": "fast",
+        "user_research_analysis": "quality",
+        "interaction_design": "balanced",
+        "usability_testing": "balanced"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "api-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "API development requires solid quality with good throughput",
+      "taskSpecificOverrides": {
+        "endpoint_implementation": "balanced",
+        "api_design": "quality",
+        "documentation": "fast",
+        "versioning_strategy": "quality"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "data-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Data pipelines need reliability and performance",
+      "taskSpecificOverrides": {
+        "etl_implementation": "balanced",
+        "data_architecture": "quality",
+        "pipeline_optimization": "quality",
+        "data_validation": "balanced"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "business-analyst": {
+      "defaultProfile": "quality",
+      "reasoning": "Business analysis requires deep understanding and accuracy",
+      "taskSpecificOverrides": {
+        "requirements_gathering": "quality",
+        "stakeholder_analysis": "quality",
+        "process_documentation": "balanced",
+        "quick_updates": "fast"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "product-manager": {
+      "defaultProfile": "quality",
+      "reasoning": "Product decisions have high business impact requiring quality analysis",
+      "taskSpecificOverrides": {
+        "roadmap_planning": "quality",
+        "feature_prioritization": "quality",
+        "status_updates": "fast",
+        "stakeholder_communication": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "session-manager": {
+      "defaultProfile": "balanced",
+      "reasoning": "Session management balances state preservation with performance",
+      "taskSpecificOverrides": {
+        "context_save": "fast",
+        "session_restore": "balanced",
+        "state_recovery": "quality",
+        "handoff_coordination": "balanced"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "sre-engineer": {
+      "defaultProfile": "quality",
+      "reasoning": "Site reliability requires highest standards for production systems",
+      "taskSpecificOverrides": {
+        "incident_response": "quality",
+        "postmortem_analysis": "quality",
+        "monitoring_setup": "balanced",
+        "runbook_updates": "fast"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "monitoring-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Monitoring setup balances comprehensiveness with speed",
+      "taskSpecificOverrides": {
+        "dashboard_creation": "balanced",
+        "alert_configuration": "quality",
+        "metrics_setup": "balanced",
+        "log_aggregation": "balanced"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "incident-responder": {
+      "defaultProfile": "quality",
+      "reasoning": "Incident response demands highest quality under pressure",
+      "taskSpecificOverrides": {
+        "triage": "balanced",
+        "root_cause_analysis": "quality",
+        "resolution_planning": "quality",
+        "communication": "fast"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "capacity-planner": {
+      "defaultProfile": "quality",
+      "reasoning": "Capacity planning requires accurate projections and analysis",
+      "taskSpecificOverrides": {
+        "capacity_analysis": "quality",
+        "scaling_strategy": "quality",
+        "cost_projection": "quality",
+        "quick_estimates": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "reliability-engineer": {
+      "defaultProfile": "quality",
+      "reasoning": "Reliability engineering cannot compromise on quality",
+      "taskSpecificOverrides": {
+        "chaos_engineering": "quality",
+        "resilience_testing": "quality",
+        "slo_definition": "quality",
+        "observability_setup": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "performance-engineer": {
+      "defaultProfile": "quality",
+      "reasoning": "Performance optimization requires deep analysis and precision",
+      "taskSpecificOverrides": {
+        "performance_audit": "quality",
+        "optimization": "quality",
+        "load_testing": "balanced",
+        "quick_profiling": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "integration-architect": {
+      "defaultProfile": "quality",
+      "reasoning": "Integration architecture has far-reaching system impact",
+      "taskSpecificOverrides": {
+        "integration_design": "quality",
+        "esb_architecture": "quality",
+        "api_gateway_design": "quality",
+        "quick_assessment": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "middleware-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Middleware development balances complexity with throughput",
+      "taskSpecificOverrides": {
+        "message_broker_setup": "balanced",
+        "workflow_orchestration": "quality",
+        "service_mesh_config": "balanced",
+        "troubleshooting": "balanced"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "devops-architect": {
+      "defaultProfile": "quality",
+      "reasoning": "DevOps architecture shapes entire delivery pipeline",
+      "taskSpecificOverrides": {
+        "cicd_design": "quality",
+        "infrastructure_architecture": "quality",
+        "automation_strategy": "quality",
+        "pipeline_fixes": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "platform-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Platform engineering balances developer experience with reliability",
+      "taskSpecificOverrides": {
+        "platform_design": "quality",
+        "tool_integration": "balanced",
+        "developer_experience": "balanced",
+        "quick_fixes": "fast"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "cloud-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Cloud engineering requires balance of speed and quality",
+      "taskSpecificOverrides": {
+        "infrastructure_deployment": "balanced",
+        "architecture_design": "quality",
+        "cost_optimization": "quality",
+        "quick_provisioning": "fast"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "network-architect": {
+      "defaultProfile": "quality",
+      "reasoning": "Network architecture requires precision and security",
+      "taskSpecificOverrides": {
+        "network_design": "quality",
+        "security_architecture": "quality",
+        "topology_planning": "quality",
+        "troubleshooting": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "compliance-auditor": {
+      "defaultProfile": "quality",
+      "reasoning": "Compliance audit cannot compromise on thoroughness",
+      "taskSpecificOverrides": {
+        "compliance_assessment": "quality",
+        "regulatory_review": "quality",
+        "audit_preparation": "quality",
+        "documentation_review": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "governance-architect": {
+      "defaultProfile": "quality",
+      "reasoning": "Governance architecture sets organizational standards",
+      "taskSpecificOverrides": {
+        "governance_framework": "quality",
+        "policy_design": "quality",
+        "standards_definition": "quality",
+        "policy_review": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "risk-manager": {
+      "defaultProfile": "quality",
+      "reasoning": "Risk management requires comprehensive analysis",
+      "taskSpecificOverrides": {
+        "risk_assessment": "quality",
+        "mitigation_planning": "quality",
+        "business_continuity": "quality",
+        "risk_monitoring": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "enterprise-architect": {
+      "defaultProfile": "quality",
+      "reasoning": "Enterprise architecture has organization-wide impact",
+      "taskSpecificOverrides": {
+        "enterprise_design": "quality",
+        "digital_transformation": "quality",
+        "technology_strategy": "quality",
+        "architecture_review": "quality"
+      },
+      "estimatedCostImpact": "very_high",
+      "businessValue": "critical"
+    },
+
+    "data-scientist": {
+      "defaultProfile": "quality",
+      "reasoning": "Data science requires precision in analysis and modeling",
+      "taskSpecificOverrides": {
+        "model_development": "quality",
+        "statistical_analysis": "quality",
+        "feature_engineering": "balanced",
+        "exploratory_analysis": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "analytics-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Analytics engineering balances insight depth with delivery speed",
+      "taskSpecificOverrides": {
+        "dashboard_development": "balanced",
+        "data_warehouse_design": "quality",
+        "etl_development": "balanced",
+        "ad_hoc_analysis": "fast"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "database-administrator": {
+      "defaultProfile": "balanced",
+      "reasoning": "DBA tasks require reliability with operational efficiency",
+      "taskSpecificOverrides": {
+        "performance_tuning": "quality",
+        "backup_strategy": "quality",
+        "routine_maintenance": "fast",
+        "schema_design": "quality"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "automation-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Automation development balances quality with rapid iteration",
+      "taskSpecificOverrides": {
+        "script_development": "balanced",
+        "workflow_automation": "balanced",
+        "process_optimization": "quality",
+        "quick_automation": "fast"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "mobile-developer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Mobile development requires quality UX with development speed",
+      "taskSpecificOverrides": {
+        "ui_implementation": "balanced",
+        "architecture_design": "quality",
+        "bug_fixes": "fast",
+        "performance_optimization": "quality"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "technical-writer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Technical writing balances clarity with production speed",
+      "taskSpecificOverrides": {
+        "api_documentation": "balanced",
+        "architecture_docs": "quality",
+        "simple_updates": "fast",
+        "comprehensive_guides": "balanced"
+      },
+      "estimatedCostImpact": "low",
+      "businessValue": "moderate"
+    },
+
+    "project-owner": {
+      "defaultProfile": "quality",
+      "reasoning": "Project ownership requires strategic vision and quality decisions",
+      "taskSpecificOverrides": {
+        "project_planning": "quality",
+        "health_monitoring": "balanced",
+        "governance": "quality",
+        "status_updates": "fast"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "project-coordinator": {
+      "defaultProfile": "balanced",
+      "reasoning": "Coordination balances thoroughness with team velocity",
+      "taskSpecificOverrides": {
+        "team_coordination": "balanced",
+        "deliverable_tracking": "balanced",
+        "stakeholder_updates": "fast",
+        "planning": "balanced"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "reviewer": {
+      "defaultProfile": "quality",
+      "reasoning": "Code review requires thoroughness and attention to detail",
+      "taskSpecificOverrides": {
+        "code_review": "quality",
+        "security_review": "quality",
+        "quick_review": "balanced",
+        "documentation_review": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "graphics-3d-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "3D graphics development balances technical complexity with iteration speed",
+      "taskSpecificOverrides": {
+        "shader_development": "balanced",
+        "optimization": "quality",
+        "pipeline_design": "quality",
+        "bug_fixes": "fast"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "graphics-2d-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "2D graphics balances visual quality with performance",
+      "taskSpecificOverrides": {
+        "rendering_implementation": "balanced",
+        "optimization": "quality",
+        "ui_graphics": "balanced",
+        "quick_fixes": "fast"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "math-specialist": {
+      "defaultProfile": "quality",
+      "reasoning": "Mathematical modeling requires precision and deep analysis",
+      "taskSpecificOverrides": {
+        "algorithm_design": "quality",
+        "mathematical_modeling": "quality",
+        "optimization": "quality",
+        "simple_calculations": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "embedded-engineer": {
+      "defaultProfile": "balanced",
+      "reasoning": "Embedded development balances hardware constraints with quality",
+      "taskSpecificOverrides": {
+        "firmware_development": "balanced",
+        "hardware_integration": "quality",
+        "optimization": "quality",
+        "debugging": "balanced"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "electronics-engineer": {
+      "defaultProfile": "quality",
+      "reasoning": "Electronics design requires precision and thorough analysis",
+      "taskSpecificOverrides": {
+        "circuit_design": "quality",
+        "pcb_layout": "quality",
+        "component_selection": "quality",
+        "troubleshooting": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "desktop-specialist": {
+      "defaultProfile": "balanced",
+      "reasoning": "Desktop development balances UI/UX quality with performance",
+      "taskSpecificOverrides": {
+        "ui_development": "balanced",
+        "architecture_design": "quality",
+        "cross_platform": "quality",
+        "bug_fixes": "fast"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "cad-engineer": {
+      "defaultProfile": "quality",
+      "reasoning": "CAD engineering requires precision and technical accuracy",
+      "taskSpecificOverrides": {
+        "plugin_development": "balanced",
+        "parametric_modeling": "quality",
+        "automation": "balanced",
+        "integration": "quality"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    },
+
+    "3d-addon-developer": {
+      "defaultProfile": "balanced",
+      "reasoning": "3D addon development balances functionality with performance",
+      "taskSpecificOverrides": {
+        "addon_development": "balanced",
+        "api_integration": "balanced",
+        "pipeline_tools": "balanced",
+        "optimization": "quality"
+      },
+      "estimatedCostImpact": "moderate",
+      "businessValue": "high"
+    },
+
+    "scientific-computing-specialist": {
+      "defaultProfile": "quality",
+      "reasoning": "Scientific computing requires precision and accuracy",
+      "taskSpecificOverrides": {
+        "numerical_methods": "quality",
+        "simulation": "quality",
+        "data_analysis": "balanced",
+        "visualization": "balanced"
+      },
+      "estimatedCostImpact": "high",
+      "businessValue": "critical"
+    }
+  },
+
+  "teamCompositions": {
+    "full_stack_team": {
+      "agents": ["frontend-engineer", "backend-engineer", "qa-engineer", "deployment-engineer"],
+      "recommendedProfile": "balanced",
+      "description": "Full-stack development team for feature delivery"
+    },
+    "architecture_team": {
+      "agents": ["software-architect", "security-engineer", "performance-engineer"],
+      "recommendedProfile": "quality",
+      "description": "Architecture and design team for strategic decisions"
+    },
+    "compliance_team": {
+      "agents": ["compliance-auditor", "security-engineer", "governance-architect"],
+      "recommendedProfile": "quality",
+      "description": "Enterprise compliance and governance team"
+    },
+    "operations_team": {
+      "agents": ["sre-engineer", "monitoring-engineer", "incident-responder", "reliability-engineer"],
+      "recommendedProfile": "quality",
+      "description": "Production operations and reliability team"
+    },
+    "data_team": {
+      "agents": ["data-engineer", "data-scientist", "analytics-engineer"],
+      "recommendedProfile": "balanced",
+      "description": "Data engineering and analytics team"
+    }
+  },
+
+  "costOptimization": {
+    "enableSmartDowngrade": true,
+    "downgradeCriteria": {
+      "taskComplexityThreshold": "simple",
+      "budgetUtilizationThreshold": 0.85,
+      "timeConstraintPriority": "high"
+    },
+    "estimatedMonthlySavings": {
+      "fast_profile_usage": "50%",
+      "balanced_profile_usage": "30%",
+      "quality_profile_usage": "20%",
+      "projected_cost_reduction": "40-50%"
+    }
+  }
+}

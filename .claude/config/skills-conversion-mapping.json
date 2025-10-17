@@ -1,0 +1,360 @@
+{
+  "version": "1.0.0",
+  "framework_version": "3.10.0",
+  "description": "Agent-to-Skill conversion mapping for Hybrid Layered Skills architecture",
+  "last_updated": "2025-10-17",
+
+  "architecture": {
+    "strategy": "hybrid_layered_skills",
+    "total_skills": 8,
+    "max_skills_per_request": 8,
+    "design_rationale": "Separate orchestration (Foundation) from domain expertise (7 domains) for flexible composition within 8-skill Claude API limit"
+  },
+
+  "skills": {
+    "foundation": {
+      "skill_id": "my-name-is-claude-foundation",
+      "display_title": "My Name Is Claude - Foundation",
+      "description": "Orchestration and coordination layer for multi-agent workflows. Provides session management, project governance, and business alignment. Always load this skill for multi-agent workflows.",
+      "agents": [
+        {
+          "name": "session-manager",
+          "path": ".claude/agents/core/management/session-manager.md",
+          "role": "Multi-agent workflow coordination and state management"
+        },
+        {
+          "name": "product-manager",
+          "path": ".claude/agents/core/strategy/product-manager.md",
+          "role": "Product strategy, roadmap planning, and feature prioritization"
+        },
+        {
+          "name": "business-analyst",
+          "path": ".claude/agents/core/strategy/business-analyst.md",
+          "role": "Requirements analysis and business process integration"
+        }
+      ],
+      "estimated_size_kb": 65,
+      "loading_priority": 1,
+      "always_load": true
+    },
+
+    "architecture": {
+      "skill_id": "my-name-is-claude-architecture",
+      "display_title": "My Name Is Claude - Architecture",
+      "description": "System architecture design and technical leadership. Use for architecture decisions, system design, technology stack selection, and UX design.",
+      "agents": [
+        {
+          "name": "software-architect",
+          "path": ".claude/agents/core/architecture/software-architect.md",
+          "role": "Enterprise architecture design, scalability engineering, technical leadership"
+        },
+        {
+          "name": "ux-designer",
+          "path": ".claude/agents/core/strategy/ux-designer.md",
+          "role": "User experience design, interaction design, accessibility"
+        }
+      ],
+      "estimated_size_kb": 60,
+      "loading_priority": 2,
+      "typical_workflows": ["architecture_design", "technology_selection", "system_design_review"]
+    },
+
+    "development": {
+      "skill_id": "my-name-is-claude-development",
+      "display_title": "My Name Is Claude - Development",
+      "description": "Full-stack software development expertise. Use for frontend, backend, and API implementation tasks.",
+      "agents": [
+        {
+          "name": "frontend-engineer",
+          "path": ".claude/agents/core/development/frontend-engineer.md",
+          "role": "Frontend development, UI implementation, responsive design"
+        },
+        {
+          "name": "backend-engineer",
+          "path": ".claude/agents/core/development/backend-engineer.md",
+          "role": "Backend systems, database design, distributed systems"
+        },
+        {
+          "name": "api-engineer",
+          "path": ".claude/agents/core/development/api-engineer.md",
+          "role": "REST/GraphQL API design, microservices, API security"
+        }
+      ],
+      "estimated_size_kb": 85,
+      "loading_priority": 3,
+      "typical_workflows": ["full_stack_development", "api_development", "web_application_development"]
+    },
+
+    "data": {
+      "skill_id": "my-name-is-claude-data",
+      "display_title": "My Name Is Claude - Data",
+      "description": "Data engineering and data science expertise. Use for data pipelines, analytics, ML/AI, and data architecture.",
+      "agents": [
+        {
+          "name": "data-engineer",
+          "path": ".claude/agents/core/data/data-engineer.md",
+          "role": "Data pipelines, warehouses, ETL, big data processing"
+        },
+        {
+          "name": "data-scientist",
+          "path": ".claude/agents/enterprise/analytics/data-scientist.md",
+          "role": "ML/AI, statistical analysis, predictive modeling"
+        }
+      ],
+      "estimated_size_kb": 60,
+      "loading_priority": 4,
+      "typical_workflows": ["data_pipeline_development", "analytics_implementation", "ml_model_development"]
+    },
+
+    "quality": {
+      "skill_id": "my-name-is-claude-quality",
+      "display_title": "My Name Is Claude - Quality",
+      "description": "Quality assurance and performance engineering. Use for testing, code review, performance optimization, and quality gates.",
+      "agents": [
+        {
+          "name": "qa-engineer",
+          "path": ".claude/agents/core/quality/qa-engineer.md",
+          "role": "Testing strategy, test automation, quality assurance"
+        },
+        {
+          "name": "performance-engineer",
+          "path": ".claude/agents/enterprise/advanced-operations/performance-engineer.md",
+          "role": "Performance optimization, load testing, scalability"
+        },
+        {
+          "name": "reviewer",
+          "path": ".claude/agents/enterprise/management/reviewer.md",
+          "role": "Code review, architectural review, quality standards"
+        }
+      ],
+      "estimated_size_kb": 75,
+      "loading_priority": 5,
+      "typical_workflows": ["testing_implementation", "performance_optimization", "code_review"]
+    },
+
+    "security": {
+      "skill_id": "my-name-is-claude-security",
+      "display_title": "My Name Is Claude - Security",
+      "description": "Security engineering and compliance. Use for security architecture, threat modeling, compliance, and governance.",
+      "agents": [
+        {
+          "name": "security-engineer",
+          "path": ".claude/agents/core/quality/security-engineer.md",
+          "role": "Security architecture, threat modeling, vulnerability assessment"
+        },
+        {
+          "name": "compliance-auditor",
+          "path": ".claude/agents/enterprise/governance/compliance-auditor.md",
+          "role": "Regulatory compliance, audit preparation, standards validation"
+        },
+        {
+          "name": "governance-architect",
+          "path": ".claude/agents/enterprise/governance/governance-architect.md",
+          "role": "Governance frameworks, policy development, risk management"
+        }
+      ],
+      "estimated_size_kb": 70,
+      "loading_priority": 6,
+      "typical_workflows": ["security_review", "compliance_validation", "threat_modeling"]
+    },
+
+    "operations": {
+      "skill_id": "my-name-is-claude-operations",
+      "display_title": "My Name Is Claude - Operations",
+      "description": "DevOps, SRE, and infrastructure operations. Use for deployment, monitoring, incident response, and reliability engineering.",
+      "agents": [
+        {
+          "name": "deployment-engineer",
+          "path": ".claude/agents/core/operations/deployment-engineer.md",
+          "role": "CI/CD, deployment automation, infrastructure as code"
+        },
+        {
+          "name": "devops-architect",
+          "path": ".claude/agents/enterprise/infrastructure/devops-architect.md",
+          "role": "DevOps strategy, toolchain design, automation"
+        },
+        {
+          "name": "reliability-engineer",
+          "path": ".claude/agents/enterprise/advanced-operations/reliability-engineer.md",
+          "role": "System reliability, fault tolerance, disaster recovery"
+        },
+        {
+          "name": "sre-engineer",
+          "path": ".claude/agents/enterprise/advanced-operations/sre-engineer.md",
+          "role": "Site reliability, monitoring, on-call, incident response"
+        },
+        {
+          "name": "monitoring-engineer",
+          "path": ".claude/agents/enterprise/advanced-operations/monitoring-engineer.md",
+          "role": "Observability, metrics, logging, alerting"
+        },
+        {
+          "name": "incident-responder",
+          "path": ".claude/agents/enterprise/advanced-operations/incident-responder.md",
+          "role": "Incident management, post-mortems, emergency response"
+        },
+        {
+          "name": "capacity-planner",
+          "path": ".claude/agents/enterprise/advanced-operations/capacity-planner.md",
+          "role": "Capacity planning, resource optimization, cost management"
+        }
+      ],
+      "estimated_size_kb": 120,
+      "loading_priority": 7,
+      "typical_workflows": ["deployment", "incident_response", "infrastructure_management", "monitoring_setup"]
+    },
+
+    "custom": {
+      "skill_id": "my-name-is-claude-custom",
+      "display_title": "My Name Is Claude - Custom",
+      "description": "Specialized technology stacks: graphics (2D/3D/math), hardware (embedded/electronics), desktop (wxWidgets/Qt/CAD/Blender), and scientific computing. Use for specialized development outside mainstream web/mobile.",
+      "agents": [
+        {
+          "name": "graphics-3d-engineer",
+          "path": ".claude/agents/custom/graphics/graphics-3d-engineer.md",
+          "role": "3D graphics, OpenGL, Vulkan, game engines"
+        },
+        {
+          "name": "graphics-2d-engineer",
+          "path": ".claude/agents/custom/graphics/graphics-2d-engineer.md",
+          "role": "2D graphics, image processing, digital art tools"
+        },
+        {
+          "name": "math-specialist",
+          "path": ".claude/agents/custom/scientific/math-specialist.md",
+          "role": "Numerical algorithms, mathematical modeling, scientific simulations"
+        },
+        {
+          "name": "embedded-engineer",
+          "path": ".claude/agents/custom/hardware/embedded-engineer.md",
+          "role": "Firmware, real-time systems, microcontroller programming"
+        },
+        {
+          "name": "electronics-engineer",
+          "path": ".claude/agents/custom/hardware/electronics-engineer.md",
+          "role": "Embedded hardware, PCB design, sensor integration, IoT"
+        },
+        {
+          "name": "desktop-specialist",
+          "path": ".claude/agents/custom/desktop/desktop-specialist.md",
+          "role": "wxWidgets, Qt, native cross-platform applications"
+        },
+        {
+          "name": "cad-engineer",
+          "path": ".claude/agents/custom/desktop/cad-engineer.md",
+          "role": "CAD systems, parametric modeling, technical drawing automation"
+        },
+        {
+          "name": "3d-addon-developer",
+          "path": ".claude/agents/custom/desktop/3d-addon-developer.md",
+          "role": "Blender extensions, Maya plugins, 3D workflow automation"
+        },
+        {
+          "name": "scientific-computing-specialist",
+          "path": ".claude/agents/custom/scientific/scientific-computing-specialist.md",
+          "role": "Research software, data analysis, HPC"
+        }
+      ],
+      "estimated_size_kb": 150,
+      "loading_priority": 8,
+      "typical_workflows": ["specialized_development", "graphics_programming", "embedded_systems", "scientific_applications"]
+    }
+  },
+
+  "enterprise_agents_distribution": {
+    "note": "24 enterprise agents distributed across skills based on function",
+    "breakdown": {
+      "operations": 7,
+      "security": 2,
+      "quality": 2,
+      "data": 1,
+      "remaining": 12
+    },
+    "remaining_agents": [
+      "cloud-engineer → operations",
+      "automation-engineer → operations",
+      "database-administrator → data",
+      "mobile-developer → development",
+      "integration-architect → architecture",
+      "middleware-engineer → development",
+      "network-architect → operations",
+      "platform-engineer → operations",
+      "project-owner → foundation",
+      "project-coordinator → foundation",
+      "enterprise-architect → architecture",
+      "risk-manager → security",
+      "technical-writer → quality"
+    ]
+  },
+
+  "conversion_process": {
+    "phase_1_extraction": {
+      "description": "Extract agent metadata and content from existing markdown files",
+      "steps": [
+        "Parse YAML frontmatter (name, description, category, etc.)",
+        "Extract Core Competencies section",
+        "Extract Approach section",
+        "Extract Key Responsibilities section",
+        "Extract Collaboration section (important for cross-agent references)",
+        "Extract Integration section (TodoWrite, CLAUDE.md, MCP tools)",
+        "Discard: Performance Standards, Quality Gates, Implementation Guidelines (framework-specific, not needed in skill)"
+      ]
+    },
+
+    "phase_2_transformation": {
+      "description": "Transform agent content into SKILL.md format",
+      "steps": [
+        "Create skill directory structure",
+        "Generate SKILL.md with simplified YAML frontmatter (name, description only)",
+        "Consolidate Core Competencies + Approach + Key Responsibilities into unified instructions",
+        "Adapt Collaboration section to reference other agents within same skill or other skills",
+        "Preserve Integration instructions (TodoWrite, Extended Thinking, CLAUDE.md)",
+        "Add skill-specific guidance (when Claude should use this agent)"
+      ]
+    },
+
+    "phase_3_aggregation": {
+      "description": "Combine multiple agents into single skill",
+      "steps": [
+        "Create skill root SKILL.md with overview of all agents in skill",
+        "Create agents/ subdirectory with individual agent files",
+        "Generate agent index/navigation in main SKILL.md",
+        "Add skill-level guidance (when to load this skill, typical workflows)",
+        "Cross-reference agents within skill",
+        "Reference related skills for cross-skill collaboration"
+      ]
+    },
+
+    "phase_4_validation": {
+      "description": "Validate skill structure and content",
+      "steps": [
+        "Verify YAML frontmatter valid (name, description within limits)",
+        "Check total skill size < 8MB",
+        "Validate agent references are resolvable",
+        "Test skill upload via API",
+        "Validate skill loads correctly in Claude Code",
+        "Test agent invocation within skill"
+      ]
+    }
+  },
+
+  "skill_structure_template": {
+    "description": "Standard directory structure for each skill",
+    "structure": {
+      "root": "SKILL.md - Skill overview and agent index",
+      "agents/": "Individual agent instruction files",
+      "resources/": "Optional: shared templates, guidelines, checklists",
+      "examples/": "Optional: usage examples and common patterns"
+    }
+  },
+
+  "typical_skill_combinations": {
+    "full_stack_web": ["foundation", "architecture", "development", "quality"],
+    "enterprise_platform": ["foundation", "architecture", "security", "operations"],
+    "data_pipeline": ["foundation", "data", "operations", "quality"],
+    "mobile_app": ["foundation", "architecture", "development", "quality"],
+    "specialized_graphics": ["foundation", "custom", "development"],
+    "compliance_audit": ["foundation", "security", "quality"],
+    "incident_response": ["foundation", "operations", "security"]
+  }
+}

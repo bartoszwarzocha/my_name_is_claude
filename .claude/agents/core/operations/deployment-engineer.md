@@ -5,7 +5,7 @@ category: Operations
 subcategory: Infrastructure
 agent_type: Core
 experience_level: "Senior (10+ years)"
-framework_version: "3.2.1+"
+framework_version: "3.10.0"
 ---
 
 # Deployment Engineer - CI/CD Excellence

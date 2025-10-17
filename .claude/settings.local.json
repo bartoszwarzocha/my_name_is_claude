@@ -53,7 +53,20 @@
       "Bash(/mnt/e/AI/my_name_is_claude/work/model-config-tests/usage-examples.sh)",
       "Bash(./work/validate_links.sh:*)",
       "Bash(do)",
-      "mcp__serena__find_symbol"
+      "mcp__serena__find_symbol",
+      "Bash(claude doctor)",
+      "Bash(npm i:*)",
+      "Bash(sudo -S npm i:*)",
+      "Bash(echo:*)",
+      "Read(//usr/local/bin/**)",
+      "Read(//usr/lib/node_modules/@anthropic-ai/claude-code/**)",
+      "Bash(cp:*)",
+      "Bash(rm:*)",
+      "Bash(/mnt/e/AI/my_name_is_claude/work/validate-agent-standardization.sh)",
+      "Bash(do echo \"=== Validating $config ===\")",
+      "Bash(/dev/null)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(do sed -i 's/\"\"framework_version\"\": \"\"3\\.9\\.0+\"\"/\"\"framework_version\"\": \"\"3.10.0\"\"/g' \"$file\")"
     ],
     "deny": [],
     "ask": []

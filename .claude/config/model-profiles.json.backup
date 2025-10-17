@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "description": "Claude Model Configuration Profiles for intelligent cost optimization and performance tuning",
+  "lastUpdated": "2025-10-05",
+
+  "profiles": {
+    "fast": {
+      "name": "Fast Profile",
+      "description": "Optimized for speed and cost efficiency - ideal for rapid iterations and simple tasks",
+      "priority": "speed",
+      "costFactor": 0.3,
+      "primaryModel": "claude-3-haiku-20240307",
+      "fallbackModels": [
+        "claude-3-sonnet-20240229",
+        "claude-sonnet-4-5-20250929"
+      ],
+      "characteristics": {
+        "speed": "very_high",
+        "quality": "good",
+        "cost": "very_low",
+        "contextWindow": "200k"
+      },
+      "useCases": [
+        "Quick code reviews",
+        "Simple refactoring tasks",
+        "Documentation updates",
+        "Syntax checking",
+        "Basic quality validation",
+        "Fast prototyping",
+        "Simple bug fixes",
+        "Code formatting"
+      ],
+      "recommendedFor": [
+        "qa-engineer (basic checks)",
+        "technical-writer (simple updates)",
+        "frontend-engineer (UI tweaks)",
+        "backend-engineer (minor fixes)"
+      ],
+      "limitations": [
+        "Not suitable for complex architecture decisions",
+        "May miss subtle edge cases",
+        "Limited for deep analysis tasks"
+      ]
+    },
+
+    "balanced": {
+      "name": "Balanced Profile",
+      "description": "Optimal cost-quality ratio - default choice for most development tasks",
+      "priority": "balanced",
+      "costFactor": 1.0,
+      "primaryModel": "claude-sonnet-4-5-20250929",
+      "fallbackModels": [
+        "claude-3-sonnet-20240229",
+        "claude-3-opus-20240229"
+      ],
+      "characteristics": {
+        "speed": "high",
+        "quality": "excellent",
+        "cost": "moderate",
+        "contextWindow": "200k"
+      },
+      "useCases": [
+        "Feature development",
+        "Code implementation",
+        "Testing strategy",
+        "API design",
+        "Database schema design",
+        "Integration development",
+        "Security implementation",
+        "Performance optimization"
+      ],
+      "recommendedFor": [
+        "frontend-engineer",
+        "backend-engineer",
+        "api-engineer",
+        "data-engineer",
+        "mobile-developer",
+        "qa-engineer (comprehensive tests)",
+        "security-engineer (implementation)",
+        "deployment-engineer"
+      ],
+      "bestPractices": [
+        "Use for 80% of development tasks",
+        "Default choice for feature development",
+        "Optimal for team collaboration",
+        "Best for iterative development"
+      ]
+    },
+
+    "quality": {
+      "name": "Quality Profile",
+      "description": "Maximum quality and depth - for critical decisions and complex analysis",
+      "priority": "quality",
+      "costFactor": 3.0,
+      "primaryModel": "claude-3-opus-20240229",
+      "fallbackModels": [
+        "claude-sonnet-4-5-20250929",
+        "claude-3-sonnet-20240229"
+      ],
+      "characteristics": {
+        "speed": "moderate",
+        "quality": "exceptional",
+        "cost": "high",
+        "contextWindow": "200k"
+      },
+      "useCases": [
+        "Architecture design",
+        "Security audits",
+        "Compliance validation",
+        "Complex algorithm design",
+        "Critical bug investigation",
+        "Enterprise system design",
+        "Risk assessment",
+        "Strategic technical decisions"
+      ],
+      "recommendedFor": [
+        "software-architect",
+        "security-engineer (audits)",
+        "compliance-auditor",
+        "enterprise-architect",
+        "governance-architect",
+        "risk-manager",
+        "data-scientist (ML models)",
+        "performance-engineer (optimization)"
+      ],
+      "bestPractices": [
+        "Use for critical architectural decisions",
+        "Reserve for complex problem solving",
+        "Apply to security-critical components",
+        "Use for compliance-sensitive work"
+      ],
+      "limitations": [
+        "Higher cost per operation",
+        "Slower response time",
+        "Overkill for simple tasks"
+      ]
+    }
+  },
+
+  "autoSelection": {
+    "enabled": true,
+    "description": "Automatically select optimal model based on task complexity and context",
+    "rules": [
+      {
+        "condition": "task_complexity === 'simple' && time_sensitive === true",
+        "profile": "fast",
+        "reason": "Fast iteration needed for simple tasks"
+      },
+      {
+        "condition": "task_complexity === 'moderate' || task_type === 'feature_development'",
+        "profile": "balanced",
+        "reason": "Optimal cost-quality ratio for standard development"
+      },
+      {
+        "condition": "task_complexity === 'complex' || criticality === 'high'",
+        "profile": "quality",
+        "reason": "Maximum quality needed for critical/complex tasks"
+      },
+      {
+        "condition": "agent_role.includes('architect') || agent_role.includes('security')",
+        "profile": "quality",
+        "reason": "Architecture and security require highest quality"
+      },
+      {
+        "condition": "budget_constraint === 'strict'",
+        "profile": "fast",
+        "reason": "Cost optimization required"
+      }
+    ]
+  },
+
+  "projectScaleDefaults": {
+    "startup": {
+      "defaultProfile": "balanced",
+      "description": "Startups need speed and quality balance with cost awareness",
+      "costBudgetMultiplier": 0.7,
+      "preferredProfiles": ["balanced", "fast"],
+      "avoidProfiles": []
+    },
+    "sme": {
+      "defaultProfile": "balanced",
+      "description": "SME projects balance quality and cost effectively",
+      "costBudgetMultiplier": 1.0,
+      "preferredProfiles": ["balanced", "quality"],
+      "avoidProfiles": []
+    },
+    "enterprise": {
+      "defaultProfile": "quality",
+      "description": "Enterprise prioritizes quality and compliance over cost",
+      "costBudgetMultiplier": 2.0,
+      "preferredProfiles": ["quality", "balanced"],
+      "avoidProfiles": ["fast"]
+    }
+  },
+
+  "environmentOverrides": {
+    "development": {
+      "defaultProfile": "balanced",
+      "allowProfileChange": true,
+      "description": "Development environment allows flexible model selection"
+    },
+    "staging": {
+      "defaultProfile": "quality",
+      "allowProfileChange": true,
+      "description": "Staging requires quality validation before production"
+    },
+    "production": {
+      "defaultProfile": "quality",
+      "allowProfileChange": false,
+      "description": "Production operations require maximum quality and reliability"
+    }
+  },
+
+  "costTracking": {
+    "enabled": true,
+    "dailyBudgetWarningThreshold": 0.8,
+    "monthlyBudgetWarningThreshold": 0.9,
+    "autoDowngradeOnBudgetExceed": true,
+    "trackingMetrics": [
+      "total_tokens_per_profile",
+      "cost_per_agent",
+      "cost_per_project_phase",
+      "daily_cost_trend",
+      "monthly_cost_projection"
+    ]
+  },
+
+  "fallbackStrategy": {
+    "onModelUnavailable": "use_fallback",
+    "fallbackOrder": [
+      "claude-sonnet-4-5-20250929",
+      "claude-3-sonnet-20240229",
+      "claude-3-haiku-20240307"
+    ],
+    "retryAttempts": 3,
+    "retryDelayMs": 1000,
+    "notifyOnFallback": true
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "version": "1.0.0",
+  "framework_version": "3.10.0",
+  "description": "Extended Thinking integration configuration for deep reasoning in complex agent decisions",
+
+  "trigger_conditions": {
+    "critical": {
+      "description": "Always activate Extended Thinking for these scenarios",
+      "enabled": true,
+      "scenarios": [
+        {
+          "id": "architecture_pattern_selection",
+          "agents": ["software-architect"],
+          "trigger": "When selecting system architecture pattern (monolithic, microservices, serverless, hybrid)",
+          "rationale": "High-impact, long-term commitment affecting entire codebase",
+          "min_confidence_threshold": 0.85
+        },
+        {
+          "id": "security_threat_modeling",
+          "agents": ["security-engineer"],
+          "trigger": "When performing threat modeling or security vulnerability assessment",
+          "rationale": "Missed threats result in production security incidents",
+          "min_confidence_threshold": 0.90
+        },
+        {
+          "id": "technology_stack_selection",
+          "agents": ["software-architect", "frontend-engineer", "backend-engineer", "data-engineer"],
+          "trigger": "When selecting primary technology stack or major framework",
+          "rationale": "Long-term commitment affecting team productivity and system maintainability",
+          "min_confidence_threshold": 0.85
+        },
+        {
+          "id": "cost_performance_tradeoff",
+          "agents": ["*"],
+          "trigger": "When making model downgrade/upgrade decision with budget implications > $100/month",
+          "rationale": "Balance between quality outcomes and operational costs",
+          "min_confidence_threshold": 0.80
+        }
+      ]
+    },
+
+    "high_value": {
+      "description": "Selective activation based on complexity and impact",
+      "enabled": true,
+      "scenarios": [
+        {
+          "id": "multi_agent_conflict",
+          "agents": ["session-manager"],
+          "trigger": "When resolving conflicting recommendations between 2+ agents",
+          "rationale": "Complex coordination requiring understanding of multiple perspectives",
+          "min_confidence_threshold": 0.75
+        },
+        {
+          "id": "performance_optimization",
+          "agents": ["performance-engineer", "backend-engineer", "sre-engineer"],
+          "trigger": "When selecting optimization strategy with multiple viable approaches",
+          "rationale": "Complex trade-offs between different optimization dimensions",
+          "min_confidence_threshold": 0.75
+        },
+        {
+          "id": "quality_gate_failure",
+          "agents": ["qa-engineer", "security-engineer"],
+          "trigger": "When investigating complex test/quality gate failures with unclear root cause",
+          "rationale": "Deep causal analysis required for effective resolution",
+          "min_confidence_threshold": 0.70
+        }
+      ]
+    },
+
+    "experimental": {
+      "description": "Optional triggers for testing and evaluation",
+      "enabled": false,
+      "scenarios": [
+        {
+          "id": "code_review_complexity",
+          "agents": ["reviewer"],
+          "trigger": "When reviewing code changes > 500 lines affecting core systems",
+          "rationale": "Large changes require comprehensive analysis",
+          "min_confidence_threshold": 0.70
+        }
+      ]
+    }
+  },
+
+  "logging": {
+    "enabled": true,
+    "storage_path": ".claude/thinking-logs/",
+    "max_log_size_mb": 10,
+    "retention_days": 90,
+    "format": "json",
+    "compression": "gzip_after_7_days",
+    "include_in_logs": {
+      "thinking_blocks": true,
+      "alternatives_considered": true,
+      "confidence_scores": true,
+      "decision_rationale": true,
+      "execution_time_ms": true
+    }
+  },
+
+  "performance": {
+    "max_thinking_time_seconds": 30,
+    "fallback_on_timeout": "standard_analysis",
+    "concurrent_thinking_limit": 3,
+    "cache_similar_decisions": true,
+    "cache_ttl_hours": 24
+  },
+
+  "integration": {
+    "todowrite_integration": {
+      "enabled": true,
+      "add_thinking_log_reference": true,
+      "add_confidence_score": true,
+      "add_decision_summary": true
+    },
+    "checkpoint_integration": {
+      "enabled": true,
+      "create_checkpoint_before_major_decision": true,
+      "include_thinking_context_in_checkpoint": true
+    },
+    "parallel_agents_integration": {
+      "enabled": true,
+      "coordinate_thinking_across_agents": true,
+      "share_reasoning_between_related_agents": false
+    }
+  },
+
+  "quality_gates": {
+    "minimum_confidence_for_implementation": 0.70,
+    "require_alternatives_analysis": true,
+    "minimum_alternatives_considered": 2,
+    "require_risk_assessment": true,
+    "stakeholder_review_threshold": 0.75
+  }
+}

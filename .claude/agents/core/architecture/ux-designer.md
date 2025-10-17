@@ -5,7 +5,7 @@ category: Architecture
 subcategory: System Design
 agent_type: Core
 experience_level: "Senior (10+ years)"
-framework_version: "3.2.1+"
+framework_version: "3.10.0"
 ---
 
 # UX Designer - User-Centered Design Excellence

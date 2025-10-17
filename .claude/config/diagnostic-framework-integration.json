@@ -1,0 +1,242 @@
+{
+  "version": "1.0.0",
+  "framework_version": "3.10.0",
+  "description": "Integration between Extended Thinking and framework diagnostic/quality systems",
+
+  "checkpoint_integration": {
+    "enabled": true,
+    "description": "Extended Thinking for checkpoint/rollback decisions",
+
+    "rollback_analysis": {
+      "enabled": true,
+      "trigger": "Before reverting to checkpoint",
+      "thinking_focus": [
+        "Why is current state problematic?",
+        "What went wrong since checkpoint?",
+        "Which checkpoint is optimal for rollback?",
+        "What work will be lost?",
+        "How to prevent recurrence?"
+      ],
+      "log_location": ".claude/thinking-logs/rollback-decisions/",
+      "include_in_checkpoint_metadata": true
+    },
+
+    "checkpoint_creation_analysis": {
+      "enabled": true,
+      "trigger": "Before major decision points",
+      "thinking_focus": [
+        "Is this a suitable checkpoint moment?",
+        "What risk level justifies checkpoint?",
+        "What state needs preservation?"
+      ]
+    }
+  },
+
+  "quality_gate_integration": {
+    "enabled": true,
+    "description": "Extended Thinking for quality gate failures and root cause analysis",
+
+    "failure_analysis": {
+      "enabled": true,
+      "trigger": "When quality gate fails",
+      "agents": ["qa-engineer", "security-engineer", "performance-engineer"],
+      "thinking_focus": [
+        "What is the root cause?",
+        "What are alternative hypotheses?",
+        "What is the confidence level for each hypothesis?",
+        "What is the fastest path to resolution?",
+        "What are the risk implications?"
+      ],
+      "output_format": {
+        "hypotheses": "ranked_by_probability",
+        "recommended_action": "with_confidence_score",
+        "alternative_approaches": "with_trade_offs"
+      },
+      "log_location": ".claude/thinking-logs/quality-failures/"
+    },
+
+    "preventive_analysis": {
+      "enabled": true,
+      "trigger": "When quality metrics approach threshold",
+      "early_warning_thresholds": {
+        "performance": "within_20%_of_sla",
+        "security": "any_medium_severity_finding",
+        "reliability": "error_rate_above_0.1%"
+      },
+      "thinking_focus": [
+        "What trend is developing?",
+        "What is the projected timeline to failure?",
+        "What preventive actions are available?"
+      ]
+    }
+  },
+
+  "parallel_agent_coordination": {
+    "enabled": true,
+    "description": "Extended Thinking for multi-agent conflict resolution",
+
+    "conflict_resolution": {
+      "enabled": true,
+      "coordinator_agent": "session-manager",
+      "trigger": "When 2+ agents provide conflicting recommendations",
+      "thinking_focus": [
+        "What is the fundamental disagreement?",
+        "What are the underlying assumptions of each agent?",
+        "What criteria should determine the decision?",
+        "Can recommendations be synthesized?",
+        "What is the optimal resolution?"
+      ],
+      "resolution_strategies": [
+        "synthesis",
+        "evidence_based_selection",
+        "hybrid_approach",
+        "escalation_to_human"
+      ],
+      "log_location": ".claude/thinking-logs/conflict-resolution/"
+    },
+
+    "coordination_optimization": {
+      "enabled": true,
+      "trigger": "Before distributing work to parallel agents",
+      "thinking_focus": [
+        "What is the optimal task distribution?",
+        "What dependencies exist?",
+        "What sequence minimizes conflicts?",
+        "What resource constraints exist?"
+      ]
+    }
+  },
+
+  "performance_diagnostics": {
+    "enabled": true,
+    "description": "Extended Thinking for performance bottleneck analysis",
+
+    "bottleneck_analysis": {
+      "enabled": true,
+      "agents": ["performance-engineer", "backend-engineer", "sre-engineer"],
+      "trigger": "When performance degrades beyond threshold",
+      "thinking_focus": [
+        "Where is the bottleneck?",
+        "What are contributing factors?",
+        "What is the expected improvement from each fix?",
+        "What is the implementation cost vs benefit?",
+        "What is the risk of each optimization?"
+      ],
+      "metrics_integration": {
+        "response_time": true,
+        "throughput": true,
+        "resource_utilization": true,
+        "error_rate": true
+      },
+      "log_location": ".claude/thinking-logs/performance-analysis/"
+    }
+  },
+
+  "security_diagnostics": {
+    "enabled": true,
+    "description": "Extended Thinking for security vulnerability analysis",
+
+    "threat_analysis": {
+      "enabled": true,
+      "agents": ["security-engineer"],
+      "trigger": "When security scan detects findings OR during threat modeling",
+      "thinking_focus": [
+        "What is the attack vector?",
+        "What is the exploitability?",
+        "What is the business impact?",
+        "What are mitigation options?",
+        "What is the risk/cost trade-off?"
+      ],
+      "severity_integration": {
+        "critical": "always_trigger_extended_thinking",
+        "high": "trigger_if_complex",
+        "medium": "trigger_if_ambiguous",
+        "low": "optional"
+      },
+      "log_location": ".claude/thinking-logs/security-analysis/"
+    }
+  },
+
+  "root_cause_analysis": {
+    "enabled": true,
+    "description": "Deep diagnostic analysis for complex failures",
+
+    "incident_analysis": {
+      "enabled": true,
+      "agents": ["incident-responder", "reliability-engineer", "sre-engineer"],
+      "trigger": "Production incident OR complex system failure",
+      "thinking_methodology": "5_whys_plus_alternatives",
+      "thinking_focus": [
+        "What was the immediate cause?",
+        "What were the contributing factors?",
+        "What were the systemic issues?",
+        "What could have prevented this?",
+        "What should change to prevent recurrence?"
+      ],
+      "output_requirements": {
+        "timeline": true,
+        "causal_chain": true,
+        "prevention_recommendations": true,
+        "confidence_scores": true
+      },
+      "log_location": ".claude/thinking-logs/incident-analysis/"
+    }
+  },
+
+  "integration_with_existing_systems": {
+    "todowrite": {
+      "enhanced_task_creation": true,
+      "include_thinking_log_reference": true,
+      "include_confidence_scores": true,
+      "include_alternative_approaches": false
+    },
+
+    "model_profiles": {
+      "use_quality_profile_for_diagnostics": true,
+      "rationale": "Diagnostic accuracy more important than speed",
+      "override_cost_optimization": true
+    },
+
+    "output_styles": {
+      "prefer_technical_style": true,
+      "include_reasoning_summary": true
+    },
+
+    "session_management": {
+      "preserve_thinking_context": true,
+      "include_in_session_state": true
+    }
+  },
+
+  "storage_and_retrieval": {
+    "thinking_log_database": {
+      "location": ".claude/thinking-logs/",
+      "index_file": ".claude/thinking-logs/index.json",
+      "search_capability": true,
+      "retention_policy": "90_days",
+      "compression": "after_7_days"
+    },
+
+    "quick_access": {
+      "recent_decisions": "last_20",
+      "by_agent": true,
+      "by_decision_type": true,
+      "by_confidence_level": true
+    }
+  },
+
+  "quality_metrics": {
+    "track_thinking_effectiveness": {
+      "decision_accuracy": "track_if_decision_was_correct_in_retrospect",
+      "resolution_speed": "track_time_to_problem_resolution",
+      "confidence_calibration": "track_confidence_vs_actual_outcome"
+    },
+
+    "improvement_loop": {
+      "review_frequency": "monthly",
+      "adjust_triggers": true,
+      "refine_thinking_focus": true,
+      "optimize_agent_selection": true
+    }
+  }
+}

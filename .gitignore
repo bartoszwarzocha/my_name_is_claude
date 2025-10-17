@@ -17,6 +17,10 @@ SESSION_TODOS_*.md
 project_archive/sessions/
 project_archive/tools/
 
+# Extended Thinking logs - Decision logs from deep reasoning mode
+.claude/thinking-logs/*
+!.claude/thinking-logs/.gitkeep
+
 # Python cache
 __pycache__/
 *.pyc
@@ -50,3 +54,8 @@ instrukcja_*.md
 INSTRUKCJA_*.md
 INSTRUCTION_*.md
 instruction_*.md
+
+# User manuals (generated, not tracked)
+manual_PL.*
+audit_report.md
+fix_report.md

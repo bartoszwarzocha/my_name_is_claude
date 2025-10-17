@@ -5,7 +5,7 @@ category: Scientific
 subcategory: Scientific Computing
 agent_type: Custom
 experience_level: "Senior (10+ years)"
-framework_version: "3.2.1+"
+framework_version: "3.10.0"
 ---
 
 # Scientific Computing Specialist - Specialized Custom
