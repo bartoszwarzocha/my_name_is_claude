@@ -2,9 +2,54 @@
   "$schema": "https://json-schema.org/draft-07/schema#",
   "version": "1.0.0",
   "description": "Claude Model Configuration Profiles for intelligent cost optimization and performance tuning",
-  "lastUpdated": "2025-10-05",
+  "lastUpdated": "2025-01-16",
 
   "profiles": {
+    "ultra-fast": {
+      "name": "Ultra-Fast Profile",
+      "description": "Haiku 4.5 for maximum speed and cost efficiency - ideal for exploration and simple execution",
+      "priority": "speed",
+      "costFactor": 0.15,
+      "primaryModel": "claude-haiku-4.5",
+      "fallbackModels": [
+        "claude-3-haiku-20240307",
+        "claude-sonnet-4-5-20250929"
+      ],
+      "characteristics": {
+        "speed": "exceptional",
+        "quality": "good",
+        "cost": "minimal",
+        "contextWindow": "200k"
+      },
+      "useCases": [
+        "Codebase exploration",
+        "File pattern matching",
+        "Quick searches",
+        "Simple execution tasks",
+        "Routine operations",
+        "Fast code navigation",
+        "Technology detection",
+        "Dependency scanning"
+      ],
+      "recommendedFor": [
+        "explore-subagent",
+        "ai-tools (project detection)",
+        "simple task execution",
+        "background exploration"
+      ],
+      "bestPractices": [
+        "Use for all exploration tasks",
+        "Ideal for auto-switching execution phase",
+        "Perfect for high-volume simple operations",
+        "Cost-optimal for routine checks"
+      ],
+      "limitations": [
+        "Not suitable for complex reasoning",
+        "Limited for architecture decisions",
+        "Use for execution, not planning"
+      ]
+    },
+
     "fast": {
       "name": "Fast Profile",
       "description": "Optimized for speed and cost efficiency - ideal for rapid iterations and simple tasks",
@@ -143,9 +188,14 @@
     "description": "Automatically select optimal model based on task complexity and context",
     "rules": [
       {
+        "condition": "task_type === 'exploration' || task_type === 'search'",
+        "profile": "ultra-fast",
+        "reason": "Ultra-fast Haiku 4.5 optimal for exploration and searching"
+      },
+      {
         "condition": "task_complexity === 'simple' && time_sensitive === true",
-        "profile": "fast",
-        "reason": "Fast iteration needed for simple tasks"
+        "profile": "ultra-fast",
+        "reason": "Ultra-fast iteration with Haiku 4.5 for simple tasks"
       },
       {
         "condition": "task_complexity === 'moderate' || task_type === 'feature_development'",
@@ -164,10 +214,55 @@
       },
       {
         "condition": "budget_constraint === 'strict'",
-        "profile": "fast",
-        "reason": "Cost optimization required"
+        "profile": "ultra-fast",
+        "reason": "Maximum cost optimization with Haiku 4.5"
       }
     ]
+  },
+
+  "autoSwitching": {
+    "enabled": true,
+    "description": "Automatic model switching: Sonnet for planning, Haiku 4.5 for execution - 70% cost savings",
+    "strategy": "planning_execution_split",
+    "models": {
+      "planning": "claude-sonnet-4-5-20250929",
+      "execution": "claude-haiku-4.5"
+    },
+    "rules": [
+      "Use Sonnet 4.5 for planning and architecture phases",
+      "Use Haiku 4.5 for execution and implementation phases",
+      "Use Opus for critical decisions only"
+    ],
+    "phaseDetection": {
+      "planning_keywords": [
+        "design",
+        "architecture",
+        "plan",
+        "strategy",
+        "approach",
+        "decide",
+        "evaluate",
+        "analyze requirements"
+      ],
+      "execution_keywords": [
+        "implement",
+        "execute",
+        "write code",
+        "create file",
+        "update",
+        "fix",
+        "refactor",
+        "test"
+      ]
+    },
+    "costSavings": {
+      "baseline": "100% Sonnet usage",
+      "withAutoSwitching": "70% cost reduction",
+      "breakdown": {
+        "planning": "30% of tasks (Sonnet)",
+        "execution": "70% of tasks (Haiku 4.5)"
+      }
+    }
   },
 
   "projectScaleDefaults": {

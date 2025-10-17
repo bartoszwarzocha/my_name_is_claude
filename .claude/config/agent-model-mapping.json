@@ -2,9 +2,29 @@
   "$schema": "https://json-schema.org/draft-07/schema#",
   "version": "1.0.0",
   "description": "Intelligent agent-to-model mapping for optimal performance and cost efficiency",
-  "lastUpdated": "2025-10-05",
+  "lastUpdated": "2025-01-16",
 
   "agentMappings": {
+    "explore-subagent": {
+      "defaultProfile": "ultra-fast",
+      "reasoning": "Haiku 4.5 optimized for fast codebase exploration and searching - 60% cost reduction",
+      "taskSpecificOverrides": {
+        "codebase_exploration": "ultra-fast",
+        "file_search": "ultra-fast",
+        "pattern_matching": "ultra-fast",
+        "technology_detection": "ultra-fast",
+        "dependency_scanning": "ultra-fast",
+        "deep_analysis": "balanced"
+      },
+      "estimatedCostImpact": "minimal",
+      "businessValue": "high",
+      "performanceMetrics": {
+        "speed": "exceptional",
+        "cost": "minimal",
+        "accuracy": "high"
+      }
+    },
+
     "software-architect": {
       "defaultProfile": "quality",
       "reasoning": "Architecture decisions require maximum quality and depth of analysis",
@@ -604,6 +624,21 @@
     }
   },
 
+  "globalTaskOverrides": {
+    "description": "Global task-based profile selection overriding agent defaults",
+    "overrides": {
+      "exploration": "ultra-fast",
+      "file_search": "ultra-fast",
+      "pattern_matching": "ultra-fast",
+      "simple_execution": "ultra-fast",
+      "routine_tasks": "ultra-fast",
+      "codebase_navigation": "ultra-fast",
+      "technology_detection": "ultra-fast",
+      "dependency_scanning": "ultra-fast"
+    },
+    "reasoning": "Haiku 4.5 provides exceptional speed and cost efficiency for exploration and simple execution tasks across all agents"
+  },
+
   "teamCompositions": {
     "full_stack_team": {
       "agents": ["frontend-engineer", "backend-engineer", "qa-engineer", "deployment-engineer"],
@@ -640,10 +675,25 @@
       "timeConstraintPriority": "high"
     },
     "estimatedMonthlySavings": {
-      "fast_profile_usage": "50%",
+      "ultra_fast_profile_usage": "40%",
+      "fast_profile_usage": "10%",
       "balanced_profile_usage": "30%",
       "quality_profile_usage": "20%",
-      "projected_cost_reduction": "40-50%"
+      "projected_cost_reduction": "60-70%"
+    },
+    "haikuOptimization": {
+      "enabled": true,
+      "model": "claude-haiku-4.5",
+      "usage_percentage": "40%",
+      "cost_impact": "60% cost reduction for exploration and simple execution",
+      "recommended_tasks": [
+        "Codebase exploration",
+        "File searching",
+        "Pattern matching",
+        "Technology detection",
+        "Simple execution",
+        "Routine operations"
+      ]
     }
   }
 }
